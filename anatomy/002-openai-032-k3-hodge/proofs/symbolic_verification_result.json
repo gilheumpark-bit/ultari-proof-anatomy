@@ -1,0 +1,92 @@
+{
+  "problem_1_symplectic_double_bind_and_eems13": {
+    "k_eightfold": 4,
+    "sign_odd_maslov_at_k4": -1,
+    "sign_even_maslov_at_k4": 1,
+    "eliashberg_murphy_I_new": "-2*m",
+    "ind_U_global_max": "2*k - 1",
+    "ind_eff_cusp_adjusted": "2*k - 2",
+    "eems13_line_421_exponent": "3*k - 2",
+    "eems13_line_410_694_exponent": "k - 1",
+    "eems13_exponent_difference_odd": "2*k - 1",
+    "reverse_G2_maslov_degrees": [
+      "1",
+      "2*k - 1"
+    ],
+    "forward_G1_maslov_degrees": [
+      "2",
+      "2*k - 2"
+    ],
+    "forward_G1_hits_curvature_degree_2": true,
+    "chi_zero_total_double_points": "2*n_odd"
+  },
+  "problem_2_part1_clifford_reduction_engine": {
+    "degrees_4_7_10": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22
+    ],
+    "degrees_6_9_12": [
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26
+    ],
+    "vandermonde_4_7_10_nonzero": true,
+    "semiregularity_formal_kernel_dim": 19,
+    "zero_transcendental_max_kernel_dim": 5,
+    "zero_transcendental_missing_directions": 14
+  },
+  "problem_3_shioda_inose_central_fiber_no_go": {
+    "picard_rank_mirror_quartic": 19,
+    "divisor_block_dim_N": 18,
+    "transcendental_block_dim_UB": 3,
+    "yoneda_uncobounded_min_rank_bound": 15,
+    "yoneda_uncobounded_exact_orthogonal": 18,
+    "split_sum_max_kernel_in_Z": 1,
+    "split_sum_unabsorbed_directions": 18
+  },
+  "problem_4_symplectic_and_algebraic_obstructions": {
+    "maurer_cartan_product_degree": 3,
+    "kummer_exceptional_curve_deficit": 16,
+    "kummer_fixed_point_total_kernel": 3,
+    "clifford_spin_dimension_gap": 511,
+    "semihomogeneous_18_sum_ext2_at_g4": 126,
+    "target_b2_bound_at_g4": 31,
+    "clifford_spinor_endomorphism_dim": 262144,
+    "clifford_spinor_ext2_at_g4": 1835008,
+    "walsh_hadamard_cross_ext1": 0,
+    "walsh_hadamard_missing_N_directions": 3,
+    "walsh_hadamard_single_channel_ext2": 130816,
+    "walsh_hadamard_16_channel_ext2": 2093056,
+    "walsh_hadamard_target_bound_g512": 523779,
+    "walsh_hadamard_ext2_overflow": 1569277,
+    "ample_koszul_4term_diagonal_multiplicity": 19,
+    "ample_koszul_4term_ext2_g512": 2485504,
+    "external_21_channel_ext2_g512": 2747136,
+    "mumford_5_channel_ext2_g512": 654080,
+    "markman_secant_so2_5_to_so2_19_gap": 14,
+    "generalized_kummer_b2_deficit": 15,
+    "kummer_picard_moduli_codimension_gap": 16,
+    "single_stable_k3_family_ext2_g512": 140033,
+    "hyperkahler_classifying_map_pullback_rank": 0
+  },
+  "problem_5_bogomolov_discriminant_and_repair": {
+    "unmodified_pure_Eg_bogomolov_lead": 0,
+    "bogomolov_plus_expression": "c_mix + q_rem",
+    "bogomolov_minus_expression": "-c_mix + q_rem",
+    "bogomolov_sign_flip_span": "2*c_mix",
+    "repaired_minimum_pure_Eg_bogomolov_lead": "c_mix - q_rem"
+  }
+}

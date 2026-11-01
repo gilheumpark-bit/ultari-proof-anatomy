@@ -1,0 +1,305 @@
+{
+  "package_name": "OpenAI_032_K3_Hodge_Conjecture_Forensic_and_No_Go_Analysis",
+  "release_date": "2026-11-01",
+  "target_repository": "openai/math (Family #032: The rational Hodge conjecture for CM abelian varieties & 3 retracted K3/Eightfold manuscripts at commit adc7f1241b42)",
+  "verification_commands": {
+    "lean4_kernel_check": "lean proofs/k3_forensic_paths.lean",
+    "symbolic_solver_check": "cd proofs && python3 verify_symbolic_k3.py"
+  },
+  "artifacts_sha256": {
+    "README.md": "08bc49224a1e628673f969e1cb6dc16e9c96c265ebc3ae647a489063d9781281",
+    "README.ko.md": "ab89362e7d16f16ae9d95631e45fac235d252340c6be1dc9c5a7617ca875cd06",
+    "proofs/k3_forensic_paths.lean": "ce3a5174796ac991d5d2039c385d910c76d32de90805b000570e02da7ab042fa",
+    "proofs/verify_symbolic_k3.py": "3da1dbbd201f7cc1f2e02b61d58e68eba8041d4983869bf7da5e52cf8b448f6e",
+    "proofs/symbolic_verification_result.json": "2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a",
+    "proofs/problem_spec.md": "82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74",
+    "ko/01_초보자용_쉬운해설.md": "fc63157e16fafe0145d0acdba3bb645a677b5b7b7481a8bc6932e87d5514fcbf",
+    "ko/02_중급자용_구조및수식가이드.md": "4ebe8408c18f8065cdc1e153382c713139c019094cee2da00182e62c7ec975d8",
+    "ko/03_전문가용_대수기하심플렉틱및형식증명보고서.md": "eafe93c6251ba8af2aadb1c81cc0adc95d7100248e46f89ed595c7d4ce635f53",
+    "ko/04_자동검증및파서용_명세서.md": "aedf7a72badf66bbf9f05aa8887602a080b03ef689cdd9afaa126c690eaf3ed2",
+    "ko/README.md": "8378d027a623b28306e7139036d19b008420a9ee32a47af2711d6bb863e8227d",
+    "en/01_Beginner_Guide.md": "fe1e3ad06dd3c2d5badc2c6118f527f5e80d95bfe1e6f472426e315d19908377",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "fa71e57fa86360f6ce264a2e86160bf6623980524ec0def9d0a9665d93eb2a4e",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "23f0103b04e89ce4dbe4aacf1dac39391934a4dd69120abc86d78f0baddb5d81",
+    "en/04_Automated_Verification_and_Manifest.md": "6caf48585402896df2fb2181d6836b1108cbb43a85751dc643c0bf93f3013ef1",
+    "en/README.md": "35cded23ec3d46d5596ac6f2bdaed1c61757bf6c4b284e8f8f9d389c693228ac"
+  },
+  "verification_scope": {
+    "formalized_rational_and_integer_theorems": "27 Lean 4 theorems over Int/Nat (0 sorry, 0 custom axiom, 112/112 hypothesis mutations caught) in proofs/k3_forensic_paths.lean + independent SymPy symbolic derivations.",
+    "future_algebraic_geometric_extensions": "Constructing a modified seed cycle C_tilde = C_* + gamma on the central fiber B x E^512 with a positive pure-E^g fourth-degree component gamma in H^0(B) x H^4(E^g) satisfying Bogomolov positivity, together with equivariant semiregularity injectivity on the Clifford-spin invariant subspace."
+  },
+  "verified_key_results": {
+    "problem_1_symplectic_double_bind_and_eems13": {
+      "eliashberg_murphy_I_new": "-2*m",
+      "ind_U_global_max": "2*k - 1",
+      "ind_eff_cusp_adjusted": "2*k - 2",
+      "reverse_G2_maslov_degrees": [
+        "1",
+        "2*k - 1"
+      ],
+      "forward_G1_maslov_degrees": [
+        "2",
+        "2*k - 2"
+      ],
+      "lean_theorems": [
+        "odd_maslov_degree_sign_always_negative (Theorem 1, L9)",
+        "odd_degree_trace_sign_always_opposite (Theorem 2, L23)",
+        "eliashberg_murphy_cancellation_fails (Theorem 3, L41)",
+        "polterovich_surgery_maslov_obstruction (Theorem 4, L51)",
+        "even_branch_generator_avoids_degree_two (Theorem 5, L59)",
+        "eems_poincare_hopf_and_maslov_degrees (Theorem 12, L141)",
+        "eems_chi_zero_stabilization_no_go (Theorem 13, L166)",
+        "eems_opposite_sign_and_stokes_blindness (Theorem 17, L218)"
+      ]
+    },
+    "problem_2_part1_clifford_reduction_engine": {
+      "degrees_4_7_10": [
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22
+      ],
+      "degrees_6_9_12": [
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26
+      ],
+      "semiregularity_formal_kernel_dim": 19,
+      "zero_transcendental_max_kernel_dim": 5,
+      "lean_theorems": [
+        "exactks_4_7_10_degree_separation (Theorem 6, L71)",
+        "auxiliary_6_9_12_degree_separation (Theorem 7, L79)",
+        "semiregularity_injective_squeeze (Theorem 8, L86)",
+        "zero_transcendental_component_breaks_ext2_bound (Theorem 9, L99)"
+      ]
+    },
+    "problem_3_shioda_inose_central_fiber_no_go": {
+      "divisor_block_dim_N": 18,
+      "transcendental_block_dim_UB": 3,
+      "yoneda_uncobounded_min_rank_bound": 15,
+      "lean_theorems": [
+        "shioda_inose_split_sum_obstruction_rank (Theorem 10, L109)",
+        "yoneda_cone_atiyah_rank_no_go (Theorem 11, L124)"
+      ]
+    },
+    "problem_4_symplectic_and_algebraic_obstructions": {
+      "kummer_exceptional_curve_deficit": 16,
+      "kummer_fixed_point_total_kernel": 3,
+      "clifford_spinor_endomorphism_dim": 262144,
+      "walsh_hadamard_16_channel_ext2": 2093056,
+      "walsh_hadamard_target_bound_g512": 523779,
+      "walsh_hadamard_ext2_overflow": 1569277,
+      "lean_theorems": [
+        "maurer_cartan_forward_trace_obstruction (Theorem 14, L178)",
+        "kummer_bkr_untwisted_deficit_and_clifford_gap (Theorem 15, L187)",
+        "semihomogeneous_rank21_diagonal_ext2_overflow (Theorem 16, L201)",
+        "kummer_bkr_fixed_point_atiyah_vanishing (Theorem 18, L233)",
+        "clifford_spin_endomorphism_ext2_explosion (Theorem 20, L260)",
+        "walsh_hadamard_decoupling_diagonal_ext2_no_go (Theorem 21, L281)",
+        "ample_koszul_4_term_diagonal_and_section_overflow (Theorem 22, L303)",
+        "mukai_semihomogeneous_projective_flatness_barrier (Theorem 23, L328)",
+        "markman_secant_mukai_dimension_gap (Theorem 24, L355)",
+        "additivity_vs_hyperkahler_rigidity_circularity (Theorem 25, L376)",
+        "universal_mumford_diagonal_overflow_for_all_g_and_M (Theorem 26, L408)",
+        "universal_g1_branch_stokes_and_kummer_moduli_no_go (Theorem 27, L438)"
+      ],
+      "ample_koszul_4term_ext2_g512": 2485504,
+      "external_21_channel_ext2_g512": 2747136,
+      "markman_secant_so2_5_to_so2_19_gap": 14,
+      "single_stable_k3_family_ext2_g512": 140033,
+      "hyperkahler_classifying_map_pullback_rank": 0,
+      "mumford_5_channel_ext2_g512": 654080,
+      "generalized_kummer_b2_deficit": 15,
+      "kummer_picard_moduli_codimension_gap": 16
+    },
+    "problem_5_bogomolov_discriminant_and_repair": {
+      "unmodified_pure_Eg_bogomolov_lead": 0,
+      "bogomolov_sign_flip_span": "2*c_mix",
+      "repaired_minimum_pure_Eg_bogomolov_lead": "c_mix - q_rem",
+      "lean_theorem": "bogomolov_mixed_discriminant_sign_flip_no_go (Theorem 19, L247)"
+    }
+  },
+  "lean4_verification": {
+    "files": [
+      "proofs/k3_forensic_paths.lean"
+    ],
+    "theorems_proved": 27,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "theorems": [
+      {
+        "index": 1,
+        "name": "odd_maslov_degree_sign_always_negative",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 9
+      },
+      {
+        "index": 2,
+        "name": "odd_degree_trace_sign_always_opposite",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 23
+      },
+      {
+        "index": 3,
+        "name": "eliashberg_murphy_cancellation_fails",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 41
+      },
+      {
+        "index": 4,
+        "name": "polterovich_surgery_maslov_obstruction",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 51
+      },
+      {
+        "index": 5,
+        "name": "even_branch_generator_avoids_degree_two",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 59
+      },
+      {
+        "index": 6,
+        "name": "exactks_4_7_10_degree_separation",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 71
+      },
+      {
+        "index": 7,
+        "name": "auxiliary_6_9_12_degree_separation",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 79
+      },
+      {
+        "index": 8,
+        "name": "semiregularity_injective_squeeze",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 86
+      },
+      {
+        "index": 9,
+        "name": "zero_transcendental_component_breaks_ext2_bound",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 99
+      },
+      {
+        "index": 10,
+        "name": "shioda_inose_split_sum_obstruction_rank",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 109
+      },
+      {
+        "index": 11,
+        "name": "yoneda_cone_atiyah_rank_no_go",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 124
+      },
+      {
+        "index": 12,
+        "name": "eems_poincare_hopf_and_maslov_degrees",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 141
+      },
+      {
+        "index": 13,
+        "name": "eems_chi_zero_stabilization_no_go",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 166
+      },
+      {
+        "index": 14,
+        "name": "maurer_cartan_forward_trace_obstruction",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 178
+      },
+      {
+        "index": 15,
+        "name": "kummer_bkr_untwisted_deficit_and_clifford_gap",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 187
+      },
+      {
+        "index": 16,
+        "name": "semihomogeneous_rank21_diagonal_ext2_overflow",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 201
+      },
+      {
+        "index": 17,
+        "name": "eems_opposite_sign_and_stokes_blindness",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 218
+      },
+      {
+        "index": 18,
+        "name": "kummer_bkr_fixed_point_atiyah_vanishing",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 233
+      },
+      {
+        "index": 19,
+        "name": "bogomolov_mixed_discriminant_sign_flip_no_go",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 247
+      },
+      {
+        "index": 20,
+        "name": "clifford_spin_endomorphism_ext2_explosion",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 260
+      },
+      {
+        "index": 21,
+        "name": "walsh_hadamard_decoupling_diagonal_ext2_no_go",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 281
+      },
+      {
+        "index": 22,
+        "name": "ample_koszul_4_term_diagonal_and_section_overflow",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 303
+      },
+      {
+        "index": 23,
+        "name": "mukai_semihomogeneous_projective_flatness_barrier",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 328
+      },
+      {
+        "index": 24,
+        "name": "markman_secant_mukai_dimension_gap",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 355
+      },
+      {
+        "index": 25,
+        "name": "additivity_vs_hyperkahler_rigidity_circularity",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 376
+      },
+      {
+        "index": 26,
+        "name": "universal_mumford_diagonal_overflow_for_all_g_and_M",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 408
+      },
+      {
+        "index": 27,
+        "name": "universal_g1_branch_stokes_and_kummer_moduli_no_go",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 438
+      }
+    ]
+  }
+}

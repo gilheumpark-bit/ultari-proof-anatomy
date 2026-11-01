@@ -1,0 +1,118 @@
+{
+  "problem_1": {
+    "linear_expression": "3*eta/2 - 1/48",
+    "slope": "3/2",
+    "intercept": "-1/48",
+    "eta_max": "1/72",
+    "a_max": "37/72"
+  },
+  "problem_2": {
+    "balancedExponent_y0": "(1224*delta**2 - 948*delta + 185)/(48*(138*delta - 185))",
+    "delta_true": "185/138 - 35*sqrt(16354)/4692",
+    "delta_true_radical": [
+      185,
+      138,
+      35,
+      16354,
+      4692
+    ],
+    "delta_true_float": 0.3866375622,
+    "a_true": "323/276 - 35*sqrt(16354)/9384",
+    "a_true_radical": [
+      323,
+      276,
+      35,
+      16354,
+      9384
+    ],
+    "a_true_float": 0.6933187811,
+    "a_true_float_str": "0.6933187811",
+    "delta_SOS": "79/204",
+    "a_SOS": "283/408",
+    "balancedExponent_delta_SOS": "-7/30672",
+    "d_balancedExponent_delta_SOS": "-391/1633284",
+    "d2_balancedExponent_delta_SOS": "-236315300/608806611"
+  },
+  "problem_3": {
+    "coarse_sqrt_exponent": "23*delta/96 + 3/16",
+    "componentwise_nonexceptional_sqrt_exponent": "17*delta/96 + 1/16",
+    "relaxed_nonexceptional_sqrt_exponent": "23*delta/96 + 1/16",
+    "componentwise_exceptional_sqrt_exponent": "3/16",
+    "saving_nonexceptional_expr": "delta/16 + 1/8",
+    "saving_exceptional_expr": "23*delta/96",
+    "saving_nonexceptional": "487/3264",
+    "saving_exceptional": "1817/19584",
+    "margin_baseline": "49/440640",
+    "ratio_to_baseline_margin": "65745/49",
+    "ratio_to_baseline_margin_float": 1341.7346938776
+  },
+  "problem_4": {
+    "total_nonprincipal_branches": 8,
+    "num_vanishing_branches": 6,
+    "num_surviving_branches": 2,
+    "vanishing_branches": [
+      "02_1",
+      "10_0",
+      "01_0",
+      "01_1",
+      "11_0",
+      "11_1"
+    ],
+    "surviving_branches": [
+      "02_0",
+      "10_1"
+    ],
+    "z_re_min": "1/12"
+  },
+  "problem_5": {
+    "w_shift_saving_at_e_max": "1063/48000",
+    "z_shift_saving_at_e_max": "17/48000",
+    "B_principal": "17/48000",
+    "matches_principal_budget": true
+  },
+  "linear_expression": "3*eta/2 - 1/48",
+  "eta_max": "1/72",
+  "a_max": "37/72",
+  "delta_true": "185/138 - 35*sqrt(16354)/4692",
+  "delta_true_radical": [
+    185,
+    138,
+    35,
+    16354,
+    4692
+  ],
+  "a_true": "323/276 - 35*sqrt(16354)/9384",
+  "a_true_radical": [
+    323,
+    276,
+    35,
+    16354,
+    9384
+  ],
+  "a_true_float": 0.6933187811,
+  "delta_SOS": "79/204",
+  "a_SOS": "283/408",
+  "balancedExponent_delta_SOS": "-7/30672",
+  "d2_balancedExponent_delta_SOS": "-236315300/608806611",
+  "saving_nonexceptional": "487/3264",
+  "saving_exceptional": "1817/19584",
+  "margin_baseline": "49/440640",
+  "ratio_to_baseline_margin": "65745/49",
+  "num_vanishing_branches": 6,
+  "num_surviving_branches": 2,
+  "vanishing_branches": [
+    "02_1",
+    "10_0",
+    "01_0",
+    "01_1",
+    "11_0",
+    "11_1"
+  ],
+  "surviving_branches": [
+    "02_0",
+    "10_1"
+  ],
+  "z_re_min": "1/12",
+  "B_principal": "17/48000",
+  "matches_principal_budget": true
+}

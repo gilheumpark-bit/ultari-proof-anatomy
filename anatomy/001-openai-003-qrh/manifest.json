@@ -1,0 +1,347 @@
+{
+  "package_name": "OpenAI_003_Quasi_Riemann_Hypothesis_Parameter_and_Exponent_Analysis",
+  "release_date": "2026-10-31",
+  "target_repository": "openai/frontiermath-open-problems (FirstProof2026Problem3)",
+  "verification_commands": {
+    "lean4_kernel_check": "lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean",
+    "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
+  },
+  "artifacts_sha256": {
+    "README.md": "25f92f7f4aa56535000a8863caa325b7d6b21593f2d39b449dd1b54d3bc694f0",
+    "README.ko.md": "13a04e21ddc5663d397b74d9303e52cd8284c911e32a2cac32a93e745268744d",
+    "proofs/qrh_exponent_and_parameter_bounds.lean": "abf95211c03d963ad7fc3b15f17e7700d21b8619a65e085d0de6abb0412de331",
+    "proofs/qrh_continuation_and_rescaling.lean": "73b33ec6bbe128261f3c375e7be16cc6d061f938e0d3900b1b939e864bc2670b",
+    "proofs/verify_symbolic_qrh.py": "eb6aa899fc90e494cbd1a854dfdae67e3aee5e413c82a48d4452a372ac485e1e",
+    "ko/01_초보자용_쉬운해설.md": "7cabe8cfa6af5e1fbe665628b9266042ceafdca43f123c1a918a63b1d4c6dbc0",
+    "ko/02_중급자용_구조및수식가이드.md": "1cdf1f2de5f4413d78e37654ee868e962bfe05ef6a4e3ffd6f37fe7487d5df24",
+    "ko/03_전문가용_수론및형식증명보고서.md": "e9e8f05c85e11c9aac1861d7e0e5c3846c9289ab326fd1459e05a69998936631",
+    "ko/04_자동검증및파서용_명세서.md": "1b889036cdac934b8bc3f408b076f7f96c119fecee208ebcdc0a40d4b3ac3ae2",
+    "ko/README.md": "cd95cab0e410f76fd0b11fe424e361221f110d78d0a588a27aab37ebdf358015",
+    "en/01_Beginner_Guide.md": "ee87f393f5851d9bcec633b240c5e3a81010dec7c19dd495e6af7de7c61373ba",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "1ddbbc80114cfc2066cf0dfa8fd5b5c844e76a1302871ce9661ed35d348d97ca",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "957411e0c797491890e51503c3beec77a2109eb0cf821e2581f1e4feea02a478",
+    "en/04_Automated_Verification_and_Manifest.md": "46cb638628e15509e2dce50a68944ba551adc40161a04d57b95578db8b2d9965",
+    "en/README.md": "08ea81ceb6f71d4632f107219c599b30af26de1825b3cafb3a390f822b37c024"
+  },
+  "verification_scope": {
+    "formalized_rational_and_integer_theorems": "40 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-40) + independent SymPy symbolic derivations.",
+    "future_complex_analytic_extensions": "Complex-analytic Mellin residue continuation of the separated m=1 finite terms, interval-arithmetic formalization of finite prime norms 4 <= Q < 480 in Lean 4, and off-diagonal bilinear phase cancellation for the diagonal peak_scale term."
+  },
+  "verified_key_results": {
+    "problem_1_floor_margin_root": {
+      "linear_expression": "3*eta/2 - 1/48",
+      "eta_max": "1/72",
+      "a_max": "37/72",
+      "lean_theorem": "floor_source_margin_root_37_72 (Theorem 12, L138)"
+    },
+    "problem_2_stationary_point": {
+      "delta_true": "185/138 - 35*sqrt(16354)/4692",
+      "a_true": "323/276 - 35*sqrt(16354)/9384",
+      "a_true_float": 0.6933187811,
+      "delta_SOS": "79/204",
+      "a_SOS": "283/408",
+      "balancedExponent_delta_SOS": "-7/30672",
+      "d2_balancedExponent_delta_SOS": "-236315300/608806611",
+      "lean_theorems": [
+        "rational_sos_reference_abscissa (Theorem 4, L86)",
+        "exact_sos_identity_and_margin_at_79_204 (Theorem 5, L95)",
+        "stationary_point_quadratic_root_323_276_identity (Theorem 27, L386)"
+      ]
+    },
+    "problem_3_componentwise_gram_exponents": {
+      "saving_exceptional": "1817/19584",
+      "saving_nonexceptional_with_L_bound": "215/3264",
+      "ratio_with_L_bound": "29025/49 (592.35x)",
+      "saving_nonexceptional_pure_scale": "487/3264",
+      "ratio_to_baseline_margin": "65745/49 (1341.73x)",
+      "lean_theorem": "componentwise_gram_exponent_differences (Theorem 24, L342)"
+    },
+    "problem_4_m_ge_2_tail_bounds": {
+      "total_branches": 8,
+      "vanishing_branches": 6,
+      "surviving_branches": [
+        "02_0",
+        "10_1"
+      ],
+      "z_re_min": "1/12",
+      "lean_theorems": [
+        "tail_m_ge_2_exponent_margins (Theorem 20, L273)",
+        "gauss_valuation_table_indices_m_ge_2 (Theorem 21, L302)",
+        "gauss_sum_linear_exponent_bounds_m1_m2 (Theorem 22, L315)",
+        "general_order_m_tail_exponent_bound (Theorem 23, L332)"
+      ]
+    },
+    "problem_5_principal_contour_shift": {
+      "beta_baseline": "7/8",
+      "w_shift_saving": "1063/48000",
+      "z_shift_saving": "17/48000",
+      "B_principal": "17/48000",
+      "lean_theorems": [
+        "exponent_balance_relation_identity (Theorem 18, L234)",
+        "convergence_boundary_at_one_sixth (Theorem 19, L258)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "files": [
+      "proofs/qrh_exponent_and_parameter_bounds.lean",
+      "proofs/qrh_continuation_and_rescaling.lean"
+    ],
+    "theorems_proved": 40,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "theorems": [
+      {
+        "index": 1,
+        "name": "coordR_exponent_at_z_034",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 64
+      },
+      {
+        "index": 2,
+        "name": "coordR_squared_exponent_at_z_024",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 69
+      },
+      {
+        "index": 3,
+        "name": "gauss_branch_exponent_at_z_017",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 76
+      },
+      {
+        "index": 4,
+        "name": "rational_sos_reference_abscissa",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 86
+      },
+      {
+        "index": 5,
+        "name": "exact_sos_identity_and_margin_at_79_204",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 95
+      },
+      {
+        "index": 6,
+        "name": "sos_polynomial_identity_sample_points",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 102
+      },
+      {
+        "index": 7,
+        "name": "certified_exponent_margins_by_beta",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 109
+      },
+      {
+        "index": 8,
+        "name": "floor_source_margin_at_051",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 119
+      },
+      {
+        "index": 9,
+        "name": "floor_source_margin_at_0505",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 123
+      },
+      {
+        "index": 10,
+        "name": "floor_source_margin_at_0501",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 127
+      },
+      {
+        "index": 11,
+        "name": "floor_source_margin_at_05001",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 132
+      },
+      {
+        "index": 12,
+        "name": "floor_source_margin_root_37_72",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 138
+      },
+      {
+        "index": 13,
+        "name": "nonstrict_gauss_branches_at_05001_and_017",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 150
+      },
+      {
+        "index": 14,
+        "name": "parameter_budget_inequality_at_05001",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 167
+      },
+      {
+        "index": 15,
+        "name": "siegel_zeros_constants_ratio_identity",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 191
+      },
+      {
+        "index": 16,
+        "name": "complementary_zero_free_widths",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 200
+      },
+      {
+        "index": 17,
+        "name": "functional_equation_reflection_and_quotient_thresholds",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 214
+      },
+      {
+        "index": 18,
+        "name": "exponent_balance_relation_identity",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 234
+      },
+      {
+        "index": 19,
+        "name": "convergence_boundary_at_one_sixth",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 258
+      },
+      {
+        "index": 20,
+        "name": "tail_m_ge_2_exponent_margins",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 273
+      },
+      {
+        "index": 21,
+        "name": "gauss_valuation_table_indices_m_ge_2",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 302
+      },
+      {
+        "index": 22,
+        "name": "gauss_sum_linear_exponent_bounds_m1_m2",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 315
+      },
+      {
+        "index": 23,
+        "name": "general_order_m_tail_exponent_bound",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 332
+      },
+      {
+        "index": 24,
+        "name": "componentwise_gram_exponent_differences",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 342
+      },
+      {
+        "index": 25,
+        "name": "sos_certificate_weight_linear_bound",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 362
+      },
+      {
+        "index": 26,
+        "name": "zero_free_region_union_and_symmetry",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 372
+      },
+      {
+        "index": 27,
+        "name": "stationary_point_quadratic_root_323_276_identity",
+        "file": "proofs/qrh_exponent_and_parameter_bounds.lean",
+        "line": 386
+      },
+      {
+        "index": 28,
+        "name": "theorem_28_marked_factor_singularity_cancels_identically",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 66
+      },
+      {
+        "index": 29,
+        "name": "theorem_29_all_small_eisenstein_norms_nonvanishing",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 84
+      },
+      {
+        "index": 30,
+        "name": "theorem_30_universal_finite_bad_prime_mask_absorption",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 96
+      },
+      {
+        "index": 31,
+        "name": "theorem_31_second_continuation_exact_polynomial_identity",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 109
+      },
+      {
+        "index": 32,
+        "name": "theorem_32_second_and_third_continuation_convergence_barrier",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 122
+      },
+      {
+        "index": 33,
+        "name": "theorem_33_central_exponent_z0_invariance_at_d0",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 148
+      },
+      {
+        "index": 34,
+        "name": "theorem_34_universal_z0_shift_improves_subcritical_d",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 169
+      },
+      {
+        "index": 35,
+        "name": "theorem_35_master_scale_coupling_identities",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 189
+      },
+      {
+        "index": 36,
+        "name": "theorem_36_regime_A_sos_slack_rescaling_and_conductor_split",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 212
+      },
+      {
+        "index": 37,
+        "name": "theorem_37_regime_B_gram_unbundled_and_diagonal_beta_bounds",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 239
+      },
+      {
+        "index": 38,
+        "name": "theorem_38_universal_beta_crit_monotonicity",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 258
+      },
+      {
+        "index": 39,
+        "name": "theorem_39_m1_sextic_pole_residue_and_33_200_remainder_saving",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 274
+      },
+      {
+        "index": 40,
+        "name": "theorem_40_energy_induction_compatible_below_seven_eighths",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 289
+      }
+    ]
+  },
+  "verification_summary": {
+    "lean4_compiler": "Lean 4.29.0-rc8",
+    "theorems_proved": 40,
+    "proof_modules": [
+      "proofs/qrh_exponent_and_parameter_bounds.lean",
+      "proofs/qrh_continuation_and_rescaling.lean"
+    ],
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "scope_and_limitations": "Proves 40 core theorems covering universal polynomial factor cancellation over Int (Theorems 28, 31), non-vanishing on all 21 small Eisenstein prime-power norms 4 <= Q < 112 (Theorem 29), second continuation barrier reduction to 97/600 < 1/6 and exact z0-invariance at d0 = 13/16 (Theorems 32-34), exact affine master equations for base exponents 3/16 and -11/16, the active LowSourceScales.lean vs. dead Parameters.lean split trade-off, and the rescaled target beta < 7/8 with zero-free zone width 29/100 (Theorems 35-40)."
+  }
+}
