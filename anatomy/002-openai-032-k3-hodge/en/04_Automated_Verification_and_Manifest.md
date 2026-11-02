@@ -29,7 +29,7 @@ sha256sum proofs/k3_forensic_paths.lean \
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
 | [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean) | `ce3a5174796ac991d5d2039c385d910c76d32de90805b000570e02da7ab042fa` | 452 lines, 27 Lean 4 theorems (`Theorem 1`..`Theorem 27`), `0 sorry`, `0 axiom`, `112/112 caught` |
-| [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py) | `3da1dbbd201f7cc1f2e02b61d58e68eba8041d4983869bf7da5e52cf8b448f6e` | Independent SymPy symbolic solver for Problems 1-5 |
+| [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py) | `1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be` | Independent SymPy symbolic solver for Problems 1-5 |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a` | Deterministic JSON output for Problems 1-5 |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74` | Specification of Problems 1-5 |
 

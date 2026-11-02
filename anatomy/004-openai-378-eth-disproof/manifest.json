@@ -1,0 +1,275 @@
+{
+  "package_name": "OpenAI_378_ETH_Disproof_Forensic_Audit_and_Formal_Verification",
+  "release_date": "2026-11-01",
+  "target_repository": "openai/math (Problem #378: The-Exponential-Time-Hypothesis-is-False-October-25-2026 / OAI.Algorithms.SubexponentialSAT)",
+  "verification_commands": {
+    "lean4_kernel_check": "lean proofs/eth_subexp_interpolation_and_hashes.lean && lean proofs/eth_tensor_contraction_and_circuits.lean",
+    "symbolic_solver_check": "cd proofs && python3 verify_symbolic_eth.py"
+  },
+  "artifacts_sha256": {
+    "README.md": "58d9868d0f5f2d59cd0ef30ab8de49556705db67f55459ad22b20e8780e5ecb2",
+    "README.ko.md": "df42b7a3c2d891808991e4d9f4c76dca74e91fe475794ee02c1f8c03fd39e7bc",
+    "proofs/eth_subexp_interpolation_and_hashes.lean": "b94d8a455df628a65926fadb9cdf75b97b546fc3089f4c5aa5d2547214540a97",
+    "proofs/eth_tensor_contraction_and_circuits.lean": "3b3bc02f8e7b48b846502089a9731738b74e5f3caacf07e045617bc8fc3165be",
+    "proofs/verify_symbolic_eth.py": "dac3892712bfffb5e33d564de07f7d59565fe0a750ede1ef76c951b140e21b83",
+    "proofs/symbolic_verification_result.json": "676142b6805b1dd75f5816fbaece971c806989c0be15d60884ae9febe46b9e57",
+    "proofs/problem_spec.md": "cc65a6091b80d905ea715472ac69919dfafc9c9b2d0db8f5f5a42da3d70ba728",
+    "ko/01_초보자용_쉬운해설.md": "3ce7bda218a27591c3653e12c7d6498e928e71e1863924e40bb3bf82429e70bd",
+    "ko/02_중급자용_구조및수식가이드.md": "4e9132e909e6b6fabedf37a5712e6caf53507e0661a772c2ff64177b7a045211",
+    "ko/03_전문가용_전산학및형식증명심사보고서.md": "f87ab179c491fc0c48d99ea55c72b4b2e99278be5a34e98b56ceddeed5408fc3",
+    "ko/04_자동검증및파서용_명세서.md": "bcaaf37903fe3c91137be6e76c96cd07305b4a906859e2ef3f96baed39d3d73d",
+    "en/01_Beginner_Guide.md": "e44898d83189b67071674f18859cfea3e2f22e157eee4a68f36f4fd962660ec4",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "968b26c5e4f37c2195e896c387af598d6ac335eb637906f91445fb2a591a2b70",
+    "en/03_Expert_Complexity_and_Formal_Report.md": "36673fecd4235cc71b5829ec5634c8725c7be869e38a59dff606a6093264ea14",
+    "en/04_Automated_Verification_and_Manifest.md": "5d63e64ba376056a72a3917009fe806491976196ce2315c6da47c72c876c7e4b"
+  },
+  "scope_and_limitations": {
+    "formalized_arithmetic_and_linear_algebra": "32 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 259/259 hypothesis mutations caught = 128/128 + 131/131) across proofs/eth_subexp_interpolation_and_hashes.lean and proofs/eth_tensor_contraction_and_circuits.lean + SymPy and Blackwell GPU tensor verification."
+  },
+  "verified_key_results": {
+    "engine_i_interpolation_and_hashes_theorems": {
+      "lean_theorems": [
+        "swap_eigenbasis_symmetric_antisymmetric_split (Theorem 1, L22)",
+        "newton_forward_difference_parity_interpolation (Theorem 2, L58)",
+        "remark_4_4_four_by_four_swap_matrix_kernel_and_path (Theorem 3, L77)",
+        "swap_support_mismatch_and_annihilator_degree_bound (Theorem 4, L95)",
+        "shared_summary_measurement_row_budget (Theorem 5, L111)",
+        "taylor_jet_truncation_and_subset_pair_exponent (Theorem 6, L130)",
+        "asymptotic_three_way_exponent_balance_schedule (Theorem 7, L149)",
+        "beigel_tarui_modulus_amplifying_polynomial_l2 (Theorem 8, L171)",
+        "total_order_truncated_ring_linear_vs_quadratic_degree (Theorem 9, L205)",
+        "tanner_expander_hash_parameters_and_mixing_distance (Theorem 10, L238)",
+        "tanner_code_check_row_budget_and_locality (Theorem 11, L272)",
+        "greedy_hash_selection_three_quarter_contraction (Theorem 12, L317)",
+        "cip_sparsification_insertion_recurrence_step (Theorem 13, L346)",
+        "cip_sparsification_b_branch_constant_and_tree_exponent (Theorem 14, L369)",
+        "coset_separation_iteration_identity_and_bound (Theorem 15, L385)",
+        "bitprogram_1220_stack_compiler_space_and_time_envelope (Theorem 16, L403)"
+      ]
+    },
+    "engine_ii_tensor_contraction_and_circuit_theorems": {
+      "lean_theorems": [
+        "appendix_d_collision_packet_packing_and_edge_contraction (Theorem 17, L22)",
+        "appendix_d_dyadic_depth_precision_schedule_and_total_wires (Theorem 18, L43)",
+        "appendix_d_cauchy_2adic_deformation_valuation_invariance (Theorem 19, L62)",
+        "appendix_d_vandermonde_sylvester_2adic_exponent_bound (Theorem 20, L79)",
+        "appendix_d_tapered_hermite_exact_agm_series_sum_six (Theorem 21, L96)",
+        "appendix_d_tapered_vs_untapered_hermite_valuation_gain (Theorem 22, L118)",
+        "appendix_d_hermite_jet_precision_budget_pt (Theorem 23, L142)",
+        "appendix_d_hardy_ramanujan_mode_partition_exponent (Theorem 24, L162)",
+        "appendix_d_recursive_depth_geometric_decay_ratio (Theorem 25, L195)",
+        "appendix_d_dense_incidence_group_wire_compression (Theorem 26, L226)",
+        "appendix_d_fixed_density_vs_arbitrary_density_exponent_gap (Theorem 27, L253)",
+        "williams_enp_witness_circuit_3sat_gate_reduction (Theorem 28, L284)",
+        "williams_enp_circuit_lower_bound_threshold_contradiction (Theorem 29, L304)",
+        "engine_i_cannot_prove_corollary_1_4_without_engine_ii (Theorem 30, L329)",
+        "lean_formalization_scope_gap_and_cutoff_inventory (Theorem 31, L354)",
+        "oai_subexponential_sat_rh13_unused_hypothesis_audit (Theorem 32, L380)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "files": [
+      "proofs/eth_subexp_interpolation_and_hashes.lean",
+      "proofs/eth_tensor_contraction_and_circuits.lean"
+    ],
+    "theorems_proved": 32,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "hypothesis_mutations_caught": "259/259",
+    "theorems": [
+      {
+        "index": 1,
+        "name": "swap_eigenbasis_symmetric_antisymmetric_split",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 22
+      },
+      {
+        "index": 2,
+        "name": "newton_forward_difference_parity_interpolation",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 58
+      },
+      {
+        "index": 3,
+        "name": "remark_4_4_four_by_four_swap_matrix_kernel_and_path",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 77
+      },
+      {
+        "index": 4,
+        "name": "swap_support_mismatch_and_annihilator_degree_bound",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 95
+      },
+      {
+        "index": 5,
+        "name": "shared_summary_measurement_row_budget",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 111
+      },
+      {
+        "index": 6,
+        "name": "taylor_jet_truncation_and_subset_pair_exponent",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 130
+      },
+      {
+        "index": 7,
+        "name": "asymptotic_three_way_exponent_balance_schedule",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 149
+      },
+      {
+        "index": 8,
+        "name": "beigel_tarui_modulus_amplifying_polynomial_l2",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 171
+      },
+      {
+        "index": 9,
+        "name": "total_order_truncated_ring_linear_vs_quadratic_degree",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 205
+      },
+      {
+        "index": 10,
+        "name": "tanner_expander_hash_parameters_and_mixing_distance",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 238
+      },
+      {
+        "index": 11,
+        "name": "tanner_code_check_row_budget_and_locality",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 272
+      },
+      {
+        "index": 12,
+        "name": "greedy_hash_selection_three_quarter_contraction",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 317
+      },
+      {
+        "index": 13,
+        "name": "cip_sparsification_insertion_recurrence_step",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 346
+      },
+      {
+        "index": 14,
+        "name": "cip_sparsification_b_branch_constant_and_tree_exponent",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 369
+      },
+      {
+        "index": 15,
+        "name": "coset_separation_iteration_identity_and_bound",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 385
+      },
+      {
+        "index": 16,
+        "name": "bitprogram_1220_stack_compiler_space_and_time_envelope",
+        "file": "eth_subexp_interpolation_and_hashes.lean",
+        "line": 403
+      },
+      {
+        "index": 17,
+        "name": "appendix_d_collision_packet_packing_and_edge_contraction",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 22
+      },
+      {
+        "index": 18,
+        "name": "appendix_d_dyadic_depth_precision_schedule_and_total_wires",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 43
+      },
+      {
+        "index": 19,
+        "name": "appendix_d_cauchy_2adic_deformation_valuation_invariance",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 62
+      },
+      {
+        "index": 20,
+        "name": "appendix_d_vandermonde_sylvester_2adic_exponent_bound",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 79
+      },
+      {
+        "index": 21,
+        "name": "appendix_d_tapered_hermite_exact_agm_series_sum_six",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 96
+      },
+      {
+        "index": 22,
+        "name": "appendix_d_tapered_vs_untapered_hermite_valuation_gain",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 118
+      },
+      {
+        "index": 23,
+        "name": "appendix_d_hermite_jet_precision_budget_pt",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 142
+      },
+      {
+        "index": 24,
+        "name": "appendix_d_hardy_ramanujan_mode_partition_exponent",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 162
+      },
+      {
+        "index": 25,
+        "name": "appendix_d_recursive_depth_geometric_decay_ratio",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 195
+      },
+      {
+        "index": 26,
+        "name": "appendix_d_dense_incidence_group_wire_compression",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 226
+      },
+      {
+        "index": 27,
+        "name": "appendix_d_fixed_density_vs_arbitrary_density_exponent_gap",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 253
+      },
+      {
+        "index": 28,
+        "name": "williams_enp_witness_circuit_3sat_gate_reduction",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 284
+      },
+      {
+        "index": 29,
+        "name": "williams_enp_circuit_lower_bound_threshold_contradiction",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 304
+      },
+      {
+        "index": 30,
+        "name": "engine_i_cannot_prove_corollary_1_4_without_engine_ii",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 329
+      },
+      {
+        "index": 31,
+        "name": "lean_formalization_scope_gap_and_cutoff_inventory",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 354
+      },
+      {
+        "index": 32,
+        "name": "oai_subexponential_sat_rh13_unused_hypothesis_audit",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 380
+      }
+    ]
+  }
+}

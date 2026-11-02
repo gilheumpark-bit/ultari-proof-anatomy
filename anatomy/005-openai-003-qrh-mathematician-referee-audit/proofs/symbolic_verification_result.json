@@ -1,0 +1,199 @@
+{
+  "case_id": "openai_003_mathematician_referee_audit",
+  "status": "PASS",
+  "stage1_key_tricks": {
+    "inflated_scales": [
+      "17/48",
+      "23/48",
+      "1/6"
+    ],
+    "uninflated_scales": [
+      "29/84",
+      "11/21",
+      "1/6"
+    ],
+    "saddle_discriminant": 320538400,
+    "saddle_delta_star_float": 0.3866375622,
+    "saddle_delta_sos": "79/204",
+    "saddle_204sq_P_at_sos": -459816,
+    "sos_identity_residual": 0,
+    "one_minus_V_cancelled": true,
+    "euler_threshold_unreduced_Q": 480,
+    "euler_threshold_reduced_Q": 112,
+    "euler_threshold_geometric_Q": 113,
+    "euler_prime_ideal_norms_lt_112": 14,
+    "euler_prime_ideal_norms_lt_480": 46,
+    "euler_prime_powers_saved": 32
+  },
+  "stage2_referee_critique": {
+    "geometric_boundary_local_hgeometry_param": true,
+    "bezout_4step_unconditional_discharge_verified": true,
+    "exponent_loss_B_inflation": "1/32",
+    "exponent_loss_Gram_drop": "79/3264",
+    "total_exponent_loss_B_and_Gram": "181/3264",
+    "componentwise_nonexc_saving": "487/3264",
+    "componentwise_exc_saving": "1817/19584",
+    "sos_endpoint_margin": "49/440640",
+    "waste_B_gram_to_margin_ratio_float": 498.67,
+    "waste_nonexc_to_margin_ratio_float": 1341.73,
+    "two_beta_with_frozen_ell0": "128519/73440",
+    "two_beta_with_shifted_ell": "7/4"
+  },
+  "stage3_4_bottlenecks_and_gpu": {
+    "contour_gap_w19_20": "13/240",
+    "contour_gap_w1_naive": "-1/16",
+    "contour_gap_w1_shifted": "29/1200",
+    "contour_w_saving_at_1e_3": "1063/48000",
+    "contour_z_saving_at_1e_3": "17/48000",
+    "z0_invariance_unique_d0": "13/16",
+    "gram_saving_thresholds": {
+      "7/8": "0",
+      "5/6": "1/16",
+      "3/4": "3/16",
+      "69/100": "111/400"
+    },
+    "surviving_m_ge_2_branches": [
+      "(e=0,l=2,k=0)",
+      "(e=1,l=0,k=1)"
+    ],
+    "siegel_N0": 18818,
+    "siegel_H": 86713344,
+    "siegel_ratio_C1_c1_over_H": "1/12",
+    "biquadratic_unit_det": -2,
+    "gpu_device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+    "gpu_contour_grid_points": 16777217,
+    "gpu_min_pole_dist_w19_20": 0.0541666667,
+    "gpu_min_pole_dist_w1_shifted": 0.0241666667,
+    "gpu_eisenstein_primes_tested": 611,
+    "gpu_eisenstein_prime_range": "7..9973 (p == 1 mod 6)",
+    "gpu_cubic_gram_offdiag_norm_p73": 0.01388889,
+    "gpu_cubic_gram_max_rel_err_611_primes": 3.477e-11,
+    "gpu_sextic_gram_max_rel_err_611_primes": 3.479e-11
+  },
+  "stage5_sub_069_master_transfer": {
+    "high_rows_critical_line_margin": "-1/48",
+    "zero_mode_vanishing_condition": "paperRadialFourier U 0 = 0",
+    "zero_mode_eliminated_exponent_E_A": "17/96",
+    "uninflated_tail_floor_E_C_at_delta_sos": "397/3264",
+    "unconditional_gram_saving_delta_E": "215/3264",
+    "unconditional_equilibrium_beta_at_dgram_0": "131/150",
+    "unconditional_equilibrium_beta_at_z035_dgram_0": "209/240",
+    "heath_brown_quarter_step_beta_at_z035": "199/240",
+    "column_duality_beta_at_z034": "39/50",
+    "global_sos_saddle_witness_aX_aY": [
+      "71/200",
+      "5737/12000"
+    ],
+    "global_sos_saddle_discriminant_4AC_minus_B2": "600338871/1000000",
+    "global_sos_unconditional_beta_0": "41999/48000",
+    "global_sos_ray_transfer_law": "beta = 7/8 - (22/25)*Delta_gram",
+    "global_full_tuple_transfer_law": "beta = 7/8 - (48/59)*Delta_gram",
+    "critical_line_half_cutoff_triple_aX_aY_d0": [
+      "2/3",
+      "7/6",
+      "1/2"
+    ],
+    "critical_line_half_cutoff_high_row_bound": "1/4",
+    "critical_line_half_cutoff_required_Delta_gram": "11/24",
+    "path_a_dynamic_zero_energy_floor_beta": "71/108",
+    "path_a_dynamic_zero_energy_max_dgram": "53/216",
+    "hybrid_ab_coupled_critical_scales_aX_aY_d0": [
+      "35/66",
+      "59/66",
+      "7/11"
+    ],
+    "hybrid_ab_required_saving_at_050": "14/33",
+    "hybrid_ab_capacity_sum_and_reserve": [
+      "49/66",
+      "7/22"
+    ],
+    "analytic_k2_poisson_tail_margin_and_pure_dual_margin": [
+      "4/11",
+      "1/44"
+    ],
+    "analytic_stickelberger_moments_N3_N2_and_Ez_saving": [
+      11,
+      8,
+      "-7/6600"
+    ],
+    "mellin_strict_exponents_z_hyb_w_19_20_w_dual": [
+      "-1/16500",
+      "-1421/33000",
+      "-167/375"
+    ],
+    "bi_stickelberger_min_monomial_exponent_and_l1_margin": [
+      "144/100",
+      "25/264"
+    ],
+    "unconditional_background_floor_beta_normalized_slope": "4069/4896",
+    "unconditional_background_floor_beta_2term": "4073/4896",
+    "unconditional_background_floor_beta_direct_slope": "2641/3264",
+    "equilibrium_scales_aX_aY_d0": [
+      "49/150",
+      "73/150",
+      "21/25"
+    ],
+    "equilibrium_scales_z035_aX_aY_d0": [
+      "19/60",
+      "7/15",
+      "17/20"
+    ],
+    "equilibrium_alpha_X_shift_from_default": "11/400",
+    "master_transfer_formula": "beta = 131/150 - Delta_gram",
+    "master_transfer_formula_z035": "beta = 209/240 - Delta_gram",
+    "required_Delta_gram_at_equilibrium_for_051": "109/300",
+    "required_Delta_gram_at_equilibrium_for_050": "28/75",
+    "pincer_box_048_052_symmetric_R_margins": [
+      "-7/300",
+      "-1/48",
+      "-7/300"
+    ],
+    "coordR_euler_wall_naive_z33_200": "401/600",
+    "coordR_euler_wall_stickelberger_1st_order": "117/200",
+    "coordR_euler_wall_full_1_minus_R_cancelled": "301/600",
+    "stickelberger_archimedean_frequency_k_inf": -6
+  },
+  "stage6_eight_remaining_tasks": {
+    "task1_gram_k2_tail_and_cap_B_new": [
+      "4/11",
+      "2/11",
+      "32/11"
+    ],
+    "task2_q_min_and_local_tail_decay": [
+      480,
+      112,
+      "11/25"
+    ],
+    "task3_principal_strict_savings_z_w_dual": [
+      "-1/16500",
+      "-1421/33000",
+      "-167/375"
+    ],
+    "task4_high_rows_a_min_and_budgets": [
+      "12/25",
+      "1/48",
+      "17/800",
+      "3/200"
+    ],
+    "task5_endpoint_b_den_range_and_7monom_sum": [
+      "35/54",
+      "215/108",
+      8861
+    ],
+    "task6_voronoi_mellin_transfer_and_l2_margin": [
+      "59/132",
+      "-5/33",
+      "1/44"
+    ],
+    "task7_grossencharakter_gamma_shift_and_mu_bi": [
+      3,
+      "102/100",
+      "99/50"
+    ],
+    "task8_zeta_collapse_deficit_and_critical_amplifier": [
+      "2/11",
+      "4/11",
+      "1/33"
+    ]
+  }
+}

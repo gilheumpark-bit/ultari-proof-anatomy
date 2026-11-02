@@ -1,0 +1,283 @@
+{
+  "package_name": "OpenAI_001_Milne_Rationality_Conjecture_Forensic_Audit_and_Repair",
+  "release_date": "2026-11-01",
+  "target_repository": "openai/math (Family #001: Milnes-rationality-conjecture-for-abelian-varieties-October-7-2026)",
+  "verification_commands": {
+    "lean4_kernel_check": "lean proofs/milne_transport_and_filtration.lean && lean proofs/milne_weil_reduction_and_repairs.lean",
+    "symbolic_solver_check": "cd proofs && python3 verify_milne_symbolic_and_gpu.py"
+  },
+  "artifacts_sha256": {
+    "README.md": "6fccefbd9b68731952af4c27c24cd3503ab5fa716aa8118ef385b64674976ff2",
+    "README.ko.md": "6a32bc3d53b3d3fab6431c7ed729165fcbc4bd8c63e924f8cf4949ae7fb55003",
+    "proofs/milne_transport_and_filtration.lean": "a97d2b96faa7d0124f0b4e239036509a80c60f0515f771f18a2cccf953542591",
+    "proofs/milne_weil_reduction_and_repairs.lean": "19c47d7ee3025dbb667d9d59eb00513f5c4625e3cfc87740ec0d11997a88a860",
+    "proofs/verify_milne_symbolic_and_gpu.py": "53eed783e0daf43c203d875d97a04961a9e6506ce50784c5c4f95098cf2a049c",
+    "proofs/symbolic_verification_result.json": "122ea7db125b36aedf4b81e3910e4c3160e50f2ec4dc0b04b3711b40e8c04b0f",
+    "proofs/problem_spec.md": "935a2f7f40e155f23fe6fad022a2f18b1523aa790d1d3fd794198b1306569a1e",
+    "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
+    "ko/01_초보자용_쉬운해설.md": "9878541a27357fa4a96a8976ad1c8c7a46db3a507818f65c660fb656b541750a",
+    "ko/02_중급자용_구조및수식가이드.md": "3b2dfdfe4142a048e36d9bc0098a21d3d0dcab1eb3771c57504b69806519f640",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "cf018a5b8165a7245a954cd03da6996966bd758be61d9da1ec2c1ae564b6771c",
+    "ko/04_자동검증및파서용_명세서.md": "57effc40982e7e69f841771e4a1ee39566865f72955d9e6a44367f1cea539169",
+    "en/01_Beginner_Guide.md": "a17778bed9b89e849d851f8c83a457eef2dd8cfc2aa5ecab07438f7ea578e95d",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "dc96e08386646fef2bbd8ef0aa7a22eae8654c62f44879aadd57d6e4c65283bf",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "22e1029f92c83fc06466ca2cafa014d3e9401000c6b6f53a180d96271aa41b5e",
+    "en/04_Automated_Verification_and_Manifest.md": "7fee83a3c993ab7d860bb7c9f1010c76e5401be91fe864d7fc64333ff10e4c1d"
+  },
+  "scope_and_limitations": {
+    "formalized_arithmetic_and_linear_algebra": "33 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 211/211 hypothesis mutations caught = 101/101 + 110/110) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and Blackwell GPU tensor verification."
+  },
+  "verified_key_results": {
+    "transport_and_filtration_theorems": {
+      "lean_theorems": [
+        "rational_pullback_clearing_multiplier_invariance (Theorem 1, L20)",
+        "auxiliary_hodge_datum_torus_and_representation_dimensions (Theorem 2, L45)",
+        "transport_common_rational_similitude_normalization (Theorem 3, L74)",
+        "base_N_monomial_exponent_injective_2var (Theorem 4, L110)",
+        "lemma_4_2_eisenstein_valuation_layer_uniqueness (Theorem 5, L148)",
+        "lagrangian_grassmannian_incidence_and_duality (Theorem 6, L188)",
+        "defect_supermodularity_and_maximizer_closure (Theorem 7, L215)",
+        "block_slope_duality_newton_sum_identity (Theorem 8, L227)",
+        "block_newton_hodge_weak_admissibility_bound (Theorem 9, L248)",
+        "divisor_filtration_wedge_two_decomposition (Theorem 10, L268)",
+        "modified_pairing_alternating_from_rosati_symmetry (Theorem 11, L307)",
+        "modified_pairing_e_bilinear_from_conjugate_cancellation (Theorem 12, L320)",
+        "modified_pairing_u_similitude_on_eigenspace (Theorem 13, L332)",
+        "u_stable_b_lagrangian_implies_beta_lagrangian (Theorem 14, L344)",
+        "hn_defect_symplectic_perp_invariance (Theorem 15, L359)",
+        "lagrangian_perp_intersection_duality (Theorem 16, L370)"
+      ]
+    },
+    "weil_reduction_and_repair_theorems": {
+      "lean_theorems": [
+        "weil_pairing_bidegree_saturation_on_conjugate_pair (Theorem 17, L16)",
+        "non_invertible_u_kernel_radical_contradiction (Theorem 18, L31)",
+        "weil_unitary_similitude_group_and_orbit_dimensions (Theorem 19, L45)",
+        "weil_retraction_projector_cohomology_recovery (Theorem 20, L68)",
+        "cm_balanced_idempotent_factor_dimensions (Theorem 21, L87)",
+        "unbalanced_cm_subset_violates_hodge_bidegree (Theorem 22, L103)",
+        "thm_6_2_cm_galois_orbit_partition (Theorem 23, L115)",
+        "prop_4_8_breuil_kisin_rank_and_zero_defect (Theorem 24, L133)",
+        "universal_weil_divisor_polynomial_pure_degree_separation (Theorem 25, L147)",
+        "milne_001_internal_dependency_and_lefschetz_vs_chow_gap (Theorem 26, L164)",
+        "first_factor_projector_retraction_pullback_chain (Theorem 27, L187)",
+        "cor_6_3_frobenius_trace_rational_equality (Theorem 28, L204)",
+        "repair_medium1_pointwise_kz_adlv_bypasses_glx26 (Theorem 29, L234)",
+        "repair_medium2_beauville_projector_canonical_cycle_invariance (Theorem 30, L248)",
+        "repair_low1_ramified_dvr_unconditional_lifting_range (Theorem 31, L267)",
+        "repair_low2_sharp_kronecker_bound_attained_3var (Theorem 32, L285)",
+        "repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive (Theorem 33, L317)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "files": [
+      "proofs/milne_transport_and_filtration.lean",
+      "proofs/milne_weil_reduction_and_repairs.lean"
+    ],
+    "theorems_proved": 33,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "hypothesis_mutations_caught": "211/211",
+    "theorems": [
+      {
+        "index": 1,
+        "name": "rational_pullback_clearing_multiplier_invariance",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 20
+      },
+      {
+        "index": 2,
+        "name": "auxiliary_hodge_datum_torus_and_representation_dimensions",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 45
+      },
+      {
+        "index": 3,
+        "name": "transport_common_rational_similitude_normalization",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 74
+      },
+      {
+        "index": 4,
+        "name": "base_N_monomial_exponent_injective_2var",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 110
+      },
+      {
+        "index": 5,
+        "name": "lemma_4_2_eisenstein_valuation_layer_uniqueness",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 148
+      },
+      {
+        "index": 6,
+        "name": "lagrangian_grassmannian_incidence_and_duality",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 188
+      },
+      {
+        "index": 7,
+        "name": "defect_supermodularity_and_maximizer_closure",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 215
+      },
+      {
+        "index": 8,
+        "name": "block_slope_duality_newton_sum_identity",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 227
+      },
+      {
+        "index": 9,
+        "name": "block_newton_hodge_weak_admissibility_bound",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 248
+      },
+      {
+        "index": 10,
+        "name": "divisor_filtration_wedge_two_decomposition",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 268
+      },
+      {
+        "index": 11,
+        "name": "modified_pairing_alternating_from_rosati_symmetry",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 307
+      },
+      {
+        "index": 12,
+        "name": "modified_pairing_e_bilinear_from_conjugate_cancellation",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 320
+      },
+      {
+        "index": 13,
+        "name": "modified_pairing_u_similitude_on_eigenspace",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 332
+      },
+      {
+        "index": 14,
+        "name": "u_stable_b_lagrangian_implies_beta_lagrangian",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 344
+      },
+      {
+        "index": 15,
+        "name": "hn_defect_symplectic_perp_invariance",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 359
+      },
+      {
+        "index": 16,
+        "name": "lagrangian_perp_intersection_duality",
+        "file": "milne_transport_and_filtration.lean",
+        "line": 370
+      },
+      {
+        "index": 17,
+        "name": "weil_pairing_bidegree_saturation_on_conjugate_pair",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 16
+      },
+      {
+        "index": 18,
+        "name": "non_invertible_u_kernel_radical_contradiction",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 31
+      },
+      {
+        "index": 19,
+        "name": "weil_unitary_similitude_group_and_orbit_dimensions",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 45
+      },
+      {
+        "index": 20,
+        "name": "weil_retraction_projector_cohomology_recovery",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 68
+      },
+      {
+        "index": 21,
+        "name": "cm_balanced_idempotent_factor_dimensions",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 87
+      },
+      {
+        "index": 22,
+        "name": "unbalanced_cm_subset_violates_hodge_bidegree",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 103
+      },
+      {
+        "index": 23,
+        "name": "thm_6_2_cm_galois_orbit_partition",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 115
+      },
+      {
+        "index": 24,
+        "name": "prop_4_8_breuil_kisin_rank_and_zero_defect",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 133
+      },
+      {
+        "index": 25,
+        "name": "universal_weil_divisor_polynomial_pure_degree_separation",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 147
+      },
+      {
+        "index": 26,
+        "name": "milne_001_internal_dependency_and_lefschetz_vs_chow_gap",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 164
+      },
+      {
+        "index": 27,
+        "name": "first_factor_projector_retraction_pullback_chain",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 187
+      },
+      {
+        "index": 28,
+        "name": "cor_6_3_frobenius_trace_rational_equality",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 204
+      },
+      {
+        "index": 29,
+        "name": "repair_medium1_pointwise_kz_adlv_bypasses_glx26",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 234
+      },
+      {
+        "index": 30,
+        "name": "repair_medium2_beauville_projector_canonical_cycle_invariance",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 248
+      },
+      {
+        "index": 31,
+        "name": "repair_low1_ramified_dvr_unconditional_lifting_range",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 267
+      },
+      {
+        "index": 32,
+        "name": "repair_low2_sharp_kronecker_bound_attained_3var",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 285
+      },
+      {
+        "index": 33,
+        "name": "repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive",
+        "file": "milne_weil_reduction_and_repairs.lean",
+        "line": 317
+      }
+    ]
+  }
+}

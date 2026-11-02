@@ -1,0 +1,211 @@
+{
+  "case_id": "openai_003_mathematician_referee_audit",
+  "title": "OpenAI #003 (QRH beta = 7/8 & Siegel Zero Exclusion) Mathematician & Referee Deep Audit + Sub-0.69 to 1/2 Master Transfer Blueprint & 8-Task Critical Upgrade",
+  "date": "2026-11-01",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/qrh_mathematician_referee_audit.lean && ~/.elan/bin/lean proofs/qrh_eight_tasks_critical_upgrade.lean",
+    "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
+  },
+  "artifacts_sha256": {
+    "proofs/qrh_mathematician_referee_audit.lean": "33c57a9d4f8b572b97f55cbfd5a545f71b873bf29492c5b6d07de01be64dd790",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
+    "proofs/verify_qrh_mathematician_audit.py": "da1db1190b7a8373840b0386a5829e9707958c93bad2bcfef785b61464a8c208",
+    "proofs/symbolic_verification_result.json": "a30bd042bdb519c3190fa5f4e7f7026c764bed2ed92dfbd011c2f44f150e2162",
+    "proofs/problem_spec.md": "f386385f0e44b04eb57ee0170c4f21b21174532707b9f3482127269755ed198d"
+  },
+  "verified_key_results": {
+    "stage1_magic_exponents_and_saddle": {
+      "inflated_scales": [
+        "17/48",
+        "23/48",
+        "1/6"
+      ],
+      "uninflated_scales": [
+        "29/84",
+        "11/21",
+        "1/6"
+      ],
+      "delta_sos": "79/204",
+      "lean_theorems": [
+        "thm_01_magic_exponents_unique_3x3_system (Theorem 1, L16)",
+        "thm_02_constant_B_absorption_inflation_and_uninflated_scales (Theorem 2, L27)",
+        "thm_06_saddle_point_discriminant_and_sos_anchor_sign (Theorem 6, L78)",
+        "thm_07_marked_factor_one_minus_V_polynomial_cancellation (Theorem 7, L96)"
+      ]
+    },
+    "stage2_referee_critique_waste_and_premises": {
+      "bezout_4step_unconditional_discharge_verified": true,
+      "waste_B_gram_to_margin_ratio": 498.67,
+      "waste_3term_with_gauss_bundling_ratio": 592.35,
+      "waste_nonexc_to_margin_ratio": 1341.73,
+      "lean_theorems": [
+        "thm_04_gram_relaxation_loss_592x_sos_margin (Theorem 4, L53)",
+        "thm_05_dead_constraint_parameters_vs_active_poisson (Theorem 5, L65)",
+        "thm_08_correction_bounds_unreduced_480_vs_reduced_112 (Theorem 8, L107)",
+        "thm_23_siegel_zero_conditional_hgeometry_vs_cubic_independence (Theorem 23, L278)",
+        "thm_25_abstract_unconditional_siegel_zero_exclusion (Theorem 25, L314)"
+      ]
+    },
+    "stage3_4_bottlenecks_and_gpu": {
+      "contour_gap_w19_20": "13/240",
+      "contour_gap_w1_shifted": "29/1200",
+      "siegel_H": 86713344,
+      "siegel_N0": 18818,
+      "gpu_contour_grid_points": 16777217,
+      "gpu_eisenstein_primes_tested": 611,
+      "gpu_gauss_gram_matrices_evaluated": 1222,
+      "lean_theorems": [
+        "thm_10_sextic_gauss_table_m_ge_2_six_branches_vanish (Theorem 10, L131)",
+        "thm_13_central_exponent_z0_invariance_at_saddle_d0 (Theorem 13, L167)",
+        "thm_14_double_contour_w_and_z_residue_separation_budget (Theorem 14, L178)",
+        "thm_16_bilinear_gram_cancellation_thresholds_5_6_and_3_4 (Theorem 16, L199)",
+        "thm_19_eisenstein_sextic_symbol_requires_Q_ge_7_mod_6_eq_1 (Theorem 19, L236)",
+        "thm_21_siegel_zero_magic_constants_86713344_and_18818 (Theorem 21, L257)",
+        "thm_22_biquadratic_klein4_torus_jet_exponent_gap (Theorem 22, L268)",
+        "thm_26_siegel_witness_and_bad_prime_countermodel (Theorem 26, L340)"
+      ]
+    },
+    "stage5_sub_069_to_1_2_master_transfer_blueprint": {
+      "high_rows_open_to_critical_line": true,
+      "unconditional_equilibrium_beta_at_dgram_0": "131/150",
+      "unconditional_equilibrium_beta_at_z035_dgram_0": "209/240",
+      "heath_brown_quarter_step_beta_at_z035": "199/240",
+      "column_duality_beta_at_z034": "39/50",
+      "unconditional_background_floor_beta_2term": "4073/4896",
+      "unconditional_background_floor_beta_3term": "4069/4896",
+      "unconditional_background_floor_beta_direct_slope": "2641/3264",
+      "equilibrium_scales_aX_aY_d0": [
+        "49/150",
+        "73/150",
+        "21/25"
+      ],
+      "equilibrium_scales_z035_aX_aY_d0": [
+        "19/60",
+        "7/15",
+        "17/20"
+      ],
+      "pincer_box_048_052_symmetric_R_margins": [
+        "-7/300",
+        "-1/48",
+        "-7/300"
+      ],
+      "coordR_stickelberger_euler_boundaries": [
+        "401/600",
+        "117/200",
+        "301/600"
+      ],
+      "master_transfer_critical_delta_gram_at_051": "109/300",
+      "master_transfer_critical_delta_gram_at_050": "28/75",
+      "lean_theorems": [
+        "thm_27_high_rows_critical_line_open_and_unconditional_beta_drop (Theorem 27, L356)",
+        "thm_28_generalized_scale_equilibrium_and_master_transfer_law (Theorem 28, L368)",
+        "thm_29_stickelberger_coordR_factorization_breaks_two_thirds_wall (Theorem 29, L379)",
+        "thm_30_master_transfer_theorem_unconditional_vs_conditional_boundary (Theorem 30, L388)",
+        "thm_31_high_rows_nine_branch_exact_rational_thresholds_and_048_opening (Theorem 31, L400)",
+        "thm_32_z_high_saddle_invariance_and_symmetric_pincer_box_048_052 (Theorem 32, L412)",
+        "thm_33_global_sos_saddle_and_critical_line_half_cutoff_theorem (Theorem 33, L431)",
+        "thm_34_path_a_and_b_individual_dead_ends (Theorem 34, L444)",
+        "thm_35_hybrid_ab_coupled_critical_certificate (Theorem 35, L454)",
+        "thm_36_analytic_dual_contour_and_stickelberger_height_moments (Theorem 36, L464)",
+        "thm_37_low_rows_nonzero_mode_dual_mellin_contour_shift (Theorem 37, L475)",
+        "thm_38_bi_stickelberger_euler_deflation_and_moment_coupling (Theorem 38, L486)"
+      ],
+      "global_sos_saddle_beta_at_dgram_0_rational_witness": "41999/48000",
+      "global_sos_transfer_slope": "22/25",
+      "global_sos_tuple_transfer_slope": "48/59",
+      "critical_line_half_unique_triple_aX_aY_d0": [
+        "2/3",
+        "7/6",
+        "1/2"
+      ],
+      "critical_line_half_full_delta_gram": "11/24",
+      "hybrid_ab_critical_point_aX_aY_d0_zhigh": [
+        "35/66",
+        "59/66",
+        "7/11",
+        "7/20"
+      ],
+      "hybrid_ab_delta_gram_at_half": "14/33",
+      "k2_schwartz_ibp_saving_exponent": "4/11",
+      "pure_dual_contour_margin_at_half": "1/44",
+      "stickelberger_vertical_moment_orders": [
+        11,
+        8
+      ]
+    },
+    "stage6_eight_remaining_tasks_critical_upgrade": {
+      "task1_k2_schwartz_ibp_saving": "4/11",
+      "task1_constant_B_absorption_capacity_upgrade": [
+        "1/16",
+        "2/11"
+      ],
+      "task2_pre_cancellation_Q_min_reduction": [
+        480,
+        112
+      ],
+      "task2_bi_stickelberger_min_tail_exponent": "144/100",
+      "task3_principal_remainder_savings_at_e_1_1000": [
+        "-1/16500",
+        "-1421/33000",
+        "-14696/33000"
+      ],
+      "task4_high_rows_a_min_upgrade": [
+        "123/250",
+        "12/25"
+      ],
+      "task5_balance_denominator_bounds_108": [
+        70,
+        215
+      ],
+      "task5_seven_monomial_positive_certificate_sum": 8861,
+      "task6_voronoi_mellin_conductor_neutral_shift": "59/132",
+      "task7_grossencharakter_convexity_exponent": "102/100",
+      "task8_family_to_individual_zeta_collapse_deficit": "2/11",
+      "task8_critical_amplifier_length": "4/11",
+      "lean_theorems": [
+        "thm_39_task1_oai_ref_parameters_and_gram_k2_upgrade (Theorem 39, L21)",
+        "thm_40_task2_oai_ref_euler_local_correction_bounds_upgrade (Theorem 40, L38)",
+        "thm_41_task3_oai_ref_principal_remainder_bounds_upgrade (Theorem 41, L58)",
+        "thm_42_task4_oai_ref_high_rows_central_data_upgrade (Theorem 42, L77)",
+        "thm_43_task5_oai_ref_central_exponent_endpoint_theorem_upgrade (Theorem 43, L97)",
+        "thm_44_task6_voronoi_mellin_conductor_neutral_transfer_lemma (Theorem 44, L122)",
+        "thm_45_task7_bi_stickelberger_grossencharakter_entirety_and_convexity (Theorem 45, L141)",
+        "thm_46_task8_family_to_individual_zeta_amplification_obstruction_and_bridge (Theorem 46, L156)"
+      ]
+    }
+  },
+  "file_checksums_sha256": {
+    "README.ko.md": "c86f5ea774d56fabb409a0f8230b93cf87fe0f601c7056138d2e9343eedf6967",
+    "README.md": "c4bd8c50053f92fc03dfdaa6f1abcc107d910520e321e0b71e4471a18bb8aa46",
+    "en/01_Beginner_Intuitive_Guide.md": "908acafa0a5e7a8ab8577f83e9c2c9f24db3450517d2e3674bfaefa30ca4666b",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "091b81a437547c3b9892a3da29d45fd1f63b966e70aa18afd553b0188059f303",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "50ca82bdd4b20b26807e6842aeae26673ca8a47527ac0fc499a69bbbdea097f8",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "943738cfc5ce6d162cdd3c7151480c82ea2f9844ad500b07d1a773a3b1f3e2f1",
+    "en/README.md": "57d1e545d0ca3d1fa092e9a079e0a30273b2e91b45c7525a7d39ea5499610413",
+    "ko/01_초보자용_쉬운해설.md": "d0b3b8ceb55da64cda4faec4d985250806b287ff6d4ce3dc519d29d6f6871de2",
+    "ko/02_중급자용_구조및수식가이드.md": "b48647869f2779145faaffe0319e59abe79fd24e136c5fcfe54c9a5f175d23a1",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "06fc4a6d2400361c4fced43fa84113589967e24596c0c89400e337fcd92a2f34",
+    "ko/04_자동검증및파서용_명세서.md": "091bdad0df48eab1ff985011adfa4e2675e0e9a32828f1bab9635125ea760a86",
+    "ko/README.md": "3f58218d955fb803ff206210d08db664e37753f19dc4438c0aed6e7e8dda7d59",
+    "proofs/problem_spec.md": "f386385f0e44b04eb57ee0170c4f21b21174532707b9f3482127269755ed198d",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
+    "proofs/qrh_mathematician_referee_audit.lean": "33c57a9d4f8b572b97f55cbfd5a545f71b873bf29492c5b6d07de01be64dd790",
+    "proofs/symbolic_verification_result.json": "a30bd042bdb519c3190fa5f4e7f7026c764bed2ed92dfbd011c2f44f150e2162",
+    "proofs/verify_qrh_mathematician_audit.py": "da1db1190b7a8373840b0386a5829e9707958c93bad2bcfef785b61464a8c208"
+  },
+  "lean4_verification": {
+    "file": "proofs/qrh_mathematician_referee_audit.lean",
+    "theorems_proved": 46,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "hypothesis_mutations_killed": "406/406",
+    "files": [
+      "proofs/qrh_mathematician_referee_audit.lean",
+      "proofs/qrh_eight_tasks_critical_upgrade.lean"
+    ]
+  },
+  "scope_and_limitations": {
+    "proved": "46 Lean 4 theorems across 2 files (406/406 hypothesis mutations killed: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity, and family-to-individual zeta(s) rank-1 collapse & amplification bridge)",
+    "gpu_verification": "2^24+1 (16,777,217) contour points + 611 Eisenstein split primes p == 1 (mod 6) in [7, 9973] (1,222 cubic & sextic Gauss Gram matrices on Blackwell GPU)"
+  }
+}

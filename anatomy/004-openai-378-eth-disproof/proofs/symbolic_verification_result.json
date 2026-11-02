@@ -1,0 +1,110 @@
+{
+  "package": "004-openai-378-eth-disproof",
+  "target_preprint": "The-Exponential-Time-Hypothesis-is-False-October-25-2026",
+  "target_lean_module": "OAI.Algorithms.SubexponentialSAT",
+  "gpu_device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+  "overall_status": "PASS",
+  "audits": {
+    "audit_1_commuting_swap_matrix_gpu": {
+      "status": "PASS",
+      "device": "cuda",
+      "D_dim_r2_Q3": 64,
+      "weight_histogram_W0": {
+        "0": 27,
+        "1": 27,
+        "2": 9,
+        "3": 1
+      },
+      "rank_I_minus_M0": 10,
+      "expected_c_B_outside_I": 10,
+      "max_group_mismatch_on_M0_support": 1,
+      "allowed_mismatch_bound_R_minus_1": 1
+    },
+    "audit_2_beigel_tarui_and_truncated_ring": {
+      "status": "PASS",
+      "beigel_tarui_decompositions": {
+        "ell_1": {
+          "deg_p_ell": 1,
+          "e_0": "1 - Y",
+          "e_last": "1 - Y"
+        },
+        "ell_2": {
+          "deg_p_ell": 3,
+          "e_0": "1 - Y",
+          "e_last": "2*Y - 1"
+        },
+        "ell_3": {
+          "deg_p_ell": 5,
+          "e_0": "1 - Y",
+          "e_last": "3 - 6*Y"
+        },
+        "ell_4": {
+          "deg_p_ell": 7,
+          "e_0": "1 - Y",
+          "e_last": "20*Y - 10"
+        },
+        "ell_5": {
+          "deg_p_ell": 9,
+          "e_0": "1 - Y",
+          "e_last": "35 - 70*Y"
+        },
+        "ell_6": {
+          "deg_p_ell": 11,
+          "e_0": "1 - Y",
+          "e_last": "252*Y - 126"
+        }
+      },
+      "truncated_degree_k2_m4_l3": 16,
+      "untruncated_degree_k2_m4_l3": 40,
+      "exact_degree_saved": 24
+    },
+    "audit_3_tanner_expander_and_greedy_hashes": {
+      "status": "PASS",
+      "P_formula": "20000*B**2*mu**2",
+      "D0_formula": "320000*B**2*mu**3",
+      "contraction_per_variable_3_rounds": "27/32"
+    },
+    "audit_4_cip_sparsification_recurrence": {
+      "status": "PASS",
+      "T_j_closed_form": "4 * (3*M)^(j-1) * n",
+      "gamma_right_branch_constants": {
+        "k_3": 16,
+        "k_4": 52,
+        "k_5": 160,
+        "k_6": 484,
+        "k_7": 1456
+      }
+    },
+    "audit_5_appendix_d_cauchy_and_tapered_hermite": {
+      "status": "PASS",
+      "r_arity": 64,
+      "child_edge_ratio": "3/32",
+      "target_edge_ratio": "1/8",
+      "slack_edge_ratio": "1/32",
+      "cauchy_2adic_invariance_nodes_tested": 16,
+      "tapered_series_limit": 6,
+      "untapered_over_tapered_loss_ratio_u12": "4"
+    },
+    "audit_6_mode_partitions_and_circuit_lower_bound": {
+      "status": "PASS",
+      "recursion_squared_decay_ratio": "1/32",
+      "recursion_amplitude_geom_sum": 1.214737,
+      "williams_circuit_solver_n_coeff_A4": "12/49",
+      "strictly_below_quarter_and_half": true
+    },
+    "audit_7_bitprogram_and_lean_scope_inventory": {
+      "status": "PASS",
+      "bitprogram_registers": 80,
+      "bitprogram_stacks": 1220,
+      "space_cap_coeff": 5022740,
+      "fallback_space_coeff": 5022741,
+      "fallback_time_coeff": 28700,
+      "tex_total_lines": 5888,
+      "tex_engine1_formalized_lines": 4829,
+      "tex_engine2_unformalized_lines": 1059,
+      "oai_lean_files_count": 3977,
+      "oai_lean_lines_count": 710320,
+      "oai_lean_rh13_unused_hypotheses": 655
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# Zero-Hint Clean-Room Blind Audit Specification: OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`)
+
+Using only the raw reference files in `./oai_ref/` (`.lean` modules and `.tex` manuscripts) and standard Python (`sympy`, `fractions`, `math`), extract the definitions directly from the source files, solve the 5 problems below from scratch without external hints, and write the resulting JSON dictionary to `blind_cleanroom_result.json`.
+
+## Problem 1: Generation 1 & Generation 2 Discarded Fossil Bottlenecks (`ExponentArithmetic.lean`, `SubexpParameters.lean`)
+Read `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/ExponentArithmetic.lean` and `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SubexpParameters.lean`.
+1. From `ExponentArithmetic.lean`, extract the rational definition of `leafCoefficient` as a function of capacity `ell`. Evaluate `leafCoefficient` at `ell = 4096` as an irreducible fraction string `"num/den"`, and compute the combined exponent coefficient after adding the sparsification term `one_thirty_second` as `"num/den"`. Record both under `problem_1.gen1_leaf_coeff_4096` and `problem_1.gen1_combined_coeff_4096`.
+2. From `SubexpParameters.lean`, inspect `GoodInput`, `goodInput_s_ge_32`, and `blockSize_pow_le_doubleExp`. Determine the minimum integer value of the parameter `s(n)` required by `GoodInput` (`problem_1.gen2_min_s`) and the integer `k` such that `n >= 2^(2^k)` is required for `s(n)` to reach that threshold (`problem_1.gen2_min_double_exp_k`).
+
+## Problem 2: Commuting Swap Spectrum & Newton Forward-Difference Window (`BinomialInterpolation.lean`, `SqrtLog/SpectralRank.lean`)
+Read `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/BinomialInterpolation.lean` and `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLog/SpectralRank.lean`.
+1. On the auxiliary index space `U = ([r] x [r])^Q` of dimension `D = r^(2*Q)` at `r = 2, Q = 3`, construct the commuting swap involutions `Pi_1, Pi_2, Pi_3` and the weight operator `W_0`. Compute the exact eigenvalue multiplicity distribution `[m_0, m_1, m_2, m_3]` for eigenvalues `w = 0, 1, 2, 3` (`problem_2.w0_multiplicities_r2_Q3`).
+2. For the spectral window `I = {0, 1}` (`A_0 = 0, R = 2`), construct the Newton forward-difference polynomial `f_I(W_0)` and the truncated swap matrix `M_0 = V_0 * f_I(W_0)`. Compute `rank(I_D - M_0)` (`problem_2.rank_I_minus_M0_r2_Q3`) and the maximum number of mismatched slots `|E_{u,y}|` across all index pairs `(u, y)` where `M_0[u, y] != 0` (`problem_2.max_mismatch_support_r2_Q3`).
+
+## Problem 3: Tanner Expander Hash Constants & Discrepancy Contraction (`main_full_version.tex`)
+Read `oai_ref/tex/main_full_version.tex` (Section 6, Lemmas 6.2 and 6.3).
+1. Extract the symbolic formulas for the hash candidate list bound `P` and minimum code distance threshold `D_0` in terms of `B` and `mu`. Evaluate both exact integers at `B = 1, mu = 1` (`problem_3.tanner_P_B1_mu1` and `problem_3.tanner_D0_B1_mu1`).
+2. Given the per-round discrepancy contraction factor, evaluate the single-variable (`n = 1`) expected discrepancy ratio for `2*n` hash rounds versus `3*n` hash rounds as irreducible fraction strings `"num/den"` (`problem_3.two_n_rounds_ratio_n1` and `problem_3.three_n_rounds_ratio_n1`).
+
+## Problem 4: Appendix D (`Engine II`) Tapered 2-adic Hermite Interpolation (`quantitative-contraction.tex`)
+Read `oai_ref/tex/quantitative-contraction.tex` (Appendix D, Lemmas D.2, D.4, D.5, and Theorem D.1).
+1. Extract the recursive branching arity `r` (`problem_4.appendix_d_arity_r`) and compute the child active-edge contraction ratio `6 / r` as an irreducible fraction string `"num/den"` (`problem_4.child_edge_contraction_ratio`).
+2. Evaluate the exact closed-form integer value of the infinite series `sum_{j >= 1} j^2 / 2^j` that bounds the 2-adic valuation loss of the tapered Hermite multiplier `E_t(0)` (`problem_4.tapered_hermite_series_sum`), and compute the squared per-depth log-effort decay ratio `((M_{d+1} / sqrt(u_{d+1})) / (M_d / sqrt(u_d)))^2` using the recursion's worst-case contraction factors (`1/8` for `M_d` and `1/2` for `u_d`) as an irreducible fraction string `"num/den"` (`problem_4.squared_log_effort_decay_ratio`).
+
+## Problem 5: Asymptotic Cutoff & Wrapper Slack Constants (`SqrtLogSpace/Asymptotics.lean`, `SqrtLogSpace/Final.lean`)
+Read `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Asymptotics.lean` and `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean`.
+1. From `Asymptotics.lean`, inspect `sparsifySchedule`, `lambda`, and `nu`. Compute the smallest positive integer `lam` such that `floor(sqrt(lam) / (ceil(log2(lam)))^2) >= 1` (`problem_5.min_lambda_nonzero_schedule`), and the minimum integer `k = lam - 1` such that `n > 2^k` is required before `sparsifySchedule n >= 1` (`problem_5.min_log2_n_nonzero_schedule`).
+2. From `Final.lean`, extract the two integer slack constants added in the outer polynomial resource wrappers (`problem_5.wrapper_slack_small` and `problem_5.wrapper_slack_large`).

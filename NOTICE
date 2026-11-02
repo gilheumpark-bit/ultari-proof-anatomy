@@ -1,0 +1,27 @@
+ultari-proof-anatomy — Dissecting Human & AI Mathematical Proofs
+Copyright 2026 Gilheum Park (parkgilheum) <gilheum.park@gmail.com>
+Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
+
+1. Original Code and Formal Proofs (Apache-2.0)
+   All original Lean 4 formal proof files (`proofs/*.lean`, excluding `oai_ref/`),
+   symbolic and GPU verification scripts (`proofs/verify_*.py`, `tools/*.py`),
+   and machine-readable verification ledgers (`manifest.json`,
+   `symbolic_verification_result.json`) are licensed under the Apache License,
+   Version 2.0 (see `LICENSE`).
+
+2. Original Mathematical Reports and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
+   All original mathematical referee reports, forensic analyses, and 4-tier
+   reader guides (`*.md`) are licensed under both the Apache License, Version 2.0
+   and the Creative Commons Attribution 4.0 International License (CC BY 4.0,
+   https://creativecommons.org/licenses/by/4.0/). Any reproduction, redistribution,
+   translation, or derivative work must retain attribution to the original author
+   and repository (`https://github.com/gilheumpark-bit/ultari-proof-anatomy`) and
+   indicate if changes were made, pursuant to Section 4 of Apache-2.0 and Section 3
+   of CC BY 4.0.
+
+3. Third-Party Reference Snapshots (`oai_ref/`)
+   Files located under `proofs/oai_ref/` (and `anatomy/*/proofs/oai_ref/`) are
+   upstream reference snapshots from OpenAI (`openai/math` / First Proof 2026)
+   included for line-by-line academic refereeing, citation verification, and
+   reproducible comparison. They remain the property of their respective copyright
+   holders and are subject to their upstream license terms.
