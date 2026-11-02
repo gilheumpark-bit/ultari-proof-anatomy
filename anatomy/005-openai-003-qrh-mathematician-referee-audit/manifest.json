@@ -7,10 +7,7 @@
     "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
   },
   "artifacts_sha256": {
-    "proofs/qrh_mathematician_referee_audit.lean": "6219192ca82058c9d0ac094a3cb55fddc9332b1f7c857d2d2a1aa30b56b925ee",
-    "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
-    "proofs/verify_qrh_mathematician_audit.py": "2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc",
-    "proofs/symbolic_verification_result.json": "95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97",
+    "proofs/symbolic_verification_result.json": "a84c39667d612831b2e5e45ad4ee328403a56c5cd1b46450e200d41d87552a0f",
     "proofs/problem_spec.md": "8149028e4727eebb2e6703eed0f7979441a482b15147976d8152304228f0b4bf"
   },
   "verified_key_results": {
@@ -175,23 +172,20 @@
     }
   },
   "file_checksums_sha256": {
-    "README.ko.md": "99d9c5246b4483f0a362f8b265cd7ab3cb89ed4c7432de221cfb11fa22fe88ef",
-    "README.md": "c8485f015c38ede6c7897208ef8b5c612cb1bb52c8f2d9be0bf37e8ff1c56cd4",
-    "en/01_Beginner_Intuitive_Guide.md": "c44d0fda68b2d171aff4f1119de9bfdbbd793e1aee6b12f9bea197a499919e10",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "8a059a931afda341ce95ddd943cc551a9dc343f5b856af734185cab78c261064",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "6caa4f26c3fdee146268798ddf53c30da42f9a0a5c016fdd3988f3cf4ba8fb0e",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "3e29261dec19c0aa4d955b0102648554c0e42949a3a636a40b333598458e9958",
-    "en/README.md": "c8485f015c38ede6c7897208ef8b5c612cb1bb52c8f2d9be0bf37e8ff1c56cd4",
-    "ko/01_초보자용_쉬운해설.md": "a1640998e1fec4bf8fa844a101412a5b117f95f385f5adf7fabb406508763379",
-    "ko/02_중급자용_구조및수식가이드.md": "0f74af6cfddf9dcb5bcefd0f8f1c8accbaaf4319a15b9473489d413ae95d60d8",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "8e56ddf084b86cc2f67e3a77794d09103d28b1ea82f7e9318bb9aa9075cbaf29",
-    "ko/04_자동검증및파서용_명세서.md": "04d85d59beb47e01886c2d9c2a8d67e7e08c62b0e83e2bc2cf0b792c64620c3e",
-    "ko/README.md": "99d9c5246b4483f0a362f8b265cd7ab3cb89ed4c7432de221cfb11fa22fe88ef",
+    "README.ko.md": "8642b9b8d138a873964cc54b9db5913997a0fa66e1da183c275889ac8aa421f5",
+    "README.md": "598d13cbac9c70b2e94929feed2d431dc7139077ebe2329172f80504875f0699",
+    "en/01_Beginner_Intuitive_Guide.md": "79114d3769e78bcc6c3b1e5baf199ef9d3f60e857ca0c77beefe0fd36c8a07a5",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "1cf0ae4355af867ae0d5d87ac756817642fb4bc66d160a0d6a1acc79d4e94cd8",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "feb608b4b8510abd86c4b2c57217edf254deef8b35e0b3a0e39b1f2723b492a8",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "cf6ca4d35e296e16b8781f693bf622246588352e1b8ec2a2d88cdd6346c0749c",
+    "en/README.md": "66b69853909304901c9f51fd30408aba3ab99499d280e0486e6bcb8005656be0",
+    "ko/01_초보자용_쉬운해설.md": "9a9b6b2e0afcd01ff778823852109b9db868f881460073cfe8f682486887ca98",
+    "ko/02_중급자용_구조및수식가이드.md": "dc12572c133c4dd83ee95b879d0dbb2d1d4e654c5739a58cd4d143decac70b34",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "7e478bef74b7fa65f846a4fa36a851fa253556d3705d5d2f764a2bccf92c9ba9",
+    "ko/04_자동검증및파서용_명세서.md": "676612f4c20dafaddc7687910a3db9f889f83f3bcf98b9f8145282b3c12a31f5",
+    "ko/README.md": "2703b7229b0e6c53ac4f33bba70f8e793734c63846d8ffb595ae738188e6b5ca",
     "proofs/problem_spec.md": "8149028e4727eebb2e6703eed0f7979441a482b15147976d8152304228f0b4bf",
-    "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
-    "proofs/qrh_mathematician_referee_audit.lean": "6219192ca82058c9d0ac094a3cb55fddc9332b1f7c857d2d2a1aa30b56b925ee",
-    "proofs/symbolic_verification_result.json": "95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97",
-    "proofs/verify_qrh_mathematician_audit.py": "2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc"
+    "proofs/symbolic_verification_result.json": "a84c39667d612831b2e5e45ad4ee328403a56c5cd1b46450e200d41d87552a0f"
   },
   "lean4_verification": {
     "file": "proofs/qrh_mathematician_referee_audit.lean",
@@ -206,7 +200,8 @@
   },
   "scope_and_limitations": {
     "proved": "46 Lean 4 theorems across 2 files (407/407 hypothesis mutations killed: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity, and family-to-individual zeta(s) rank-1 collapse & amplification bridge)",
-    "gpu_verification": "2^24+1 (16,777,217) contour points + 611 Eisenstein split primes p == 1 (mod 6) in [7, 9973] (1,222 cubic & sextic Gauss Gram matrices on Blackwell GPU)"
+    "gpu_verification": "2^24+1 (16,777,217) contour points + 611 Eisenstein split primes p == 1 (mod 6) in [7, 9973] (1,222 cubic & sextic Gauss Gram matrices on Blackwell GPU)",
+    "limitations": "1) Standalone Arithmetic Shadow: The 46 Lean 4 theorems (qrh_mathematician_referee_audit.lean and qrh_eight_tasks_critical_upgrade.lean) formalize cleared-denominator integer and polynomial parameter relations without importing Mathlib or oai_ref; analytic inputs (Delta_hybrid = 14/33, Res_{w=1} = 0, delta_triv = 0, gain_amp >= 2/11) enter as explicit theorem hypotheses. 2) Excerpted Reference Modules: proofs/oai_ref/ contains 26 excerpted Lean files without upstream modules (W22, W28, UnconditionalPrimeBias, PrimeNumberTheoremAnd); full axiom verification of exists_absolute_real_zero_gap requires lake build in the upstream repository."
   },
   "multi_cli_blind_and_referee_audit": {
     "track1_cleanroom_blind_20_questions": {

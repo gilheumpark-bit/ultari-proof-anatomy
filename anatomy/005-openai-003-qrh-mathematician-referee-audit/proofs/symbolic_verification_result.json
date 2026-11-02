@@ -67,8 +67,8 @@
     "gpu_eisenstein_primes_tested": 611,
     "gpu_eisenstein_prime_range": "7..9973 (p == 1 mod 6)",
     "gpu_cubic_gram_offdiag_norm_p73": 0.01388889,
-    "gpu_cubic_gram_max_rel_err_611_primes": 3.477e-11,
-    "gpu_sextic_gram_max_rel_err_611_primes": 3.479e-11
+    "gpu_cubic_gram_max_rel_err_611_primes": 2.52e-12,
+    "gpu_sextic_gram_max_rel_err_611_primes": 1.08e-12
   },
   "stage5_sub_069_master_transfer": {
     "high_rows_critical_line_margin": "-1/48",
@@ -187,8 +187,8 @@
     ],
     "task7_grossencharakter_gamma_shift_and_mu_bi": [
       3,
-      "102/100",
-      "99/50"
+      "103/100",
+      "197/100"
     ],
     "task8_zeta_collapse_deficit_and_critical_amplifier": [
       "2/11",
