@@ -28,6 +28,10 @@
   "stage2_referee_critique": {
     "geometric_boundary_local_hgeometry_param": true,
     "bezout_4step_unconditional_discharge_verified": true,
+    "compensated_geometry_external_refs_in_26_oai_ref": 0,
+    "upstream_dirichletL_transitive_dag_modules": 2924,
+    "upstream_siegel_zeros_transitive_dag_modules": 201,
+    "upstream_compensated_geometry_refs_in_2925_modules": 0,
     "exponent_loss_B_inflation": "1/32",
     "exponent_loss_Gram_drop": "79/3264",
     "total_exponent_loss_B_and_Gram": "181/3264",

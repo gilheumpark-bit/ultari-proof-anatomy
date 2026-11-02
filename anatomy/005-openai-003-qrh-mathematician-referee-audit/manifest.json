@@ -7,8 +7,11 @@
     "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
   },
   "artifacts_sha256": {
-    "proofs/symbolic_verification_result.json": "a84c39667d612831b2e5e45ad4ee328403a56c5cd1b46450e200d41d87552a0f",
-    "proofs/problem_spec.md": "8149028e4727eebb2e6703eed0f7979441a482b15147976d8152304228f0b4bf"
+    "proofs/qrh_mathematician_referee_audit.lean": "b1091f2a18e56a64a648c311d0f13f41a146e5ce0eb2e925075c6c83e9b78719",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "acc4a59047684857c3ad98d4df96f3d875c3ed672920aa383bebded8d324def3",
+    "proofs/verify_qrh_mathematician_audit.py": "be738506424157ea6f5ef5f8822c4ce939b3f91314d85c9c1a19786f8f175670",
+    "proofs/symbolic_verification_result.json": "73decc92d4745aad3368e5dc84799545721ca7a046dfde207eafa4a5826ed635",
+    "proofs/problem_spec.md": "5c57efd314aa17b9706ed55b897a0636d904978a13dbb7d439f7a87612eec326"
   },
   "verified_key_results": {
     "stage1_magic_exponents_and_saddle": {
@@ -156,7 +159,7 @@
       ],
       "task5_seven_monomial_positive_certificate_sum": 8861,
       "task6_voronoi_mellin_conductor_neutral_shift": "59/132",
-      "task7_grossencharakter_convexity_exponent": "102/100",
+      "task7_grossencharakter_convexity_exponent": "103/100",
       "task8_family_to_individual_zeta_collapse_deficit": "2/11",
       "task8_critical_amplifier_length": "4/11",
       "lean_theorems": [
@@ -172,36 +175,39 @@
     }
   },
   "file_checksums_sha256": {
-    "README.ko.md": "8642b9b8d138a873964cc54b9db5913997a0fa66e1da183c275889ac8aa421f5",
-    "README.md": "598d13cbac9c70b2e94929feed2d431dc7139077ebe2329172f80504875f0699",
-    "en/01_Beginner_Intuitive_Guide.md": "79114d3769e78bcc6c3b1e5baf199ef9d3f60e857ca0c77beefe0fd36c8a07a5",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "1cf0ae4355af867ae0d5d87ac756817642fb4bc66d160a0d6a1acc79d4e94cd8",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "feb608b4b8510abd86c4b2c57217edf254deef8b35e0b3a0e39b1f2723b492a8",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "cf6ca4d35e296e16b8781f693bf622246588352e1b8ec2a2d88cdd6346c0749c",
-    "en/README.md": "66b69853909304901c9f51fd30408aba3ab99499d280e0486e6bcb8005656be0",
-    "ko/01_초보자용_쉬운해설.md": "9a9b6b2e0afcd01ff778823852109b9db868f881460073cfe8f682486887ca98",
-    "ko/02_중급자용_구조및수식가이드.md": "dc12572c133c4dd83ee95b879d0dbb2d1d4e654c5739a58cd4d143decac70b34",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "7e478bef74b7fa65f846a4fa36a851fa253556d3705d5d2f764a2bccf92c9ba9",
-    "ko/04_자동검증및파서용_명세서.md": "676612f4c20dafaddc7687910a3db9f889f83f3bcf98b9f8145282b3c12a31f5",
-    "ko/README.md": "2703b7229b0e6c53ac4f33bba70f8e793734c63846d8ffb595ae738188e6b5ca",
-    "proofs/problem_spec.md": "8149028e4727eebb2e6703eed0f7979441a482b15147976d8152304228f0b4bf",
-    "proofs/symbolic_verification_result.json": "a84c39667d612831b2e5e45ad4ee328403a56c5cd1b46450e200d41d87552a0f"
+    "README.ko.md": "c7848682fc7ba691e8c09bf5cf22d7bad854cca98f373741dd91ff92433f34e3",
+    "README.md": "ae3bf92d1da39ff7bd5cb318ca11c6bdae22a15f2d04c559953abadefe5c40d4",
+    "en/01_Beginner_Intuitive_Guide.md": "f17142aba5458d909988ba7848f9dbb9d1c61575e9fd86c2f9206a1d8b381a1e",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "e197db1e72292e89b35f522c38b9c7787bd1a59a776363317b5f7255c5b7c9ec",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "9f0129736f85bc882e274a15a1521df22e8cd3de9cb4be5f97208fb4d65c7585",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "5698e00fc9d4543949da054f9fc7a0eadf86ab55bafa8e09fc7c0a40ec4a5864",
+    "en/README.md": "6bdcfb6e5858b593e37f6ad4c94647fa03566195f02d979f9be3e0202643dc69",
+    "ko/01_초보자용_쉬운해설.md": "721afb98de1eeccf8d50bdd7f18b0d7d9f4aa18825442846f35d063c4dfe5102",
+    "ko/02_중급자용_구조및수식가이드.md": "22a99188d243256dc603898fe3e5abcdfc1cf6a269ff54ac521c6937dc099fb0",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "768fa7f6de5bcd4e4b72ea6460807fbc7cc6b265707f2473f468160b8eb3884a",
+    "ko/04_자동검증및파서용_명세서.md": "09b3587e6a8d383c12f130342f71e286e677a98fc571c26fd31d0ab5e271ffdc",
+    "ko/README.md": "2e1871fdc442dd9a499f6bda266e2a2c1a77c7c945d2eb84ea125f69c04f784a",
+    "proofs/problem_spec.md": "5c57efd314aa17b9706ed55b897a0636d904978a13dbb7d439f7a87612eec326",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "acc4a59047684857c3ad98d4df96f3d875c3ed672920aa383bebded8d324def3",
+    "proofs/qrh_mathematician_referee_audit.lean": "b1091f2a18e56a64a648c311d0f13f41a146e5ce0eb2e925075c6c83e9b78719",
+    "proofs/symbolic_verification_result.json": "73decc92d4745aad3368e5dc84799545721ca7a046dfde207eafa4a5826ed635",
+    "proofs/verify_qrh_mathematician_audit.py": "be738506424157ea6f5ef5f8822c4ce939b3f91314d85c9c1a19786f8f175670"
   },
   "lean4_verification": {
     "file": "proofs/qrh_mathematician_referee_audit.lean",
     "theorems_proved": 46,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_killed": "407/407",
+    "hypothesis_mutations_killed": "408/408",
     "files": [
       "proofs/qrh_mathematician_referee_audit.lean",
       "proofs/qrh_eight_tasks_critical_upgrade.lean"
     ]
   },
   "scope_and_limitations": {
-    "proved": "46 Lean 4 theorems across 2 files (407/407 hypothesis mutations killed: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity, and family-to-individual zeta(s) rank-1 collapse & amplification bridge)",
+    "proved": "46 Lean 4 theorems across 2 files (408/408 hypothesis mutations killed [0 unused/vacuous premises]: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, conditional Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity 102/100+1/100=103/100, and required-saving threshold inversions for Delta_hybrid=14/33 and gain_amp>=2/11)",
     "gpu_verification": "2^24+1 (16,777,217) contour points + 611 Eisenstein split primes p == 1 (mod 6) in [7, 9973] (1,222 cubic & sextic Gauss Gram matrices on Blackwell GPU)",
-    "limitations": "1) Standalone Arithmetic Shadow: The 46 Lean 4 theorems (qrh_mathematician_referee_audit.lean and qrh_eight_tasks_critical_upgrade.lean) formalize cleared-denominator integer and polynomial parameter relations without importing Mathlib or oai_ref; analytic inputs (Delta_hybrid = 14/33, Res_{w=1} = 0, delta_triv = 0, gain_amp >= 2/11) enter as explicit theorem hypotheses. 2) Excerpted Reference Modules: proofs/oai_ref/ contains 26 excerpted Lean files without upstream modules (W22, W28, UnconditionalPrimeBias, PrimeNumberTheoremAnd); full axiom verification of exists_absolute_real_zero_gap requires lake build in the upstream repository."
+    "limitations": "1) Standalone Arithmetic Shadow: The 46 Lean 4 theorems (qrh_mathematician_referee_audit.lean and qrh_eight_tasks_critical_upgrade.lean) formalize cleared-denominator integer and polynomial parameter relations without importing Mathlib or oai_ref, plus executable rational definitions (criticalBeta48000, globalSosDiscriminant, hybridRequiredSaving132); analytic inputs (Res_{w=1} = 0 in thm_44, delta_triv = 0) enter as explicit conditional hypotheses, while thm_35 (Delta_hybrid = 14/33) and thm_46 (gain_amp >= 2/11) are formalized as Required Saving Threshold Inversion Theorems. 2) Upstream Repository & Excerpted Reference Modules: Full 3,233-file upstream DAG audit confirms 201 SiegelZeros reachability modules (0 sorry, 0 axiom) and compensated_geometry unused across DirichletL; full Lean kernel build requires prebuilt Mathlib.olean."
   },
   "multi_cli_blind_and_referee_audit": {
     "track1_cleanroom_blind_20_questions": {
@@ -226,13 +232,50 @@
     },
     "track2_adversarial_referee_audit": {
       "theorems_audited": 46,
-      "hypothesis_mutations_killed": "407/407",
+      "hypothesis_mutations_killed": "408/408",
       "epistemic_boundary_honest_across_3_clis": true,
       "referee_fixes_applied": [
         "Fixed header theorem count 36 -> 38 Theorems in qrh_mathematician_referee_audit.lean",
         "Formalized both 2-term unbundled floor 4103/4896 and 3-term bundled floor 4069/4896 in thm_27 (284/284 mutations killed)",
-        "Bound siegel_concrete_witness in thm_26 directly to N_0 = 2*97^2 and H = 12*192*(2*N_0) and strengthened 5-module call-chain verification in verify_qrh_mathematician_audit.py"
+        "Bound siegel_concrete_witness in thm_26 directly to N_0 = 2*97^2 and H = 12*192*(2*N_0) and strengthened 5-module call-chain verification in verify_qrh_mathematician_audit.py",
+        "Applied C-01..C-05, M-01..M-06, D-01..D-06, R-01..R-03 audit repairs: inverted thm_35 and thm_46 into required-saving threshold theorems, made thm_44 explicitly conditional on hres_cond : res_w1 = 0, derived SymPy SOS quadratic/slopes/7-monomial coefficients symbolically, and verified 408/408 (285+123) hypothesis mutations"
       ]
     }
-  }
+  },
+  "files": [
+    {
+      "path": "proofs/qrh_mathematician_referee_audit.lean",
+      "role": "lean4_proof_part_1_to_5",
+      "lines": 499,
+      "theorems": 38,
+      "sorry_count": 0,
+      "sha256": "b1091f2a18e56a64a648c311d0f13f41a146e5ce0eb2e925075c6c83e9b78719"
+    },
+    {
+      "path": "proofs/qrh_eight_tasks_critical_upgrade.lean",
+      "role": "lean4_proof_part_6_to_7",
+      "lines": 193,
+      "theorems": 8,
+      "sorry_count": 0,
+      "sha256": "acc4a59047684857c3ad98d4df96f3d875c3ed672920aa383bebded8d324def3"
+    },
+    {
+      "path": "proofs/verify_qrh_mathematician_audit.py",
+      "role": "sympy_and_gpu_verifier",
+      "lines": 497,
+      "sha256": "be738506424157ea6f5ef5f8822c4ce939b3f91314d85c9c1a19786f8f175670"
+    },
+    {
+      "path": "proofs/symbolic_verification_result.json",
+      "role": "verification_output",
+      "lines": 203,
+      "sha256": "73decc92d4745aad3368e5dc84799545721ca7a046dfde207eafa4a5826ed635"
+    },
+    {
+      "path": "proofs/problem_spec.md",
+      "role": "problem_specification",
+      "lines": 23,
+      "sha256": "5c57efd314aa17b9706ed55b897a0636d904978a13dbb7d439f7a87612eec326"
+    }
+  ]
 }
