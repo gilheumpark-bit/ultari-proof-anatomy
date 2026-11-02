@@ -8,10 +8,10 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
 
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
-| [`proofs/qrh_mathematician_referee_audit.lean`](proofs/qrh_mathematician_referee_audit.lean) | `b1091f2a18e56a64a648c311d0f13f41a146e5ce0eb2e925075c6c83e9b78719` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `285/285` mutations caught) |
+| [`proofs/qrh_mathematician_referee_audit.lean`](proofs/qrh_mathematician_referee_audit.lean) | `afa9aa74d4871b966eea35951c6b6ae8ce0b3d22a646f509852e16d960e0c2df` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `285/285` mutations caught) |
 | [`proofs/qrh_eight_tasks_critical_upgrade.lean`](proofs/qrh_eight_tasks_critical_upgrade.lean) | `acc4a59047684857c3ad98d4df96f3d875c3ed672920aa383bebded8d324def3` | `193` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `123/123` mutations caught) |
-| [`proofs/verify_qrh_mathematician_audit.py`](proofs/verify_qrh_mathematician_audit.py) | `be738506424157ea6f5ef5f8822c4ce939b3f91314d85c9c1a19786f8f175670` | `497` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
-| [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json) | `73decc92d4745aad3368e5dc84799545721ca7a046dfde207eafa4a5826ed635` | `203` | Deterministic symbolic derivation, upstream DAG & GPU verification output JSON |
+| [`proofs/verify_qrh_mathematician_audit.py`](proofs/verify_qrh_mathematician_audit.py) | `cdda9cdc862136fa2380f1d16f8bd95c85e95a0787d6c84c07d95bb4bc559588` | `497` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
+| [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json) | `3a90b9b6448cc605315fdef4fac679947f1b7315916046f83fda21bec3281b07` | `203` | Deterministic symbolic derivation, upstream DAG & GPU verification output JSON |
 | [`proofs/problem_spec.md`](proofs/problem_spec.md) | `5c57efd314aa17b9706ed55b897a0636d904978a13dbb7d439f7a87612eec326` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
 
 ---

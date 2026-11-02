@@ -79,9 +79,9 @@
     "zero_mode_vanishing_condition": "paperRadialFourier U 0 = 0",
     "zero_mode_eliminated_exponent_E_A": "17/96",
     "uninflated_tail_floor_E_C_at_delta_sos": "397/3264",
-    "unconditional_gram_saving_delta_E": "215/3264",
-    "unconditional_equilibrium_beta_at_dgram_0": "131/150",
-    "unconditional_equilibrium_beta_at_z035_dgram_0": "209/240",
+    "nonexceptional_tail_saving_delta_E": "215/3264",
+    "local_delta0_equilibrium_beta_at_dgram_0": "131/150",
+    "local_delta0_equilibrium_beta_at_z035_dgram_0": "209/240",
     "heath_brown_quarter_step_beta_at_z035": "199/240",
     "column_duality_beta_at_z034": "39/50",
     "global_sos_saddle_witness_aX_aY": [
@@ -129,9 +129,9 @@
       "144/100",
       "25/264"
     ],
-    "unconditional_background_floor_beta_normalized_slope": "4069/4896",
-    "unconditional_background_floor_beta_2term": "4103/4896",
-    "unconditional_background_floor_beta_direct_slope": "2641/3264",
+    "isolated_nonexceptional_floor_beta_normalized_slope": "4069/4896",
+    "isolated_nonexceptional_floor_beta_2term": "4103/4896",
+    "isolated_nonexceptional_floor_beta_direct_slope": "2641/3264",
     "equilibrium_scales_aX_aY_d0": [
       "49/150",
       "73/150",
