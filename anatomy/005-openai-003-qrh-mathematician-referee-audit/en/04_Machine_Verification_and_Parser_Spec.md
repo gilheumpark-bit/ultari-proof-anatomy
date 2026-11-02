@@ -12,7 +12,7 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
 | [`proofs/qrh_eight_tasks_critical_upgrade.lean`](../proofs/qrh_eight_tasks_critical_upgrade.lean) | `a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec` | `173` | `8` remaining-task (`thm_39`–`thm_46`) Lean 4 theorems (`0 sorry`, `123/123` mutations caught) |
 | [`proofs/verify_qrh_mathematician_audit.py`](../proofs/verify_qrh_mathematician_audit.py) | `2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc` | `490` | SymPy symbolic + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97` | `199` | Deterministic symbolic & GPU verification output JSON |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `1178341167f290674ad01b15ab50b78ddc5ae8c82910c7f6c6f3b4b79e01ac92` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `8149028e4727eebb2e6703eed0f7979441a482b15147976d8152304228f0b4bf` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
 
 ---
 
