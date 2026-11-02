@@ -180,12 +180,12 @@
     "en/01_Beginner_Intuitive_Guide.md": "c44d0fda68b2d171aff4f1119de9bfdbbd793e1aee6b12f9bea197a499919e10",
     "en/02_Intermediate_Math_and_Code_Guide.md": "8a059a931afda341ce95ddd943cc551a9dc343f5b856af734185cab78c261064",
     "en/03_Expert_Mathematician_Referee_Audit_Report.md": "6caa4f26c3fdee146268798ddf53c30da42f9a0a5c016fdd3988f3cf4ba8fb0e",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "f03ee7c72e7c823c2489ed91c989ac753ac442534cc872c84b4d89b2ff042263",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "219f57f95fa6937476de49e61b9bd9a39e98e6a575a46cf5be923de2062c5e45",
     "en/README.md": "c8485f015c38ede6c7897208ef8b5c612cb1bb52c8f2d9be0bf37e8ff1c56cd4",
     "ko/01_초보자용_쉬운해설.md": "a1640998e1fec4bf8fa844a101412a5b117f95f385f5adf7fabb406508763379",
     "ko/02_중급자용_구조및수식가이드.md": "0f74af6cfddf9dcb5bcefd0f8f1c8accbaaf4319a15b9473489d413ae95d60d8",
     "ko/03_전문가용_수론학자심층심사보고서.md": "8e56ddf084b86cc2f67e3a77794d09103d28b1ea82f7e9318bb9aa9075cbaf29",
-    "ko/04_자동검증및파서용_명세서.md": "851645bc8a81ceab5ad29c5fc50fd730cbd0a0b4331243914f35b6b2400c491a",
+    "ko/04_자동검증및파서용_명세서.md": "7f213db0160da3439b3bf4b789d1ce1eafa620dde1b147f3f5a4db19e113c3fd",
     "ko/README.md": "875f726ade0692befc2195ba38969c8709cc7be268eb7d019917a748ff55861c",
     "proofs/problem_spec.md": "1178341167f290674ad01b15ab50b78ddc5ae8c82910c7f6c6f3b4b79e01ac92",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
@@ -207,5 +207,37 @@
   "scope_and_limitations": {
     "proved": "46 Lean 4 theorems across 2 files (407/407 hypothesis mutations killed: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity, and family-to-individual zeta(s) rank-1 collapse & amplification bridge)",
     "gpu_verification": "2^24+1 (16,777,217) contour points + 611 Eisenstein split primes p == 1 (mod 6) in [7, 9973] (1,222 cubic & sextic Gauss Gram matrices on Blackwell GPU)"
+  },
+  "multi_cli_blind_and_referee_audit": {
+    "track1_cleanroom_blind_20_questions": {
+      "muse": {
+        "matched": "20/20",
+        "lean_theorems_0_sorry": 10,
+        "answers_sha256": "249a531e594dd5098837fa7688cf2a1e2383f98b233808038b3495e32cf980f6",
+        "lean_sha256": "d7f5a7badb587d2bf4d68bb40daf45f5f9560dbe25e6c5059ed4aa59727cb0fc"
+      },
+      "opencode": {
+        "matched": "20/20",
+        "lean_theorems_0_sorry": 20,
+        "answers_sha256": "b0aa08c41ef0d973977e08848cad018d26c47ab239199db67e56fd34808d6b4f",
+        "lean_sha256": "0979c12ae3c2c0ac660db99ae9d48069c2ff0b2e65c996c7da1510f8025cd9bb"
+      },
+      "agy": {
+        "matched": "20/20",
+        "lean_theorems_0_sorry": 12,
+        "answers_sha256": "b0aa08c41ef0d973977e08848cad018d26c47ab239199db67e56fd34808d6b4f",
+        "lean_sha256": "0060ed9ca0dede132e271c624ef139e225b866e75b62d1823a2f4f9b64527354"
+      }
+    },
+    "track2_adversarial_referee_audit": {
+      "theorems_audited": 46,
+      "hypothesis_mutations_killed": "407/407",
+      "epistemic_boundary_honest_across_3_clis": true,
+      "referee_fixes_applied": [
+        "Fixed header theorem count 36 -> 38 Theorems in qrh_mathematician_referee_audit.lean",
+        "Formalized both 2-term unbundled floor 4103/4896 and 3-term bundled floor 4069/4896 in thm_27 (284/284 mutations killed)",
+        "Bound siegel_concrete_witness in thm_26 directly to N_0 = 2*97^2 and H = 12*192*(2*N_0) and strengthened 5-module call-chain verification in verify_qrh_mathematician_audit.py"
+      ]
+    }
   }
 }

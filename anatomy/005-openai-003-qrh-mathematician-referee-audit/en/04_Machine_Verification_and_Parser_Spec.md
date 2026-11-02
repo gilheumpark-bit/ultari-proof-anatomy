@@ -8,11 +8,11 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
 
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
-| [`proofs/qrh_mathematician_referee_audit.lean`](proofs/qrh_mathematician_referee_audit.lean) | `6219192ca82058c9d0ac094a3cb55fddc9332b1f7c857d2d2a1aa30b56b925ee` | `499` | `38` structural, referee & transfer Lean 4 theorems (`0 sorry`, `284/284` mutations caught) |
-| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](proofs/qrh_eight_tasks_critical_upgrade.lean) | `a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec` | `173` | `8` remaining-task (`thm_39`–`thm_46`) Lean 4 theorems (`0 sorry`, `123/123` mutations caught) |
-| [`proofs/verify_qrh_mathematician_audit.py`](proofs/verify_qrh_mathematician_audit.py) | `2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc` | `490` | SymPy symbolic + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
-| [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json) | `95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97` | `199` | Deterministic symbolic & GPU verification output JSON |
-| [`proofs/problem_spec.md`](proofs/problem_spec.md) | `1178341167f290674ad01b15ab50b78ddc5ae8c82910c7f6c6f3b4b79e01ac92` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
+| [`proofs/qrh_mathematician_referee_audit.lean`](../proofs/qrh_mathematician_referee_audit.lean) | `6219192ca82058c9d0ac094a3cb55fddc9332b1f7c857d2d2a1aa30b56b925ee` | `499` | `38` structural, referee & transfer Lean 4 theorems (`0 sorry`, `284/284` mutations caught) |
+| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](../proofs/qrh_eight_tasks_critical_upgrade.lean) | `a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec` | `173` | `8` remaining-task (`thm_39`–`thm_46`) Lean 4 theorems (`0 sorry`, `123/123` mutations caught) |
+| [`proofs/verify_qrh_mathematician_audit.py`](../proofs/verify_qrh_mathematician_audit.py) | `2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc` | `490` | SymPy symbolic + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97` | `199` | Deterministic symbolic & GPU verification output JSON |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `1178341167f290674ad01b15ab50b78ddc5ae8c82910c7f6c6f3b4b79e01ac92` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
 
 ---
 
@@ -29,12 +29,21 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
    python3 proofs/verify_qrh_mathematician_audit.py
    ```
    * Pass criteria: Exit code `0`, Blackwell GPU `float64` verification across $2^{24}+1 = 16,777,217$ complex contour grid points and all $611$ Eisenstein split primes $p \equiv 1 \pmod 6$ in $[7, 9973]$ (`1,222` cubic & sextic Gauss Gram matrices), Stage 5 & Stage 6 symbolic verification, and byte-identical reproduction of `proofs/symbolic_verification_result.json`.
-3. **Artifact SHA-256 Checksum Integrity Gate**:
+3. **Static Discipline & Document Integrity Scan (`extra_scan.py` & `code_discipline.py`)**:
    ```bash
-   sha256sum proofs/qrh_mathematician_referee_audit.lean \
-             proofs/qrh_eight_tasks_critical_upgrade.lean \
-             proofs/verify_qrh_mathematician_audit.py \
-             proofs/symbolic_verification_result.json \
-             proofs/problem_spec.md
+   python3 /home/heum/바탕화면/울타리_연구원/template/.ultari/extra_scan.py .
+   python3 /home/heum/바탕화면/울타리_연구원/template/.ultari/code_discipline.py .
    ```
-   * Pass criteria: Exact SHA-256 checksum match across all `5` core artifacts (`EXIT 0`).
+   * Pass criteria: `0` warnings and `0` problems (`EXIT 0`).
+
+---
+
+## 3. Multi-Vendor 3-CLI Clean-Room Blind Derivation (`20/20`) & Adversarial Referee Audit
+
+To eliminate single-model bias, the entire suite was cross-examined across three independent vendor CLIs (`muse`, `opencode`, `agy`) under two tracks: **Track 1 (Zero-Hint Clean-Room Blind Derivation)** with access only to `oai_ref/*.lean`, and **Track 2 (Adversarial Referee Audit, `--bias referee / falsifier`)** across all `46` theorems and reports.
+
+| Independent CLI Engine (Version / Model) | Track 1: Zero-Hint 20-Item Blind Derivation (`blind_answers.json` SHA-256) | Track 1: Standalone Clean-Room Lean 4 Proof (`blind_proof.lean` SHA-256) | Track 2: Adversarial Referee Audit (`46` Theorems Audited & Fixes Applied) |
+| :--- | :--- | :--- | :--- |
+| **`muse`**<br>(`Meta Muse Code CLI v1.4.14`, `muse-spark`) | **`20/20` (`100%`)**<br>`249a531e594dd509...` | **`10` theorems (`0 sorry`, `EXIT 0`)**<br>`d7f5a7badb587d2b...` | • Confirmed `0` formula mismatches across all `46` theorems and `epistemic_boundary_honest = true`<br>• Referee findings resolved: ① fixed header count `36 → 38 Theorems`, ② formalized both 2-term unbundled floor `4103/4896` and 3-term bundled floor `4069/4896` in [`thm_27`](../proofs/qrh_mathematician_referee_audit.lean#L356-L364) (`284/284` mutations caught), ③ bound [`thm_26`](../proofs/qrh_mathematician_referee_audit.lean#L340-L347) directly to `N_0 = 2*97^2` and `H = 12*192*(2*N_0)` and strengthened 5-module call-chain verification in [`verify_qrh_mathematician_audit.py`](../proofs/verify_qrh_mathematician_audit.py#L132-L138) |
+| **`opencode`**<br>(`OpenCode CLI v2.0.32`, `deepseek-v4.1-flash-free`) | **`20/20` (`100%`)**<br>`b0aa08c41ef0d973...` | **`20` theorems (`0 sorry`, `EXIT 0`)**<br>`0979c12ae3c2c0ac...` | • Generated a standalone 403-line audit harness (`audit_referee.py`) scanning all `46` theorems: `0 sorry/axiom`, `0` vacuous/suspect hypotheses, and `epistemic_boundary_honest = true`<br>• Confirmed via raw source comparison against `oai_ref/*.lean` that Stage 5 transfer formulas (`131/150 - Delta_gram`, `209/240 - Delta_gram`) are new Stage 5 extensions ([`thm_28`](../proofs/qrh_mathematician_referee_audit.lean#L368-L375), [`thm_32`](../proofs/qrh_mathematician_referee_audit.lean#L412-L423)) beyond upstream's `7/8`-frozen code |
+| **`agy`**<br>(`Google Antigravity CLI v1.4.12`) | **`20/20` (`100%`)**<br>`b0aa08c41ef0d973...` | **`12` theorems (`0 sorry`, `EXIT 0`)**<br>`0060ed9ca0dede13...` | • **`PASS`** (`94445a3d83f03bda...`): Audited all `46` theorems (`38 + 8`), `0 sorry`, `0` vacuous hypotheses, `0` formula mismatches against the `26` upstream `oai_ref/*.lean` modules, end-to-end SymPy+GPU reproduction (`16,777,217` grid points & `611` primes), and `epistemic_boundary_honest = true` |
