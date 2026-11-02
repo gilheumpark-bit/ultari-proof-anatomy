@@ -7,11 +7,11 @@
     "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
   },
   "artifacts_sha256": {
-    "proofs/qrh_mathematician_referee_audit.lean": "33c57a9d4f8b572b97f55cbfd5a545f71b873bf29492c5b6d07de01be64dd790",
+    "proofs/qrh_mathematician_referee_audit.lean": "6219192ca82058c9d0ac094a3cb55fddc9332b1f7c857d2d2a1aa30b56b925ee",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
-    "proofs/verify_qrh_mathematician_audit.py": "da1db1190b7a8373840b0386a5829e9707958c93bad2bcfef785b61464a8c208",
-    "proofs/symbolic_verification_result.json": "a30bd042bdb519c3190fa5f4e7f7026c764bed2ed92dfbd011c2f44f150e2162",
-    "proofs/problem_spec.md": "f386385f0e44b04eb57ee0170c4f21b21174532707b9f3482127269755ed198d"
+    "proofs/verify_qrh_mathematician_audit.py": "2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc",
+    "proofs/symbolic_verification_result.json": "95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97",
+    "proofs/problem_spec.md": "1178341167f290674ad01b15ab50b78ddc5ae8c82910c7f6c6f3b4b79e01ac92"
   },
   "verified_key_results": {
     "stage1_magic_exponents_and_saddle": {
@@ -71,7 +71,7 @@
       "unconditional_equilibrium_beta_at_z035_dgram_0": "209/240",
       "heath_brown_quarter_step_beta_at_z035": "199/240",
       "column_duality_beta_at_z034": "39/50",
-      "unconditional_background_floor_beta_2term": "4073/4896",
+      "unconditional_background_floor_beta_2term": "4103/4896",
       "unconditional_background_floor_beta_3term": "4069/4896",
       "unconditional_background_floor_beta_direct_slope": "2641/3264",
       "equilibrium_scales_aX_aY_d0": [
@@ -175,37 +175,37 @@
     }
   },
   "file_checksums_sha256": {
-    "README.ko.md": "c86f5ea774d56fabb409a0f8230b93cf87fe0f601c7056138d2e9343eedf6967",
-    "README.md": "c4bd8c50053f92fc03dfdaa6f1abcc107d910520e321e0b71e4471a18bb8aa46",
-    "en/01_Beginner_Intuitive_Guide.md": "908acafa0a5e7a8ab8577f83e9c2c9f24db3450517d2e3674bfaefa30ca4666b",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "091b81a437547c3b9892a3da29d45fd1f63b966e70aa18afd553b0188059f303",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "50ca82bdd4b20b26807e6842aeae26673ca8a47527ac0fc499a69bbbdea097f8",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "943738cfc5ce6d162cdd3c7151480c82ea2f9844ad500b07d1a773a3b1f3e2f1",
-    "en/README.md": "57d1e545d0ca3d1fa092e9a079e0a30273b2e91b45c7525a7d39ea5499610413",
-    "ko/01_초보자용_쉬운해설.md": "d0b3b8ceb55da64cda4faec4d985250806b287ff6d4ce3dc519d29d6f6871de2",
-    "ko/02_중급자용_구조및수식가이드.md": "b48647869f2779145faaffe0319e59abe79fd24e136c5fcfe54c9a5f175d23a1",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "06fc4a6d2400361c4fced43fa84113589967e24596c0c89400e337fcd92a2f34",
-    "ko/04_자동검증및파서용_명세서.md": "091bdad0df48eab1ff985011adfa4e2675e0e9a32828f1bab9635125ea760a86",
-    "ko/README.md": "3f58218d955fb803ff206210d08db664e37753f19dc4438c0aed6e7e8dda7d59",
-    "proofs/problem_spec.md": "f386385f0e44b04eb57ee0170c4f21b21174532707b9f3482127269755ed198d",
+    "README.ko.md": "875f726ade0692befc2195ba38969c8709cc7be268eb7d019917a748ff55861c",
+    "README.md": "c8485f015c38ede6c7897208ef8b5c612cb1bb52c8f2d9be0bf37e8ff1c56cd4",
+    "en/01_Beginner_Intuitive_Guide.md": "c44d0fda68b2d171aff4f1119de9bfdbbd793e1aee6b12f9bea197a499919e10",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "8a059a931afda341ce95ddd943cc551a9dc343f5b856af734185cab78c261064",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "6caa4f26c3fdee146268798ddf53c30da42f9a0a5c016fdd3988f3cf4ba8fb0e",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "f03ee7c72e7c823c2489ed91c989ac753ac442534cc872c84b4d89b2ff042263",
+    "en/README.md": "c8485f015c38ede6c7897208ef8b5c612cb1bb52c8f2d9be0bf37e8ff1c56cd4",
+    "ko/01_초보자용_쉬운해설.md": "a1640998e1fec4bf8fa844a101412a5b117f95f385f5adf7fabb406508763379",
+    "ko/02_중급자용_구조및수식가이드.md": "0f74af6cfddf9dcb5bcefd0f8f1c8accbaaf4319a15b9473489d413ae95d60d8",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "8e56ddf084b86cc2f67e3a77794d09103d28b1ea82f7e9318bb9aa9075cbaf29",
+    "ko/04_자동검증및파서용_명세서.md": "851645bc8a81ceab5ad29c5fc50fd730cbd0a0b4331243914f35b6b2400c491a",
+    "ko/README.md": "875f726ade0692befc2195ba38969c8709cc7be268eb7d019917a748ff55861c",
+    "proofs/problem_spec.md": "1178341167f290674ad01b15ab50b78ddc5ae8c82910c7f6c6f3b4b79e01ac92",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "a2d4c01b2fe5bc5aa1f753f3eec0fca017da119c74c97a6a27a87ab8cfa753ec",
-    "proofs/qrh_mathematician_referee_audit.lean": "33c57a9d4f8b572b97f55cbfd5a545f71b873bf29492c5b6d07de01be64dd790",
-    "proofs/symbolic_verification_result.json": "a30bd042bdb519c3190fa5f4e7f7026c764bed2ed92dfbd011c2f44f150e2162",
-    "proofs/verify_qrh_mathematician_audit.py": "da1db1190b7a8373840b0386a5829e9707958c93bad2bcfef785b61464a8c208"
+    "proofs/qrh_mathematician_referee_audit.lean": "6219192ca82058c9d0ac094a3cb55fddc9332b1f7c857d2d2a1aa30b56b925ee",
+    "proofs/symbolic_verification_result.json": "95cfab711006e02fffad01235c4d12918afb095d293a6547d6cda22836ef3f97",
+    "proofs/verify_qrh_mathematician_audit.py": "2b40b4b277ac400fbee20c6b992f987e6294972f1ce51941b1a9163c67d96edc"
   },
   "lean4_verification": {
     "file": "proofs/qrh_mathematician_referee_audit.lean",
     "theorems_proved": 46,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_killed": "406/406",
+    "hypothesis_mutations_killed": "407/407",
     "files": [
       "proofs/qrh_mathematician_referee_audit.lean",
       "proofs/qrh_eight_tasks_critical_upgrade.lean"
     ]
   },
   "scope_and_limitations": {
-    "proved": "46 Lean 4 theorems across 2 files (406/406 hypothesis mutations killed: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity, and family-to-individual zeta(s) rank-1 collapse & amplification bridge)",
+    "proved": "46 Lean 4 theorems across 2 files (407/407 hypothesis mutations killed: 38 theorems in qrh_mathematician_referee_audit.lean + 8 remaining-task upgrade theorems thm_39..thm_46 in qrh_eight_tasks_critical_upgrade.lean covering oai_ref 5-module beta=1/2 refactoring, Voronoi-Mellin conductor-neutral transfer, k_inf=-6 Grossencharakter convexity, and family-to-individual zeta(s) rank-1 collapse & amplification bridge)",
     "gpu_verification": "2^24+1 (16,777,217) contour points + 611 Eisenstein split primes p == 1 (mod 6) in [7, 9973] (1,222 cubic & sextic Gauss Gram matrices on Blackwell GPU)"
   }
 }

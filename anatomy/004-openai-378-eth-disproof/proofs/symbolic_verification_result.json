@@ -104,7 +104,56 @@
       "tex_engine2_unformalized_lines": 1059,
       "oai_lean_files_count": 3977,
       "oai_lean_lines_count": 710320,
-      "oai_lean_rh13_unused_hypotheses": 655
+      "oai_lean_unused_hypotheses": 655
+    },
+    "audit_8_five_repairs_and_four_layer_verdict": {
+      "status": "PASS",
+      "layer1_unary_bitlength_n20": 1048586,
+      "layer1_binary_bitlength_n20": 69,
+      "layer1_original_spec_space_cap_binary": 49000,
+      "layer1_output_countword_bits": 1048576,
+      "layer1_refuted_under_binary_encoding": true,
+      "layer1_repaired_poly_n_plus_L_cap": 10996584333160,
+      "layer1_verdict": "CHANGED (True -> False under binary encoding; requires poly(n+L) repair)",
+      "layer2_zmod27_inv2": 14,
+      "layer2_tapered_hermite_m4_sum": 58,
+      "layer2_verdict": "CHANGED (Weakened to Omega(n*sqrt(log n)/(log log n)^2) under Engine I alone)",
+      "layer3_max_failing_log2_L": 24,
+      "layer3_min_passing_log2_L": 25,
+      "layer3_at_log2_L_24": {
+        "log2_L": 24,
+        "L": 16777216,
+        "w": 25,
+        "s": 6,
+        "r": 6,
+        "Q": 87381,
+        "E": 57,
+        "R": 25253,
+        "four_R": 101012,
+        "slack_Q_minus_4R": -13631,
+        "guard_4R_le_Q": false
+      },
+      "layer3_at_log2_L_25": {
+        "log2_L": 25,
+        "L": 33554432,
+        "w": 26,
+        "s": 8,
+        "r": 8,
+        "Q": 131072,
+        "E": 60,
+        "R": 31731,
+        "four_R": 126924,
+        "slack_Q_minus_4R": 4148,
+        "guard_4R_le_Q": true
+      },
+      "layer3_exponent_constant_k3_q1": 12032411847,
+      "layer3_outer_doubled_constant_k3_q1": 24064823694,
+      "layer3_gpu_uniform_exhaustive_n12_count": 2360,
+      "layer3_reject_branch_error_n12": 2360,
+      "layer3_verdict": "CHANGED (Operates as uniform 2^n exhaustive search for all n < 2^33554431)",
+      "layer4_walsh_min_D_r2_q2": 96,
+      "layer4_irreducible_search_checks_d2": 6561,
+      "layer4_verdict": "UNCHANGED (Asymptotic 2^{o(n)} ETH disproof holds for n >= N_0(k))"
     }
   }
 }
