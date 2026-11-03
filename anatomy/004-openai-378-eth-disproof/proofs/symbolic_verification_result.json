@@ -2,10 +2,10 @@
   "package": "004-openai-378-eth-disproof",
   "target_preprint": "The-Exponential-Time-Hypothesis-is-False-October-25-2026",
   "target_lean_module": "OAI.Algorithms.SubexponentialSAT",
-  "gpu_device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+  "compute_backend": "PyTorch FP64 / Int64 Tensor Engine",
   "overall_status": "PASS",
   "audits": {
-    "audit_1_commuting_swap_matrix_gpu": {
+    "audit_1_commuting_swap_matrix": {
       "status": "PASS",
       "device": "cuda",
       "D_dim_r2_Q3": 64,
@@ -148,7 +148,7 @@
       },
       "layer3_exponent_constant_k3_q1": 12032411847,
       "layer3_outer_doubled_constant_k3_q1": 24064823694,
-      "layer3_gpu_uniform_exhaustive_n12_count": 2360,
+      "layer3_uniform_exhaustive_n12_count": 2360,
       "layer3_reject_branch_error_n12": 2360,
       "layer3_verdict": "CHANGED (Operates as uniform 2^n exhaustive search for all n < 2^33554431)",
       "layer4_walsh_min_D_r2_q2": 96,

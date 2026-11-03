@@ -1,6 +1,6 @@
 # 04. Automated Verification & Machine-Checkable Specification
 
-This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `331/331` Lean 4 hypothesis-mutation kills across `42` formal theorems, `SymPy` + Blackwell GPU tensor verification, clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
+This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `331/331` Lean 4 hypothesis-mutation kills across `42` formal theorems, `SymPy` + PyTorch tensor verification, clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
 
 ---
 
@@ -11,8 +11,8 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 | [`proofs/eth_subexp_interpolation_and_hashes.lean`](../proofs/eth_subexp_interpolation_and_hashes.lean) | `c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9` | `418` | Part A (`Theorems 1–16`): `Engine I` swap matrix, incidence-pair cancellation, truncated ring, Tanner hashes, `BitProgram 80 1220` (`0 sorry`, `128/128` mutations killed) |
 | [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean) | `2a1880ee7b5087953689474706e747552f054adc57bd11cc6a148b1c4a25a90c` | `396` | Part B (`Theorems 17–32`): Appendix D (`Engine II`) tapered $2$-adic Hermite interpolation, `Corollary 1.4` circuit lower bound, scope gap & unused-hypothesis audit (`0 sorry`, `131/131` mutations killed) |
 | [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean) | `404727d4deaf236e2596a90f5fbf6d49819dab20349dd308f5d8c0964ab342cf` | `234` | Part C (`Theorems 33–42`): 5 specification-gaming repairs and 4-layer post-repair verdict (`0 sorry`, `72/72` mutations killed) |
-| [`proofs/verify_symbolic_eth.py`](../proofs/verify_symbolic_eth.py) | `1a01932c23fd476bcc038f66fe3021b64163ee6ece61757451e038d6229b9b1d` | `479` | `SymPy` symbolic algebra + Blackwell GPU (`FP64`) tensor verifier (`8` audit suites) |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `23c89c857f6dc979c4b5e43e47cc01a8bc61d12aba4db562606ecd39ab324fe6` | `159` | Deterministic symbolic & GPU verification receipt JSON |
+| [`proofs/verify_symbolic_eth.py`](../proofs/verify_symbolic_eth.py) | `37fab1671c2d5eede0599f688f3a2b2c6d170882db4eb3ee22e80a3398e43012` | `479` | `SymPy` symbolic algebra + PyTorch (`FP64`) tensor verifier (`8` audit suites) |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `8710847fae24b24a622b67c8927c48047dd3958dc4d287d2fd5272300b4626a5` | `159` | Deterministic symbolic & numerical verification receipt JSON |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `ddd0b0609effa210e26c006d52ede5772e4235fc1664582aa6f9db6092d10adf` | `34` | 6-problem (`24` target values) clean-room blind specification |
 
 ---
@@ -24,11 +24,11 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
    ~/.elan/bin/lean proofs/eth_subexp_interpolation_and_hashes.lean && ~/.elan/bin/lean proofs/eth_tensor_contraction_and_circuits.lean && ~/.elan/bin/lean proofs/eth_five_repairs_and_four_layer_verdict.lean
    ```
    * Pass criteria: Exit code `0`, `0 sorry`, `0` custom axioms; replacing each of the `331` relational hypotheses across all `42` theorems individually with `: True` causes `331/331` compilation rejections (`100%` killed).
-2. **Symbolic (`SymPy`) + Blackwell GPU (`PyTorch FP64`) Deterministic Reproduction**:
+2. **Symbolic (`SymPy`) + PyTorch (`PyTorch FP64`) Deterministic Reproduction**:
    ```bash
    cd proofs && python3 verify_symbolic_eth.py
    ```
-   * Pass criteria: Exit code `0`, Blackwell GPU `FP64` $64 \times 64$ commuting swap operator $W_0, M_0$ spectrum, Appendix D tapered Hermite $2$-adic valuation, and 4-layer post-repair verdict (`audit_8`) pass, matching `proofs/symbolic_verification_result.json` byte-for-byte.
+   * Pass criteria: Exit code `0`, PyTorch `FP64` $64 \times 64$ commuting swap operator $W_0, M_0$ spectrum, Appendix D tapered Hermite $2$-adic valuation, and 4-layer post-repair verdict (`audit_8`) pass, matching `proofs/symbolic_verification_result.json` byte-for-byte.
 3. **Artifact SHA-256 Checksum & Clean-Room Blind Reproduction Gate (`24/24` Match)**:
    ```bash
    sha256sum proofs/eth_subexp_interpolation_and_hashes.lean \
@@ -42,20 +42,20 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 
 ---
 
-## 3. `SymPy` / Blackwell GPU Receipt & Clean-Room Independent Blind (`24/24`) Comparison Tables
+## 3. `SymPy` / PyTorch Receipt & Clean-Room Independent Blind (`24/24`) Comparison Tables
 
 ### 3.1 `proofs/symbolic_verification_result.json` Verification Table
 
 | Audit ID | Verified Metric | Measured Value in `proofs/symbolic_verification_result.json` | Status |
 | :--- | :--- | :--- | :--- |
-| `audit_1_commuting_swap_matrix_gpu` | $\operatorname{rank}(I_{64} - M_0)$ and max support mismatch at $r=2, Q=3$ ($D=64$) | `10` (`max_group_mismatch_on_M0_support = 1`) | `PASS` |
+| `audit_1_commuting_swap_matrix` | $\operatorname{rank}(I_{64} - M_0)$ and max support mismatch at $r=2, Q=3$ ($D=64$) | `10` (`max_group_mismatch_on_M0_support = 1`) | `PASS` |
 | `audit_2_beigel_tarui_and_truncated_ring` | Truncated degree $d_{\mathrm{trunc}}$ vs. full degree $d_{\mathrm{full}}$ at $k=2, m_{\mathrm{test}}=4, \ell=3$ | `16` vs `40` (`exact_degree_saved = 24`) | `PASS` |
 | `audit_3_tanner_expander_and_greedy_hashes` | Per-variable 3-round greedy hash contraction ratio $(3/4)^3 \cdot 2$ | `27/32` (`P = 20000*B**2*mu**2`) | `PASS` |
 | `audit_4_cip_sparsification_recurrence` | Right-branch constant $\Gamma(k) = 2(3^{k-1}-1)$ for $k=3, 4, 5, 6, 7$ | `16`, `52`, `160`, `484`, `1456` | `PASS` |
 | `audit_5_appendix_d_cauchy_and_tapered_hermite` | $r=64$ child edge ratio, target ratio, slack, and tapered Hermite series limit | `3/32`, `1/8`, `1/32` (`tapered_series_limit = 6`) | `PASS` |
 | `audit_6_mode_partitions_and_circuit_lower_bound` | Per-depth squared log-effort decay ratio and Williams circuit exponent at $A=4$ | `1/32`, `12/49` (`< 1/4 < 1/2`) | `PASS` |
 | `audit_7_bitprogram_and_lean_scope_inventory` | `BitProgram` registers/stacks, raw space cap, unformalized LaTeX lines, unused-hypothesis count | `80`, `1220`, `5022740`, `1059` / `5888`, `655` | `PASS` |
-| `audit_8_five_repairs_and_four_layer_verdict` | Binary space refutation (`49000 < 1048576`), `4*R ≤ Q` crossover (`24` fail $\to$ `25` pass, slack `4148`), constant `12032411847`, GPU $n=12$ uniform count `2360` | `49000`, `10996584333160`, `24 -> 25`, `4148`, `12032411847`, `2360` | `PASS` |
+| `audit_8_five_repairs_and_four_layer_verdict` | Binary space refutation (`49000 < 1048576`), `4*R ≤ Q` crossover (`24` fail $\to$ `25` pass, slack `4148`), constant `12032411847`, numerical $n=12$ uniform count `2360` | `49000`, `10996584333160`, `24 -> 25`, `4148`, `12032411847`, `2360` | `PASS` |
 
 ### 3.2 Clean-Room Independent Blind Test (`24/24` Match) Receipt Summary
 

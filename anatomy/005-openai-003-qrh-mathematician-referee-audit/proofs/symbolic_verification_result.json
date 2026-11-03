@@ -35,11 +35,10 @@
     "exponent_loss_B_inflation": "1/32",
     "exponent_loss_Gram_drop": "79/3264",
     "total_exponent_loss_B_and_Gram": "181/3264",
+    "total_exponent_loss_3term": "215/3264",
     "componentwise_nonexc_saving": "487/3264",
     "componentwise_exc_saving": "1817/19584",
     "sos_endpoint_margin": "49/440640",
-    "waste_B_gram_to_margin_ratio_float": 498.67,
-    "waste_nonexc_to_margin_ratio_float": 1341.73,
     "two_beta_with_frozen_ell0": "128519/73440",
     "two_beta_with_shifted_ell": "7/4"
   },
@@ -169,7 +168,7 @@
     "task1_gram_k2_tail_and_cap_B_new": [
       "4/11",
       "2/11",
-      "32/11"
+      "21/176"
     ],
     "task2_q_min_and_local_tail_decay": [
       480,

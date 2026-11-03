@@ -1,7 +1,7 @@
 # [Level 3: Expert Report] Arithmetic Geometry & $p$-adic Hodge Forensic Audit and Repair Report
 
 - **Release Date**: 2026-11-01
-- **Verification Toolchain**: `Lean 4 (v4.29.0-rc8)`, `Python 3 (SymPy / PyTorch FP64 on NVIDIA RTX PRO 5000 Blackwell)`, Dynamic Hypothesis-Removal Mutation Testing (`211/211 = 101 + 110`)
+- **Verification Toolchain**: `Lean 4 (v4.29.0-rc8)`, `Python 3 (SymPy / PyTorch FP64 in PyTorch FP64)`, Dynamic Hypothesis-Removal Mutation Testing (`211/211 = 101 + 110`)
 - **Primary Formal Proof & Patch Artifacts**: [`proofs/milne_transport_and_filtration.lean`](../proofs/milne_transport_and_filtration.lean) (`16` theorems, `101/101`), [`proofs/milne_weil_reduction_and_repairs.lean`](../proofs/milne_weil_reduction_and_repairs.lean) (`17` theorems, `110/110`), [`proofs/oai_001_milne_repair.patch`](../proofs/oai_001_milne_repair.patch) (`234` lines)
 
 ---
@@ -48,7 +48,7 @@ The logical dependency boundary between `#001` and `#032` (`[OAI26]`, *The ratio
 2. **`[Low-2]` (`03_filtration.tex:99-121`, [`repair_low2_sharp_kronecker_bound_attained_3var`](../proofs/milne_weil_reduction_and_repairs.lean#L285-L314))**:
    Tightened the Kronecker substitution degree bound in `Lemma 4.2` from $b\sum_{i=0}^{r-1} N^i$ to the sharp total-degree bound $B_{\mathrm{sharp}} = b N^{r-1}$ (attained at $X_{r-1}^b$), saving $\Delta B = b\sum_{i=0}^{r-2} N^i > 0$ ($215 \to 180$, saving $35$ in degree for $r=3, b=5, N=6$, `Audit 2`).
 3. **`[Low-3]` (`03_filtration.tex:257-275`, `00_intro.tex:66-70`, `references.tex`, [`repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive`](../proofs/milne_weil_reduction_and_repairs.lean#L317-L323))**:
-   Proved explicitly that self-adjointness of $L_u$ for the positive-definite Rosati trace form $\langle a, b \rangle = \operatorname{Tr}(a b^\dagger)$ on $\operatorname{End}^0(A_0) \otimes_\mathbb{Q} \mathbb{R}$ forces $u$ to have nonzero real eigenvalues $\mu_i \in \mathbb{R}^\times$ and $u^2$ to have strictly positive real algebraic eigenvalues $z = \mu_i^2 > 0$ (`Audit 7`: 1,000/1,000 random GPU trials), and added `[Mil09]` (`arXiv:0707.3173v4`, §6) to `00_intro.tex` and `references.tex`.
+   Proved explicitly that self-adjointness of $L_u$ for the positive-definite Rosati trace form $\langle a, b \rangle = \operatorname{Tr}(a b^\dagger)$ on $\operatorname{End}^0(A_0) \otimes_\mathbb{Q} \mathbb{R}$ forces $u$ to have nonzero real eigenvalues $\mu_i \in \mathbb{R}^\times$ and $u^2$ to have strictly positive real algebraic eigenvalues $z = \mu_i^2 > 0$ (`Audit 7`: 1,000/1,000 random numerical trials), and added `[Mil09]` (`arXiv:0707.3173v4`, §6) to `00_intro.tex` and `references.tex`.
 
 ---
 

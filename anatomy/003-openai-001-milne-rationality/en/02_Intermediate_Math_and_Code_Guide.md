@@ -1,6 +1,6 @@
 # [Level 2: Intermediate Guide] 6-Section Mathematical Structure & Complete Mapping of All 33 Lean 4 Theorems
 
-The 6 LaTeX sections of OpenAI `#001` (*Milne's rationality conjecture for abelian varieties*) correspond one-to-one with our **33 Lean 4 theorems** (split across two modular files under 500 lines, with **`211/211` (`101 + 110`)** hypothesis mutations caught) and **7 SymPy + Blackwell GPU verification audits (`Audit 1–7`)**.
+The 6 LaTeX sections of OpenAI `#001` (*Milne's rationality conjecture for abelian varieties*) correspond one-to-one with our **33 Lean 4 theorems** (split across two modular files under 500 lines, with **`211/211` (`101 + 110`)** hypothesis mutations caught) and **7 SymPy + PyTorch verification audits (`Audit 1–7`)**.
 
 ---
 
@@ -76,19 +76,19 @@ Because `00_intro.tex` opens with `\section{Introduction}`, each file index `0k_
 
 ---
 
-## 4. Detailed Mapping of the 7 Symbolic & Blackwell GPU Audits (`Audit 1–7`)
+## 4. Detailed Mapping of the 7 Symbolic & PyTorch Audits (`Audit 1–7`)
 
-[`verify_milne_symbolic_and_gpu.py`](../proofs/verify_milne_symbolic_and_gpu.py) combines SymPy symbolic algebra with PyTorch FP64 GPU tensor computations across 7 modular audit functions and records deterministic results in [`symbolic_verification_result.json`](../proofs/symbolic_verification_result.json).
+[`verify_symbolic_milne.py`](../proofs/verify_symbolic_milne.py) combines SymPy symbolic algebra with PyTorch FP64 tensor computations across 7 modular audit functions and records deterministic results in [`symbolic_verification_result.json`](../proofs/symbolic_verification_result.json).
 
 | Audit ID | Function & Line Range | Mathematical Formula & Verification Algorithm | Verified Output Metrics (`JSON` Keys) | Corresponding Lean 4 Theorems |
 | :--- | :--- | :--- | :--- | :--- |
 | **`Audit 1`** | `_run_audits_1_and_2` (`L25-L47`) | Auxiliary Hodge datum torus rank $\operatorname{rk} J = 1 + d_P(\operatorname{rk} G - 1)$, abelianization dimension, symplectic dimension $\dim W = 2 d_P m \dim A$, and normalized pullback identity $(\lambda^{-r}/d_P)(\lambda^r d_P \gamma_0) = \gamma_0$ | `status: PASS`, `rk_J_formula`, `normalized_pullback_identity` | Theorems 1, 2, 3 |
 | **`Audit 2`** | `_run_audits_1_and_2` (`L49-L76`) | Injectivity of base-$N$ ($N=6$) Kronecker exponents across all $\binom{3+5}{3} = 56$ monomials of total degree $\le 5$ in $r=3$ variables, sharp bound $B_{\mathrm{sharp}} = 5 \cdot 6^2 = 180$ vs. paper bound $B_{\mathrm{paper}} = 5(1+6+36) = 215$ | `monomial_count_total_deg_le_b: 56`, `B_sharp_max_total_deg_exponent: 180`, `exact_degree_slack: 35` | Theorems 4, 5, 32 |
-| **`Audit 3`** | `_run_audit_3_symplectic_gpu` (`L79-L143`) | $2m = 12$-dimensional symplectic isocrystal ($m=6$, slope-dual sum $\sum \lambda_i = 6$): FP64 Lagrangian isotropy check and exhaustive inspection of all $2^{12} = 4096$ slope-graded subobjects verifying weak admissibility $t_H(M') - t_N(M') \le 0$ | `lagrangian_isotropy_max_err: 0.0`, `slope_graded_subobjects_tested: 4096`, `max_defect_tH_minus_tN: "0"` | Theorems 6–10, 15–16, 24 |
-| **`Audit 4`** | `_run_audits_4_and_5_weil` (`L146-L178`) | Pure-power coefficient extraction $D_i^2$ from $(\sum_{i=1}^4 x_i^2 D_i)^2$ ($d_E = 4, s = 2$), full FP64 Vandermonde rank $\operatorname{rank}(V) = \binom{4+2-1}{2} = 10$ across 25 evaluation points, and degenerate Pfaffian $\det(\Omega_{\mathrm{deg}}) = 0.0$ for non-invertible $u$ | `gpu_vandermonde_monomial_rank: 10`, `expected_monomial_space_dim: 10`, `non_invertible_u_pfaffian_det: -0.0` | Theorems 17–20, 25, 27 |
+| **`Audit 3`** | `_run_audit_3_symplectic_num` (`L79-L143`) | $2m = 12$-dimensional symplectic isocrystal ($m=6$, slope-dual sum $\sum \lambda_i = 6$): FP64 Lagrangian isotropy check and exhaustive inspection of all $2^{12} = 4096$ slope-graded subobjects verifying weak admissibility $t_H(M') - t_N(M') \le 0$ | `lagrangian_isotropy_max_err: 0.0`, `slope_graded_subobjects_tested: 4096`, `max_defect_tH_minus_tN: "0"` | Theorems 6–10, 15–16, 24 |
+| **`Audit 4`** | `_run_audits_4_and_5_weil` (`L146-L178`) | Pure-power coefficient extraction $D_i^2$ from $(\sum_{i=1}^4 x_i^2 D_i)^2$ ($d_E = 4, s = 2$), full FP64 Vandermonde rank $\operatorname{rank}(V) = \binom{4+2-1}{2} = 10$ across 25 evaluation points, and degenerate Pfaffian $\det(\Omega_{\mathrm{deg}}) = 0.0$ for non-invertible $u$ | `vandermonde_monomial_rank: 10`, `expected_monomial_space_dim: 10`, `non_invertible_u_pfaffian_det: -0.0` | Theorems 17–20, 25, 27 |
 | **`Audit 5`** | `_run_audits_4_and_5_weil` (`L180-L192`) | Balanced CM idempotent factor dimensions for $d = 4, r = 2, d_K = 6$: $\dim_\mathbb{Q} T = 48$, $\dim_\mathbb{Q} U = 24$, and abelian factor dimension $\dim B_\Delta = 12$ | `dim_T: 48`, `dim_U_Q: 24`, `dim_B_Delta: 12` | Theorems 21, 22, 23, 26, 28 |
 | **`Audit 6`** | `_run_audit_6_beauville_projector` (`L195-L240`) | Idempotency ($P_{2,0}^2 = P_{2,0}$) of Beauville projector for $d = 4, r = 2, s \in \{-2, \dots, 4\}$, unrepaired $N=3$ vs. $N=6$ discrepancy $\|z_\gamma^{(6)} - z_\gamma^{(3)}\|_1 = \frac{42109}{432}$, and exact $N$-invariance across $N \in \{1,2,3,5,6,10\}$ with preserved cohomology class $11$ | `unrepaired_N3_vs_N6_l1_discrepancy: "42109/432"`, `repaired_canonical_cycle_N_invariant: true`, `common_cohomological_class_value: "11"` | Theorem 30 |
-| **`Audit 7`** | `_run_audit_7_rosati_gpu` (`L243-L275`) | Blackwell GPU batch of $1000$ random Rosati-symmetric positive-definite operators $u$ ($6 \times 6$): minimum $u^2$ eigenvalue $\min z = 10^{-6} > 0$ and zero Lagrangian isotropy error $0.0$ | `gpu_batch_trials: 1000`, `min_u2_eigenvalue_z: 1e-06`, `all_u2_eigenvalues_strictly_positive: true`, `max_lagrangian_isotropy_error: 0.0` | Theorems 11–14, 33 |
+| **`Audit 7`** | `_run_audit_7_rosati_num` (`L243-L275`) | PyTorch batch of $1000$ random Rosati-symmetric positive-definite operators $u$ ($6 \times 6$): minimum $u^2$ eigenvalue $\min z = 10^{-6} > 0$ and zero Lagrangian isotropy error $0.0$ | `batch_trials: 1000`, `min_u2_eigenvalue_z: 1e-06`, `all_u2_eigenvalues_strictly_positive: true`, `max_lagrangian_isotropy_error: 0.0` | Theorems 11–14, 33 |
 
 ---
 

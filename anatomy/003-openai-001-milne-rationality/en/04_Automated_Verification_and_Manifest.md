@@ -6,20 +6,20 @@ This specification provides exact reproduction commands, SHA-256 checksums, scop
 
 ## 1. Verification Commands
 
-Run the following commands from the package root directory to reproduce all 33 Lean 4 kernel proofs (`exit 0`, `211/211` hypothesis mutations caught), the SymPy + Blackwell GPU verification suite (`Audit 1–7`), and SHA-256 checksums:
+Run the following commands from the package root directory to reproduce all 33 Lean 4 kernel proofs (`exit 0`, `211/211` hypothesis mutations caught), the SymPy + PyTorch verification suite (`Audit 1–7`), and SHA-256 checksums:
 
 ```bash
 # 1. Lean 4 kernel compilation (Theorems 1–16 and Theorems 17–33, exit 0, 0 warnings)
 lean proofs/milne_transport_and_filtration.lean
 lean proofs/milne_weil_reduction_and_repairs.lean
 
-# 2. Symbolic & Blackwell GPU solver execution and deterministic JSON check
-cd proofs && python3 verify_milne_symbolic_and_gpu.py && cd ..
+# 2. Symbolic & PyTorch solver execution and deterministic JSON check
+cd proofs && python3 verify_symbolic_milne.py && cd ..
 
 # 3. SHA-256 checksum verification across all 6 core proof artifacts
 sha256sum proofs/milne_transport_and_filtration.lean \
           proofs/milne_weil_reduction_and_repairs.lean \
-          proofs/verify_milne_symbolic_and_gpu.py \
+          proofs/verify_symbolic_milne.py \
           proofs/symbolic_verification_result.json \
           proofs/problem_spec.md \
           proofs/oai_001_milne_repair.patch
@@ -33,8 +33,8 @@ sha256sum proofs/milne_transport_and_filtration.lean \
 | :--- | :--- | :--- |
 | [`proofs/milne_transport_and_filtration.lean`](../proofs/milne_transport_and_filtration.lean) | `a97d2b96faa7d0124f0b4e239036509a80c60f0515f771f18a2cccf953542591` | Theorems 1–16 (`Part I–III, VI-A`), `0 sorry`, `101/101` mutations caught |
 | [`proofs/milne_weil_reduction_and_repairs.lean`](../proofs/milne_weil_reduction_and_repairs.lean) | `19c47d7ee3025dbb667d9d59eb00513f5c4625e3cfc87740ec0d11997a88a860` | Theorems 17–33 (`Part IV–V, VI-B, VII`), `0 sorry`, `110/110` mutations caught |
-| [`proofs/verify_milne_symbolic_and_gpu.py`](../proofs/verify_milne_symbolic_and_gpu.py) | `53eed783e0daf43c203d875d97a04961a9e6506ce50784c5c4f95098cf2a049c` | SymPy + PyTorch Blackwell GPU 7-audit verifier (`Audit 1–7`) |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `122ea7db125b36aedf4b81e3910e4c3160e50f2ec4dc0b04b3711b40e8c04b0f` | Deterministic JSON output for Audits 1–7 |
+| [`proofs/verify_symbolic_milne.py`](../proofs/verify_symbolic_milne.py) | `6e6e313248fc9aa8d2bf65994b912c6037f9bbe0aa4c5111dae9c2b354aa7147` | SymPy + PyTorch PyTorch 7-audit verifier (`Audit 1–7`) |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100` | Deterministic JSON output for Audits 1–7 |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `935a2f7f40e155f23fe6fad022a2f18b1523aa790d1d3fd794198b1306569a1e` | Forensic repair specification (`PARAMETER_ARITHMETIC_ONLY`) |
 | [`proofs/oai_001_milne_repair.patch`](../proofs/oai_001_milne_repair.patch) | `529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886` | 234-line unified diff across 6 LaTeX sections |
 

@@ -1,6 +1,6 @@
 {
   "paper": "OpenAI #001 — Milne's rationality conjecture for abelian varieties (Sep 23 & Oct 7, 2026) + Forensic Repairs",
-  "gpu_device": "NVIDIA RTX PRO 5000 72GB Blackwell",
+  "compute_backend": "PyTorch FP64 (exact int32 / float64 tensor arithmetic)",
   "all_audits_passed": true,
   "audits": {
     "audit_1_transport_and_similitude_normalization": {
@@ -21,22 +21,22 @@
       "B_paper_bound": 215,
       "exact_degree_slack_B_paper_minus_B_sharp": 35
     },
-    "audit_3_gpu_symplectic_isocrystal_weak_admissibility": {
+    "audit_3_symplectic_isocrystal_weak_admissibility": {
       "status": "PASS",
       "m_block": 6,
       "lagrangian_isotropy_max_err": 0.0,
       "annihilator_orthogonality_max_err": 0.0,
       "slope_graded_subobjects_tested": 4096,
       "max_defect_tH_minus_tN": "0",
-      "gpu_exact_int32_subobjects_tested_dim24": 16777216,
-      "gpu_exact_int32_max_defect_12_tH_minus_tN": 0
+      "exact_int32_subobjects_tested_dim24": 16777216,
+      "exact_int32_max_defect_12_tH_minus_tN": 0
     },
     "audit_4_weil_dichotomy_and_vandermonde_extraction": {
       "status": "PASS",
       "d_E": 4,
       "s_weil": 2,
       "multinomial_pure_coefficients_verified": true,
-      "gpu_vandermonde_monomial_rank": 10,
+      "vandermonde_monomial_rank": 10,
       "expected_monomial_space_dim": 10,
       "non_invertible_u_pfaffian_det": -0.0
     },
@@ -62,9 +62,9 @@
       "repaired_canonical_cycle_N_invariant": true,
       "common_cohomological_class_value": "11"
     },
-    "audit_7_repair_rosati_positivity_and_lagrangian_gpu": {
+    "audit_7_repair_rosati_positivity_and_lagrangian": {
       "status": "PASS",
-      "gpu_batch_trials": 50000,
+      "batch_trials": 50000,
       "min_u2_eigenvalue_z": 0.0,
       "all_u2_eigenvalues_strictly_positive": true,
       "max_lagrangian_isotropy_error": 0.0

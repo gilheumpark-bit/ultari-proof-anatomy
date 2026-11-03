@@ -17,7 +17,7 @@ Read `oai_ref/Endpoint.lean` and extract the exact rational function `balancedEx
 ## Problem 3: Componentwise Gram Scale Exponents (`oai_ref/LowSourceScales.lean`, `oai_ref/GramScaleLoss.lean`, `oai_ref/GramBound.lean`, `oai_ref/LowGramScale.lean`)
 Read `oai_ref/LowSourceScales.lean`, `oai_ref/GramScaleLoss.lean`, `oai_ref/GramBound.lean`, and `oai_ref/LowGramScale.lean`.
 1. Compare the exact `Z`-power exponents of the non-exceptional and exceptional terms in `oai_ref/LowSourceScales.lean`, `oai_ref/GramScaleLoss.lean`, and `oai_ref/GramBound.lean` (before they are relaxed and bundled into the coarse factor in `oai_ref/LowGramScale.lean`) against the coarse square-root `Z`-exponent in `source_gram_sqrt_power`.
-2. At `δ = delta_SOS` from Problem 2, compute the exact rational square-root `Z`-exponent savings `saving_nonexceptional` and `saving_exceptional` (as irreducible fractions `"num/den"`), and compute `ratio_to_baseline_margin = saving_nonexceptional / margin_baseline` where `margin_baseline` is the uniform endpoint margin proved in `oai_ref/Endpoint.lean`.
+2. At `δ = delta_SOS` from Problem 2, compute the exact rational square-root `Z`-exponent savings `saving_nonexceptional`, `saving_nonexceptional_with_L_bound`, and `saving_exceptional` (as irreducible fractions `"num/den"`).
 
 ## Problem 4: Exact `m >= 2` Vanishing and Continuation Threshold (`oai_ref/HighRowsTail.lean`, `oai_ref/HighRowsScalar.lean`, `oai_ref/ScalarTable.lean`, `oai_ref/HighRowsCentralTerms.lean`)
 Read `oai_ref/HighRowsTail.lean`, `oai_ref/HighRowsScalar.lean`, `oai_ref/ScalarTable.lean`, and `oai_ref/HighRowsCentralTerms.lean`.

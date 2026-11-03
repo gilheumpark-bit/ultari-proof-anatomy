@@ -7,21 +7,21 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "25f92f7f4aa56535000a8863caa325b7d6b21593f2d39b449dd1b54d3bc694f0",
+    "README.md": "2532a74cff1687b51b0c05a1ca756bdc3c99a5136ea66bd2cd96d785c0845034",
     "README.ko.md": "13a04e21ddc5663d397b74d9303e52cd8284c911e32a2cac32a93e745268744d",
-    "proofs/qrh_exponent_and_parameter_bounds.lean": "abf95211c03d963ad7fc3b15f17e7700d21b8619a65e085d0de6abb0412de331",
+    "proofs/qrh_exponent_and_parameter_bounds.lean": "b64209b36682fbadc37b5f39de363b13fe638c2580901dbcc8c6133d80a0732f",
     "proofs/qrh_continuation_and_rescaling.lean": "73b33ec6bbe128261f3c375e7be16cc6d061f938e0d3900b1b939e864bc2670b",
-    "proofs/verify_symbolic_qrh.py": "eb6aa899fc90e494cbd1a854dfdae67e3aee5e413c82a48d4452a372ac485e1e",
-    "ko/01_초보자용_쉬운해설.md": "7cabe8cfa6af5e1fbe665628b9266042ceafdca43f123c1a918a63b1d4c6dbc0",
-    "ko/02_중급자용_구조및수식가이드.md": "1cdf1f2de5f4413d78e37654ee868e962bfe05ef6a4e3ffd6f37fe7487d5df24",
-    "ko/03_전문가용_수론및형식증명보고서.md": "da5422cc08e9347b247d2b886f9f66a166ee335cb53c8dfe43d7a78c1e8dec1a",
-    "ko/04_자동검증및파서용_명세서.md": "27952e8c49614eb9efc462934824d575858c319593c809764d8c3daf97fb31af",
+    "proofs/verify_symbolic_qrh.py": "86c3a661f8e7eddff3c100b3aaf79f6f0ee248c62dbe4b42d4b10c99e72d9834",
+    "ko/01_초보자용_쉬운해설.md": "06097572bde8556111934bf923b189340bc0968ceba38640dd8c7dc9b28eef75",
+    "ko/02_중급자용_구조및수식가이드.md": "564fad62ae9042a371d5f49cf1b4d5c44d78d0547ba0e5e0830560522606d7c4",
+    "ko/03_전문가용_수론및형식증명보고서.md": "b06bc760e59d4ed5009bfa068f42d694465c36502d59d2a24b0c22c1a90e5a4e",
+    "ko/04_자동검증및파서용_명세서.md": "71993b478eaec902ead6389802b678edc99230a3eff89e4a526b9292c23f022a",
     "ko/README.md": "cd95cab0e410f76fd0b11fe424e361221f110d78d0a588a27aab37ebdf358015",
-    "en/01_Beginner_Guide.md": "14b20a6286d7df24a013c02dd0dc1491e36c3c2d655904fbe31ba2c833406dc4",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "031882d46f71178e9a27fab46470e46ae4d125951e3846f30cfd8051c658b4a7",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "957411e0c797491890e51503c3beec77a2109eb0cf821e2581f1e4feea02a478",
-    "en/04_Automated_Verification_and_Manifest.md": "46cb638628e15509e2dce50a68944ba551adc40161a04d57b95578db8b2d9965",
-    "en/README.md": "08ea81ceb6f71d4632f107219c599b30af26de1825b3cafb3a390f822b37c024"
+    "en/01_Beginner_Guide.md": "e6b4ab3faeffc5c7ed382e4e96f262338135d09a467471dc2a6e6be936962bcc",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "b5c402e7747e99e4b5bdd01a47c16bc0a1a6fb9121c133aa30bfde5cf474fcc0",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "d6e97f6b8fdcd9ba0b0ad4acb67189194b2a786691f28610c189835c0d42dc5f",
+    "en/04_Automated_Verification_and_Manifest.md": "aa1cf83932f10a392c54de5f7827c6cadb33e3e8c0769464ef0d9cf969cb5529",
+    "en/README.md": "e781710a35ce4171ccfa52e1507f9adb43982c74965cdd08cd14e008fabb061b"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "40 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-40) + independent SymPy symbolic derivations.",
@@ -51,9 +51,8 @@
     "problem_3_componentwise_gram_exponents": {
       "saving_exceptional": "1817/19584",
       "saving_nonexceptional_with_L_bound": "215/3264",
-      "ratio_with_L_bound": "29025/49 (592.35x)",
       "saving_nonexceptional_pure_scale": "487/3264",
-      "ratio_to_baseline_margin": "65745/49 (1341.73x)",
+      "sos_rounding_residual": "49/440640",
       "lean_theorem": "componentwise_gram_exponent_differences (Theorem 24, L342)"
     },
     "problem_4_m_ge_2_tail_bounds": {

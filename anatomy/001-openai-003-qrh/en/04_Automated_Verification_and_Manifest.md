@@ -29,18 +29,18 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
-| [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) | `abf95211c03d963ad7fc3b15f17e7700d21b8619a65e085d0de6abb0412de331` | 404 lines, 27 Lean 4 theorems (`Theorem 1`~`Theorem 27`), `0` `sorry`, `0` custom `axiom`. |
+| [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) | `b64209b36682fbadc37b5f39de363b13fe638c2580901dbcc8c6133d80a0732f` | 404 lines, 27 Lean 4 theorems (`Theorem 1`~`Theorem 27`), `0` `sorry`, `0` custom `axiom`. |
 | [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `73b33ec6bbe128261f3c375e7be16cc6d061f938e0d3900b1b939e864bc2670b` | 300 lines, 13 Lean 4 theorems (`Theorem 28`~`Theorem 40`, Tasks 1–3), `0` `sorry`, `0` custom `axiom`. |
-| [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py) | `eb6aa899fc90e494cbd1a854dfdae67e3aee5e413c82a48d4452a372ac485e1e` | Exact `SymPy`/`Fraction` symbolic solver extracting definitions directly from `./proofs/oai_ref/*.lean`. |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `441dace0d0495b439cf50dcb32d892e2dd0070de65c8f1827db3a66ab2b65761` | Exact rational/symbolic output dictionary for Problems 1 through 5. |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `5ae4e1fb1a972d9438e43e293efbd18a2315343c91d30fc4114273e74914cabf` | Problem specification referencing `./oai_ref/*.lean`. |
+| [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py) | `86c3a661f8e7eddff3c100b3aaf79f6f0ee248c62dbe4b42d4b10c99e72d9834` | Exact `SymPy`/`Fraction` symbolic solver extracting definitions directly from `./proofs/oai_ref/*.lean`. |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `40f07e5fb117001ffb1ab88b8cd5df2bc8c7578bfbc7c2adad16e7a340eceeca` | Exact rational/symbolic output dictionary for Problems 1 through 5. |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `df55a30d662c934ccb45d6379782f81849d5758d0029450daa4b4fb414133051` | Problem specification referencing `./oai_ref/*.lean`. |
 
 ---
 
 ## 3. Scope Notes
 
 1. **Formalized Rational/Integer Theorems vs. Future Complex-Analytic Extensions**:
-   - The 40 theorems across [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (Theorems 1–27) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (Theorems 28–40) are kernel-verified over `Rat`, `Int`, and `Nat` (covering algebraic parameter budgets, SOS decompositions, $m \ge 2$ Gauss branch vanishing, $592.35\times$ / $1341.73\times$ componentwise Gram exponent differences, $(w,z)$ contour-shift exponent budgets, universal 2nd/3rd Euler continuation polynomial cancellations, and master scale-coupling equations).
+   - The 40 theorems across [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (Theorems 1–27) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (Theorems 28–40) are kernel-verified over `Rat`, `Int`, and `Nat` (covering algebraic parameter budgets, SOS decompositions, $m \ge 2$ Gauss branch vanishing, exact componentwise Gram exponent differences $\frac{215}{3264}$ and $\frac{487}{3264}$, $(w,z)$ contour-shift exponent budgets, universal 2nd/3rd Euler continuation polynomial cancellations, and master scale-coupling equations).
    - They do **not** formalize the continuous complex-analytic Mellin contour integrals for the separated $m=1$ finite terms or Hilbert-space trace-class operator bounds. Do not summarize this package as a complete unconditional proof of the full Riemann Hypothesis.
 2. **JSON Manifest**:
    - Parse [`manifest.json`](../manifest.json) for programmatic access to all theorem identifiers, line numbers, verified fractions, and SHA-256 hashes.
@@ -51,7 +51,7 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 - [`theorem_30_universal_finite_bad_prime_mask_absorption`](../proofs/qrh_continuation_and_rescaling.lean#L96-L100): Universal `∀` absorption law for finite bad-prime masks $S = S_0 \cup \text{smallPrimeSet}(N)$.
 - [`theorem_31_second_continuation_exact_polynomial_identity`](../proofs/qrh_continuation_and_rescaling.lean#L109-L113): Universal `∀ (R V qInv K W D : Int)` 5-term cancellation identity for `secondContinuedCorrection`.
 - [`theorem_32_second_and_third_continuation_convergence_barrier`](../proofs/qrh_continuation_and_rescaling.lean#L122-L141): Reduction of the Euler-tail $z_{\text{re}}$ convergence barrier from $97/300$ to $97/600 \approx 0.16167 < 1/6$ (`-(53/50) = -1.06 < -1` at $z = 1/6$).
-- [`theorem_33_central_exponent_z0_invariance_at_d0`](../proofs/qrh_continuation_and_rescaling.lean#L148-L163): Exact $z_0$-invariance of `sourceExponent` at $d_0 = 13/16$ (coefficient $0$) and $16.92\times$ margin strengthening at $d = 1/2$.
+- [`theorem_33_central_exponent_z0_invariance_at_d0`](../proofs/qrh_continuation_and_rescaling.lean#L148-L163): Exact $z_0$-invariance of `sourceExponent` at $d_0 = 13/16$ (coefficient $0$) and $-13/240$ exponent shift ($-49/14400 \to -829/14400$) at $d = 1/2$.
 - [`theorem_34_universal_z0_shift_improves_subcritical_d`](../proofs/qrh_continuation_and_rescaling.lean#L169-L179): Universal `∀` improvement of `sourceExponent` for all $d < 1 + \ell - \alpha_X$ when $z_0' < z_0$.
 - [`theorem_35_master_scale_coupling_identities`](../proofs/qrh_continuation_and_rescaling.lean#L189-L203): Master scale-coupling identities for `-11/16`, `3/16`, and $\beta_{\text{crit}}(\alpha_X, \alpha_Y, \ell) = \frac{5}{6} + \frac{\alpha_X + \alpha_Y - 2\ell}{12}$.
 - [`theorem_36_regime_A_sos_slack_rescaling_and_conductor_split`](../proofs/qrh_continuation_and_rescaling.lean#L212-L232): Derivation of $\beta_{\text{crit}} = 128519/146880 < 7/8$ on the active `LowSourceScales.lean:80-104` path using existing SOS slack vs. $\beta_{\text{crit}} = 7/8$ invariance under simultaneous `Parameters.lean:14` split shifting.

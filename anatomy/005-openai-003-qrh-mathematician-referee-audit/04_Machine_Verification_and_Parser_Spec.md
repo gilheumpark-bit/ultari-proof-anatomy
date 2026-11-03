@@ -8,11 +8,11 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
 
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
-| [`proofs/qrh_mathematician_referee_audit.lean`](proofs/qrh_mathematician_referee_audit.lean) | `6f80879efc9039decd5b8fd91a4ca66cf2327c8f6b016ee305f82a523821822b` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `286/286` mutations caught) |
-| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](proofs/qrh_eight_tasks_critical_upgrade.lean) | `f9cde4cfee46f9f0f0a9211b8fb1fe560ca00425250ac2b07c41114995d310c1` | `242` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `155/155` mutations caught) |
-| [`proofs/verify_qrh_mathematician_audit.py`](proofs/verify_qrh_mathematician_audit.py) | `4a99683692c753cee53777d3b5db831cd4b1ed8ba2ce5a4de517058e8d6a43cf` | `550` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + PyTorch tensor verifier (`Stage 1`–`Stage 6`) |
-| [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json) | `fb0ee6fbe35164b2ad5bac4e9c73c043e65ceb93fce9b191ede933f7eac6b71b` | `214` | Deterministic symbolic derivation, upstream DAG & numerical verification output JSON |
-| [`proofs/problem_spec.md`](proofs/problem_spec.md) | `8d2f3a32c67dcfe2d003e190500b1db02c7023f2a464c30e6ae29686ed5257ee` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
+| [`proofs/qrh_mathematician_referee_audit.lean`](proofs/qrh_mathematician_referee_audit.lean) | `ad687a5824e113784b5931d8e261dd73bcce8d9367312023626fd47072f8ce9e` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `286/286` mutations caught) |
+| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](proofs/qrh_eight_tasks_critical_upgrade.lean) | `8cf658e0b4f1e56e74c3d203bcfa497c0f59255dda74e147f00f22f2b2ed297f` | `242` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `155/155` mutations caught) |
+| [`proofs/verify_qrh_mathematician_audit.py`](proofs/verify_qrh_mathematician_audit.py) | `20fef1f0272d8f4b9112f6d12ee8aec6771328bd183a7f8b09427fc6bf3f5224` | `550` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + PyTorch tensor verifier (`Stage 1`–`Stage 6`) |
+| [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json) | `a5006ff42a2b12171c98b20facf6d23c86ed5186e1f43da524f6e42c80727b0e` | `214` | Deterministic symbolic derivation, upstream DAG & numerical verification output JSON |
+| [`proofs/problem_spec.md`](proofs/problem_spec.md) | `274b752f2943dffbb545087ecec16c101579dbf6a62c22f94ef461ca2aca1d3e` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
 
 ---
 

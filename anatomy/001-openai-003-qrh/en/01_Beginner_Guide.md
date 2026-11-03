@@ -6,7 +6,7 @@ This guide explains **what OpenAI's `#003` proof is**, **why its code uses simpl
 
 ## 1. One-Sentence Summary
 
-By analyzing the source code of OpenAI's `#003` Quasi-Riemann Hypothesis proof in Lean 4, we showed that **the authors replaced irrational square roots and separate matrix energy terms with simpler rational upper bounds (leaving up to 592x to 1341x of exponent margin unused)**, and we formally proved the exact algebraic equations for the key thresholds (`0.51`, `0.69`, `0.875`) in Lean 4.
+By analyzing the source code of OpenAI's `#003` Quasi-Riemann Hypothesis proof in Lean 4, we showed that **the authors replaced irrational square roots and separate matrix energy terms with simpler rational upper bounds (relaxing the non-exceptional square-root $Z$-exponent by $\frac{215}{3264} \approx 0.0659$, or $\frac{487}{3264} \approx 0.1492$ at pure scale)**, and we formally proved the exact algebraic equations for the key thresholds (`0.51`, `0.69`, `0.875`) in Lean 4.
 
 ---
 
@@ -26,7 +26,7 @@ OpenAI's `#003` repository (`FirstProof2026Problem3`) contains 3,414 files of fo
 
 To keep the formalization tractable over rational arithmetic (`Rat`), the code used three simplifications:
 1. **Replacing an Irrational Stationary Point with a Nearby Fraction**: The true stationary point of the balanced exponent is an irrational number involving $\sqrt{16354}$ ($\approx 0.693319$), which the code approximated by the nearby fraction $\frac{283}{408} \approx 0.693627$.
-2. **Grouping Separate Matrix Scales into a Single Upper Bound**: Keeping the three matrix energy terms separate yields an exponent difference **592.35x** (up to **1341.73x**) larger than the baseline margin, whereas the code grouped them under a single upper bound.
+2. **Grouping Separate Matrix Scales into a Single Upper Bound**: Keeping the three matrix energy terms separate yields an exact non-exceptional exponent difference of **$\frac{215}{3264} \approx 0.0659$** (**$\frac{487}{3264} \approx 0.1492$** at pure scale $L=1$, compared to the SOS rounding residual $\frac{49}{440640} \approx 0.0001112$), whereas the code grouped them under the single cubic Gauss upper bound $\frac{18+23\delta}{96}$.
 3. **Stopping at $m=1$ Rather Than Using $m \ge 2$ Branch Vanishing**: In the $m \ge 2$ geometric tail, **6 out of 8** non-principal Gauss-sum branches vanish identically to $0$, relaxing the convergence condition from $\frac{1}{6}$ to $\frac{1}{12}$.
 
 ---
@@ -46,6 +46,6 @@ Solving the exact algebraic equations behind the rational constants in `#003` id
 ## 5. Formal Verification Scope vs. Future Complex-Analytic Extensions
 
 - **Formalized Rational & Integer Theorems (`qrh_exponent_and_parameter_bounds.lean`)**:
-  - All 27 theorems in [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) compile in Lean 4 with zero `sorry` or custom axioms, proving the exact rational and integer identities for the floor root ($\frac{37}{72}$), the irrational stationary point formula, the $592.35\times$ / $1341.73\times$ componentwise Gram exponent differences, the vanishing of 6 of 8 branches for $m \ge 2$, and the parameter budget inequalities.
+  - All 27 theorems in [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) compile in Lean 4 with zero `sorry` or custom axioms, proving the exact rational and integer identities for the floor root ($\frac{37}{72}$), the irrational stationary point formula, the exact componentwise Gram exponent differences ($\frac{215}{3264}$ and $\frac{487}{3264}$), the vanishing of 6 of 8 branches for $m \ge 2$, and the parameter budget inequalities.
 - **Future Complex-Analytic Extensions**:
   - Proving the algebraic exponent and parameter inequalities does not by itself complete a complex-analytic proof of the Riemann Hypothesis. Extending all 3,414 files of the repository below $\beta = 7/8$ requires formalizing the complex Mellin residue continuation for the separated finite $m=1$ terms and interval-arithmetic bounds for finite prime norms $4 \le Q < 480$ in Lean 4.

@@ -41,10 +41,9 @@
     "saving_nonexceptional_expr": "delta/16 + 1/8",
     "saving_exceptional_expr": "23*delta/96",
     "saving_nonexceptional": "487/3264",
+    "saving_nonexceptional_with_L_bound": "215/3264",
     "saving_exceptional": "1817/19584",
-    "margin_baseline": "49/440640",
-    "ratio_to_baseline_margin": "65745/49",
-    "ratio_to_baseline_margin_float": 1341.7346938776
+    "margin_baseline": "49/440640"
   },
   "problem_4": {
     "total_nonprincipal_branches": 8,
@@ -95,9 +94,9 @@
   "balancedExponent_delta_SOS": "-7/30672",
   "d2_balancedExponent_delta_SOS": "-236315300/608806611",
   "saving_nonexceptional": "487/3264",
+  "saving_nonexceptional_with_L_bound": "215/3264",
   "saving_exceptional": "1817/19584",
   "margin_baseline": "49/440640",
-  "ratio_to_baseline_margin": "65745/49",
   "num_vanishing_branches": 6,
   "num_surviving_branches": 2,
   "vanishing_branches": [

@@ -4,7 +4,7 @@ Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
 
 1. Original Code and Formal Proofs (Apache-2.0)
    All original Lean 4 formal proof files (`proofs/*.lean`, excluding `oai_ref/`),
-   symbolic and GPU verification scripts (`proofs/verify_*.py`, `tools/*.py`),
+   symbolic and numerical verification scripts (`proofs/verify_*.py`, `tools/*.py`),
    and machine-readable verification ledgers (`manifest.json`,
    `symbolic_verification_result.json`) are licensed under the Apache License,
    Version 2.0 (see `LICENSE`).
