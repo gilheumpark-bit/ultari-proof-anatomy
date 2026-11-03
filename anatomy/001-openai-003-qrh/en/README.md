@@ -3,8 +3,8 @@
 - **Release Date**: 2026-10-31
 - **Target Repository**: `openai/frontiermath-open-problems` (`FirstProof2026Problem3` / Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis in Lean 4)
 - **Primary Formal & Symbolic Artifacts**:
-  - Formal Lean 4 Proofs (40 Theorems, 404+295 lines, `0 sorry`, `0 axiom`): [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean), [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean)
-  - Symbolic Verification Script (`SymPy` / Exact Rational Arithmetic): [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py)
+  - Formal Lean 4 Proofs (40 Theorems, 404+295 lines, `0 sorry`, `0 axiom`): `proofs/qrh_exponent_and_parameter_bounds.lean`, `proofs/qrh_continuation_and_rescaling.lean`
+  - Symbolic Verification Script (`SymPy` / Exact Rational Arithmetic): `proofs/verify_symbolic_qrh.py`
   - Symbolic Verification Output Data (JSON): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)
 
 ---

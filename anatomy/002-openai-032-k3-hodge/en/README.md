@@ -3,8 +3,8 @@
 - **Release Date**: 2026-11-01
 - **Target Repository**: `openai/math` Family `#032` (`The rational Hodge conjecture for CM abelian varieties` & 3 retracted K3/Eightfold Hodge conjecture manuscripts at commit `adc7f1241b42` + `[EEMS13]` `arXiv:1303.0588v2`)
 - **Primary Formal & Symbolic Artifacts**:
-  - Formal Lean 4 Proofs (27 Theorems, 452 lines, `0 sorry`, `0 axiom`, `112/112` hypothesis mutations killed): [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean)
-  - Symbolic Verification Script (`SymPy` / Exact Integer & Determinant Arithmetic): [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py)
+  - Formal Lean 4 Proofs (27 Theorems, 452 lines, `0 sorry`, `0 axiom`, `112/112` hypothesis mutations killed): `proofs/k3_forensic_paths.lean`
+  - Symbolic Verification Script (`SymPy` / Exact Integer & Determinant Arithmetic): `proofs/verify_symbolic_k3.py`
   - Symbolic Verification Output Data (JSON): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)
 
 ---

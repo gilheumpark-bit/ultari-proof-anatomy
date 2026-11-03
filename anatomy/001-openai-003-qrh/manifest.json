@@ -7,21 +7,21 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "2532a74cff1687b51b0c05a1ca756bdc3c99a5136ea66bd2cd96d785c0845034",
-    "README.ko.md": "13a04e21ddc5663d397b74d9303e52cd8284c911e32a2cac32a93e745268744d",
+    "README.md": "cfd4795892f4634635a2b772ce2862a01d532b2c68b5f356a84ec13fc1602aee",
+    "README.ko.md": "96f027218b4f3493fdd77bb2d2e440460a25c27a4ccee9d6dde1759128fef178",
     "proofs/qrh_exponent_and_parameter_bounds.lean": "b64209b36682fbadc37b5f39de363b13fe638c2580901dbcc8c6133d80a0732f",
     "proofs/qrh_continuation_and_rescaling.lean": "73b33ec6bbe128261f3c375e7be16cc6d061f938e0d3900b1b939e864bc2670b",
     "proofs/verify_symbolic_qrh.py": "86c3a661f8e7eddff3c100b3aaf79f6f0ee248c62dbe4b42d4b10c99e72d9834",
-    "ko/01_초보자용_쉬운해설.md": "06097572bde8556111934bf923b189340bc0968ceba38640dd8c7dc9b28eef75",
-    "ko/02_중급자용_구조및수식가이드.md": "564fad62ae9042a371d5f49cf1b4d5c44d78d0547ba0e5e0830560522606d7c4",
-    "ko/03_전문가용_수론및형식증명보고서.md": "b06bc760e59d4ed5009bfa068f42d694465c36502d59d2a24b0c22c1a90e5a4e",
-    "ko/04_자동검증및파서용_명세서.md": "71993b478eaec902ead6389802b678edc99230a3eff89e4a526b9292c23f022a",
-    "ko/README.md": "cd95cab0e410f76fd0b11fe424e361221f110d78d0a588a27aab37ebdf358015",
-    "en/01_Beginner_Guide.md": "e6b4ab3faeffc5c7ed382e4e96f262338135d09a467471dc2a6e6be936962bcc",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "b5c402e7747e99e4b5bdd01a47c16bc0a1a6fb9121c133aa30bfde5cf474fcc0",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "d6e97f6b8fdcd9ba0b0ad4acb67189194b2a786691f28610c189835c0d42dc5f",
-    "en/04_Automated_Verification_and_Manifest.md": "aa1cf83932f10a392c54de5f7827c6cadb33e3e8c0769464ef0d9cf969cb5529",
-    "en/README.md": "e781710a35ce4171ccfa52e1507f9adb43982c74965cdd08cd14e008fabb061b"
+    "ko/01_초보자용_쉬운해설.md": "c95c042644eb29e78990a6887a401e6db2fd2a525297d939d6ac7045b3a7ed8e",
+    "ko/02_중급자용_구조및수식가이드.md": "dac547218c92cf12a0d52d59a0375111205521ddcb3f06812d0a7e3bb9cae451",
+    "ko/03_전문가용_수론및형식증명보고서.md": "04fdac6c3012e09786c09cf3befc51e1acfe5d615300386dbff66bd7ca46b38b",
+    "ko/04_자동검증및파서용_명세서.md": "e8bcb22772c761de0b7824a31cbafc1c69cb353c5db28ddef14d7822af1e4729",
+    "ko/README.md": "0aa6e45ac66f7873d75c2fb2ac87db7f18e436d410a6d75294fdc859ec21dde6",
+    "en/01_Beginner_Guide.md": "ad2957779a3d89f0488a90062648feb5992455eb3ba83784c87bdfd7b8565225",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "e72a19fe08c9af3a3b536ee23d199d9cd2431fab29e750a279d957e2bb4b1607",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "b333156341501a84f9f8b450c650b77d770175c79c56d942df5510b8f40000ab",
+    "en/04_Automated_Verification_and_Manifest.md": "692a4bea8d1816222f84881b0ee49f44e1104ef1dacb90ade74923877f0befab",
+    "en/README.md": "73151e7baab8163546b83770b7be50b4567975a6aeed7234535752716d4f72db"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "40 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-40) + independent SymPy symbolic derivations.",

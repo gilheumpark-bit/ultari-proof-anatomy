@@ -7,22 +7,22 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_milne.py"
   },
   "artifacts_sha256": {
-    "README.md": "b1bff6bdd19b6a42c96f71ee8a3eb9e687a262fff50019924f0b82c45ef0090b",
-    "README.ko.md": "69c4e053aa50a783e3c11874d44fe35796d80e1ea64f3e62f19dd8ff6bc92963",
+    "README.md": "9bb942bb2c3be57de27829d9fecaeda3a35f84207124b615a1f24814cbe18f89",
+    "README.ko.md": "1ad28042e5e6e77fb94f5d7f96fe7275549468835e61fa1befb87c81dcff2382",
     "proofs/milne_transport_and_filtration.lean": "a97d2b96faa7d0124f0b4e239036509a80c60f0515f771f18a2cccf953542591",
     "proofs/milne_weil_reduction_and_repairs.lean": "19c47d7ee3025dbb667d9d59eb00513f5c4625e3cfc87740ec0d11997a88a860",
     "proofs/verify_symbolic_milne.py": "6e6e313248fc9aa8d2bf65994b912c6037f9bbe0aa4c5111dae9c2b354aa7147",
     "proofs/symbolic_verification_result.json": "068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100",
     "proofs/problem_spec.md": "935a2f7f40e155f23fe6fad022a2f18b1523aa790d1d3fd794198b1306569a1e",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
-    "ko/01_초보자용_쉬운해설.md": "5bae81b88950cf8c529871780ad33762ce3b47fd52c7be058ef6f2577195c981",
-    "ko/02_중급자용_구조및수식가이드.md": "d8d418adba0273c6b3ee1f37f9694dc5f2f322204cbfac2fa826d45defce797a",
-    "ko/03_전문가용_산술기하및형식증명보고서.md": "b6389ad1e0d45549e09e8f4d61cbd73b9bd4d1f70f4b66584a692913b835b618",
-    "ko/04_자동검증및파서용_명세서.md": "f444355a61a986960cd30307f2672b1168e98504c43790c4630c2f63ef93b221",
-    "en/01_Beginner_Guide.md": "e02de6ebb83f2a2e82c300412bdfe5dbe351603b3884565805d18ed5e0b95142",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "0647cd42a250113f44d697738623fef29eead03a03527fcaa2cf913e7ce4f9ff",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "d8b052bf993823503be1c79f5b64612df4d195ecc86279f8be625469a16619e3",
-    "en/04_Automated_Verification_and_Manifest.md": "769015c2684c09bb5fdac56af66c6a2b6cebeec2629bc01e39470ef84e0b8d32"
+    "ko/01_초보자용_쉬운해설.md": "2d43b71d8e1bc6b1f6a9ada16d8e594c5760f9e0858b8d7edc698271f93db9d5",
+    "ko/02_중급자용_구조및수식가이드.md": "3f2c87bc34e68f7d181023548e7c3decc02d2d35a7835e7be1f0445147a88457",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "6fecd3d8d6c5c121af32918cae1ca3234b27b61aa588cf744e116e91b284cfff",
+    "ko/04_자동검증및파서용_명세서.md": "1c535aca03233b68cf39a82b4bf68839b895184cf2aeca27c03d7f6563523232",
+    "en/01_Beginner_Guide.md": "a867b974182d1cf3f6ae28e70f62e9eaac69f0c3ed1d5cd1449051eb8a7dc516",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "e9ceb15713f265aa1d4f28a15b68f2ad0ea722b5b42c70625bb65cf693a6932b",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "159d51b31383887b6eb852e85fc24ab616a0c675a798291a75ccaf3af997f8af",
+    "en/04_Automated_Verification_and_Manifest.md": "dce111fa544cc30df9dec32293a36bdd481bc976cb58020049b399827808392b"
   },
   "scope_and_limitations": {
     "formalized_arithmetic_and_linear_algebra": "33 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 211/211 hypothesis mutations caught = 101/101 + 110/110) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and PyTorch tensor verification."
