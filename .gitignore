@@ -2,8 +2,3 @@ __pycache__/
 *.pyc
 *.olean
 .DS_Store
-.ultari/
-tools/
-anatomy/*/proofs/*.lean
-anatomy/*/proofs/verify_*.py
-anatomy/*/proofs/*.patch

@@ -4,14 +4,14 @@ This document reverse-engineers the algebraic origin of the hardcoded constants 
 
 ---
 
-## 1. Reverse-Engineering Magic Constants & the First-Principles 6-Step Recalculation
+## 1. Reverse-Engineering Hardcoded Constants & the First-Principles 6-Step Recalculation
 
 ```mermaid
 flowchart TD
     S1["Step 1: CIP Sparsification Tree (Appendix A)\nBranch depth O(n/sqrt(log n)), max degree Delta = k*2^(kb+1)"] --> S2["Step 2 (Gen 1 Discarded, 73 files 17,065 lines): Fixed field F_p^4 + capacity ell=4096\nLeaf coeff 12803/16384 <= 0.79 + 1/32 = 657/800 < 0.9 -> 2^(0.9n)"]
     S2 --> S3["Step 3 (Gen 2 Algebraic Core): Commuting swap Pi_s + weight W_0\nNewton forward-difference f_I(W_0) achieves low rank + low mismatch degree"]
     S3 --> S4["Step 4 (Gen 2 Packing Failure, 935 files 174,938 lines discarded): UniversalType r Q Delta\nSize r^(Q(Delta+1)) -> blockSize^3 <= 2^(2^s) doubly exponential -> 2^O(n/log log n)"]
-    S4 --> S5["Step 5 (Gen 3-4 Breakthrough, 710,320 lines): Incidence-pair pullback D = r^(2Q) + Char-3 Ring\nh <= 2M/D times c_B <= eps*D cancels D identically -> 2^O(n(log log n)^2/sqrt(log n))"]
+    S4 --> S5["Step 5 (Gen 3-4 Pullback Architecture, 710,320 lines): Incidence-pair pullback D = r^(2Q) + Char-3 Ring\nh <= 2M/D times c_B <= eps*D cancels D identically -> 2^O(n(log log n)^2/sqrt(log n))"]
     S5 --> S6["Step 6 (Gen 5 Appendix D, Engine II): r=64 packet recursion (3/32 contraction) + 2-adic Cauchy\nTapered Hermite q(i)=h max(0, u-i) (sum j^2 2^-j = 6) -> 2^O(n/sqrt(log n))"]
 ```
 

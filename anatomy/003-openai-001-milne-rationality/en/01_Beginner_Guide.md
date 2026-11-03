@@ -35,7 +35,7 @@ The manuscript is organized into 6 sections (`00_intro.tex` through `05_reductio
 
 ## 3. The 5 Uncovered Vulnerabilities and Our Verified Repairs
 
-While the main theorem (`Theorem 1.1`) has zero fatal flaws (`High: 0`), our forensic audit identified **2 Medium (`중`) and 3 Low (`하`) vulnerabilities**, all of which we repaired in [`oai_001_milne_repair.patch`](../proofs/oai_001_milne_repair.patch) and formally verified:
+While the main theorem (`Theorem 1.1`) has zero high-severity flaws (`High: 0`), our forensic audit identified **2 Medium (`중`) and 3 Low (`하`) vulnerabilities**, all of which we repaired in [`oai_001_milne_repair.patch`](../proofs/oai_001_milne_repair.patch) and formally verified:
 
 | Severity | Uncovered Vulnerability | Our Repair & Verification | Lean Theorem |
 | :---: | :--- | :--- | :--- |

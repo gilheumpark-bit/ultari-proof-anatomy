@@ -15,13 +15,13 @@
     "proofs/symbolic_verification_result.json": "122ea7db125b36aedf4b81e3910e4c3160e50f2ec4dc0b04b3711b40e8c04b0f",
     "proofs/problem_spec.md": "935a2f7f40e155f23fe6fad022a2f18b1523aa790d1d3fd794198b1306569a1e",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
-    "ko/01_초보자용_쉬운해설.md": "9878541a27357fa4a96a8976ad1c8c7a46db3a507818f65c660fb656b541750a",
-    "ko/02_중급자용_구조및수식가이드.md": "3b2dfdfe4142a048e36d9bc0098a21d3d0dcab1eb3771c57504b69806519f640",
-    "ko/03_전문가용_산술기하및형식증명보고서.md": "cf018a5b8165a7245a954cd03da6996966bd758be61d9da1ec2c1ae564b6771c",
+    "ko/01_초보자용_쉬운해설.md": "6166fc3538b09981ea67c2af0ac7767f5e0c6eae7d5903300f612ed7ba365f5b",
+    "ko/02_중급자용_구조및수식가이드.md": "8a471dc3b2f22099a3823cdf0074db1ebb71d5e705583e49a8b23fa67986e24b",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "6cb1b6f52b440f26fc5abf0eefa26a5748812ddfbd6375577360585a9fab697f",
     "ko/04_자동검증및파서용_명세서.md": "57effc40982e7e69f841771e4a1ee39566865f72955d9e6a44367f1cea539169",
-    "en/01_Beginner_Guide.md": "a17778bed9b89e849d851f8c83a457eef2dd8cfc2aa5ecab07438f7ea578e95d",
+    "en/01_Beginner_Guide.md": "a5b136db61c1e0d8d7cea4eb6bfbc2315fe869c34c6853df03558117e09efa98",
     "en/02_Intermediate_Math_and_Code_Guide.md": "dc96e08386646fef2bbd8ef0aa7a22eae8654c62f44879aadd57d6e4c65283bf",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "22e1029f92c83fc06466ca2cafa014d3e9401000c6b6f53a180d96271aa41b5e",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "51791316f0e6af204402df19d632766b03da27685bfca4bf98a3e8fbf15abba2",
     "en/04_Automated_Verification_and_Manifest.md": "7fee83a3c993ab7d860bb7c9f1010c76e5401be91fe864d7fc64333ff10e4c1d"
   },
   "scope_and_limitations": {

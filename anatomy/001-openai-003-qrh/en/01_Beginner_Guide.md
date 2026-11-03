@@ -6,7 +6,7 @@ This guide explains **what OpenAI's `#003` proof is**, **why its code uses simpl
 
 ## 1. One-Sentence Summary
 
-By analyzing the source code of OpenAI's `#003` Quasi-Riemann Hypothesis proof in Lean 4, we showed that **the authors replaced irrational square roots and separate matrix energy terms with simpler rational upper bounds—leaving up to 592x to 1341x of exponent margin unused**—and we formally proved the exact algebraic equations for the key thresholds (`0.51`, `0.69`, `0.875`) in Lean 4.
+By analyzing the source code of OpenAI's `#003` Quasi-Riemann Hypothesis proof in Lean 4, we showed that **the authors replaced irrational square roots and separate matrix energy terms with simpler rational upper bounds (leaving up to 592x to 1341x of exponent margin unused)**, and we formally proved the exact algebraic equations for the key thresholds (`0.51`, `0.69`, `0.875`) in Lean 4.
 
 ---
 

@@ -7,11 +7,11 @@
     "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
   },
   "artifacts_sha256": {
-    "proofs/qrh_mathematician_referee_audit.lean": "2d88856e3bfbf0f1d7497f802c7a5277250f6df391abe1cbebda8eb7a0e90fbe",
-    "proofs/qrh_eight_tasks_critical_upgrade.lean": "05e7d035209f5f1cd7e3f8b774b196665bfdca1549e9956a1dddaa1f3e7e21f5",
+    "proofs/qrh_mathematician_referee_audit.lean": "6f80879efc9039decd5b8fd91a4ca66cf2327c8f6b016ee305f82a523821822b",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "504e0957d35172a3317a0fa79560aab110c1466d54aada116433c4a0c65a3e18",
     "proofs/verify_qrh_mathematician_audit.py": "0c356928d785dc0d32ea343785582489191a01d16445d30e0450949d185e172d",
     "proofs/symbolic_verification_result.json": "7469f16a40d261dcbab137ed9bcb747695e373f317d01870ca5953b5d0ac0dbb",
-    "proofs/problem_spec.md": "a0a09b2c685b63fc7103f7a763a63677ff367c2bf5a4cb934cb86145fd83997d"
+    "proofs/problem_spec.md": "16e6190994d66db50f16b32347888897d056f0646c90c3b0d9ebe1def73a661e"
   },
   "verified_key_results": {
     "stage1_magic_exponents_and_saddle": {
@@ -176,21 +176,21 @@
     }
   },
   "file_checksums_sha256": {
-    "README.ko.md": "9b5d0be1078f0b18082dbafe593b3b9b53e6aa5631ad2484a223493ad2813a51",
-    "README.md": "c1b49615890a3cab8f55d3035f3e80a6d424c20e7ec74576aa4bdf829d02b506",
-    "en/01_Beginner_Intuitive_Guide.md": "c60a064dfc70372240d4d5ee99274e0c86f001e47daab79e8a63ff35e0718cbe",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "45a7affd4f7e732b8f3e2d4940bd9c838a0ce4208d0c782f3c2e4454a827a783",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "8005c76497b00d9289e0404ae8c59563d789fd66902499970620bbb3b4b88a38",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "ebf932cf23bd98da5fbb2b84748cf91da3b3dd38572b630c807131e0d53564ce",
-    "en/README.md": "3cb632ecd889a7282b6412490afe456953823b308c10ca2e323c61927686e550",
-    "ko/01_초보자용_쉬운해설.md": "99234c01b6eee88eba43e245c12c0185091c02cdc1605e671476b0f9ee2cab75",
-    "ko/02_중급자용_구조및수식가이드.md": "99ed9920ed4859d62bdf918383c63da19cd95826d0802d4420c8aac580454602",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "d1e323775d4a1ab1ad0cc7c916d9eff4ffc23329299a05e877f5cce1ab180d8e",
-    "ko/04_자동검증및파서용_명세서.md": "c017b6f4b064dc67cc25d30d599d92fe1bb94ff8d9b524c4f4b18326231b2f40",
-    "ko/README.md": "345008b3156bb9aef09a7658baff1ab8df31e3c6e8e81085cff948bfa7bd2045",
-    "proofs/problem_spec.md": "a0a09b2c685b63fc7103f7a763a63677ff367c2bf5a4cb934cb86145fd83997d",
-    "proofs/qrh_eight_tasks_critical_upgrade.lean": "05e7d035209f5f1cd7e3f8b774b196665bfdca1549e9956a1dddaa1f3e7e21f5",
-    "proofs/qrh_mathematician_referee_audit.lean": "2d88856e3bfbf0f1d7497f802c7a5277250f6df391abe1cbebda8eb7a0e90fbe",
+    "README.ko.md": "0da8abd84d153f5d53367de9b32443f2ae38db2f3e3865e86c8faac4b7884461",
+    "README.md": "d9d8ab1b2ae3d3065905f58d70cddc7515d79b9e9934720f17e5ea3c95310121",
+    "en/01_Beginner_Intuitive_Guide.md": "10f8190e8e1a123ec3d48f5cdebe0141a4a51ee761cfa1b88f21fd62c68457d1",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "86756dffe7ceb308fbb57fae4c36e2a001f116112a55b6739f59ab2eb5f37a28",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "763c7e843248857c889b1c6893fe0ca59a62231b0e5e75c641acb996ab1f13d2",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "c4c223cdf0c366e96fbf5b842674ffc7950c45f36244ce5f8e479d540a2b1f9f",
+    "en/README.md": "73909f609850b9a9afd2321639a193936b8e8a48e465029ea9744043f39d9ce8",
+    "ko/01_초보자용_쉬운해설.md": "07e813403a980500a68414bcde6bb1214de4c501c2f24c154c71319ca6ccb6b1",
+    "ko/02_중급자용_구조및수식가이드.md": "4abc765715844b0123fb365b7544f436c409a0428d713dc91a9132022dcca5c0",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "4802da6547f8056986806f9226a40516319991890c8583eae3e4862c9cbb692d",
+    "ko/04_자동검증및파서용_명세서.md": "6e14c9aee4df57bd3afa47286648166ebac0927d9744775998dbde664cd2bd45",
+    "ko/README.md": "feb02f58f12e47818abb342ab3c29f3e6d72838130921488550ec03325798c22",
+    "proofs/problem_spec.md": "16e6190994d66db50f16b32347888897d056f0646c90c3b0d9ebe1def73a661e",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "504e0957d35172a3317a0fa79560aab110c1466d54aada116433c4a0c65a3e18",
+    "proofs/qrh_mathematician_referee_audit.lean": "6f80879efc9039decd5b8fd91a4ca66cf2327c8f6b016ee305f82a523821822b",
     "proofs/symbolic_verification_result.json": "7469f16a40d261dcbab137ed9bcb747695e373f317d01870ca5953b5d0ac0dbb",
     "proofs/verify_qrh_mathematician_audit.py": "0c356928d785dc0d32ea343785582489191a01d16445d30e0450949d185e172d"
   },
@@ -250,8 +250,8 @@
       "lines": 499,
       "theorems": 38,
       "sorry_count": 0,
-      "sha256": "2d88856e3bfbf0f1d7497f802c7a5277250f6df391abe1cbebda8eb7a0e90fbe",
-      "bytes": 37687
+      "sha256": "6f80879efc9039decd5b8fd91a4ca66cf2327c8f6b016ee305f82a523821822b",
+      "bytes": 37686
     },
     {
       "path": "proofs/qrh_eight_tasks_critical_upgrade.lean",
@@ -259,8 +259,8 @@
       "lines": 193,
       "theorems": 8,
       "sorry_count": 0,
-      "sha256": "05e7d035209f5f1cd7e3f8b774b196665bfdca1549e9956a1dddaa1f3e7e21f5",
-      "bytes": 17452
+      "sha256": "504e0957d35172a3317a0fa79560aab110c1466d54aada116433c4a0c65a3e18",
+      "bytes": 17422
     },
     {
       "path": "proofs/verify_qrh_mathematician_audit.py",
@@ -280,8 +280,8 @@
       "path": "proofs/problem_spec.md",
       "role": "problem_specification",
       "lines": 23,
-      "sha256": "a0a09b2c685b63fc7103f7a763a63677ff367c2bf5a4cb934cb86145fd83997d",
-      "bytes": 12463
+      "sha256": "16e6190994d66db50f16b32347888897d056f0646c90c3b0d9ebe1def73a661e",
+      "bytes": 12494
     }
   ]
 }
