@@ -7,9 +7,9 @@
     "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
   },
   "artifacts_sha256": {
-    "proofs/qrh_mathematician_referee_audit.lean": "9e7dec7f0064b0bfc843fdca79bec435d62c3b446f3d034a81a07472e4c39565",
+    "proofs/qrh_mathematician_referee_audit.lean": "76de1ca5dadb14ab9ff37017068729c174e66471369d4164f440a72561739660",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "e310bc94e246a58dc4a456c9baeec14c51612e46a1afd78b79755fa9867c400e",
-    "proofs/verify_qrh_mathematician_audit.py": "80596407c9a4d148eb1d0bde2cedaf11443787c6ae07972fe4a6b8649b5936ed",
+    "proofs/verify_qrh_mathematician_audit.py": "0c356928d785dc0d32ea343785582489191a01d16445d30e0450949d185e172d",
     "proofs/symbolic_verification_result.json": "7469f16a40d261dcbab137ed9bcb747695e373f317d01870ca5953b5d0ac0dbb",
     "proofs/problem_spec.md": "041172bb4b79daf7c9ed0f6b735add7b6b635f4e2610ce4007621a15b09ccc75"
   },
@@ -178,21 +178,21 @@
   "file_checksums_sha256": {
     "README.ko.md": "ae5478017f711c2610ad8f6916303d29cbe76e90ee289aee1dc53211f566033b",
     "README.md": "5527bda78328359a6c1dc13aa015fbbcd25235d61d8a9ef17eda6f32abd2ec50",
-    "en/01_Beginner_Intuitive_Guide.md": "e077f5a2fdb29e53a872cf0cb60e11390c848e945c44e40b6760b8b0df41f814",
+    "en/01_Beginner_Intuitive_Guide.md": "f40616d453c9c3495b6346ea9bbaa728e436e5f12602ad71f76db2c01749edce",
     "en/02_Intermediate_Math_and_Code_Guide.md": "82d14df340d92c8993de7b01c20d82a76d079c0748e496a21af2585ef35453c8",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "4b7de6ca7582f121dfcf53edfecfa0213115aa8658046e7d0ca81c6fadd18d82",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "72f1091f875b864a2eaeff4307b8284cb9e557465a77dc3ee8e2d0159a6d4d11",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "0f5097b4481a45eda3c7180a91250a9526a79d9966d16f13c071cad666c71193",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "3e8c713010f53816fa3531e9aff48e73ea767d96993f6c5af41c10994949363c",
     "en/README.md": "0498987855083732f38cd25d9b860c3b31eecaf06e4c62bf2d580a70ab9cea6f",
-    "ko/01_초보자용_쉬운해설.md": "611441d3e0f8fcc861de69b6572f4bc7c80d52f896686697b3f1456c095bdd17",
+    "ko/01_초보자용_쉬운해설.md": "c93d24f648c3b1666594f7beaef08bcbcfd0f32a31efb909a7feabf6afcda1ca",
     "ko/02_중급자용_구조및수식가이드.md": "327de4d90f36b6986dac36dcbcdeee0fa3b569936319eca1736f1e62798820e9",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "820de022652b0e6078f61c3ba1ede66d0e9964b5f1a6034e366957c056721e32",
-    "ko/04_자동검증및파서용_명세서.md": "65d2a8b735f44396fd2a68d3e9b4d03b01495649a141b1ff2f17157a4606ceca",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "e1879c943081e4cbd47656e8a582b7b836083749b81420396520144df9edbd03",
+    "ko/04_자동검증및파서용_명세서.md": "928c8613b9392d3dda2f7a3d4c19160895dbf4bc3ea0029eb0625e82d9b2ded2",
     "ko/README.md": "8c59ac8b1dcba82841dca97d9a5c45435b80a2c41071669e7a2249c4387df14b",
     "proofs/problem_spec.md": "041172bb4b79daf7c9ed0f6b735add7b6b635f4e2610ce4007621a15b09ccc75",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "e310bc94e246a58dc4a456c9baeec14c51612e46a1afd78b79755fa9867c400e",
-    "proofs/qrh_mathematician_referee_audit.lean": "9e7dec7f0064b0bfc843fdca79bec435d62c3b446f3d034a81a07472e4c39565",
+    "proofs/qrh_mathematician_referee_audit.lean": "76de1ca5dadb14ab9ff37017068729c174e66471369d4164f440a72561739660",
     "proofs/symbolic_verification_result.json": "7469f16a40d261dcbab137ed9bcb747695e373f317d01870ca5953b5d0ac0dbb",
-    "proofs/verify_qrh_mathematician_audit.py": "80596407c9a4d148eb1d0bde2cedaf11443787c6ae07972fe4a6b8649b5936ed"
+    "proofs/verify_qrh_mathematician_audit.py": "0c356928d785dc0d32ea343785582489191a01d16445d30e0450949d185e172d"
   },
   "lean4_verification": {
     "file": "proofs/qrh_mathematician_referee_audit.lean",
@@ -250,7 +250,7 @@
       "lines": 499,
       "theorems": 38,
       "sorry_count": 0,
-      "sha256": "9e7dec7f0064b0bfc843fdca79bec435d62c3b446f3d034a81a07472e4c39565",
+      "sha256": "76de1ca5dadb14ab9ff37017068729c174e66471369d4164f440a72561739660",
       "bytes": 36925
     },
     {
@@ -266,7 +266,7 @@
       "path": "proofs/verify_qrh_mathematician_audit.py",
       "role": "sympy_and_gpu_verifier",
       "lines": 497,
-      "sha256": "80596407c9a4d148eb1d0bde2cedaf11443787c6ae07972fe4a6b8649b5936ed",
+      "sha256": "0c356928d785dc0d32ea343785582489191a01d16445d30e0450949d185e172d",
       "bytes": 31157
     },
     {

@@ -19,9 +19,9 @@ Reverse-engineering the proof shows that these three fractions are the **unique 
 2. **Square-Full Exceptional Shift ($\alpha_X - \ell = 3/16 = 9/48$)**: Controlling square-full moduli forces $\alpha_X = 8/48 + 9/48 = 17/48$.
 3. **Cubic Gauss $P^{1/6}$ Cancellation ($(5\alpha_X + \alpha_Y)/12 = 3/16$)**: Matching the cubic Gauss sum $L^2$-saving to $3/16$ forces $5(17/48) + \alpha_Y = 108/48 \implies \alpha_Y = 23/48$.
 
-Similarly, in the Siegel-zero module ([`GeometricBoundary.lean:26`](proofs/oai_ref/GeometricBoundary.lean#L26), [`PivotBounds.lean:63-65`](proofs/oai_ref/PivotBounds.lean#L63-L65)), the giant integer **$H = 86,713,344$** and threshold **$N_0 = 18,818$** come from prime $97$ ([`thm_21_siegel_zero_magic_constants_86713344_and_18818`](proofs/qrh_mathematician_referee_audit.lean#L257-L265)):
-* Setting $N_0 = 2 \times 97^2 = 18,818$ gives lower bound constant $c_1 = 1/(2N_0) = 1/37,636$.
-* With upper constant $C_1 = 192$, choosing $H = 12 \times (C_1 / c_1) = 12 \times 192 \times 37,636 = 86,713,344$ makes the ratio $(C_1/c_1)/H$ equal to $1/12$.
+Similarly, in the Siegel-zero module ([`GeometricBoundary.lean:26`](proofs/oai_ref/GeometricBoundary.lean#L26), [`PivotBounds.lean:63-65`](proofs/oai_ref/PivotBounds.lean#L63-L65)), the giant integer **$H = 86,713,344$** and threshold **$N_0 = 18,818$** come from the floor bound $\lfloor 96t \rfloor + 1 \le 97t$ ($97 = 96 + 1$, [`thm_21_siegel_zero_magic_constants_86713344_and_18818`](proofs/qrh_mathematician_referee_audit.lean#L257-L265)):
+* From $Q \le 97^2 t^2$, the dimension bound `twice_pivot_floor_square_le` sets $N_0 = 2 \times 97^2 = 18,818$ while the $M^2/(4Q)$ lower bound independently sets $1/c_1 = 4 \times 97^2 = 37,636$ (sharing the common floor factor $97^2 = 9,409$).
+* With upper constant $C_1 = 2 \times 96 = 192$, choosing $H = 12 \times (C_1 / c_1) = 12 \times 192 \times 37,636 = 86,713,344$ makes the ratio $(C_1/c_1)/H$ equal to $1/12$.
 
 ---
 
