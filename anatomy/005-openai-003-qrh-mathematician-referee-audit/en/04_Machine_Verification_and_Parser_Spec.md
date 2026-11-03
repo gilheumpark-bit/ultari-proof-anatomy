@@ -8,11 +8,11 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
 
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
-| [`proofs/qrh_mathematician_referee_audit.lean`](../proofs/qrh_mathematician_referee_audit.lean) | `afa9aa74d4871b966eea35951c6b6ae8ce0b3d22a646f509852e16d960e0c2df` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `285/285` mutations caught) |
-| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](../proofs/qrh_eight_tasks_critical_upgrade.lean) | `acc4a59047684857c3ad98d4df96f3d875c3ed672920aa383bebded8d324def3` | `193` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `123/123` mutations caught) |
-| [`proofs/verify_qrh_mathematician_audit.py`](../proofs/verify_qrh_mathematician_audit.py) | `cdda9cdc862136fa2380f1d16f8bd95c85e95a0787d6c84c07d95bb4bc559588` | `497` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `3a90b9b6448cc605315fdef4fac679947f1b7315916046f83fda21bec3281b07` | `203` | Deterministic symbolic derivation, upstream DAG & GPU verification output JSON |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `5c57efd314aa17b9706ed55b897a0636d904978a13dbb7d439f7a87612eec326` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
+| [`proofs/qrh_mathematician_referee_audit.lean`](../proofs/qrh_mathematician_referee_audit.lean) | `9e7dec7f0064b0bfc843fdca79bec435d62c3b446f3d034a81a07472e4c39565` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `285/285` mutations caught) |
+| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](../proofs/qrh_eight_tasks_critical_upgrade.lean) | `e310bc94e246a58dc4a456c9baeec14c51612e46a1afd78b79755fa9867c400e` | `193` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `123/123` mutations caught) |
+| [`proofs/verify_qrh_mathematician_audit.py`](../proofs/verify_qrh_mathematician_audit.py) | `80596407c9a4d148eb1d0bde2cedaf11443787c6ae07972fe4a6b8649b5936ed` | `497` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + Blackwell GPU tensor verifier (`Stage 1`–`Stage 6`) |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `7469f16a40d261dcbab137ed9bcb747695e373f317d01870ca5953b5d0ac0dbb` | `203` | Deterministic symbolic derivation, upstream DAG & GPU verification output JSON |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `041172bb4b79daf7c9ed0f6b735add7b6b635f4e2610ce4007621a15b09ccc75` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |
 
 ---
 

@@ -19,11 +19,11 @@
     "sos_identity_residual": 0,
     "one_minus_V_cancelled": true,
     "euler_threshold_unreduced_Q": 480,
-    "euler_threshold_reduced_Q": 112,
-    "euler_threshold_geometric_Q": 113,
-    "euler_prime_ideal_norms_lt_112": 14,
+    "euler_threshold_reduced_Q": 128,
+    "euler_threshold_geometric_Q": 129,
+    "euler_prime_ideal_norms_lt_128": 16,
     "euler_prime_ideal_norms_lt_480": 46,
-    "euler_prime_powers_saved": 32
+    "euler_prime_powers_saved": 30
   },
   "stage2_referee_critique": {
     "geometric_boundary_local_hgeometry_param": true,
@@ -165,7 +165,7 @@
     ],
     "task2_q_min_and_local_tail_decay": [
       480,
-      112,
+      128,
       "11/25"
     ],
     "task3_principal_strict_savings_z_w_dual": [
