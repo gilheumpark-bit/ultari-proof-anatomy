@@ -43,7 +43,7 @@
     "two_beta_with_frozen_ell0": "128519/73440",
     "two_beta_with_shifted_ell": "7/4"
   },
-  "stage3_4_bottlenecks_and_gpu": {
+  "stage3_4_bottlenecks_and_numerics": {
     "contour_gap_w19_20": "13/240",
     "contour_gap_w1_naive": "-1/16",
     "contour_gap_w1_shifted": "29/1200",
@@ -64,15 +64,23 @@
     "siegel_H": 86713344,
     "siegel_ratio_C1_c1_over_H": "1/12",
     "biquadratic_unit_det": -2,
-    "gpu_device": "NVIDIA RTX PRO 5000 72GB Blackwell",
-    "gpu_contour_grid_points": 16777217,
-    "gpu_min_pole_dist_w19_20": 0.0541666667,
-    "gpu_min_pole_dist_w1_shifted": 0.0241666667,
-    "gpu_eisenstein_primes_tested": 611,
-    "gpu_eisenstein_prime_range": "7..9973 (p == 1 mod 6)",
-    "gpu_cubic_gram_offdiag_norm_p73": 0.01388889,
-    "gpu_cubic_gram_max_rel_err_611_primes": 2.52e-12,
-    "gpu_sextic_gram_max_rel_err_611_primes": 1.08e-12
+    "compute_backend": "PyTorch FP64 Tensor Engine",
+    "contour_grid_points": 16777217,
+    "min_pole_dist_w19_20": 0.0541666667,
+    "min_pole_dist_w1_shifted": 0.0241666667,
+    "eisenstein_primes_tested": 611,
+    "eisenstein_prime_range": "7..9973 (p == 1 mod 6)",
+    "cubic_gram_offdiag_norm_p73": 0.01388889,
+    "cubic_gram_max_rel_err_611_primes": 2.52e-12,
+    "sextic_gram_max_rel_err_611_primes": 1.08e-12,
+    "euler_maclaurin_m6400_bernoulli_constant": 0.08333333,
+    "multiprime_dyadic_q6400_K_M_op3_op6_ratio6": [
+      190,
+      181,
+      7.08177,
+      3.957323,
+      0.161528
+    ]
   },
   "stage5_sub_069_master_transfer": {
     "high_rows_critical_line_margin": "-1/48",
@@ -198,6 +206,21 @@
       "2/11",
       "4/11",
       "1/33"
+    ],
+    "thm47_euler_maclaurin_w1_residue_k1_k2_k3_and_k2_margins": [
+      "13/44",
+      "-31/132",
+      "-101/132",
+      "7/66",
+      "1/12"
+    ],
+    "thm48_welch_duality_and_bourgain_weyl_betas": [
+      "1/33",
+      "7/44",
+      "529/1050",
+      "11/21",
+      "1/2",
+      "77/150"
     ]
   }
 }
