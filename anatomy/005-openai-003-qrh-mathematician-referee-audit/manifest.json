@@ -181,12 +181,12 @@
     "en/01_Beginner_Intuitive_Guide.md": "f40616d453c9c3495b6346ea9bbaa728e436e5f12602ad71f76db2c01749edce",
     "en/02_Intermediate_Math_and_Code_Guide.md": "82d14df340d92c8993de7b01c20d82a76d079c0748e496a21af2585ef35453c8",
     "en/03_Expert_Mathematician_Referee_Audit_Report.md": "0f5097b4481a45eda3c7180a91250a9526a79d9966d16f13c071cad666c71193",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "3e8c713010f53816fa3531e9aff48e73ea767d96993f6c5af41c10994949363c",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "227b5b5f34c97801685d4b54395116d241c8e20073db6b45368dc321bb43a8e4",
     "en/README.md": "0498987855083732f38cd25d9b860c3b31eecaf06e4c62bf2d580a70ab9cea6f",
     "ko/01_초보자용_쉬운해설.md": "c93d24f648c3b1666594f7beaef08bcbcfd0f32a31efb909a7feabf6afcda1ca",
     "ko/02_중급자용_구조및수식가이드.md": "327de4d90f36b6986dac36dcbcdeee0fa3b569936319eca1736f1e62798820e9",
     "ko/03_전문가용_수론학자심층심사보고서.md": "e1879c943081e4cbd47656e8a582b7b836083749b81420396520144df9edbd03",
-    "ko/04_자동검증및파서용_명세서.md": "928c8613b9392d3dda2f7a3d4c19160895dbf4bc3ea0029eb0625e82d9b2ded2",
+    "ko/04_자동검증및파서용_명세서.md": "22ef1bd47b6c88e33990a7dd81928d2b12e99a40036cf3b0d1af073d325f4625",
     "ko/README.md": "8c59ac8b1dcba82841dca97d9a5c45435b80a2c41071669e7a2249c4387df14b",
     "proofs/problem_spec.md": "041172bb4b79daf7c9ed0f6b735add7b6b635f4e2610ce4007621a15b09ccc75",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "e310bc94e246a58dc4a456c9baeec14c51612e46a1afd78b79755fa9867c400e",
@@ -251,7 +251,7 @@
       "theorems": 38,
       "sorry_count": 0,
       "sha256": "76de1ca5dadb14ab9ff37017068729c174e66471369d4164f440a72561739660",
-      "bytes": 36925
+      "bytes": 36972
     },
     {
       "path": "proofs/qrh_eight_tasks_critical_upgrade.lean",

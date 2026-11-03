@@ -29,12 +29,6 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
    python3 proofs/verify_qrh_mathematician_audit.py
    ```
    * Pass criteria: Exit code `0`, first-principles SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) of the global SOS quadratic `3789*s^2 - 8862*s + 4753 = 0`, slopes `22/25` & `48/59`, and hybrid 7-monomial coefficients `[750, 295, 190, 108, 3162, 3300, 1056]`, full upstream DAG audit (`2,927` `DirichletL` + `306` `SiegelZeros` files, `0` references to `compensated_geometry`, `0 sorry`), Blackwell GPU `float64` verification across $2^{24}+1 = 16,777,217$ complex contour distance grid points and all $611$ Eisenstein split primes $p \equiv 1 \pmod 6$ in $[7, 9973]$ (`1,222` cubic & sextic Gauss matrices verifying $|\tau(\chi)|=\sqrt{p}$ and Ramanujan off-diagonal norm $\frac{1}{p-1}$), and byte-identical reproduction of `proofs/symbolic_verification_result.json`.
-3. **Static Discipline & Document Integrity Scan (`extra_scan.py` & `code_discipline.py`)**:
-   ```bash
-   python3 /home/heum/바탕화면/울타리_연구원/template/.ultari/extra_scan.py .
-   python3 /home/heum/바탕화면/울타리_연구원/template/.ultari/code_discipline.py .
-   ```
-   * Pass criteria: `0` warnings and `0` problems (`EXIT 0`).
 
 ---
 
