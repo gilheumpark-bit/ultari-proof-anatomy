@@ -182,13 +182,13 @@
     "README.md": "6136a6824fd4282581a89d170c0aba563793fc73d8bc961e15206bd10919dfdc",
     "en/01_Beginner_Intuitive_Guide.md": "2890a54a7662ad73d9defdf001d93046bc3fbd70550c3adc43dad694ce71dfed",
     "en/02_Intermediate_Math_and_Code_Guide.md": "88943d71e09ff986214e167513783cd067f2b7f55d2c9ca09add2d7434aa817c",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "f8b3522c8493caff46a67570f130f7929acaa976e4c95d6a5aba11db9f326a6a",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "efe263fa4870e0fb9f743dfacd6a4c16868fff1387b81460a0979f5ac3bd3fc7",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "639978389a94be6cfaf12daa1c2b25ca1a8865e12477bc8ed9c72237e16f0362",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "da1ed7e08ec456f0d5cc62849cfcc012221ae35ce0eb4191fb1e500772e6e674",
     "en/README.md": "8b395cfd0caa24c24985913cb4d04075bd034b9f5df7b5bead82bc5039b75999",
     "ko/01_초보자용_쉬운해설.md": "e37de80c78438960be834f1cde7c317c778b6b3415e4ae354158e906400104b3",
     "ko/02_중급자용_구조및수식가이드.md": "d555530bdcfa999c7940130b382474f83ab8fb46dff49efdf83d499433c41372",
     "ko/03_전문가용_수론학자심층심사보고서.md": "339dc0ea908ad565e9f51e99971b6e2fc8c1ba3824afd1170994aef77b2a6e2b",
-    "ko/04_자동검증및파서용_명세서.md": "a5e66d2bdbcec3d77b8a1ef4ea9480d7773ee700062e18ff57bf0efd2c22b098",
+    "ko/04_자동검증및파서용_명세서.md": "ac7ddb7e685245afc31d979e4c494f5161ece38a4acaab05e2f15f15ad7db014",
     "ko/README.md": "90100909c470de8bd7cb44829f10351081c785efe5de6a43b906cce2f807f9b2",
     "proofs/problem_spec.md": "6d369de92f5f85d17c62c80a53566465b3145df8ebb924cf0716dec6719be8e0",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "8cf658e0b4f1e56e74c3d203bcfa497c0f59255dda74e147f00f22f2b2ed297f",
@@ -214,19 +214,19 @@
   },
   "multi_cli_blind_and_referee_audit": {
     "track1_cleanroom_blind_20_questions": {
-      "muse": {
+      "run_a": {
         "matched": "20/20",
         "lean_theorems_0_sorry": 10,
         "answers_sha256": "249a531e594dd5098837fa7688cf2a1e2383f98b233808038b3495e32cf980f6",
         "lean_sha256": "d7f5a7badb587d2bf4d68bb40daf45f5f9560dbe25e6c5059ed4aa59727cb0fc"
       },
-      "opencode": {
+      "run_b": {
         "matched": "20/20",
         "lean_theorems_0_sorry": 20,
         "answers_sha256": "b0aa08c41ef0d973977e08848cad018d26c47ab239199db67e56fd34808d6b4f",
         "lean_sha256": "0979c12ae3c2c0ac660db99ae9d48069c2ff0b2e65c996c7da1510f8025cd9bb"
       },
-      "agy": {
+      "run_c": {
         "matched": "20/20",
         "lean_theorems_0_sorry": 12,
         "answers_sha256": "b0aa08c41ef0d973977e08848cad018d26c47ab239199db67e56fd34808d6b4f",

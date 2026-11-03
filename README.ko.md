@@ -2,7 +2,7 @@
 
 > **언어 선택 (Language)**: [**English (`README.md`)**](./README.md) | **한국어**
 
-[![Lean 4](https://img.shields.io/badge/Lean_4-v4.35.0_Verified-blue)](#1줄-전체-저장소-검증-명령어)
+[![Lean 4](https://img.shields.io/badge/Lean_4-v4.29.0_Verified-blue)](#1줄-전체-저장소-검증-명령어)
 [![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#1줄-전체-저장소-검증-명령어)
 [![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#1줄-전체-저장소-검증-명령어)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
@@ -44,7 +44,9 @@
 
 ## 디렉터리 구조 (단일 `manifest.json` 원장 및 한·영 4단계 가이드)
 
-각 사례(`anatomy/001-...`)는 **단일 [`manifest.json`](./anatomy/001-openai-003-qrh/manifest.json) 원장**, 결정론적 검증 결과(`proofs/symbolic_verification_result.json`), 분석 대상 원본 스냅샷(`proofs/oai_ref/`), 그리고 영문(`en/`)과 한국어(`ko/`) 4단계 문서를 제공합니다:
+각 사례(`anatomy/001-...`)는 **단일 [`manifest.json`](./anatomy/001-openai-003-qrh/manifest.json) 원장**, 결정론적 검증 결과(`proofs/symbolic_verification_result.json`), 분석 대상 원본 스냅샷(`proofs/oai_ref/`), 그리고 영문(`en/`)과 한국어(`ko/`) 4단계 문서를 제공합니다.
+
+> **공개 저장소 수록 범위 안내**: 본 공개 저장소에는 한·영 4단계 해부 보고서(`*.md`), 결정론적 기호·수치 검증 출력(`proofs/symbolic_verification_result.json`), 정리·SHA-256 원장(`manifest.json`), 분석 대상 원본 스냅샷(`proofs/oai_ref/`)이 수록되어 있으며, `manifest.json`에 해시와 줄 번호가 등재된 독자 산술 그림자 `.lean` 증명 및 `verify_*.py` 실행 스크립트 원본은 비공개 검증 금고에서 별도 관리됩니다.
 
 ```text
 ultari-proof-anatomy/

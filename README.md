@@ -2,9 +2,9 @@
 
 > **Language**: **English** | [**한국어 (`README.ko.md`)**](./README.ko.md)
 
-[![Lean 4](https://img.shields.io/badge/Lean_4-v4.35.0_Verified-blue)](#one-command-repository-verification)
-[![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#one-command-repository-verification)
-[![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#one-command-repository-verification)
+[![Lean 4](https://img.shields.io/badge/Lean_4-v4.29.0_Verified-blue)](#verification-ledger--reproducibility-manifestjson--04_md)
+[![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#verification-ledger--reproducibility-manifestjson--04_md)
+[![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#verification-ledger--reproducibility-manifestjson--04_md)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
 
 In Korean, **울타리 (*Ultari*)** means a **protective boundary or enclosure**.
@@ -44,7 +44,9 @@ In Korean, **울타리 (*Ultari*)** means a **protective boundary or enclosure**
 
 ## Repository Architecture
 
-Each case under [`anatomy/`](./anatomy/) provides a [`manifest.json`](./anatomy/001-openai-003-qrh/manifest.json) (recording the exact theorem ledger, line numbers, verified fractions, and SHA-256 artifact checksums), deterministic verification outputs (`proofs/symbolic_verification_result.json`), reference snapshots (`proofs/oai_ref/`), and bilingual (`en/` and `ko/`) 4-tier documentation guides:
+Each case under [`anatomy/`](./anatomy/) provides a [`manifest.json`](./anatomy/001-openai-003-qrh/manifest.json) (recording the exact theorem ledger, line numbers, verified fractions, and SHA-256 artifact checksums), deterministic verification outputs (`proofs/symbolic_verification_result.json`), reference snapshots (`proofs/oai_ref/`), and bilingual (`en/` and `ko/`) 4-tier documentation guides.
+
+> **Public Showcase Scope Note**: This public repository distributes the complete 4-tier bilingual audit reports (`*.md`), deterministic symbolic/numerical verification outputs (`proofs/symbolic_verification_result.json`), theorem & SHA-256 ledgers (`manifest.json`), and upstream reference snapshots (`proofs/oai_ref/`). The standalone cleared-denominator `.lean` shadow proof files and `verify_*.py` scripts indexed in `manifest.json` are maintained in the private verification vault.
 
 ```text
 ultari-proof-anatomy/
