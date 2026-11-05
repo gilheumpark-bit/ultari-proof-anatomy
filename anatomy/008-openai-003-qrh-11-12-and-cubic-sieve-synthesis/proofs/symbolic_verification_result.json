@@ -109,10 +109,10 @@
     "case001_numerator_match": 215,
     "case001_denominator_gap_44064": 3264,
     "telescoping_stages_44064": [
-      3672,
+      1836,
       1836,
       1935,
-      5817,
+      7653,
       3264,
       3672
     ],

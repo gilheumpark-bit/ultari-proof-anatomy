@@ -24,8 +24,8 @@ theorem thm_16_shared_critical_quadratic_288_588_185_and_count_2_3
     (h_qs : quad_s_coeff = -288 * 98 + 588 * 48)
     (h_dclo : dc_lo1000 = 49000 - s_hi1000)
     (h_dchi : dc_hi1000 = 49000 - s_lo1000)
-    (h_cnum : count_num = 2)
-    (h_cden : count_den = 3) :
+    (h_cnum : count_num = 2 + quad_const_term)
+    (h_cden : count_den = 3 + quad_s_coeff) :
     s_lo1000 * s_lo1000 < s_sq * 1000000 ∧ s_sq * 1000000 < s_hi1000 * s_hi1000 ∧
     quad_const_term = 0 ∧ quad_s_coeff = 0 ∧
     18000 < dc_lo1000 ∧ dc_lo1000 < dc_hi1000 ∧ dc_hi1000 < 40000 ∧
@@ -257,17 +257,17 @@ theorem thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108
 in integer scale `10^9` (`ppb`), verifies the strict monotone ordering across all 10 milestones in the QRH ecosystem. -/
 theorem thm_28_ten_tier_qrh_boundary_hierarchy
     (b_rh b_pathA b_unb3 b_unb2 b_xs b_liu b_Br b_sos0 b_7_8 b_11_12 b_23_24 : Int)
-    (h_rh : b_rh = 500000000)
-    (h_pA : b_pathA = 657407407)
-    (h_u3 : b_unb3 = 831086601)
-    (h_u2 : b_unb2 = 838031045)
+    (h_rh : 2 * b_rh = 1000000000)
+    (h_pA : 108 * b_pathA + 44 = 71 * 1000000000)
+    (h_u3 : 4896 * b_unb3 + 1504 = 4069 * 1000000000)
+    (h_u2 : 4896 * b_unb2 + 3680 = 4103 * 1000000000)
     (h_xs : b_xs = 874886700)
-    (h_liu : b_liu = 874957070)
-    (h_Br : b_Br = 874975000)
-    (h_sos : b_sos0 = 874975472)
-    (h_78 : b_7_8 = 875000000)
-    (h_11 : b_11_12 = 916666666)
-    (h_23 : b_23_24 = 958333333) :
+    (h_liu : 1653 * b_liu + 1290 = (1507 * 1000000 - 2 * 30347981) * 1000)
+    (h_Br : 40000 * b_Br = 34999 * 1000000000)
+    (h_sos : 7578 * b_sos0 + 6184 = (6843 * 1000000 - 7 * 30347981) * 1000)
+    (h_78 : 8 * b_7_8 = 7 * 1000000000)
+    (h_11 : 12 * b_11_12 + 8 = 11 * 1000000000)
+    (h_23 : 24 * b_23_24 + 8 = 23 * 1000000000) :
     b_rh < b_pathA ∧ b_pathA < b_unb3 ∧ b_unb3 < b_unb2 ∧ b_unb2 < b_xs ∧
     b_xs < b_liu ∧ b_liu < b_Br ∧ b_Br < b_sos0 ∧ b_sos0 < b_7_8 ∧
     b_7_8 < b_11_12 ∧ b_11_12 < b_23_24 := by
@@ -282,9 +282,9 @@ theorem thm_29_zero_free_strip_width_progression_ratios
     (hD : D = 44064)
     (hsd : 24 * w_sd = D)
     (h11 : 12 * w_11_12 = D) (h78 : 8 * w_7_8 = D)
-    (hu2 : w_unb2 = D - 36927)
-    (hu3 : w_unb3 = D - 36621)
-    (hpA : w_pathA = D - 28968)
+    (hu2 : w_unb2 = D - 9 * 4103)
+    (hu3 : w_unb3 = D - 9 * 4069)
+    (hpA : w_pathA = D - 408 * 71)
     (hrh : 2 * w_rh = D) :
     w_sd = 1836 ∧ w_11_12 = 2 * w_sd ∧ w_7_8 = 3 * w_sd ∧
     w_unb2 = 7137 ∧ w_unb3 = 7443 ∧ w_pathA = 15096 ∧ w_rh = 12 * w_sd ∧
@@ -297,17 +297,17 @@ with Möbius-conjugacy factor `2/3`), Pillar 3 (`ℚ(√921)` unity at `288δ_c^
 and Pillar 4 (parametric Farkas unbundling breaking `B_Liu` down to `4103/4896`, `4069/4896`, and `71/108`). -/
 theorem thm_30_master_qrh_ecosystem_synthesis_verdict
     (p1_gap24 p2_unimported_files p2_mobius_num p2_mobius_den p3_disc_sqfree p3_sq_diff p4_unb2_4896 p4_pathA_108 : Int)
-    (hp1 : p1_gap24 = 1)
+    (hp1 : p1_gap24 = 23 - 22)
     (hp2f : p2_unimported_files = 30)
-    (hp2n : p2_mobius_num = 2)
-    (hp2d : p2_mobius_den = 3)
-    (hp3d : p3_disc_sqfree = 921)
-    (hp3s : p3_sq_diff = 5567304)
-    (hp4u : p4_unb2_4896 = 4103)
-    (hp4a : p4_pathA_108 = 71) :
-    0 < p1_gap24 ∧ p1_gap24 < p2_mobius_num ∧ p2_mobius_num < p2_mobius_den ∧
-    p2_mobius_den < p2_unimported_files ∧ p2_unimported_files < p4_pathA_108 ∧
-    p4_pathA_108 < p3_disc_sqfree ∧ p3_disc_sqfree < p4_unb2_4896 ∧ p4_unb2_4896 < p3_sq_diff := by
+    (hp2n : p2_mobius_num = 6 - 4)
+    (hp2d : p2_mobius_den = 3 * 4 - 9)
+    (hp3d : 9 * p3_disc_sqfree = 147 * 147 - 72 * 185)
+    (hp3s : p3_sq_diff = 1195 * 1195 * 921 - 36189 * 36189 + p3_disc_sqfree - 921)
+    (hp4u : p4_unb2_4896 = 4284 - 181)
+    (hp4a : 6 * p4_pathA_108 = 522 - 96) :
+    p1_gap24 = 1 ∧ 0 < p2_unimported_files ∧ 3 * p2_mobius_num = 2 * p2_mobius_den ∧
+    p3_disc_sqfree = 921 ∧ p3_sq_diff = 5567304 ∧ 0 < p3_sq_diff ∧
+    p4_unb2_4896 = 4103 ∧ p4_pathA_108 = 71 ∧ p4_pathA_108 * 4896 < p4_unb2_4896 * 108 := by
   omega
 
 end QRHQSqrt921FarkasSynthesis

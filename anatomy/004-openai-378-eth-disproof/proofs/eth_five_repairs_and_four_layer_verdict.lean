@@ -103,9 +103,9 @@ theorem layer3_asymptotic_layout_guard_fails_at_log2_L_24
     (hL : L = 16777216)
     (hw : w = 24 + 1)
     (hsqrtL : sqrt_L = 4096)
-    (hs : s = sqrt_L / (w * w))
+    (hs : w * w * s + 346 = sqrt_L)
     (hden : layoutDen = 64 * (2 + 1))
-    (hQ : Q = L / layoutDen)
+    (hQ : layoutDen * Q + 64 = L)
     (hE : E = 56 + 1)
     (hrad : radicand = 128 * Q * E)
     (hsqrt_val : sqrt_rad = 25249)
@@ -114,8 +114,8 @@ theorem layer3_asymptotic_layout_guard_fails_at_log2_L_24
     s = 6 ∧ Q = 87381 ∧ R = 25253 ∧
     sqrt_rad * sqrt_rad ≤ radicand ∧ radicand < (sqrt_rad + 1) * (sqrt_rad + 1) ∧
     4 * R = 101012 ∧ deficit = 13631 ∧ Q < 4 * R := by
-  subst hL hw hsqrtL hs hden hQ hE hrad hsqrt_val hR hdef
-  decide
+  subst hL hw hsqrtL hden hE hrad hsqrt_val hR hdef
+  omega
 
 /-- [Theorem 38] First activation of `LeafParametersProgram.Guard` (`4 * R ≤ Q`) at `log2 L(n) = 25` (`L = 33,554,432, b = 1`)
 (`AsymptoticSchedule.lean:19-22`, `AsymptoticLayoutParameters.lean:15-20`, `LeafParametersProgram.lean:98-105`).
@@ -127,9 +127,9 @@ theorem layer3_asymptotic_layout_guard_passes_at_log2_L_25
     (hL : L = 33554432)
     (hw : w = 25 + 1)
     (hsqrtL : sqrt_L = 5792)
-    (hs : s = sqrt_L / (w * w))
+    (hs : w * w * s + 384 = sqrt_L)
     (hden : layoutDen = 64 * (3 + 1))
-    (hQ : Q = L / layoutDen)
+    (hQ : layoutDen * Q = L)
     (hE : E = 59 + 1)
     (hrad : radicand = 128 * Q * E)
     (hsqrt_val : sqrt_rad = 31727)
@@ -138,8 +138,8 @@ theorem layer3_asymptotic_layout_guard_passes_at_log2_L_25
     s = 8 ∧ Q = 131072 ∧ R = 31731 ∧
     sqrt_rad * sqrt_rad ≤ radicand ∧ radicand < (sqrt_rad + 1) * (sqrt_rad + 1) ∧
     4 * R = 126924 ∧ slack = 4148 ∧ 4 * R ≤ Q := by
-  subst hL hw hsqrtL hs hden hQ hE hrad hsqrt_val hR hslack
-  decide
+  subst hL hw hsqrtL hden hE hrad hsqrt_val hR hslack
+  omega
 
 /-- [Theorem 39] Explicit leaf cost-assembly exponent constant `exponentConstant(3, 1) = 12,032,411,847`
 (`SqrtLog/CostAssemblyFinal.lean:53-54`).
@@ -279,13 +279,13 @@ theorem layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression
     (L_25 L_20 Q_20 E_20 rad_20 R_20 slack_20 L_15 Q_15 E_15 rad_15 R_15 slack_15 : Int)
     (hL25 : L_25 = 33554432)
     (hL20 : L_20 = 1048576)
-    (hQ20 : Q_20 = L_20 / 32)
+    (hQ20 : 32 * Q_20 = L_20)
     (hE20 : E_20 = 49)
     (hrad20 : rad_20 = 32 * Q_20 * E_20)
     (hR20 : R_20 = 7168 + 4)
     (hsl20 : slack_20 = Q_20 - 4 * R_20)
     (hL15 : L_15 = 32768)
-    (hQ15 : Q_15 = L_15 / 32)
+    (hQ15 : 32 * Q_15 = L_15)
     (hE15 : E_15 = 28)
     (hrad15 : rad_15 = 2 * Q_15 * E_15)
     (hR15 : R_15 = 239 + 4)
@@ -293,8 +293,8 @@ theorem layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression
     7168 * 7168 = rad_20 ∧ slack_20 = 4080 ∧ 4 * R_20 < Q_20 ∧
     239 * 239 ≤ rad_15 ∧ rad_15 < 240 * 240 ∧ slack_15 = 52 ∧ 4 * R_15 < Q_15 ∧
     L_25 = 32 * L_20 ∧ L_25 = 1024 * L_15 := by
-  subst hL25 hL20 hQ20 hE20 hrad20 hR20 hsl20 hL15 hQ15 hE15 hrad15 hR15 hsl15
-  decide
+  subst hL25 hL20 hE20 hrad20 hR20 hsl20 hL15 hE15 hrad15 hR15 hsl15
+  omega
 
 /-- [Theorem 45] Discarded `IdempotentTernary.lean` Hensel error factorization and `171,835x` exponent constant compression
 (`SqrtLog/IdempotentTernary.lean:15-67`, `SqrtLog/CostAssemblyFinal.lean:53-54`).
@@ -404,12 +404,12 @@ wrap-around across all 4 benchmark regimes: `sat_n12 = 2360` (`unsat_n12 = 1736`
 and `sat_n6_unique = 1`, while the unpatched `HighQueryProgram.reject` branch incurs error `2360`. -/
 theorem layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate
     (M_8 assign_n12 sat_n12 unsat_n12 M_5 assign_n6 sat_n6_multi sat_n6_unsat sat_n6_unique : Int)
-    (hM8 : M_8 = 6561)
-    (ha12 : assign_n12 = 4096)
+    (hM8 : M_8 = 3 ^ 8)
+    (ha12 : assign_n12 = 2 ^ 12)
     (hs12 : sat_n12 = 2360)
     (hu12 : unsat_n12 = assign_n12 - sat_n12)
-    (hM5 : M_5 = 243)
-    (ha6 : assign_n6 = 64)
+    (hM5 : M_5 = 3 ^ 5)
+    (ha6 : assign_n6 = 2 ^ 6)
     (hs6m : sat_n6_multi = 7)
     (hs6u : sat_n6_unsat = 0)
     (hs6q : sat_n6_unique = 1) :

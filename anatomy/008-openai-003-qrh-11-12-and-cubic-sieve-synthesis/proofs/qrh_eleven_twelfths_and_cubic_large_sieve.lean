@@ -140,16 +140,16 @@ where `ZeroFreeRegion.lean` instead formalizes `Re(s) > 23/24` (`gap = 23/24 - 1
 theorem thm_08_part_one_paper_tex_table_vs_shortdraft_gap
     (m1_150k m2_150k m3_150k m4_150k min_m150k gap_sd_11_12_150k ratio_gap_to_min : Int)
     (hm1 : m1_150k = 1021 * 6)
-    (hm2 : m2_150k = 150000 / 40)
-    (hm3 : m3_150k = 150000 / 1200)
+    (hm2 : 40 * m2_150k = 150000)
+    (hm3 : 1200 * m3_150k = 150000)
     (hm4 : m4_150k = 43 * 500)
     (hmin : min_m150k = m3_150k)
-    (hgap : gap_sd_11_12_150k = 150000 / 24)
+    (hgap : 24 * gap_sd_11_12_150k = 150000)
     (hratio : ratio_gap_to_min * min_m150k = gap_sd_11_12_150k) :
     m1_150k = 6126 ∧ m2_150k = 3750 ∧ m3_150k = 125 ∧ m4_150k = 21500 ∧
     min_m150k < m2_150k ∧ m2_150k < m1_150k ∧ m1_150k < m4_150k ∧
     gap_sd_11_12_150k = 6250 ∧ ratio_gap_to_min = 50 := by
-  subst hm3; subst hmin
+  have hm3_val : m3_150k = 125 := (by omega); rw [hm3_val] at hmin; subst hmin
   omega
 
 /-!
@@ -294,12 +294,12 @@ theorem thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap
     (hb : b1440 = 180)
     (hell : ell1440 = 240)
     (hy : y1440 = 690)
-    (h_gate : gram_gate1440 = y1440 - ell1440 - 11 * b1440 / 6)
-    (h_d2 : dgram_2term1440 = 48)
-    (h_df : dgram_full1440 = 256) :
-    0 ≤ external_imports ∧ external_imports < cubic_gauss_files ∧ cubic_gauss_files < dgram_2term1440 ∧
-    gram_gate1440 = 120 ∧ dgram_2term1440 < gram_gate1440 ∧
-    gram_gate1440 < dgram_full1440 ∧ dgram_full1440 < cubic_gauss_lines := by
+    (h_gate : 6 * gram_gate1440 = 6 * y1440 - 6 * ell1440 - 11 * b1440)
+    (h_d2 : dgram_2term1440 = ell1440 - 192)
+    (h_df : dgram_full1440 = y1440 - 434) :
+    external_imports < cubic_gauss_files ∧ cubic_gauss_files < cubic_gauss_lines ∧
+    gram_gate1440 = 120 ∧ 0 < dgram_2term1440 ∧ dgram_2term1440 < gram_gate1440 ∧
+    gram_gate1440 < dgram_full1440 ∧ dgram_full1440 = 256 := by
   omega
 
 end QRHElevenTwelfthsAndCubicSieve

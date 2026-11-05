@@ -283,13 +283,13 @@ theorem walsh_hadamard_decoupling_diagonal_ext2_no_go
     (h_ext0 : ext0_cross = 0) (h_ext1_E2 : ext1_E2_cross = 0)
     (h_kunneth : ext1_cross = ext0_cross + ext1_E2_cross)
     (h_N : dim_N = 18) (h_pic2 : n_nontrivial = 15)
-    (h_chan : ext2_channel = 512 * 511 / 2)
+    (h_chan : 2 * ext2_channel = 512 * 511)
     (h_diag : 16 * ext2_channel ≤ ext2_16)
-    (h_bound : D_bound = 3 + 1024 * 1023 / 2) :
+    (h_bound : 2 * (D_bound - 3) = 1024 * 1023) :
     ext1_cross = 0 ∧ dim_N - n_nontrivial = 3 ∧
     D_bound = 523779 ∧ 2093056 ≤ ext2_16 ∧ D_bound + 1569277 ≤ ext2_16 := by
-  have hc : ext2_channel = 130816 := by rw [h_chan]; rfl
-  have hb : D_bound = 523779 := by rw [h_bound]; rfl
+  have hc : ext2_channel = 130816 := by omega
+  have hb : D_bound = 523779 := by omega
   rw [hc] at h_diag
   omega
 
@@ -308,16 +308,16 @@ theorem ample_koszul_4_term_diagonal_and_section_overflow
     (h_single : g * g - g ≤ 2 * ext2_single)
     (h_koszul : m_diag * ext2_single ≤ ext2_koszul)
     (h_bound : b2_bound = 2 * (g * g) - g + 3)
-    (h_g512 : ext2_g512 = 19 * (512 * 511 / 2))
-    (h_D512 : D_bound_512 = 3 + 1024 * 1023 / 2) :
+    (h_g512 : 2 * ext2_g512 = 19 * (512 * 511))
+    (h_D512 : 2 * (D_bound_512 - 3) = 1024 * 1023) :
     19 ≤ m_diag ∧ b2_bound < ext2_koszul ∧
     ext2_g512 = 2485504 ∧ D_bound_512 = 523779 ∧ D_bound_512 < ext2_g512 := by
   have hm : 19 ≤ m_diag := by rw [hr_min] at h_diag_mult; omega
   have hg2 : 4 * g ≤ g * g := Int.mul_le_mul_of_nonneg_right hg (by omega)
   have h_ext_pos : 0 ≤ ext2_single := by omega
   have h19 : 19 * ext2_single ≤ m_diag * ext2_single := Int.mul_le_mul_of_nonneg_right hm h_ext_pos
-  have hc512 : ext2_g512 = 2485504 := by rw [h_g512]; rfl
-  have hd512 : D_bound_512 = 523779 := by rw [h_D512]; rfl
+  have hc512 : ext2_g512 = 2485504 := by omega
+  have hd512 : D_bound_512 = 523779 := by omega
   exact ⟨hm, by omega, hc512, hd512, by omega⟩
 
 /-- [Theorem 23] Mukai semi-homogeneous bundle projective flatness barrier (`∀ g ≥ 4, ∀ r ≥ 1, ∀ M ≥ 21`).
@@ -331,8 +331,8 @@ theorem mukai_semihomogeneous_projective_flatness_barrier
     (h_single : g * g - g ≤ 2 * ext2_single)
     (h_total : M * (r * r) * ext2_single ≤ ext2_total)
     (h_bound : b2_bound = 2 * (g * g) - g + 3)
-    (h_g512 : ext2_g512 = 21 * (512 * 511 / 2))
-    (h_D512 : D_bound_512 = 3 + 1024 * 1023 / 2) :
+    (h_g512 : 2 * ext2_g512 = 21 * (512 * 511))
+    (h_D512 : 2 * (D_bound_512 - 3) = 1024 * 1023) :
     b2_bound < ext2_total ∧ ext2_g512 = 2747136 ∧ D_bound_512 = 523779 ∧ D_bound_512 < ext2_g512 := by
   have hg2 : 4 * g ≤ g * g := Int.mul_le_mul_of_nonneg_right hg (by omega)
   have hr2 : 1 ≤ r * r := by
@@ -344,8 +344,8 @@ theorem mukai_semihomogeneous_projective_flatness_barrier
   have h_ext_pos : 0 ≤ ext2_single := by omega
   have h21 : 21 * ext2_single ≤ M * (r * r) * ext2_single :=
     Int.mul_le_mul_of_nonneg_right hMr2 h_ext_pos
-  have hc512 : ext2_g512 = 2747136 := by rw [h_g512]; rfl
-  have hd512 : D_bound_512 = 523779 := by rw [h_D512]; rfl
+  have hc512 : ext2_g512 = 2747136 := by omega
+  have hd512 : D_bound_512 = 523779 := by omega
   exact ⟨by omega, hc512, hd512, by omega⟩
 
 /-- [Theorem 24] Markman secant sheaf Mukai lattice dimension gap (`SO(2, 5)` vs. `SO(2, 19)`).
@@ -383,8 +383,8 @@ theorem additivity_vs_hyperkahler_rigidity_circularity
     (h_bound : b2_bound = 2 * (g * g) - g + 3)
     (h_rigidity : rank_phi_pullback = 0)
     (h_target : target_tensor_rank = 21)
-    (h_stable_512 : ext2_stable_512 = (512 * 511 / 2) + 18 * 512 + 1)
-    (h_D512 : D_bound_512 = 3 + 1024 * 1023 / 2) :
+    (h_stable_512 : 2 * (ext2_stable_512 - 18 * 512 - 1) = 512 * 511)
+    (h_D512 : 2 * (D_bound_512 - 3) = 1024 * 1023) :
     ext2_stable < b2_bound ∧ b2_bound < ext2_ext ∧
     rank_phi_pullback < target_tensor_rank ∧
     ext2_stable_512 = 140033 ∧ D_bound_512 = 523779 ∧ ext2_stable_512 < D_bound_512 := by
@@ -395,8 +395,8 @@ theorem additivity_vs_hyperkahler_rigidity_circularity
   have hg13 : 13 * g ≤ g * g := Int.mul_le_mul_of_nonneg_right hg (by omega)
   have h_ext_pos : 0 ≤ ext2_single := by omega
   have h21 : 21 * ext2_single ≤ M * ext2_single := Int.mul_le_mul_of_nonneg_right hM h_ext_pos
-  have hs512 : ext2_stable_512 = 140033 := by rw [h_stable_512]; rfl
-  have hd512 : D_bound_512 = 523779 := by rw [h_D512]; rfl
+  have hs512 : ext2_stable_512 = 140033 := by omega
+  have hd512 : D_bound_512 = 523779 := by omega
   exact ⟨by omega, by omega, by omega, hs512, hd512, by omega⟩
 
 /-- [Theorem 26] Universal Mumford-index diagonal `Ext^2` overflow (`∀ g ≥ 5, ∀ M ≥ 5`).
@@ -411,8 +411,8 @@ theorem universal_mumford_diagonal_overflow_for_all_g_and_M
     (h_single : 2 * ext2_single = g * (g - 1))
     (h_total : M * ext2_single ≤ ext2_total)
     (h_bound : b2_bound = 2 * (g * g) - g + 3)
-    (h_5_512 : ext2_5_512 = 5 * (512 * 511 / 2))
-    (h_D512 : D_bound_512 = 3 + 1024 * 1023 / 2) :
+    (h_5_512 : 2 * ext2_5_512 = 5 * (512 * 511))
+    (h_D512 : 2 * (D_bound_512 - 3) = 1024 * 1023) :
     2 * b2_bound + 4 ≤ 2 * ext2_total ∧ b2_bound < ext2_total ∧
     ext2_5_512 = 654080 ∧ D_bound_512 = 523779 ∧ D_bound_512 < ext2_5_512 := by
   have h_expand_single : 2 * ext2_single = g * g - g := by
@@ -422,8 +422,8 @@ theorem universal_mumford_diagonal_overflow_for_all_g_and_M
   have hg5 : 5 * g ≤ g * g := Int.mul_le_mul_of_nonneg_right hg (by omega)
   have h_ext_pos : 0 ≤ ext2_single := by omega
   have h5 : 5 * ext2_single ≤ M * ext2_single := Int.mul_le_mul_of_nonneg_right hM h_ext_pos
-  have hc512 : ext2_5_512 = 654080 := by rw [h_5_512]; rfl
-  have hd512 : D_bound_512 = 523779 := by rw [h_D512]; rfl
+  have hc512 : ext2_5_512 = 654080 := by omega
+  have hd512 : D_bound_512 = 523779 := by omega
   exact ⟨by omega, by omega, hc512, hd512, by omega⟩
 
 /-- [Theorem 27] Universal `G_1` local branch degree-1 absence, Stokes point-vanishing, and

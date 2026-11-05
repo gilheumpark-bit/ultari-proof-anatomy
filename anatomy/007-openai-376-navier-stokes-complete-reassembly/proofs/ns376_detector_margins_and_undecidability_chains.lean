@@ -16,9 +16,9 @@ namespace NS376CompleteReassembly
     for L = 0 (q = 1/4), massBound(0) = 1 / 750,000,000,000 < 1 / 100,000,000,000. -/
 theorem thm_25_detector_mass_bound_l0_exact_ratio
     (denom_l0 denom_oai : Int)
-    (hl0 : denom_l0 = 750000000000)
+    (hl0 : 4 * denom_l0 = (4 - 1) * 1000000000000)
     (hoai : denom_oai = 100000000000) :
-    2 * denom_l0 = 15 * denom_oai ∧
+    denom_l0 = 750000000000 ∧ 2 * denom_l0 = 15 * denom_oai ∧
     denom_oai < denom_l0 := by
   omega
 
@@ -31,7 +31,7 @@ theorem thm_26_detector_mass_bound_l1_157x_tightening
     (q_inv one_minus_q_num denom_l1 denom_oai : Int)
     (hq : q_inv = 64)
     (hm : one_minus_q_num = q_inv - 1)
-    (hl1 : denom_l1 = one_minus_q_num * 1000000000000 / 4)
+    (hl1 : 4 * denom_l1 = one_minus_q_num * 1000000000000)
     (hoai : denom_oai = 100000000000) :
     denom_l1 = 15750000000000 ∧
     2 * denom_l1 = 315 * denom_oai ∧
@@ -53,7 +53,7 @@ theorem thm_27_detector_mass_bound_monotone_in_L
 theorem thm_28_detector_old_mass_margin_sharpened
     (num_old denom_l1 : Int)
     (hnum : num_old = 16)
-    (hden : denom_l1 = 15750000000000) :
+    (hden : 4 * denom_l1 = 63 * 1000000000000) :
     16 * num_old < denom_l1 ∧
     denom_l1 - 16 * num_old = 15749999999744 := by
   omega
@@ -79,9 +79,9 @@ theorem thm_29_diffusion_loss_exact_supremum_one_fiftieth
 theorem thm_30_detector_wait_margin_7560x_expansion
     (H H_oai denom_l1 : Int)
     (hH_oai : H_oai = 1000000000)
-    (hden : denom_l1 = 15750000000000)
-    (hH_max : H = 7559999999984) :
-    50 * (H + 16) + denom_l1 = 25 * denom_l1 ∧
+    (hden : 4 * denom_l1 = 63 * 1000000000000)
+    (hH_max : 50 * (H + 16) + denom_l1 = 25 * denom_l1) :
+    H = 7559999999984 ∧
     H + 16 = 7560 * H_oai ∧
     H > 7559 * H_oai := by
   omega
@@ -92,9 +92,9 @@ theorem thm_30_detector_wait_margin_7560x_expansion
 theorem thm_31_detector_wait_margin_with_oai_loss_term
     (H H_oai denom_l1 : Int)
     (hH_oai : H_oai = 1000000000)
-    (hden : denom_l1 = 15750000000000)
-    (hH : H = 6890624999984) :
-    16 * (H + 16) + denom_l1 = 8 * denom_l1 ∧
+    (hden : 4 * denom_l1 = 63 * 1000000000000)
+    (hH : 16 * (H + 16) + denom_l1 = 8 * denom_l1) :
+    H = 6890624999984 ∧
     H > 6890 * H_oai := by
   omega
 

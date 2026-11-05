@@ -40,9 +40,9 @@ zero-mode `9/96`, cubic Gauss mode `10/96`, and bundled `18/96 = 3/16` (`+8/96 =
 theorem thm_03_gram_three_mode_exponent_decomposition
     (aX96 aY96 ell96 exp_zero96 exp_gauss96 exp_bundled96 loss_L96 : Int)
     (hX : aX96 = 34) (hY : aY96 = 46) (hL : ell96 = 16)
-    (h_zero : exp_zero96 = (aX96 - ell96) / 2)
-    (h_gauss : 6 * exp_gauss96 = 5 * (aX96 / 2) + (aY96 / 2) - 3 * ell96)
-    (h_bund : 6 * exp_bundled96 = 5 * (aX96 / 2) + (aY96 / 2))
+    (h_zero : 2 * exp_zero96 = aX96 - ell96)
+    (h_gauss : 12 * exp_gauss96 = 5 * aX96 + aY96 - 6 * ell96)
+    (h_bund : 12 * exp_bundled96 = 5 * aX96 + aY96)
     (h_loss : loss_L96 = exp_bundled96 - exp_gauss96) :
     exp_zero96 = 9 ∧ exp_gauss96 = 10 ∧ exp_bundled96 = 18 ∧
     loss_L96 = 8 ∧ exp_zero96 < exp_gauss96 := by
@@ -258,7 +258,7 @@ theorem thm_21_siegel_zero_magic_constants_86713344_and_18818
     (p97 sq97 inv_c1 C1 N0 ratio_num H_magic target_inv_slope : Int)
     (hp : p97 = 97) (hsq : sq97 = p97 * p97) (hc1 : inv_c1 = 4 * sq97)
     (hC1 : C1 = 192) (hN0 : N0 = 2 * sq97) (hrat : ratio_num = C1 * inv_c1)
-    (hH : H_magic = 12 * ratio_num) (h_slope : target_inv_slope = H_magic / ratio_num) :
+    (hH : H_magic = 12 * ratio_num) (h_slope : ratio_num * target_inv_slope = H_magic) :
     sq97 = 9409 ∧ inv_c1 = 37636 ∧ N0 = 18818 ∧
     ratio_num = 7226112 ∧ H_magic = 86713344 ∧ target_inv_slope = 12 := by
   subst hp; subst hsq; subst hc1; subst hC1; subst hN0; subst hrat; subst hH
@@ -387,8 +387,8 @@ theorem thm_29_stickelberger_coordR_factorization_breaks_two_thirds_wall
 /-- [Theorem 30] Stage 4 Master Transfer Theorem: Monotone reduction chain (`β_0 = 7/8`, `β_eq(0) = 131/150`, `β_floor = 4069/4896` to `β_RH = 1/2` in `1/146880`). -/
 theorem thm_30_master_transfer_theorem_unconditional_vs_conditional_boundary
     (b_oai b_floor b_3_4 b_069 b_euler_naive b_euler_quad b_floor_051 b_crit_050 floor_gain total_span : Int)
-    (h0 : b_oai = 128520) (h1 : b_floor = 30 * 4069) (h2 : b_3_4 = 110160) (h3 : b_069 = 101347)
-    (h4 : b_euler_naive = 97920) (h5 : b_euler_quad = 85680) (h6 : b_floor_051 = 74908) (h7 : b_crit_050 = 73440)
+    (h0 : 8 * b_oai = 7 * 146880) (h1 : b_floor = 30 * 4069) (h2 : 4 * b_3_4 = 3 * 146880) (h3 : b_069 = 101347)
+    (h4 : 3 * b_euler_naive = 2 * 146880) (h5 : 12 * b_euler_quad = 7 * 146880) (h6 : b_floor_051 = 74908) (h7 : 2 * b_crit_050 = 146880)
     (h_ug : floor_gain = b_oai - b_floor) (h_sp : total_span = b_oai - b_crit_050) :
     b_floor = 122070 ∧ floor_gain = 6450 ∧ total_span = 55080 ∧
     b_crit_050 < b_floor_051 ∧ b_floor_051 < b_euler_quad ∧ b_euler_quad < b_euler_naive ∧
@@ -444,7 +444,7 @@ theorem thm_33_global_sos_saddle_and_critical_line_half_cutoff_theorem
 theorem thm_34_path_a_and_b_individual_dead_ends
     (E_base96 E_weil96 E_low96 beta_stat96 E_prin_half96 aX_weil216 beta_weil216 aX_zero216 aY_zero216 dgram_max216 beta_minA216 z_slope432 : Int)
     (hb96 : E_base96 = 17) (hw96 : E_weil96 = 1) (hlow96 : E_low96 = E_base96 + E_weil96) (hbs96 : beta_stat96 = 84 - E_low96)
-    (hep96 : E_prin_half96 = 48 - beta_stat96) (hax_w : 9 * aX_weil216 = 648) (hbw : beta_weil216 = 174 + aX_weil216 / 6)
+    (hep96 : E_prin_half96 = 48 - beta_stat96) (hax_w : 9 * aX_weil216 = 648) (hbw : 6 * beta_weil216 = 6 * 174 + aX_weil216)
     (h_eh0 : 3 * aX_zero216 = 288) (h_ay0 : aY_zero216 = 2 * aX_zero216 - 36) (hdg_m : 12 * dgram_max216 = 5 * aX_zero216 + aY_zero216)
     (hb_mA : 3 * beta_minA216 = 522 - aX_zero216) (hz_sl : z_slope432 = 153 - 2 * aX_zero216) :
     E_low96 = 18 ∧ beta_stat96 = 66 ∧ E_prin_half96 = -18 ∧ E_prin_half96 < 0 ∧ aX_weil216 = 72 ∧ beta_weil216 = 186 ∧
@@ -466,7 +466,7 @@ theorem thm_36_analytic_dual_contour_and_stickelberger_height_moments
     (htk1 : tail_k1_132 = 2 * 70 - 118 - 22) (htk2 : tail_k2_132 = 3 * 70 - 118 - 44) (hepr : 3 * E_prin132 = 198 - (319 - 70))
     (hedmp : E_low_dmp132 = 39 - 59) (hmrg : margin_dual132 = E_prin132 - E_low_dmp132) (hdv : e_DV100 = 50 + 99) (hdw : e_DW100 = 50 + 95)
     (hvw : e_VW100 = 99 + 95) (hkv : e_KV100 = 50 + 95 + 99 - 100) (hsr : sig_R100 = 300 + 99 - 400) (hmu : mu_st100 = 100 - 2 * sig_R100)
-    (hn3 : N3_new = 2 + 3 + 3 + 3) (hn2 : N2_new = 2 + 3 + 3) (hez : Ez_rel6600 = 84 * (99 - 100) / 12) :
+    (hn3 : N3_new = 2 + 3 + 3 + 3) (hn2 : N2_new = 2 + 3 + 3) (hez : 12 * Ez_rel6600 = 84 * (99 - 100)) :
     tail_k1_132 = 0 ∧ tail_k2_132 = 48 ∧ E_prin132 = -17 ∧ E_low_dmp132 = -20 ∧ margin_dual132 = 3 ∧ E_low_dmp132 < E_prin132 ∧
     e_DV100 = 149 ∧ e_DW100 = 145 ∧ e_VW100 = 194 ∧ e_KV100 = 144 ∧ 100 < e_KV100 ∧
     sig_R100 = -1 ∧ mu_st100 = 102 ∧ mu_st100 ≤ 300 ∧ N3_new = 11 ∧ N2_new = 8 ∧ Ez_rel6600 = -7 ∧ Ez_rel6600 < 0 := by omega

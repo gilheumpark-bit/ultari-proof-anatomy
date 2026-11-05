@@ -12,18 +12,18 @@
     "README.md": "0f1e4235ab23659d97f0df16ada1d6c092de6f8e0bf4eabccca869b326fe3a00",
     "README.ko.md": "154fb46d329d07abac2e019c4588530befffce739170fb6c7b5fa6b8f0c973fe",
     "proofs/ns376_unimported_solenoidal_and_leray_bounds.lean": "9f2a806ed1ed1c9be40fc63aeb33ae8ab260d8f1b8c670b46c1bb2f8a0cf12a2",
-    "proofs/ns376_detector_margins_and_undecidability_chains.lean": "1f485065d9c3e7a07e7bae44ea67c3fbf90e03369964a73a91b7a0d70b35ab58",
+    "proofs/ns376_detector_margins_and_undecidability_chains.lean": "16f2d152cdc00bc02fb3657306835402a9b4eccaeaaaab43e0212e4caff47d56",
     "proofs/verify_symbolic_ns376_complete.py": "72bd8fee3fa642be7c745e3f22eb2a8c1291de4ce90b2e3a6744c8195b190c14",
     "proofs/symbolic_verification_result.json": "81b3f5f849ee2d4025d4e7aa929ed1ca7b1f892388203d3f1e2ae43811d0d4e9",
     "proofs/problem_spec.md": "3e3967391bfe71142d73f17763f71f61effe2e9c74c56cb69af280fca362411a",
     "ko/01_고등학생_직관가이드.md": "0f5d6cc10a78712111bda891b04d1458352f843ee8ca32cbf082ef2d4c821870",
     "ko/02_대학생_수리해부.md": "100dc6bf8cc940747d241985624ab16403b2d230fb351a75da2974ac27762b93",
     "ko/03_전문가_비평및재구성.md": "a35deeec90dbb987327e0fd4f9ef7ab35999d6d0f72785d3bb7621c221d9a6c0",
-    "ko/04_컴퓨터공학_실증검증.md": "2b9f2b4038911ca641733ca7f9be4e44e900e93660a1ab8a5c83c28756a6e38c",
+    "ko/04_컴퓨터공학_실증검증.md": "98951f3b42f176d410a80bb1a4237c9b85dc30762eeb117ae67970da8eb2888c",
     "en/01_high_school_intuition_guide.md": "cc48bb1cd6b355d065ac70c66d6d8382b22246cb36d73810b10c6af0d445de06",
     "en/02_undergraduate_mathematical_anatomy.md": "d6bd37170bcf09f1d7b41cd1754832a29e1a141441bbd88ee2051a507ed37557",
     "en/03_expert_critique_and_reconstruction.md": "fec273f6f0b23810fec00a722f670eed28e5b569cc614aa3c6ef36a35ca23511",
-    "en/04_cs_empirical_verification.md": "63fa20def303c9c21970ba6073e71dd53968f97bc40e3f6c9173e73302d07930"
+    "en/04_cs_empirical_verification.md": "57e753ab8e1a6bd089f1bcea74fcd652b8fd9fd8609647cbf5c1bccf8092ded8"
   },
   "verdict": {
     "stratum_partition_1004_oai_files": "PASS (286/354 challenge-reachable files + 696/628 ForcedComputation/Main.lean master-hub files + 19 Material/ files + 3 StationaryNS files = 1,004 files, 139,847 lines, 0 sorry, 0 custom axioms)",
@@ -391,5 +391,6 @@
         "line": 322
       }
     ]
-  }
+  },
+  "lean_version": "v4.29.0-rc8"
 }

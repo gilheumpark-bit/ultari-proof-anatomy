@@ -338,7 +338,8 @@
         "file": "proofs/qrh_continuation_and_rescaling.lean",
         "line": 289
       }
-    ]
+    ],
+    "compiler": "leanprover/lean4:v4.29.0-rc8"
   },
   "verification_summary": {
     "lean4_compiler": "Lean 4.29.0-rc8",
@@ -350,5 +351,6 @@
     "sorry_count": 0,
     "axiom_count": 0,
     "scope_and_limitations": "Proves 40 core theorems covering universal polynomial factor cancellation over Int (Theorems 28, 31), non-vanishing on all 21 small Eisenstein prime-power norms 4 <= Q < 112 (Theorem 29), second continuation barrier reduction to 97/600 < 1/6 and exact z0-invariance at d0 = 13/16 (Theorems 32-34), exact affine master equations for base exponents 3/16 and -11/16, the active LowSourceScales.lean vs. dead Parameters.lean split trade-off, and the rescaled target beta < 7/8 with zero-free zone width 29/100 (Theorems 35-40)."
-  }
+  },
+  "lean_version": "v4.29.0-rc8"
 }

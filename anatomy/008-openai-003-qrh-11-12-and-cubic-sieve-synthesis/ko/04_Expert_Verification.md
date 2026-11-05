@@ -25,11 +25,11 @@ python3 ../../tools/verify_all.py --root .
 
 | 산출물 파일 | SHA-256 체크섬 |
 | :--- | :--- |
-| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `86a4642903065c2982e6b75be8c0dd8b15f2e57a3fc9c14ff509cb1332c62d49` |
-| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `bc7e6c4b6e7b8a4ffe26c9db484bb9f286f2519c172f4dd5c9dba6f4618791f9` |
-| [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `1589c6a84d6755cd01c617e3acaa991b37a07d72b5b1b03f6246bfc538b93939` |
-| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `decadb3dd29b20c8aaecab75e93924b6daf97dd8d86a07f023e47f6c295061c6` |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `d3d5a2ef03f796c24578ea54b2bf6cdd8cf013df327499464d9a4977698e713e` |
+| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `24b00ab6c5793c88efed52f8094327e680e405a8d3f4305ba6b663c102107d26` |
+| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `e7d87e2f12e0a6887c10f42a2cb5c0a8801b0699225361fba7a07150d7a283e2` |
+| [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `0acdb6187a5b85ac44fb7060bdb34df245f19d7cf9b3f381b411474db46bea5f` |
+| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `3cc6e87a939119a7118e617b9e3fc96e76873c14ac699768f3b91196633d88a4` |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4` |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `56c00cfa270ccd1a6612c2684466b896039a58468d2e7c7d70b94c106f509fcd` |
 
 ---
@@ -84,5 +84,5 @@ python3 ../../tools/verify_all.py --root .
 - **정리 41**: [`thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L264-L277) : `Case 001` 가우스 분기 6/8 소멸(`1/6 → 1/12`)과 `Case 005` 극점 이동(`2/3 → 7/12 → 1/2`)의 일치.
 - **정리 42**: [`thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L292) : 공통분모 `44064`에서 `(71/108 - 7/12) * 44064 = 3264 = d_001` 일치 증명.
 - **정리 43**: [`thm_43_eleven_twelfths_to_seven_eighths_bridge`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L299-L308) : 1부 `11/12` (`14/24 + 8/24 = 11/12`)에서 2부 `7/8` (`14/24 + 7/24 = 7/8`)로의 전이.
-- **정리 44**: [`thm_44_six_stage_trilogy_telescoping_decomposition`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L316-L331) : 6단계 망원 합 `3672 + 1836 + 1935 + 5817 + 3264 + 3672 = 20196 = (23/24 - 1/2) * 44064`.
+- **정리 44**: [`thm_44_six_stage_trilogy_telescoping_decomposition`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L316-L331) : 6단계 망원 합 `1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = (23/24 - 1/2) * 44064`.
 - **정리 45**: [`thm_45_grand_trilogy_synthesis_verdict`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L338-L355) : `Case 001` + `Case 005` + `Case 008` 3부작 통합 마스터 정리.

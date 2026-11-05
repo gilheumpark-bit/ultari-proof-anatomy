@@ -80,13 +80,26 @@ def extract_balanced_hyps(src: str):
 
 
 def check_manifest_hashes(case_dir, manifest):
-    for rel, expected in manifest.get("artifacts_sha256", {}).items():
-        target = case_dir / rel
-        assert target.is_file(), f"Missing artifact: {target}"
-        actual = hashlib.sha256(target.read_bytes()).hexdigest()
-        assert actual == expected, f"SHA-256 mismatch for {rel}: {actual} != {expected}"
+    assert manifest.get("lean_version") == "v4.29.0-rc8", f"Missing/mismatched lean_version in {case_dir.name}/manifest.json"
+    assert manifest.get("lean4_verification", {}).get("compiler") == "leanprover/lean4:v4.29.0-rc8", (
+        f"Missing/mismatched lean4_verification.compiler in {case_dir.name}/manifest.json"
+    )
+    for key in ("artifacts_sha256", "file_checksums_sha256"):
+        for rel, expected in manifest.get(key, {}).items():
+            target = case_dir / rel
+            assert target.is_file(), f"Missing artifact: {target}"
+            actual = hashlib.sha256(target.read_bytes()).hexdigest()
+            assert actual == expected, f"SHA-256 mismatch for {rel}: {actual} != {expected}"
+    chk_file = case_dir / "proofs" / "checksums.sha256"
+    if chk_file.is_file():
+        r_chk = subprocess.run(["sha256sum", "-c", "proofs/checksums.sha256"], cwd=str(case_dir), capture_output=True, text=True, timeout=30)
+        assert r_chk.returncode == 0, f"sha256sum -c proofs/checksums.sha256 failed in {case_dir.name}:\n{r_chk.stderr}\n{r_chk.stdout}"
     for md in list(case_dir.glob("04_*.md")) + list((case_dir / "en").glob("04_*.md")) + list((case_dir / "ko").glob("04_*.md")):
-        for rel_p, sha_hex in re.findall(r"\((?:\.\./)?(proofs/[^)]+)\)\s*\|\s*`([0-9a-f]{64})`", md.read_text(encoding="utf-8")):
+        md_text = md.read_text(encoding="utf-8")
+        pairs = re.findall(r"\((?:\.\./)?(proofs/[^)]+)\)\s*\|\s*`([0-9a-f]{64})`", md_text)
+        pairs += re.findall(r"\|\s*`(proofs/[^`]+)`\s*\|\s*`([0-9a-f]{64})`", md_text)
+        assert len(pairs) >= 4, f"Missing or incomplete SHA-256 table in {md.relative_to(case_dir)} (found {len(pairs)} entries)"
+        for rel_p, sha_hex in pairs:
             act_sha = hashlib.sha256((case_dir / rel_p).read_bytes()).hexdigest()
             assert act_sha == sha_hex, f"Stale SHA-256 in {md.name} for {rel_p}: {sha_hex} != {act_sha}"
     print(f"  [PASS] SHA-256 checksums ({len(manifest.get('artifacts_sha256', {}))} artifacts + 04_*.md tables)")
@@ -106,8 +119,11 @@ def check_lean_and_mutations(lean_file):
     res = subprocess.run([LEAN_BIN, str(lean_file)], capture_output=True, text=True, timeout=60)
     assert res.returncode == 0, f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}"
     hyps = extract_balanced_hyps(src)
+    if "001-" not in str(lean_file):
+        for (_, _, _, _, names, hbody) in hyps:
+            assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
     tasks = [(src, s, e, och, cch, names, lean_file.name) for (s, e, och, cch, names, _) in hyps]
-    workers = min(8, os.cpu_count() or 4)
+    workers = os.cpu_count() or 8
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
         for bname, fname, rc in ex.map(_run_single_mutation, tasks):
             assert rc != 0, f"Vacuous hypothesis survived mutation: {bname} in {fname}"

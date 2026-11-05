@@ -278,6 +278,8 @@
         "file": "milne_weil_reduction_and_repairs.lean",
         "line": 317
       }
-    ]
-  }
+    ],
+    "compiler": "leanprover/lean4:v4.29.0-rc8"
+  },
+  "lean_version": "v4.29.0-rc8"
 }

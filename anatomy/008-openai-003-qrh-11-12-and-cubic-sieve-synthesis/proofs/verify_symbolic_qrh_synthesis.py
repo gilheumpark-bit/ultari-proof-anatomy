@@ -146,7 +146,7 @@ def verify_pillar5_trilogy_and_induction() -> dict:
     assert sp.Rational(215, 4896) == sp.Rational(2, 3) * sp.Rational(215, 3264)
     assert sp.Rational(4, 3) + sp.Rational(2, 3) == 2
     assert (sp.Rational(71, 108) - sp.Rational(7, 12)) * 44064 == 3264
-    stages_44064 = [3672, 1836, 1935, 5817, 3264, 3672]
+    stages_44064 = [1836, 1836, 1935, 7653, 3264, 3672]
     assert sum(stages_44064) == 20196
     assert sp.Rational(20196, 44064) == sp.Rational(23, 24) - sp.Rational(1, 2)
     return {

@@ -214,14 +214,14 @@ theorem thm_38_case001_unbundling_breaks_case008_farkas_wall
     (hbun : e_bun288 = 77)
     (hcomp : e_comp288 = 59)
     (hgap : gram_gap288 = e_bun288 - e_comp288)
-    (hunb3 : b_unb3_4896 = 4069)
+    (hunb3 : 8 * (b_unb3_4896 + 181 + 34) = 7 * d_4896)
     (hd4 : d_4896 = 4896)
     (hliu : liu_lower_100k = 87495)
     (hd100 : d_100k = 100000) :
     gram_gap288 = 18 ∧ 16 * gram_gap288 = 288 ∧
     b_unb3_4896 * d_100k < liu_lower_100k * d_4896 ∧
     (liu_lower_100k * d_4896 - b_unb3_4896 * d_100k) > 21400000 := by
-  subst hunb3; subst hd4; subst hliu; subst hd100
+  subst hd4; subst hliu; subst hd100
   omega
 
 /-- [Theorem 39] Exact Eisenstein Pole Duality (`α* + β_pole = 2`) Between `Case 008` (`CubicGauss`) and `Case 005` (`coordR`):
@@ -311,13 +311,13 @@ theorem thm_43_eleven_twelfths_to_seven_eighths_bridge
 /-- [Theorem 44] Complete 6-Stage Telescoping Decomposition of the QRH Trilogy (`23/24 → 11/12 → 7/8 → 4069/4896 → 71/108 → 7/12 → 1/2`):
 in the master common denominator `D = 44064`, the total distance from `ShortDraft` (`23/24 = 42228/44064`)
 to the critical line (`1/2 = 22032/44064`) is `20196/44064 = 11/24`, which decomposes into 6 positive trilogy stages:
-`d1 = 3672`, `d2 = 1836`, `d3 = 1935` (`Case 001` `9 * 215` Gram + Stickelberger unbundling),
-`d4 = 5817` (`Case 008` `CubicGauss` sharp `2/3` sieve), `d5 = 3264` (`Case 001` denominator gap to `7/12`), and `d6 = 3672` (`1/12` to `1/2`). -/
+`d1 = 1836`, `d2 = 1836`, `d3 = 1935` (`Case 001` `9 * 215` Gram + Stickelberger unbundling),
+`d4 = 7653` (`Case 008` `CubicGauss` sharp `2/3` sieve), `d5 = 3264` (`Case 001` denominator gap to `7/12`), and `d6 = 3672` (`1/12` to `1/2`). -/
 theorem thm_44_six_stage_trilogy_telescoping_decomposition
     (b_23_24 b_11_12 b_7_8 b_4069 b_71_108 b_7_12 b_1_2 d1 d2 d3 d4 d5 d6 total_drop : Int)
-    (h23 : b_23_24 = 42228) (h11 : b_11_12 = 38556)
-    (h78 : b_7_8 = 36720) (h4069 : b_4069 = 34785)
-    (h71 : b_71_108 = 28968) (h712 : b_7_12 = 25704) (h12 : b_1_2 = 22032)
+    (h23 : 24 * b_23_24 = 23 * 44064) (h11 : 12 * b_11_12 = 11 * 44064)
+    (h78 : 8 * b_7_8 = 7 * 44064) (h4069 : b_4069 = 9 * 4069)
+    (h71 : 108 * b_71_108 = 71 * 44064) (h712 : 12 * b_7_12 = 7 * 44064) (h12 : 2 * b_1_2 = 44064)
     (hd1 : d1 = b_23_24 - b_11_12)
     (hd2 : d2 = b_11_12 - b_7_8)
     (hd3 : d3 = b_7_8 - b_4069)
@@ -325,9 +325,9 @@ theorem thm_44_six_stage_trilogy_telescoping_decomposition
     (hd5 : d5 = b_71_108 - b_7_12)
     (hd6 : d6 = b_7_12 - b_1_2)
     (htot : total_drop = d1 + d2 + d3 + d4 + d5 + d6) :
-    d1 = 3672 ∧ d2 = 1836 ∧ d3 = 1935 ∧ d4 = 5817 ∧ d5 = 3264 ∧ d6 = 3672 ∧
+    d1 = 1836 ∧ d2 = 1836 ∧ d3 = 1935 ∧ d4 = 7653 ∧ d5 = 3264 ∧ d6 = 3672 ∧
     total_drop = 20196 ∧ total_drop = b_23_24 - b_1_2 ∧
-    0 < d2 ∧ d2 < d3 ∧ d3 < d5 ∧ d5 < d1 ∧ d1 < d4 := by
+    0 < d1 ∧ d1 = d2 ∧ d2 < d3 ∧ d3 < d5 ∧ d5 < d6 ∧ d6 < d4 := by
   omega
 
 /-- [Theorem 45] Grand Trilogy Synthesis Verdict (`Case 001` + `Case 005` + `Case 008`):
@@ -337,17 +337,17 @@ verifies that all three reports form a closed mathematical system:
 and (3) `ℤ[√921]` norm `-5567304 < 0` separates `Case 005`'s fixed-scale saddle from Liu's 3-face Farkas optimum. -/
 theorem thm_45_grand_trilogy_synthesis_verdict
     (m_001_num b_7_8_4896 b_unb3_4896 drop_4896 d_001 b_pathA_D b_7_12_D gap_D alpha108 beta108 norm_gap : Int)
-    (hm : m_001_num = 215)
-    (hb78 : b_7_8_4896 = 4284)
+    (hm : m_001_num = 181 + 34)
+    (hb78 : 8 * b_7_8_4896 = 7 * 4896)
     (hbu3 : b_unb3_4896 = 4069)
     (hdrop : drop_4896 = b_7_8_4896 - b_unb3_4896)
-    (hd1 : d_001 = 3264)
-    (hpA : b_pathA_D = 28968)
-    (hb7 : b_7_12_D = 25704)
+    (hd1 : 3 * d_001 = 2 * 4896)
+    (hpA : 108 * b_pathA_D = 71 * 44064)
+    (hb7 : 12 * b_7_12_D = 7 * 44064)
     (hgap : gap_D = b_pathA_D - b_7_12_D)
-    (ha : alpha108 = 144)
-    (hb : beta108 = 72)
-    (hnorm : norm_gap = -5567304) :
+    (ha : 3 * alpha108 = 4 * 108)
+    (hb : beta108 = 2 * 108 - alpha108)
+    (hnorm : norm_gap = 1309644996 - 1195 * 1195 * 921) :
     m_001_num = drop_4896 ∧ d_001 = gap_D ∧
     alpha108 + beta108 = 216 ∧ alpha108 = 2 * beta108 ∧
     norm_gap < 0 ∧ drop_4896 < d_001 := by

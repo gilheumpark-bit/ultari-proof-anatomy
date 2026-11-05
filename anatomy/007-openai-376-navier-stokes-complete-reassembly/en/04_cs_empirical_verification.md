@@ -83,3 +83,15 @@ lean proofs/ns376_detector_margins_and_undecidability_chains.lean
 python3 proofs/verify_symbolic_ns376_complete.py
 sha256sum -c proofs/checksums.sha256
 ```
+
+---
+
+## 3. Artifact SHA-256 Ledger
+
+| Relative Path | SHA-256 Checksum | Description |
+| :--- | :--- | :--- |
+| [`proofs/ns376_unimported_solenoidal_and_leray_bounds.lean`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean) | `9f2a806ed1ed1c9be40fc63aeb33ae8ab260d8f1b8c670b46c1bb2f8a0cf12a2` | Theorems 1–24 (`0 sorry`, `0 axiom`, `68/68` hypothesis mutations caught) |
+| [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](../proofs/ns376_detector_margins_and_undecidability_chains.lean) | `16f2d152cdc00bc02fb3657306835402a9b4eccaeaaaab43e0212e4caff47d56` | Theorems 25–48 (`0 sorry`, `0 axiom`, `66/66` hypothesis mutations caught) |
+| [`proofs/verify_symbolic_ns376_complete.py`](../proofs/verify_symbolic_ns376_complete.py) | `72bd8fee3fa642be7c745e3f22eb2a8c1291de4ce90b2e3a6744c8195b190c14` | Deterministic SymPy + NumPy solver for all 650 unimported modules |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `81b3f5f849ee2d4025d4e7aa929ed1ca7b1f892388203d3f1e2ae43811d0d4e9` | Deterministic JSON certificate |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `3e3967391bfe71142d73f17763f71f61effe2e9c74c56cb69af280fca362411a` | Mathematical and algorithmic problem specification |

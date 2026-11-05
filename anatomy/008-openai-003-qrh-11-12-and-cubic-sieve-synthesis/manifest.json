@@ -8,11 +8,11 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_qrh_synthesis.py"
   },
   "artifacts_sha256": {
-    "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean": "86a4642903065c2982e6b75be8c0dd8b15f2e57a3fc9c14ff509cb1332c62d49",
-    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "bc7e6c4b6e7b8a4ffe26c9db484bb9f286f2519c172f4dd5c9dba6f4618791f9",
-    "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "1589c6a84d6755cd01c617e3acaa991b37a07d72b5b1b03f6246bfc538b93939",
-    "proofs/verify_symbolic_qrh_synthesis.py": "decadb3dd29b20c8aaecab75e93924b6daf97dd8d86a07f023e47f6c295061c6",
-    "proofs/symbolic_verification_result.json": "d3d5a2ef03f796c24578ea54b2bf6cdd8cf013df327499464d9a4977698e713e",
+    "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean": "24b00ab6c5793c88efed52f8094327e680e405a8d3f4305ba6b663c102107d26",
+    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "e7d87e2f12e0a6887c10f42a2cb5c0a8801b0699225361fba7a07150d7a283e2",
+    "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "0acdb6187a5b85ac44fb7060bdb34df245f19d7cf9b3f381b411474db46bea5f",
+    "proofs/verify_symbolic_qrh_synthesis.py": "3cc6e87a939119a7118e617b9e3fc96e76873c14ac699768f3b91196633d88a4",
+    "proofs/symbolic_verification_result.json": "d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4",
     "proofs/problem_spec.md": "56c00cfa270ccd1a6612c2684466b896039a58468d2e7c7d70b94c106f509fcd"
   },
   "verified_key_results": {
@@ -92,51 +92,233 @@
     "hypothesis_mutations_tested": 344,
     "hypothesis_mutations_killed": 344,
     "theorems": [
-      {"name": "thm_01_shortdraft_fixed_reserve_and_23_24_exponent", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 19},
-      {"name": "thm_02_symbolic_sixth_power_cauchy_schwarz_exponent", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 38},
-      {"name": "thm_03_kontorovich_epsilon_split_exact_11_12", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 54},
-      {"name": "thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 70},
-      {"name": "thm_05_remainder_exponent_subdominance_and_crossover", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 90},
-      {"name": "thm_06_sixth_power_fiber_cauchy_constant_768", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 108},
-      {"name": "thm_07_totient_euler_correction_vs_prime_amplification_tradeoff", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 124},
-      {"name": "thm_08_part_one_paper_tex_table_vs_shortdraft_gap", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 140},
-      {"name": "thm_09_cubic_gauss_sieve_step_and_threshold_identities", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 165},
-      {"name": "thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 182},
-      {"name": "thm_11_mobius_conjugacy_exact_closed_form_solution", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 206},
-      {"name": "thm_12_nonlinear_vs_linearized_sieve_iterates_comparison", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 229},
-      {"name": "thm_13_short_four_thirds_and_reciprocity_symmetrization", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 252},
-      {"name": "thm_14_scalar_bounds_epsilon_and_mixed_exponents", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 270},
-      {"name": "thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 289},
-      {"name": "thm_16_shared_critical_quadratic_288_588_185_and_count_2_3", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 18},
-      {"name": "thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 41},
-      {"name": "thm_18_liu_three_face_equalization_in_Q_sqrt_921", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 59},
-      {"name": "thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 77},
-      {"name": "thm_20_liu_gram_gate_parameter_b_new_and_margins", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 95},
-      {"name": "thm_21_farkas_dual_weights_and_closure_obstruction", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 116},
-      {"name": "thm_22_signal_matching_identity_and_face_K_origin", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 137},
-      {"name": "thm_23_complete_square_uniqueness_at_dc_and_u_half", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 154},
-      {"name": "thm_24_parametric_unbundled_farkas_shift_theorem", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 179},
-      {"name": "thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 206},
-      {"name": "thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 224},
-      {"name": "thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 242},
-      {"name": "thm_28_ten_tier_qrh_boundary_hierarchy", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 258},
-      {"name": "thm_29_zero_free_strip_width_progression_ratios", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 280},
-      {"name": "thm_30_master_qrh_ecosystem_synthesis_verdict", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 298},
-      {"name": "thm_31_sieve_iter_mobius_invariants_by_induction", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 36},
-      {"name": "thm_32_sieve_iter_exact_closed_form_all_n", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 73},
-      {"name": "thm_33_sieve_iter_strictly_beats_openai_sieve_exponent_all_n", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 92},
-      {"name": "thm_34_zsqrt921_norm_and_critical_quadratic_root", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 130},
-      {"name": "thm_35_zsqrt921_liu_rationalization_and_case005_gap", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 144},
-      {"name": "thm_36_trilogy_denominator_bridge_3264_and_4896", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 167},
-      {"name": "thm_37_case001_margin_215_3264_drives_case005_4069_4896", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 185},
-      {"name": "thm_38_case001_unbundling_breaks_case008_farkas_wall", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 212},
-      {"name": "thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 232},
-      {"name": "thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 249},
-      {"name": "thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 264},
-      {"name": "thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 284},
-      {"name": "thm_43_eleven_twelfths_to_seven_eighths_bridge", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 299},
-      {"name": "thm_44_six_stage_trilogy_telescoping_decomposition", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 316},
-      {"name": "thm_45_grand_trilogy_synthesis_verdict", "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean", "line": 338}
-    ]
-  }
+      {
+        "name": "thm_01_shortdraft_fixed_reserve_and_23_24_exponent",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 19
+      },
+      {
+        "name": "thm_02_symbolic_sixth_power_cauchy_schwarz_exponent",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 38
+      },
+      {
+        "name": "thm_03_kontorovich_epsilon_split_exact_11_12",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 54
+      },
+      {
+        "name": "thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 70
+      },
+      {
+        "name": "thm_05_remainder_exponent_subdominance_and_crossover",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 90
+      },
+      {
+        "name": "thm_06_sixth_power_fiber_cauchy_constant_768",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 108
+      },
+      {
+        "name": "thm_07_totient_euler_correction_vs_prime_amplification_tradeoff",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 124
+      },
+      {
+        "name": "thm_08_part_one_paper_tex_table_vs_shortdraft_gap",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 140
+      },
+      {
+        "name": "thm_09_cubic_gauss_sieve_step_and_threshold_identities",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 165
+      },
+      {
+        "name": "thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 182
+      },
+      {
+        "name": "thm_11_mobius_conjugacy_exact_closed_form_solution",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 206
+      },
+      {
+        "name": "thm_12_nonlinear_vs_linearized_sieve_iterates_comparison",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 229
+      },
+      {
+        "name": "thm_13_short_four_thirds_and_reciprocity_symmetrization",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 252
+      },
+      {
+        "name": "thm_14_scalar_bounds_epsilon_and_mixed_exponents",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 270
+      },
+      {
+        "name": "thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap",
+        "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+        "line": 289
+      },
+      {
+        "name": "thm_16_shared_critical_quadratic_288_588_185_and_count_2_3",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 18
+      },
+      {
+        "name": "thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 41
+      },
+      {
+        "name": "thm_18_liu_three_face_equalization_in_Q_sqrt_921",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 59
+      },
+      {
+        "name": "thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 77
+      },
+      {
+        "name": "thm_20_liu_gram_gate_parameter_b_new_and_margins",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 95
+      },
+      {
+        "name": "thm_21_farkas_dual_weights_and_closure_obstruction",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 116
+      },
+      {
+        "name": "thm_22_signal_matching_identity_and_face_K_origin",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 137
+      },
+      {
+        "name": "thm_23_complete_square_uniqueness_at_dc_and_u_half",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 154
+      },
+      {
+        "name": "thm_24_parametric_unbundled_farkas_shift_theorem",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 179
+      },
+      {
+        "name": "thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 206
+      },
+      {
+        "name": "thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 224
+      },
+      {
+        "name": "thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 242
+      },
+      {
+        "name": "thm_28_ten_tier_qrh_boundary_hierarchy",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 258
+      },
+      {
+        "name": "thm_29_zero_free_strip_width_progression_ratios",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 280
+      },
+      {
+        "name": "thm_30_master_qrh_ecosystem_synthesis_verdict",
+        "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+        "line": 298
+      },
+      {
+        "name": "thm_31_sieve_iter_mobius_invariants_by_induction",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 36
+      },
+      {
+        "name": "thm_32_sieve_iter_exact_closed_form_all_n",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 73
+      },
+      {
+        "name": "thm_33_sieve_iter_strictly_beats_openai_sieve_exponent_all_n",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 92
+      },
+      {
+        "name": "thm_34_zsqrt921_norm_and_critical_quadratic_root",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 130
+      },
+      {
+        "name": "thm_35_zsqrt921_liu_rationalization_and_case005_gap",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 144
+      },
+      {
+        "name": "thm_36_trilogy_denominator_bridge_3264_and_4896",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 167
+      },
+      {
+        "name": "thm_37_case001_margin_215_3264_drives_case005_4069_4896",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 185
+      },
+      {
+        "name": "thm_38_case001_unbundling_breaks_case008_farkas_wall",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 212
+      },
+      {
+        "name": "thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 232
+      },
+      {
+        "name": "thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 249
+      },
+      {
+        "name": "thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 264
+      },
+      {
+        "name": "thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 284
+      },
+      {
+        "name": "thm_43_eleven_twelfths_to_seven_eighths_bridge",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 299
+      },
+      {
+        "name": "thm_44_six_stage_trilogy_telescoping_decomposition",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 316
+      },
+      {
+        "name": "thm_45_grand_trilogy_synthesis_verdict",
+        "file": "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+        "line": 338
+      }
+    ],
+    "compiler": "leanprover/lean4:v4.29.0-rc8"
+  },
+  "lean_version": "v4.29.0-rc8"
 }

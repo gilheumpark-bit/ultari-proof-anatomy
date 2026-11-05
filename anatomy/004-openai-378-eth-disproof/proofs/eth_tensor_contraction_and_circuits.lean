@@ -200,7 +200,7 @@ theorem appendix_d_recursive_depth_geometric_decay_ratio
     (h_eff_next : u_next * effort_sq_next = M_next_sq)
     (h_eff_curr : u_curr * effort_sq_curr = M_curr_sq)
     (h5 : five_sq = 5 * 5) (h6 : six_sq = 6 * 6)
-    (hratio : ratio_inv_sq = 64 / 2) :
+    (hratio : 2 * ratio_inv_sq = 64) :
     64 ≤ M_curr_sq ∧ ratio_inv_sq = 32 ∧ five_sq < ratio_inv_sq ∧ ratio_inv_sq < six_sq ∧
     effort_sq_curr = 32 * effort_sq_next := by
   have h_eq_u : (2 * u_next) * effort_sq_curr = (2 * u_next) * (32 * effort_sq_next) := by
