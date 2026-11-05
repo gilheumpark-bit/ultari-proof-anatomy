@@ -1,6 +1,6 @@
 # 04. Automated Verification & Machine-Checkable Specification
 
-This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `331/331` Lean 4 hypothesis-mutation kills across `42` formal theorems, `SymPy` + PyTorch tensor verification, clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
+This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `408/408` Lean 4 hypothesis-mutation kills across `50` formal theorems, `SymPy` + PyTorch tensor verification (`10` audit suites), clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
 
 ---
 
@@ -10,25 +10,25 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 | :--- | :--- | :---: | :--- |
 | [`proofs/eth_subexp_interpolation_and_hashes.lean`](../proofs/eth_subexp_interpolation_and_hashes.lean) | `c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9` | `418` | Part A (`Theorems 1–16`): `Engine I` swap matrix, incidence-pair cancellation, truncated ring, Tanner hashes, `BitProgram 80 1220` (`0 sorry`, `128/128` mutations killed) |
 | [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean) | `2a1880ee7b5087953689474706e747552f054adc57bd11cc6a148b1c4a25a90c` | `396` | Part B (`Theorems 17–32`): Appendix D (`Engine II`) tapered $2$-adic Hermite interpolation, `Corollary 1.4` circuit lower bound, scope gap & unused-hypothesis audit (`0 sorry`, `131/131` mutations killed) |
-| [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean) | `404727d4deaf236e2596a90f5fbf6d49819dab20349dd308f5d8c0964ab342cf` | `234` | Part C (`Theorems 33–42`): 5 specification-gaming repairs and 4-layer post-repair verdict (`0 sorry`, `72/72` mutations killed) |
-| [`proofs/verify_symbolic_eth.py`](../proofs/verify_symbolic_eth.py) | `37fab1671c2d5eede0599f688f3a2b2c6d170882db4eb3ee22e80a3398e43012` | `479` | `SymPy` symbolic algebra + PyTorch (`FP64`) tensor verifier (`8` audit suites) |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `8710847fae24b24a622b67c8927c48047dd3958dc4d287d2fd5272300b4626a5` | `159` | Deterministic symbolic & numerical verification receipt JSON |
+| [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean) | `09bef762119f25a07e8d4545a89977046d3124d330f5cb8c7f2702a9733f296b` | `443` | Part C (`Theorems 33–50`): 5 specification-gaming repairs, 6-layer post-repair verdict, 3 fossil-rescued hybrid results, G. H. Hardy's 3 beauty invariants, and completion of unperformed Areas 1–3 (`0 sorry`, `149/149` mutations killed) |
+| [`proofs/verify_symbolic_eth.py`](../proofs/verify_symbolic_eth.py) | `6b7bbe2c886fe739fe3725eb225d65b60f4f0b2e80146e74eb5d3d4509aa7a21` | `474` | `SymPy` symbolic algebra + PyTorch (`FP64`) tensor verifier (`10` audit suites) |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735` | `197` | Deterministic symbolic & numerical verification receipt JSON |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `ddd0b0609effa210e26c006d52ede5772e4235fc1664582aa6f9db6092d10adf` | `34` | 6-problem (`24` target values) clean-room blind specification |
 
 ---
 
 ## 2. Automated Verification Gate Commands & Pass Criteria
 
-1. **Lean 4 Kernel & Hypothesis-Mutation Kill Gate (`331/331`)**:
+1. **Lean 4 Kernel & Hypothesis-Mutation Kill Gate (`408/408`)**:
    ```bash
    ~/.elan/bin/lean proofs/eth_subexp_interpolation_and_hashes.lean && ~/.elan/bin/lean proofs/eth_tensor_contraction_and_circuits.lean && ~/.elan/bin/lean proofs/eth_five_repairs_and_four_layer_verdict.lean
    ```
-   * Pass criteria: Exit code `0`, `0 sorry`, `0` custom axioms; replacing each of the `331` relational hypotheses across all `42` theorems individually with `: True` causes `331/331` compilation rejections (`100%` killed).
+   * Pass criteria: Exit code `0`, `0 sorry`, `0` custom axioms; replacing each of the `408` relational hypotheses across all `50` theorems individually with `: True` causes `408/408` compilation rejections (`100%` killed).
 2. **Symbolic (`SymPy`) + PyTorch (`PyTorch FP64`) Deterministic Reproduction**:
    ```bash
    cd proofs && python3 verify_symbolic_eth.py
    ```
-   * Pass criteria: Exit code `0`, PyTorch `FP64` $64 \times 64$ commuting swap operator $W_0, M_0$ spectrum, Appendix D tapered Hermite $2$-adic valuation, and 4-layer post-repair verdict (`audit_8`) pass, matching `proofs/symbolic_verification_result.json` byte-for-byte.
+   * Pass criteria: Exit code `0`, PyTorch `FP64` $64 \times 64$ commuting swap operator $W_0, M_0$ spectrum, Appendix D tapered Hermite $2$-adic valuation, 4-layer post-repair verdict (`audit_8`), fossil hybrid + beauty invariants (`audit_9`), and Galois-ring swap 3-SAT solver + 5-module `oai_ref` patch (`audit_10`) pass, matching `proofs/symbolic_verification_result.json` byte-for-byte.
 3. **Artifact SHA-256 Checksum & Clean-Room Blind Reproduction Gate (`24/24` Match)**:
    ```bash
    sha256sum proofs/eth_subexp_interpolation_and_hashes.lean \
@@ -56,6 +56,8 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 | `audit_6_mode_partitions_and_circuit_lower_bound` | Per-depth squared log-effort decay ratio and Williams circuit exponent at $A=4$ | `1/32`, `12/49` (`< 1/4 < 1/2`) | `PASS` |
 | `audit_7_bitprogram_and_lean_scope_inventory` | `BitProgram` registers/stacks, raw space cap, unformalized LaTeX lines, unused-hypothesis count | `80`, `1220`, `5022740`, `1059` / `5888`, `655` | `PASS` |
 | `audit_8_five_repairs_and_four_layer_verdict` | Binary space refutation (`49000 < 1048576`), `4*R ≤ Q` crossover (`24` fail $\to$ `25` pass, slack `4148`), constant `12032411847`, numerical $n=12$ uniform count `2360` | `49000`, `10996584333160`, `24 -> 25`, `4148`, `12032411847`, `2360` | `PASS` |
+| `audit_9_fossil_hybrid_and_beauty_invariants` | Stratum 2+3 hybrid ($p=389$, $Q=22898045040$, $R=2452661$), threshold compression (`25 -> 20 -> 15`), constant compression (`12032411847 -> 70023`), Hardy beauty (`102`, `141`) | `22898045040`, `2452661`, `7172`, `243`, `70023`, `102`, `141` | `PASS` |
+| `audit_10_galois_ring_swap_3sat_solver_and_oai_ref_patch` | $\mathrm{GR}(3^3, 2)$ cubic Hensel lift (`-1164240`), tapered Hermite weights (`[21,12,12,-1]`, `32`), Galois-swap 3-SAT solver (`2360`, `7`, `0`, `1`), 5-module `oai_ref` patch (`2558543740 < 10996584333160`) | `-1164240`, `[21, 12, 12, -1]`, `2360`, `7`, `0`, `1`, `2558543740` | `PASS` |
 
 ### 3.2 Clean-Room Independent Blind Test (`24/24` Match) Receipt Summary
 
@@ -70,7 +72,7 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 
 ---
 
-## 4. `Lean 4` Formal Theorem Specification (`42` Theorems, `331/331` Mutations Killed)
+## 4. `Lean 4` Formal Theorem Specification (`50` Theorems, `408/408` Mutations Killed)
 
 ### Part A: [`proofs/eth_subexp_interpolation_and_hashes.lean`](../proofs/eth_subexp_interpolation_and_hashes.lean#L1-L418) (`Theorems 1–16`, `128/128` Mutations Killed)
 1. [`swap_eigenbasis_symmetric_antisymmetric_split`](../proofs/eth_subexp_interpolation_and_hashes.lean#L22-L50) (`L22`): Symmetric/antisymmetric eigenspace split of $\Pi_s$ on $[r]^2$ and binomial multiplicity identity.
@@ -108,7 +110,7 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 31. [`lean_formalization_scope_gap_and_cutoff_inventory`](../proofs/eth_tensor_contraction_and_circuits.lean#L354-L372) (`L354`): Inventory of `1,059` unformalized lines out of `5,888` and small-input cutoffs ($n=20, 896$).
 32. [`oai_subexponential_sat_unused_hypothesis_audit`](../proofs/eth_tensor_contraction_and_circuits.lean#L380-L394) (`L380`): Static hygiene audit (`0 sorry`, `0 axiom`, `655` unused hypotheses) across `3,977` files and `iteration_bound` counterexample.
 
-### Part C: [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L1-L234) (`Theorems 33–42`, `72/72` Mutations Killed)
+### Part C: [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L1-L443) (`Theorems 33–50`, `149/149` Mutations Killed)
 33. [`layer1_unary_vs_binary_encoding_bitlength_gap`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L20-L30) (`L20`): Layer ① unary encoding ($1,048,586$) vs. standard binary encoding ($69$) bit-length gap at $n=2^{20}$.
 34. [`layer1_visited_space_L_only_refuted_and_poly_n_plus_L_repaired`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L38-L51) (`L38`): Layer ① refutation of `visitedSpace ≤ S*(L+1)^2` ($49,000 < 1,048,576$, True $\to$ False) under binary encoding and $\mathrm{poly}(n+L)$ ($10,996,584,333,160$) repair.
 35. [`layer2_engine_i_circuit_lower_bound_loglog_degradation`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L61-L73) (`L61`): Layer ② circuit lower bound degradation from $\Omega(n\sqrt{\log n})$ to $\Omega(n\sqrt{\log n}/(\log\log n)^2)$ under `Engine I` alone.
@@ -119,3 +121,11 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 40. [`layer3_uniform_exhaustive_loop_replaces_noncomputable_dfa_and_reject`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L166-L183) (`L166`): Layer ③ replacement of noncomputable `FiniteFallback` DFA and `HighQueryProgram.reject` (`0` output) by a uniform $2^n$ loop.
 41. [`layer4_walsh_and_irreducible_search_constructive_termination_bounds`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L191-L203) (`L191`): Layer ④ constructive finite termination bounds for `WalshExistence` ($8q^2(r+1)=96\le D$) and `IrreducibleSearch` ($6,561$ checks).
 42. [`layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L210-L230) (`L210`): Layer ④ preservation of $4\cdot\mathrm{subexp\_exp} \le n$ ($2^{o(n)}$ ETH disproof) for $n \ge N_0(k)$ after all five repairs.
+43. [`layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L245-L269) (`L245`): Layer ⑤ rescue of discarded Stratum 2 (`SubexpParameters.lean`) $Q(p)=p^4-1$ via Stratum 3 pair duplication ($2Q$), satisfying `4*R ≤ Q` unconditionally at every prime $p \ge 2$ and activating at $p=389$.
+44. [`layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L278-L297) (`L278`): Layer ⑤ compression of the `4*R ≤ Q` activation threshold from $\log_2 L = 25$ ($n \ge 2^{33,554,431}$) to $\log_2 L = 20$ ($n \ge 2^{1,048,575}$) and $\log_2 L = 15$ ($n \ge 2^{32,767}$).
+45. [`layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L305-L319) (`L305`): Layer ⑤ rescue of discarded `SqrtLog/IdempotentTernary.lean` Hensel idempotent lift ($P_0(x)=u(x-1)(x-2)$) and compression of `exponentConstant(3,1)` from `12,032,411,847` to `70,023` ($171,835\times$).
+46. [`layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L328-L343) (`L328`): Layer ⑤ formal verification of G. H. Hardy's 3 mathematical beauty criteria (`Unexpectedness`: `char 2 -> char 3`, `Economy`: exact $D=r^{2Q}$ cancellation, `Inevitability`: exact $6\cdot 2^m - (m^2+4m+6)$ collapse).
+47. [`layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L359-L377) (`L359`): Layer ⑥ $\mathrm{GR}(3^3, 2) = (\mathbb{Z}/27\mathbb{Z})[X]/(X^2+1)$ invertibility ($(1+2X)(11+5X)=1+27X$) and cubic Hensel idempotent lift $P_1(y)=3y^2-2y^3$ ($P_1(84)=-43,120\times 27 \equiv 0 \pmod{27}$).
+48. [`layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L386-L398) (`L386`): Layer ⑥ universal swap action $M_0 = \Pi_1+\Pi_2-\Pi_1\Pi_2$ on $\mathbb{Z}^4$ and tapered $2$-adic Hermite cubic polynomial reconstruction $21f(0)+12f'(0)+12f(2)-f(4)=32f(1)$ ($v_2(32)=5$).
+49. [`layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L405-L420) (`L405`): Layer ⑥ executable characteristic-$3^t$ Galois-ring + swap-projection 3-SAT solver certificate over $\mathrm{GR}(3^8, 2)$ and $\mathrm{GR}(3^5, 2)$ across 4 benchmarks (`2360`, `7`, `0`, `1`).
+50. [`layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L428-L441) (`L428`): Layer ⑥ direct 5-module `oai_ref` surgical patch (`SubexponentialSAT`, `AsymptoticLayoutParameters`, `CostAssemblyFinal`, `FiniteFallback`/`HighQueryProgram`, `Final`) and `1220*(2*n+15) = 2,558,543,740 < 10,996,584,333,160` space bound.

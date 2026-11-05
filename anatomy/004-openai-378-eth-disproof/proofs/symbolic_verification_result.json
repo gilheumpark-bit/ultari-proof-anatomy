@@ -154,6 +154,44 @@
       "layer4_walsh_min_D_r2_q2": 96,
       "layer4_irreducible_search_checks_d2": 6561,
       "layer4_verdict": "UNCHANGED (Asymptotic 2^{o(n)} ETH disproof holds for n >= N_0(k))"
+    },
+    "audit_9_fossil_hybrid_and_beauty_invariants": {
+      "status": "PASS",
+      "stratum2_prime_p": 389,
+      "stratum2_Q_p": 22898045040,
+      "stratum2_R_p": 2452661,
+      "debloated_log2_L_20_R": 7172,
+      "debloated_log2_L_20_slack": 4080,
+      "hoeffding_log2_L_15_R": 243,
+      "hoeffding_log2_L_15_slack": 52,
+      "L_scale_compression_25_to_15": 1024,
+      "idempotent_ternary_u_mod9": 5,
+      "recalculated_exponent_constant_k3_q1": 70023,
+      "exponent_constant_saved": 12032341824,
+      "exponent_compression_ratio_int": 171835,
+      "hardy_economy_cancelled_prod": 102,
+      "hardy_inevitability_hermite_m5": 141
+    },
+    "audit_10_galois_ring_swap_3sat_solver_and_oai_ref_patch": {
+      "status": "PASS",
+      "gr27_inv_1_plus_2X": [
+        11,
+        5
+      ],
+      "hensel_p1_x3_mod27": 1,
+      "hensel_p1_x4_mod27": 0,
+      "hermite_cubic_weights": [
+        21,
+        12,
+        12,
+        -1
+      ],
+      "galois_solver_n12_sat_count": 2360,
+      "galois_solver_n6_multi_sat_count": 7,
+      "galois_solver_n6_unsat_count": 0,
+      "galois_solver_n6_unique_count": 1,
+      "oai_ref_patched_stack_space_n20": 2558543740,
+      "oai_ref_patched_space_cap_n20": 10996584333160
     }
   }
 }

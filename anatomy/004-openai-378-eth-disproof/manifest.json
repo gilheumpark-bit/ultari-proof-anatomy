@@ -7,25 +7,25 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_eth.py"
   },
   "artifacts_sha256": {
-    "README.md": "34fcdd278350f2dbf308312feb4509f0bff8a0e3185fc58d454e8b79eadf266d",
-    "README.ko.md": "d37fcc4f77d8361dcf525d6839a6e378e435ea0fb13c39f7b1d5ea653c8a57ac",
+    "README.md": "27d68e2b02e9be96999446d0bcf12b05b572464211aceb80508ce6657e9f3a15",
+    "README.ko.md": "6f420abaa0ff3b44e8d4717c8471dc30903621bba823fcdbdc47058116e585e7",
     "proofs/eth_subexp_interpolation_and_hashes.lean": "c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9",
     "proofs/eth_tensor_contraction_and_circuits.lean": "2a1880ee7b5087953689474706e747552f054adc57bd11cc6a148b1c4a25a90c",
-    "proofs/eth_five_repairs_and_four_layer_verdict.lean": "404727d4deaf236e2596a90f5fbf6d49819dab20349dd308f5d8c0964ab342cf",
-    "proofs/verify_symbolic_eth.py": "37fab1671c2d5eede0599f688f3a2b2c6d170882db4eb3ee22e80a3398e43012",
-    "proofs/symbolic_verification_result.json": "8710847fae24b24a622b67c8927c48047dd3958dc4d287d2fd5272300b4626a5",
+    "proofs/eth_five_repairs_and_four_layer_verdict.lean": "09bef762119f25a07e8d4545a89977046d3124d330f5cb8c7f2702a9733f296b",
+    "proofs/verify_symbolic_eth.py": "6b7bbe2c886fe739fe3725eb225d65b60f4f0b2e80146e74eb5d3d4509aa7a21",
+    "proofs/symbolic_verification_result.json": "2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735",
     "proofs/problem_spec.md": "ddd0b0609effa210e26c006d52ede5772e4235fc1664582aa6f9db6092d10adf",
-    "ko/01_초보자용_쉬운해설.md": "bd4fc2ee16b02ccf2c29f2f4a671bcdd624535acef14d56d79fb9e5634231766",
-    "ko/02_중급자용_구조및수식가이드.md": "2c04fc5c399a9dfc34be357f183829fb337b2c8961cad1924212b21446170cda",
-    "ko/03_전문가용_전산학및형식증명심사보고서.md": "6e1b267526e23233a9bba36796bf3c7ddadf70c86b8212e3c3e22df3cd99ef76",
-    "ko/04_자동검증및파서용_명세서.md": "7255d15ece1fea17da6871c9f7534079c8d6937f1088e2a5cb9b59e57e60a4e8",
-    "en/01_Beginner_Guide.md": "074815f2b2f1dfc4029a35eb58f1fdfb74a75d7390631c2d046909eb17d47f80",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "ebcb72139f91e8d8df62604e4041a46c0c3b4633f14e0d297372c9f3899fb28f",
-    "en/03_Expert_Complexity_and_Formal_Report.md": "8fd0b29df195c46a7ddda5fa4ae3ab12e1f4c918f369f13cad408f5597c6df9f",
-    "en/04_Automated_Verification_and_Manifest.md": "b9fad327cb6afe32b7abc3851874ed3040b4a98ddc9fff584b52b71c6096302b"
+    "ko/01_초보자용_쉬운해설.md": "b3a99aa7a614d1ad324643d02c3b15a2bb913f1cc4e38233820f6c6f0803d015",
+    "ko/02_중급자용_구조및수식가이드.md": "dbd84d9df90a9e54e5255bd8061105743e6f1676bda79eed849a2d62d4208d97",
+    "ko/03_전문가용_전산학및형식증명심사보고서.md": "1df8a4191d9920390ef97a5873efdddbd9fa22791efa98d7023927a09b44ab9c",
+    "ko/04_자동검증및파서용_명세서.md": "cbec351fbb4d2c47a1d96e06e1240bca9024570888ff1aa5eb52671127ca112c",
+    "en/01_Beginner_Guide.md": "96a5cc1bc958194bac2358b2baa46934d1e24b40e9e28f6eee830974b677bb03",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "0c39213614242b7d0b6f5e3984f8704716c82f5ff04dd745b5d3735a764328ed",
+    "en/03_Expert_Complexity_and_Formal_Report.md": "0b9181b1452fb927b4dc186fc1ff32097669bfc448fe097f8189353e6d4ed2f0",
+    "en/04_Automated_Verification_and_Manifest.md": "737a69b51b0854f64b4c0449f76c46a45a44d194f5a79f89972adaceb32de332"
   },
   "scope_and_limitations": {
-    "formalized_arithmetic_and_linear_algebra": "42 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 331/331 hypothesis mutations caught = 128/128 + 131/131 + 72/72) across proofs/eth_subexp_interpolation_and_hashes.lean, proofs/eth_tensor_contraction_and_circuits.lean, and proofs/eth_five_repairs_and_four_layer_verdict.lean + SymPy and PyTorch tensor verification."
+    "formalized_arithmetic_and_linear_algebra": "50 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 408/408 hypothesis mutations caught = 128/128 + 131/131 + 149/149) across proofs/eth_subexp_interpolation_and_hashes.lean, proofs/eth_tensor_contraction_and_circuits.lean, and proofs/eth_five_repairs_and_four_layer_verdict.lean + SymPy and PyTorch tensor verification."
   },
   "verified_key_results": {
     "engine_i_interpolation_and_hashes_theorems": {
@@ -79,7 +79,15 @@
         "layer3_cost_assembly_explicit_exponent_constant_12032411847 (Theorem 39, L148)",
         "layer3_uniform_exhaustive_loop_replaces_noncomputable_dfa_and_reject (Theorem 40, L166)",
         "layer4_walsh_and_irreducible_search_constructive_termination_bounds (Theorem 41, L191)",
-        "layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof (Theorem 42, L210)"
+        "layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof (Theorem 42, L210)",
+        "layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication (Theorem 43, L245)",
+        "layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression (Theorem 44, L278)",
+        "layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression (Theorem 45, L305)",
+        "layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast (Theorem 46, L328)",
+        "layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator (Theorem 47, L359)",
+        "layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction (Theorem 48, L386)",
+        "layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate (Theorem 49, L405)",
+        "layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness (Theorem 50, L428)"
       ]
     }
   },
@@ -89,10 +97,10 @@
       "proofs/eth_tensor_contraction_and_circuits.lean",
       "proofs/eth_five_repairs_and_four_layer_verdict.lean"
     ],
-    "theorems_proved": 42,
+    "theorems_proved": 50,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_caught": "331/331",
+    "hypothesis_mutations_caught": "408/408",
     "theorems": [
       {
         "index": 1,
@@ -345,6 +353,54 @@
         "name": "layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
         "line": 210
+      },
+      {
+        "index": 43,
+        "name": "layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 245
+      },
+      {
+        "index": 44,
+        "name": "layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 278
+      },
+      {
+        "index": 45,
+        "name": "layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 305
+      },
+      {
+        "index": 46,
+        "name": "layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 328
+      },
+      {
+        "index": 47,
+        "name": "layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 359
+      },
+      {
+        "index": 48,
+        "name": "layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 386
+      },
+      {
+        "index": 49,
+        "name": "layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 405
+      },
+      {
+        "index": 50,
+        "name": "layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness",
+        "file": "eth_five_repairs_and_four_layer_verdict.lean",
+        "line": 428
       }
     ]
   }
