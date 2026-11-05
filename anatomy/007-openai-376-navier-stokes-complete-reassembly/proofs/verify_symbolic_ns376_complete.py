@@ -6,9 +6,9 @@ Symbolic (SymPy) and GPU Numerical (PyTorch FP64) Verification for:
 
 Verifies all 5 mathematical breakthroughs and structural invariants from first principles:
   1. 3D Periodic Lattice Solenoidal Force (div f_sol = 0, non-zero pressure p = -phi != 0)
-     and 45,281,969x (4.53e7x) tightening of the screened Green's operator S_{4*pi}.
+     and 45,282,268x (4.53e7x) tightening of the screened Green's operator S_{4*pi}.
   2. Oct 6, 2026 3D Torus Leray Projection Constant S_L: 52 vs 134/3 vs 4*pi^2 + pi^4/45
-     vs 5-stratum Euclidean cubic-shell sum Z_3(2) ~= 16.532316 (3.145x tightening).
+     vs 5-stratum Euclidean cubic-shell sum Z_3(2) ~= 16.532149 (exact Ewald 16.532316, 3.145x tightening).
   3. 4-Shear Solid-Tube Reciprocal Factorization & Sign-Preserving Excursion Tightening
      (|(lam^-1 - 1)*s| <= (1 - min(lam, lam^-1))*h < h).
   4. Compact Velocity Detector Scales: 157.5x mass Bound tightening at L >= 1,

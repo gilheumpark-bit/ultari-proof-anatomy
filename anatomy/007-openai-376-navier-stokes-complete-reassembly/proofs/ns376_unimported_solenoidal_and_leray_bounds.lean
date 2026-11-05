@@ -56,7 +56,7 @@ theorem thm_03_challenge_duplication_and_30_submains
     n_papers_covered > n_unique_targets := by
   omega
 
-/-- Theorem 4: Exact convective divergence two-mode identity in PeriodicLattice/Solenoidal.lean:243
+/-- Theorem 4: Exact convective divergence two-mode identity in PeriodicLattice/Solenoidal.lean:231
     (`force_divergence`): 2*(c^2 * D1Sq - s^2 * B_D2) = (D1Sq - B_D2)*(c^2 + s^2)
     + (D1Sq + B_D2)*(c^2 - s^2), splitting div((u.grad)u) into k3=0 and cos(4*pi*z) modes. -/
 theorem thm_04_solenoidal_convective_divergence_two_mode_split
@@ -70,7 +70,7 @@ theorem thm_04_solenoidal_convective_divergence_two_mode_split
   grind
 
 /-- Theorem 5: Exact 3D Poisson cancellation and non-zero pressure Navier-Stokes equation
-    in PeriodicLattice/Solenoidal.lean:328,342 (`solenoidalForce_solenoidal`, `solenoidalForce_equations`). -/
+    in PeriodicLattice/Solenoidal.lean:340,355 (`solenoidalForce_solenoidal`, `solenoidalForce_equations`). -/
 theorem thm_05_solenoidal_nonzero_pressure_poisson_cancellation
     (div_g lap_phi0 d2y_phi2 lamSq phi2 cos4piz visc_lap_u grad_phi g : Int)
     (h_div : div_g = lap_phi0 + cos4piz * (d2y_phi2 - lamSq * phi2)) :
@@ -79,7 +79,7 @@ theorem thm_05_solenoidal_nonzero_pressure_poisson_cancellation
   rw [h_div]
   grind
 
-/-- Theorem 6: Factored 1D screened Helmholtz operator identity in PeriodicInverse.lean:349
+/-- Theorem 6: Factored 1D screened Helmholtz operator identity in PeriodicInverse.lean:343
     (`screened_equation`): if D(u1) = lam*u1 + H and D(u2) = -lam*u2 + u1, then
     D^2(u2) = -lam*D(u2) + D(u1) = lam^2 * u2 + H. -/
 theorem thm_06_periodic_inverse_screened_helmholtz_factorization
@@ -92,7 +92,7 @@ theorem thm_06_periodic_inverse_screened_helmholtz_factorization
   grind
 
 /-- Theorem 7: Sign-aware pointwise kernel bound vs OpenAI's sign-blind bound in
-    PeriodicInverse.lean:169 (`first_weighted_bound`): since exp(-lam*s) <= 1 on [0,1]
+    PeriodicInverse.lean:183 (`first_weighted_bound`): since exp(-lam*s) <= 1 on [0,1]
     for lam > 0 (E = exp(lam) > 1), dropping the spurious factor E reduces E^3 to E^2. -/
 theorem thm_07_periodic_inverse_sign_aware_pointwise_saving
     (E C : Int)
@@ -133,7 +133,7 @@ theorem thm_08_exact_green_kernel_integral_cancellation
   · grind
   · omega
 
-/-- Theorem 9: Quantitative 4.53e7-fold tightening of `screened (4*pi)` in PeriodicInverse.lean:344:
+/-- Theorem 9: Quantitative 4.53e7-fold tightening of `screened (4*pi)` in PeriodicInverse.lean:340:
     with lam^2 = (4*pi)^2 > 157 and E = exp(4*pi) > 286751, OpenAI's bound exceeds the exact
     1/lam^2 operator norm by a factor > 45,019,907 (> 4.5e7). -/
 theorem thm_09_screened_green_operator_45million_tightening
@@ -246,7 +246,7 @@ theorem thm_17_epstein_zeta_z3_vs_openai_52
   omega
 
 /-- Theorem 18: Exact 4-shear factorization of reciprocal diagonal scaling in
-    ShearFlows/Affine.lean:36 (`four_shears`):
+    ShearFlows/Affine.lean:24 (`four_shears`):
     S_X(lam - 1) o S_Y(1) o S_X(lam^-1 - 1) o S_Y(-lam) maps (v0, v1) to (lam*v0, v1/lam).
     Cleared of denominators by multiplying by lam: (lam*v0, v1). -/
 theorem thm_18_four_shears_reciprocal_diagonal_identity
@@ -260,7 +260,7 @@ theorem thm_18_four_shears_reciprocal_diagonal_identity
   grind
 
 /-- Theorem 19: Area preservation (det = 1) of every fractional shear step
-    partialShear(lam, k, theta) in ShearFlows/Affine.lean:29. -/
+    partialShear(lam, k, theta) in ShearFlows/Affine.lean:20. -/
 theorem thm_19_partial_shear_determinant_one
     (a v0 v1 w0 w1 det_in : Int)
     (hdet : det_in = v0 * w1 - v1 * w0) :
@@ -270,7 +270,7 @@ theorem thm_19_partial_shear_determinant_one
   grind
 
 /-- Theorem 20: Sharpened reciprocal correction bound for 0 < lam <= 1
-    (tightening ShearFlows/Affine.lean:51 `reciprocal_correction_bound`):
+    (tightening ShearFlows/Affine.lean:40 `reciprocal_correction_bound`):
     when 0 <= s and s/lam <= h (i.e. 0 <= s <= lam*h), s/lam - s <= (1 - lam)*h < h. -/
 theorem thm_20_reciprocal_correction_sharpened_sub_unit
     (s q lam_num lam_den h : Int)
@@ -308,7 +308,7 @@ theorem thm_21_reciprocal_correction_sharpened_super_unit
   omega
 
 /-- Theorem 22: Sharpened intermediate x-excursion bound at stages k=2,3 in
-    ShearFlows/Affine.lean:77 (`scaling_endpoints_bound`):
+    ShearFlows/Affine.lean:67 (`scaling_endpoints_bound`):
     |lam*v0 + (v1/lam - v1)| <= (2 - min(lam, lam^-1))*h < 2*h, saving min(lam, lam^-1)*h. -/
 theorem thm_22_four_shears_x_excursion_sharpened
     (lam_v0 diff_v1 h_scaled min_lam_h : Int)
@@ -320,7 +320,7 @@ theorem thm_22_four_shears_x_excursion_sharpened
   omega
 
 /-- Theorem 23: Unidirectional shear zero-advection & solenoidal force identity in
-    ShearFlows/Main.lean:45,103 (`ZeroAdvection V`, `force_solenoidal`):
+    ShearFlows/Main.lean:55,77 (`sourceTube_open`, `realizingVelocity_fluid`):
     since V = (u1(t,y,z), 0, 0) has dx(u1) = 0, div(V) = 0 and (V.grad)V = 0, so
     div(dt V + (V.grad)V - nu * lap V) = dt(div V) - nu * lap(div V) = 0 with p = 0. -/
 theorem thm_23_unidirectional_shear_zero_advection_solenoidal
@@ -333,8 +333,8 @@ theorem thm_23_unidirectional_shear_zero_advection_solenoidal
   rw [h_no_x, h_dt_div, h_lap_div]
   grind
 
-/-- Theorem 24: Time-collar vanishing margin around integer times in ShearFlows/Main.lean:113
-    (`vanishes_near_integers` with epsilon = 1/32, leaving active window 1 - 2/32 = 15/16). -/
+/-- Theorem 24: Time-collar vanishing margin around integer times in ShearFlows/Main.lean:77
+    (`realizingVelocity_fluid` with epsilon = 1/32, leaving active window 1 - 2/32 = 15/16). -/
 theorem thm_24_shear_schedule_collar_margin
     (eps32 period32 : Int)
     (heps : eps32 = 1)

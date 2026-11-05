@@ -11,7 +11,7 @@
 namespace NS376CompleteReassembly
 
 /-- Theorem 25: Exact geometric series formula for `massBound L` in
-    VelocityDetectorScales.lean:23,94 (`total_injected_mass`):
+    VelocityDetectorScales.lean:23,93 (`total_injected_mass`):
     4 * 10^-12 * q / (1 - q) where q = (2 * 4^L)^-2. Cleared of denominators:
     for L = 0 (q = 1/4), massBound(0) = 1 / 750,000,000,000 < 1 / 100,000,000,000. -/
 theorem thm_25_detector_mass_bound_l0_exact_ratio
@@ -23,7 +23,7 @@ theorem thm_25_detector_mass_bound_l0_exact_ratio
   omega
 
 /-- Theorem 26: Exact value of `massBound L` at L = 1 (under `hL : 0 < L` in
-    VelocityUnconditional.lean:77 `compact_detector_unconditional`):
+    VelocityUnconditional.lean:104 `compact_detector_unconditional`):
     expansion(1) = 4, geometricRatio(1) = 1/8, q = 1/64, so
     massBound(1) = 4 * 10^-12 * (1/64) / (63/64) = 4 / (63 * 10^12) = 1 / 15,750,000,000,000,
     which is 157.5x (315 / 2) smaller than OpenAI's 1 / 100,000,000,000. -/
@@ -47,7 +47,7 @@ theorem thm_27_detector_mass_bound_monotone_in_L
     (q_inv - 1) * 250000000000 ≥ 15750000000000 := by
   omega
 
-/-- Theorem 28: Old-mass residual margin in DetectorMargins.lean:18 (`detector_old_mass_margin`):
+/-- Theorem 28: Old-mass residual margin in DetectorMargins.lean:17 (`detector_old_mass_margin`):
     at L >= 1, 16 * massBound(L) <= 64 / (63 * 10^12) = 16 / 15,750,000,000,000,
     whereas OpenAI relaxed it to 1/16 (a 6.15e10-fold relaxation). -/
 theorem thm_28_detector_old_mass_margin_sharpened
@@ -98,7 +98,7 @@ theorem thm_31_detector_wait_margin_with_oai_loss_term
     H > 6890 * H_oai := by
   omega
 
-/-- Theorem 32: Heat waiting duration lower bound in VelocityDetectorScales.lean:73
+/-- Theorem 32: Heat waiting duration lower bound in VelocityDetectorScales.lean:74
     (`heat_wait_long`): since duration <= 1/100, 2 - 2*duration >= 99/50 = 1.98 > 1
     (margin 49/50 = 0.98 above OpenAI's threshold 1). -/
 theorem thm_32_heat_wait_duration_exact_lower_bound
@@ -212,7 +212,7 @@ theorem thm_40_rapid_forcing_small_motion_exponent_slack
   · grind
   · omega
 
-/-- Theorem 41: Base-b even-digit Cantor encoding guard gap in Material/Encoding.lean:16,40
+/-- Theorem 41: Base-b even-digit Cantor encoding guard gap in Material/Encoding.lean:15,37
     (`tailBound b = (b - 2)/(b - 1)`):
     between the maximum value (d + (b-2)/(b-1))/b in digit slot d and the next integer slot
     (d + 1)/b, there is an exact positive guard gap of 1 / (b*(b - 1)). -/
@@ -228,7 +228,7 @@ theorem thm_41_cantor_encoding_single_slot_guard_gap
   · omega
 
 /-- Theorem 42: Sharpened guard gap between adjacent ALLOWED (even) digits d and d + 2
-    in Material/Encoding.lean:13 (`AllowedDigits b ds` requires `Even d`):
+    in Material/Encoding.lean:12 (`AllowedDigits b ds` requires `Even d`):
     since the next allowed digit is d + 2 (not d + 1), the actual cylinder separation is
     (d + 2)/b - (d + (b-2)/(b-1))/b = b / (b*(b - 1)) = 1 / (b - 1), which is b times larger! -/
 theorem thm_42_cantor_encoding_even_digit_b_fold_gap
@@ -241,7 +241,7 @@ theorem thm_42_cantor_encoding_even_digit_b_fold_gap
   · omega
 
 /-- Theorem 43: Picard-Lindelof unit-interval ODE stitching consistency in
-    Material/MaterialFlow.lean:85 (`exists_globalMaterialFlow`):
+    Material/MaterialFlow.lean:81 (`exists_globalMaterialFlow`):
     for floor_t <= N and t in [0, N+1], uniqueness on [0, min(floor_t + 1, N + 1)]
     identifies X(t) = F(floor_t)(t) with F(N)(t). -/
 theorem thm_43_picard_lindelof_slab_stitching_window
@@ -253,7 +253,7 @@ theorem thm_43_picard_lindelof_slab_stitching_window
   omega
 
 /-- Theorem 44: Degree -1 homogeneity and curl-free/divergence-free numerator balance of
-    `homogeneousDatum` V(130z/(r^2+z^2)) in HomogeneousDatum.lean:38,59:
+    `homogeneousDatum` V(130z/(r^2+z^2)) in HomogeneousDatum.lean:40,65:
     for (130*x0*(x0^2+x1^2-x2^2), 130*x1*(x0^2+x1^2-x2^2), -260*x2^3) / (x0^2+x1^2+x2^2)^2,
     scaling x -> t*x scales the numerator by t^3 and denominator by t^4, giving t^-1. -/
 theorem thm_44_homogeneous_datum_degree_minus_one_scaling
@@ -265,7 +265,7 @@ theorem thm_44_homogeneous_datum_degree_minus_one_scaling
       t ^ 4 * (x0 ^ 2 + x1 ^ 2 + x2 ^ 2) ^ 2 := by
   refine ⟨by grind, by grind, by grind⟩
 
-/-- Theorem 45: Finite-rank moment-matrix coercivity lower bound in FiniteRankGap.lean:32
+/-- Theorem 45: Finite-rank moment-matrix coercivity lower bound in FiniteRankGap.lean:34
     (`finite_rank_gap`): if eps * norm_Cy <= delta * norm_My and norm_y <= norm_My + beta * norm_Cy,
     then eps * norm_y <= (eps + beta * delta) * norm_My. -/
 theorem thm_45_finite_rank_moment_matrix_coercivity
@@ -283,10 +283,10 @@ theorem thm_45_finite_rank_moment_matrix_coercivity
     beta * (delta * norm_My - eps * norm_Cy) := by grind
   omega
 
-/-- Theorem 46: Exact Banach contraction Lipschitz margin in StationaryContraction.lean:45
+/-- Theorem 46: Exact Banach contraction Lipschitz margin in StationaryContraction.lean:43
     (`lipschitz_budget`): with eta = 29/100, F0 = 51/10^8, c = 271/1000, r0 = 2*F0/eta,
-    L_exact = 2*c*63^2*r0/eta = 109,710,990 / 4,205,000,000,000 ~= 0.0260906 < 27/1000 = 0.027
-    with exact numerator slack 3,824,010. -/
+    L_exact = 2*c*63^2*r0/eta = 219,422,196 / 8,410,000,000 ~= 0.0260906 < 27/1000 = 0.027
+    with exact numerator slack 7,647,804 over common denominator 8,410,000,000. -/
 theorem thm_46_stationary_contraction_lipschitz_exact_margin
     (scale_c num_exact denom_common num_27 : Int)
     (hc : scale_c = 271)
@@ -301,7 +301,7 @@ theorem thm_46_stationary_contraction_lipschitz_exact_margin
   omega
 
 /-- Theorem 47: Exact Banach contraction ball-invariance and correction-norm margins in
-    StationaryContraction.lean:51,56 (`correction_budget` & `ball_budget`):
+    StationaryContraction.lean:48,52 (`correction_budget` & `ball_budget`):
     63*r0 = 6426 / (29 * 10^8) < targetError = 277 / 1,250,000 with exact difference
     1 / 72,500,000 (slack 40 over common denominator 2,900,000,000). -/
 theorem thm_47_stationary_contraction_target_error_exact_slack
@@ -315,7 +315,7 @@ theorem thm_47_stationary_contraction_target_error_exact_slack
     lhs_scaled < rhs_scaled := by
   omega
 
-/-- Theorem 48: Coercivity and spectral gap margins in StationaryContraction.lean:61,70
+/-- Theorem 48: Coercivity and spectral gap margins in StationaryContraction.lean:58,68
     (`coercivity_budget` & `matrix_budget`):
     109/350 - (164/25)*(3/2500) = 132,806 / 437,500 = 0.30355657... > 29/100 = 126,875 / 437,500
     (exact slack 5,931 / 437,500), and 151/50000 < 669/100000 < 29/100. -/

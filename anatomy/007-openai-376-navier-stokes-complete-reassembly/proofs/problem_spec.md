@@ -15,23 +15,23 @@
 1. **3차원 주기 격자 무발산 외력 및 그린 연산자 (`PeriodicLattice/`)**:
    - `OAI.PeriodicLattice.FluidLift.doubleSlope` / `vertical_energy` / `doubleSlope_second` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:19,41,46`)
    - `OAI.PeriodicLattice.FluidLift.pressureBase` / `pressureSource` / `pressureMode` / `potential` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:58,109,140,165`)
-   - `OAI.PeriodicLattice.FluidLift.solenoidalForce` / `solenoidalForce_solenoidal` / `solenoidalForce_classical_solution` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:315,328,342,352`)
-   - `OAI.PeriodicLattice.PeriodicInverse.first` / `first_weighted_bound` / `screened` / `screened_rapid` (`lean/OAI/Analysis/PeriodicLattice/PeriodicInverse.lean:32,169,259,344`)
+   - `OAI.PeriodicLattice.FluidLift.solenoidalForce` / `solenoidalForce_solenoidal` / `solenoidalForce_classical_solution` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:334,340,355,366`)
+   - `OAI.PeriodicLattice.PeriodicInverse.first` / `first_weighted_bound` / `screened` / `screened_rapid` (`lean/OAI/Analysis/PeriodicLattice/PeriodicInverse.lean:84,183,328,340`)
 2. **2026년 10월 6일 개정판 3차원 토러스 르레이 투영 및 푸리에 껍질 급수 (`oct06/build/analysis.tex`)**:
    - `\sum_{k \in \mathbb{Z}^3 \setminus \{0\}} |k|^{-4} \le 52` 및 $S_L := (1 + 52(L/2\pi)^4)^{1/2}$ (`tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex:187,219-223`)
 3. **4단 전단 유동 쌍곡 스케일링 및 중간 궤적 이탈 한계 (`ShearFlows/`)**:
    - `OAI.ShearFlows.scalingEndpoints` / `four_shears` / `reciprocal_correction_bound` / `scaling_endpoints_bound` (`lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Affine.lean:13,24,40,67`)
-   - `OAI.ShearFlows.reciprocal_affine_maps_by_shears` (`lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Main.lean:55`)
+   - `OAI.ShearFlows.reciprocal_affine_maps_by_shears` (`lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Main.lean:92`)
 4. **콤팩트 속도 검출기 스케일 및 무조건부 결정 불가능성 사슬 (`ForcedComputation/`)**:
-   - `OAI.ForcedComputation.massBound` / `diffusion_loss_small` / `heat_wait_long` / `mass_bound_le` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityDetectorScales.lean:23,64,73,78`)
-   - `OAI.ForcedComputation.detector_old_mass_margin` / `detector_wait_margin` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/DetectorMargins.lean:18,22`)
-   - `OAI.ForcedComputation.compact_detector_unconditional` / `torus_velocity_undecidable_unconditional` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean:77,114`)
+   - `OAI.ForcedComputation.massBound` / `diffusion_loss_small` / `heat_wait_long` / `massBound_small` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityDetectorScales.lean:23,64,74,78`)
+   - `OAI.ForcedComputation.detector_old_mass_margin` / `detector_wait_margin` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/DetectorMargins.lean:17,22`)
+   - `OAI.ForcedComputation.compact_detector_unconditional` / `torus_velocity_undecidable_unconditional` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean:63,104`)
    - `OAI.ForcedComputation.BalancedCycle.preparation` / `stay_cycle` / `left_cycle` / `right_cycle` (`lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/BalancedCycle.lean:160-168`)
 5. **초지수 급속 외력 스케일, 짝수 진법 칸토어 부호화 및 정상 축대칭 수축 사상**:
    - `OAI.RapidForcing.s` / `s_succ` / `s_succ_lower` / `small_motion_exponents` (`lean/OAI/MathematicalPhysics/RapidForcing/Scales.lean:32,73,77,87`)
-   - `OAI.NavierStokes.Material.AllowedDigits` / `tailBound` / `code_separation` (`lean/OAI/MathematicalPhysics/NavierStokes/Material/Encoding.lean:13,16,40`)
-   - `OAI.NavierStokes.Material.exists_globalMaterialFlow` (`lean/OAI/MathematicalPhysics/NavierStokes/Material/MaterialFlow.lean:85`)
-   - `OAI.StationaryNS.homogeneousDatum` (`lean/OAI/MathematicalPhysics/NavierStokes/HomogeneousDatum.lean:38,59`), `finite_rank_gap` (`FiniteRankGap.lean:32`), `lipschitz_budget` / `coercivity_budget` (`StationaryContraction.lean:43,58`)
+   - `OAI.NavierStokes.Material.AllowedDigits` / `tailBound` / `fraction_le_tailBound` (`lean/OAI/MathematicalPhysics/NavierStokes/Material/Encoding.lean:12,15,37`)
+   - `OAI.NavierStokes.Material.exists_globalMaterialFlow` (`lean/OAI/MathematicalPhysics/NavierStokes/Material/MaterialFlow.lean:81`)
+   - `OAI.StationaryNS.homogeneousDatum` (`lean/OAI/MathematicalPhysics/NavierStokes/HomogeneousDatum.lean:40,65`), `finite_rank_gap` (`FiniteRankGap.lean:34`), `lipschitz_budget` / `coercivity_budget` (`StationaryContraction.lean:43,58`)
 
 ## 3. 블라인드 검증 요구사항
 - `OAI/` 디렉터리 전체 `1,004`개 파일(`139,847`줄)을 4개 독립 계층으로 무누락 분할하고, `lean/docs/376.md`가 범위 밖이라고 선언했던 정리들이 미연결 모듈 어디에 증명되어 있는지 특정할 것.
