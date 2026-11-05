@@ -1,6 +1,7 @@
 {
   "case_id": "openai_003_mathematician_referee_audit",
   "title": "OpenAI #003 (QRH beta = 7/8 & Siegel Zero Exclusion) Mathematician & Referee Deep Audit + Sub-0.69 to 1/2 Master Transfer Blueprint & 8-Task Critical Upgrade",
+  "target_repository": "openai/math (Family 003: Quasi-Riemann Hypothesis for Dirichlet & Hecke L-Functions, lean/OAI/NumberTheory/DirichletL/ & SiegelZeros/)",
   "date": "2026-11-01",
   "verification_commands": {
     "lean4_kernel_check": "~/.elan/bin/lean proofs/qrh_mathematician_referee_audit.lean && ~/.elan/bin/lean proofs/qrh_eight_tasks_critical_upgrade.lean",
@@ -9,9 +10,9 @@
   "artifacts_sha256": {
     "proofs/qrh_mathematician_referee_audit.lean": "ad687a5824e113784b5931d8e261dd73bcce8d9367312023626fd47072f8ce9e",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "8cf658e0b4f1e56e74c3d203bcfa497c0f59255dda74e147f00f22f2b2ed297f",
-    "proofs/verify_qrh_mathematician_audit.py": "20fef1f0272d8f4b9112f6d12ee8aec6771328bd183a7f8b09427fc6bf3f5224",
+    "proofs/verify_qrh_mathematician_audit.py": "cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713",
     "proofs/symbolic_verification_result.json": "a5006ff42a2b12171c98b20facf6d23c86ed5186e1f43da524f6e42c80727b0e",
-    "proofs/problem_spec.md": "6d369de92f5f85d17c62c80a53566465b3145df8ebb924cf0716dec6719be8e0"
+    "proofs/problem_spec.md": "274b752f2943dffbb545087ecec16c101579dbf6a62c22f94ef461ca2aca1d3e"
   },
   "verified_key_results": {
     "stage1_magic_exponents_and_saddle": {
@@ -178,23 +179,23 @@
     }
   },
   "file_checksums_sha256": {
-    "README.ko.md": "cb91896f38954b18a7414ee56d171dec64cc95b858317506f46f8dbfd3406d60",
-    "README.md": "6136a6824fd4282581a89d170c0aba563793fc73d8bc961e15206bd10919dfdc",
-    "en/01_Beginner_Intuitive_Guide.md": "2890a54a7662ad73d9defdf001d93046bc3fbd70550c3adc43dad694ce71dfed",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "88943d71e09ff986214e167513783cd067f2b7f55d2c9ca09add2d7434aa817c",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "639978389a94be6cfaf12daa1c2b25ca1a8865e12477bc8ed9c72237e16f0362",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "da1ed7e08ec456f0d5cc62849cfcc012221ae35ce0eb4191fb1e500772e6e674",
-    "en/README.md": "8b395cfd0caa24c24985913cb4d04075bd034b9f5df7b5bead82bc5039b75999",
-    "ko/01_초보자용_쉬운해설.md": "e37de80c78438960be834f1cde7c317c778b6b3415e4ae354158e906400104b3",
-    "ko/02_중급자용_구조및수식가이드.md": "d555530bdcfa999c7940130b382474f83ab8fb46dff49efdf83d499433c41372",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "339dc0ea908ad565e9f51e99971b6e2fc8c1ba3824afd1170994aef77b2a6e2b",
-    "ko/04_자동검증및파서용_명세서.md": "ac7ddb7e685245afc31d979e4c494f5161ece38a4acaab05e2f15f15ad7db014",
-    "ko/README.md": "90100909c470de8bd7cb44829f10351081c785efe5de6a43b906cce2f807f9b2",
-    "proofs/problem_spec.md": "6d369de92f5f85d17c62c80a53566465b3145df8ebb924cf0716dec6719be8e0",
+    "README.ko.md": "ad3e21c3f78e64d036c077d105b7d837da178e7f03ca41c0b6ac7b1000109b03",
+    "README.md": "e94ce13e073709a30b2941c5bec299a3a15c0db81f59377ccfd98b4f01235931",
+    "en/01_Beginner_Intuitive_Guide.md": "dfaf6598185f65407ea21a3da68dca606f6303afb0e000e714f6fda447d47eca",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "07263bb369cc614011b3a8ea1117865d9f45bbdbfacfcfbc964cf3910aeac3d2",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "cea492f798fb97f955a18a2ef9ba961cffe1ff473645124f2f29825cd6ea5a11",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "973adac86294dce4431012151b4993164f0fa97e5540b561370eaab44c50a07a",
+    "en/README.md": "036af1b30313a1365fac43b22cc704a9b623835822b88bf91fdb0f3ae365d86d",
+    "ko/01_초보자용_쉬운해설.md": "70887c10c2128692cbcfd16141a11331559eb485234ff080adcb9b70f4e521e2",
+    "ko/02_중급자용_구조및수식가이드.md": "563660dd184daf47a29920da0d1acb3d2aa5b0e22af3237db9e7c8f37d2f50c8",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "2bf82747eb1eb4769997e7ab4a6e6328caa61a8057ad7f0b236c1f5379ce96b2",
+    "ko/04_자동검증및파서용_명세서.md": "2fb1966d0cb79f4d8fa182b2699cd2ef73a2c8d68276262669eaa0b8007b246c",
+    "ko/README.md": "37c73f8a9fbe44c67cc1c7f27d79283a016746b9f57c8b053fba21fda94a8658",
+    "proofs/problem_spec.md": "274b752f2943dffbb545087ecec16c101579dbf6a62c22f94ef461ca2aca1d3e",
     "proofs/qrh_eight_tasks_critical_upgrade.lean": "8cf658e0b4f1e56e74c3d203bcfa497c0f59255dda74e147f00f22f2b2ed297f",
     "proofs/qrh_mathematician_referee_audit.lean": "ad687a5824e113784b5931d8e261dd73bcce8d9367312023626fd47072f8ce9e",
     "proofs/symbolic_verification_result.json": "a5006ff42a2b12171c98b20facf6d23c86ed5186e1f43da524f6e42c80727b0e",
-    "proofs/verify_qrh_mathematician_audit.py": "20fef1f0272d8f4b9112f6d12ee8aec6771328bd183a7f8b09427fc6bf3f5224"
+    "proofs/verify_qrh_mathematician_audit.py": "cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713"
   },
   "lean4_verification": {
     "file": "proofs/qrh_mathematician_referee_audit.lean",
@@ -267,9 +268,9 @@
     {
       "path": "proofs/verify_qrh_mathematician_audit.py",
       "role": "sympy_and_numerical_verifier",
-      "lines": 547,
-      "sha256": "20fef1f0272d8f4b9112f6d12ee8aec6771328bd183a7f8b09427fc6bf3f5224",
-      "bytes": 34966
+      "lines": 548,
+      "sha256": "cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713",
+      "bytes": 34970
     },
     {
       "path": "proofs/symbolic_verification_result.json",

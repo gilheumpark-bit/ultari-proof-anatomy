@@ -1,10 +1,10 @@
 # OpenAI `#003` (Quasi-Riemann Hypothesis in Lean 4) Mathematical Analysis & Formal Proofs Package (English Edition)
 
 - **Release Date**: 2026-10-31
-- **Target Repository**: `openai/frontiermath-open-problems` (`FirstProof2026Problem3` / Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis in Lean 4)
+- **Target Repository**: `openai/math` (Family `003`: Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis in Lean 4, `lean/OAI/NumberTheory/DirichletL/` & `SiegelZeros/`)
 - **Primary Formal & Symbolic Artifacts**:
-  - Formal Lean 4 Proofs (40 Theorems, 404+295 lines, `0 sorry`, `0 axiom`): `proofs/qrh_exponent_and_parameter_bounds.lean`, `proofs/qrh_continuation_and_rescaling.lean`
-  - Symbolic Verification Script (`SymPy` / Exact Rational Arithmetic): `proofs/verify_symbolic_qrh.py`
+  - Formal Lean 4 Proofs (40 Theorems, 404+295 lines, `0 sorry`, `0 axiom`): [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean), [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean)
+  - Symbolic Verification Script (`SymPy` / Exact Rational Arithmetic): [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py)
   - Symbolic Verification Output Data (JSON): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)
 
 ---
@@ -27,5 +27,5 @@ This package is structured into 4 self-contained tiers so that **Beginners**, **
 Run the following command from the package root directory to compile all 40 Lean 4 theorems (`exit 0`) and reproduce the symbolic verification JSON:
 
 ```bash
-lean ../proofs/qrh_exponent_and_parameter_bounds.lean && (cd ../proofs && python3 verify_symbolic_qrh.py)
+lean ../proofs/qrh_exponent_and_parameter_bounds.lean && lean ../proofs/qrh_continuation_and_rescaling.lean && (cd ../proofs && python3 verify_symbolic_qrh.py)
 ```

@@ -4,11 +4,11 @@
 - **분석 및 수리 대상**: `openai/math` 패밀리 `#001` (`Milnes-rationality-conjecture-for-abelian-varieties-October-7-2026`)
 - **핵심 검증 산출물**:
   - Lean 4 형식증명(총 33개 정리, `0 sorry`, `0 axiom`, 가설 변이 `211/211` 사살 = `101/101` + `110/110`):
-    - `proofs/milne_transport_and_filtration.lean` (정리 1~16, 변이 `101/101` 사살)
-    - `proofs/milne_weil_reduction_and_repairs.lean` (정리 17~33, 변이 `110/110` 사살)
-  - 기호 및 PyTorch 텐서 검증 스크립트(`Audit 1~7` 전수 통과): `proofs/verify_symbolic_milne.py`
+    - [`proofs/milne_transport_and_filtration.lean`](./proofs/milne_transport_and_filtration.lean) (정리 1~16, 변이 `101/101` 사살)
+    - [`proofs/milne_weil_reduction_and_repairs.lean`](./proofs/milne_weil_reduction_and_repairs.lean) (정리 17~33, 변이 `110/110` 사살)
+  - 기호 및 PyTorch 텐서 검증 스크립트(`Audit 1~7` 전수 통과): [`proofs/verify_symbolic_milne.py`](./proofs/verify_symbolic_milne.py)
   - 기호 및 수치 검증 결과 데이터(JSON): [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json)
-  - LaTeX 원문 6개 섹션 수리 통합 패치(`234`줄): `proofs/oai_001_milne_repair.patch`
+  - LaTeX 원문 6개 섹션 수리 통합 패치(`234`줄): [`proofs/oai_001_milne_repair.patch`](./proofs/oai_001_milne_repair.patch)
 
 ---
 

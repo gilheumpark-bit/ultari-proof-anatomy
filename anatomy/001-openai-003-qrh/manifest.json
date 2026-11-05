@@ -1,27 +1,29 @@
 {
   "package_name": "OpenAI_003_Quasi_Riemann_Hypothesis_Parameter_and_Exponent_Analysis",
   "release_date": "2026-10-31",
-  "target_repository": "openai/frontiermath-open-problems (FirstProof2026Problem3)",
+  "target_repository": "openai/math (Family 003: Quasi-Riemann Hypothesis for Dirichlet & Hecke L-Functions, lean/OAI/NumberTheory/DirichletL/ & SiegelZeros/)",
   "verification_commands": {
     "lean4_kernel_check": "lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean",
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "cfd4795892f4634635a2b772ce2862a01d532b2c68b5f356a84ec13fc1602aee",
-    "README.ko.md": "96f027218b4f3493fdd77bb2d2e440460a25c27a4ccee9d6dde1759128fef178",
-    "proofs/qrh_exponent_and_parameter_bounds.lean": "b64209b36682fbadc37b5f39de363b13fe638c2580901dbcc8c6133d80a0732f",
-    "proofs/qrh_continuation_and_rescaling.lean": "73b33ec6bbe128261f3c375e7be16cc6d061f938e0d3900b1b939e864bc2670b",
-    "proofs/verify_symbolic_qrh.py": "86c3a661f8e7eddff3c100b3aaf79f6f0ee248c62dbe4b42d4b10c99e72d9834",
-    "ko/01_초보자용_쉬운해설.md": "c95c042644eb29e78990a6887a401e6db2fd2a525297d939d6ac7045b3a7ed8e",
-    "ko/02_중급자용_구조및수식가이드.md": "dac547218c92cf12a0d52d59a0375111205521ddcb3f06812d0a7e3bb9cae451",
-    "ko/03_전문가용_수론및형식증명보고서.md": "d197583d9b6a3ec565b2d9f826b9def6f24c3cd4accbba76f8a48c2a1f9faf53",
-    "ko/04_자동검증및파서용_명세서.md": "e8bcb22772c761de0b7824a31cbafc1c69cb353c5db28ddef14d7822af1e4729",
-    "ko/README.md": "0aa6e45ac66f7873d75c2fb2ac87db7f18e436d410a6d75294fdc859ec21dde6",
-    "en/01_Beginner_Guide.md": "ad2957779a3d89f0488a90062648feb5992455eb3ba83784c87bdfd7b8565225",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "e72a19fe08c9af3a3b536ee23d199d9cd2431fab29e750a279d957e2bb4b1607",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "b333156341501a84f9f8b450c650b77d770175c79c56d942df5510b8f40000ab",
-    "en/04_Automated_Verification_and_Manifest.md": "692a4bea8d1816222f84881b0ee49f44e1104ef1dacb90ade74923877f0befab",
-    "en/README.md": "73151e7baab8163546b83770b7be50b4567975a6aeed7234535752716d4f72db"
+    "README.md": "9b6607a8f3e6fc5756e279cfd7744d1da27182884621ac165f7784d39160009e",
+    "README.ko.md": "7916fa0fd3f09eefaba02e5edec2b40bdbddd7e28b84486c4139091c3a968400",
+    "proofs/qrh_exponent_and_parameter_bounds.lean": "cd4343bbd8579febfeaa963b87580fd053522ad1d05b4276d963a15f631b67e8",
+    "proofs/qrh_continuation_and_rescaling.lean": "4252467ba50e046b17e11040c12014d5999c5237afa5eb01ff1b22c0566b10c5",
+    "proofs/verify_symbolic_qrh.py": "f0c2f3e94f1ee422de2e4bdd758f94fc4a7212b2bde50106886a2d864aca6cdb",
+    "proofs/symbolic_verification_result.json": "072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55",
+    "proofs/problem_spec.md": "6cd04e3c6579ced675edd0ab3056338a58e7ccb1cca1a7fcb5e22a6cb337093a",
+    "ko/01_초보자용_쉬운해설.md": "6a285b1078bfe07efce527ad527ed18b56141fb8fb06bce2fd6b2618bb0d39a3",
+    "ko/02_중급자용_구조및수식가이드.md": "46f8eaae84479125a912239bffe0e278f2cd879fbe4af4c8cde77e5943c77aa5",
+    "ko/03_전문가용_수론및형식증명보고서.md": "8fcc4a0cbe678e6dc2d91979b3ef9d48e497bbae45752be92a34fdd953fffb8c",
+    "ko/04_자동검증및파서용_명세서.md": "8222e5e53c33c6025a83fa34fc65648f3b8f74f79da87581404efd3d452d9f7d",
+    "ko/README.md": "4ab42dea06e4e25b2ff43f16a1721dde4dd6cf169ca18b750441dcfd94049a14",
+    "en/01_Beginner_Guide.md": "78996d8c1f72c13b7dc01a931873899f44ad25f1429c8f8a9ece60b79e7d8fe3",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "3bfd92115bafb0250db26676d04e02a5f3516f0f0c5f4aac354eadfb6d8ef0f5",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "886390929f5d26f13c69ce95870525bf136f4c0c9f30819bd970e7187402da6f",
+    "en/04_Automated_Verification_and_Manifest.md": "5d98af70612d409c5d77bcfb691e3fd5b9ed5d95b39ac5e34a8252644e5faed7",
+    "en/README.md": "4be4891b273e51666e327a6d8a27f6b0ca305cba0d470aab5bc4b291feda2527"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "40 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-40) + independent SymPy symbolic derivations.",
@@ -49,6 +51,12 @@
       ]
     },
     "problem_3_componentwise_gram_exponents": {
+      "coarse_sqrt_exponent": "23*delta/96 + 3/16",
+      "coarse_sqrt_exponent_common_denom": "(18 + 23*delta)/96",
+      "componentwise_nonexceptional_with_L_bound_sqrt_exponent": "17*delta/96 + 7/48",
+      "componentwise_nonexceptional_with_L_bound_sqrt_exponent_common_denom": "(14 + 17*delta)/96",
+      "componentwise_nonexceptional_sqrt_exponent": "17*delta/96 + 1/16",
+      "componentwise_nonexceptional_sqrt_exponent_common_denom": "(6 + 17*delta)/96",
       "saving_exceptional": "1817/19584",
       "saving_nonexceptional_with_L_bound": "215/3264",
       "saving_nonexceptional_pure_scale": "487/3264",

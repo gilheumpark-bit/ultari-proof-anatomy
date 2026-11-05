@@ -28,39 +28,39 @@ sha256sum proofs/k3_forensic_paths.lean \
 
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
-| `proofs/k3_forensic_paths.lean` | `ce3a5174796ac991d5d2039c385d910c76d32de90805b000570e02da7ab042fa` | 452 lines, 27 Lean 4 theorems (`Theorem 1`..`Theorem 27`), `0 sorry`, `0 axiom`, `112/112 caught` |
-| `proofs/verify_symbolic_k3.py` | `1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be` | Independent SymPy symbolic solver for Problems 1-5 |
+| [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean) | `ce3a5174796ac991d5d2039c385d910c76d32de90805b000570e02da7ab042fa` | 452 lines, 27 Lean 4 theorems (`Theorem 1`..`Theorem 27`), `0 sorry`, `0 axiom`, `112/112 caught` |
+| [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py) | `1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be` | Independent SymPy symbolic solver for Problems 1-5 |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a` | Deterministic JSON output for Problems 1-5 |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74` | Specification of Problems 1-5 |
 
 ---
 
-## 3. Theorem Line Index (`proofs/k3_forensic_paths.lean`)
+## 3. Theorem Line Index ([`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean))
 
-- `odd_maslov_degree_sign_always_negative`
-- `odd_degree_trace_sign_always_opposite`
-- `eliashberg_murphy_cancellation_fails`
-- `polterovich_surgery_maslov_obstruction`
-- `even_branch_generator_avoids_degree_two`
-- `exactks_4_7_10_degree_separation`
-- `auxiliary_6_9_12_degree_separation`
-- `semiregularity_injective_squeeze`
-- `zero_transcendental_component_breaks_ext2_bound`
-- `shioda_inose_split_sum_obstruction_rank`
-- `yoneda_cone_atiyah_rank_no_go`
-- `eems_poincare_hopf_and_maslov_degrees`
-- `eems_chi_zero_stabilization_no_go`
-- `maurer_cartan_forward_trace_obstruction`
-- `kummer_bkr_untwisted_deficit_and_clifford_gap`
-- `semihomogeneous_rank21_diagonal_ext2_overflow`
-- `eems_opposite_sign_and_stokes_blindness`
-- `kummer_bkr_fixed_point_atiyah_vanishing`
-- `bogomolov_mixed_discriminant_sign_flip_no_go`
-- `clifford_spin_endomorphism_ext2_explosion`
-- `walsh_hadamard_decoupling_diagonal_ext2_no_go`
-- `ample_koszul_4_term_diagonal_and_section_overflow`
-- `mukai_semihomogeneous_projective_flatness_barrier`
-- `markman_secant_mukai_dimension_gap`
-- `additivity_vs_hyperkahler_rigidity_circularity`
-- `universal_mumford_diagonal_overflow_for_all_g_and_M`
-- `universal_g1_branch_stokes_and_kummer_moduli_no_go`
+- [`odd_maslov_degree_sign_always_negative`](../proofs/k3_forensic_paths.lean#L9-L16)
+- [`odd_degree_trace_sign_always_opposite`](../proofs/k3_forensic_paths.lean#L23-L35)
+- [`eliashberg_murphy_cancellation_fails`](../proofs/k3_forensic_paths.lean#L41-L46)
+- [`polterovich_surgery_maslov_obstruction`](../proofs/k3_forensic_paths.lean#L51-L53)
+- [`even_branch_generator_avoids_degree_two`](../proofs/k3_forensic_paths.lean#L59-L65)
+- [`exactks_4_7_10_degree_separation`](../proofs/k3_forensic_paths.lean#L71-L74)
+- [`auxiliary_6_9_12_degree_separation`](../proofs/k3_forensic_paths.lean#L79-L82)
+- [`semiregularity_injective_squeeze`](../proofs/k3_forensic_paths.lean#L86-L93)
+- [`zero_transcendental_component_breaks_ext2_bound`](../proofs/k3_forensic_paths.lean#L99-L104)
+- [`shioda_inose_split_sum_obstruction_rank`](../proofs/k3_forensic_paths.lean#L109-L117)
+- [`yoneda_cone_atiyah_rank_no_go`](../proofs/k3_forensic_paths.lean#L124-L130)
+- [`eems_poincare_hopf_and_maslov_degrees`](../proofs/k3_forensic_paths.lean#L141-L158)
+- [`eems_chi_zero_stabilization_no_go`](../proofs/k3_forensic_paths.lean#L166-L170)
+- [`maurer_cartan_forward_trace_obstruction`](../proofs/k3_forensic_paths.lean#L178-L183)
+- [`kummer_bkr_untwisted_deficit_and_clifford_gap`](../proofs/k3_forensic_paths.lean#L187-L194)
+- [`semihomogeneous_rank21_diagonal_ext2_overflow`](../proofs/k3_forensic_paths.lean#L201-L208)
+- [`eems_opposite_sign_and_stokes_blindness`](../proofs/k3_forensic_paths.lean#L218-L226)
+- [`kummer_bkr_fixed_point_atiyah_vanishing`](../proofs/k3_forensic_paths.lean#L233-L239)
+- [`bogomolov_mixed_discriminant_sign_flip_no_go`](../proofs/k3_forensic_paths.lean#L247-L254)
+- [`clifford_spin_endomorphism_ext2_explosion`](../proofs/k3_forensic_paths.lean#L260-L271)
+- [`walsh_hadamard_decoupling_diagonal_ext2_no_go`](../proofs/k3_forensic_paths.lean#L281-L294)
+- [`ample_koszul_4_term_diagonal_and_section_overflow`](../proofs/k3_forensic_paths.lean#L303-L321)
+- [`mukai_semihomogeneous_projective_flatness_barrier`](../proofs/k3_forensic_paths.lean#L328-L349)
+- [`markman_secant_mukai_dimension_gap`](../proofs/k3_forensic_paths.lean#L355-L362)
+- [`additivity_vs_hyperkahler_rigidity_circularity`](../proofs/k3_forensic_paths.lean#L376-L400)
+- [`universal_mumford_diagonal_overflow_for_all_g_and_M`](../proofs/k3_forensic_paths.lean#L408-L427)
+- [`universal_g1_branch_stokes_and_kummer_moduli_no_go`](../proofs/k3_forensic_paths.lean#L438-L450)

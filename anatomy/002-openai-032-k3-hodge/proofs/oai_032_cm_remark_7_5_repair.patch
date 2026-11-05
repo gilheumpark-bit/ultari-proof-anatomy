@@ -1,0 +1,20 @@
+--- a/preprints/The-rational-Hodge-conjecture-for-CM-abelian-varieties-October-6-2026/build/sections/07-consequences.tex
++++ b/preprints/The-rational-Hodge-conjecture-for-CM-abelian-varieties-October-6-2026/build/sections/07-consequences.tex
+@@ -324,9 +324,13 @@
+ Indeed, the transport writes that specialization as the pullback of
+ a specialized CM Hodge class by a rational homomorphism of special
+-fibers. Theorem~\ref{thm:cm} algebraizes the CM class; specialization
+-and Chow pullback after clearing the homomorphism's denominator give
+-the required cycle. See
+-\cite[Corollary~6.4]{OpenAIMilneRationality2026} for the
++fibers. Theorem~\ref{thm:cm} algebraizes the CM class; specialization,
++application of Beauville's weight-zero Chow eigenprojector
++\(P_{r,0}=\prod_{s\neq 0}\frac{[k]^*-k^{2r-s}\mathrm{id}}{k^{2r}-k^{2r-s}}\)
++(\(k\ge 2\)) to kill higher-weight components \(\mathrm{CH}^r_{(s)}\) (\(s\neq 0\)),
++and normalized Chow pullback \(Z_0:=P_{r,0}(N^{-2r}(Nb)^*Z_{\mathrm{CM},0})\)
++after clearing the denominator \(N\ge 1\) of \(b\in\mathrm{Hom}(A_0,B_0)\otimes\mathbb{Q}\)
++give a canonical \(N\)-independent cycle satisfying \([m]^*Z_0=m^{2r}Z_0\).
++See \cite[Corollary~6.4]{OpenAIMilneRationality2026} for the
+ field-of-definition argument and precise realization conventions,
+ including \(p=2\). This application uses the CM transport, not the
+ independent rationality proof of that paper, and is not an input to

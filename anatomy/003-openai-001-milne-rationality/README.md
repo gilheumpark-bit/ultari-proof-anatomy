@@ -4,11 +4,11 @@
 - **Target**: `openai/math` Family `#001` (`Milnes-rationality-conjecture-for-abelian-varieties-October-7-2026`)
 - **Core Verified Artifacts**:
   - Lean 4 Formal Proofs (33 theorems total, `0 sorry`, `0 axiom`, `211/211` hypothesis mutations caught = `101/101` + `110/110`):
-    - `proofs/milne_transport_and_filtration.lean` (Theorems 1–16, `101/101` mutations caught)
-    - `proofs/milne_weil_reduction_and_repairs.lean` (Theorems 17–33, `110/110` mutations caught)
-  - Symbolic & PyTorch Verifier (`Audit 1–7` all `PASS`): `proofs/verify_symbolic_milne.py`
+    - [`proofs/milne_transport_and_filtration.lean`](./proofs/milne_transport_and_filtration.lean) (Theorems 1–16, `101/101` mutations caught)
+    - [`proofs/milne_weil_reduction_and_repairs.lean`](./proofs/milne_weil_reduction_and_repairs.lean) (Theorems 17–33, `110/110` mutations caught)
+  - Symbolic & PyTorch Verifier (`Audit 1–7` all `PASS`): [`proofs/verify_symbolic_milne.py`](./proofs/verify_symbolic_milne.py)
   - Deterministic Verification Output (JSON): [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json)
-  - Unified LaTeX Repair Patch (`234` lines): `proofs/oai_001_milne_repair.patch`
+  - Unified LaTeX Repair Patch (`234` lines): [`proofs/oai_001_milne_repair.patch`](./proofs/oai_001_milne_repair.patch)
 
 ---
 

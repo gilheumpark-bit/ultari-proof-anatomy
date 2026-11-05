@@ -1,10 +1,10 @@
 # OpenAI `#003` (준리만 가설 Lean 4 형식증명) 수식 구조 분석 및 검증 패키지 (한국어판)
 
 - **작성 기준일**: 2026-10-31
-- **분석 대상**: `openai/frontiermath-open-problems` (`FirstProof2026Problem3` / 디리클레·헤케 $L$-함수 준리만 가설 Lean 4 증명 저장소)
+- **분석 대상**: `openai/math` (Family `003`: 디리클레·헤케 $L$-함수 준리만 가설 Lean 4 증명 저장소, `lean/OAI/NumberTheory/DirichletL/` 및 `SiegelZeros/`)
 - **핵심 검증 산출물**:
-  - Lean 4 형식증명(40개 정리, 404+295행, `0 sorry`, `0 axiom`): `proofs/qrh_exponent_and_parameter_bounds.lean`, `proofs/qrh_continuation_and_rescaling.lean`
-  - 기호 연산 검산 스크립트(`SymPy` / 유리수 정밀 연산): `proofs/verify_symbolic_qrh.py`
+  - Lean 4 형식증명(40개 정리, 404+295행, `0 sorry`, `0 axiom`): [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean), [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean)
+  - 기호 연산 검산 스크립트(`SymPy` / 유리수 정밀 연산): [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py)
   - 기호 연산 검산 결과 데이터(JSON): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)
 
 ---
@@ -27,5 +27,5 @@
 패키지 루트 폴더에서 아래 명령어를 실행하면 40개 Lean 4 정리의 커널 컴파일(`exit 0`)과 기호 연산 결과를 즉시 재현할 수 있습니다.
 
 ```bash
-lean ../proofs/qrh_exponent_and_parameter_bounds.lean && (cd ../proofs && python3 verify_symbolic_qrh.py)
+lean ../proofs/qrh_exponent_and_parameter_bounds.lean && lean ../proofs/qrh_continuation_and_rescaling.lean && (cd ../proofs && python3 verify_symbolic_qrh.py)
 ```

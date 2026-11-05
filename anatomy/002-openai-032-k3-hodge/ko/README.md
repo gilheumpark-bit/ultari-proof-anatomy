@@ -3,8 +3,8 @@
 - **작성 기준일**: 2026-11-01
 - **분석 대상**: `openai/math` 패밀리 `#032` (`The rational Hodge conjecture for CM abelian varieties` 및 커밋 `3014888`에서 철회된 K3·8차원 아벨 다양체 호지 추측 논문 3편 + `[EEMS13]` `arXiv:1303.0588v2`)
 - **핵심 검증 산출물**:
-  - Lean 4 형식증명(27개 정리, 452행, `0 sorry`, `0 axiom`, 가설 변이 `112/112 포착`): `proofs/k3_forensic_paths.lean`
-  - 기호 연산 검산 스크립트(`SymPy` / 정수·유리수·행렬식 연산): `proofs/verify_symbolic_k3.py`
+  - Lean 4 형식증명(27개 정리, 452행, `0 sorry`, `0 axiom`, 가설 변이 `112/112 포착`): [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean)
+  - 기호 연산 검산 스크립트(`SymPy` / 정수·유리수·행렬식 연산): [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py)
   - 기호 연산 검산 결과 데이터(JSON): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)
 
 ---
