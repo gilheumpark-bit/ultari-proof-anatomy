@@ -1,0 +1,338 @@
+{
+  "package_name": "OpenAI_376_Forced_Navier_Stokes_Forensic_and_Mathematical_Verification_2026-11-05",
+  "problem_id": "376",
+  "title": "Universal computation in forced Navier-Stokes flows",
+  "release_date": "2026-11-05",
+  "target_repository": "openai/math (Family 376: Universal computation in forced Navier-Stokes flows, lean/ComparatorChallenges/ & lean/OAI/)",
+  "verification_commands": {
+    "lean4_kernel_check": "lean proofs/ns376_kinematic_routing_and_forensics.lean && lean proofs/ns376_gronwall_uniqueness_and_repairs.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
+  },
+  "artifacts_sha256": {
+    "README.md": "421ab2de7bda56467f5e553093270c713cfce253b4ff3db550f5eb130a9c811c",
+    "README.ko.md": "b683123781c3df07fb6e2801ec88807e2191106ef1e6c30ca2fcd99676addd27",
+    "proofs/ns376_kinematic_routing_and_forensics.lean": "2660a8ccbb868be47f3664e1cf935e92c33050690390d18685ee3bbcee65f2a6",
+    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "b5b2e26a043f058875cd0900d06d62cf85725baeec7552b5275cc764ae0daaff",
+    "proofs/verify_symbolic_ns376.py": "4a9707d51999062dd8803897c70c3f035c41a118164262c7dfc20501710f813b",
+    "proofs/symbolic_verification_result.json": "4907ce6cb6d6cd06ef7918b90f7dc6a852f45a477b914124a1c538747c6fc746",
+    "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
+    "ko/01_초보자용_쉬운해설.md": "7d2ddb9d2423f4250d45a5ce9c04d3623ccd0ee3afb85207de19394822334a3e",
+    "ko/02_중급자용_구조및수식가이드.md": "3182545a271331c2f5f697b4efe1176123713a7960df54f10f9b6a98ad73595f",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "1485a1dc3c5c116a64e0ed3a7c5bd1865b239ab30c4f41734c6f4a01cb7ef694",
+    "ko/04_자동검증및파서용_명세서.md": "01f21894085aa0ffbc5334527c48eb1a28f7991c16f91587033d340858710cc3",
+    "en/01_Beginner_Guide.md": "fc82586c2aa4b897d8bb46463661ae63c7516c12f319fa22589d41d3ef594eef",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "a11081a36c3f4b3dd843d8a47873db19114ea5cab16077e8a99ef69f5da1c974",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "5a85cb70c8e6da276df719d091e599b0b5222f8f3fe0ceb0066ceb374305e3d3",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "2cde9d1c3eadf5b5974ea330cc859e5387a2806af81f4cfb1d289b789be96587"
+  },
+  "verdict": {
+    "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
+    "layer_1b_autonomous_pde_vs_inverse_forcing": "CONDITIONAL / INVERSE-FORCING (5 box/sheet challenges satisfy the momentum equation via point-by-point residual substitution f := dt_U + (U.grad)U - nu*Delta U discharged by abel or unidirectional shear sheets with (u.grad)u = 0; Challenge 3 decouples vertical velocity into a 2+1D linear passive-scalar heat equation; SolenoidalSheetPrograms omits the paper fixed-particle halting detector and solid-box reciprocal maps)",
+    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean clones all 38 definitions and the main theorem of BalancedThreeStack.lean; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused)",
+    "layer_3_genuine_mathematical_mechanisms": "PASS (3 core mechanisms verified: curl(chi * Psi) volume-preserving affine box routing, 12*C Serrin-Gronwall L^2 energy uniqueness, and 2+1D Gaussian heat-kernel Duhamel positivity)",
+    "layer_4_ultari_formal_and_symbolic_verification": "PASS (40 Lean 4 theorems, 0 sorry, 0 custom axioms, 163/163 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
+  },
+  "verified_key_results": {
+    "part1_kinematic_routing_and_forensics": {
+      "lean_theorems": [
+        "ns376_manufactured_force_abel_identity (Theorem 1, L18)",
+        "ns376_manufactured_force_arbitrary_trajectory_witness (Theorem 2, L34)",
+        "ns376_orthogonal_shear_advection_zero (Theorem 3, L50)",
+        "ns376_collar_glue_time_support_disjoint (Theorem 4, L67)",
+        "ns376_moving_affine_potential_curl_identity (Theorem 5, L81)",
+        "ns376_vector_potential_curl_divergence_free (Theorem 6, L98)",
+        "ns376_volume_preserving_third_scale_inversion (Theorem 7, L114)",
+        "ns376_five_stage_box_routing_schedule_disjoint (Theorem 8, L132)",
+        "ns376_base_b_stack_push_pop_roundtrip (Theorem 9, L148)",
+        "ns376_stack_address_bijection_injective (Theorem 10, L170)",
+        "ns376_expanding_radius_geometric_growth (Theorem 11, L193)",
+        "ns376_balanced_three_stack_determinant_balance (Theorem 12, L221)",
+        "ns376_observer_box_halting_separation (Theorem 13, L232)",
+        "ns376_ecosystem_1010_file_stratigraphy (Theorem 14, L251)",
+        "ns376_navier_stokes_dir_631_orphan_partition (Theorem 15, L270)",
+        "ns376_challenge_clone_rh17_identity (Theorem 16, L292)",
+        "ns376_velocity_challenge_spec_stuffing_ratio (Theorem 17, L311)",
+        "ns376_vacuous_computable_viscosity_rh13 (Theorem 18, L330)",
+        "ns376_sobolev_derivative_loss_ob3 (Theorem 19, L345)",
+        "ns376_rational_box_grid_combinatorial_explosion (Theorem 20, L358)"
+      ]
+    },
+    "part2_gronwall_uniqueness_and_repairs": {
+      "lean_theorems": [
+        "T21_competitor_difference_cancels_forcing (Theorem 21, L27)",
+        "T22_advection_difference_energy_cancellation (Theorem 22, L43)",
+        "T23_serrin_gronwall_differential_inequality (Theorem 23, L57)",
+        "T24_gronwall_zero_initial_uniqueness (Theorem 24, L72)",
+        "T25_pressure_gradient_uniqueness_from_velocity (Theorem 25, L89)",
+        "T26_mean_zero_pressure_vanishes (Theorem 26, L103)",
+        "T27_triangular_2plus1d_divergence_decoupling (Theorem 27, L125)",
+        "T28_vertical_momentum_passive_scalar_reduction (Theorem 28, L139)",
+        "T29_horizontal_momentum_zero_backreaction (Theorem 29, L151)",
+        "T30_duhamel_heat_kernel_positivity_detection (Theorem 30, L164)",
+        "T31_duhamel_nonhalting_zero_signal (Theorem 31, L177)",
+        "T32_five_dimensional_oracle_absorbs_viscosity (Theorem 32, L192)",
+        "T33_repair1_finite_dimensional_forcing_forbids_manufactured_residual (Theorem 33, L211)",
+        "T34_repair2_autonomous_unforced_rejects_nonzero_residual (Theorem 34, L225)",
+        "T35_repair3_distinct_challenge_specification (Theorem 35, L238)",
+        "T36_repair4_active_viscosity_oracle_eliminates_vacuous_premise (Theorem 36, L251)",
+        "T37_repair5_pruned_repository_hundred_percent_reachability (Theorem 37, L266)",
+        "T38_layers_1_and_2_verdict_partition (Theorem 38, L282)",
+        "T39_layers_3_and_4_genuine_mechanisms_count (Theorem 39, L300)",
+        "T40_complete_suite_forty_theorems_verified (Theorem 40, L315)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "compiler": "leanprover/lean4:v4.29.0-rc8",
+    "files": [
+      "proofs/ns376_kinematic_routing_and_forensics.lean",
+      "proofs/ns376_gronwall_uniqueness_and_repairs.lean"
+    ],
+    "theorems_proved": 40,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "hypothesis_mutations_caught": "163/163",
+    "theorems": [
+      {
+        "index": 1,
+        "name": "ns376_manufactured_force_abel_identity",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 18
+      },
+      {
+        "index": 2,
+        "name": "ns376_manufactured_force_arbitrary_trajectory_witness",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 34
+      },
+      {
+        "index": 3,
+        "name": "ns376_orthogonal_shear_advection_zero",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 50
+      },
+      {
+        "index": 4,
+        "name": "ns376_collar_glue_time_support_disjoint",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 67
+      },
+      {
+        "index": 5,
+        "name": "ns376_moving_affine_potential_curl_identity",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 81
+      },
+      {
+        "index": 6,
+        "name": "ns376_vector_potential_curl_divergence_free",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 98
+      },
+      {
+        "index": 7,
+        "name": "ns376_volume_preserving_third_scale_inversion",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 114
+      },
+      {
+        "index": 8,
+        "name": "ns376_five_stage_box_routing_schedule_disjoint",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 132
+      },
+      {
+        "index": 9,
+        "name": "ns376_base_b_stack_push_pop_roundtrip",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 148
+      },
+      {
+        "index": 10,
+        "name": "ns376_stack_address_bijection_injective",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 170
+      },
+      {
+        "index": 11,
+        "name": "ns376_expanding_radius_geometric_growth",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 193
+      },
+      {
+        "index": 12,
+        "name": "ns376_balanced_three_stack_determinant_balance",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 221
+      },
+      {
+        "index": 13,
+        "name": "ns376_observer_box_halting_separation",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 232
+      },
+      {
+        "index": 14,
+        "name": "ns376_ecosystem_1010_file_stratigraphy",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 251
+      },
+      {
+        "index": 15,
+        "name": "ns376_navier_stokes_dir_631_orphan_partition",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 270
+      },
+      {
+        "index": 16,
+        "name": "ns376_challenge_clone_rh17_identity",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 292
+      },
+      {
+        "index": 17,
+        "name": "ns376_velocity_challenge_spec_stuffing_ratio",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 311
+      },
+      {
+        "index": 18,
+        "name": "ns376_vacuous_computable_viscosity_rh13",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 330
+      },
+      {
+        "index": 19,
+        "name": "ns376_sobolev_derivative_loss_ob3",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 345
+      },
+      {
+        "index": 20,
+        "name": "ns376_rational_box_grid_combinatorial_explosion",
+        "file": "ns376_kinematic_routing_and_forensics.lean",
+        "line": 358
+      },
+      {
+        "index": 21,
+        "name": "T21_competitor_difference_cancels_forcing",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 27
+      },
+      {
+        "index": 22,
+        "name": "T22_advection_difference_energy_cancellation",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 43
+      },
+      {
+        "index": 23,
+        "name": "T23_serrin_gronwall_differential_inequality",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 57
+      },
+      {
+        "index": 24,
+        "name": "T24_gronwall_zero_initial_uniqueness",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 72
+      },
+      {
+        "index": 25,
+        "name": "T25_pressure_gradient_uniqueness_from_velocity",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 89
+      },
+      {
+        "index": 26,
+        "name": "T26_mean_zero_pressure_vanishes",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 103
+      },
+      {
+        "index": 27,
+        "name": "T27_triangular_2plus1d_divergence_decoupling",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 125
+      },
+      {
+        "index": 28,
+        "name": "T28_vertical_momentum_passive_scalar_reduction",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 139
+      },
+      {
+        "index": 29,
+        "name": "T29_horizontal_momentum_zero_backreaction",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 151
+      },
+      {
+        "index": 30,
+        "name": "T30_duhamel_heat_kernel_positivity_detection",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 164
+      },
+      {
+        "index": 31,
+        "name": "T31_duhamel_nonhalting_zero_signal",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 177
+      },
+      {
+        "index": 32,
+        "name": "T32_five_dimensional_oracle_absorbs_viscosity",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 192
+      },
+      {
+        "index": 33,
+        "name": "T33_repair1_finite_dimensional_forcing_forbids_manufactured_residual",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 211
+      },
+      {
+        "index": 34,
+        "name": "T34_repair2_autonomous_unforced_rejects_nonzero_residual",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 225
+      },
+      {
+        "index": 35,
+        "name": "T35_repair3_distinct_challenge_specification",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 238
+      },
+      {
+        "index": 36,
+        "name": "T36_repair4_active_viscosity_oracle_eliminates_vacuous_premise",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 251
+      },
+      {
+        "index": 37,
+        "name": "T37_repair5_pruned_repository_hundred_percent_reachability",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 266
+      },
+      {
+        "index": 38,
+        "name": "T38_layers_1_and_2_verdict_partition",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 282
+      },
+      {
+        "index": 39,
+        "name": "T39_layers_3_and_4_genuine_mechanisms_count",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 300
+      },
+      {
+        "index": 40,
+        "name": "T40_complete_suite_forty_theorems_verified",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 315
+      }
+    ]
+  }
+}

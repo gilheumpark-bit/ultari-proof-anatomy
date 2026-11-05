@@ -1,0 +1,79 @@
+{
+  "problem_id": "OpenAI_376_Forced_Navier_Stokes_Universal_Computation",
+  "sympy_verification": {
+    "moving_affine_curl_plateau_errors": [
+      "0",
+      "0",
+      "0"
+    ],
+    "moving_affine_curl_exact": true,
+    "cutoff_curl_global_divergence": "0",
+    "cutoff_curl_divergence_zero": true,
+    "rh14_manufactured_forcing_residual": "0",
+    "rh14_tautology_verified": true,
+    "rh15_shear_advection_components": [
+      "0",
+      "0",
+      "0"
+    ],
+    "rh15_shear_advection_zero": true,
+    "triangular_2plus1d_full_divergence": "Derivative(a1(t, y0, y1), y0) + Derivative(a2(t, y0, y1), y1)",
+    "triangular_2plus1d_vertical_div_contribution": "0",
+    "triangular_2plus1d_self_advection_error": "0",
+    "triangular_2plus1d_decoupling_verified": true
+  },
+  "gpu_fp64_verification": {
+    "compute_backend": "PyTorch FP64 Spectral & Autograd Engine",
+    "dtype": "float64",
+    "exp1_3d_box_routing": {
+      "grid_shape": [
+        64,
+        64,
+        64
+      ],
+      "plateau_affine_velocity_linf_error": 2.359224e-16,
+      "global_spectral_divergence_linf": 3.871015e-16,
+      "unforced_ns_residual_l2": 2.877521,
+      "viscous_bit_erasure_halflife_k10_sec": 3.348851e-07,
+      "viscous_bit_erasure_halflife_k20_sec": 3.193713e-13,
+      "manufactured_forced_ns_residual_l2": 0.0
+    },
+    "exp2_2plus1d_passive_scalar": {
+      "grid_shape": [
+        128,
+        128
+      ],
+      "timesteps": 250,
+      "halting_detector_w_center": 0.385003682547,
+      "halting_w_global_min": -3.8857806e-15,
+      "nonhalting_w_linf": 0.0,
+      "strict_separation_verified": true
+    },
+    "exp3_solenoidal_support_leakage": {
+      "f_paper_outside_ball_linf": 0.0,
+      "f_solenoidal_inside_ball_rms": 5.508929,
+      "f_solenoidal_outside_ball_rms": 0.185222,
+      "f_solenoidal_outside_ball_linf": 4.510381,
+      "exterior_linf_to_interior_rms_pct": 81.87
+    }
+  },
+  "corpus_stratigraphy": {
+    "challenge_lean_files": 6,
+    "challenge_lean_lines": 2284,
+    "oai_lean_files": 1004,
+    "oai_lean_lines": 139847,
+    "total_lean_files": 1010,
+    "total_lean_lines": 142131,
+    "reachable_oai_files": 354,
+    "reachable_oai_lines": 66480,
+    "orphan_oai_files": 650,
+    "orphan_oai_lines": 73367,
+    "sorry_in_comparator_challenges_theorem_stubs": 6,
+    "sorry_in_comparator_challenges_helper_defs": 1,
+    "sorry_in_oai_library": 0,
+    "computable_fluid_evaluator_proofs_in_576_forced_computation_files": 0,
+    "preprint_tex_files": 75,
+    "preprint_tex_lines": 23477
+  },
+  "all_checks_passed": true
+}
