@@ -56,11 +56,11 @@ def verify_pillar2_cubic_gauss_sieve() -> dict:
     assert sp.simplify(u_next - sp.Rational(2, 3) * u_curr) == 0
     nl_iterates = [sp.Integer(2)]
     lin_iterates = [sp.Rational(4, 3) + sp.Rational(2, 3) ** (n + 1) for n in range(4)]
-    for n in range(3):
+    for k in range(1, 4):
         nl_iterates.append(sp.simplify(s_step.subs(a, nl_iterates[-1])))
-        closed_n = (sp.Rational(4, 3) - sp.Rational(2, 3) ** (n + 2)) / (1 - sp.Rational(2, 3) ** (n + 2))
-        assert nl_iterates[-1] == closed_n
-        assert sp.Rational(4, 3) < nl_iterates[-1] < lin_iterates[n + 1]
+        closed_k = (sp.Rational(4, 3) - sp.Rational(2, 3) ** (k + 1)) / (1 - sp.Rational(2, 3) ** (k + 1))
+        assert nl_iterates[-1] == closed_k
+        assert sp.Rational(4, 3) < nl_iterates[-1] < lin_iterates[k]
     return {
         "cubic_gauss_files": 30,
         "cubic_gauss_lines": 6252,
@@ -79,6 +79,9 @@ def verify_pillar3_and_4_q_sqrt_921() -> dict:
     assert sp.simplify(288 * dc**2 - 588 * dc + 185) == 0
     ell_liu = (33 + 8 * s) / sp.Integer(1653)
     b_liu = sp.Rational(-4, 29) + 230 * s / sp.Integer(26709)
+    y_liu = (1 + b_liu - ell_liu) / sp.Integer(2)
+    gram_gate_liu = sp.simplify(y_liu - ell_liu - sp.Rational(11, 6) * b_liu)
+    assert gram_gate_liu == (995601 - 28532 * s) / sp.Integer(1522413)
     beta_liu = sp.simplify(sp.Rational(11, 12) - ell_liu / 4)
     assert beta_liu == (1507 - 2 * s) / sp.Integer(1653)
     beta_r = sp.Rational(34999, 40000)

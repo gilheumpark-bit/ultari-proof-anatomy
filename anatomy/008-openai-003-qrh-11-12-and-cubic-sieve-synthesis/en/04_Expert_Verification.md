@@ -19,12 +19,12 @@ python3 ../../tools/verify_all.py --root .
 
 | Artifact File | SHA-256 Checksum |
 | :--- | :--- |
-| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `e9dc7e61b68c2e9650b566370ddcb61c78db6a455cbfa78fe41c01a8ecad4e06` |
-| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `1bf3fedc64965d2c76917f08c994d2ee20fe0cbbc91e408d06b789408cbd16ca` |
-| [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `7358f4ad1e7da151d70dc827ea0c0aaeafd449e8b1456d8a9379926a1f2af737` |
-| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `1802f838d9251109e7a6329d895948149f6ff9dd5a4379a1cc44fa695cc04818` |
+| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `86a4642903065c2982e6b75be8c0dd8b15f2e57a3fc9c14ff509cb1332c62d49` |
+| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `bc7e6c4b6e7b8a4ffe26c9db484bb9f286f2519c172f4dd5c9dba6f4618791f9` |
+| [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `1589c6a84d6755cd01c617e3acaa991b37a07d72b5b1b03f6246bfc538b93939` |
+| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `decadb3dd29b20c8aaecab75e93924b6daf97dd8d86a07f023e47f6c295061c6` |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `d3d5a2ef03f796c24578ea54b2bf6cdd8cf013df327499464d9a4977698e713e` |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `b5b60157da94c3117fe821e80ccbfe90d40c6a79d176f68f7f5f846c128d975d` |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `56c00cfa270ccd1a6612c2684466b896039a58468d2e7c7d70b94c106f509fcd` |
 
 ## 3. Complete 1-to-1 Theorem Map (45 Theorems, `344/344` Mutations Caught)
 

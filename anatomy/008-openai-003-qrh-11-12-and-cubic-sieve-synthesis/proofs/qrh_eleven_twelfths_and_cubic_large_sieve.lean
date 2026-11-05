@@ -136,7 +136,7 @@ theorem thm_07_totient_euler_correction_vs_prime_amplification_tradeoff
 /-- [Theorem 8] Unformalized `paper.tex` Part I margin table (`paper.tex:6501`) vs. upstream `ShortDraft.DirichletTarget` (`ZeroFreeRegion.lean:204-214`):
 in `paper.tex` (`L6501`), Part I lists four regime margins `(1021/25000, 1/40, 1/1200, 43/300)` for `Re(s) > 11/12`
 (in units of `1/150000`: `6126, 3750, 125, 21500`, minimum `125/150000 = 1/1200`), none of which appear in `lean/OAI/NumberTheory/DirichletL/`,
-where `Foundation.lean` instead formalizes `Re(s) > 23/24` (`gap = 23/24 - 11/12 = 1/24 = 6250/150000 = 50 * (1/1200)`). -/
+where `ZeroFreeRegion.lean` instead formalizes `Re(s) > 23/24` (`gap = 23/24 - 11/12 = 1/24 = 6250/150000 = 50 * (1/1200)`). -/
 theorem thm_08_part_one_paper_tex_table_vs_shortdraft_gap
     (m1_150k m2_150k m3_150k m4_150k min_m150k gap_sd_11_12_150k ratio_gap_to_min : Int)
     (hm1 : m1_150k = 1021 * 6)
@@ -223,7 +223,7 @@ theorem thm_11_mobius_conjugacy_exact_closed_form_solution
   rw [h_lhs, h_rhs, hun, hud]
   simp only [Int.mul_assoc, Int.mul_comm, Int.mul_left_comm]
 
-/-- [Theorem 12] Exact comparison at `n = 0, 1, 2, 3` between the true nonlinear iterates `α̃_n = (4*3^n - 2^(n+1))/(3^(n+1) - 3*2^(n+1))`
+/-- [Theorem 12] Exact comparison at `n = 0, 1, 2, 3` between the true nonlinear iterates `α̃_n = (4*3^n - 2^(n+1))/(3*3^n - 2^(n+1))`
 (`2, 8/5, 28/19, 92/65`) and OpenAI's linearized upper envelope `sieveExponent n = 4/3 + (2/3)^(n+1)` (`2, 16/9, 44/27, 124/81` in `LargeSieve.lean:75`):
 for every `n ≥ 1`, `4/3 < α̃_n < α_n`, and the excess ratio `(α̃_n - 4/3)/(α_n - 4/3) = (1/3)/(1 - (2/3)^(n+1))` converges to `1/3`. -/
 theorem thm_12_nonlinear_vs_linearized_sieve_iterates_comparison

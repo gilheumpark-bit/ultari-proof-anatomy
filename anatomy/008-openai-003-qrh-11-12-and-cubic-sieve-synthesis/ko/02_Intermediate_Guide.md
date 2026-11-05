@@ -4,13 +4,13 @@
 
 ---
 
-## 1. 제1기둥: 왜 `DirichletL/Foundation.lean`은 $23/24$까지만 증명하는가?
+## 1. 제1기둥: 왜 `DirichletL/RowCompletion/ZeroFreeRegion.lean`은 $23/24$까지만 증명하는가?
 
 OpenAI의 `first-proof` 저장소에는 디리클레 $L$-함수에 대한 두 개의 서로 다른 목표 정리가 공존합니다:
 
-| 항목 | 원본 `DirichletL/Foundation.lean` (`ShortDraft`) | `paper2.tex` & `AlexKontorovich/quasi-rh` |
+| 항목 | 원본 `DirichletL/RowCompletion/ZeroFreeRegion.lean` (`ShortDraft`) | `paper2.tex` & `AlexKontorovich/quasi-rh` |
 |---|---|---|
-| 최상위 목표 정리 | `ShortDraft.DirichletTarget` (`ZeroFreeRegion.lean:204`) | `DirichletTarget` (`ZeroFreeRegion.lean:274`) |
+| 최상위 목표 정리 | `ShortDraft.DirichletTarget` (`ZeroFreeRegion.lean:197–214`, `EisensteinCoordinates.lean:253`) | `dirichletL_ne_zero_of_gt_eleven_twelfths` (`Unconditional.lean:118–137`, `paper2.tex:74`) |
 | 영점 비존재 영역 | $\text{Re}(s) > 23/24 \approx 0.95833$ | $\text{Re}(s) > 11/12 \approx 0.91667$ |
 | 영점 비존재 폭 ($1 - \beta_0$) | $1/24 \approx 0.04167$ | $1/12 \approx 0.08333$ (**정확히 2배**) |
 | 예비 여백(`reserve`) | `1/20` 하드코딩 (`ClosedRecursion.lean:120`) | `CanonicalDescentScale` (`50 ≤ reserve * denom`) |

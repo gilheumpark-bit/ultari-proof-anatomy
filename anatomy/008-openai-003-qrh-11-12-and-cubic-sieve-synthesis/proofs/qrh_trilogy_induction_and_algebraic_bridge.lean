@@ -69,7 +69,7 @@ theorem thm_31_sieve_iter_mobius_invariants_by_induction
     exact ⟨hp2, hp3⟩
 
 /-- [Theorem 32] Exact closed-form solution of `(sieveIter n)` for all `n : Nat` derived from `thm_31`:
-for every `n : Nat`, `3 * (sieveIter n).1 = 4 * 3^n - 2^(n+1)` and `3 * (sieveIter n).2 = 3^(n+1) - 3 * 2^(n+1)`. -/
+for every `n : Nat`, `(sieveIter n).1 = 4 * 3^n - 2^(n+1)` and `(sieveIter n).2 = 3 * 3^n - 2^(n+1)` (`α̃_n = (4*3^n - 2^(n+1))/(3*3^n - 2^(n+1))`). -/
 theorem thm_32_sieve_iter_exact_closed_form_all_n
     (n : Nat) (p_n q_n : Int)
     (hp : p_n = (sieveIter n).1)

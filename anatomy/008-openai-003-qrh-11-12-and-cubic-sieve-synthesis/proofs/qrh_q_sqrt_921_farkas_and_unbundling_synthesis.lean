@@ -89,11 +89,11 @@ theorem thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum
   omega
 
 /-- [Theorem 20] Liu's Gram-gate parameter `b_new = -4/29 + 230√921/26709` (`V2Optimization.lean:14-17, 135-166`):
-over denominator `26709 = 29 * 921`, `b_new = (-3684 + 230s)/26709 ≈ 0.1244737` satisfies
+over denominator `26709 = 29 * 921`, `b_new = (-3684 + 230s)/26709 ≈ 0.1234054` satisfies
 `0 < b_new < 1/8` (a downward shift from `b = 1/8 = 0.125`), while keeping the bundled Gram gate
-`y - ℓ - 11b/6 = (1 - 3ℓ - 8b/3)/2 = (26595 - 524s)/53418 > 0` strictly positive. -/
+`y - ℓ - 11b/6 = (1 - 3ℓ - 8b/3)/2 = (995601 - 28532s)/1522413 > 0` (`1522413 = 921 * 1653 = 57 * 26709`) strictly positive. -/
 theorem thm_20_liu_gram_gate_parameter_b_new_and_margins
-    (s_lo1000 s_hi1000 b_const26709 b_s26709 b_lo1000 b_hi1000 eighth_scaled1000 gram_const53418 gram_s53418 gram_lo1000 : Int)
+    (s_lo1000 s_hi1000 b_const26709 b_s26709 b_lo1000 b_hi1000 eighth_scaled1000 gram_const1522413 gram_s1522413 gram_lo1000 : Int)
     (h_slo : s_lo1000 = 30347)
     (h_shi : s_hi1000 = 30348)
     (h_bc : b_const26709 = -4 * 921)
@@ -101,11 +101,11 @@ theorem thm_20_liu_gram_gate_parameter_b_new_and_margins
     (h_blo : b_lo1000 = 8 * (1000 * b_const26709 + b_s26709 * s_lo1000))
     (h_bhi : b_hi1000 = 8 * (1000 * b_const26709 + b_s26709 * s_hi1000))
     (h_eig : eighth_scaled1000 = 26709 * 1000)
-    (h_gc : gram_const53418 = 26709 - 3 * 33 * 16 - 8 * (-3684) / 3)
-    (h_gs : gram_s53418 = -3 * 8 * 16 - 8 * 230 / 3)
-    (h_glo : gram_lo1000 = 1000 * 26595 - 524 * s_hi1000) :
+    (h_gc : 2 * gram_const1522413 = 1522413 - 3 * 921 * 33 - 19 * 8 * b_const26709)
+    (h_gs : 2 * gram_s1522413 = -3 * 921 * 8 - 19 * 8 * b_s26709)
+    (h_glo : gram_lo1000 = 1000 * gram_const1522413 + gram_s1522413 * s_hi1000) :
     b_const26709 = -3684 ∧ 0 < b_lo1000 ∧ b_lo1000 < b_hi1000 ∧ b_hi1000 < eighth_scaled1000 ∧
-    gram_const53418 = 34949 ∧ gram_s53418 = -997 ∧ 0 < gram_lo1000 := by
+    gram_const1522413 = 995601 ∧ gram_s1522413 = -28532 ∧ 0 < gram_lo1000 := by
   subst h_slo; subst h_shi; subst h_bc; subst h_bs
   omega
 
@@ -140,9 +140,9 @@ theorem thm_22_signal_matching_identity_and_face_K_origin
     (hy : y24 = 12 * (1 + b - ell))
     (hM : M24 = x24 + y24)
     (h_slhs : sig_lhs24 = (22 - 6 * ell) - 4 * (4 + b))
-    (h_srhs : sig_rhs24 = x24 / 2 + 2 * b)
-    (h_fK : faceK_at_M24 = 8 + 7 * (M24 / 12) + 8 * ell)
-    (h_f0 : face0_at_M24 = 20 + (M24 / 12) - 4 * ell) :
+    (h_srhs : 2 * sig_rhs24 = x24 + 4 * b)
+    (h_fK : 12 * faceK_at_M24 = 96 + 7 * M24 + 96 * ell)
+    (h_f0 : 12 * face0_at_M24 = 240 + M24 - 48 * ell) :
     M24 = 24 * (1 - ell) ∧ sig_lhs24 = 6 - 6 * ell - 4 * b ∧
     sig_lhs24 = sig_rhs24 ∧ faceK_at_M24 = 22 - 6 * ell ∧ faceK_at_M24 = face0_at_M24 := by
   omega
@@ -209,7 +209,7 @@ theorem thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction
     (h_shi : s_hi1000 = 30348)
     (h_ss : s_shi_scaled = s_hi1000 * 10000)
     (h_w0 : w0_gt_2_3_lo1000 = 1000 * 123 - 3 * s_hi1000)
-    (h_bliu : B_liu_lo10m = (1507 * 10000000 - 2 * s_shi_scaled) / 1653)
+    (h_bliu : 1653 * B_liu_lo10m + 790 = 1507 * 10000000 - 2 * s_shi_scaled)
     (h_bxs : B_xs10m = 8748867)
     (h_gap : gap_liu_xs10m = B_liu_lo10m - B_xs10m) :
     s_lo1000 < s_hi1000 ∧ 0 < w0_gt_2_3_lo1000 ∧ B_liu_lo10m = 8749570 ∧ gap_liu_xs10m = 703 ∧

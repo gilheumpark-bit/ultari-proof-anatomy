@@ -20,7 +20,7 @@
 이전 [`Case 001`](../../001-openai-003-qrh/README.ko.md)과 [`Case 005`](../../005-openai-003-qrh-mathematician-referee-audit/README.ko.md)에서는 `CubicMoment/Blueprint.lean`(영점 비존재 경계 $7/8 = 0.875$)을 감사했습니다. 그런데 OpenAI의 `first-proof` 저장소 전체와 최근 공개된 학계 후속 연구들, 그리고 우리의 선행 리포트 2편을 교차 대조해 보니 **다섯 가지 핵심 퍼즐 조각**이 하나로 맞물렸습니다:
 
 1. **두 개의 서로 다른 디리클레 $L$-함수 정리 ($23/24$ 대 $11/12$)**:
-   - 원본 저장소의 `DirichletL/Foundation.lean`은 $\text{Re}(s) > 23/24$까지만 증명합니다([`thm_01_shortdraft_fixed_reserve_and_23_24_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L19-L33)).
+   - 원본 저장소의 `DirichletL/RowCompletion/ZeroFreeRegion.lean`은 $\text{Re}(s) > 23/24$까지만 증명합니다([`thm_01_shortdraft_fixed_reserve_and_23_24_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L19-L33)).
    - 반면 `paper2.tex`와 Alex Kontorovich 교수의 `quasi-rh` 저장소는 **엄격히 두 배 넓은** $\text{Re}(s) > 11/12$를 증명합니다([`thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L70-L85)).
 2. **연결되지 않은 30개 파일(`CubicGauss/`, 6,252줄)과 전 구간 수학적 귀납법 해**:
    - Heath-Brown의 날카로운 $2/3$ 지수($M + N + (MN)^{2/3}$)가 이미 `0 sorry`로 증명되어 있는데, 본 증명 파일들에서는 한 번도 `import`하지 않았습니다([`thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L289-L303)).
