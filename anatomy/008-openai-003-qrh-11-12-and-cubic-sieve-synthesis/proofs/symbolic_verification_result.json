@@ -1,6 +1,6 @@
 {
   "case_id": "008-openai-003-qrh-11-12-and-cubic-sieve-synthesis",
-  "total_lean_theorems": 30,
+  "total_lean_theorems": 45,
   "pillar1_eleven_twelfths_vs_23_24": {
     "shortdraft_beta": "23/24",
     "eleven_twelfths_beta": "11/12",
@@ -103,5 +103,20 @@
       }
     ]
   },
-  "verdict": "ALL_30_THEOREMS_AND_4_PILLARS_VERIFIED_EXACTLY"
+  "pillar5_trilogy_induction_and_bridge": {
+    "induction_verified_up_to_n": 11,
+    "gcd_3264_4896": 1632,
+    "case001_numerator_match": 215,
+    "case001_denominator_gap_44064": 3264,
+    "telescoping_stages_44064": [
+      3672,
+      1836,
+      1935,
+      5817,
+      3264,
+      3672
+    ],
+    "total_drop_44064": 20196
+  },
+  "verdict": "ALL_45_THEOREMS_AND_TRILOGY_SYNTHESIS_VERIFIED_EXACTLY"
 }

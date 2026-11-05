@@ -1,16 +1,17 @@
-# Expert Verification: Artifact Hashes, Reproduction Commands, and 30-Theorem Map
+# Expert Verification: Artifact Hashes, Reproduction Commands, and 45-Theorem Map
 
 ## 1. Reproduction Commands
 
 ```bash
-# 1. Standalone Lean 4 Kernel Check (0 sorry, 30 theorems)
+# 1. Standalone Lean 4 Kernel Check (0 sorry, 45 theorems + 7 defs across 3 files)
 ~/.elan/bin/lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && \
-  ~/.elan/bin/lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean
+  ~/.elan/bin/lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean && \
+  ~/.elan/bin/lean proofs/qrh_trilogy_induction_and_algebraic_bridge.lean
 
 # 2. Deterministic Symbolic (SymPy) Verification
 python3 proofs/verify_symbolic_qrh_synthesis.py
 
-# 3. Full Ultari Proof Anatomy Gate (SHA-256 + 240/240 Mutation Tests + Line Links + RH13~RH30)
+# 3. Full Ultari Proof Anatomy Gate (SHA-256 + 344/344 Mutation Tests + Line Links + RH13~RH30)
 python3 ../../tools/verify_all.py --root .
 ```
 
@@ -20,11 +21,12 @@ python3 ../../tools/verify_all.py --root .
 | :--- | :--- |
 | [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `e9dc7e61b68c2e9650b566370ddcb61c78db6a455cbfa78fe41c01a8ecad4e06` |
 | [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `1bf3fedc64965d2c76917f08c994d2ee20fe0cbbc91e408d06b789408cbd16ca` |
-| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `aed6f6447d4709acdfeaf3263fbad035438f8b27e3cb5d9d3665670e63faf17f` |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `150f00b4afa9941cd91a5208a67d86a95a1220622de78dc0917789f68d598094` |
+| [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `7358f4ad1e7da151d70dc827ea0c0aaeafd449e8b1456d8a9379926a1f2af737` |
+| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `1802f838d9251109e7a6329d895948149f6ff9dd5a4379a1cc44fa695cc04818` |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `d3d5a2ef03f796c24578ea54b2bf6cdd8cf013df327499464d9a4977698e713e` |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `b5b60157da94c3117fe821e80ccbfe90d40c6a79d176f68f7f5f846c128d975d` |
 
-## 3. Complete 1-to-1 Theorem Map (30 Theorems, `240/240` Mutations Caught)
+## 3. Complete 1-to-1 Theorem Map (45 Theorems, `344/344` Mutations Caught)
 
 ### File 1: [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L305)
 - **Theorem 1**: [`thm_01_shortdraft_fixed_reserve_and_23_24_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L19-L33) — Hardcoded `1/20 < σ` and `σ = 1/10` (`H = Z^(11/10), Y = Z^(11/60)`) produce `137/120 - 11/60 = 23/24` (half the `11/12` strip width).
@@ -59,3 +61,20 @@ python3 ../../tools/verify_all.py --root .
 - **Theorem 28**: [`thm_28_ten_tier_qrh_boundary_hierarchy`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L258-L275) — Complete 10-tier strict ordering from `1/2` to `23/24`.
 - **Theorem 29**: [`thm_29_zero_free_strip_width_progression_ratios`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L280-L293) — Zero-free strip width progression (`1x → 2x → 3x → 3.89x → 4.05x → 8.22x → 12x`).
 - **Theorem 30**: [`thm_30_master_qrh_ecosystem_synthesis_verdict`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L298-L311) — Master synthesis verdict across all 4 pillars.
+
+### File 3: [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L1-L356)
+- **Theorem 31**: [`thm_31_sieve_iter_mobius_invariants_by_induction`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L36-L69) — All-`n` mathematical induction (`induction n`) proving `mobiusNum (sieveIter n) = 2^(n+1)` and `mobiusDen (sieveIter n) = 3^n`.
+- **Theorem 32**: [`thm_32_sieve_iter_exact_closed_form_all_n`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L73-L86) — Exact closed-form solution `p_n = 4*3^n - 2^(n+1)` and `q_n = 3*3^n - 2^(n+1)` for all `n : Nat`.
+- **Theorem 33**: [`thm_33_sieve_iter_strictly_beats_openai_sieve_exponent_all_n`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L92-L107) — Universal denominator gap `9*3^n - 3*q_n = 3*2^(n+1)` for all `n : Nat`.
+- **Theorem 34**: [`thm_34_zsqrt921_norm_and_critical_quadratic_root`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L130-L137) — `ℤ[√921]` ring evaluation of `48δ_c = ⟨49, -1⟩` proving `288*(48δ_c)^2 - 588*48*(48δ_c) + 185*48^2 = ⟨0, 0⟩`.
+- **Theorem 35**: [`thm_35_zsqrt921_liu_rationalization_and_case005_gap`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L144-L157) — `ℤ[√921]` rationalization of `B_Liu` and exact norm `z921Norm ⟨-36189, 1195⟩ = -5567304 < 0`.
+- **Theorem 36**: [`thm_36_trilogy_denominator_bridge_3264_and_4896`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L167-L178) — Prime `17` slope bridge (`17 * 96 = 1632 = gcd(3264, 4896)`, `d_001 = 2 * 1632`, `d_005 = 3 * 1632`).
+- **Theorem 37**: [`thm_37_case001_margin_215_3264_drives_case005_4069_4896`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L185-L204) — Exact numerator `215` identity: `7/8 - 4069/4896 = 215/4896 = (2/3) * (215/3264)`.
+- **Theorem 38**: [`thm_38_case001_unbundling_breaks_case008_farkas_wall`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L212-L224) — Unbundled Gram saving `18/288 = 1/16` breaking Liu's `ℚ(√921)` Farkas wall.
+- **Theorem 39**: [`thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L232-L242) — Exact Eisenstein pole duality `α* + β_pole = 4/3 + 2/3 = 2` and `β_pole - 71/108 = 1/108`.
+- **Theorem 40**: [`thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L249-L257) — Stickelberger pole cancellation (`k_∞ = -6`, `net_pole_order = 1 - 1 = 0`) crossing `β = 2/3`.
+- **Theorem 41**: [`thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L264-L277) — `Case 001`'s 6-of-8 Gauss branch vanishing (`1/6 → 1/12`) driving `Case 005`'s `2/3 → 7/12 → 1/2` shift.
+- **Theorem 42**: [`thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L292) — Exact identity `(71/108 - 7/12) * 44064 = 3264 = d_001`.
+- **Theorem 43**: [`thm_43_eleven_twelfths_to_seven_eighths_bridge`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L299-L308) — Decomposition `14/24 + 8/24 = 11/12` vs. `14/24 + 7/24 = 7/8`.
+- **Theorem 44**: [`thm_44_six_stage_trilogy_telescoping_decomposition`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L316-L331) — 6-stage telescoping decomposition `3672 + 1836 + 1935 + 5817 + 3264 + 3672 = 20196 = (23/24 - 1/2) * 44064`.
+- **Theorem 45**: [`thm_45_grand_trilogy_synthesis_verdict`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L338-L355) — Grand Trilogy Synthesis Verdict across `Case 001` + `Case 005` + `Case 008`.
