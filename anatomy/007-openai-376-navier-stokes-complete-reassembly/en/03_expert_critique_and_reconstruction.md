@@ -9,7 +9,7 @@ In our initial forensic audit (`006`) of OpenAI `#376` (`Universal computation i
 2. **Resolution of the Scope Note in `lean/docs/376.md`**:
    `lean/docs/376.md` noted that the paper's fixed-particle halting detector and its reciprocal maps on solid boxes were omitted from `SolenoidalSheetPrograms.json` because that challenge pointed only to `SheetFlows/SheetProgram.lean`. Both theorems are proved with zero gaps in [`ShearFlows/Main.lean:55`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Main.lean#L55-L66) (`reciprocal_affine_maps_by_shears`) and [`ForcedComputation/Programs/FixedParticleMain.lean:45`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FixedParticleMain.lean#L45-L56) (`fixed_particle_effective_computation`).
 3. **Genuine Non-Zero Pressure $p = -\phi \neq 0$, Solenoidal Forcing $\operatorname{div} f_{\text{sol}} = 0$, and Unconditional Halting Undecidability**:
-   [`PeriodicLattice/Solenoidal.lean:334-373`](../proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean#L334-L373) solves $\Delta \phi = \operatorname{div} g$ on $\mathbb{T}^3$ so that $p = -\phi \neq 0$ and $\operatorname{div} f_{\text{sol}} = 0$, while [`VelocityUnconditional.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean#L60-L130) and [`FiniteMachineHaltingDischarge.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FiniteMachineHaltingDischarge.lean#L1-L25) connect Mathlib's `ComputablePred.halting_problem 0` to unconditional fluid observation undecidability.
+   [`PeriodicLattice/Solenoidal.lean:315-366`](../proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean#L315-L366) solves $\Delta \phi = \operatorname{div} g$ on $\mathbb{T}^3$ so that $p = -\phi \neq 0$ and $\operatorname{div} f_{\text{sol}} = 0$, while [`VelocityUnconditional.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean#L60-L130) and [`FiniteMachineHaltingDischarge.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FiniteMachineHaltingDischarge.lean#L1-L25) connect Mathlib's `ComputablePred.halting_problem 0` to unconditional fluid observation undecidability.
 
 ```lean
 -- Source: proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean:1-32
@@ -50,10 +50,10 @@ import OAI.MathematicalPhysics.NavierStokes.ForcedComputation.Detector.VelocityU
 
 ## 2. Breakthrough #1 Audit: `PeriodicLattice/Solenoidal.lean` & `PeriodicInverse.lean`
 
-### 2.1 Verbatim Verification of Non-Zero Pressure and Solenoidal Forcing (`Solenoidal.lean:334-373`)
+### 2.1 Verbatim Verification of Non-Zero Pressure and Solenoidal Forcing (`Solenoidal.lean:315-366`)
 
 ```lean
--- Source: proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:334-373
+-- Source: proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:315-366
 def solenoidalForce (ν : ℝ) (d : Input) : VectorField := force ν d - gradient (potential d)
 
 theorem solenoidalForce_contDiff (ν : ℝ) (d : Input) :
@@ -118,7 +118,7 @@ theorem first_weighted_bound (lam t : ℝ) {H : ℝ → ℝ → ℝ} {w C : ℝ}
            _ ≤ |lam| := by nlinarith [abs_nonneg lam]
 ```
 
-**Critique and Reconstruction** ([`thm_07`–`thm_10`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L92-L154)):
+**Critique and Reconstruction** ([`thm_07`–`thm_10`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L97-L162)):
 Applying `Real.exp (lam * s) ≤ Real.exp |lam|` inside `screened (4 * Real.pi) = first (-4*pi) (first (4*pi) H)` multiplies the negative-exponent step by $e^{4\pi} \approx 286,751.31$ instead of $1$, and fails to integrate the positive kernel $|1 - e^{\pm\lambda}|^{-1}\int_0^1 e^{\pm\lambda s}\,ds = |\lambda|^{-1}$. Replacing the pointwise bound by exact positive-kernel integration tightens the operator norm from $\frac{e^{12\pi}}{(e^{4\pi}-1)^2} \approx 286,753.3131$ to $\frac{1}{16\pi^2} \approx 0.006332574$ (**`45,282,268.18x` tighter**).
 
 ---
@@ -141,7 +141,7 @@ For the tail $|k|_\infty>N\ge1$, it is at most
 \end{equation}
 ```
 
-**Critique and Reconstruction** ([`thm_11`–`thm_17`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L159-L239)):
+**Critique and Reconstruction** ([`thm_11`–`thm_17`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L164-L250)):
 Keeping $|k|_2 \ge |k|_\infty = n$ with rational bounds $\sum n^{-2} \le \frac{7}{4}$ and $\sum n^{-4} \le \frac{4}{3}$ tightens `52` to $\frac{134}{3} = 44.\overline{6}$ (`thm_12`), while the exact $L^\infty$-shell sum is $4\pi^2 + \frac{\pi^4}{45} \approx 41.6431$ (`thm_13`). Decomposing each cubical shell $S_n$ into 5 Euclidean strata (`thm_14`) reduces the $n=1$ shell from $26$ to $\frac{89}{9} \approx 9.8889$ (`thm_15`) and yields the exact 3D Epstein zeta value $Z_3(2) \approx \mathbf{16.532149}$ (**`3.145x` smaller** than `52`, `thm_17`).
 
 ---
@@ -186,4 +186,4 @@ def AllowedDigits (b : ℕ) (ds : List ℕ) : Prop :=
 noncomputable def tailBound (b : ℕ) : ℝ := ((b : ℝ) - 2) / ((b : ℝ) - 1)
 ```
 
-In [`thm_20`–`thm_23`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L266-L322), [`thm_25`–`thm_32`](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L17-L109), and [`thm_41`–`thm_48`](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L219-L327), we formally prove the $(1 - \min(\lambda, \lambda^{-1}))h$ excursion bound, the `157.5x` mass tightening and `7,560x` $H$-range expansion at $L \ge 1$, the $b$-fold even-digit Cantor cylinder separation $\frac{1}{b-1}$, and the exact rational Banach contraction margins of `StationaryContraction.lean`.
+In [`thm_20`–`thm_22`](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L275-L324), [`thm_25`–`thm_32`](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L17-L114), and [`thm_41`–`thm_48`](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L219-L334), we formally prove the $(1 - \min(\lambda, \lambda^{-1}))h$ excursion bound, the `157.5x` mass tightening and `7,560x` $H$-range expansion at $L \ge 1$, the $b$-fold even-digit Cantor cylinder separation $\frac{1}{b-1}$, and the exact rational Banach contraction margins of `StationaryContraction.lean`.

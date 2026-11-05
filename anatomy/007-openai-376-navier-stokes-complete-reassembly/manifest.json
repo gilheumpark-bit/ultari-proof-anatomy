@@ -9,21 +9,21 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376_complete.py"
   },
   "artifacts_sha256": {
-    "README.md": "38bc822f5f027bc316ab67f8e477b2035489c1712678f999a3082c3d3c741521",
-    "README.ko.md": "3f87e3eb02339595b511532269397df7e660b83c29edba6d888e6561dac9ce32",
+    "README.md": "0f1e4235ab23659d97f0df16ada1d6c092de6f8e0bf4eabccca869b326fe3a00",
+    "README.ko.md": "154fb46d329d07abac2e019c4588530befffce739170fb6c7b5fa6b8f0c973fe",
     "proofs/ns376_unimported_solenoidal_and_leray_bounds.lean": "29e118af0c9b28cdfb118cd1671dfd5cc3fe43ddf31ced08fc1f990d3b3b87e0",
     "proofs/ns376_detector_margins_and_undecidability_chains.lean": "eb44b1ee88957f6ec6c25326da384e9507526a81c9e9e82d702e9e7dac3b92bb",
     "proofs/verify_symbolic_ns376_complete.py": "0614ae8cf7810780be7b1a5443470c4a150e69b1abe2dde65a864929a1433341",
     "proofs/symbolic_verification_result.json": "81b3f5f849ee2d4025d4e7aa929ed1ca7b1f892388203d3f1e2ae43811d0d4e9",
-    "proofs/problem_spec.md": "60b7f2193e96d33edf61301b28a5a2db4dae2459f7ca1925c5248758d598943b",
-    "ko/01_고등학생_직관가이드.md": "57b4b7c03ea214cf0df8ba8dcf63b5b25d50bc73f99e75a9072f997166f5bbd5",
-    "ko/02_대학생_수리해부.md": "1400e039a709acb8d28faabeebb60c2dc656a8f54ad5b07c69a47197b9ba5a9f",
-    "ko/03_전문가_비평및재구성.md": "9e9b2d087396a974f6b48072142e18510d6f7091c05650ac1fce2dd7b49d82c8",
-    "ko/04_컴퓨터공학_실증검증.md": "0dbbc53f3f64a4c8ef68bd09f96a6e96bb7a07735b26004ee571d60393a8a8b9",
+    "proofs/problem_spec.md": "77bb7ca1410c644982a94c5dc73b6f5da75d0e66709d78015d70ce694362a841",
+    "ko/01_고등학생_직관가이드.md": "4aa11ad3b7e401ae766f405eb8fabfdba5af08df55205a11b8c8b830fbf20293",
+    "ko/02_대학생_수리해부.md": "ab00c7a1e8352ce0e4f9880b64e4e5897c90426ff9f482088f062fbcc32194cc",
+    "ko/03_전문가_비평및재구성.md": "a35deeec90dbb987327e0fd4f9ef7ab35999d6d0f72785d3bb7621c221d9a6c0",
+    "ko/04_컴퓨터공학_실증검증.md": "2b9f2b4038911ca641733ca7f9be4e44e900e93660a1ab8a5c83c28756a6e38c",
     "en/01_high_school_intuition_guide.md": "cc48bb1cd6b355d065ac70c66d6d8382b22246cb36d73810b10c6af0d445de06",
-    "en/02_undergraduate_mathematical_anatomy.md": "33826e5a1f83f342e201da2b16d0eb6198aabe6235c2e9a9eae9aa1660ed38e0",
-    "en/03_expert_critique_and_reconstruction.md": "2de7be520c32a4c3883fc605049c211c7f021b83ead05d8dfb1072c3ca72aeb9",
-    "en/04_cs_empirical_verification.md": "b5212d22d9beb03f2dea10bf84fecfa795b1dbf5d686834ec0acd3169c4463fa"
+    "en/02_undergraduate_mathematical_anatomy.md": "d6bd37170bcf09f1d7b41cd1754832a29e1a141441bbd88ee2051a507ed37557",
+    "en/03_expert_critique_and_reconstruction.md": "fec273f6f0b23810fec00a722f670eed28e5b569cc614aa3c6ef36a35ca23511",
+    "en/04_cs_empirical_verification.md": "63fa20def303c9c21970ba6073e71dd53968f97bc40e3f6c9173e73302d07930"
   },
   "verdict": {
     "stratum_partition_1004_oai_files": "PASS (286/354 challenge-reachable files + 696/628 ForcedComputation/Main.lean master-hub files + 19 Material/ files + 3 StationaryNS files = 1,004 files, 139,847 lines, 0 sorry, 0 custom axioms)",
@@ -100,7 +100,7 @@
     "theorems_proved": 48,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_caught": "129/129",
+    "hypothesis_mutations_caught": "134/134",
     "theorems": [
       {
         "index": 1,

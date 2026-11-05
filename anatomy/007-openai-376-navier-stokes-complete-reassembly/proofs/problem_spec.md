@@ -15,7 +15,7 @@
 1. **3차원 주기 격자 무발산 외력 및 그린 연산자 (`PeriodicLattice/`)**:
    - `OAI.PeriodicLattice.FluidLift.doubleSlope` / `vertical_energy` / `doubleSlope_second` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:19,41,46`)
    - `OAI.PeriodicLattice.FluidLift.pressureBase` / `pressureSource` / `pressureMode` / `potential` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:58,109,140,165`)
-   - `OAI.PeriodicLattice.FluidLift.solenoidalForce` / `solenoidalForce_div` / `solenoidalForce_classical_solution` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:295,310,331,401`)
+   - `OAI.PeriodicLattice.FluidLift.solenoidalForce` / `solenoidalForce_solenoidal` / `solenoidalForce_classical_solution` (`lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean:315,328,342,352`)
    - `OAI.PeriodicLattice.PeriodicInverse.first` / `first_weighted_bound` / `screened` / `screened_rapid` (`lean/OAI/Analysis/PeriodicLattice/PeriodicInverse.lean:32,169,259,344`)
 2. **2026년 10월 6일 개정판 3차원 토러스 르레이 투영 및 푸리에 껍질 급수 (`oct06/build/analysis.tex`)**:
    - `\sum_{k \in \mathbb{Z}^3 \setminus \{0\}} |k|^{-4} \le 52` 및 $S_L := (1 + 52(L/2\pi)^4)^{1/2}$ (`tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex:187,219-223`)
