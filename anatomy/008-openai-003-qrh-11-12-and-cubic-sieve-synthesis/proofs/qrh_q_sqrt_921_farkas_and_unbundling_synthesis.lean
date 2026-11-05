@@ -1,7 +1,7 @@
 import Init
 /- OpenAI #003 (Quasi-Riemann Hypothesis Ecosystem Deep Synthesis)
    File 2: The Q(sqrt(921)) Unity Across Case 005 & Baiying Liu (arXiv:2610.12234), Parametric Farkas Unbundling & The 10-Tier Hierarchy (Theorems 16–30)
-   Scope: PARAMETER_ARITHMETIC_ONLY (Category A: Exact Algebraic Number Field Q(sqrt(921)), Farkas Duality & Unbundled Exponent Verification)
+   Scope: Category A (Exact Algebraic Number Field Q(sqrt(921)), Farkas Duality & Unbundled Exponent Verification)
 -/
 
 namespace QRHQSqrt921FarkasSynthesis

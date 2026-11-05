@@ -30,7 +30,7 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
 | [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) | `cd4343bbd8579febfeaa963b87580fd053522ad1d05b4276d963a15f631b67e8` | 404 lines, 27 Lean 4 theorems (`Theorem 1`~`Theorem 27`), `0` `sorry`, `0` custom `axiom`. |
-| [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `4252467ba50e046b17e11040c12014d5999c5237afa5eb01ff1b22c0566b10c5` | 300 lines, 13 Lean 4 theorems (`Theorem 28`~`Theorem 40`, Tasks 1–3), `0` `sorry`, `0` custom `axiom`. |
+| [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `4d3b41086ad86e8bf6a7b0501858901202c0a0579d4938ba1c04b6b527c804c4` | 300 lines, 13 Lean 4 theorems (`Theorem 28`~`Theorem 40`, Tasks 1–3), `0` `sorry`, `0` custom `axiom`. |
 | [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py) | `f0c2f3e94f1ee422de2e4bdd758f94fc4a7212b2bde50106886a2d864aca6cdb` | Exact `SymPy`/`Fraction` symbolic solver extracting definitions directly from `./proofs/oai_ref/*.lean`. |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55` | Exact rational/symbolic output dictionary for Problems 1 through 5. |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `6cd04e3c6579ced675edd0ab3056338a58e7ccb1cca1a7fcb5e22a6cb337093a` | Problem specification referencing `./oai_ref/*.lean`. |

@@ -35,12 +35,12 @@ sha256sum proofs/milne_transport_and_filtration.lean \
 | [`proofs/milne_weil_reduction_and_repairs.lean`](../proofs/milne_weil_reduction_and_repairs.lean) | `19c47d7ee3025dbb667d9d59eb00513f5c4625e3cfc87740ec0d11997a88a860` | Theorems 17–33 (`Part IV–V, VI-B, VII`), `0 sorry`, `110/110` mutations caught |
 | [`proofs/verify_symbolic_milne.py`](../proofs/verify_symbolic_milne.py) | `13cd8628577c1aa90df21b7ea4c8530605f5eaf57fd17ddb2a2d08171e71e620` | SymPy + PyTorch PyTorch 7-audit verifier (`Audit 1–7`) |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100` | Deterministic JSON output for Audits 1–7 |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `935a2f7f40e155f23fe6fad022a2f18b1523aa790d1d3fd794198b1306569a1e` | Forensic repair specification (`PARAMETER_ARITHMETIC_ONLY`) |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `e2873e84dc9152d82b37467af932f6ecc58537508018e138064156c51dcdd71b` | Forensic repair specification (`Category A`) |
 | [`proofs/oai_001_milne_repair.patch`](../proofs/oai_001_milne_repair.patch) | `529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886` | 234-line unified diff across 6 LaTeX sections |
 
 ---
 
-## 3. Scope Notes (`PARAMETER_ARITHMETIC_ONLY`)
+## 3. Scope Notes (`Category A`)
 
 1. **Boundary Between Category A (Formalized Dimension, Slope, Valuation, and Eigenspace Arithmetic) and Category B (Scheme-Theoretic Cohomology)**:
    - The 33 theorems in [`milne_transport_and_filtration.lean`](../proofs/milne_transport_and_filtration.lean) and [`milne_weil_reduction_and_repairs.lean`](../proofs/milne_weil_reduction_and_repairs.lean) verify the exact integer/rational dimension, rank, slope-duality, Kronecker degree, valuation, and Beauville eigenspace identities (`211/211` hypothesis mutations caught).

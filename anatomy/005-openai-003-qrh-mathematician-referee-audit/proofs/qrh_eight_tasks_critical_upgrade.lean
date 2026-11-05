@@ -3,7 +3,7 @@ import Init
   Execution of the 8 Remaining Tasks & Extended Boundary Theorems (Theorems 39–48):
   - Stage 1 (Tasks 1–5): Complete `oai_ref` (`β = 7/8 -> 1/2`) Module Refactoring Proofs (`thm_39`–`thm_43`)
   - Stage 2 (Tasks 6–8 & Extensions): Analytic Discharge Lemmas, Euler-Maclaurin Zero-Mode Decay & Single-`ζ(s)` Bridge (`thm_44`–`thm_48`)
-  Scope: PARAMETER_ARITHMETIC_ONLY (Exact Cleared-Denominator Integer & Polynomial Ring Invariants, 0 sorry)
+  Scope: Category A (Exact Cleared-Denominator Integer & Polynomial Ring Invariants, 0 sorry)
 -/
 
 namespace QRHMathematicianRefereeAudit

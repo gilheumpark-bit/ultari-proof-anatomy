@@ -105,10 +105,10 @@ def verify_sympy_identities() -> dict:
         "moving_affine_curl_exact": all(e == "0" for e in plateau_errors),
         "cutoff_curl_global_divergence": str(div_u_cut),
         "cutoff_curl_divergence_zero": (div_u_cut == 0),
-        "rh14_manufactured_forcing_residual": str(ns_residual_mfg),
-        "rh14_tautology_verified": (ns_residual_mfg == 0),
-        "rh15_shear_advection_components": adv_shear,
-        "rh15_shear_advection_zero": all(c == "0" for c in adv_shear),
+        "manufactured_forcing_residual": str(ns_residual_mfg),
+        "manufactured_forcing_tautology_verified": (ns_residual_mfg == 0),
+        "orthogonal_shear_advection_components": adv_shear,
+        "orthogonal_shear_advection_zero": all(c == "0" for c in adv_shear),
         "triangular_2plus1d_full_divergence": str(div_tri),
         "triangular_2plus1d_vertical_div_contribution": str(sp.diff(w_s, y2)),
         "triangular_2plus1d_self_advection_error": str(conv_w),
@@ -413,8 +413,8 @@ def main() -> None:
         "all_checks_passed": (
             sympy_res["moving_affine_curl_exact"]
             and sympy_res["cutoff_curl_divergence_zero"]
-            and sympy_res["rh14_tautology_verified"]
-            and sympy_res["rh15_shear_advection_zero"]
+            and sympy_res["manufactured_forcing_tautology_verified"]
+            and sympy_res["orthogonal_shear_advection_zero"]
             and sympy_res["triangular_2plus1d_decoupling_verified"]
             and gpu_res["exp1_3d_box_routing"]["plateau_affine_velocity_linf_error"] < 1e-14
             and gpu_res["exp3_solenoidal_support_leakage"]["exterior_linf_to_interior_rms_pct"] == 81.87

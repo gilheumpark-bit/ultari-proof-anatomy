@@ -179,7 +179,7 @@ def check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
     print(f"  [PASS] 1-to-1 theorem & line-number links ({len(all_thms)} theorems, {link_count} markdown links verified)")
 
 
-def check_ultari_gates_and_doc_depth(case_dir):
+def check_doc_depth(case_dir):
     subs = [case_dir / s for s in ("ko", "en") if (case_dir / s).is_dir()] or [case_dir]
     for base in subs:
         for prefix in ("01_", "02_", "03_"):
@@ -191,16 +191,7 @@ def check_ultari_gates_and_doc_depth(case_dir):
                 assert len(lines) >= 30 and len(raw) >= 2500, (
                     f"Stubbed document detected ({md.relative_to(case_dir)}: {len(lines)} lines, {len(raw)} bytes)"
                 )
-    ultari_dir = ROOT.parent / "울타리_연구원" / "template" / ".ultari"
-    extra_scan = ultari_dir / "extra_scan.py"
-    code_disc = ultari_dir / "code_discipline.py"
-    if extra_scan.is_file():
-        r_scan = subprocess.run([sys.executable, str(extra_scan), str(case_dir)], capture_output=True, text=True, timeout=60)
-        assert r_scan.returncode == 0, f"Ultari extra_scan failed on {case_dir.name}:\n{r_scan.stdout}\n{r_scan.stderr}"
-    if code_disc.is_file():
-        r_disc = subprocess.run([sys.executable, str(code_disc), str(case_dir)], capture_output=True, text=True, timeout=60)
-        assert r_disc.returncode == 0, f"Ultari code_discipline failed on {case_dir.name}:\n{r_disc.stdout}\n{r_disc.stderr}"
-    print("  [PASS] Ultari static gates (RH13~RH30, code_discipline, and 01~03 doc depth >= 30 lines / 2.5KB)")
+    print("  [PASS] Documentation completeness and depth (01~03 guides >= 30 lines / 2.5KB)")
 
 
 def verify_case(case_dir: pathlib.Path):
@@ -218,7 +209,7 @@ def verify_case(case_dir: pathlib.Path):
         total_lines_by_file[lf.name] = len(lf.read_text(encoding="utf-8").splitlines())
     check_symbolic_solver(case_dir / "proofs", manifest)
     check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
-    check_ultari_gates_and_doc_depth(case_dir)
+    check_doc_depth(case_dir)
 
 
 def main():

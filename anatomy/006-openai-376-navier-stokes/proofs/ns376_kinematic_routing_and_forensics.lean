@@ -1,17 +1,17 @@
 /-
   OpenAI #376 (Universal Computation in Forced Navier-Stokes Flows)
-  Part I: Kinematic Box Routing, Manufactured-Forcing Tautology (RH14),
-          Orthogonal Shear Annihilation (RH15), and 1,010-File Fossil Archaeology (RH32)
+  Part I: Kinematic Box Routing, Manufactured-Forcing Tautology,
+          Orthogonal Shear Annihilation, and 1,010-File Ecosystem Stratigraphy
   Total Theorems: 20 (Theorems 1 to 20), 0 sorry, 0 axiom.
 -/
 
 namespace UltariNS376
 
 -- ============================================================================
--- Section 1: RH14 Manufactured Forcing Tautology & RH15 Advection Annihilation
+-- Section 1: Manufactured Forcing Tautology & Orthogonal Shear Advection Annihilation
 -- ============================================================================
 
-/-- Theorem 1 (RH14 Manufactured Forcing Tautology — BoxCoding.lean:53-66):
+/-- Theorem 1 (Manufactured Forcing Tautology — BoxCoding.lean:53-66):
     Setting f₀ = dtU + convU, f₁ = -lapU, f = f₀ + ν * f₁, and grad_p = 0
     makes the Navier-Stokes momentum equation dtU + convU = -grad_p + ν * lapU + f
     an unconditional ring identity (`abel`) for ANY velocity field U. -/
@@ -26,7 +26,7 @@ theorem ns376_manufactured_force_abel_identity
     rw [hf1, Int.mul_neg]
   omega
 
-/-- Theorem 2 (RH14 Zero-DOF Dynamical Freedom):
+/-- Theorem 2 (Zero-DOF Dynamical Freedom):
     Two completely distinct kinematic evolutions (dtU1 ≠ dtU2, e.g., halting vs
     non-halting particle paths) both satisfy the forced Navier-Stokes momentum
     equation with zero residual once each defines its own residual force f_i,
@@ -42,7 +42,7 @@ theorem ns376_manufactured_force_arbitrary_trajectory_witness
   have hneg : nu * (-lapU) = -(nu * lapU) := Int.mul_neg nu lapU
   omega
 
-/-- Theorem 3 (RH15 Orthogonal Shear Advection Annihilation — SolenoidalSheetPrograms.lean:188):
+/-- Theorem 3 (Orthogonal Shear Advection Annihilation — SolenoidalSheetPrograms.lean:188):
     In a unidirectional shear sheet U(t, x₁, x₂, x₃) = (u₁(t, x₃), u₂(t, x₃), 0)
     where ∂₁U = ∂₂U = 0 and u₃ = 0, every component of the nonlinear Euler advection
     (U · ∇)U_i = u₁ ∂₁U_i + u₂ ∂₂U_i + u₃ ∂₃U_i vanishes identically, reducing
@@ -240,10 +240,10 @@ theorem ns376_observer_box_halting_separation
   omega
 
 -- ============================================================================
--- Section 3: Forensic Audit of the 1,010-File #376 Ecosystem (RH32, RH17, RH13, OB3)
+-- Section 3: Forensic Audit of the 1,010-File #376 Ecosystem (Orphans, Clones & Regularity)
 -- ============================================================================
 
-/-- Theorem 14 (RH32 1,010-File Ecosystem Stratigraphy):
+/-- Theorem 14 (1,010-File Ecosystem Stratigraphy):
     Across the 6 OAI directories of Family #376 (1,004 OAI files = 139,847 lines)
     plus 6 ComparatorChallenges files (2,284 lines), only 354 OAI files (66,480 lines)
     are reachable from the 6 challenges, leaving 650 OAI files (73,367 lines, >64%)
@@ -262,7 +262,7 @@ theorem ns376_ecosystem_1010_file_stratigraphy
     orphan_oai > reach_oai ∧ orphan_lines > reach_lines := by
   omega
 
-/-- Theorem 15 (RH32 NavierStokes Subdirectory 631-Orphan Partition):
+/-- Theorem 15 (NavierStokes Subdirectory 631-Orphan Partition):
     Inside OAI/MathematicalPhysics/NavierStokes (843 files = 212 reachable + 631 orphan),
     the 631 orphaned files (70,195 lines) partition into ForcedComputation (576 files =
     144 Detector + 98 Flow + 173 Programs + 160 Scalar + 1 Main), ShearFlows (31 files),
@@ -284,12 +284,12 @@ theorem ns376_navier_stokes_dir_631_orphan_partition
     total_ns = 843 := by
   omega
 
-/-- Theorem 16 (RH17 Challenge Clone Identity — BalancedThreeStack vs ForcedNavierStokesComputation):
+/-- Theorem 16 (Challenge Clone Module Identity — BalancedThreeStack vs ForcedNavierStokesComputation):
     BalancedThreeStack.lean (239 lines) and ForcedNavierStokesComputation.lean (232 lines)
     contain the exact same 38 definitions and the exact same 1 theorem
     `balanced_three_stack_realization`, differing only in 7 namespace/docstring lines,
     and both point to the single solution module `BalancedTransport.MainResult`. -/
-theorem ns376_challenge_clone_rh17_identity
+theorem ns376_challenge_clone_module_identity
     (lines_b3 lines_fn defs_b3 defs_fn thms_b3 thms_fn distinct_challenges_claimed distinct_engines_actual : Int)
     (hl_b3 : lines_b3 = 239)
     (hl_fn : lines_fn = 232)
@@ -322,12 +322,12 @@ theorem ns376_velocity_challenge_spec_stuffing_ratio
     0 < internal_sorry_line ∧ internal_sorry_line < l_vel := by
   omega
 
-/-- Theorem 18 (RH13 Vacuous ComputableReal ν in VelocityDetection/MainResult.lean:14,51):
+/-- Theorem 18 (Vacuous ComputableReal ν Premise in VelocityDetection/MainResult.lean:14,51):
     Because `RationalBox 5` in `NavierStokesVelocity.lean:1203` already packages
     viscosity ν = x(0), time t = x(1), and 3D space (X₀, X₁, X₂) = (x(2), x(3), x(4))
     into a 5-dimensional rational oracle `Names q x`, the external hypothesis
     `ComputableReal ν` (`_hcomputable`) adds 0 new coordinates and is discarded unused. -/
-theorem ns376_vacuous_computable_viscosity_rh13
+theorem ns376_vacuous_computable_viscosity_premise
     (dim_nu dim_time dim_space box_dim total_vacuous_hyps : Int)
     (hnu : dim_nu = 1)
     (ht : dim_time = 1)
@@ -337,12 +337,12 @@ theorem ns376_vacuous_computable_viscosity_rh13
     box_dim = 5 ∧ dim_nu ≤ box_dim ∧ total_vacuous_hyps > 200 := by
   omega
 
-/-- Theorem 19 (OB3 Sobolev Derivative Loss from Potential Ψ to Manufactured Force f):
+/-- Theorem 19 (Sobolev Three-Derivative Loss from Potential Ψ to Manufactured Force f):
     When velocity U = ∇ × Ψ is generated from a vector potential Ψ of regularity order k,
     U has regularity k - 1, vorticity ω = ∇ × U has regularity k - 2, and the manufactured
     viscous force f = ∂_t U + (U · ∇)U - ν ΔU has spatial regularity k - 3 (a loss of
     2 derivatives from U and 3 derivatives from Ψ). -/
-theorem ns376_sobolev_derivative_loss_ob3
+theorem ns376_sobolev_three_derivative_loss
     (k_psi k_vel k_vort k_force : Int)
     (hk : 3 ≤ k_psi)
     (hvel : k_vel = k_psi - 1)

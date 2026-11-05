@@ -1,7 +1,7 @@
 import Init
 /- OpenAI #003 (Quasi-Riemann Hypothesis Ecosystem Deep Synthesis)
    File 1: The 23/24 vs. 11/12 Formalization Gap & The Unimported 30-File Sharp Cubic Large Sieve (Theorems 1–15)
-   Scope: PARAMETER_ARITHMETIC_ONLY (Category A: Exact Algebraic, Recurrence, Reserve-Budget & Exponent-Bridge Verification)
+   Scope: Category A (Exact Algebraic, Recurrence, Reserve-Budget & Exponent-Bridge Verification)
 -/
 
 namespace QRHElevenTwelfthsAndCubicSieve

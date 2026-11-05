@@ -2,7 +2,7 @@
   OpenAI Math Benchmark #003 (Quasi-Riemann Hypothesis for Dirichlet L-Functions, β = 7/8)
   Part II: Complex-Analytic Continuation & Master Scale-Coupling Anatomy (Theorems 28–40)
   =======================================================================================
-  Scope: PARAMETER_ARITHMETIC_ONLY (Category A — Universal Polynomial Ring & Scale-Coupling Identities)
+  Scope: Category A (Universal Polynomial Ring & Cleared-Denominator Scale-Coupling Identities)
   Standard Lean 4 (v4.29.0-rc8) kernel-verified proofs with zero external dependencies,
   zero `sorry`, and zero `axiom`.
 

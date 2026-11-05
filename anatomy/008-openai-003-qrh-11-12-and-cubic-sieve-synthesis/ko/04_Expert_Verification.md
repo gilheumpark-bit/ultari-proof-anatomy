@@ -15,7 +15,7 @@
 # 2. 결정론적 SymPy 기호 검증
 python3 proofs/verify_symbolic_qrh_synthesis.py
 
-# 3. 전체 Ultari Proof Anatomy 검증 게이트 (SHA-256 + 344/344 돌연변이 시험 + 줄 번호 링크 + RH13~RH30)
+# 3. 전체 Proof Anatomy 검증 게이트 (SHA-256 + 344/344 돌연변이 시험 + 줄 번호 링크)
 python3 ../../tools/verify_all.py --root .
 ```
 
@@ -25,8 +25,8 @@ python3 ../../tools/verify_all.py --root .
 
 | 산출물 파일 | SHA-256 체크섬 |
 | :--- | :--- |
-| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `24b00ab6c5793c88efed52f8094327e680e405a8d3f4305ba6b663c102107d26` |
-| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `e7d87e2f12e0a6887c10f42a2cb5c0a8801b0699225361fba7a07150d7a283e2` |
+| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `ac78033ab95046c97c9b09e92728429a74b1df30d058c843beb2a0cf2059439b` |
+| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `4b388614dbc3a259ab2eef695d7e19db98e93450028894e2d719fe4046e164b5` |
 | [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `0acdb6187a5b85ac44fb7060bdb34df245f19d7cf9b3f381b411474db46bea5f` |
 | [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `3cc6e87a939119a7118e617b9e3fc96e76873c14ac699768f3b91196633d88a4` |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4` |

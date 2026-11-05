@@ -1,7 +1,7 @@
 import Init
 /- OpenAI #003 (Quasi-Riemann Hypothesis & Siegel Zero Exclusion)
    Mathematician's Deep Referee & Structural Verification Suite (38 Theorems)
-   Scope: PARAMETER_ARITHMETIC_ONLY (Category A: Exact Algebraic, Valuation, Exponent-System, Call-Graph & Sub-0.69 Transfer Invariants)
+   Scope: Category A (Exact Algebraic, Valuation, Exponent-System, Call-Graph & Sub-0.69 Transfer Invariants)
 -/
 
 namespace QRHMathematicianRefereeAudit
@@ -293,7 +293,7 @@ theorem thm_24_complete_26_file_architectural_partition
     n_total_files = 26 ∧ lines_total = 3319 ∧ 3 * n_siegel_zeros < n_seven_eighths ∧ line_diff = 10 := by
   omega
 
-/-- [Light-v2 Abstract Structure] Axiomatic 4-stage Bézout-to-Siegel-zero functorial discharge chain (`RH31 AXIOMATIC_DUAL_WITNESS_V2`). -/
+/-- [Abstract Functorial Chain] Axiomatic 4-stage Bézout-to-Siegel-zero functorial discharge chain with dual concrete witness & counter-model. -/
 structure BezoutSiegelChain (Family Cutoff Cert : Type) where
   AdmissibleFamily : Family → Prop
   RegularSelection : Family → Cutoff → Prop

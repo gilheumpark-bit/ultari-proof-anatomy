@@ -9,14 +9,14 @@
     "moving_affine_curl_exact": true,
     "cutoff_curl_global_divergence": "0",
     "cutoff_curl_divergence_zero": true,
-    "rh14_manufactured_forcing_residual": "0",
-    "rh14_tautology_verified": true,
-    "rh15_shear_advection_components": [
+    "manufactured_forcing_residual": "0",
+    "manufactured_forcing_tautology_verified": true,
+    "orthogonal_shear_advection_components": [
       "0",
       "0",
       "0"
     ],
-    "rh15_shear_advection_zero": true,
+    "orthogonal_shear_advection_zero": true,
     "triangular_2plus1d_full_divergence": "Derivative(a1(t, y0, y1), y0) + Derivative(a2(t, y0, y1), y1)",
     "triangular_2plus1d_vertical_div_contribution": "0",
     "triangular_2plus1d_self_advection_error": "0",

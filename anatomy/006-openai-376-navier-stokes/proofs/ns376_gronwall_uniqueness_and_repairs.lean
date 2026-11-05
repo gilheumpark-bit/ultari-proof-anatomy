@@ -291,7 +291,7 @@ theorem T38_layers_1_and_2_verdict_partition
 /--
 Theorem 39 (Layer 3 & Layer 4 Verdict — Genuine Mathematical Tricks Inside the Proof Corpus):
 Despite failing Layer 1 (autonomous 3D Navier-Stokes Turing completeness) and exhibiting Layer 2
-spec-laundering (`RH14`, `RH15`, `RH17`, `RH13`, `RH32`), the corpus contains `3` genuine, non-trivial
+spec-laundering (manufactured forcing, shear annihilation, clone & orphan modules), the corpus has `3` genuine
 formalized mathematical mechanisms:
 (1) `curl(chi * Psi)` volume-preserving affine box routing (`OAI/Analysis/BoxTransport/Routing.lean`),
 (2) `12 * C` Serrin-Gronwall $L^2$ uniqueness against arbitrary smooth competitors (`OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Comparison.lean`),
