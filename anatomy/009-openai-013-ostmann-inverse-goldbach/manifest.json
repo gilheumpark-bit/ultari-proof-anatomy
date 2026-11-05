@@ -1,0 +1,315 @@
+{
+  "case_id": "openai_013_ostmann_inverse_goldbach",
+  "title": "OpenAI #013 (Ostmann's Inverse Goldbach Conjecture): Twin-Engine 7,716-File Stratigraphy, -11/125 Fourier Supply Contraction, and -7/20 log r Binary Tree Permutation Contradiction",
+  "target_repository": "openai/math (Family 013: OAI/NumberTheory/Ostmann/, ComparatorChallenges/OstmannComplete.lean, ComparatorChallenges/OstmannPrimes.lean, and preprints/the-additive-indecomposability-of-the-primes-September-24-2026)",
+  "date": "2026-11-06",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_ostmann.py"
+  },
+  "artifacts_sha256": {
+    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "d84dd42297d340e15f43d58c0fbff30ea6ac25ee80ee3e727dee425d14b1be2f",
+    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "5d4b5e064309c1fdcb084abf04022b36856f5ef7f926af9eb558fc1cf0812119",
+    "proofs/verify_symbolic_ostmann.py": "1769621cb38eff4116f66c489932c5a0b950aaa9d90be61a468f2484d3695431",
+    "proofs/symbolic_verification_result.json": "37a2f24b005ca15eda2530395edad4093af1601a8a62ba8bdaf9581f4635236c",
+    "proofs/problem_spec.md": "e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02"
+  },
+  "verified_key_results": {
+    "pillar1_twin_engine_stratigraphy": {
+      "files_engine_a": 3165,
+      "files_engine_b": 4175,
+      "files_shared": 5,
+      "files_reachable": 7335,
+      "files_orphan": 381,
+      "files_total": 7716,
+      "lines_engine_a": 266820,
+      "lines_engine_b": 303234,
+      "lines_shared": 372,
+      "lines_reachable": 569682,
+      "lines_orphan": 39517,
+      "lines_total": 609199,
+      "ext_imports_engine_a": 1,
+      "ext_imports_engine_b": 18,
+      "lean_theorems": [
+        "thm_01_ostmann_directory_inclusion_exclusion_partition (Theorem 1, L20)",
+        "thm_02_shared_intersection_five_files_accounting (Theorem 2, L44)",
+        "thm_03_unreachable_orphan_381_files_accounting (Theorem 3, L61)",
+        "thm_04_external_dependency_asymmetry_1_vs_18 (Theorem 4, L85)",
+        "thm_05_complete_vs_main_logical_bridge_equivalence (Theorem 5, L106)",
+        "thm_06_finite_summand_crt_dirichlet_composite_witness (Theorem 6, L136)"
+      ]
+    },
+    "pillar2_sieve_and_supply_contraction": {
+      "collision_penalty_identity": "(2*sigma - 1)^2 / (sigma*(1 - sigma))",
+      "unbalanced_penalty_floor": "1/2",
+      "harmonic_band": ["1/20", "9/10"],
+      "nonsparse_target": "3/20",
+      "sparse_threshold": "17/25",
+      "local_contraction_c_loc": "8/5",
+      "net_supply_exponent": "-11/125",
+      "montgomery_Q_power": 7,
+      "perron_tail_Q_power": -8,
+      "qrh_003_imports": 0,
+      "lean_theorems": [
+        "thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window (Theorem 7, L160)",
+        "thm_08_collision_stability_reciprocal_penalty_identity (Theorem 8, L177)",
+        "thm_09_unbalanced_density_penalty_lower_bound_one_half (Theorem 9, L189)",
+        "thm_10_quadratic_character_parameter_budget (Theorem 10, L204)",
+        "thm_11_cauchy_schwarz_anchor_code_doubling (Theorem 11, L225)",
+        "thm_12_harmonic_band_mertens_budget_and_sparse_complement (Theorem 12, L240)",
+        "thm_13_local_transfer_polydisc_contraction_margin (Theorem 13, L262)",
+        "thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction (Theorem 14, L282)",
+        "thm_15_supply_contradiction_exponent_11_125 (Theorem 15, L303)",
+        "thm_16_montgomery_zero_density_Q7_and_tail_Q_minus_8 (Theorem 16, L324)",
+        "thm_17_zero_density_critical_exponent_crossover_at_sigma_half (Theorem 17, L340)",
+        "thm_18_page_exceptional_zero_single_prime_deletion_budget (Theorem 18, L355)",
+        "thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional (Theorem 19, L372)",
+        "thm_20_engine_a_vs_engine_b_supply_constants_bridge (Theorem 20, L387)"
+      ]
+    },
+    "pillar3_tree_and_permutation_contradiction": {
+      "dyadic_leaf_sum_formula": "2^k - 1",
+      "weighted_level_sum_formula": "(k - 2) * 2^k + 2",
+      "frequency_budget_coeff": "2/5",
+      "bad_permutation_decay_coeff": "-3/4",
+      "net_contradiction_rate": "-7/20",
+      "paper_sections_lines": 6072,
+      "formalization_expansion_ratio": 100.3292,
+      "lean_theorems": [
+        "thm_21_dyadic_tree_leaf_sum_by_induction (Theorem 21, L30)",
+        "thm_22_weighted_dyadic_level_sum_by_induction (Theorem 22, L51)",
+        "thm_23_weighted_dyadic_strict_upper_bound_all_k (Theorem 23, L80)",
+        "thm_24_single_diagram_second_moment_three_pow_r (Theorem 24, L103)",
+        "thm_25_section_7_schedule_scales_and_even_bulk_size (Theorem 25, L117)",
+        "thm_26_frequency_budget_exact_closed_form_all_k (Theorem 26, L132)",
+        "thm_27_engine_a_vs_engine_b_frequency_rate_unification (Theorem 27, L151)",
+        "thm_28_overlap_graph_component_merge_bound (Theorem 28, L168)",
+        "thm_29_bad_arrangement_multinomial_decay_three_quarters (Theorem 29, L180)",
+        "thm_30_net_contradiction_rate_minus_seven_twentieths (Theorem 30, L194)",
+        "thm_31_diagonal_good_permutation_rate_and_four_providers (Theorem 31, L213)",
+        "thm_32_scheduled_gap_parameters_and_depth_reserves_engine_a (Theorem 32, L232)",
+        "thm_33_comparison_slot_complexity_bound (Theorem 33, L249)",
+        "thm_34_linear_k_log_2_dominates_logarithmic_4_log_k (Theorem 34, L264)",
+        "thm_35_final_amplitude_upper_vs_lower_contradiction (Theorem 35, L278)",
+        "thm_36_engine_a_15_step_conditional_discharge_spine (Theorem 36, L296)",
+        "thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting (Theorem 37, L317)",
+        "thm_38_paper_9_sections_to_lean_subsystem_mapping (Theorem 38, L332)",
+        "thm_39_two_stage_analytic_combinatorial_contraction_comparison (Theorem 39, L357)",
+        "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict (Theorem 40, L377)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "files": [
+      "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+      "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean"
+    ],
+    "sorry_count": 0,
+    "hypothesis_mutations_tested": 256,
+    "hypothesis_mutations_killed": 256,
+    "theorems": [
+      {
+        "name": "thm_01_ostmann_directory_inclusion_exclusion_partition",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 20
+      },
+      {
+        "name": "thm_02_shared_intersection_five_files_accounting",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 44
+      },
+      {
+        "name": "thm_03_unreachable_orphan_381_files_accounting",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 61
+      },
+      {
+        "name": "thm_04_external_dependency_asymmetry_1_vs_18",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 85
+      },
+      {
+        "name": "thm_05_complete_vs_main_logical_bridge_equivalence",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 106
+      },
+      {
+        "name": "thm_06_finite_summand_crt_dirichlet_composite_witness",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 136
+      },
+      {
+        "name": "thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 160
+      },
+      {
+        "name": "thm_08_collision_stability_reciprocal_penalty_identity",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 177
+      },
+      {
+        "name": "thm_09_unbalanced_density_penalty_lower_bound_one_half",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 189
+      },
+      {
+        "name": "thm_10_quadratic_character_parameter_budget",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 204
+      },
+      {
+        "name": "thm_11_cauchy_schwarz_anchor_code_doubling",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 225
+      },
+      {
+        "name": "thm_12_harmonic_band_mertens_budget_and_sparse_complement",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 240
+      },
+      {
+        "name": "thm_13_local_transfer_polydisc_contraction_margin",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 262
+      },
+      {
+        "name": "thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 282
+      },
+      {
+        "name": "thm_15_supply_contradiction_exponent_11_125",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 303
+      },
+      {
+        "name": "thm_16_montgomery_zero_density_Q7_and_tail_Q_minus_8",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 324
+      },
+      {
+        "name": "thm_17_zero_density_critical_exponent_crossover_at_sigma_half",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 340
+      },
+      {
+        "name": "thm_18_page_exceptional_zero_single_prime_deletion_budget",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 355
+      },
+      {
+        "name": "thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 372
+      },
+      {
+        "name": "thm_20_engine_a_vs_engine_b_supply_constants_bridge",
+        "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
+        "line": 387
+      },
+      {
+        "name": "thm_21_dyadic_tree_leaf_sum_by_induction",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 30
+      },
+      {
+        "name": "thm_22_weighted_dyadic_level_sum_by_induction",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 51
+      },
+      {
+        "name": "thm_23_weighted_dyadic_strict_upper_bound_all_k",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 80
+      },
+      {
+        "name": "thm_24_single_diagram_second_moment_three_pow_r",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 103
+      },
+      {
+        "name": "thm_25_section_7_schedule_scales_and_even_bulk_size",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 117
+      },
+      {
+        "name": "thm_26_frequency_budget_exact_closed_form_all_k",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 132
+      },
+      {
+        "name": "thm_27_engine_a_vs_engine_b_frequency_rate_unification",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 151
+      },
+      {
+        "name": "thm_28_overlap_graph_component_merge_bound",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 168
+      },
+      {
+        "name": "thm_29_bad_arrangement_multinomial_decay_three_quarters",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 180
+      },
+      {
+        "name": "thm_30_net_contradiction_rate_minus_seven_twentieths",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 194
+      },
+      {
+        "name": "thm_31_diagonal_good_permutation_rate_and_four_providers",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 213
+      },
+      {
+        "name": "thm_32_scheduled_gap_parameters_and_depth_reserves_engine_a",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 232
+      },
+      {
+        "name": "thm_33_comparison_slot_complexity_bound",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 249
+      },
+      {
+        "name": "thm_34_linear_k_log_2_dominates_logarithmic_4_log_k",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 264
+      },
+      {
+        "name": "thm_35_final_amplitude_upper_vs_lower_contradiction",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 278
+      },
+      {
+        "name": "thm_36_engine_a_15_step_conditional_discharge_spine",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 296
+      },
+      {
+        "name": "thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 317
+      },
+      {
+        "name": "thm_38_paper_9_sections_to_lean_subsystem_mapping",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 332
+      },
+      {
+        "name": "thm_39_two_stage_analytic_combinatorial_contraction_comparison",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 357
+      },
+      {
+        "name": "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 377
+      }
+    ],
+    "compiler": "leanprover/lean4:v4.29.0-rc8"
+  },
+  "lean_version": "v4.29.0-rc8"
+}

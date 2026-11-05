@@ -1,0 +1,96 @@
+{
+  "case_id": "009-openai-013-ostmann-inverse-goldbach",
+  "problem": "OpenAI #013: Ostmann's Inverse Goldbach Conjecture (The Additive Indecomposability of the Primes)",
+  "pillar1_twin_engine_stratigraphy": {
+    "files_engine_a": 3165,
+    "files_engine_b": 4175,
+    "files_shared": 5,
+    "files_reachable": 7335,
+    "files_orphan": 381,
+    "files_total": 7716,
+    "lines_engine_a": 266820,
+    "lines_engine_b": 303234,
+    "lines_shared": 372,
+    "lines_reachable": 569682,
+    "lines_orphan": 39517,
+    "lines_total": 609199,
+    "shared_breakdown": {
+      "Defs.lean": 46,
+      "Statement.lean": 2,
+      "Endpoint.lean": 190,
+      "FiniteCRT.lean": 68,
+      "FiniteFactor.lean": 66
+    },
+    "shared_line_fraction": "62/94947",
+    "shared_line_pct": 0.0653,
+    "orphan_breakdown": {
+      "Arithmetic": 264,
+      "Construction": 86,
+      "Quadratic": 10,
+      "Characters": 8,
+      "ZeroDensity": 7,
+      "Tree": 2,
+      "Preliminaries": 1,
+      "QuadraticCenter": 1,
+      "Root_All_and_PaperMain": 2
+    },
+    "ext_imports_engine_a": 1,
+    "ext_imports_engine_b": 18
+  },
+  "pillar2_sieve_and_supply_contraction": {
+    "collision_penalty_identity": "(2*sigma - 1)**2/(sigma*(1 - sigma))",
+    "unbalanced_penalty_floor": "1/2",
+    "harmonic_band": [
+      "1/20",
+      "9/10"
+    ],
+    "harmonic_band_width": "17/20",
+    "nonsparse_target": "3/20",
+    "sparse_threshold": "17/25",
+    "mertens_reserve": "1/50",
+    "polydisc_block_norm": "1751/2000",
+    "polydisc_slack": "149/2000",
+    "local_contraction_c_loc": "8/5",
+    "supply_contraction_product": "136/125",
+    "net_supply_exponent": "-11/125",
+    "net_supply_decimal": -0.088,
+    "montgomery_Q_power": 7,
+    "montgomery_slope_A": 21,
+    "perron_tail_Q_power": -8,
+    "qrh_003_imports": 0
+  },
+  "pillar3_tree_and_permutation_contradiction": {
+    "dyadic_leaf_sum_formula": "2^k - 1",
+    "weighted_level_sum_formula": "(k - 2) * 2^k + 2",
+    "frequency_budget_coeff": "2/5",
+    "bad_permutation_decay_coeff": "-3/4",
+    "net_contradiction_rate": "-7/20",
+    "net_contradiction_decimal": -0.35,
+    "engine_b_constants": {
+      "Cs": 17,
+      "Ccov": 17,
+      "Bs": 200,
+      "BD_min": 322,
+      "Bz_min": 9,
+      "good_margin": 65,
+      "target_rate": -66,
+      "diag_margin": 67
+    },
+    "engine_a_depth_threshold_k": 5,
+    "engine_a_discharge_chain": [
+      15,
+      12,
+      8,
+      7,
+      6,
+      5,
+      3,
+      1,
+      0
+    ],
+    "paper_sections_lines": 6072,
+    "paper_build_total_lines": 6624,
+    "formalization_expansion_ratio": 100.3292
+  },
+  "status": "ALL_SYMBOLIC_AND_TENSOR_CHECKS_PASSED"
+}
