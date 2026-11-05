@@ -1,0 +1,107 @@
+{
+  "case_id": "008-openai-003-qrh-11-12-and-cubic-sieve-synthesis",
+  "total_lean_theorems": 30,
+  "pillar1_eleven_twelfths_vs_23_24": {
+    "shortdraft_beta": "23/24",
+    "eleven_twelfths_beta": "11/12",
+    "strip_width_ratio": 2,
+    "symbolic_e_cs": "5*theta/12 + 11/12",
+    "symbolic_e_rem": "5/6 - theta/6",
+    "symbolic_gap_cs_rem": "7*theta/12 + 1/12",
+    "cauchy_fiber_constant": 768,
+    "prime_extraction_constant": 384,
+    "part1_min_margin": "1/1200"
+  },
+  "pillar2_unimported_cubic_gauss_sieve": {
+    "cubic_gauss_files": 30,
+    "cubic_gauss_lines": 6252,
+    "external_imports": 0,
+    "attracting_fixed_point": "4/3",
+    "mobius_contraction_factor": "2/3",
+    "nonlinear_iterates_0_to_3": [
+      "2",
+      "8/5",
+      "28/19",
+      "92/65"
+    ],
+    "linearized_iterates_0_to_3": [
+      "2",
+      "16/9",
+      "44/27",
+      "124/81"
+    ]
+  },
+  "pillar3_4_q_sqrt_921_and_unbundling": {
+    "critical_delta_c": "49/48 - sqrt(921)/48",
+    "ell_liu": "11/551 + 8*sqrt(921)/1653",
+    "b_liu": "-4/29 + 230*sqrt(921)/26709",
+    "beta_liu": "1507/1653 - 2*sqrt(921)/1653",
+    "beta_sos0": "2281/2526 - 7*sqrt(921)/7578",
+    "gap_sos0_minus_liu": "-4021/463942 + 1195*sqrt(921)/4175478",
+    "sq_diff_sos0_liu": 5567304,
+    "sq_diff_Br_liu": 5755217591,
+    "hierarchy_12_tiers": [
+      {
+        "name": "RH_critical_line",
+        "exact": "1/2",
+        "decimal_12dp": "0.500000000000"
+      },
+      {
+        "name": "Case005_PathA_floor",
+        "exact": "71/108",
+        "decimal_12dp": "0.657407407407"
+      },
+      {
+        "name": "Case005_unbundled_3term",
+        "exact": "4069/4896",
+        "decimal_12dp": "0.831086601307"
+      },
+      {
+        "name": "Case005_unbundled_2term",
+        "exact": "4103/4896",
+        "decimal_12dp": "0.838031045752"
+      },
+      {
+        "name": "Xu_Sang_delta0_L6",
+        "exact": "8748867/10000000",
+        "decimal_12dp": "0.874886700000"
+      },
+      {
+        "name": "Liu_Q_sqrt_921_Farkas",
+        "exact": "1507/1653 - 2*sqrt(921)/1653",
+        "decimal_12dp": "0.874957069799"
+      },
+      {
+        "name": "Liu_rational_Br",
+        "exact": "34999/40000",
+        "decimal_12dp": "0.874975000000"
+      },
+      {
+        "name": "Case005_fixed_scale_SOS",
+        "exact": "2281/2526 - 7*sqrt(921)/7578",
+        "decimal_12dp": "0.874975472067"
+      },
+      {
+        "name": "Case005_rational_SOS",
+        "exact": "41999/48000",
+        "decimal_12dp": "0.874979166667"
+      },
+      {
+        "name": "OpenAI_SevenEighths",
+        "exact": "7/8",
+        "decimal_12dp": "0.875000000000"
+      },
+      {
+        "name": "OpenAI_ElevenTwelfths",
+        "exact": "11/12",
+        "decimal_12dp": "0.916666666667"
+      },
+      {
+        "name": "OpenAI_ShortDraft",
+        "exact": "23/24",
+        "decimal_12dp": "0.958333333333"
+      }
+    ]
+  },
+  "verdict": "ALL_30_THEOREMS_AND_4_PILLARS_VERIFIED_EXACTLY"
+}

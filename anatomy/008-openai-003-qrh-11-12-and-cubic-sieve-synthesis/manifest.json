@@ -1,0 +1,125 @@
+{
+  "case_id": "openai_003_qrh_11_12_and_cubic_sieve_synthesis",
+  "title": "OpenAI #003 (QRH Ecosystem Deep Synthesis): The 23/24 vs. 11/12 Formalization Gap, Unimported 30-File Sharp CubicGauss Large Sieve, and Q(sqrt(921)) Farkas Unbundling",
+  "target_repository": "openai/math (Family 003: DirichletL/ShortDraft, CubicGauss/, paper.tex Part I, paper2.tex, AlexKontorovich/quasi-rh, and Baiying Liu arXiv:2610.12234)",
+  "date": "2026-11-05",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && ~/.elan/bin/lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_qrh_synthesis.py"
+  },
+  "artifacts_sha256": {
+    "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean": "e9dc7e61b68c2e9650b566370ddcb61c78db6a455cbfa78fe41c01a8ecad4e06",
+    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "1bf3fedc64965d2c76917f08c994d2ee20fe0cbbc91e408d06b789408cbd16ca",
+    "proofs/verify_symbolic_qrh_synthesis.py": "aed6f6447d4709acdfeaf3263fbad035438f8b27e3cb5d9d3665670e63faf17f",
+    "proofs/symbolic_verification_result.json": "150f00b4afa9941cd91a5208a67d86a95a1220622de78dc0917789f68d598094",
+    "proofs/problem_spec.md": "b5b60157da94c3117fe821e80ccbfe90d40c6a79d176f68f7f5f846c128d975d"
+  },
+  "verified_key_results": {
+    "pillar1_eleven_twelfths_vs_23_24_gap": {
+      "shortdraft_beta": "23/24",
+      "eleven_twelfths_beta": "11/12",
+      "strip_width_ratio": 2,
+      "cauchy_fiber_constant": 768,
+      "prime_extraction_constant": 384,
+      "lean_theorems": [
+        "thm_01_shortdraft_fixed_reserve_and_23_24_exponent (Theorem 1, L19)",
+        "thm_02_symbolic_sixth_power_cauchy_schwarz_exponent (Theorem 2, L38)",
+        "thm_03_kontorovich_epsilon_split_exact_11_12 (Theorem 3, L54)",
+        "thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta (Theorem 4, L70)",
+        "thm_05_remainder_exponent_subdominance_and_crossover (Theorem 5, L90)",
+        "thm_06_sixth_power_fiber_cauchy_constant_768 (Theorem 6, L108)",
+        "thm_07_totient_euler_correction_vs_prime_amplification_tradeoff (Theorem 7, L124)",
+        "thm_08_part_one_paper_tex_table_vs_shortdraft_gap (Theorem 8, L140)"
+      ]
+    },
+    "pillar2_unimported_cubic_gauss_sieve": {
+      "cubic_gauss_files": 30,
+      "cubic_gauss_lines": 6252,
+      "external_imports": 0,
+      "attracting_fixed_point": "4/3",
+      "mobius_contraction_factor": "2/3",
+      "lean_theorems": [
+        "thm_09_cubic_gauss_sieve_step_and_threshold_identities (Theorem 9, L165)",
+        "thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point (Theorem 10, L182)",
+        "thm_11_mobius_conjugacy_exact_closed_form_solution (Theorem 11, L206)",
+        "thm_12_nonlinear_vs_linearized_sieve_iterates_comparison (Theorem 12, L229)",
+        "thm_13_short_four_thirds_and_reciprocity_symmetrization (Theorem 13, L252)",
+        "thm_14_scalar_bounds_epsilon_and_mixed_exponents (Theorem 14, L270)",
+        "thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap (Theorem 15, L289)"
+      ]
+    },
+    "pillar3_q_sqrt_921_farkas_unity": {
+      "critical_quadratic": "288*dc^2 - 588*dc + 185 = 0",
+      "critical_delta_c": "(49 - sqrt(921))/48",
+      "beta_sos0": "(6843 - 7*sqrt(921))/7578",
+      "beta_liu": "(1507 - 2*sqrt(921))/1653",
+      "gap_sos0_minus_liu": "(1195*sqrt(921) - 36189)/4175478",
+      "lean_theorems": [
+        "thm_16_shared_critical_quadratic_288_588_185_and_count_2_3 (Theorem 16, L18)",
+        "thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r (Theorem 17, L41)",
+        "thm_18_liu_three_face_equalization_in_Q_sqrt_921 (Theorem 18, L59)",
+        "thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum (Theorem 19, L77)",
+        "thm_20_liu_gram_gate_parameter_b_new_and_margins (Theorem 20, L95)",
+        "thm_21_farkas_dual_weights_and_closure_obstruction (Theorem 21, L116)",
+        "thm_22_signal_matching_identity_and_face_K_origin (Theorem 22, L137)",
+        "thm_23_complete_square_uniqueness_at_dc_and_u_half (Theorem 23, L154)"
+      ]
+    },
+    "pillar4_parametric_farkas_unbundling_and_hierarchy": {
+      "xu_sang_beta": "8748867/10000000",
+      "unbundled_2term_beta": "4103/4896",
+      "unbundled_3term_beta": "4069/4896",
+      "path_a_floor_beta": "71/108",
+      "lean_theorems": [
+        "thm_24_parametric_unbundled_farkas_shift_theorem (Theorem 24, L179)",
+        "thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction (Theorem 25, L206)",
+        "thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H (Theorem 26, L224)",
+        "thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108 (Theorem 27, L242)",
+        "thm_28_ten_tier_qrh_boundary_hierarchy (Theorem 28, L258)",
+        "thm_29_zero_free_strip_width_progression_ratios (Theorem 29, L280)",
+        "thm_30_master_qrh_ecosystem_synthesis_verdict (Theorem 30, L298)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "files": [
+      "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean",
+      "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean"
+    ],
+    "sorry_count": 0,
+    "hypothesis_mutations_tested": 240,
+    "hypothesis_mutations_killed": 240,
+    "theorems": [
+      {"name": "thm_01_shortdraft_fixed_reserve_and_23_24_exponent", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 19},
+      {"name": "thm_02_symbolic_sixth_power_cauchy_schwarz_exponent", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 38},
+      {"name": "thm_03_kontorovich_epsilon_split_exact_11_12", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 54},
+      {"name": "thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 70},
+      {"name": "thm_05_remainder_exponent_subdominance_and_crossover", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 90},
+      {"name": "thm_06_sixth_power_fiber_cauchy_constant_768", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 108},
+      {"name": "thm_07_totient_euler_correction_vs_prime_amplification_tradeoff", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 124},
+      {"name": "thm_08_part_one_paper_tex_table_vs_shortdraft_gap", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 140},
+      {"name": "thm_09_cubic_gauss_sieve_step_and_threshold_identities", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 165},
+      {"name": "thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 182},
+      {"name": "thm_11_mobius_conjugacy_exact_closed_form_solution", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 206},
+      {"name": "thm_12_nonlinear_vs_linearized_sieve_iterates_comparison", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 229},
+      {"name": "thm_13_short_four_thirds_and_reciprocity_symmetrization", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 252},
+      {"name": "thm_14_scalar_bounds_epsilon_and_mixed_exponents", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 270},
+      {"name": "thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap", "file": "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean", "line": 289},
+      {"name": "thm_16_shared_critical_quadratic_288_588_185_and_count_2_3", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 18},
+      {"name": "thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 41},
+      {"name": "thm_18_liu_three_face_equalization_in_Q_sqrt_921", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 59},
+      {"name": "thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 77},
+      {"name": "thm_20_liu_gram_gate_parameter_b_new_and_margins", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 95},
+      {"name": "thm_21_farkas_dual_weights_and_closure_obstruction", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 116},
+      {"name": "thm_22_signal_matching_identity_and_face_K_origin", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 137},
+      {"name": "thm_23_complete_square_uniqueness_at_dc_and_u_half", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 154},
+      {"name": "thm_24_parametric_unbundled_farkas_shift_theorem", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 179},
+      {"name": "thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 206},
+      {"name": "thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 224},
+      {"name": "thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 242},
+      {"name": "thm_28_ten_tier_qrh_boundary_hierarchy", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 258},
+      {"name": "thm_29_zero_free_strip_width_progression_ratios", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 280},
+      {"name": "thm_30_master_qrh_ecosystem_synthesis_verdict", "file": "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean", "line": 298}
+    ]
+  }
+}

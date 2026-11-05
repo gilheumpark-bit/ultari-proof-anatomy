@@ -3,7 +3,7 @@
 > **언어 선택 (Language)**: [**English (`README.md`)**](./README.md) | **한국어**
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.29.0--rc8_Verified-blue)](#1줄-전체-저장소-검증-명령어)
-[![Theorems & Mutants](https://img.shields.io/badge/Verified_Archive-286_Theorems_%7C_1%2C491%2F1%2C491_Mutants_Killed-purple)](#논문-및-형식증명-해부-아카이브-목록)
+[![Theorems & Mutants](https://img.shields.io/badge/Verified_Archive-316_Theorems_%7C_1%2C731%2F1%2C731_Mutants_Killed-purple)](#논문-및-형식증명-해부-아카이브-목록)
 [![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#1줄-전체-저장소-검증-명령어)
 [![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#1줄-전체-저장소-검증-명령어)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
@@ -12,7 +12,7 @@
 
 **`ultari-proof-anatomy`**는 인간 학자나 프론티어 AI가 작성한 수학·과학 논문과 대규모 `Lean 4` 형식증명 코드를 분해하여 **정확한 대수 불변량**, **독립 실행 가능한 `Lean 4` 정리(`0 sorry`)**, 그리고 **초보자부터 전문가·자동 파서까지 읽을 수 있는 4단계 가이드**로 제공하는 오픈 리서치 아카이브입니다.
 
-> **아카이브 검증 규모 (`001`~`007`)**: **7개 심층 해부 사례** · **독립 Lean 4 정리 총 `286`개** (`0 sorry`, `0 axiom`) · **전칭 가설 돌연변이 사살 `1,491 / 1,491`건 (`100%`)** · **원본 대조 `.lean` 파일 `11,465`개**.
+> **아카이브 검증 규모 (`001`~`008`)**: **8개 심층 해부 사례** · **독립 Lean 4 정리 총 `316`개** (`0 sorry`, `0 axiom`) · **전칭 가설 돌연변이 사살 `1,731 / 1,731`건 (`100%`)** · **원본 대조 `.lean` 파일 `14,531`개**.
 
 ---
 
@@ -35,7 +35,7 @@
 
 ## 논문 및 형식증명 해부 아카이브 목록
 
-**번호(`001`~`007`)**를 누르면 각 사례의 요약 페이지로 이동하며, 오른쪽 끝 열에서 **1단계 초보자용 쉬운 해설**을 바로 읽을 수 있습니다.
+**번호(`001`~`008`)**를 누르면 각 사례의 요약 페이지로 이동하며, 오른쪽 끝 열에서 **1단계 초보자용 쉬운 해설**을 바로 읽을 수 있습니다.
 
 | 번호 | 분석 대상 논문 및 원본 규모 | 한눈에 보는 핵심 해부 결과 (3줄 요약) | 검증 산출물 (`0 sorry`) | 4단계 가이드 (`ko` / `en`) |
 | :---: | :--- | :--- | :--- | :---: |
@@ -46,6 +46,7 @@
 | **[`005`](./anatomy/005-openai-003-qrh-mathematician-referee-audit/README.ko.md)** | **OpenAI `#003`: 수론 심사위원 심층 감사 및 $\beta \to 1/2$ 전달 설계도**<br>`openai/math` family `003` 전체 DAG<br>(`3,233`개 `.lean` 파일 감사 + 참조 모듈 `26`개) | • **혼재된 3종 $\beta$ 지표 분리**: 전역 SOS 안장점($\frac{41999}{48000} < \frac{7}{8}$), 국소 $\delta=0$ 균형점($\frac{131}{150} \approx 0.8733$), 비예외 배경 바닥($\frac{4103}{4896} \approx 0.8380$)을 엄밀히 구분합니다.<br>• **$\beta = 2/3$ 수렴 장벽 돌파**: 슈티켈베르거-아이젠슈타인 소멸($k_\infty = -6 \neq 0$)을 이용해 `coordR` 극점 장벽을 $\beta = \frac{2}{3}$에서 $\frac{7}{12}$ 및 $\frac{1}{2}$로 낮춥니다.<br>• **임계선($\beta = 1/2$) 마스터 전달 법칙**: 그람 이득에 따른 선형 법칙 $\beta(\Delta_{\mathrm{gram}})$과 $\beta = \frac{1}{2}$ 도달에 필요한 하이브리드 임계치 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$를 역산합니다. | **정리 48개 + `def` 3개** (`441/441` 변이 포착)<br>[`qrh_mathematician_referee_audit.lean`](./anatomy/005-openai-003-qrh-mathematician-referee-audit/proofs/qrh_mathematician_referee_audit.lean)<br>[`qrh_eight_tasks_critical_upgrade.lean`](./anatomy/005-openai-003-qrh-mathematician-referee-audit/proofs/qrh_eight_tasks_critical_upgrade.lean)<br>[`verify_qrh_mathematician_audit.py`](./anatomy/005-openai-003-qrh-mathematician-referee-audit/proofs/verify_qrh_mathematician_audit.py) | [**한국어 (`ko/`)**](./anatomy/005-openai-003-qrh-mathematician-referee-audit/ko/README.md)<br>[**English (`en/`)**](./anatomy/005-openai-003-qrh-mathematician-referee-audit/en/README.md) |
 | **[`006`](./anatomy/006-openai-376-navier-stokes/README.ko.md)** | **OpenAI `#376`: 강제 나비에-스토크스 유동의 보편 계산 검증**<br>`openai/math` family `376`<br>(`1,010`개 `.lean` 파일 `142,131`줄 + `.tex` `75`개) | • **핵심 PDE 구성 검증**: 아핀 컬 퍼텐셜 $U = \nabla\times(\chi\Psi)$(`BoxTransport/Flow.lean`), $L^2$ 에너지 유일성(`Comparison.lean`), 2+1D 수동 스칼라 수송(`MildScalar.lean`)을 검증합니다.<br>• **모델 가정 경계 분리**: 영압력($p=0$) 역산 외력 항등식 $f = f_0 + \nu f_1$(`BoxCoding.lean`) 및 단방향 전단 유동(`advection = 0`)과 자율 3D 유체 방정식의 차이를 구분합니다.<br>• **임포트 지층 분석**: 6개 챌린지 엔트리포인트가 `OAI/` `1,004`개 파일 중 `354`개만 임포트하고 `650`개 파일(`64.7%`, `ForcedComputation/` 전체 포함)을 임포트하지 않음을 확인합니다. | **정리 40개** (`163/163` 변이 포착)<br>[`ns376_kinematic_routing_and_forensics.lean`](./anatomy/006-openai-376-navier-stokes/proofs/ns376_kinematic_routing_and_forensics.lean)<br>[`ns376_gronwall_uniqueness_and_repairs.lean`](./anatomy/006-openai-376-navier-stokes/proofs/ns376_gronwall_uniqueness_and_repairs.lean)<br>[`verify_symbolic_ns376.py`](./anatomy/006-openai-376-navier-stokes/proofs/verify_symbolic_ns376.py) | [**한국어 (`ko/`)**](./anatomy/006-openai-376-navier-stokes/ko/01_초보자용_쉬운해설.md)<br>[**English (`en/`)**](./anatomy/006-openai-376-navier-stokes/en/01_Beginner_Guide.md) |
 | **[`007`](./anatomy/007-openai-376-navier-stokes-complete-reassembly/README.ko.md)** | **OpenAI `#376`: 미연결 `650` 모듈 전수 재조립 및 10월 6일 개정판 검증**<br>`OAI/` `1,004`개 `.lean` 파일 + 10월 6일 자 개정 프리프린트 | • **미연결 `650`(`718`) 모듈 재조립**: `ForcedComputation/Main.lean`(`770`개), `Material/MaterialFlow.lean`(`19`개), `StationaryNS`(`3`개)를 전수 연결하고 `lean/docs/376.md`의 경로 오기를 바로잡습니다.<br>• **비영 압력($p \neq 0$) 및 그린 연산자 상한(`4,528만 배`) 정밀화**: `PeriodicLattice/Solenoidal.lean`의 무발산 외력($\operatorname{div} f_{\text{sol}} = 0$) 구성을 검증하고 차폐 그린 노름 상한을 $\approx 286,753$에서 $\frac{1}{16\pi^2} \approx 0.00633$으로 압축합니다.<br>• **르레이·검출기·칸토어 상한 개선**: 토러스 르레이 상수를 `52`에서 $16.5321$($3.15$배)로 줄이고, 검출기 작동 한계 $H_{\max}$를 $7,560$배($10^9 \to 7.56\times 10^{12}$) 확장합니다. | **정리 48개** (`134/134` 변이 포착)<br>[`ns376_unimported_solenoidal_and_leray_bounds.lean`](./anatomy/007-openai-376-navier-stokes-complete-reassembly/proofs/ns376_unimported_solenoidal_and_leray_bounds.lean)<br>[`ns376_detector_margins_and_undecidability_chains.lean`](./anatomy/007-openai-376-navier-stokes-complete-reassembly/proofs/ns376_detector_margins_and_undecidability_chains.lean)<br>[`verify_symbolic_ns376_complete.py`](./anatomy/007-openai-376-navier-stokes-complete-reassembly/proofs/verify_symbolic_ns376_complete.py) | [**한국어 (`ko/`)**](./anatomy/007-openai-376-navier-stokes-complete-reassembly/ko/01_고등학생_직관가이드.md)<br>[**English (`en/`)**](./anatomy/007-openai-376-navier-stokes-complete-reassembly/en/01_high_school_intuition_guide.md) |
+| **[`008`](./anatomy/008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/README.ko.md)** | **OpenAI `#003`: `23/24` 대 `11/12` 스케일링, 미연결 `CubicGauss` 및 $\mathbb{Q}(\sqrt{921})$ 통합**<br>`DirichletL/`, `CubicGauss/` (`30`개 파일), `paper2.tex`, `quasi-rh` & `arXiv:2610.12234` | • **`23/24` 고정 원인 및 `11/12` 확장 규명**: `reserve = 1/20`(`ClosedRecursion.lean:120`)이 $\vartheta = 1/10 \implies \frac{23}{24}$을 강제한 원인과 `CanonicalDescentScale` 및 $(\vartheta,\eta)=(\frac{6\varepsilon}{5},\frac{\varepsilon}{2})$를 통한 $\frac{11}{12}+\varepsilon$ 확장(`cauchy_const = 768`)을 증명합니다.<br>• **미연결 `CubicGauss`(`6,252`줄) 해부 및 뫼비우스 정확 해**: 미연결 30개 파일의 날카로운 $2/3$ 3차 큰 체를 발굴하고, 비선형 점화식 `sieveStep(α) = (6α-4)/(3α-1)`을 $u(\alpha)=\frac{\alpha-4/3}{\alpha-1}$($u_{n+1}=\frac{2}{3}u_n$, 잔여 오차 $1/3$로 축소)로 정확히 풉니다.<br>• **$\mathbb{Q}(\sqrt{921})$ 대수적 통합 및 파카스 10단계 계보**: `Case 005`($\frac{6843-7\sqrt{921}}{7578}$)와 Baiying Liu의 $B_{\mathrm{Liu}}=\frac{1507-2\sqrt{921}}{1653}$가 $288\delta_c^2-588\delta_c+185=0$을 공유함(차이 $\frac{1195\sqrt{921}-36189}{4175478}$)을 밝히고 $\frac{71}{108}$까지의 10단계 계보를 완성합니다. | **정리 30개** (`240/240` 변이 포착)<br>[`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](./anatomy/008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean)<br>[`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](./anatomy/008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean)<br>[`verify_symbolic_qrh_synthesis.py`](./anatomy/008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/proofs/verify_symbolic_qrh_synthesis.py) | [**한국어 (`ko/`)**](./anatomy/008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/ko/01_Beginner_Guide.md)<br>[**English (`en/`)**](./anatomy/008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/en/01_Beginner_Guide.md) |
 
 ---
 
@@ -60,7 +61,7 @@ ultari-proof-anatomy/
 ├── README.md                  # 영문 마스터 목차
 ├── README.ko.md               # 한국어 마스터 목차
 ├── tools/
-│   └── verify_all.py          # 전 사례(001~007, 286개 정리) 통합 1줄 자동 검증기
+│   └── verify_all.py          # 전 사례(001~008, 316개 정리) 통합 1줄 자동 검증기
 └── anatomy/
     ├── 001-openai-003-qrh/
     │   ├── README.md          # 사례별 영문 개요
@@ -79,7 +80,8 @@ ultari-proof-anatomy/
     ├── 004-openai-378-eth-disproof/
     ├── 005-openai-003-qrh-mathematician-referee-audit/
     ├── 006-openai-376-navier-stokes/
-    └── 007-openai-376-navier-stokes-complete-reassembly/
+    ├── 007-openai-376-navier-stokes-complete-reassembly/
+    └── 008-openai-003-qrh-11-12-and-cubic-sieve-synthesis/
 ```
 
 ---

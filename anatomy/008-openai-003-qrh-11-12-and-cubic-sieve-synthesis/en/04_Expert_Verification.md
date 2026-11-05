@@ -1,0 +1,61 @@
+# Expert Verification: Artifact Hashes, Reproduction Commands, and 30-Theorem Map
+
+## 1. Reproduction Commands
+
+```bash
+# 1. Standalone Lean 4 Kernel Check (0 sorry, 30 theorems)
+~/.elan/bin/lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && \
+  ~/.elan/bin/lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean
+
+# 2. Deterministic Symbolic (SymPy) Verification
+python3 proofs/verify_symbolic_qrh_synthesis.py
+
+# 3. Full Ultari Proof Anatomy Gate (SHA-256 + 240/240 Mutation Tests + Line Links + RH13~RH30)
+python3 ../../tools/verify_all.py --root .
+```
+
+## 2. Artifact SHA-256 Checksum Table
+
+| Artifact File | SHA-256 Checksum |
+| :--- | :--- |
+| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `e9dc7e61b68c2e9650b566370ddcb61c78db6a455cbfa78fe41c01a8ecad4e06` |
+| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `1bf3fedc64965d2c76917f08c994d2ee20fe0cbbc91e408d06b789408cbd16ca` |
+| [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `aed6f6447d4709acdfeaf3263fbad035438f8b27e3cb5d9d3665670e63faf17f` |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `150f00b4afa9941cd91a5208a67d86a95a1220622de78dc0917789f68d598094` |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `b5b60157da94c3117fe821e80ccbfe90d40c6a79d176f68f7f5f846c128d975d` |
+
+## 3. Complete 1-to-1 Theorem Map (30 Theorems, `240/240` Mutations Caught)
+
+### File 1: [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L305)
+- **Theorem 1**: [`thm_01_shortdraft_fixed_reserve_and_23_24_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L19-L33) — Hardcoded `1/20 < σ` and `σ = 1/10` (`H = Z^(11/10), Y = Z^(11/60)`) produce `137/120 - 11/60 = 23/24` (half the `11/12` strip width).
+- **Theorem 2**: [`thm_02_symbolic_sixth_power_cauchy_schwarz_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L38-L50) — Symbolic sixth-power Cauchy-Schwarz exponent `E_CS(θ) = (11 + 5θ)/12`.
+- **Theorem 3**: [`thm_03_kontorovich_epsilon_split_exact_11_12`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L54-L64) — Exact `(θ, η) = (6ε/5, ε/2)` substitution yielding `(11 + 5θ)/12 + η = 11/12 + ε`.
+- **Theorem 4**: [`thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L70-L85) — Symbolic `CanonicalDescentScale` budget `50 ≤ κ * denom_sym` unlocking arbitrary `θ > 0`.
+- **Theorem 5**: [`thm_05_remainder_exponent_subdominance_and_crossover`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L90-L103) — Subdominance of the Poisson/divisibility remainder `E_rem(θ) = (5 - θ)/6` with gap `(1 + 7θ)/12 > 0`.
+- **Theorem 6**: [`thm_06_sixth_power_fiber_cauchy_constant_768`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L108-L119) — Sixth-power fiber degree `6` times disk constant `128` (`768 = 6 * 128` vs. `384 = 3 * 128`).
+- **Theorem 7**: [`thm_07_totient_euler_correction_vs_prime_amplification_tradeoff`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L124-L134) — Local totient density `(N_p - 1)/N_p ∈ [1/2, 1)` and `Re(s) > 0` Euler correction convergence.
+- **Theorem 8**: [`thm_08_part_one_paper_tex_table_vs_shortdraft_gap`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L140-L154) — Unformalized `paper.tex` Part I margin table `(1021/25000, 1/40, 1/1200, 43/300)` vs. `ShortDraft` `1/24` gap.
+- **Theorem 9**: [`thm_09_cubic_gauss_sieve_step_and_threshold_identities`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L165-L178) — Exact rational identities of `sieveThreshold(α)` and `sieveStep(α)` in `CubicGauss/Recurrence.lean`.
+- **Theorem 10**: [`thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L182-L202) — Quadratic slack `2(3p - 4q)^2 / (9q(3p - q)) > 0` and unique fixed point `α* = 4/3`.
+- **Theorem 11**: [`thm_11_mobius_conjugacy_exact_closed_form_solution`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L206-L224) — Exact Möbius conjugacy `u(sieveStep(α)) = (2/3) * u(α)` for `u(α) = (α - 4/3)/(α - 1)`.
+- **Theorem 12**: [`thm_12_nonlinear_vs_linearized_sieve_iterates_comparison`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L229-L247) — Exact comparison of nonlinear iterates `(2, 8/5, 28/19, 92/65)` vs. linearized `(2, 16/9, 44/27, 124/81)`.
+- **Theorem 13**: [`thm_13_short_four_thirds_and_reciprocity_symmetrization`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L252-L265) — `short_four_thirds` and cubic-reciprocity symmetrization to `max(a, b, 2(a+b)/3)`.
+- **Theorem 14**: [`thm_14_scalar_bounds_epsilon_and_mixed_exponents`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L270-L284) — Monomial exponent laws (`mixed_one`, `mixed_two`, `scale_epsilon`) in `CubicGauss/ScalarBounds.lean`.
+- **Theorem 15**: [`thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L289-L303) — Unimported 30-file `CubicGauss` (`6,252` lines, `0` external imports) vs. bundled `CubicGram`.
+
+### File 2: [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L313)
+- **Theorem 16**: [`thm_16_shared_critical_quadratic_288_588_185_and_count_2_3`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L18-L34) — Shared critical quadratic `288δ_c^2 - 588δ_c + 185 = 0` (`δ_c = (49 - √921)/48`, `R(δ_c, 1/2) = 2/3`).
+- **Theorem 17**: [`thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L41-L54) — Strict ordering `B_r = 34999/40000 < β_SOS(0) = (6843 - 7√921)/7578 < 41999/48000 < 7/8`.
+- **Theorem 18**: [`thm_18_liu_three_face_equalization_in_Q_sqrt_921`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L59-L71) — 3-face scalar equalization in `ℚ(√921)` yielding `ℓ_Liu = (33 + 8√921)/1653` and `B_Liu = (1507 - 2√921)/1653`.
+- **Theorem 19**: [`thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L77-L90) — Exact gap `β_SOS(0) - B_Liu = (1195√921 - 36189)/4175478 > 0` (`1195^2 * 921 - 36189^2 = 5567304`).
+- **Theorem 20**: [`thm_20_liu_gram_gate_parameter_b_new_and_margins`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L95-L111) — Positivity of `0 < b_new < 1/8` and bundled Gram gate `y - ℓ - 11b/6 > 0`.
+- **Theorem 21**: [`thm_21_farkas_dual_weights_and_closure_obstruction`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L116-L132) — Universal `(M, ℓ)`-cancellation of Farkas weights and rationalization `(203 - 3√921)/(219 - 3√921) = B_Liu`.
+- **Theorem 22**: [`thm_22_signal_matching_identity_and_face_K_origin`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L137-L149) — Signal-matching identity `(11/12 - ℓ/4) - (4 + b)/6 = x/2 + b/12` and origin of `Face_K`.
+- **Theorem 23**: [`thm_23_complete_square_uniqueness_at_dc_and_u_half`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L154-L168) — Positivity of `A_c(v)` and `disc(v)` coefficients proving uniqueness at `(d, u) = (δ_c, 1/2)`.
+- **Theorem 24**: [`thm_24_parametric_unbundled_farkas_shift_theorem`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L179-L201) — Parametric Farkas shift theorem `B*(Δ_0, Δ_K, Δ_H) = B_Liu - (w_0 Δ_0 + w_K Δ_K + w_H Δ_H)`.
+- **Theorem 25**: [`thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L206-L219) — `w_0 > 2/3` and `δ = 0` sixth-moment saving lowering `B_Liu` to `8748867/10000000`.
+- **Theorem 26**: [`thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L224-L237) — Unbundled Gram + Stickelberger `z_high' = 7/20` shift lowering boundary to `4103/4896` and `4069/4896`.
+- **Theorem 27**: [`thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L242-L253) — Connecting `CubicGauss`'s sharp `2/3` large sieve (`R_eff = 7/9`) to the Path-A floor `71/108`.
+- **Theorem 28**: [`thm_28_ten_tier_qrh_boundary_hierarchy`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L258-L275) — Complete 10-tier strict ordering from `1/2` to `23/24`.
+- **Theorem 29**: [`thm_29_zero_free_strip_width_progression_ratios`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L280-L293) — Zero-free strip width progression (`1x → 2x → 3x → 3.89x → 4.05x → 8.22x → 12x`).
+- **Theorem 30**: [`thm_30_master_qrh_ecosystem_synthesis_verdict`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L298-L311) — Master synthesis verdict across all 4 pillars.
