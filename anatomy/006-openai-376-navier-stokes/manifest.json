@@ -18,11 +18,11 @@
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
     "ko/01_초보자용_쉬운해설.md": "96aadda378bec5906dcf5615fabc684b01ae60891beebd55c6cc8c0f00d04818",
     "ko/02_중급자용_구조및수식가이드.md": "9edca9c9f61312fe993b39df929231a2543a6770a69ce942dc373adf09e81001",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "9c6b5b04dc91b3d5d42efbd53946cef00a26fe6c24b4db754a57e0bdcd41be9d",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "bf6e11100ca9f1019b25424f7ea6206a933ab50e18322bc3bdd3e29030629a32",
     "ko/04_자동검증및파서용_명세서.md": "330b52091c1530037638f6603384917b72e7512557e469a6167618c8c71a9041",
     "en/01_Beginner_Guide.md": "dfdbf1b762d040d8d28f0e5db39e5a564f283834297eb5dc2abd76e2475c3be0",
     "en/02_Intermediate_Math_and_Code_Guide.md": "bf2c90191f7913f3af8ef41af52b98e2f3f4a173caeae07a154d702c55ed876d",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "64400a91755a4fe0894fb7f4f090360500e5658a7eec9685d9007e055a44da4f",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "c7c4d6af5865191d32ba64fcf145e9a4721a763923eaec98b6cf18c0fc3db67c",
     "en/04_Automated_Verification_and_Parser_Spec.md": "5bd09dcc362a3754a37d9b611caedf10635d6106dc5002b2c57181ddbf46940d"
   },
   "verdict": {
