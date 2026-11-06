@@ -1,0 +1,325 @@
+{
+  "case_id": "010-openai-017-pi-irrationality-exponent",
+  "problem": "OpenAI #017: The irrationality exponent of pi is 2 (September 24, 2026)",
+  "stratigraphy_audit": {
+    "total_files": 869,
+    "total_lines": 94948,
+    "reachable_from_Main_lean": 869,
+    "dead_modules": 0,
+    "external_OAI_imports": 0,
+    "sorry_count": 0,
+    "unused_hypothesis_parameters": 14,
+    "subdirectories": {
+      "Geometry": {
+        "files": 181,
+        "lines": 19957,
+        "unused_hyps": 4
+      },
+      "LocalAlgebra": {
+        "files": 172,
+        "lines": 16427,
+        "unused_hyps": 2
+      },
+      "Approximation": {
+        "files": 133,
+        "lines": 15257,
+        "unused_hyps": 2
+      },
+      "Cohomology": {
+        "files": 99,
+        "lines": 14821,
+        "unused_hyps": 4
+      },
+      "Ampleness": {
+        "files": 119,
+        "lines": 11028,
+        "unused_hyps": 0
+      },
+      "Jets": {
+        "files": 63,
+        "lines": 6945,
+        "unused_hyps": 0
+      },
+      "Polynomials": {
+        "files": 68,
+        "lines": 6698,
+        "unused_hyps": 2
+      },
+      "Analysis": {
+        "files": 32,
+        "lines": 3752,
+        "unused_hyps": 0
+      },
+      "(root)": {
+        "files": 2,
+        "lines": 63,
+        "unused_hyps": 0
+      }
+    },
+    "flint_hills_formalization_audit": {
+      "017_md_scope_claim": "Outside selected statement",
+      "actual_Main_lean_theorem": "flint_hills_summable (Main.lean:29-32)",
+      "Corollary_1_2_formalized": true,
+      "Corollary_5_2_generalized_formalized": false
+    }
+  },
+  "reasoning_trace_evolution": {
+    "total_pages": 42,
+    "total_sections": 45,
+    "part_1_sections": "1-44 (pp. 1-39)",
+    "part_1_bound": "mu(pi) <= 62/25 = 2.48 < 5/2",
+    "part_1_dyadic_decay": "2*mu - 5 = -1/25 = -0.04 < 0",
+    "part_2_sections": "45 (pp. 39-40)",
+    "part_2_bound": "mu(pi) = 2"
+  },
+  "lemma_4_1_witnesses": [
+    {
+      "nu": "5/2",
+      "nu_float": 2.5,
+      "b": "11/20",
+      "b_float": 0.55,
+      "delta": "20/121",
+      "delta_float": 0.16528926,
+      "theta": "101/121",
+      "A": "10/11",
+      "B": "2015/2211",
+      "C": "2211/2020",
+      "gap_g_exact": "5/242",
+      "gap_g_float": 0.02066116,
+      "theta_minus_A2_exact": "1/121",
+      "theta_minus_A2_float": 0.00826446,
+      "eps_0_exact": "5/484",
+      "F_0_cutoff": 727,
+      "growth_ratio_B_over_A": 1.00248756,
+      "growth_ratio_Ctheta_over_B": 1.0025062,
+      "growth_ratio_1_over_CB": 1.00248139,
+      "m_min_cL_proxy": 7458
+    },
+    {
+      "nu": "62/25",
+      "nu_float": 2.48,
+      "b": "17/31",
+      "b_float": 0.5483871,
+      "delta": "93/578",
+      "delta_float": 0.16089965,
+      "theta": "485/578",
+      "A": "31/34",
+      "B": "120001/131308",
+      "C": "32827/30070",
+      "gap_g_exact": "279/14450",
+      "gap_g_float": 0.01930796,
+      "theta_minus_A2_exact": "9/1156",
+      "theta_minus_A2_float": 0.00778547,
+      "eps_0_exact": "279/28900",
+      "F_0_cutoff": 772,
+      "growth_ratio_B_over_A": 1.0023304,
+      "growth_ratio_Ctheta_over_B": 1.00234675,
+      "growth_ratio_1_over_CB": 1.00232498,
+      "m_min_cL_proxy": 8023
+    },
+    {
+      "nu": "21/10",
+      "nu_float": 2.1,
+      "b": "43/84",
+      "b_float": 0.51190476,
+      "delta": "84/1849",
+      "delta_float": 0.04542996,
+      "theta": "1765/1849",
+      "A": "42/43",
+      "B": "148239/151747",
+      "C": "151747/148260",
+      "gap_g_exact": "21/18490",
+      "gap_g_float": 0.00113575,
+      "theta_minus_A2_exact": "1/1849",
+      "theta_minus_A2_float": 0.00054083,
+      "eps_0_exact": "21/36980",
+      "F_0_cutoff": 11095,
+      "growth_ratio_B_over_A": 1.00014168,
+      "growth_ratio_Ctheta_over_B": 1.00014174,
+      "growth_ratio_1_over_CB": 1.00014166,
+      "m_min_cL_proxy": 175349
+    },
+    {
+      "nu": "201/100",
+      "nu_float": 2.01,
+      "b": "403/804",
+      "b_float": 0.50124378,
+      "delta": "804/162409",
+      "delta_float": 0.00495046,
+      "theta": "161605/162409",
+      "A": "402/403",
+      "B": "129930219/130253227",
+      "C": "130253227/129930420",
+      "gap_g_exact": "201/16240900",
+      "gap_g_float": 1.238e-05,
+      "theta_minus_A2_exact": "1/162409",
+      "theta_minus_A2_float": 6.16e-06,
+      "eps_0_exact": "201/32481800",
+      "F_0_cutoff": 974455,
+      "growth_ratio_B_over_A": 1.00000155,
+      "growth_ratio_Ctheta_over_B": 1.00000155,
+      "growth_ratio_1_over_CB": 1.00000155,
+      "m_min_cL_proxy": 22324406
+    }
+  ],
+  "theorem_9_explicit_witness_nu_5_2": {
+    "nu": "5/2",
+    "b": "11/20",
+    "delta": "1/10",
+    "theta": "9/10",
+    "A": "189/200",
+    "B": "379/400",
+    "C": "211/200",
+    "gap_g": "1/80",
+    "theta_minus_A2": "279/40000",
+    "eps_0": "1/160",
+    "F_0": 1201
+  },
+  "simplex_vs_rectangle_comparison": [
+    {
+      "m": 1,
+      "L_0": 3,
+      "2_m_factorial": 2,
+      "m_pow_m": 1,
+      "c_star_paper_sigma1": 6,
+      "c_star_rect_sigma1": 3,
+      "c_star_lean_sigma1": 3456,
+      "lean_over_paper_ratio": 576.0
+    },
+    {
+      "m": 2,
+      "L_0": 4,
+      "2_m_factorial": 4,
+      "m_pow_m": 4,
+      "c_star_paper_sigma1": 64,
+      "c_star_rect_sigma1": 64,
+      "c_star_lean_sigma1": 320000,
+      "lean_over_paper_ratio": 5000.0
+    },
+    {
+      "m": 3,
+      "L_0": 5,
+      "2_m_factorial": 12,
+      "m_pow_m": 27,
+      "c_star_paper_sigma1": 1500,
+      "c_star_rect_sigma1": 3375,
+      "c_star_lean_sigma1": 48600000,
+      "lean_over_paper_ratio": 32400.0
+    },
+    {
+      "m": 4,
+      "L_0": 6,
+      "2_m_factorial": 48,
+      "m_pow_m": 256,
+      "c_star_paper_sigma1": 62208,
+      "c_star_rect_sigma1": 331776,
+      "c_star_lean_sigma1": 10978063488,
+      "lean_over_paper_ratio": 176473.5
+    },
+    {
+      "m": 5,
+      "L_0": 7,
+      "2_m_factorial": 240,
+      "m_pow_m": 3125,
+      "c_star_paper_sigma1": 4033680,
+      "c_star_rect_sigma1": 52521875,
+      "c_star_lean_sigma1": 3454189699072,
+      "lean_over_paper_ratio": 856337.07
+    },
+    {
+      "m": 6,
+      "L_0": 8,
+      "2_m_factorial": 1440,
+      "m_pow_m": 46656,
+      "c_star_paper_sigma1": 377487360,
+      "c_star_rect_sigma1": 12230590464,
+      "c_star_lean_sigma1": 1444408272617472,
+      "lean_over_paper_ratio": 3826375.2
+    }
+  ],
+  "lcm_and_flint_hills": {
+    "lcm_dyadic_checks": [
+      {
+        "n": 1,
+        "lcm_1_to_n": 1,
+        "four_pow_n": 4,
+        "log_lcm_over_n": 0.0,
+        "four_log_2": 2.772589,
+        "satisfies_lcm_le_4_pow_n": true
+      },
+      {
+        "n": 2,
+        "lcm_1_to_n": 2,
+        "four_pow_n": 16,
+        "log_lcm_over_n": 0.346574,
+        "four_log_2": 2.772589,
+        "satisfies_lcm_le_4_pow_n": true
+      },
+      {
+        "n": 5,
+        "lcm_1_to_n": 60,
+        "four_pow_n": 1024,
+        "log_lcm_over_n": 0.818869,
+        "four_log_2": 2.772589,
+        "satisfies_lcm_le_4_pow_n": true
+      },
+      {
+        "n": 10,
+        "lcm_1_to_n": 2520,
+        "four_pow_n": 1048576,
+        "log_lcm_over_n": 0.783201,
+        "four_log_2": 2.772589,
+        "satisfies_lcm_le_4_pow_n": true
+      },
+      {
+        "n": 20,
+        "lcm_1_to_n": 232792560,
+        "four_pow_n": 1099511627776,
+        "log_lcm_over_n": 0.963283,
+        "four_log_2": 2.772589,
+        "satisfies_lcm_le_4_pow_n": true
+      },
+      {
+        "n": 30,
+        "lcm_1_to_n": 2329089562800,
+        "four_pow_n": 1152921504606846976,
+        "log_lcm_over_n": 0.949217,
+        "four_log_2": 2.772589,
+        "satisfies_lcm_le_4_pow_n": true
+      }
+    ],
+    "flint_hills_partial_sums": {
+      "10": 3.5387181517,
+      "100": 4.8056936821,
+      "354": 4.8074441368,
+      "355": 29.4056253575,
+      "1000": 30.1747901659,
+      "10000": 30.314510833
+    },
+    "dominant_peak_up_to_10000": {
+      "n": 355,
+      "rational_approx": "355 / 113",
+      "term_value": 24.5981812207
+    },
+    "lean_vs_paper_bad_index_constant": {
+      "paper_series_tex_86": 2.546479,
+      "lean_FlintSine_lean_88": 16
+    }
+  },
+  "citation_audit_summary": {
+    "total_bib_entries": 25,
+    "cited_in_tex": 25,
+    "uncited_bib_entries": 0,
+    "crossref_verified_dois": 10,
+    "datacite_verified_arxiv_dois": 8,
+    "url_verified_legacy_arxiv": 2,
+    "books_and_historical_monographs": 5,
+    "section_citation_counts": {
+      "main.tex": 24,
+      "sections/interpolation.tex": 9,
+      "sections/determinant.tex": 2,
+      "sections/conclusion.tex": 0,
+      "sections/series.tex": 2
+    }
+  }
+}
