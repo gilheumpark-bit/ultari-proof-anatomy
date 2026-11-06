@@ -1,6 +1,6 @@
 /-
   OpenAI Math Benchmark #003 (Quasi-Riemann Hypothesis for Dirichlet L-Functions, β = 7/8)
-  Part II: Complex-Analytic Continuation & Master Scale-Coupling Anatomy (Theorems 28–40)
+  Part II: Complex-Analytic Continuation & Master Scale-Coupling Anatomy (Theorems 28–48)
   =======================================================================================
   Scope: Category A (Universal Polynomial Ring & Cleared-Denominator Scale-Coupling Identities)
   Standard Lean 4 (v4.29.0-rc8) kernel-verified proofs with zero external dependencies,
@@ -43,7 +43,7 @@ def signalExponentOffset (αX ell : Rat) : Rat := αX / 3 + ell / 6 - 5 / 6
 /-- Low Gram square-root exponent `e_gauss(α_X, α_Y) = (5*α_X + α_Y) / 12` (`DirichletL/Detector/LowSourceScales.lean:64-68`). -/
 def lowGramGaussExponent (αX αY : Rat) : Rat := (5 * αX + αY) / 12
 
-/-- Critical contradiction threshold `β_crit(α_X, α_Y, ℓ) = e_gauss - c_sig = 5/6 + (α_X + α_Y - 2*ℓ) / 12` (`Supremum.lean:40-43`). -/
+/-- Critical contradiction threshold `β_crit(α_X, α_Y, ℓ) = e_gauss - c_sig = 5/6 + (α_X + α_Y - 2*ℓ) / 12` (`DirichletL/Detector/Supremum.lean:40-43`). -/
 def criticalBeta (αX αY ell : Rat) : Rat := 5 / 6 + (αX + αY - 2 * ell) / 12
 
 /-- Generalized `balancedExponent` (`DirichletL/Endpoint.lean:30`, `DirichletL/Detector/CentralExponent.lean:11-20`) as a function of `(α_X, α_Y, ℓ)`. -/
@@ -113,7 +113,7 @@ theorem theorem_31_second_continuation_exact_polynomial_identity (R V qInv K W D
   omega
 
 /-- [Theorem 32] Task 2 — Convergence barrier drop from `z_re = 17/50` to below `z_re = 1/6` via 2nd/3rd-order Euler continuation
-    (`HighRowsFirstRegion.lean:8-79`, `FirstContinuation.lean:68-156`):
+    (`DirichletL/Detector/HighRowsFirstRegion.lean:8-79`, `DirichletL/Detector/FirstContinuation.lean:68-156`):
     At `x_re = 51/100`:
     (1) Uncancelled 1st-order `R` has exponent `4 - 6*x_re - 6*z_re`, which requires `z_re > 97/300 ≈ 0.3233` (`-11/10` at `z_re = 17/50`),
     (2) After peeling off `(1 - R)` and `(1 - R*W^2)`, the surviving `R*qInv` and `R*V` terms have exponents
@@ -284,7 +284,7 @@ theorem theorem_39_m1_sextic_pole_residue_and_33_200_remainder_saving :
     z_total_saving ≤ target_saving := by decide +kernel
 
 /-- [Theorem 40] Task 3 — Full compatibility of OpenAI's Capped-Width Energy Induction tree (`DirichletL/Energy/CertifiedExistence.lean:19-48`,
-    `FinalAssemblyUnconditional.lean:15-36`) down to `β = 51/100`:
+    `DirichletL/FinalAssemblyUnconditional.lean:15-36`) down to `β = 51/100`:
     Setting `κ = 3/4` satisfies `51/100 ≤ β`, `3/4 ≤ κ`, and `2*β - 1 ≤ κ` simultaneously for all `β ∈ {7/8, 5/6, 3/4, 69/100, 51/100}`. -/
 theorem theorem_40_energy_induction_compatible_below_seven_eighths :
     let κ_fixed : Rat := 3 / 4
@@ -377,7 +377,7 @@ theorem theorem_44_local_compensated_replacement_and_cancellation (V W D Pstar B
   constructor
   · simp only [Int.mul_add, Int.mul_sub, Int.mul_one, Int.mul_comm, Int.mul_left_comm]
     omega
-  · simp only [Int.mul_add, Int.mul_sub, Int.sub_mul, Int.mul_one, Int.one_mul, Int.mul_comm, Int.mul_left_comm]
+  · simp only [Int.mul_add, Int.mul_sub, Int.mul_one, Int.mul_comm, Int.mul_left_comm]
     omega
 
 /-- [Theorem 45] Euler Resummation Error & Norm Bound Multipliers

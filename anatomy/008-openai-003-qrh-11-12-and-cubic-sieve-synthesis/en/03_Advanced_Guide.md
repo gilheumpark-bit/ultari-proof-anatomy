@@ -39,7 +39,7 @@ In [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_tril
 - **Exact Root in $\mathbb{Z}[\sqrt{921}]$ ([`thm_34_zsqrt921_norm_and_critical_quadratic_root`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L130-L137))**: For $X = 48\delta_c = \langle 49, -1\rangle$, $\operatorname{Norm}(X) = 49^2 - 921 = 1480 = 8 \times 185$ and $288 X^2 - 588\cdot 48 X + 185\cdot 48^2 = \langle 0, 0\rangle$.
 - **Exact Rationalization & Gap Norm in $\mathbb{Z}[\sqrt{921}]$ ([`thm_35_zsqrt921_liu_rationalization_and_case005_gap`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L144-L157))**: Multiplying numerator $\langle 203, -3\rangle$ by the conjugate $\langle 219, 3\rangle$ of denominator $\langle 219, -3\rangle$ in $\mathbb{Z}[\sqrt{921}]$ gives:
   $$\langle 203, -3\rangle \cdot \langle 219, 3\rangle = \langle 36168, -48\rangle = 24 \cdot \langle 1507, -2\rangle, \qquad \operatorname{Norm}(\langle 219, -3\rangle) = 39672 = 24 \times 1653,$$
-  proving $B_{\mathrm{Liu}} = \frac{1507 - 2\sqrt{921}}{1653}$, while the gap numerator $\langle -36189, 1195\rangle$ between `Case 005` and Liu has norm $-36189^2 - 921 \times 1195^2 = -5567304 < 0$.
+  proving $B_{\mathrm{Liu}} = \frac{1507 - 2\sqrt{921}}{1653}$, while the gap numerator $\langle -36189, 1195\rangle$ between `Case 005` and Liu has norm $(-36189)^2 - 921 \times 1195^2 = -5567304 < 0$.
 
 ## 3. Parametric Unbundled Farkas Theorem (`Theorems 24–30`)
 When the three faces are improved by non-negative savings $(\Delta_0, \Delta_K, \Delta_H)$, contracting with $(w_0, w_K, w_H)$ immediately yields the exact parametric Farkas shift ([`thm_24_parametric_unbundled_farkas_shift_theorem`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L179-L201)):
@@ -67,7 +67,7 @@ Why did `Case 001` produce the denominator $3264$ and margin numerator $215$, wh
    Over $44064$, the total progression from OpenAI's `ShortDraft` ($\frac{23}{24} = \frac{42228}{44064}$) to the critical line ($\frac{1}{2} = \frac{22032}{44064}$) decomposes into six exact integer steps:
    $$1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = \left(\frac{23}{24} - \frac{1}{2}\right) \times 44064.$$
    - **Proved & Constructible from Existing Modules (`Steps 1–4`, total $13260 / 44064 = 55 / 1836 \to \beta = 71/108 \approx 0.6574$)**: Achieved by `CanonicalDescentScale` ($1836$), cubic moment transition ($1836$), Gram unbundling + Stickelberger shift ($1935$), and connecting `CubicGauss` ($7653$), while neutralizing the $\beta = 2/3$ pole barrier (`net_pole_order = 0`).
-   - **Remaining Open Analytic Problem (`Steps 5–6`, total $3264 + 3672 = 6936 / 44064 = 17/108 \approx 0.1574$ from $71/108$ to $1/2$)**: Requires establishing the additional analytic moment saving $\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$ (square-root cancellation in off-diagonal spectral/Kloosterman sums beyond the cubic large sieve).
+   - **Remaining Open Analytic Problem (`Steps 5–6`, total $(3264 + 3672) / 44064 = 6936 / 44064 = 17/108 \approx 0.1574$ from $71/108$ to $1/2$)**: Requires establishing the additional analytic moment saving $\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$ (square-root cancellation in off-diagonal spectral/Kloosterman sums beyond the cubic large sieve).
 
 
 ---

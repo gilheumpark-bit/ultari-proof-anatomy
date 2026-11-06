@@ -46,21 +46,50 @@ flowchart TD
 
 ---
 
-## 3. 3단계로 이해하는 핵심 증명 원리 (`영역 A`)
+## 3. 왜 76년 동안 고전적인 소수 체(Sieve)로는 풀지 못했는가? (`왜 1: 패리티 장벽과 위상 상쇄`)
 
-1. **1단계: 유한 소환수 배제 ([`FiniteCRT.lean`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/FiniteCRT.lean#L1), 보조정리 2.2)**:
-   - 만약 $A$가 유한 집합($|A| \ge 2$)이고 $B$가 무한 집합이면, 중국인의 나머지 정리(CRT)와 디리클레 등차수열 소수 정리에 의해 무한히 많은 소수 $p = a + b$에서 이동된 합 $f(a) + b \in A + B$가 합성수가 되어 모순이 발생합니다([`thm_06_finite_summand_crt_dirichlet_composite_witness`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L136-L159)).
-2. **2단계: 푸리에 공급 수축 (`-11/125 < 0`)**:
-   - $A, B$가 모두 무한 집합이면 충돌 안정성에 의해 거의 모든 소수에서 밀도 $\sigma_p = |A_p|/p$가 $[1/3, 2/3]$ 안에 들어와야 합니다. 이 구간 밖에서는 벌점 $\frac{(2\sigma_p - 1)^2}{\sigma_p(1 - \sigma_p)} \ge \frac{1}{2}$이 부과되기 때문입니다([`thm_08_collision_stability_reciprocal_penalty_identity`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L177-L188), [`thm_09_unbalanced_density_penalty_lower_bound_one_half`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L189-L203)).
-   - 또한 푸리에 모드가 희소한 소수의 비율이 $H \ge \frac{17}{25}L = 0.68L$ 이상이면 국소 전달 연산자가 $1 - \frac{8}{5}\times\frac{17}{25} = -\frac{11}{125} < 0$으로 수축해 모순이 생깁니다([`thm_15_supply_contradiction_exponent_11_125`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L303-L323)).
-3. **3단계: 이진 트리 예산 대 나쁜 순열 감쇠 (`2/5 - 3/4 = -7/20 < 0`)**:
-   - 따라서 조화 가중치 $\ge \frac{3}{20}L = 0.15L$([`thm_12_harmonic_band_mertens_budget_and_sparse_complement`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L240-L261)) 이상의 소수가 퍼진(비희소) 스펙트럼을 가집니다.
-   - 깊이 $k$($r = 2^k$개 잎)인 이진 트리에서 주파수 예산은 $+\frac{2}{5}\log r$ 속도로 자라는 반면([`thm_26_frequency_budget_exact_closed_form_all_k`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L150)), 나쁜 겹침 순열은 $-\frac{3}{4}\log r$ 속도로 감쇠합니다([`thm_29_bad_arrangement_multinomial_decay_three_quarters`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L180-L193)).
-   - 두 비율의 합이 $\frac{2}{5} - \frac{3}{4} = -\frac{7}{20} < 0$이므로 충분히 큰 $k$에서 상한과 하한이 충돌합니다([`thm_30_net_contradiction_rate_minus_seven_twentieths`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L194-L212), [`thm_35_final_amplitude_upper_vs_lower_contradiction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L278-L295)).
+에라토스테네스의 체나 셀베르그 체 같은 고전적 방법은 *"두 원소의 합 $a + b$가 소수 $p$의 배수($0 \pmod p$)가 되면 안 된다"*는 조건만 사용합니다. 하지만 이 조건만으로는 **코시-다벤포트(Cauchy-Davenport) 한계**에 막힙니다:
+- 예를 들어 $p = 7$일 때, $A_7 = \{1, 2, 3\}$, $B_7 = \{1, 2, 3\}$으로 잡으면 두 집합 모두 전체 잉여류의 약 절반($3/7 \approx 1/2$)을 차지하지만, 합집합은 $A_7 + B_7 = \{2, 3, 4, 5, 6\} \pmod 7$이 되어 $0 \pmod 7$을 완벽히 피합니다.
+- 즉 $|A_p| + |B_p| \le p - 1$만 만족하면 얼마든지 빠져나갈 수 있어서, 밀도가 반반($\sigma_p \approx 1/2$)인 균형 영역에서는 고전 체법이 완전히 멈춥니다(체법의 **패리티 장벽**).
+- 게다가 각 소수 $p$마다 금지된 잉여류 구간이 미지의 위상 $t_p \pmod p$만큼 제각각 평행이동되어 있어서, 여러 소수에 걸쳐 단순 평균을 내면 위상이 서로 상쇄되어 정보가 사라집니다.
 
 ---
 
-## 4. 적대적 검증(Adversarial Audit) 요약: 화석 복원, 4대 대수 엔진, 유효 문턱값 (`정리 41~75`)
+## 4. 3단계로 이해하는 핵심 증명 원리와 장난감 수치 손계산 (`왜 2~4`)
+
+OpenAI `#013`은 이 장벽을 **유한 배제 $\to$ 푸리에 공급 수축 $\to$ 이진 트리 순열 모순**의 3단계로 돌파합니다:
+
+1. **1단계: 유한 가산항 배제 ([`FiniteCRT.lean`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/FiniteCRT.lean#L1), 보조정리 2.2) — 왜 하나만 유한해도 합성수가 쏟아지는가?**:
+   - 만약 $A$가 유한 집합($|A| \ge 2$)이고 $B$가 무한 집합이면, $A$의 두 원소 $a_0 \leftrightarrow a_1$만 맞바꾸는 순열 $f : A \to A$를 잡습니다. 중국인의 나머지 정리(CRT)와 디리클레 등차수열 소수 정리에 의해 무한히 많은 소수 $p = a + b$에서 맞바꾼 합 $s = f(a) + b \in A + B$가 특정 소수 $q_a$의 진배수(합성수)가 되어 모순이 발생합니다([`thm_06_finite_summand_crt_dirichlet_composite_witness`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L136-L159)).
+   - **장난감 수치 손계산 ($A = \{1, 3\}$)**: $f(1) = 3, f(3) = 1$로 두고 서로 다른 소수 $q_1 = 5, q_3 = 7$을 고릅니다. CRT로 연립합동식
+     $$r \equiv 5 + 1 - 3 = 3 \pmod 5, \qquad r \equiv 7 + 3 - 1 = 2 \pmod 7$$
+     을 풀면 $r \equiv 23 \pmod{35}$를 얻습니다. 이제 $p \equiv 23 \pmod{35}$인 큰 소수(예: $p = 163 = 35 \times 4 + 23$)가 $p = a + b$로 표현된다고 해 봅시다:
+     - 만약 $a = 1, b = 162$이면, 맞바꾼 합 $s = f(1) + b = 3 + 162 = 165 = 5 \times 33$이 되어 $5$의 배수(합성수)가 됩니다!
+     - 만약 $a = 3, b = 160$이면, 맞바꾼 합 $s = f(3) + b = 1 + 160 = 161 = 7 \times 23$이 되어 $7$의 배수(합성수)가 됩니다!
+     어느 쪽이든 $A + B$ 안에 합성수가 강제로 만들어지므로 유한 집합 $A$는 불가능합니다.
+
+2. **2단계: 푸리에 공급 수축 (`-11/125 < 0`) — 왜 스펙트럼이 한곳에 몰릴 수 없는가?**:
+   - $A, B$가 모두 무한 집합이면 충돌 안정성에 의해 거의 모든 소수에서 밀도 $\sigma_p = |A_p|/p$가 $[1/3, 2/3]$ 안에 들어와야 합니다. 이 구간 밖에서는 역수 벌점
+     $$\frac{1}{\sigma_p} + \frac{1}{1 - \sigma_p} - 4 = \frac{(2\sigma_p - 1)^2}{\sigma_p(1 - \sigma_p)} \ge \frac{1}{2}$$
+     이 부과되기 때문입니다([`thm_08_collision_stability_reciprocal_penalty_identity`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L177-L188), [`thm_09_unbalanced_density_penalty_lower_bound_one_half`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L189-L203)).
+   - 소수마다 다른 이동 위상 $t_p$는 비둘기집 원리로 뽑은 **공통 유리 중심 $h/m$**을 빼 주면 $(an - at_p) - (am - at_p) = a(n - m)$으로 깔끔히 사라집니다([`thm_56_common_center_lift_difference_cancellation`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L54-L65)).
+   - 나아가 푸리에 모드가 희소한 소수의 비율이 $H \ge \frac{17}{25}L = 0.68L$ 이상이면, 제곱 전달 연산자 $K^2$의 수축 기울기($\kappa = \frac{8}{5}$)에 의해 전체 지수가
+     $$1 - \frac{8}{5}\cdot\frac{17}{25} = \frac{125 - 136}{125} = -\frac{11}{125} < 0$$
+     으로 수축해 영점 밀도 하한과 충돌합니다([`thm_15_supply_contradiction_exponent_11_125`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L303-L323)).
+
+3. **3단계: 이진 트리 예산 대 나쁜 순열 감쇠 (`2/5 - 3/4 = -7/20 < 0`)와 코시 행렬식**:
+   - 따라서 조화 가중치 $\ge \frac{3}{20}L = 0.15L$([`thm_12_harmonic_band_mertens_budget_and_sparse_complement`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L240-L261)) 이상의 소수가 퍼진(비희소) 스펙트럼을 가집니다.
+   - 깊이 $k$($r = 2^k$개 잎)인 이진 트리에서 아핀 연산자 $U_u F(t) = F(u - u^2 t)$는 충돌 다항식을 $(u_1 - u_1^2 t) - (u_2 - u_2^2 t) = (u_1 - u_2)(1 - (u_1 + u_2)t)$로 인수분해하여([`thm_65_affine_collision_polynomial_factorization`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L243-L259)) 주파수 예산을 $+\frac{2}{5}\log r$ 속도로 키우는 반면([`thm_26_frequency_budget_exact_closed_form_all_k`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L150)), 나쁜 겹침 순열은 $-\frac{3}{4}\log r$ 속도로 감쇠합니다([`thm_29_bad_arrangement_multinomial_decay_three_quarters`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L180-L193)).
+   - 동시에 보상 소수 법에서 우연한 합동으로 진폭이 $0$이 되는 현상은 **$2\times 2$ 코시(Cauchy) 행렬식**이 원천 차단합니다([`thm_69_cauchy_2x2_determinant_polynomial_identity`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L314-L331)). 예를 들어 $a_1 = 2, a_2 = 1, b_1 = 4, b_2 = 5$를 대입해 손으로 계산하면:
+     $$\frac{1}{(4 - 2)(5 - 1)} - \frac{1}{(4 - 1)(5 - 2)} = \frac{1}{8} - \frac{1}{9} = \frac{9 - 8}{72} = \frac{(5 - 4)(2 - 1)}{(4 - 2)(4 - 1)(5 - 2)(5 - 1)} = \frac{1}{72} \neq 0$$
+     처럼 분자가 $(b_2 - b_1)(a_1 - a_2) \ge 1$로 인수분해되어 절대 $0$이 될 수 없습니다([`thm_70_cauchy_2x2_determinant_strict_positivity`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L332-L348)).
+   - 결국 코시 행렬식이 보장하는 양의 하한과 트리 순열의 지수 감쇠 상한이 순 비율
+     $$\frac{2}{5} - \frac{3}{4} = \frac{8 - 15}{20} = -\frac{7}{20} < 0$$
+     으로 정면충돌하여 귀류법이 완성됩니다([`thm_30_net_contradiction_rate_minus_seven_twentieths`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L194-L212), [`thm_35_final_amplitude_upper_vs_lower_contradiction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L278-L295)).
+
+---
+
+## 5. 적대적 검증(Adversarial Audit) 요약: 화석 복원, 4대 대수 엔진, 유효 문턱값 (`정리 41~75`)
 
 1. **`#003`(`QRH`) 순환 의존성 `0`건 확증**: 논문 5절 비고 5.4가 OpenAI `#003`을 언급하지만, 두 Lean 증명 엔진 모두 `OAI.NumberTheory.DirichletL` 임포트가 `0`건이며 고전적 영점 밀도 추정만으로 완전 독립 증명되었습니다([`thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L372-L386)).
 2. **나쁜 순열 완전 소멸 및 트리 깊이 단축 ($k_{\min}: 7041 \to 1040$)**: 나쁜 순열($3r < 4t$)이 발생하려면 전체 잎의 절반 초과가 크기 1인 비분할 성분($r < 2t_1$)으로 남아야 합니다([`thm_41_bad_arrangement_requires_majority_unsplit_leaves`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L381-L395)). 화석 `FinalReassignments.lean`의 슬롯별 완전순열($t_1 = 0$)을 복원하면 나쁜 순열이 공집합이 되어([`thm_42_deranged_slot_pair_eliminates_bad_arrangements`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L396-L411)) 최소 이진 트리 깊이가 $k_{\min} = 7041$에서 $1040$으로 줄어들며([`thm_44_master_contraction_rate_and_depth_reduction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L450)), 반올림된 $\kappa = 8/5$를 $33/20, 17/10$으로 복원하면 우호적 소수 질량이 $+46.7\% \sim +53.3\%$ 확장됩니다([`thm_45_supply_contraction_favorable_mass_expansion`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L451-L475)).

@@ -12,18 +12,18 @@
     "README.md": "1b7d655c7e676d381e90a6468cebcc04232757879275170f2bc6a6e229ebb2dd",
     "README.ko.md": "b230a42afd118f6de4e0b3ed1b2011b4ae93926a0297430cad9978ed6c478660",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "7a04cc360fed5e1772718a92540734c9bb549d26804009378685678a8b23a391",
-    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "91c3dc36125082f85ed230582f37bbb0eb62b2f74df88e14ab4ab47bc40ff80d",
+    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "d88d831ce6ef231b22501ddb090b8efdabb988dbbc1e900c5ffd7777296ebf0a",
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
     "ko/01_초보자용_쉬운해설.md": "96aadda378bec5906dcf5615fabc684b01ae60891beebd55c6cc8c0f00d04818",
     "ko/02_중급자용_구조및수식가이드.md": "9edca9c9f61312fe993b39df929231a2543a6770a69ce942dc373adf09e81001",
     "ko/03_전문가용_수리물리및형식증명심사보고서.md": "b8c171434c90f01a6d3930e8ff4bced58cca724a95e4035bf1001af4532fe5fc",
-    "ko/04_자동검증및파서용_명세서.md": "7ee8dec8a9a110f866c12cb503cfb9a93f1203a5d5182135c96aa0b51d2d2832",
+    "ko/04_자동검증및파서용_명세서.md": "330b52091c1530037638f6603384917b72e7512557e469a6167618c8c71a9041",
     "en/01_Beginner_Guide.md": "dfdbf1b762d040d8d28f0e5db39e5a564f283834297eb5dc2abd76e2475c3be0",
     "en/02_Intermediate_Math_and_Code_Guide.md": "bf2c90191f7913f3af8ef41af52b98e2f3f4a173caeae07a154d702c55ed876d",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "a7fb63001254c89363ed12e98dd6ec2b82b85d5a9a59eb063b8e826a24d08db2",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "00ab4e2014af984445be6dc81523ac3a572cfbd5442c31d32ae83aa242ee9876"
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "02120ead9c7030f9027ee130d961b23df2865c7f670fe2e04d4d597d34030797",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "5bd09dcc362a3754a37d9b611caedf10635d6106dc5002b2c57181ddbf46940d"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
@@ -78,7 +78,12 @@
         "T37_repair5_pruned_repository_hundred_percent_reachability (Theorem 37, L266)",
         "T38_layers_1_and_2_verdict_partition (Theorem 38, L282)",
         "T39_layers_3_and_4_genuine_mechanisms_count (Theorem 39, L300)",
-        "T40_complete_suite_forty_theorems_verified (Theorem 40, L315)"
+        "T40_complete_suite_forty_five_theorems_verified (Theorem 40, L315)",
+        "T41_periodic_lattice_solenoidal_vertical_energy_identity (Theorem 41, L330)",
+        "T42_box_transport_motion_lexicographic_rank_bound (Theorem 42, L343)",
+        "T43_shear_flow_energy_comparison_advection_difference (Theorem 43, L357)",
+        "T44_balanced_transport_energy_curve_and_slice_h2_closure (Theorem 44, L369)",
+        "T45_velocity_detection_heat_kernel_and_json_challenge_parity (Theorem 45, L384)"
       ]
     }
   },
@@ -88,7 +93,7 @@
       "proofs/ns376_kinematic_routing_and_forensics.lean",
       "proofs/ns376_gronwall_uniqueness_and_repairs.lean"
     ],
-    "theorems_proved": 40,
+    "theorems_proved": 45,
     "sorry_count": 0,
     "axiom_count": 0,
     "hypothesis_mutations_caught": "176/176",
@@ -329,7 +334,7 @@
       },
       {
         "index": 40,
-        "name": "T40_complete_suite_forty_theorems_verified",
+        "name": "T40_complete_suite_forty_five_theorems_verified",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
         "line": 315
       },

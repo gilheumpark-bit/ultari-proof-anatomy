@@ -35,7 +35,7 @@ $$\text{sieveIter}(0) = (2, 1), \qquad \text{sieveIter}(n+1) = (6p_n - 4q_n,\; 3
 - **정역 내 정확한 근 확인 ([`thm_34_zsqrt921_norm_and_critical_quadratic_root`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L130-L137))**: $X = 48\delta_c = \langle 49, -1\rangle$에 대해 $\operatorname{Norm}(X) = 49^2 - 921 = 1480 = 8 \times 185$이고 $288 X^2 - 588\cdot 48 X + 185\cdot 48^2 = \langle 0, 0\rangle$.
 - **켤레 곱 유리화 및 `Case 005` 대 Liu 격차 노름 ([`thm_35_zsqrt921_liu_rationalization_and_case005_gap`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L144-L157), [`thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L77-L90))**:
   $$\langle 203, -3\rangle \cdot \langle 219, 3\rangle = \langle 36168, -48\rangle = 24 \cdot \langle 1507, -2\rangle, \qquad \operatorname{Norm}(\langle 219, -3\rangle) = 39672 = 24 \times 1653$$
-  으로부터 $B_{\mathrm{Liu}} = \frac{1507 - 2\sqrt{921}}{1653}$이 도출되며, `Case 005` 안장점과의 차이 $\beta_{\mathrm{SOS}}(0) - B_{\mathrm{Liu}} = \frac{1195\sqrt{921} - 36189}{4175478}$의 분자 원소 $\langle -36189, 1195\rangle$는 노름이 $-36189^2 - 921\times 1195^2 = -5567304 < 0$이므로 엄격히 양수입니다.
+  으로부터 $B_{\mathrm{Liu}} = \frac{1507 - 2\sqrt{921}}{1653}$이 도출되며, `Case 005` 안장점과의 차이 $\beta_{\mathrm{SOS}}(0) - B_{\mathrm{Liu}} = \frac{1195\sqrt{921} - 36189}{4175478}$의 분자 원소 $\langle -36189, 1195\rangle$는 노름이 $(-36189)^2 - 921\times 1195^2 = -5567304 < 0$이므로 엄격히 양수입니다.
 
 ### 2.2 파카스 쌍대 가중치와 매개변수 이동 정리 (`thm_21`–`thm_30`)
 세 활성 면 $\text{Face}_0, \text{Face}_K, \text{Face}_H$에 대해 파카스 쌍대 가중치
@@ -64,7 +64,7 @@ $$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w
    공통분모 $44064$ 위에서 $\frac{23}{24}$부터 $\frac{1}{2}$까지의 전체 폭 $20196$은 6단계 정수 폭으로 분해됩니다:
    $$1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = \left(\frac{23}{24} - \frac{1}{2}\right) \times 44064.$$
    - **기존 `0 sorry` 모듈 조립으로 달성 가능한 영역 (`1~4단계`, 합계 $13260 / 44064 \to \beta = 71/108 \approx 0.6574$ 및 $\beta = 2/3$ 극점 제거)**: 가변 하강 스케일($1836$), 3차 모멘트 전환($1836$), 그램 결합 해제 + 슈티켈베르거 이동($1935$), 미연결 `CubicGauss` 연결($7653$)로 달성됩니다.
-   - **진정한 미해결 해석적 난제로 남는 영역 (`5~6단계`, 합계 $3264 + 3672 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$)**: 극점 장벽 제거로 길은 열렸으나, 실제 모멘트 에너지 바닥을 $\frac{71}{108}$에서 $\frac{1}{2}$까지 밀어 내리려면 큰 체 부등식을 넘어서는 비대각 스펙트럼/클루스터만 제곱근 상쇄($\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$)에 대한 새로운 해석적 증명이 필요합니다.
+   - **진정한 미해결 해석적 난제로 남는 영역 (`5~6단계`, 합계 $(3264 + 3672) / 44064 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$)**: 극점 장벽 제거로 길은 열렸으나, 실제 모멘트 에너지 바닥을 $\frac{71}{108}$에서 $\frac{1}{2}$까지 밀어 내리려면 큰 체 부등식을 넘어서는 비대각 스펙트럼/클루스터만 제곱근 상쇄($\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$)에 대한 새로운 해석적 증명이 필요합니다.
 
 
 ---

@@ -30,8 +30,8 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
 | [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) | `b04012886b320c1f6e32012638f81d2be0f7ea7c75001f44ce72ab5f8e7cc92c` | 404 lines, 27 Lean 4 theorems (`Theorem 1`~`Theorem 27`), `0` `sorry`, `0` custom `axiom`. |
-| [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `92db90ed0b1dc93050188c1ceba83ac81597ade1bc01e1572585d15f4168d4e3` | 466 lines, 21 Lean 4 theorems (`Theorem 28`~`Theorem 48`, Tasks 1–4 & 178-decl 1-to-1 audit), `0` `sorry`, `0` custom `axiom`. |
-| [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py) | `f0c2f3e94f1ee422de2e4bdd758f94fc4a7212b2bde50106886a2d864aca6cdb` | Exact `SymPy`/`Fraction` symbolic solver extracting definitions directly from `./proofs/oai_ref/*.lean`. |
+| [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `264ce426ee8cdd45eba29fecc35ece3eb71801a9d11e36560506b9357ae0faf9` | 466 lines, 21 Lean 4 theorems (`Theorem 28`~`Theorem 48`, Tasks 1–4 & 178-decl 1-to-1 audit), `0` `sorry`, `0` custom `axiom`. |
+| [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py) | `cf71d7ddd3f56a8846dc6f6d58c179d2a1de1db8c5c5d0ab53ef168752942812` | Exact `SymPy`/`Fraction` symbolic solver extracting definitions directly from `./proofs/oai_ref/*.lean`. |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55` | Exact rational/symbolic output dictionary for Problems 1 through 5. |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `1a57a59bb4bfec2cbd4bfd62316c31a21e6a756155f4b64016ecad09aa78bc58` | Problem specification referencing `./oai_ref/*.lean`. |
 

@@ -46,21 +46,50 @@ flowchart TD
 
 ---
 
-## 3. How the Proof Works in Three Steps (`Category A`)
+## 3. Why Classical Prime Sieves Failed for 76 Years (`Why 1: The Parity Barrier and Phase Cancellation`)
 
-1. **Step 1: Ruling Out a Finite Summand ([`FiniteCRT.lean`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/FiniteCRT.lean#L1), Lemma 2.2)**:
-   - If $A$ is finite ($|A| \ge 2$) and $B$ is infinite, the Chinese Remainder Theorem and Dirichlet's theorem produce infinitely many primes $p = a + b$ where a shifted sum $f(a) + b \in A + B$ is divisible by a prime $q_a$ ([`thm_06_finite_summand_crt_dirichlet_composite_witness`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L136-L159)).
-2. **Step 2: Fourier Supply Contraction (`-11/125 < 0`)**:
-   - When both $A$ and $B$ are infinite, collision stability forces balanced density $\sigma_p \in [1/3, 2/3]$, since outside that interval the penalty $\frac{(2\sigma_p - 1)^2}{\sigma_p(1 - \sigma_p)}$ is at least $\frac{1}{2}$ ([`thm_08_collision_stability_reciprocal_penalty_identity`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L177-L188), [`thm_09_unbalanced_density_penalty_lower_bound_one_half`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L189-L203)).
-   - If Fourier modes were sparse on $H \ge \frac{17}{25}L$ of the primes, a transfer operator would contract at rate $1 - \frac{8}{5}\times\frac{17}{25} = -\frac{11}{125} < 0$ ([`thm_15_supply_contradiction_exponent_11_125`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L303-L323)).
-3. **Step 3: Binary Tree vs. Bad Permutations (`2/5 - 3/4 = -7/20 < 0`)**:
-   - Thus a harmonic fraction $\ge \frac{3}{20}L = 0.15L$ ([`thm_12_harmonic_band_mertens_budget_and_sparse_complement`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L240-L261)) of primes has spread-out spectra.
-   - Across a depth-$k$ binary tree ($r = 2^k$ leaves), the frequency budget grows at $+\frac{2}{5}\log r$ ([`thm_26_frequency_budget_exact_closed_form_all_k`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L150)) while bad permutations decay at $-\frac{3}{4}\log r$ ([`thm_29_bad_arrangement_multinomial_decay_three_quarters`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L180-L193)).
-   - Their net sum is $\frac{2}{5} - \frac{3}{4} = -\frac{7}{20} < 0$, forcing an amplitude contradiction for large $k$ ([`thm_30_net_contradiction_rate_minus_seven_twentieths`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L194-L212), [`thm_35_final_amplitude_upper_vs_lower_contradiction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L278-L295)).
+Classical sieves (Eratosthenes, Selberg) only use the local zero-avoidance condition $a + b \not\equiv 0 \pmod p$ at each prime $p$. By themselves, such congruences hit the **Cauchy-Davenport barrier**:
+- For example, at $p = 7$, choosing $A_7 = \{1, 2, 3\}$ and $B_7 = \{1, 2, 3\}$ gives two sets that each occupy nearly half of all residues ($3/7 \approx 1/2$), yet their sumset $A_7 + B_7 = \{2, 3, 4, 5, 6\} \pmod 7$ completely misses $0 \pmod 7$.
+- Because any pair satisfying $|A_p| + |B_p| \le p - 1$ can avoid zero modulo $p$, density bounds alone stall completely in the balanced regime $\sigma_p \approx 1/2$ (the **sieve parity barrier**).
+- Worse still, at each prime $p$ the forbidden residue interval is shifted by an unknown translation phase $t_p \pmod p$ that varies erratically across primes, causing naive Fourier averages over $p$ to cancel out to zero.
 
 ---
 
-## 4. Adversarial Verification Summary: Shortcuts, 4 Core Algebraic Engines, and Effective Thresholds (`Theorems 41–75`)
+## 4. How the Proof Works in Three Steps + Toy Numerical Hand-Calculations (`Why 2–4`)
+
+OpenAI `#013` breaks through this barrier in three stages (**Finite Summand Elimination $\to$ Fourier Supply Contraction $\to$ Binary Tree Permutation Contradiction**):
+
+1. **Step 1: Ruling Out a Finite Summand ([`FiniteCRT.lean`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/FiniteCRT.lean#L1), Lemma 2.2) — Why Even One Finite Set Forces Composite Sums**:
+   - If $A$ is finite ($|A| \ge 2$) and $B$ is infinite, let $f : A \to A$ swap two distinct elements $a_0 \leftrightarrow a_1$. By the Chinese Remainder Theorem (CRT) and Dirichlet's theorem on primes in arithmetic progressions, infinitely many primes $p = a + b$ force the swapped sum $s = f(a) + b \in A + B$ to be a proper multiple of a prime $q_a$ ([`thm_06_finite_summand_crt_dirichlet_composite_witness`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L136-L159)).
+   - **Toy Hand-Calculation ($A = \{1, 3\}$)**: Set $f(1) = 3, f(3) = 1$ and pick distinct primes $q_1 = 5, q_3 = 7$. Solving the CRT system
+     $$r \equiv 5 + 1 - 3 = 3 \pmod 5, \qquad r \equiv 7 + 3 - 1 = 2 \pmod 7$$
+     gives $r \equiv 23 \pmod{35}$. Now take any large prime $p \equiv 23 \pmod{35}$ (for instance, $p = 163 = 35 \times 4 + 23$) written as $p = a + b$:
+     - If $a = 1, b = 162$, the swapped sum is $s = f(1) + b = 3 + 162 = 165 = 5 \times 33$, which is composite (divisible by $5$)!
+     - If $a = 3, b = 160$, the swapped sum is $s = f(3) + b = 1 + 160 = 161 = 7 \times 23$, which is composite (divisible by $7$)!
+     Either way, $A + B$ is forced to contain composite numbers, ruling out any finite $A$.
+
+2. **Step 2: Fourier Supply Contraction (`-11/125 < 0`) — Why Fourier Modes Cannot Stay Sparse**:
+   - When both $A$ and $B$ are infinite, collision stability forces balanced density $\sigma_p = |A_p|/p \in [1/3, 2/3]$ at almost all primes, because outside that interval the reciprocal collision penalty satisfies
+     $$\frac{1}{\sigma_p} + \frac{1}{1 - \sigma_p} - 4 = \frac{(2\sigma_p - 1)^2}{\sigma_p(1 - \sigma_p)} \ge \frac{1}{2}$$
+     ([`thm_08_collision_stability_reciprocal_penalty_identity`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L177-L188), [`thm_09_unbalanced_density_penalty_lower_bound_one_half`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L189-L203)).
+   - To eliminate the erratic prime-by-prime shift $t_p$, Dirichlet's pigeonhole principle lifts the shifts to a **Common Rational Center $h/m$**, so subtracting two congruent elements cancels $t_p$ identically: $(an - at_p) - (am - at_p) = a(n - m)$ ([`thm_56_common_center_lift_difference_cancellation`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L54-L65)).
+   - If Fourier modes were sparse on $H \ge \frac{17}{25}L = 0.68L$ of the primes, the squared rank-2 transfer operator $K^2$ (with contraction rate $\kappa = \frac{8}{5}$) would force the net exponent
+     $$1 - \frac{8}{5}\cdot\frac{17}{25} = \frac{125 - 136}{125} = -\frac{11}{125} < 0,$$
+     contradicting the zero-density lower bound ([`thm_15_supply_contradiction_exponent_11_125`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L303-L323)).
+
+3. **Step 3: Binary Tree vs. Bad Permutations (`2/5 - 3/4 = -7/20 < 0`) and the $2\times 2$ Cauchy Determinant**:
+   - Consequently, a harmonic fraction $\ge \frac{3}{20}L = 0.15L$ ([`thm_12_harmonic_band_mertens_budget_and_sparse_complement`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L240-L261)) of primes must carry spread-out Fourier spectra.
+   - Across a depth-$k$ binary tree ($r = 2^k$ leaves), the affine operator $U_u F(t) = F(u - u^2 t)$ factors collisions as $(u_1 - u_1^2 t) - (u_2 - u_2^2 t) = (u_1 - u_2)(1 - (u_1 + u_2)t)$ ([`thm_65_affine_collision_polynomial_factorization`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L243-L259)), driving frequency budget growth at $+\frac{2}{5}\log r$ ([`thm_26_frequency_budget_exact_closed_form_all_k`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L150)) while bad permutations decay at $-\frac{3}{4}\log r$ ([`thm_29_bad_arrangement_multinomial_decay_three_quarters`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L180-L193)).
+   - Meanwhile, accidental vanishing modulo compensation primes is blocked by the **$2\times 2$ Cauchy determinant** ([`thm_69_cauchy_2x2_determinant_polynomial_identity`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L314-L331)). Evaluating a concrete toy instance $a_1 = 2, a_2 = 1, b_1 = 4, b_2 = 5$ by hand gives:
+     $$\frac{1}{(4 - 2)(5 - 1)} - \frac{1}{(4 - 1)(5 - 2)} = \frac{1}{8} - \frac{1}{9} = \frac{9 - 8}{72} = \frac{(5 - 4)(2 - 1)}{(4 - 2)(4 - 1)(5 - 2)(5 - 1)} = \frac{1}{72} \neq 0,$$
+     whose numerator $(b_2 - b_1)(a_1 - a_2) \ge 1$ never vanishes for distinct ordered pairs ([`thm_70_cauchy_2x2_determinant_strict_positivity`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L332-L348)).
+   - Combining the positive Cauchy lower bound with the tree permutation upper bound yields the net rate
+     $$\frac{2}{5} - \frac{3}{4} = \frac{8 - 15}{20} = -\frac{7}{20} < 0,$$
+     forcing an amplitude contradiction for large $k$ ([`thm_30_net_contradiction_rate_minus_seven_twentieths`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L194-L212), [`thm_35_final_amplitude_upper_vs_lower_contradiction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L278-L295)).
+
+---
+
+## 5. Adversarial Verification Summary: Shortcuts, 4 Core Algebraic Engines, and Effective Thresholds (`Theorems 41–75`)
 
 1. **Zero Hidden Dependency on `#003` (`QRH`)**: Although `05-supply.tex` Remark 5.4 mentions OpenAI `#003`, both Lean engines have `0` imports from `OAI.NumberTheory.DirichletL` ([`thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L372-L386)).
 2. **Eliminating Bad Permutations ($k_{\min}: 7041 \to 1040$)**: Any bad arrangement ($3r < 4t$) requires more than half of all leaves to remain unsplit size-1 components ($r < 2t_1$, [`thm_41_bad_arrangement_requires_majority_unsplit_leaves`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L381-L395)). Restoring slotwise deranged pairs ($t_1 = 0$) from the `FinalReassignments.lean` fossil makes the bad-arrangement set empty ([`thm_42_deranged_slot_pair_eliminates_bad_arrangements`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L396-L411)) and cuts the minimum binary tree depth from $k_{\min} = 7041$ down to $1040$ ([`thm_44_master_contraction_rate_and_depth_reduction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L450)), while unrounding $\kappa = 8/5 \to 33/20, 17/10$ expands the favorable prime supply by $+46.7\%$ to $+53.3\%$ ([`thm_45_supply_contraction_favorable_mass_expansion`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L451-L475)).

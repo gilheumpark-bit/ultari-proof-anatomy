@@ -2,7 +2,7 @@
 
 - **Date**: 2026-10-31
 - **Target Repository**: `openai/math` (Family `003`: Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis, `lean/OAI/NumberTheory/DirichletL/` & `SiegelZeros/`)
-- **Verification Toolchain**: `Lean 4 (v4.29.0-rc8)`, `Python 3 (SymPy / Fractions)`, Double-Precision (`FP64 / Complex128`) Grid Evaluation ($1.9802 \times 10^9$ points)
+- **Verification Toolchain**: `Lean 4 (v4.29.0-rc8)` and `Python 3 (SymPy / Fractions)` (`verify_symbolic_qrh.py`)
 - **Primary Formal Proof Artifacts**: [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (`SHA-256: b04012886b320c1f6e32012638f81d2be0f7ea7c75001f44ce72ab5f8e7cc92c`, 404 lines, 27 `theorem` declarations) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (`SHA-256: 92db90ed0b1dc93050188c1ceba83ac81597ade1bc01e1572585d15f4168d4e3`, 466 lines, 21 `theorem` declarations; total **48 theorems**, `0` `sorry`, `0` custom `axiom`, `lean` `exit 0`)
 - **Symbolic Verification Artifact**: [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) (`SHA-256: 072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55`)
 
@@ -66,7 +66,7 @@ At $\delta_{\text{SOS}} = \frac{79}{204}$, the componentwise square-root $Z$-exp
 
 ---
 
-## 7. Completion of Tasks 1–3: Small-Norm Threshold Removal, 2nd/3rd Complex Mellin Continuation, and Master Scale-Coupling Equations (Theorems 28–40)
+## 7. Completion of Tasks 1–3: Small-Norm Threshold Removal, 2nd/3rd Complex Mellin Continuation, and Master Scale-Coupling Equations (Theorems 28–48)
 
 ### 7.1 Task 1: Removal of $4 \le Q < 480$ Threshold & Finite Bad-Prime Mask Absorption (Theorems 28–30)
 1. **Call-Graph Verification (`DirichletL/PrimeRows/CubePrimeThresholds.lean:13-33`, `DirichletL/PrimeRows/FirstTail.lean:81-100`)**:

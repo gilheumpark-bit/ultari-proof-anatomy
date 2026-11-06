@@ -117,8 +117,21 @@ def _run_single_mutation(args):
 def check_lean_and_mutations(lean_file):
     src = lean_file.read_text(encoding="utf-8")
     assert not re.search(r"\b(?:sorry|admit)\b", re.sub(r"--[^\n]*|/-.*?-/", "", src, flags=re.S))
-    res = subprocess.run([LEAN_BIN, str(lean_file)], capture_output=True, text=True, timeout=60)
+    meta_p = next(
+        (
+            c / "patterns" / "70-lean-meta.txt"
+            for c in (ROOT / ".ultari", ROOT.parent / "울타리_연구원" / "template" / ".ultari")
+            if (c / "patterns" / "70-lean-meta.txt").is_file()
+        ),
+        None,
+    )
+    meta_h = meta_p.read_text(encoding="utf-8") if meta_p else ""
+    m_in = ("import Lean\n" if not re.search(r"(?m)^\s*import\s+Lean\b", src) else "") + src + ("\n" + meta_h if meta_h else "")
+    res = subprocess.run([LEAN_BIN, "--stdin"], input=m_in, cwd=str(lean_file.parent), capture_output=True, text=True, timeout=60)
     assert res.returncode == 0, f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}"
+    meta_issues = re.findall(r"^META_ISSUE:(\S+)$", res.stdout, re.M)
+    assert not meta_issues, f"Lean.Elab MetaM AST/Proof-Term/DoF violation in {lean_file.name}: {meta_issues}"
+    m_sum = re.search(r"META_SUMMARY:\s*thms=(\d+)\s+dof_pos=(\d+)\s+nonlin=(\d+)", res.stdout)
     hyps = extract_balanced_hyps(src)
     for (_, _, _, _, names, hbody) in hyps:
         assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
@@ -148,7 +161,8 @@ def check_lean_and_mutations(lean_file):
     assert not thms or struct_cnt / len(thms) >= 0.55, (
         f"Excessive literal-plugging theorems in {lean_file.name}: only {struct_cnt}/{len(thms)} structural"
     )
-    print(f"  [PASS] Lean 4 kernel check ({lean_file.name}, 0 sorry, {len(hyps)}/{len(hyps)} hypothesis mutations caught, {struct_cnt}/{len(thms)} structural)")
+    dof_info = f", DoF>0: {m_sum.group(2)}/{m_sum.group(1)}, nonlin: {m_sum.group(3)}" if m_sum else ""
+    print(f"  [PASS] Lean 4 kernel + Elab MetaM check ({lean_file.name}, 0 sorry, {len(hyps)}/{len(hyps)} hypothesis mutations caught, {struct_cnt}/{len(thms)} structural{dof_info})")
     return {
         m.group(1): idx
         for idx, line in enumerate(src.splitlines(), 1)

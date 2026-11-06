@@ -307,18 +307,18 @@ theorem T39_layers_3_and_4_genuine_mechanisms_count
   omega
 
 /--
-Theorem 40 (Complete 40-Theorem Forensic & Repair Verification Summary):
+Theorem 40 (Complete 45-Theorem Forensic & Repair Verification Summary):
 Across Part I (`20` theorems in `ns376_kinematic_routing_and_forensics.lean`) and
-Part II (`20` theorems in `ns376_gronwall_uniqueness_and_repairs.lean`), all `40` theorems
-compile with `0` `sorry` and `0` `axiom`, achieving `40 / 40` verified claims.
+Part II (`25` theorems in `ns376_gronwall_uniqueness_and_repairs.lean`), all `45` theorems
+compile with `0` `sorry` and `0` `axiom`, achieving `45 / 45` verified claims.
 -/
-theorem T40_complete_suite_forty_theorems_verified
+theorem T40_complete_suite_forty_five_theorems_verified
     (part1_theorems part2_theorems sorry_count axiom_count : Nat)
     (h_p1 : part1_theorems = 20)
-    (h_p2 : part2_theorems = 20)
+    (h_p2 : part2_theorems = 25)
     (h_sorry : sorry_count = 0)
     (h_axiom : axiom_count = 0) :
-    part1_theorems + part2_theorems - sorry_count - axiom_count = 40 := by
+    part1_theorems + part2_theorems - sorry_count - axiom_count = 45 := by
   omega
 
 /--

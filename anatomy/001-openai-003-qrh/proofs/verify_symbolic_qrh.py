@@ -21,7 +21,7 @@ def solve_qrh_problem_1():
     """
     a, d, R, q, eta = sp.symbols("a d R q eta", rational=True)
 
-    # Exact definition from CentralExponent.lean:
+    # Exact definition from DirichletL/Detector/CentralExponent.lean:
     source_exponent = (
         sp.Rational(17, 48) * (sp.Rational(1, 2) - sp.Rational(17, 50))
         + a
@@ -247,7 +247,7 @@ def solve_qrh_problem_3(delta_sos_str):
     assert saving_nonexc_with_l_bound == sp.Rational(215, 3264)
     assert saving_exc == sp.Rational(1817, 19584)
 
-    # Uniform baseline endpoint margin from Endpoint.lean (balanced_endpoint_margin):
+    # Uniform baseline endpoint margin from DirichletL/Endpoint.lean (balanced_endpoint_margin):
     margin_baseline = sp.Rational(49, 440640)
     assert saving_nonexc - sp.Rational(1, 12) == saving_nonexc_with_l_bound
 
@@ -278,7 +278,7 @@ def solve_qrh_problem_4():
                oai_ref/ScalarTable.lean (upstream: lean/OAI/NumberTheory/DirichletL/Detector/ScalarTable.lean),
                oai_ref/HighRowsCentralTerms.lean (upstream: lean/OAI/NumberTheory/DirichletL/Detector/HighRowsCentralTerms.lean)
     """
-    # The 8 non-principal (e, l, k) branches in HighRowsCentralTerms.lean:
+    # The 8 non-principal (e, l, k) branches in DirichletL/Detector/HighRowsCentralTerms.lean:
     # (e, l) in {(0, 2), (1, 0), (0, 1), (1, 1)} and k in {0, 1}, where t = e + 3*l, n = t - 1.
     branches = [
         {"name": "02_0", "e": 0, "l": 2, "k": 0, "s": sp.Rational(6, 1)},
@@ -298,7 +298,7 @@ def solve_qrh_problem_4():
         t = b["e"] + 3 * b["l"]
         n = t - 1
         k = b["k"]
-        # From ScalarTable.lean (gaussValuationTable_above) and HighRowsScalar.lean:
+        # From DirichletL/Detector/ScalarTable.lean (gaussValuationTable_above) and DirichletL/Detector/HighRowsScalar.lean:
         # For m >= 2 and 0 <= j < 6, j + 6*m >= 12 > n + 1.
         # At k = 0: gaussValuationTable (n + 1) (j + 6*m) is non-zero iff (n + 1) % 6 == 0.
         # At k = 1: gaussValuationTable n (j + 6*m - 1) is non-zero iff n % 6 == 0.
@@ -349,7 +349,7 @@ def solve_qrh_problem_5():
     """
     a, beta, e, xi, upsilon = sp.symbols("a beta e xi upsilon", rational=True)
 
-    # From PrincipalRemainderBounds.lean (source_scale_identity):
+    # From DirichletL/Detector/PrincipalRemainderBounds.lean (source_scale_identity):
     scale_exp = (
         a
         - sp.Rational(11, 16)
@@ -391,7 +391,7 @@ def solve_qrh_problem_5():
     b_principal = min(w_saving, z_saving)
     assert b_principal == sp.Rational(17, 48000)
 
-    # Compare to principal_budget in ParametersHighData.lean:
+    # Compare to principal_budget in DirichletL/ParametersHighData.lean:
     # principal_budget : sigma + t / 8 <= 17 / 48000
     principal_budget_rhs = sp.Rational(17, 48000)
     matches = bool(b_principal == principal_budget_rhs)
