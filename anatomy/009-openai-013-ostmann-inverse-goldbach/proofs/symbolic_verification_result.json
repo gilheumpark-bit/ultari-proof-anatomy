@@ -103,6 +103,38 @@
       "reduction_ratio_sharp": 6.42,
       "reduction_ratio_ultra": 16.08
     },
+    "paper_to_lean_mechanisms": {
+      "sec3_bonami_exponent_coeff": 625,
+      "sec3_divisor_omega_cap": 7,
+      "sec4_anchor_dichotomy_verified": true,
+      "sec4_entropy_margin_10000": 6871,
+      "sec6_bipartite_min_cycle_excess": 1,
+      "sec6_affine_hs_numerator": 3,
+      "sec7_disjoint_prime_bands_10000": [
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          40,
+          60
+        ],
+        [
+          100,
+          100
+        ],
+        [
+          500,
+          9000
+        ]
+      ],
+      "sec8_giant_low_zero_margin_10000": 50,
+      "sec8_bulk_low_zero_margin_10000": 3
+    },
     "engine_b_constants": {
       "Cs": 17,
       "Ccov": 17,

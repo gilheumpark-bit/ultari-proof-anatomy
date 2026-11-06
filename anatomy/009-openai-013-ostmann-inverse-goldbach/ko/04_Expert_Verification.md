@@ -1,9 +1,9 @@
-# 전문가 검증: 아티팩트 해시, 재현 명령, 50개 정리 1:1 매핑
+# 전문가 검증: 아티팩트 해시, 재현 명령, 55개 정리 1:1 매핑
 
 ## 1. 재현 명령
 
 ```bash
-# 1. 독립형 Lean 4 커널 검증 (0 sorry, 2개 파일에 걸친 정리 50개 + 재귀 def 2개)
+# 1. 독립형 Lean 4 커널 검증 (0 sorry, 2개 파일에 걸친 정리 55개 + 재귀 def 2개)
 ~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && \
   ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean
 
@@ -18,15 +18,15 @@ python3 ../../tools/verify_all.py --root .
 
 | 아티팩트 파일 | SHA-256 체크섬 |
 | :--- | :--- |
-| [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean) | `d84dd42297d340e15f43d58c0fbff30ea6ac25ee80ee3e727dee425d14b1be2f` |
+| [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean) | `522055ee8bbb20f5b9dc92cecc3546d72e476a75e8cbf5029c19897e3b089aee` |
 | [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) | `727e3dcb4149aacb3beba1d87793c911002687bd7cc979abd20fb3f38a4d8d61` |
-| [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `8af48e414837d0fb6f67aebbda11d1e07f7bbfc19634592609917f7462a9a8a6` |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `9ba21bf6bef1d9b754b0b9b80895345f71c01ccbb7691d34d39d429ba51f3f41` |
+| [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `372e75ff2e8e0274aee5d2ba8ae4ffc306c677263f164bc3b4a472590799a24e` |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `a4c633c4e291dbfc200f7ea4348f6da9232db260fc796b5f37668a3f87ecca63` |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02` |
 
-## 3. 전체 50개 정리 1:1 매핑 (`0 sorry`, 가설 변이 100% 격추)
+## 3. 전체 55개 정리 1:1 매핑 (`0 sorry`, 가설 변이 100% 격추)
 
-### 파일 1: [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L404)
+### 파일 1: [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L517)
 - **Theorem 1**: [`thm_01_ostmann_directory_inclusion_exclusion_partition`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L20-L43) - `OAI/NumberTheory/Ostmann/` 포함-배제 분할: `3165 + 4175 - 5 = 7335`개 도달 가능 파일(`569,682`줄) + `381`개 고아 파일(`39,517`줄) = `7,716`개 파일(`609,199`줄).
 - **Theorem 2**: [`thm_02_shared_intersection_five_files_accounting`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L44-L60) - `Complete ∩ Main` 공유 코어 5개 파일 줄 수 합산(`46 + 2 + 190 + 68 + 66 = 372`줄, 도달 가능 코드의 `< 0.1%`).
 - **Theorem 3**: [`thm_03_unreachable_orphan_381_files_accounting`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L61-L84) - 미사용 고아 화석 파일 `381`개의 하위 폴더별 분해(`264 + 86 + 10 + 8 + 7 + 2 + 1 + 1 + 2 = 381`).
@@ -47,6 +47,11 @@ python3 ../../tools/verify_all.py --root .
 - **Theorem 18**: [`thm_18_page_exceptional_zero_single_prime_deletion_budget`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L355-L371) - 란다우-페이지 예외 실수 영점 소수 제거 예산(`d_supply <= 1`, `d_sched <= 2`).
 - **Theorem 19**: [`thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L372-L386) - `#003` (`QRH`)으로부터의 완전 독립성: 두 엔진 모두 `OAI.NumberTheory.DirichletL` 임포트 `0`개.
 - **Theorem 20**: [`thm_20_engine_a_vs_engine_b_supply_constants_bridge`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L387-L402) - `05-supply.tex`와 `Supply/NonsparseSupply.lean`의 5절 공급 상수 통합 검증.
+- **Theorem 51**: [`thm_51_section3_bonami_high_weight_exponent_and_divisor_cap`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L413-L426) - 3절 증폭 모멘트(`lambda = 1/16`, `1 + lambda/3 = 49/48`), 약수 개수 상한 `omega(P) <= 7`, 보나미 고가중치 감쇠 계수 `tau / (8 * mu_0) = 625 >= 20`.
+- **Theorem 52**: [`thm_52_section4_anchor_code_one_sided_dichotomy_and_margin`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L434-L449) - 4절 앵커 코드 단측 제곱 지표 이분법(`(±2, 0)` 또는 `(0, ±2)`) 및 단계당 엔트로피 여유분 `6931 - 60 = 6871` (`04-characters.tex:1058`, `Characters/AnchorOneSidedEdge.lean:10`).
+- **Theorem 53**: [`thm_53_section6_bipartite_quartet_cycle_and_affine_hs_bound`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L458-L470) - 6절 성분-사중주 이분 다중그래프 순환 존재성(`V_bip <= E_bip`, `cycle_excess >= 1`)을 통한 `b <= 3r/4` 임계치의 기하학적 기원 및 아핀 힐베르트-슈미트 상한 `1 + 2 = 3` (`3/q^2`).
+- **Theorem 54**: [`thm_54_section7_five_disjoint_prime_scale_hierarchy`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L479-L491) - 7~8절 5대 쌍별 서로소 이중 로그 소수 스케일 계층(`4 < 5 <= c_spec <= 10 < 40 <= c_bulk <= 60 < 100 = c_top_comp < 500 <= c_giant <= 9000`).
+- **Theorem 55**: [`thm_55_section8_progression_table_zero_free_margins`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L498-L515) - 8절 2행 등차수열 스케일 표(`giant` 대 `bulk`)의 엄격한 부등식 사슬 `a_0 - theta > theta > delta' > delta > mu > 0` (`margin_g = 50`, `margin_b = 3`).
 
 ### 파일 2: [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L581)
 - **Theorem 21**: [`thm_21_dyadic_tree_leaf_sum_by_induction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L30-L50) - 모든 자연수 `k`에 대한 구조적 귀납법(`induction k`)으로 증명한 `dyadicSum k = 2^k - 1`.

@@ -2,7 +2,7 @@
 
 # 사례 009: OpenAI `#013` 오스트만 역 골드바흐 추측 (`Erdős #431`) 해부 및 형식증명
 
-이 패키지는 OpenAI `#013`(*소수 집합의 가법적 분해 불가능성*, `OAI/NumberTheory/Ostmann/`, `7,716`개 `.lean` 파일 `609,199`줄)을 해부한 결과물입니다. 모든 결론은 `50`개 독립 Lean 4 정리와 `2`개 `def`(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `322/322`건 포착)로 검증했습니다.
+이 패키지는 OpenAI `#013`(*소수 집합의 가법적 분해 불가능성*, `OAI/NumberTheory/Ostmann/`, `7,716`개 `.lean` 파일 `609,199`줄)을 해부한 결과물입니다. 모든 결론은 `55`개 독립 Lean 4 정리와 `2`개 `def`(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `370/370`건 포착)로 검증했습니다.
 
 ## 핵심 해부 결과
 
@@ -15,13 +15,13 @@
 | 단계 | 대상 독자 | 문서 파일 | 핵심 내용 |
 | :---: | :--- | :--- | :--- |
 | **1단계** | **초보자 (일반 독자)** | [`ko/01_Beginner_Guide.md`](ko/01_Beginner_Guide.md) | 오스트만 역 골드바흐 문제, 쌍둥이 엔진 중복 구조, 3단계 증명 원리 쉬운 해설. |
-| **2단계** | **중급자 (이공계·개발자)** | [`ko/02_Intermediate_Guide.md`](ko/02_Intermediate_Guide.md) | 핵심 대수 방정식과 50개 Lean 4 정리 1대1 줄 번호 색인표. |
-| **3단계** | **전문가 (수론·형식증명 연구자)** | [`ko/03_Advanced_Guide.md`](ko/03_Advanced_Guide.md) | 3세대 화석 트리, 5절 푸리에 공급 수축, 6절 이진 트리 전달 및 유효 문턱값 심층 보고서. |
+| **2단계** | **중급자 (이공계·개발자)** | [`ko/02_Intermediate_Guide.md`](ko/02_Intermediate_Guide.md) | 핵심 대수 방정식과 55개 Lean 4 정리 1대1 줄 번호 색인표. |
+| **3단계** | **전문가 (수론·형식증명 연구자)** | [`ko/03_Advanced_Guide.md`](ko/03_Advanced_Guide.md) | 3세대 화석 트리, 5절 푸리에 공급 수축, 6절 이진 트리 전달, 유효 문턱값 및 9개 절 1:1 대조 보고서. |
 | **4단계** | **자동 검증기 및 파서** | [`ko/04_Expert_Verification.md`](ko/04_Expert_Verification.md)<br>[`manifest.json`](manifest.json) | SHA-256 해시 원장, 가설 돌연변이 시험 결과 및 1줄 재현 명령어. |
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
-- [`ostmann_twin_engines_and_supply_contraction.lean`](proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L404): 정리 1~20 (`140/140` 변이 포착).
+- [`ostmann_twin_engines_and_supply_contraction.lean`](proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L517): 정리 1~20 및 51~55 (`188/188` 변이 포착).
 - [`ostmann_tree_transfers_and_permutation_contradiction.lean`](proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L581): 정리 21~50 + `def` 2개 (`182/182` 변이 포착).
 - [`verify_symbolic_ostmann.py`](proofs/verify_symbolic_ostmann.py) 및 [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json).
 

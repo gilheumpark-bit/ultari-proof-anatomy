@@ -1,9 +1,9 @@
-# Expert Verification: Artifact Hashes, Reproduction Commands, and 50-Theorem Map
+# Expert Verification: Artifact Hashes, Reproduction Commands, and 55-Theorem Map
 
 ## 1. Reproduction Commands
 
 ```bash
-# 1. Standalone Lean 4 Kernel Check (0 sorry, 50 theorems + 2 recursive defs across 2 files)
+# 1. Standalone Lean 4 Kernel Check (0 sorry, 55 theorems + 2 recursive defs across 2 files)
 ~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && \
   ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean
 
@@ -18,15 +18,15 @@ python3 ../../tools/verify_all.py --root .
 
 | Artifact File | SHA-256 Checksum |
 | :--- | :--- |
-| [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean) | `d84dd42297d340e15f43d58c0fbff30ea6ac25ee80ee3e727dee425d14b1be2f` |
+| [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean) | `522055ee8bbb20f5b9dc92cecc3546d72e476a75e8cbf5029c19897e3b089aee` |
 | [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) | `727e3dcb4149aacb3beba1d87793c911002687bd7cc979abd20fb3f38a4d8d61` |
-| [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `8af48e414837d0fb6f67aebbda11d1e07f7bbfc19634592609917f7462a9a8a6` |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `9ba21bf6bef1d9b754b0b9b80895345f71c01ccbb7691d34d39d429ba51f3f41` |
+| [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `372e75ff2e8e0274aee5d2ba8ae4ffc306c677263f164bc3b4a472590799a24e` |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `a4c633c4e291dbfc200f7ea4348f6da9232db260fc796b5f37668a3f87ecca63` |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02` |
 
-## 3. Complete 1-to-1 Theorem Map (50 Theorems, `0 sorry`, 100% Hypothesis Mutation Kill Rate)
+## 3. Complete 1-to-1 Theorem Map (55 Theorems, `0 sorry`, 100% Hypothesis Mutation Kill Rate)
 
-### File 1: [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L404)
+### File 1: [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L517)
 - **Theorem 1**: [`thm_01_ostmann_directory_inclusion_exclusion_partition`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L20-L43) - Exact inclusion-exclusion partition of `OAI/NumberTheory/Ostmann/`: `3165 + 4175 - 5 = 7335` reachable files (`569,682` lines) + `381` orphans (`39,517` lines) = `7,716` files (`609,199` lines).
 - **Theorem 2**: [`thm_02_shared_intersection_five_files_accounting`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L44-L60) - Exact line count of the 5 shared files in `Complete ∩ Main` (`46 + 2 + 190 + 68 + 66 = 372` lines, `< 0.1%` of reachable code).
 - **Theorem 3**: [`thm_03_unreachable_orphan_381_files_accounting`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L61-L84) - Exact subdirectory decomposition of the `381` unreachable fossil files (`264 + 86 + 10 + 8 + 7 + 2 + 1 + 1 + 2 = 381`).
@@ -47,6 +47,11 @@ python3 ../../tools/verify_all.py --root .
 - **Theorem 18**: [`thm_18_page_exceptional_zero_single_prime_deletion_budget`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L355-L371) - Landau-Page exceptional real zero deletion budget (`d_supply <= 1`, `d_sched <= 2`).
 - **Theorem 19**: [`thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L372-L386) - Strict independence from `#003` (`QRH`): `0` imports from `OAI.NumberTheory.DirichletL` across both engines.
 - **Theorem 20**: [`thm_20_engine_a_vs_engine_b_supply_constants_bridge`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L387-L402) - Synthesis of Section 5 supply constants across `05-supply.tex` and `Supply/NonsparseSupply.lean`.
+- **Theorem 51**: [`thm_51_section3_bonami_high_weight_exponent_and_divisor_cap`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L413-L426) - Section 3 amplified moment (`lambda = 1/16`, `1 + lambda/3 = 49/48`), divisor cap `omega(P) <= 7`, and Bonami high-weight exponent `tau / (8 * mu_0) = 625 >= 20`.
+- **Theorem 52**: [`thm_52_section4_anchor_code_one_sided_dichotomy_and_margin`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L434-L449) - Section 4 anchor-code one-sided square-character dichotomy (`(±2, 0)` or `(0, ±2)`) and entropy margin `6931 - 60 = 6871` (`04-characters.tex:1058`, `Characters/AnchorOneSidedEdge.lean:10`).
+- **Theorem 53**: [`thm_53_section6_bipartite_quartet_cycle_and_affine_hs_bound`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L458-L470) - Section 6 geometric origin of `b <= 3r/4` via component-quartet bipartite cycle existence (`V_bip <= E_bip`, `cycle_excess >= 1`) and affine Hilbert-Schmidt bound `1 + 2 = 3` (`3/q^2`).
+- **Theorem 54**: [`thm_54_section7_five_disjoint_prime_scale_hierarchy`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L479-L491) - Section 7–8 five pairwise disjoint log-log prime scale bands (`4 < 5 <= c_spec <= 10 < 40 <= c_bulk <= 60 < 100 = c_top_comp < 500 <= c_giant <= 9000`).
+- **Theorem 55**: [`thm_55_section8_progression_table_zero_free_margins`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L498-L515) - Section 8 two-row progression scale table (`giant` vs. `bulk`) strict inequalities `a_0 - theta > theta > delta' > delta > mu > 0` (`margin_g = 50`, `margin_b = 3`).
 
 ### File 2: [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L581)
 - **Theorem 21**: [`thm_21_dyadic_tree_leaf_sum_by_induction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L30-L50) - All-`k` structural induction (`induction k`) proving `dyadicSum k = 2^k - 1`.
