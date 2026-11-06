@@ -9,8 +9,8 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "1b7d655c7e676d381e90a6468cebcc04232757879275170f2bc6a6e229ebb2dd",
-    "README.ko.md": "b230a42afd118f6de4e0b3ed1b2011b4ae93926a0297430cad9978ed6c478660",
+    "README.md": "d9cf61c3eba8d06e56321ee80c19798ae042bd0a2ba13111319a389c32887789",
+    "README.ko.md": "69e5640d1a62f8b7bc29dd19d34237adc419c90dadb99c607b5a9f02d96be594",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "7a04cc360fed5e1772718a92540734c9bb549d26804009378685678a8b23a391",
     "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "d88d831ce6ef231b22501ddb090b8efdabb988dbbc1e900c5ffd7777296ebf0a",
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
@@ -18,17 +18,17 @@
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
     "ko/01_초보자용_쉬운해설.md": "96aadda378bec5906dcf5615fabc684b01ae60891beebd55c6cc8c0f00d04818",
     "ko/02_중급자용_구조및수식가이드.md": "9edca9c9f61312fe993b39df929231a2543a6770a69ce942dc373adf09e81001",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "b8c171434c90f01a6d3930e8ff4bced58cca724a95e4035bf1001af4532fe5fc",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "9c6b5b04dc91b3d5d42efbd53946cef00a26fe6c24b4db754a57e0bdcd41be9d",
     "ko/04_자동검증및파서용_명세서.md": "330b52091c1530037638f6603384917b72e7512557e469a6167618c8c71a9041",
     "en/01_Beginner_Guide.md": "dfdbf1b762d040d8d28f0e5db39e5a564f283834297eb5dc2abd76e2475c3be0",
     "en/02_Intermediate_Math_and_Code_Guide.md": "bf2c90191f7913f3af8ef41af52b98e2f3f4a173caeae07a154d702c55ed876d",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "02120ead9c7030f9027ee130d961b23df2865c7f670fe2e04d4d597d34030797",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "64400a91755a4fe0894fb7f4f090360500e5658a7eec9685d9007e055a44da4f",
     "en/04_Automated_Verification_and_Parser_Spec.md": "5bd09dcc362a3754a37d9b611caedf10635d6106dc5002b2c57181ddbf46940d"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
     "layer_1b_autonomous_pde_vs_inverse_forcing": "CONDITIONAL / INVERSE-FORCING (5 box/sheet challenges satisfy the momentum equation via point-by-point residual substitution f := dt_U + (U.grad)U - nu*Delta U discharged by abel or unidirectional shear sheets with (u.grad)u = 0; Challenge 3 decouples vertical velocity into a 2+1D linear passive-scalar heat equation; SolenoidalSheetPrograms omits the paper fixed-particle halting detector and solid-box reciprocal maps)",
-    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean clones all 38 definitions and the main theorem of BalancedThreeStack.lean; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused)",
+    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean clones all 38 definitions and the main theorem of BalancedThreeStack.lean; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused; in the main manuscript build/, 9 of 22 references.bib entries [40.9%] are never cited via \\cite and 11 of 15 section files [4,630/5,808 lines, 79.7%] have zero human citations)",
     "layer_3_genuine_mathematical_mechanisms": "PASS (3 core mechanisms verified: curl(chi * Psi) volume-preserving affine box routing, 12*C Serrin-Gronwall L^2 energy uniqueness, and 2+1D Gaussian heat-kernel Duhamel positivity)",
     "layer_4_ultari_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 176/176 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
   },
