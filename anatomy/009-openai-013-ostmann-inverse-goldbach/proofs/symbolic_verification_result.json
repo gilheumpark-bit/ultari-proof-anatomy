@@ -66,6 +66,24 @@
     "bad_permutation_decay_coeff": "-3/4",
     "net_contradiction_rate": "-7/20",
     "net_contradiction_decimal": -0.35,
+    "sharpened_contraction_rates": {
+      "gpt_baseline": "7/20",
+      "tuned_threshold": "17/20",
+      "deranged_t1_zero": "19/20",
+      "restored_gen1a_fossil": "1"
+    },
+    "k_min_depths": {
+      "engine_b_gpt": 7041,
+      "engine_a_gpt": 5340,
+      "tuned_17_20": 2036,
+      "deranged_19_20": 1803,
+      "fossil_gen1a_20_20": 1040
+    },
+    "supply_favorable_mass": {
+      "gpt_baseline": "3/20",
+      "unrounded_kappa_33_20": "11/50",
+      "asymptotic_kappa_17_10": "23/100"
+    },
     "engine_b_constants": {
       "Cs": 17,
       "Ccov": 17,

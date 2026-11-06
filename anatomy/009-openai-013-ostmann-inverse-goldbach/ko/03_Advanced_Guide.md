@@ -58,3 +58,37 @@ $$\sum_{j=0}^{k-1} \Delta_j = \sum_{j=0}^{k-1} 2^j \left(B_D + B_z \log z + \fra
    $$k 2^k - \text{weightedDyadicSum}(k) = 2(2^k - 1) = 2\,\text{dyadicSum}(k) > 0 \quad (\forall k \ge 1).$$
    양변에 $\frac{2}{5}\log 2$를 곱하면 가중 합 $\frac{2}{5}\sum_{j=0}^{k-1} 2^j \log(2^j) = \frac{2}{5}(r\log r - 2r\log 2 + 2\log 2)$는 $\frac{2}{5}r\log r$보다 엄격히 작습니다. 이 $+\frac{2}{5}\log r$ 주파수 예산 성장률과 나쁜 순열의 $-\frac{3}{4}\log r$ 다항 감쇠율([`thm_28_overlap_graph_component_merge_bound`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L168-L179), [`thm_29_bad_arrangement_multinomial_decay_three_quarters`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L180-L193))을 결합하면 정확한 최종 모순율이 증명됩니다([`thm_30_net_contradiction_rate_minus_seven_twentieths`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L194-L212), [`thm_39_two_stage_analytic_combinatorial_contraction_comparison`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L357-L376), [`thm_40_master_ostmann_inverse_goldbach_synthesis_verdict`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L377-L389)):
    $$\text{finalRate}(k) = -\frac{7}{20}\log(2^k) + B_D + 2B_s + (B_z + 16)\log(k^4) + C \xrightarrow{k \to \infty} -\infty.$$
+
+---
+
+## 4. 3세대 진화 트리, 4대 화석 층위 복원(`381`개 파일), 4가지 내부 형식화 꼼수, 날카로운 돌파구 증명 (`thm_41`~`thm_45`)
+
+### 4.1 3세대 진화 트리와 4대 화석 층위 (`381`개 고립 파일, `39,517`줄)
+진입점에서 도달하지 않는 `381`개 화석 파일(`39,517`줄, `66`개 연결 성분, 내부 최대 허브 `Arithmetic/StepwiseQuantitativeInduction.lean` 피호출 `234`회 및 `Construction/SelectedScheduledIteration.lean` 피호출 `71`회)의 의존성 그래프를 역추적하면 **3세대 진화 트리**가 복원됩니다:
+- **1A세대 (화석 패리티 원형, `379`개 파일)**: `Construction/SelectedScheduledIteration.lean` $\to$ `Arithmetic/StepwiseQuantitativeInduction.lean` $\to$ `Construction/FinalExponentialContradiction.lean`. 패리티·지표 상쇄($-r \log r$)로 선형 오버헤드 $(6\log 2 + 16)r$를 제압하여 최소 깊이 $k_{\min} = 1040$에서 모순을 완결했으나, 이동 절단(`MovingCutoff`)의 층위 가중치 $j\log 2$를 흡수하지 못해 분리되었습니다.
+- **1B세대 (현역 엔진 A, `3,165`개 파일)**: `SelectedScheduledIteration.lean`을 `SelectedScheduledMovingIteration.lean` + `Arithmetic/MovingFrequencyBudget.lean` + `Construction/SelectedScheduledFinalContradiction.lean`으로 교체하여 $+\frac{2}{5}r\log r$ 이동 주파수 예산을 도입하고 $k_{\min} = 5340$에서 종결했습니다.
+- **2세대 (현역 엔진 B, `4,175`개 파일)**: 논문 9개 절과 1:1로 대응하는 10개 폴더 구조(`Conclusion/Scales.lean`, `ActualFourComparisonConsumer.lean`)로 재구축하고, 최상위에 `All.lean`과 `PaperMain.lean`(`2`개 루트 화석)을 남겼습니다.
+
+`381`개 화석 파일은 역할에 따라 **4개 지층**으로 나뉩니다:
+1. **지층 I (`350`개 파일: `Arithmetic` `264` + `Construction` `86`)**: 1A세대 패리티 모순 엔진 전체(`FinalExponentialContradiction.lean`, `FinalReassignments.lean`, `StepwiseQuantitativeInduction.lean`).
+2. **지층 II (`19`개 파일: `Quadratic` `10` + `Characters` `8` + `QuadraticCenter` `1`)**: 초기 4차 모멘트·이중 지표합 원형(`FourthMomentBound.lean`, `PrimeDoubleCharacterSum.lean`).
+3. **지층 III (`ZeroDensity/` `7`개 파일)**: 독자 구축하다 중단된 경로 적분 영점 밀도 다리(`ContourIntegralBound.lean`, `ZeroSumBound.lean`, `ExplicitFormulaBridge.lean`). 엔진 B에서는 `#021`(`Jacobsthal`)과 `#026`(`PrimeGaps`)의 외부 모듈 `18`개 호출로 대체되었습니다.
+4. **지층 IV (`5`개 파일: `Tree` `2` + `Preliminaries` `1` + 루트 `2`)**: `Tree/SlotPermutationDecomposition.lean`, `Tree/TreeTransferTheorem.lean`, `Preliminaries/PrimeSumsetReduction.lean`, `All.lean`, `PaperMain.lean`.
+
+### 4.2 원본 Lean 코드 내부에서 적발된 4가지 형식화 꼼수
+1. **꼼수 1 (`Tree/ArrangementGraph.lean:45–53`)**: 논문 8절의 슬롯 이분 다중그래프 $H(\sigma)$ 대신 `overlapComponentMap (r m : Nat) (pi : Equiv.Perm (Fin r)) : Fin r -> Fin r := fun l => ⟨l.1 / 2, ...⟩`로 정의하여, $m$과 순열 `pi`를 무시하고 잎 번호를 `l / 2`로 반토막 내는 고정 사상으로 중첩 그래프를 단축했습니다.
+2. **꼼수 2 (`Construction/SelectedScheduledFinalContradiction.lean:18–21`)**: `def selectedScheduledLeafScale (_X : Nat) (k : Nat) : Nat := k`로 정의하여 `SelectedScheduledFinalContradiction.lean` 내부에서는 $\log r_k = k \log 2$가 $\log k$로 축소되었고, 엔진 B의 `Conclusion/Scales.lean`에서 `k * log 2`로 보정했습니다.
+3. **꼼수 3 (`Tree/ComponentFactorial.lean:28–38`)**: `component_log_cost`($a_c \log r \le r \log r$)를 보일 때 분할 항등식 $\sum_{c=1}^t (a_c - 1) = r - t$ 대신 `Fin r`의 자명한 성질 `a_c.isLt`($a_c \le r$)만 사용하여 상한에서 4배의 손실을 남겼습니다.
+4. **꼼수 4 (`Conclusion/Scales.lean:51–53`)**: `sum_dyadic`과 `sum_dyadic_log`를 `Finset.range k` 위의 유한합이 아닌 닫힌 공식(`2^k - 1` 및 `(k - 2)2^k + 2`)으로 바로 정의했습니다(본 해부의 `thm_21`~`thm_23`에서 구조적 귀납법 `induction k`로 완전 증명).
+
+### 4.3 화석 복원 및 4대 날카로운 돌파구 증명 (`thm_41`~`thm_45`)
+1. **돌파구 1 (중첩 그래프 비분할 잎 과반 정리 및 나쁜 순열 완전 소멸, `thm_41`·`thm_42`)**:
+   $r$개 잎 위의 균형 $m$-정칙 중첩 그래프에서 연결 성분 $t = t_1 + t_{\ge 2}$개 중 크기 $1$인 비분할 성분을 $t_1$개, 크기 $2$ 이상인 성분을 $t_{\ge 2}$개라 하면 $2(t - t_1) \le r - t_1 \implies 2t \le r + t_1$입니다. 따라서 나쁜 순열 조건 $3r < 4t$가 성립하려면 반드시 $r < 2t_1$이어야 합니다([`thm_41_bad_arrangement_requires_majority_unsplit_leaves`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L396-L404)). 즉 전체 잎의 절반 초과가 크기 $1$ 성분에 머물러야 합니다. 화석 `Construction/FinalReassignments.lean`의 슬롯별 순열군 $S_r^m$을 복원하여 단 한 쌍의 슬롯이라도 완전순열($\sigma_2(l) \neq \sigma_1(l)$)로 배정하면 $t_1 = 0$이 강제되어, 모든 $r \ge 1$에서 $2t \le r$ 및 $4(r - t) \ge 2r > r$이 성립합니다([`thm_42_deranged_slot_pair_eliminates_bad_arrangements`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L411-L421)). 이로써 **나쁜 순열 집합이 공집합($\text{card}(\text{Bad}) = 0$)이 되어** 다항 계수 근사 없이 나쁜 순열 항이 완전히 사라집니다.
+2. **돌파구 2 (나쁜 성분 최대 크기 4배 축소, `thm_43`)**:
+   분할 항등식 $a_c + \sum_{c' \neq c} a_{c'} = r$과 나머지 $t - 1$개 성분의 하한 $\sum_{c' \neq c} a_{c'} \ge t - 1$을 나쁜 순열 조건 $4(r - t) \le r$과 결합하면 $a_c \le r - t + 1$ 및 $4a_c \le r + 4$가 성립합니다([`thm_43_bad_component_max_size_quarter_bound`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L427-L434)). 이는 `ComponentFactorial.lean:34`의 자명한 상한 $a_c \le r$을 4배 조인 결과입니다.
+3. **돌파구 3 (마스터 수축률 공식 및 이진 트리 최소 깊이 $85\%$ 단축, `thm_44`)**:
+   나쁜 병합 임계치 $\theta \in [0, 1/2)$ ($r - t \le \theta r$)와 단계별 절단 지수 $\delta_{\text{step}} > 0$에 대한 순 수축률은
+   $$\gamma(\theta, \delta_{\text{step}}) = (1 - \theta) - (\theta + \delta_{\text{step}}) = 1 - 2\theta - \delta_{\text{step}}$$
+   입니다([`thm_44_master_contraction_rate_and_depth_reduction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L443-L459)). GPT 기본값 $(\theta, \delta_{\text{step}}) = (5/20, 3/20)$ ($\gamma = 7/20 = 0.35$, 엔진 B $k_{\min} = 7041$ / 엔진 A $5340$)을 $(1/20, 1/20)$으로 조율하면 $\gamma = 17/20 = 0.85$ ($k_{\min} = 2036$), 완전순열 $t_1 = 0$ $(0, 1/20)$을 적용하면 $\gamma = 19/20 = 0.95$ ($k_{\min} = 1803$), 1A세대 패리티 화석 $(0, 0)$을 복원하면 $\gamma = 20/20 = 1.00$ ($k_{\min} = 1040$, 이진 트리 깊이 `6,001`단계 단축)에 도달합니다.
+4. **돌파구 4 (5절 우호적 소수 역수 질량 $+46.7\% \sim +53.3\%$ 확장, `thm_45`)**:
+   `Supply/ContractionConstants.lean:45`(`local_strict_norm_numerical`)와 `Supply/CoverageMargin.lean:114`에서 반올림된 국소 파르세발 수축 상수 $\kappa = 8/5 = 32/20$ ($H = 68/100 L$) 대신 무손실 상수 $\kappa = 33/20 = 1.65$ ($H = 61/100 L$) 및 점근 극한 $\kappa = 17/10 = 34/20$ ($H = 60/100 L$)을 적용하면, 스케일된 쌍합 지수 $2000 - \kappa_{20} H_{100}$을 엄격한 음수($-13 < 0$ 및 $-40 < 0$)로 유지하면서 우호적 소수 역수 합 하한을 $30/200 L$($0.15 L$)에서 $44/200 L$($0.22 L$, $+46.7\%$) 및 $46/200 L$($0.23 L$, $+53.3\%$)로 확장합니다([`thm_45_supply_contraction_favorable_mass_expansion`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L466-L479)).

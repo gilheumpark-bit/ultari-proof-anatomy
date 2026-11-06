@@ -9,9 +9,9 @@
   },
   "artifacts_sha256": {
     "proofs/ostmann_twin_engines_and_supply_contraction.lean": "d84dd42297d340e15f43d58c0fbff30ea6ac25ee80ee3e727dee425d14b1be2f",
-    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "5d4b5e064309c1fdcb084abf04022b36856f5ef7f926af9eb558fc1cf0812119",
-    "proofs/verify_symbolic_ostmann.py": "1769621cb38eff4116f66c489932c5a0b950aaa9d90be61a468f2484d3695431",
-    "proofs/symbolic_verification_result.json": "37a2f24b005ca15eda2530395edad4093af1601a8a62ba8bdaf9581f4635236c",
+    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "9c938e49398b434a9edd2ef58da03a311fabfc8b22e0e2eb91674d5e906906d2",
+    "proofs/verify_symbolic_ostmann.py": "6cc9db5990f638f8a357e74b4000f4d76a1fb5040677ad17ded019efec220ac9",
+    "proofs/symbolic_verification_result.json": "522285adb49058bf7da0237afc5a41c8e3603979a74ec6b6c4bd53a4d9d47d58",
     "proofs/problem_spec.md": "e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02"
   },
   "verified_key_results": {
@@ -95,7 +95,12 @@
         "thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting (Theorem 37, L317)",
         "thm_38_paper_9_sections_to_lean_subsystem_mapping (Theorem 38, L332)",
         "thm_39_two_stage_analytic_combinatorial_contraction_comparison (Theorem 39, L357)",
-        "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict (Theorem 40, L377)"
+        "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict (Theorem 40, L377)",
+        "thm_41_bad_arrangement_requires_majority_unsplit_leaves (Theorem 41, L396)",
+        "thm_42_deranged_slot_pair_eliminates_bad_arrangements (Theorem 42, L411)",
+        "thm_43_bad_component_max_size_quarter_bound (Theorem 43, L427)",
+        "thm_44_master_contraction_rate_and_depth_reduction (Theorem 44, L443)",
+        "thm_45_supply_contraction_favorable_mass_expansion (Theorem 45, L466)"
       ]
     }
   },
@@ -105,8 +110,8 @@
       "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean"
     ],
     "sorry_count": 0,
-    "hypothesis_mutations_tested": 256,
-    "hypothesis_mutations_killed": 256,
+    "hypothesis_mutations_tested": 287,
+    "hypothesis_mutations_killed": 287,
     "theorems": [
       {
         "name": "thm_01_ostmann_directory_inclusion_exclusion_partition",
@@ -307,6 +312,31 @@
         "name": "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
         "line": 377
+      },
+      {
+        "name": "thm_41_bad_arrangement_requires_majority_unsplit_leaves",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 396
+      },
+      {
+        "name": "thm_42_deranged_slot_pair_eliminates_bad_arrangements",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 411
+      },
+      {
+        "name": "thm_43_bad_component_max_size_quarter_bound",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 427
+      },
+      {
+        "name": "thm_44_master_contraction_rate_and_depth_reduction",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 443
+      },
+      {
+        "name": "thm_45_supply_contraction_favorable_mass_expansion",
+        "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+        "line": 466
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"

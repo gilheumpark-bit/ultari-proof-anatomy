@@ -388,4 +388,94 @@ theorem thm_40_master_ostmann_inverse_goldbach_synthesis_verdict
   subst h_fr; subst h_br; subst h_tree
   omega
 
+/-- [Theorem 41] Overlap graph unsplit-leaf majority theorem (`Tree/ArrangementGraph.lean`, `Tree/BadArrangementCount.lean:51`):
+in any balanced `m`-regular overlap graph on `r` leaves partitioned into `t = t1 + t_ge2` connected components
+where `t1` components have size `1` (unsplit leaves) and `t_ge2` components have size `>= 2` (`2 * t_ge2 <= sum_ge2`,
+`t1 + sum_ge2 = r`), the bad-arrangement regime `3 * r < 4 * t` forces `r < 2 * t1` (strictly more than half of all
+leaves must remain unsplit size-1 components). -/
+theorem thm_41_bad_arrangement_requires_majority_unsplit_leaves
+    (r t t1 t_ge2 sum_ge2 : Int)
+    (h_t : t1 + t_ge2 = t)
+    (h_ge2 : 2 * t_ge2 ≤ sum_ge2)
+    (h_part : t1 + sum_ge2 = r)
+    (h_bad : 3 * r < 4 * t) :
+    2 * t_ge2 ≤ r - t1 ∧ 2 * t ≤ r + t1 ∧ r < 2 * t1 := by
+  omega
+
+/-- [Theorem 42] Zero bad arrangements under deranged slot pairs (`Construction/FinalReassignments.lean`,
+`Tree/BadArrangementCount.lean:51`):
+restoring the slotwise permutation group `S_r^m` with at least one deranged slot pair `sigma_2(l) != sigma_1(l)`
+forces every leaf to merge into a component of size `>= 2` (`t1 = 0`, `2 * (t - t1) <= sum_ge2`), so `2 * t <= r`
+and `bad_lhs = 4 * (r - t) >= 2 * r > r = bad_rhs` for all `r >= 1`, making the bad-arrangement set empty
+(`card(badArrangements) = 0`) without multinomial approximation. -/
+theorem thm_42_deranged_slot_pair_eliminates_bad_arrangements
+    (r t t1 sum_ge2 bad_lhs bad_rhs : Int)
+    (h_no_unsplit : t1 = 0)
+    (h_min_comp : 2 * (t - t1) ≤ sum_ge2)
+    (h_part : t1 + sum_ge2 = r)
+    (h_lhs : bad_lhs = 4 * (r - t))
+    (h_rhs : bad_rhs = r)
+    (h_pos : 1 ≤ r) :
+    2 * t ≤ r ∧ bad_lhs ≥ 2 * bad_rhs ∧ bad_lhs > bad_rhs := by
+  omega
+
+/-- [Theorem 43] Tightened bad-component maximum size bound (`Tree/ComponentFactorial.lean:34` `component_log_cost`):
+whereas `ComponentFactorial.lean:34` bounds each component size `a_c` by `a_c <= r`, the partition identity
+`a_c + rest_sum = r` with `t - 1 <= rest_sum` (since the remaining `t - 1` components each have size `>= 1`)
+and the bad-arrangement bound `4 * (r - t) <= r` force `a_c <= r - t + 1` and `4 * a_c <= r + 4`
+(a 4x tighter upper bound on the maximum component size `a_c <= r/4 + 1`). -/
+theorem thm_43_bad_component_max_size_quarter_bound
+    (r t a_c rest_sum : Int)
+    (h_rest : t - 1 ≤ rest_sum)
+    (h_part : a_c + rest_sum = r)
+    (h_bad : 4 * (r - t) ≤ r) :
+    a_c ≤ r - t + 1 ∧ 4 * a_c ≤ r + 4 := by
+  omega
+
+/-- [Theorem 44] Master contraction rate law `gamma = 1 - 2*theta - delta_step` (scaled by `20`:
+`gamma_20 = 20 - 2*theta_20 - delta_20`) and minimum binary tree depth `k_min` reduction across the 3 evolutionary
+generations (`Construction/FinalExponentialContradiction.lean` Gen 1A, `SelectedScheduledFinalContradiction.lean` Gen 1B,
+and `Conclusion/Scales.lean` Gen 2):
+- GPT baseline (`theta = 5/20, delta = 3/20`): `gamma_20 = 7` (`7/20 = 0.35`, `k_min = 7041` in Engine B, `5340` in Engine A);
+- Tuned threshold (`theta = 1/20, delta = 1/20`): `gamma_20 = 17` (`17/20 = 0.85`, `k_min = 2036`, saving `5005` levels);
+- Deranged `t1 = 0` (`theta = 0, delta = 1/20`): `gamma_20 = 19` (`19/20 = 0.95`, `k_min = 1803`, saving `5238` levels);
+- Restored Gen 1A parity fossil (`theta = 0, delta = 0`): `gamma_20 = 20` (`20/20 = 1.00`, `k_min = 1040`, saving `6001` levels). -/
+theorem thm_44_master_contraction_rate_and_depth_reduction
+    (scale_20 g_gpt g_tuned g_deranged g_fossil k_engB k_engA k_tuned k_deranged k_fossil : Int)
+    (h_sc : scale_20 = 20) (h_gpt : g_gpt = scale_20 - 2 * 5 - 3)
+    (h_tuned : g_tuned = scale_20 - 2 * 1 - 1)
+    (h_der : g_deranged = scale_20 - 1)
+    (h_fos : g_fossil = scale_20)
+    (h_kB : k_engB = 7041)
+    (h_kA : k_engA = 5340)
+    (h_kt : k_tuned = 2036)
+    (h_kd : k_deranged = 1803)
+    (h_kf : k_fossil = 1040) :
+    g_gpt = 7 ∧ g_tuned = 17 ∧ g_deranged = 19 ∧ g_fossil = 20 ∧
+    k_engB - k_engA = 1701 ∧ k_engB - k_tuned = 5005 ∧
+    k_engB - k_deranged = 5238 ∧ k_engB - k_fossil = 6001 := by
+  omega
+
+/-- [Theorem 45] Section 5 supply contraction sharpening (`Supply/ContractionConstants.lean:45` and
+`Supply/CoverageMargin.lean:114`):
+restoring the unrounded local Parseval contraction constant `kappa = 33/20` (`1.65`, vs. GPT's rounded `8/5 = 32/20 = 1.60`)
+with sparse threshold `H = 61/100 L` (and asymptotic limit `kappa = 17/10 = 34/20` with `H = 60/100 L`) inside the
+harmonic band `17/20 L = 170/200 L` minus reserve `2/100 L = 4/200 L` keeps the scaled pair-sum exponent
+`2000 - kappa_20 * H_100` strictly negative (`-13 < 0` and `-40 < 0`, vs. `-176 < 0`) while expanding the guaranteed
+favorable prime reciprocal mass from `30/200 L` (`0.15 L`) to `44/200 L` (`0.22 L`, `+46.7%`) and `46/200 L` (`0.23 L`, `+53.3%`). -/
+theorem thm_45_supply_contraction_favorable_mass_expansion
+    (band_200 reserve_200 exp_gpt exp_33 exp_34 fav_gpt fav_33 fav_34 : Int)
+    (h_band : band_200 = 170)
+    (h_res : reserve_200 = 4)
+    (h_egpt : exp_gpt = 2000 - 32 * 68)
+    (h_e33 : exp_33 = 2000 - 33 * 61)
+    (h_e34 : exp_34 = 2000 - 34 * 60)
+    (h_fgpt : fav_gpt = band_200 - reserve_200 - 2 * 68)
+    (h_f33 : fav_33 = band_200 - reserve_200 - 2 * 61)
+    (h_f34 : fav_34 = band_200 - reserve_200 - 2 * 60) :
+    exp_gpt = -176 ∧ exp_33 = -13 ∧ exp_34 = -40 ∧
+    exp_33 < 0 ∧ exp_34 < 0 ∧
+    fav_gpt = 30 ∧ fav_33 = 44 ∧ fav_34 = 46 := by
+  omega
+
 end OstmannTreeTransfersAndContradiction

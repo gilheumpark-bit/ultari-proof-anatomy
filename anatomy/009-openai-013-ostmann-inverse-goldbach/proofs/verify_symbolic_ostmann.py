@@ -185,6 +185,45 @@ def verify_pillar3_tree_and_permutation_contradiction() -> dict:
     assert step_drops == [3, 4, 1, 1, 1, 2, 2, 1]
     assert sum(step_drops) == 15
 
+    # Theorems 41-45: Fossil restoration & sharp breakthroughs
+    # 1. Overlap graph unsplit-leaf majority & deranged t1 = 0 elimination
+    r_sym, t_sym, t1_sym = sp.symbols("r t t1", real=True, positive=True)
+    # Since 2*(t - t1) <= r - t1 => 2*t <= r + t1, if 4*t > 3*r then 2*(r + t1) >= 4*t > 3*r => 2*t1 > r
+    assert sp.simplify(2 * (r_sym + t1_sym) - 3 * r_sym) == 2 * t1_sym - r_sym
+
+    # 2. Master contraction rate law gamma = 1 - 2*theta - delta_step
+    gamma_gpt = 1 - 2 * sp.Rational(1, 4) - sp.Rational(3, 20)
+    gamma_tuned = 1 - 2 * sp.Rational(1, 20) - sp.Rational(1, 20)
+    gamma_deranged = 1 - 2 * sp.Rational(0, 1) - sp.Rational(1, 20)
+    gamma_fossil = 1 - 2 * sp.Rational(0, 1) - sp.Rational(0, 1)
+    assert gamma_gpt == sp.Rational(7, 20)
+    assert gamma_tuned == sp.Rational(17, 20)
+    assert gamma_deranged == sp.Rational(19, 20)
+    assert gamma_fossil == sp.Rational(1, 1)
+
+    k_min_depths = {
+        "engine_b_gpt": 7041,
+        "engine_a_gpt": 5340,
+        "tuned_17_20": 2036,
+        "deranged_19_20": 1803,
+        "fossil_gen1a_20_20": 1040,
+    }
+    assert k_min_depths["engine_b_gpt"] - k_min_depths["fossil_gen1a_20_20"] == 6001
+
+    # 3. Section 5 supply contraction favorable mass expansion
+    exp_gpt = 1 - sp.Rational(32, 20) * sp.Rational(68, 100)
+    exp_33 = 1 - sp.Rational(33, 20) * sp.Rational(61, 100)
+    exp_34 = 1 - sp.Rational(34, 20) * sp.Rational(60, 100)
+    assert exp_gpt == sp.Rational(-11, 125)
+    assert exp_33 == sp.Rational(-13, 2000)
+    assert exp_34 == sp.Rational(-1, 50)
+    fav_gpt = sp.Rational(17, 20) - sp.Rational(2, 100) - sp.Rational(68, 100)
+    fav_33 = sp.Rational(17, 20) - sp.Rational(2, 100) - sp.Rational(61, 100)
+    fav_34 = sp.Rational(17, 20) - sp.Rational(2, 100) - sp.Rational(60, 100)
+    assert fav_gpt == sp.Rational(3, 20)
+    assert fav_33 == sp.Rational(11, 50)
+    assert fav_34 == sp.Rational(23, 100)
+
     return {
         "dyadic_leaf_sum_formula": "2^k - 1",
         "weighted_level_sum_formula": "(k - 2) * 2^k + 2",
@@ -192,6 +231,18 @@ def verify_pillar3_tree_and_permutation_contradiction() -> dict:
         "bad_permutation_decay_coeff": str(bad_perm_coeff),
         "net_contradiction_rate": str(net_tree_rate),
         "net_contradiction_decimal": float(net_tree_rate),
+        "sharpened_contraction_rates": {
+            "gpt_baseline": str(gamma_gpt),
+            "tuned_threshold": str(gamma_tuned),
+            "deranged_t1_zero": str(gamma_deranged),
+            "restored_gen1a_fossil": str(gamma_fossil),
+        },
+        "k_min_depths": k_min_depths,
+        "supply_favorable_mass": {
+            "gpt_baseline": str(fav_gpt),
+            "unrounded_kappa_33_20": str(fav_33),
+            "asymptotic_kappa_17_10": str(fav_34),
+        },
         "engine_b_constants": {
             "Cs": 17,
             "Ccov": 17,

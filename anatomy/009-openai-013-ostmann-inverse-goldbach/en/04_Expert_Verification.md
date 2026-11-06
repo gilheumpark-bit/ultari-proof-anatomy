@@ -1,9 +1,9 @@
-# Expert Verification: Artifact Hashes, Reproduction Commands, and 40-Theorem Map
+# Expert Verification: Artifact Hashes, Reproduction Commands, and 45-Theorem Map
 
 ## 1. Reproduction Commands
 
 ```bash
-# 1. Standalone Lean 4 Kernel Check (0 sorry, 40 theorems + 2 recursive defs across 2 files)
+# 1. Standalone Lean 4 Kernel Check (0 sorry, 45 theorems + 2 recursive defs across 2 files)
 ~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && \
   ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean
 
@@ -19,12 +19,12 @@ python3 ../../tools/verify_all.py --root .
 | Artifact File | SHA-256 Checksum |
 | :--- | :--- |
 | [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean) | `d84dd42297d340e15f43d58c0fbff30ea6ac25ee80ee3e727dee425d14b1be2f` |
-| [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) | `5d4b5e064309c1fdcb084abf04022b36856f5ef7f926af9eb558fc1cf0812119` |
-| [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `1769621cb38eff4116f66c489932c5a0b950aaa9d90be61a468f2484d3695431` |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `37a2f24b005ca15eda2530395edad4093af1601a8a62ba8bdaf9581f4635236c` |
+| [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) | `9c938e49398b434a9edd2ef58da03a311fabfc8b22e0e2eb91674d5e906906d2` |
+| [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `6cc9db5990f638f8a357e74b4000f4d76a1fb5040677ad17ded019efec220ac9` |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `522285adb49058bf7da0237afc5a41c8e3603979a74ec6b6c4bd53a4d9d47d58` |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02` |
 
-## 3. Complete 1-to-1 Theorem Map (40 Theorems, `0 sorry`, 100% Hypothesis Mutation Kill Rate)
+## 3. Complete 1-to-1 Theorem Map (45 Theorems, `0 sorry`, 100% Hypothesis Mutation Kill Rate)
 
 ### File 1: [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L404)
 - **Theorem 1**: [`thm_01_ostmann_directory_inclusion_exclusion_partition`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L20-L43) — Exact inclusion-exclusion partition of `OAI/NumberTheory/Ostmann/`: `3165 + 4175 - 5 = 7335` reachable files (`569,682` lines) + `381` orphans (`39,517` lines) = `7,716` files (`609,199` lines).
@@ -48,7 +48,7 @@ python3 ../../tools/verify_all.py --root .
 - **Theorem 19**: [`thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L372-L386) — Strict independence from `#003` (`QRH`): `0` imports from `OAI.NumberTheory.DirichletL` across both engines.
 - **Theorem 20**: [`thm_20_engine_a_vs_engine_b_supply_constants_bridge`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L387-L402) — Synthesis of Section 5 supply constants across `05-supply.tex` and `Supply/NonsparseSupply.lean`.
 
-### File 2: [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L391)
+### File 2: [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L481)
 - **Theorem 21**: [`thm_21_dyadic_tree_leaf_sum_by_induction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L30-L50) — All-`k` structural induction (`induction k`) proving `dyadicSum k = 2^k - 1`.
 - **Theorem 22**: [`thm_22_weighted_dyadic_level_sum_by_induction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L51-L79) — All-`k` structural induction (`induction k`) proving `weightedDyadicSum k = k * 2^k - 2 * 2^k + 2`.
 - **Theorem 23**: [`thm_23_weighted_dyadic_strict_upper_bound_all_k`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L80-L102) — Exact slack identity `k * 2^k - weightedDyadicSum k = 2 * (2^k - 1) = 2 * dyadicSum k` for all `k : Nat`.
@@ -69,3 +69,8 @@ python3 ../../tools/verify_all.py --root .
 - **Theorem 38**: [`thm_38_paper_9_sections_to_lean_subsystem_mapping`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L332-L356) — Preprint line accounting (`6,072` section lines + `552` root lines = `6,624` lines; `609199 = 100 * 6072 + 1999`).
 - **Theorem 39**: [`thm_39_two_stage_analytic_combinatorial_contraction_comparison`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L357-L376) — Comparison of Stage 1 (`-11/125 = -44/500`) and Stage 2 (`-7/20 = -175/500`) contraction exponents.
 - **Theorem 40**: [`thm_40_master_ostmann_inverse_goldbach_synthesis_verdict`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L377-L389) — Master synthesis verdict for OpenAI `#013`.
+- **Theorem 41**: [`thm_41_bad_arrangement_requires_majority_unsplit_leaves`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L396-L404) — Overlap graph unsplit-leaf majority bound (`3r < 4t` forces `r < 2*t1`, so strictly more than half of all leaves must remain unsplit size-1 components).
+- **Theorem 42**: [`thm_42_deranged_slot_pair_eliminates_bad_arrangements`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L411-L421) — Zero bad arrangements under deranged slot pairs (`t1 = 0` forces `2t <= r` and `4(r - t) >= 2r > r` for all `r >= 1`, making `badArrangements` empty).
+- **Theorem 43**: [`thm_43_bad_component_max_size_quarter_bound`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L427-L434) — Tightened bad-component maximum size bound (`a_c <= r - t + 1` and `4*a_c <= r + 4`, 4x tighter than `ComponentFactorial.lean:34`).
+- **Theorem 44**: [`thm_44_master_contraction_rate_and_depth_reduction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L443-L459) — Master contraction rate law `gamma_20 = 20 - 2*theta_20 - delta_20` (`7 -> 17 -> 19 -> 20`) and minimum binary tree depth reduction (`k_min: 7041 -> 5340 -> 2036 -> 1803 -> 1040`, saving `6,001` levels).
+- **Theorem 45**: [`thm_45_supply_contraction_favorable_mass_expansion`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L466-L479) — Section 5 supply contraction sharpening (`kappa = 33/20, 17/10`), keeping the pair-sum exponent strictly negative (`-13 < 0`, `-40 < 0`) while expanding favorable prime reciprocal mass from `30/200 L` (`0.15 L`) to `44/200 L` (`0.22 L`, `+46.7%`) and `46/200 L` (`0.23 L`, `+53.3%`).
