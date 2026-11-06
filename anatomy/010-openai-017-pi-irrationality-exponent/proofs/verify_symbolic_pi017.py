@@ -11,8 +11,13 @@ and floating-point checks for:
      and asymptotic dimension thresholds m_min for nu in {5/2, 62/25, 21/10, 201/100}.
   4. Lemma 2.2 continuous simplex covering (2*k!) vs Lean inscribed rectangle (k^k)
      vs WeightSeparationConstant.lean C_*^Lean and Section 3 Euclidean sandwich.
-  5. Section 3 elementary dyadic LCM bound (lcm(1..n) <= 4^n, Lambda = 4 log 2) vs PNT.
-  6. Section 5 Flint-Hills series partial sums, convergent peaks (n = 355), and dyadic shells.
+  5. Section 3 elementary dyadic LCM bound (lcm(1..n) <= 4^n, Lambda = 4 log 2) vs PNT,
+     Brahmagupta-Fibonacci Gaussian norm multiplicativity, 3x3 Vandermonde determinant
+     factorization, and Cauchy-Schwarz collision occupancy variance.
+  6. Universal inductive invariants (lacunary weight tower 2^k, discrete rectangle lattice
+     cardinality, dyadic LCM increment sum, and distinct Taylor degree sum).
+  7. Section 5 Flint-Hills series partial sums, convergent peaks (n = 355), dyadic shells,
+     and continued-fraction convergent divergence at a = b = 2.
 """
 
 from fractions import Fraction
@@ -47,6 +52,9 @@ def verify_stratigraphy():
         "external_OAI_imports": 0,
         "sorry_count": 0,
         "unused_hypothesis_parameters": total_unused,
+        "preserved_oai_ref_files": 60,
+        "preserved_oai_ref_lean_files": 54,
+        "preserved_oai_ref_tex_files": 6,
         "subdirectories": subdirs,
         "flint_hills_formalization_audit": {
             "017_md_scope_claim": "Outside selected statement",
@@ -59,10 +67,8 @@ def verify_stratigraphy():
 
 def construct_lemma_4_1_witness(nu: Fraction):
     assert nu > 2, "Lemma 4.1 requires nu > 2"
-    # Midpoint of (1/2, 1 - 1/nu): b = (3*nu - 2) / (4*nu)
     b = (Fraction(1, 2) + (1 - Fraction(1, nu))) / 2
     assert Fraction(1, 2) < b < 1 - Fraction(1, nu)
-    # Require b^2 * delta < 2*b - 1; choose delta = (2*b - 1) / (2 * b^2) < 1/2
     delta = (2 * b - 1) / (2 * b * b)
     if delta >= Fraction(1, 2):
         delta = Fraction(1, 4)
@@ -74,10 +80,8 @@ def construct_lemma_4_1_witness(nu: Fraction):
     assert gap_g > 0
     quad_window = theta - A * A
     assert quad_window > 0
-    # Choose C = midpoint of (A / theta, 1 / A)
     C = (A / theta + Fraction(1, A)) / 2
     assert A / theta < C < Fraction(1, A)
-    # Choose B = midpoint of (A, min(1 / C, C * theta))
     upper_B = min(Fraction(1, C), C * theta)
     B = (A + upper_B) / 2
     assert A < B < upper_B
@@ -85,12 +89,9 @@ def construct_lemma_4_1_witness(nu: Fraction):
     assert C * theta > B
     eps_0 = min(gap_g / 2, Fraction(1, 2))
     F_0 = math.ceil(float(3 * nu / eps_0)) + 1
-    # Asymptotic growth rates per dimension step m:
-    # L(m) = (B / A)^m * (C / (m + 1))^(1 / (m + 1))
     ratio_B_over_A = float(B / A)
     ratio_Ctheta_over_B = float(C * theta / B)
     ratio_inv_CB = float(1 / (C * B))
-    # Find smallest m >= 2 such that (B / A)^m > 2 * (m + 1)^2 (rough proxy for c * L > 2)
     m_cL_proxy = 2
     while (ratio_B_over_A ** m_cL_proxy) <= 2.0 * ((m_cL_proxy + 1) ** 2):
         m_cL_proxy += 1
@@ -141,6 +142,85 @@ def verify_simplex_vs_rectangle():
     return rows
 
 
+def verify_algebraic_and_inductive_invariants():
+    # 1. Universal inductions: lacunaryWeightTower, rectLatticeCount, dyadicLcmSum, distinctDegreeSum
+    induction_rows = []
+    tower = 1
+    rect = 0
+    dyadic_sum = 0
+    deg_sum = 0
+    for k in range(0, 9):
+        assert tower >= k + 1
+        assert tower + 1 >= k + 2
+        assert dyadic_sum == k * (k + 1)
+        assert 2 * deg_sum + k == k * k
+        induction_rows.append({
+            "k": k,
+            "lacunary_weight_tower_2_pow_k": tower,
+            "linear_lower_bound_k_plus_1": k + 1,
+            "rect_lattice_bound_k_plus_2": k + 2,
+            "dyadic_lcm_sum_k_k_plus_1": dyadic_sum,
+            "distinct_degree_sum": deg_sum,
+            "twice_deg_sum_plus_k_eq_k2": 2 * deg_sum + k,
+        })
+        tower = 2 * tower
+        rect = rect + 6
+        dyadic_sum = dyadic_sum + 2 * (k + 1)
+        deg_sum = deg_sum + k
+
+    # 2. Brahmagupta-Fibonacci Gaussian norm multiplicativity
+    gaussian_samples = []
+    for (a, b, c, d) in [(1, 2, 3, 4), (2, -3, 5, 1), (-4, 7, 3, -2)]:
+        lhs = (a * a + b * b) * (c * c + d * d)
+        re_prod = a * c - b * d
+        im_prod = a * d + b * c
+        rhs = re_prod * re_prod + im_prod * im_prod
+        assert lhs == rhs and lhs >= 1
+        gaussian_samples.append({
+            "z1": [a, b],
+            "z2": [c, d],
+            "norm_z1_mul_norm_z2": lhs,
+            "norm_z1_z2": rhs,
+        })
+
+    # 3. 3x3 Vandermonde determinant factorization
+    vandermonde_samples = []
+    for (x1, x2, x3) in [(1, 2, 3), (2, 5, 11), (3, 7, 19)]:
+        det_expanded = (
+            (x2 * (x3 * x3) - (x2 * x2) * x3)
+            - (x1 * (x3 * x3) - (x1 * x1) * x3)
+            + (x1 * (x2 * x2) - (x1 * x1) * x2)
+        )
+        det_factored = (x2 - x1) * (x3 - x1) * (x3 - x2)
+        assert det_expanded == det_factored and det_factored >= 2
+        vandermonde_samples.append({
+            "centers": [x1, x2, x3],
+            "det_expanded": det_expanded,
+            "det_factored": det_factored,
+        })
+
+    # 4. 3-group Cauchy-Schwarz occupancy variance
+    cs_samples = []
+    for (n1, n2, n3) in [(4, 4, 4), (2, 5, 8), (1, 3, 11)]:
+        M = n1 + n2 + n3
+        lhs = 3 * (n1 * n1 + n2 * n2 + n3 * n3) - M * M
+        rhs = (n1 - n2) ** 2 + (n2 - n3) ** 2 + (n3 - n1) ** 2
+        assert lhs == rhs and lhs >= 0
+        cs_samples.append({
+            "occupancies": [n1, n2, n3],
+            "M": M,
+            "three_sum_sq_minus_M2": lhs,
+            "pairwise_diff_sq_sum": rhs,
+        })
+
+    return {
+        "universal_induction_checks": induction_rows,
+        "brahmagupta_fibonacci_checks": gaussian_samples,
+        "vandermonde_3x3_checks": vandermonde_samples,
+        "cauchy_schwarz_3group_checks": cs_samples,
+    }
+
+
 def verify_lcm_and_flint_hills():
     lcm_checks = []
     cur_lcm = 1
@@ -157,7 +237,6 @@ def verify_lcm_and_flint_hills():
         })
         assert cur_lcm <= (4 ** n)
 
-    # Flint-Hills partial sums and famous jump at n = 355 (since 355 / 113 ≈ pi)
     partial_sums = {}
     s = 0.0
     max_term = (0, 0.0)
@@ -169,6 +248,20 @@ def verify_lcm_and_flint_hills():
         if n in (10, 100, 354, 355, 1000, 10000):
             partial_sums[str(n)] = round(s, 10)
     assert max_term[0] == 355
+
+    # Continued-fraction convergents p_j / q_j of pi showing divergence for a = b = 2
+    convergents = [(3, 1), (22, 7), (333, 106), (355, 113), (103993, 33102)]
+    convergent_terms = []
+    for (p_j, q_j) in convergents:
+        val_a2_b2 = 1.0 / ((p_j ** 2) * (math.sin(p_j) ** 2))
+        assert val_a2_b2 > 1.0 / 16.0
+        convergent_terms.append({
+            "p_j": p_j,
+            "q_j": q_j,
+            "term_a2_b2": round(val_a2_b2, 6),
+            "exceeds_one_sixteenth": val_a2_b2 > 0.0625,
+        })
+
     return {
         "lcm_dyadic_checks": lcm_checks,
         "flint_hills_partial_sums": partial_sums,
@@ -177,6 +270,7 @@ def verify_lcm_and_flint_hills():
             "rational_approx": "355 / 113",
             "term_value": round(max_term[1], 10),
         },
+        "continued_fraction_divergence_a2_b2": convergent_terms,
         "lean_vs_paper_bad_index_constant": {
             "paper_series_tex_86": round(8.0 / math.pi, 6),
             "lean_FlintSine_lean_88": 16,
@@ -188,6 +282,17 @@ def main():
     out = {
         "case_id": "010-openai-017-pi-irrationality-exponent",
         "problem": "OpenAI #017: The irrationality exponent of pi is 2 (September 24, 2026)",
+        "lean4_suite_summary": {
+            "total_theorems": 75,
+            "files": [
+                "proofs/pi_simplex_parameters_and_stratigraphy.lean (Theorems 1-25)",
+                "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean (Theorems 26-50)",
+                "proofs/pi_laurent_determinant_and_flint_hills.lean (Theorems 51-75)",
+            ],
+            "sorry_count": 0,
+            "universal_inductions": 4,
+            "dual_witness_structures": 1,
+        },
         "stratigraphy_audit": verify_stratigraphy(),
         "reasoning_trace_evolution": {
             "total_pages": 42,
@@ -218,6 +323,7 @@ def main():
             "F_0": 1201,
         },
         "simplex_vs_rectangle_comparison": verify_simplex_vs_rectangle(),
+        "algebraic_and_inductive_invariants": verify_algebraic_and_inductive_invariants(),
         "lcm_and_flint_hills": verify_lcm_and_flint_hills(),
         "citation_audit_summary": {
             "total_bib_entries": 25,

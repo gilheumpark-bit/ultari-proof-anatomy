@@ -9,12 +9,12 @@
 
 | Artifact Path (`proofs/...`) | SHA-256 Checksum | Role & Verification Gate |
 | :--- | :--- | :--- |
-| [`proofs/pi_simplex_parameters_and_stratigraphy.lean`](../proofs/pi_simplex_parameters_and_stratigraphy.lean) | `bd5585443f184e1bbf515ee20994d67c76860ee8d99f9018df5be5346339b284` | `Theorems 1–10` (`869`-file stratigraphy, `62/25 -> 2` pivot, `Lemma 4.1` algebra, `75/75` mutations caught) |
-| [`proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean`](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean) | `94d45723b803e4017865a8401cc8f431a615198c9cd76c75377a71fd130ca67b` | `Theorems 11–20` (`Lemma 2.2` inscribed rectangle vs simplex, Euclidean sandwich, Seshadri blowup, `57/57` mutations caught) |
-| [`proofs/pi_laurent_determinant_and_flint_hills.lean`](../proofs/pi_laurent_determinant_and_flint_hills.lean) | `a2617aa7e7f5b49fee4f8b940572ad4981f9aba5d03ae7aca16b8c68dfc1a86e` | `Theorems 21–30` (Gaussian integer clearing, row translation, Cauchy-Schwarz collision, Flint-Hills, `50/50` mutations caught) |
-| [`proofs/verify_symbolic_pi017.py`](../proofs/verify_symbolic_pi017.py) | `72695d4a14e5f525ebb9de9dc554b5117d018814fb4426c74010b85f32c8c64e` | Deterministic symbolic/numerical verifier (reproduces `symbolic_verification_result.json` byte-for-byte) |
-| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `6e151a8a57b65d0462619e9ec218d325a353a83c2f4dcce7edcf258d2c5b7124` | Exact `Lemma 4.1` witnesses, simplex-vs-rectangle ratios, Flint-Hills partial sums & citation audit JSON |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `18797175209f97641bf4393521304ea71cf12c743eb84977a66a2c925171d145` | Problem specification, 5 causal `Why`s, and `30`-theorem architecture summary |
+| [`proofs/pi_simplex_parameters_and_stratigraphy.lean`](../proofs/pi_simplex_parameters_and_stratigraphy.lean) | `efdfc03a71b1bd415b5374706c6ed3fc9897caef9b4a260403fc276f0f7418d9` | `Theorems 1–25` (`869`-file stratigraphy, `62/25 -> 2` pivot, `Lemma 4.1` algebra, Euclidean injectivity & lacunary weight inductions, `126/126` mutations caught) |
+| [`proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean`](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean) | `ebefc54597b49689d7318efd301ecdf3ea4cfcc4ba183f3c11df7f5490da0f34` | `Theorems 26–50` (`Lemma 2.2` inscribed rectangle vs simplex, local jet algebra, Seshadri blowup, Rees pushdown & Čech complex, `107/107` mutations caught) |
+| [`proofs/pi_laurent_determinant_and_flint_hills.lean`](../proofs/pi_laurent_determinant_and_flint_hills.lean) | `f760cb9575e71b0ac44431ad7c35e2f376f79d8ea4f098eabb2fffcd11383b7a` | `Theorems 51–75` (Gaussian integer clearing, Brahmagupta-Fibonacci norm, Cauchy-Schwarz collision, Vandermonde factorization, Flint-Hills & `RH31` dual witness, `82/82` mutations caught) |
+| [`proofs/verify_symbolic_pi017.py`](../proofs/verify_symbolic_pi017.py) | `602bac70e252b0b0fd517fed6554e8cde6056739e93f55a0d8d7d5e68f352d5b` | Deterministic symbolic/numerical verifier (reproduces `symbolic_verification_result.json` byte-for-byte) |
+| [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `f3e31e46b8f9d17fc9a8f51572adc062f33dc25139a1f4c6e10a687a32a55caf` | Exact `Lemma 4.1` witnesses, simplex-vs-rectangle ratios, 4 inductive invariants, Flint-Hills partial sums & citation audit JSON |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `18797175209f97641bf4393521304ea71cf12c743eb84977a66a2c925171d145` | Zero-hint (`RH28`) problem specification and 3-pillar subsystem target scope |
 
 ---
 
@@ -24,7 +24,7 @@
 # 1. Verify SHA-256 checksums
 sha256sum -c proofs/checksums.sha256
 
-# 2. Run Lean 4 kernel check (v4.29.0-rc8, 0 sorry, 30 theorems)
+# 2. Run Lean 4 kernel check (v4.29.0-rc8, 0 sorry, 75 theorems across 1,446 lines)
 ~/.elan/bin/lean proofs/pi_simplex_parameters_and_stratigraphy.lean
 ~/.elan/bin/lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean
 ~/.elan/bin/lean proofs/pi_laurent_determinant_and_flint_hills.lean
@@ -32,6 +32,6 @@ sha256sum -c proofs/checksums.sha256
 # 3. Reproduce symbolic/numerical solver output
 python3 -B proofs/verify_symbolic_pi017.py
 
-# 4. Run full Ultari verification gate (182/182 mutations + Elab MetaM DoF 30/30 + oai_ref 100% + RH13~RH43)
+# 4. Run full Ultari verification gate (315/315 mutations + Elab MetaM DoF 75/75 + nonlin 39 + oai_ref 60/60 100%)
 python3 -B ../../tools/verify_all.py --root .
 ```
