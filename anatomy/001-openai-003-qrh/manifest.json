@@ -7,26 +7,26 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "1141adf814908e890b7d8e21437651d9924d92822dd196487504400275a00905",
-    "README.ko.md": "01e5cea41e7085b1c0a92cea3a40ee6b66c67e1c791f102441c075c800edb441",
+    "README.md": "d7005804e3e27d9b32ec053bf34a9fb26848509bbff26568a5369ba0abce546c",
+    "README.ko.md": "0a03f600ec4ce8e4fde4f4d0d1f711f2b99a870065917ed4e20b138789d44555",
     "proofs/qrh_exponent_and_parameter_bounds.lean": "cd4343bbd8579febfeaa963b87580fd053522ad1d05b4276d963a15f631b67e8",
-    "proofs/qrh_continuation_and_rescaling.lean": "4d3b41086ad86e8bf6a7b0501858901202c0a0579d4938ba1c04b6b527c804c4",
+    "proofs/qrh_continuation_and_rescaling.lean": "c4c8e3558153db2234a22259e6713ee565fd35b8bd35c9ceddbd8bfe256f092c",
     "proofs/verify_symbolic_qrh.py": "f0c2f3e94f1ee422de2e4bdd758f94fc4a7212b2bde50106886a2d864aca6cdb",
     "proofs/symbolic_verification_result.json": "072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55",
     "proofs/problem_spec.md": "6cd04e3c6579ced675edd0ab3056338a58e7ccb1cca1a7fcb5e22a6cb337093a",
-    "ko/01_초보자용_쉬운해설.md": "683333328b954ff1180320acb50ab13a6cd842ad46275f653e9a85ae4125a7dc",
-    "ko/02_중급자용_구조및수식가이드.md": "46f8eaae84479125a912239bffe0e278f2cd879fbe4af4c8cde77e5943c77aa5",
-    "ko/03_전문가용_수론및형식증명보고서.md": "8fcc4a0cbe678e6dc2d91979b3ef9d48e497bbae45752be92a34fdd953fffb8c",
-    "ko/04_자동검증및파서용_명세서.md": "2c6976ff642b1429e5c785b7131acc8b7f33be6aa40d0b93099d6a783cc1f7e2",
-    "ko/README.md": "25c39ad7fd7e31a1fd2157fdf3cf018754cd39f0220a867374a3a9d725b9f0b8",
-    "en/01_Beginner_Guide.md": "3ad6f0833d4b9c6cb3c551632e5e9c8371b5975744377d086eb96bb4c5a38988",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "3bfd92115bafb0250db26676d04e02a5f3516f0f0c5f4aac354eadfb6d8ef0f5",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "886390929f5d26f13c69ce95870525bf136f4c0c9f30819bd970e7187402da6f",
-    "en/04_Automated_Verification_and_Manifest.md": "cd4079084e1796f58afa2b430c61f79ce4147e2300df59a0ad08ebb2a8bba69e",
-    "en/README.md": "d92d02be400b7e7edf942db5a255a90d7e85d204516110734907979117fda833"
+    "ko/01_초보자용_쉬운해설.md": "bbe4c8babd21924bfbc2ff4ad9495b3200e98df84debe5b983a8164df509281c",
+    "ko/02_중급자용_구조및수식가이드.md": "3a5d1d08fa42739b05aa9a08fa72d7f0992cd3b3acee1664babd44c333f19eaf",
+    "ko/03_전문가용_수론및형식증명보고서.md": "93a75692565d43eecbacfe3600c3897dda07ce17532f3d29cb7ddffae4285cb4",
+    "ko/04_자동검증및파서용_명세서.md": "3d4b96edceaac88de4fecb026a4a9ea729f603374525046cf80ed5897f379051",
+    "ko/README.md": "b97976a51f02a9ace686fc2c646bf722cc01772e54fb53671de2c01b22a88806",
+    "en/01_Beginner_Guide.md": "9c8b8f2f9f6ccd5a55e383c71a5c36eb15d82f8269b1c01bfffa0f3b16c94c09",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "48d143ce5af91e8eed3dca779a24eae4904328a7b61741ce99b0f7f6c55babec",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "916d0e5b77000cf7db8e42415c1b73eaa1c46ca505539a3c76b9a2c75e2052e4",
+    "en/04_Automated_Verification_and_Manifest.md": "f1fdb896ea8ee4ed5644ccf145b84dd228e79be4263c65a4892757a1c5a4cd47",
+    "en/README.md": "082165c0ba0a620d0402b8b8a6a4574ffc5c24815cc47b95783ba88d543a27ec"
   },
   "verification_scope": {
-    "formalized_rational_and_integer_theorems": "40 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-40) + independent SymPy symbolic derivations.",
+    "formalized_rational_and_integer_theorems": "48 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-48) + 100% 1-to-1 audit of all 26 OpenAI #003 reference files (178 declarations).",
     "future_complex_analytic_extensions": "Complex-analytic Mellin residue continuation of the separated m=1 finite terms, interval-arithmetic formalization of finite prime norms 4 <= Q < 480 in Lean 4, and off-diagonal bilinear phase cancellation for the diagonal peak_scale term."
   },
   "verified_key_results": {
@@ -94,7 +94,7 @@
       "proofs/qrh_exponent_and_parameter_bounds.lean",
       "proofs/qrh_continuation_and_rescaling.lean"
     ],
-    "theorems_proved": 40,
+    "theorems_proved": 48,
     "sorry_count": 0,
     "axiom_count": 0,
     "theorems": [
@@ -337,13 +337,61 @@
         "name": "theorem_40_energy_induction_compatible_below_seven_eighths",
         "file": "proofs/qrh_continuation_and_rescaling.lean",
         "line": 289
+      },
+      {
+        "index": 41,
+        "name": "theorem_41_bezout_homogenized_cone_and_degree_bounds",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 311
+      },
+      {
+        "index": 42,
+        "name": "theorem_42_arithmetic_cutoff_and_pigeonhole_incompatibility",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 329
+      },
+      {
+        "index": 43,
+        "name": "theorem_43_biquadratic_galois_and_pivot_constants",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 351
+      },
+      {
+        "index": 44,
+        "name": "theorem_44_local_compensated_replacement_and_cancellation",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 372
+      },
+      {
+        "index": 45,
+        "name": "theorem_45_euler_resummation_and_correction_bounds",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 389
+      },
+      {
+        "index": 46,
+        "name": "theorem_46_euler_coordinates_and_unramified_factorization",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 409
+      },
+      {
+        "index": 47,
+        "name": "theorem_47_sextic_gauss_valuation_table_and_high_rows_scalar",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 431
+      },
+      {
+        "index": 48,
+        "name": "theorem_48_high_data_nine_budget_inequalities",
+        "file": "proofs/qrh_continuation_and_rescaling.lean",
+        "line": 446
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"
   },
   "verification_summary": {
     "lean4_compiler": "Lean 4.29.0-rc8",
-    "theorems_proved": 40,
+    "theorems_proved": 48,
     "proof_modules": [
       "proofs/qrh_exponent_and_parameter_bounds.lean",
       "proofs/qrh_continuation_and_rescaling.lean"

@@ -7,25 +7,25 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_eth.py"
   },
   "artifacts_sha256": {
-    "README.md": "689a89bec3abaa4f2242721444a30aacddbba7a2a1bccfe65ef867362a9e3eaa",
-    "README.ko.md": "179823a1c99df6a4149eac6247d6452abbe0ad1553e2cb2d214998c24d98f169",
+    "README.md": "d90e619572f508c7761977510b7949124f50925f2758cd00674b5c72ce36cb8c",
+    "README.ko.md": "eac40847a3c45f0de85bc7cb0db2a8097f3e57e169ccdb8f3a764838d286f83d",
     "proofs/eth_subexp_interpolation_and_hashes.lean": "c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9",
-    "proofs/eth_tensor_contraction_and_circuits.lean": "19febf0050691c328797de72720cb8ac11a218fef4573acb9cf13485766a31a2",
+    "proofs/eth_tensor_contraction_and_circuits.lean": "b86142b58bba1ec2c6ada53e26aa626d64daa2bb5ab335398d687bb5a830d9e8",
     "proofs/eth_five_repairs_and_four_layer_verdict.lean": "1d9cc84de4b1c08f5050c968f9eb754f069061ac65e2caab896a36dcdb46a425",
     "proofs/verify_symbolic_eth.py": "6b7bbe2c886fe739fe3725eb225d65b60f4f0b2e80146e74eb5d3d4509aa7a21",
     "proofs/symbolic_verification_result.json": "2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735",
     "proofs/problem_spec.md": "ddd0b0609effa210e26c006d52ede5772e4235fc1664582aa6f9db6092d10adf",
     "ko/01_초보자용_쉬운해설.md": "29f6b73c7b6e8e0dd9179d77e9ede456517413b8657b4cea09a19acb139b987d",
-    "ko/02_중급자용_구조및수식가이드.md": "dbd84d9df90a9e54e5255bd8061105743e6f1676bda79eed849a2d62d4208d97",
-    "ko/03_전문가용_전산학및형식증명심사보고서.md": "0c975fcad4f2b5bd510a7e51c5d458b1794007f627b4cf1dcbed2a7a5078b0ca",
-    "ko/04_자동검증및파서용_명세서.md": "05135857acf4f8817fe12df8f58ff1e3d285581e7c790ef461e9241e4436a817",
+    "ko/02_중급자용_구조및수식가이드.md": "00cc1a0f3ba281af3f4076de94b073c6b914bc5f15c40640081a21a441e6f02f",
+    "ko/03_전문가용_전산학및형식증명심사보고서.md": "8a3a23cd9a6e8576c75c4b9ef671adf3e0afa1b5e319d7bc7cdd686af8759e86",
+    "ko/04_자동검증및파서용_명세서.md": "cd6aea9ba2cc484fb1571003692e7bbc2f32dcd52393b7109a4905b17ed56466",
     "en/01_Beginner_Guide.md": "a17e3313cf280b673011ee7dced1f811dcba1a686ed2f42270ebd55fce42158a",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "0c39213614242b7d0b6f5e3984f8704716c82f5ff04dd745b5d3735a764328ed",
-    "en/03_Expert_Complexity_and_Formal_Report.md": "0b9181b1452fb927b4dc186fc1ff32097669bfc448fe097f8189353e6d4ed2f0",
-    "en/04_Automated_Verification_and_Manifest.md": "87ebce9103334091526b5ed0b85cc7f9393da87be149eced9833854092e057c7"
+    "en/02_Intermediate_Math_and_Code_Guide.md": "7c88c7cae0300ed708e04a4857e6dda6089028728f3c5c8589f4ae6b0afb3d3e",
+    "en/03_Expert_Complexity_and_Formal_Report.md": "40b52eef934b379a892ccc2ccbb9a6ceda477707cbcc8e4563d7ca459ee93457",
+    "en/04_Automated_Verification_and_Manifest.md": "c1032014d1aee1826a55c15d1d2d629c40caee004debd7305b4f89dbbd7ca68d"
   },
   "scope_and_limitations": {
-    "formalized_arithmetic_and_linear_algebra": "50 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 408/408 hypothesis mutations caught = 128/128 + 131/131 + 149/149) across proofs/eth_subexp_interpolation_and_hashes.lean, proofs/eth_tensor_contraction_and_circuits.lean, and proofs/eth_five_repairs_and_four_layer_verdict.lean + SymPy and PyTorch tensor verification."
+    "formalized_arithmetic_and_linear_algebra": "56 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 454/454 hypothesis mutations caught = 128/128 + 177/177 + 149/149) across proofs/eth_subexp_interpolation_and_hashes.lean, proofs/eth_tensor_contraction_and_circuits.lean, and proofs/eth_five_repairs_and_four_layer_verdict.lean + SymPy and PyTorch tensor verification covering 100% (48/48 files, 629/629 formal statements, 940/940 total declarations & environments) of #378."
   },
   "verified_key_results": {
     "engine_i_interpolation_and_hashes_theorems": {
@@ -65,7 +65,13 @@
         "williams_enp_circuit_lower_bound_threshold_contradiction (Theorem 29, L304)",
         "engine_i_cannot_prove_corollary_1_4_without_engine_ii (Theorem 30, L329)",
         "lean_formalization_scope_gap_and_cutoff_inventory (Theorem 31, L354)",
-        "oai_subexponential_sat_unused_hypothesis_audit (Theorem 32, L380)"
+        "oai_subexponential_sat_unused_hypothesis_audit (Theorem 32, L380)",
+        "actual_lift_ring_degree_and_nat_cast_injectivity_range (Theorem 51, L399)",
+        "binomial_matrix_vandermonde_chu_lu_determinant_one (Theorem 52, L416)",
+        "bitprogram_compile_tm_and_primitive_machine_overhead_bounds (Theorem 53, L433)",
+        "sparse_budget_occurrence_cap_and_inverse_index_envelope (Theorem 54, L447)",
+        "asymptotic_layout_rate_and_cost_assembly_trial_guards (Theorem 55, L464)",
+        "comparator_challenge_json_and_main_entry_point_audit (Theorem 56, L483)"
       ]
     },
     "five_repairs_and_four_layer_verdict_theorems": {
@@ -97,10 +103,10 @@
       "proofs/eth_tensor_contraction_and_circuits.lean",
       "proofs/eth_five_repairs_and_four_layer_verdict.lean"
     ],
-    "theorems_proved": 50,
+    "theorems_proved": 56,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_caught": "408/408",
+    "hypothesis_mutations_caught": "454/454",
     "theorems": [
       {
         "index": 1,
@@ -401,6 +407,42 @@
         "name": "layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
         "line": 428
+      },
+      {
+        "index": 51,
+        "name": "actual_lift_ring_degree_and_nat_cast_injectivity_range",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 399
+      },
+      {
+        "index": 52,
+        "name": "binomial_matrix_vandermonde_chu_lu_determinant_one",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 416
+      },
+      {
+        "index": 53,
+        "name": "bitprogram_compile_tm_and_primitive_machine_overhead_bounds",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 433
+      },
+      {
+        "index": 54,
+        "name": "sparse_budget_occurrence_cap_and_inverse_index_envelope",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 447
+      },
+      {
+        "index": 55,
+        "name": "asymptotic_layout_rate_and_cost_assembly_trial_guards",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 464
+      },
+      {
+        "index": 56,
+        "name": "comparator_challenge_json_and_main_entry_point_audit",
+        "file": "eth_tensor_contraction_and_circuits.lean",
+        "line": 483
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"

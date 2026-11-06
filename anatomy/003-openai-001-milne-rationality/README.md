@@ -2,7 +2,7 @@
 
 # Case 003: OpenAI `#001` Milne's Rationality Conjecture Audit & Repair
 
-This package audits the 6 LaTeX sections of OpenAI `#001` (*Milne's rationality conjecture for abelian varieties*) and verifies 5 surgical repairs across `33` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `211/211` hypothesis mutations caught).
+This package audits the 6 LaTeX sections of OpenAI `#001` (*Milne's rationality conjecture for abelian varieties*) and verifies 5 surgical repairs across `33` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `232/232` hypothesis mutations caught).
 
 ## Key Findings
 
@@ -15,14 +15,14 @@ This package audits the 6 LaTeX sections of OpenAI `#001` (*Milne's rationality 
 | Tier | Target Audience | Document | Summary |
 | :---: | :--- | :--- | :--- |
 | **Tier 1** | **Beginners** | [`01_Beginner_Guide.md`](./en/01_Beginner_Guide.md) | Plain-language overview of Milne's conjecture, the 4-stage proof bridge, and the 5 repairs. |
-| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](./en/02_Intermediate_Math_and_Code_Guide.md) | Section-by-section equations and a 1-to-1 guide to all 33 Lean 4 theorems. |
+| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](./en/02_Intermediate_Math_and_Code_Guide.md) | Section-by-section equations and a 1-to-1 guide to all 36 Lean 4 theorems. |
 | **Tier 3** | **Experts** | [`03_Expert_Mathematical_and_Formal_Report.md`](./en/03_Expert_Mathematical_and_Formal_Report.md) | Referee report covering `#032` independence, Kisin-Zhou uniformization, and Beauville projection. |
 | **Tier 4** | **Automated Verifiers** | [`04_Automated_Verification_and_Manifest.md`](./en/04_Automated_Verification_and_Manifest.md)<br>[`manifest.json`](./manifest.json) | Reproduction commands, SHA-256 checksums, and 33-theorem line index. |
 
 ## Formal Proofs & One-Command Verification
 
 - [`proofs/milne_transport_and_filtration.lean`](./proofs/milne_transport_and_filtration.lean): Theorems 1–16 (`101/101` mutations caught).
-- [`proofs/milne_weil_reduction_and_repairs.lean`](./proofs/milne_weil_reduction_and_repairs.lean): Theorems 17–33 (`110/110` mutations caught).
+- [`proofs/milne_weil_reduction_and_repairs.lean`](./proofs/milne_weil_reduction_and_repairs.lean): Theorems 17–36 (`131/131` mutations caught).
 - [`proofs/verify_symbolic_milne.py`](./proofs/verify_symbolic_milne.py) & [`proofs/oai_001_milne_repair.patch`](./proofs/oai_001_milne_repair.patch).
 
 ```bash

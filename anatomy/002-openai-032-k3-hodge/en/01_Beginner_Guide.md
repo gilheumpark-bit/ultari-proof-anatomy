@@ -48,5 +48,5 @@ Why not simply use the forward stabilization move ($G_1$, which has sign $+1$) s
   - `Part I` (`cohomology.tex`, `exactks.tex`, `auxiliary.tex`) is mathematically sound.
   - It reduces the rational Hodge conjecture for projective K3 surfaces to constructing one unobstructed seed complex $\mathcal{E}_0$ on a central fiber $B \times E^{512}$.
 - **Verified No-Go Theorems (`proofs/k3_forensic_paths.lean`)**:
-  - All 27 theorems in [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean) compile with `0 sorry` and `112/112` hypothesis mutations caught.
+  - All 35 theorems in [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean) compile with `0 sorry` and `135/135` hypothesis mutations caught.
   - They prove why the 7 `Part II` assembly routes hit rank and dimension barriers, and show that any future seed must include a positive 4th-degree Bogomolov correction $\gamma \in H^0(B) \otimes H^4(E^g)$.

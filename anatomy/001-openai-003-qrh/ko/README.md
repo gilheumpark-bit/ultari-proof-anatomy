@@ -2,7 +2,7 @@
 
 # 사례 001: OpenAI `#003` 준리만 가설 ($\text{Re}(s) > 7/8$) 해부 및 형식증명
 
-이 패키지는 OpenAI `#003`(`DirichletL/` 및 `SiegelZeros/` `3,414`개 `.lean` 파일)을 감사한 결과물입니다. 유리수 근사 상수 뒤의 정확한 대수 방정식을 복원하고 `40`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `22/22`건 포착)로 검증했습니다.
+이 패키지는 OpenAI `#003`(`DirichletL/` 및 `SiegelZeros/` `3,414`개 `.lean` 파일, 핵심 레퍼런스 `26/26`개 파일 및 `178/178`개 선언문 1:1 전수 대조 포함)을 감사한 결과물입니다. 유리수 근사 상수 뒤의 정확한 대수 방정식을 복원하고 `48`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `28/28`건 포착)로 검증했습니다.
 
 ## 핵심 해부 결과
 
@@ -15,14 +15,14 @@
 | 단계 | 대상 독자 | 문서 파일 | 핵심 내용 |
 | :---: | :--- | :--- | :--- |
 | **1단계** | **초보자 (일반 독자)** | [`01_초보자용_쉬운해설.md`](./01_초보자용_쉬운해설.md) | 준리만 가설의 개념과 3대 임계치(`0.51`, `0.69`, `0.875`)의 쉬운 해설. |
-| **2단계** | **중급자 (이공계·개발자)** | [`02_중급자용_구조및수식가이드.md`](./02_중급자용_구조및수식가이드.md) | 핵심 대수 방정식 유도 및 40개 Lean 4 정리 1대1 줄 번호 색인표. |
-| **3단계** | **전문가 (수론·형식증명 연구자)** | [`03_전문가용_수론및형식증명보고서.md`](./03_전문가용_수론및형식증명보고서.md) | 무리수 정류점, 그람 지수 여유분, `영역 A` 대수 검증 범위 상세 보고서. |
+| **2단계** | **중급자 (이공계·개발자)** | [`02_중급자용_구조및수식가이드.md`](./02_중급자용_구조및수식가이드.md) | 핵심 대수 방정식 유도 및 48개 Lean 4 정리·26개 원본 파일 1대1 색인표. |
+| **3단계** | **전문가 (수론·형식증명 연구자)** | [`03_전문가용_수론및형식증명보고서.md`](./03_전문가용_수론및형식증명보고서.md) | 무리수 정류점, 그람 지수 여유분, `178/178`개 선언문 1:1 전수 대조 원장. |
 | **4단계** | **자동 검증기 및 파서** | [`04_자동검증및파서용_명세서.md`](./04_자동검증및파서용_명세서.md)<br>[`manifest.json`](../manifest.json) | 1줄 재현 명령어, SHA-256 해시 원장 및 JSON 매니페스트. |
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
 - [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean): 정리 1~27 (`0 sorry`).
-- [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean): 정리 28~40 (`0 sorry`).
+- [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean): 정리 28~48 (`0 sorry`).
 - [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)을 재현하는 결정론적 `SymPy` 스크립트.
 
 ```bash

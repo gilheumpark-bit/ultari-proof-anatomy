@@ -1,6 +1,6 @@
 # 04. Automated Verification & Machine-Checkable Specification
 
-This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `408/408` Lean 4 hypothesis-mutation kills across `50` formal theorems, `SymPy` + PyTorch tensor verification (`10` audit suites), clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
+This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `454/454` Lean 4 hypothesis-mutation kills across `56` formal theorems, `SymPy` + PyTorch tensor verification (`10` audit suites), clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
 
 ---
 
@@ -9,7 +9,7 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
 | [`proofs/eth_subexp_interpolation_and_hashes.lean`](../proofs/eth_subexp_interpolation_and_hashes.lean) | `c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9` | `418` | Part A (`Theorems 1–16`): `Engine I` swap matrix, incidence-pair cancellation, truncated ring, Tanner hashes, `BitProgram 80 1220` (`0 sorry`, `128/128` mutations killed) |
-| [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean) | `19febf0050691c328797de72720cb8ac11a218fef4573acb9cf13485766a31a2` | `396` | Part B (`Theorems 17–32`): Appendix D (`Engine II`) tapered $2$-adic Hermite interpolation, `Corollary 1.4` circuit lower bound, scope gap & unused-hypothesis audit (`0 sorry`, `131/131` mutations killed) |
+| [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean) | `b86142b58bba1ec2c6ada53e26aa626d64daa2bb5ab335398d687bb5a830d9e8` | `497` | Part B (`Theorems 17–32` & `Theorems 51–56` & `Theorems 51–56`): Appendix D (`Engine II`) tapered $2$-adic Hermite interpolation, `Corollary 1.4` circuit lower bound, scope gap & full 48-file `oai_ref` module coverage (`0 sorry`, `177/177` mutations killed) |
 | [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean) | `1d9cc84de4b1c08f5050c968f9eb754f069061ac65e2caab896a36dcdb46a425` | `443` | Part C (`Theorems 33–50`): 5 specification-gaming repairs, 6-layer post-repair verdict, 3 fossil-rescued hybrid results, G. H. Hardy's 3 beauty invariants, and completion of unperformed Areas 1–3 (`0 sorry`, `149/149` mutations killed) |
 | [`proofs/verify_symbolic_eth.py`](../proofs/verify_symbolic_eth.py) | `6b7bbe2c886fe739fe3725eb225d65b60f4f0b2e80146e74eb5d3d4509aa7a21` | `474` | `SymPy` symbolic algebra + PyTorch (`FP64`) tensor verifier (`10` audit suites) |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735` | `197` | Deterministic symbolic & numerical verification receipt JSON |
@@ -19,11 +19,11 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 
 ## 2. Automated Verification Gate Commands & Pass Criteria
 
-1. **Lean 4 Kernel & Hypothesis-Mutation Kill Gate (`408/408`)**:
+1. **Lean 4 Kernel & Hypothesis-Mutation Kill Gate (`454/454`)**:
    ```bash
    ~/.elan/bin/lean proofs/eth_subexp_interpolation_and_hashes.lean && ~/.elan/bin/lean proofs/eth_tensor_contraction_and_circuits.lean && ~/.elan/bin/lean proofs/eth_five_repairs_and_four_layer_verdict.lean
    ```
-   * Pass criteria: Exit code `0`, `0 sorry`, `0` custom axioms; replacing each of the `408` relational hypotheses across all `50` theorems individually with `: True` causes `408/408` compilation rejections (`100%` killed).
+   * Pass criteria: Exit code `0`, `0 sorry`, `0` custom axioms; replacing each of the `454` relational hypotheses across all `56` theorems individually with `: True` causes `454/454` compilation rejections (`100%` killed).
 2. **Symbolic (`SymPy`) + PyTorch (`PyTorch FP64`) Deterministic Reproduction**:
    ```bash
    cd proofs && python3 verify_symbolic_eth.py
@@ -72,7 +72,7 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 
 ---
 
-## 4. `Lean 4` Formal Theorem Specification (`50` Theorems, `408/408` Mutations Killed)
+## 4. `Lean 4` Formal Theorem Specification (`56` Theorems, `454/454` Mutations Killed)
 
 ### Part A: [`proofs/eth_subexp_interpolation_and_hashes.lean`](../proofs/eth_subexp_interpolation_and_hashes.lean#L1-L418) (`Theorems 1–16`, `128/128` Mutations Killed)
 1. [`swap_eigenbasis_symmetric_antisymmetric_split`](../proofs/eth_subexp_interpolation_and_hashes.lean#L22-L50) (`L22`): Symmetric/antisymmetric eigenspace split of $\Pi_s$ on $[r]^2$ and binomial multiplicity identity.
@@ -92,7 +92,7 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 15. [`coset_separation_iteration_identity_and_bound`](../proofs/eth_subexp_interpolation_and_hashes.lean#L385-L398) (`L385`): Disjoint coset separation identity and $3D/4$ geometric shrinkage.
 16. [`bitprogram_1220_stack_compiler_space_and_time_envelope`](../proofs/eth_subexp_interpolation_and_hashes.lean#L403-L418) (`L403`): `BitProgram 80 1220` raw space envelope $5022740(L+1)^2$, fallback padding (`28700`, `5022741`), and $7\times$ compiler bound.
 
-### Part B: [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean#L1-L396) (`Theorems 17–32`, `131/131` Mutations Killed)
+### Part B: [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean#L1-L497) (`Theorems 17–32` & `Theorems 51–56`, `177/177` Mutations Killed)
 17. [`appendix_d_collision_packet_packing_and_edge_contraction`](../proofs/eth_tensor_contraction_and_circuits.lean#L22-L36) (`L22`): Appendix D (`Lemma D.3`) $r=64$ collision packet packing and per-child edge contraction $3/32 < 1/8$.
 18. [`appendix_d_dyadic_depth_precision_schedule_and_total_wires`](../proofs/eth_tensor_contraction_and_circuits.lean#L43-L55) (`L43`): Appendix D dyadic precision schedule $a_d < 4 u_0$ and $8^{-d}$ wire shrinkage.
 19. [`appendix_d_cauchy_2adic_deformation_valuation_invariance`](../proofs/eth_tensor_contraction_and_circuits.lean#L62-L72) (`L62`): Appendix D (`Lemma D.4`) $2$-adic Cauchy deformation valuation invariance for $\alpha = 2^{a+1}$.
@@ -129,3 +129,9 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 48. [`layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L386-L398) (`L386`): Layer ⑥ universal swap action $M_0 = \Pi_1+\Pi_2-\Pi_1\Pi_2$ on $\mathbb{Z}^4$ and tapered $2$-adic Hermite cubic polynomial reconstruction $21f(0)+12f'(0)+12f(2)-f(4)=32f(1)$ ($v_2(32)=5$).
 49. [`layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L405-L420) (`L405`): Layer ⑥ executable characteristic-$3^t$ Galois-ring + swap-projection 3-SAT solver certificate over $\mathrm{GR}(3^8, 2)$ and $\mathrm{GR}(3^5, 2)$ across 4 benchmarks (`2360`, `7`, `0`, `1`).
 50. [`layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L428-L441) (`L428`): Layer ⑥ direct 5-module `oai_ref` surgical patch (`SubexponentialSAT`, `AsymptoticLayoutParameters`, `CostAssemblyFinal`, `FiniteFallback`/`HighQueryProgram`, `Final`) and `1220*(2*n+15) = 2,558,543,740 < 10,996,584,333,160` space bound.
+51. [`actual_lift_ring_degree_and_nat_cast_injectivity_range`](../proofs/eth_tensor_contraction_and_circuits.lean#L399-L410) (`L399`): `ActualLiftRing.lean` monic modulus degree `h`, nilpotency `p^μ`, and `decodeCount` injectivity below `p^μ`.
+52. [`binomial_matrix_vandermonde_chu_lu_determinant_one`](../proofs/eth_tensor_contraction_and_circuits.lean#L416-L427) (`L416`): `BinomialMatrix.lean` and `RowInterpolation.lean` Vandermonde-Chu `B = L * U` determinant `det_B = 1` and row-interpolation rank `R`.
+53. [`bitprogram_compile_tm_and_primitive_machine_overhead_bounds`](../proofs/eth_tensor_contraction_and_circuits.lean#L433-L443) (`L433`): `BitProgram.lean` and `BitProgramCompile.lean` register-stack to `Turing.FinTM2` and `PrimitiveMachine` step overhead `≥ 6`.
+54. [`sparse_budget_occurrence_cap_and_inverse_index_envelope`](../proofs/eth_tensor_contraction_and_circuits.lean#L447-L459) (`L447`): `SparseBudget.lean`, `ResourceBudgets.lean`, `NativeEntry.lean`, and `Statement.lean` occurrence cap `≤ 4M^2` and `inverseIndex` ceiling bounds.
+55. [`asymptotic_layout_rate_and_cost_assembly_trial_guards`](../proofs/eth_tensor_contraction_and_circuits.lean#L464-L478) (`L464`): `AsymptoticLayoutRate.lean`, `CostAssemblyTrialGuards.lean`, and `StatementScale.lean` shifted log scale and runtime bound monotonicity.
+56. [`comparator_challenge_json_and_main_entry_point_audit`](../proofs/eth_tensor_contraction_and_circuits.lean#L483-L495) (`L483`): Complete `48`-file (`42` Lean + `4` TeX + `2` metadata), `629`-statement (`593` Lean `theorem`/`lemma` + `36` TeX environments), `940`-declaration corpus reconciliation.

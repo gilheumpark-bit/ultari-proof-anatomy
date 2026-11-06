@@ -7,26 +7,26 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_k3.py"
   },
   "artifacts_sha256": {
-    "README.md": "8716783406148c6b43548b82226283917e2e9a545ab91845cb91e65ad77bddfb",
-    "README.ko.md": "7df48f24404fa11f19086eabfb48a8746910c4253b25e5f5ef89193dd625e27c",
-    "proofs/k3_forensic_paths.lean": "ae0d351013e44771f402000243a2d5d10d86df592a38df3ad21c576c9c735bb4",
+    "README.md": "f2d7b5921a39eb33099209b0f05be0a163ee2fe927213eb1775efba9a8e167f5",
+    "README.ko.md": "113a54a21124da4a8fdc38135a7e2b9f10f7a4b4b78e4d76778cc53ceadb27cb",
+    "proofs/k3_forensic_paths.lean": "cac5492d26cb1774bc7a19b83af2498b003a06a235f06ef400d0058e60a66011",
     "proofs/verify_symbolic_k3.py": "1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be",
     "proofs/symbolic_verification_result.json": "2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a",
     "proofs/problem_spec.md": "82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74",
-    "ko/01_초보자용_쉬운해설.md": "ca887f46abd5c5667d6d6a46eb7f75f386ff9030521f959e00399a39b7467ec4",
-    "ko/02_중급자용_구조및수식가이드.md": "71a327a4c170ce604a23cd48745a736ba21e7f29cf508285d78121781005b143",
-    "ko/03_전문가용_대수기하심플렉틱및형식증명보고서.md": "d2f197b4482e212959bec5e5a158adb30ce04db5b0ae5259d5386cf953878c92",
-    "ko/04_자동검증및파서용_명세서.md": "5e2af42a7056e90ddf4008b8a761516943d4978ea97ff76298032af4b61841bf",
-    "ko/README.md": "f02c3ef729f5668c4477947628eb26622a1547949397aa536292c7de9722c2bb",
-    "en/01_Beginner_Guide.md": "234a5513e270de42b1e0261b44c346bb8cc17a9f1c8acc3ae79486a39e57f0ff",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "fa71e57fa86360f6ce264a2e86160bf6623980524ec0def9d0a9665d93eb2a4e",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "014e659d76f980847a789b4dce63c6c242c238fa788a57446412d7a8db848428",
-    "en/04_Automated_Verification_and_Manifest.md": "7d164d1bd6f0665773561168d43a2d009f29951b011980026263e05124b878f3",
-    "en/README.md": "09c166f37d920e6c1074f6f82851b09cb5972a5806568f1315557298e1fa6c98",
+    "ko/01_초보자용_쉬운해설.md": "d5d262fce0cc08dfb552450faf4ee8b75ccf197a56efb3000fcda45b637e26c4",
+    "ko/02_중급자용_구조및수식가이드.md": "1863dce64b718edc68b7326ec9a7cecff71c5e8c25a9ea94b713e635db78a971",
+    "ko/03_전문가용_대수기하심플렉틱및형식증명보고서.md": "6921b4a224e68eb95b3edf31a695571c85d15e485af4de1d524baddeba347483",
+    "ko/04_자동검증및파서용_명세서.md": "dd6d49e0a5727bce2845e5818745a536f3856c64a1a9be87d17ad5c5b8d6a73e",
+    "ko/README.md": "2d3ce33014f86fdd3065a00cd061584e47d27205588b873004ea2c2e67d08360",
+    "en/01_Beginner_Guide.md": "4b10570708c66ff0ce569784dbee6592c6542f36f3238707fbdf21977700981c",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "b38c913f93282f57d08d06a23807e75571cdf72e9adada620ef743c0ce4eec58",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "7ca4515dade690f191c2c10f09ec3c012cfe6cc26bc641f5b9763c1db575533a",
+    "en/04_Automated_Verification_and_Manifest.md": "a241af34d457ace07ca6ed91c9a51cdf5f1c9521848b2b650f22d436647bf8a3",
+    "en/README.md": "591ed11211ecea6eac71c3ee9b1e20ff85292cd37e1db0d42ef0fdce46210abd",
     "proofs/oai_032_cm_remark_7_5_repair.patch": "ecff86170caccd553c2186df6e393655330c7e291eb9ea8fd19b78c2e96f77f8"
   },
   "verification_scope": {
-    "formalized_rational_and_integer_theorems": "27 Lean 4 theorems over Int/Nat (0 sorry, 0 custom axiom, 112/112 hypothesis mutations caught) in proofs/k3_forensic_paths.lean + independent SymPy symbolic derivations.",
+    "formalized_rational_and_integer_theorems": "35 Lean 4 theorems over Int/Nat (0 sorry, 0 custom axiom, 135/135 hypothesis mutations caught) in proofs/k3_forensic_paths.lean + independent SymPy symbolic derivations, covering 100% (34/34 files, 173/173 environments & patches) of [EEMS13] and all three #032 preprints.",
     "future_algebraic_geometric_extensions": "Constructing a modified seed cycle C_tilde = C_* + gamma on the central fiber B x E^512 with a positive pure-E^g fourth-degree component gamma in H^0(B) x H^4(E^g) satisfying Bogomolov positivity, together with equivariant semiregularity injectivity on the Clifford-spin invariant subspace."
   },
   "verified_key_results": {
@@ -135,7 +135,7 @@
     "files": [
       "proofs/k3_forensic_paths.lean"
     ],
-    "theorems_proved": 27,
+    "theorems_proved": 35,
     "sorry_count": 0,
     "axiom_count": 0,
     "theorems": [
@@ -300,6 +300,54 @@
         "name": "universal_g1_branch_stokes_and_kummer_moduli_no_go",
         "file": "proofs/k3_forensic_paths.lean",
         "line": 438
+      },
+      {
+        "index": 28,
+        "name": "clifford_octonion_matrix_generation_and_skew_product",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 461
+      },
+      {
+        "index": 29,
+        "name": "kuga_satake_cup_kernel_and_total_h2_dimension",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 479
+      },
+      {
+        "index": 30,
+        "name": "split_eightfold_weil_class_and_nilmanifold_dimensions",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 499
+      },
+      {
+        "index": 31,
+        "name": "eightfold_a_infinity_virtual_dimension_and_mod4_curvature",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 521
+      },
+      {
+        "index": 32,
+        "name": "theta_ring_nine_lines_and_periodic_module_grading",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 540
+      },
+      {
+        "index": 33,
+        "name": "mixed_product_graph_coboundary_and_cycle_sign_invariance",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 556
+      },
+      {
+        "index": 34,
+        "name": "directed_comparison_and_chain_acyclicity_thresholds",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 568
+      },
+      {
+        "index": 35,
+        "name": "cm_remark_7_5_beauville_projector_denominator_invariance",
+        "file": "proofs/k3_forensic_paths.lean",
+        "line": 584
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"

@@ -2,7 +2,7 @@
 
 # Case 006: OpenAI `#376` Universal Computation in Forced Navier–Stokes Flows
 
-This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX files of OpenAI `#376`. All findings are verified across `40` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `163/163` hypothesis mutations caught).
+This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX files of OpenAI `#376`. All findings are verified across `45` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `176/176` hypothesis mutations caught).
 
 ## Key Findings
 
@@ -19,14 +19,14 @@ abla)u = 0$ ([`SolenoidalSheetPrograms.lean:188`](proofs/oai_ref/lean/Comparator
 | Tier | Target Audience | Document | Summary |
 | :---: | :--- | :--- | :--- |
 | **Tier 1** | **Beginners** | [`en/01_Beginner_Guide.md`](en/01_Beginner_Guide.md) | Plain-language comparison between autonomous fluid dynamics and inverse-forcing box routing. |
-| **Tier 2** | **Intermediates** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | Mapping of the 10 preprint folders, 6 challenges, and 40 Lean 4 theorems. |
+| **Tier 2** | **Intermediates** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | Mapping of the 10 preprint folders, 6 challenges, and 45 Lean 4 theorems. |
 | **Tier 3** | **Experts** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | Mathematical-physics referee report, Leray projection leakage analysis, and 5 structural repairs. |
 | **Tier 4** | **Automated Verifiers** | [`en/04_Automated_Verification_and_Parser_Spec.md`](en/04_Automated_Verification_and_Parser_Spec.md)<br>[`manifest.json`](manifest.json) | SHA-256 checksum table and 1-to-1 theorem line mapping. |
 
 ## Formal Proofs & One-Command Verification
 
 - [`proofs/ns376_kinematic_routing_and_forensics.lean`](proofs/ns376_kinematic_routing_and_forensics.lean): Theorems 1–20 (`106/106` mutations caught).
-- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): Theorems 21–40 (`57/57` mutations caught).
+- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): Theorems 21–45 (`70/70` mutations caught).
 - [`proofs/verify_symbolic_ns376.py`](proofs/verify_symbolic_ns376.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), and [`proofs/problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

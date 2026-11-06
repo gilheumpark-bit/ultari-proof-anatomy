@@ -2,7 +2,7 @@
 
 # Case 001: OpenAI `#003` Quasi-Riemann Hypothesis ($	ext{Re}(s) > 7/8$)
 
-This package audits the `3,414` Lean 4 files of OpenAI `#003` (`DirichletL/` and `SiegelZeros/`). We recover the exact algebraic roots behind its rational proxies and verify `40` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `22/22` hypothesis mutations caught).
+This package audits the `3,414` Lean 4 files of OpenAI `#003` (`DirichletL/` and `SiegelZeros/`, including a 1-to-1 declaration-level audit of all `26/26` core reference files and `178/178` declarations). We recover the exact algebraic roots behind its rational proxies and verify `48` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `28/28` hypothesis mutations caught).
 
 ## Key Findings
 
@@ -15,14 +15,14 @@ This package audits the `3,414` Lean 4 files of OpenAI `#003` (`DirichletL/` and
 | Tier | Target Audience | Document | Summary |
 | :---: | :--- | :--- | :--- |
 | **Tier 1** | **Beginners** | [`01_Beginner_Guide.md`](./01_Beginner_Guide.md) | Plain-language guide to the Quasi-Riemann Hypothesis and the three thresholds (`0.51`, `0.69`, `0.875`). |
-| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](./02_Intermediate_Math_and_Code_Guide.md) | Core algebraic equations and a 1-to-1 index of all 40 Lean 4 theorems. |
-| **Tier 3** | **Experts** | [`03_Expert_Mathematical_and_Formal_Report.md`](./03_Expert_Mathematical_and_Formal_Report.md) | Technical report on the stationary point, Gram exponent slack, and `Category A` arithmetic scope. |
+| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](./02_Intermediate_Math_and_Code_Guide.md) | Core algebraic equations and a 1-to-1 index of all 48 Lean 4 theorems and 26 reference files. |
+| **Tier 3** | **Experts** | [`03_Expert_Mathematical_and_Formal_Report.md`](./03_Expert_Mathematical_and_Formal_Report.md) | Technical report on the stationary point, Gram exponent slack, and `178/178` declaration-level audit ledger. |
 | **Tier 4** | **Automated Verifiers** | [`04_Automated_Verification_and_Manifest.md`](./04_Automated_Verification_and_Manifest.md)<br>[`manifest.json`](../manifest.json) | Verification commands, SHA-256 checksums, and machine-readable theorem manifest. |
 
 ## Formal Proofs & One-Command Verification
 
 - [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean): Theorems 1–27 (`0 sorry`).
-- [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean): Theorems 28–40 (`0 sorry`).
+- [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean): Theorems 28–48 (`0 sorry`).
 - [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py): Deterministic SymPy verification script reproducing [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json).
 
 ```bash

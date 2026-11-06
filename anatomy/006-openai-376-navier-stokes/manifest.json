@@ -9,21 +9,21 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "6597fed3942b1f655151d045c12f94d3a0e64fa5def2be4535e3a7a6bd2d52c1",
-    "README.ko.md": "83466a96c3948310b1752c30a8a5109e189742bfff19fce23a54cadfd14c429b",
+    "README.md": "e1be43a081cec778c2552e733ef15fa7a9bca24ca5a971c6cd1b87b9a125e775",
+    "README.ko.md": "ade9042aa0aa83fc876187b13843d828d7e36019974a2a25186f8d05b4290d1a",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "7a04cc360fed5e1772718a92540734c9bb549d26804009378685678a8b23a391",
-    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "886dd43c3cc555daff1d8d33a8b0b1276fb5d1deb37ae5e51aefd0d18c06a3e7",
+    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "130b418901659afe3b612b56d3856dc7682b07809368bca60031cbb3b6413427",
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
     "ko/01_초보자용_쉬운해설.md": "96aadda378bec5906dcf5615fabc684b01ae60891beebd55c6cc8c0f00d04818",
-    "ko/02_중급자용_구조및수식가이드.md": "3182545a271331c2f5f697b4efe1176123713a7960df54f10f9b6a98ad73595f",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "1969bb825a34ab17f5d85116d737a8c07b20a7f3835f8b6b31e506d70cab2d41",
-    "ko/04_자동검증및파서용_명세서.md": "9ff61a59ada0eea75da1545ffa56f6630cd0327c4334da0d58d5aac95978d4f7",
+    "ko/02_중급자용_구조및수식가이드.md": "9edca9c9f61312fe993b39df929231a2543a6770a69ce942dc373adf09e81001",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "9f02c55c7520a46d91209b4978965cc37b671b2c0cac8507cf27dfde4cb7c81d",
+    "ko/04_자동검증및파서용_명세서.md": "24a4ff73a7ac3049ae23ce83d51ba5290cfee43b6175227f28ebfd613b5e7180",
     "en/01_Beginner_Guide.md": "dfdbf1b762d040d8d28f0e5db39e5a564f283834297eb5dc2abd76e2475c3be0",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "a11081a36c3f4b3dd843d8a47873db19114ea5cab16077e8a99ef69f5da1c974",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "94236dc1780de0d2951726757083b4dcdd2b1c00e64e3b5b77cb98e005a7e8d1",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "b85ed39a0606044e5e15df070f19bb258d72e3051537d3c9de88e1faf78d6c3d"
+    "en/02_Intermediate_Math_and_Code_Guide.md": "bf2c90191f7913f3af8ef41af52b98e2f3f4a173caeae07a154d702c55ed876d",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "6c017f641d3ec08f681958a0da1c400b35de8ef2f061d9766cedeb341c1b75aa",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "513b59d2729cfe53fcdc1484df59c0aa4e248565e27343264f579a05bd722f88"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
@@ -332,6 +332,36 @@
         "name": "T40_complete_suite_forty_theorems_verified",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
         "line": 315
+      },
+      {
+        "index": 41,
+        "name": "T41_periodic_lattice_solenoidal_vertical_energy_identity",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 330
+      },
+      {
+        "index": 42,
+        "name": "T42_box_transport_motion_lexicographic_rank_bound",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 343
+      },
+      {
+        "index": 43,
+        "name": "T43_shear_flow_energy_comparison_advection_difference",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 357
+      },
+      {
+        "index": 44,
+        "name": "T44_balanced_transport_energy_curve_and_slice_h2_closure",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 369
+      },
+      {
+        "index": 45,
+        "name": "T45_velocity_detection_heat_kernel_and_json_challenge_parity",
+        "file": "ns376_gronwall_uniqueness_and_repairs.lean",
+        "line": 384
       }
     ]
   },

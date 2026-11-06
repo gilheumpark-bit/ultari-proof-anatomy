@@ -2,7 +2,7 @@
 
 ## 1. Verification Environment & Toolchain
 - **Operating System**: Linux (Ubuntu 26.04 LTS, x86_64)
-- **Lean 4 Kernel**: `leanprover/lean4:v4.29.0-rc8` (`0 sorry`, `0` custom axioms, `163/163` dynamic hypothesis mutations killed)
+- **Lean 4 Kernel**: `leanprover/lean4:v4.29.0-rc8` (`0 sorry`, `0` custom axioms, `176/176` dynamic hypothesis mutations killed)
 - **Symbolic & Numerical Engine**: Python 3 (`SymPy` + `PyTorch` FP64 Spectral & Autograd Engine)
 - **Verification Commands**:
   ```bash
@@ -12,19 +12,19 @@
 
 ---
 
-## 2. Split Proof Architecture & Artifact SHA-256 Checksum Table (`40` Theorems)
+## 2. Split Proof Architecture & Artifact SHA-256 Checksum Table (`45` Theorems)
 
 | Artifact Path | SHA-256 Checksum | Lines | Scope | `sorry` / `axiom` | Hypothesis Mutation Kill Rate (`verify_all.py`) |
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | [`proofs/ns376_kinematic_routing_and_forensics.lean`](../proofs/ns376_kinematic_routing_and_forensics.lean) | `7a04cc360fed5e1772718a92540734c9bb549d26804009378685678a8b23a391` | `370` | `Theorems 1–20` (`UltariNS376`) | `0` / `0` | **`100.0%` (`106/106` killed)** |
-| [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) | `886dd43c3cc555daff1d8d33a8b0b1276fb5d1deb37ae5e51aefd0d18c06a3e7` | `324` | `Theorems 21–40` (`OpenAI376ForensicsAndRepairsPart2`) | `0` / `0` | **`100.0%` (`57/57` killed)** |
+| [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) | `130b418901659afe3b612b56d3856dc7682b07809368bca60031cbb3b6413427` | `393` | `Theorems 21–45` (`OpenAI376ForensicsAndRepairsPart2`) | `0` / `0` | **`100.0%` (`70/70` killed)** |
 | [`proofs/verify_symbolic_ns376.py`](../proofs/verify_symbolic_ns376.py) | `11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e` | `434` | `SymPy` symbolic verifier + `PyTorch` FP64 spectral/autograd simulations (`exp1`–`exp3`) | N/A | All assertions `PASS` (`ALL #376 CHECKS PASSED`) |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80` | `79` | Deterministic symbolic, spectral, and corpus stratigraphy receipt JSON | N/A | Exact byte-for-byte match on re-run |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222` | `34` | `#376` target entrypoints and symbol specification | N/A | Specification verified |
 
 ---
 
-## 3. Complete 1-to-1 Index of All 40 Lean 4 Theorems
+## 3. Complete 1-to-1 Index of All 45 Lean 4 Theorems
 
 ### Part I: [`proofs/ns376_kinematic_routing_and_forensics.lean`](../proofs/ns376_kinematic_routing_and_forensics.lean) (`Theorems 1–20`)
 - **`Theorem 1` ([`ns376_manufactured_force_abel_identity`](../proofs/ns376_kinematic_routing_and_forensics.lean#L18))**: Proves that substituting $f = f_0 + \nu f_1$ and $\nabla p = 0$ from [`BalancedTransport/BoxCoding.lean:53-66`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/BoxCoding.lean#L53-L66) reduces the Navier-Stokes momentum equation to an additive identity (`abel`).
@@ -48,7 +48,7 @@
 - **`Theorem 19` ([`ns376_sobolev_three_derivative_loss`](../proofs/ns376_kinematic_routing_and_forensics.lean#L345))**: Proves the 3-derivative regularity loss from potential $\Psi \in C^k$ to $U = \nabla\times\Psi \in C^{k-1}$, $\omega \in C^{k-2}$, and $f \in C^{k-3}$.
 - **`Theorem 20` ([`ns376_rational_box_grid_combinatorial_explosion`](../proofs/ns376_kinematic_routing_and_forensics.lean#L358))**: Proves the $(k+2)^5$ grid subdivision counts ($32, 243, 100000$ at $k = 0, 1, 8$) for `RationalBox 5`.
 
-### Part II: [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) (`Theorems 21–40`)
+### Part II: [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) (`Theorems 21–45`)
 - **`Theorem 21` ([`T21_competitor_difference_cancels_forcing`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L27))**: Proves cancellation of $f$ in the competitor difference equation ([`BalancedTransport/Comparison.lean:20-45`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Comparison.lean#L20-L45)).
 - **`Theorem 22` ([`T22_advection_difference_energy_cancellation`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L43))**: Proves that $(w\cdot\nabla)w\cdot w$ and $(U\cdot\nabla)w\cdot w$ integrate to zero under divergence-free integration, leaving the strain stretching term.
 - **`Theorem 23` ([`T23_serrin_gronwall_differential_inequality`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L57))**: Proves the Serrin-Grönwall energy rate bound $\frac{dE}{dt} \le 12 C E$.
@@ -69,3 +69,8 @@
 - **`Theorem 38` ([`T38_layers_1_and_2_verdict_partition`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L282))**: Proves the 6-challenge partition (`0` autonomous 3D NS + `5` inverse-forcing/shear + `1` 2+1D passive scalar = `6`).
 - **`Theorem 39` ([`T39_layers_3_and_4_genuine_mechanisms_count`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L300))**: Proves the count of `3` verified mathematical mechanisms (`curl` box routing + Serrin-Grönwall + Duhamel heat kernel).
 - **`Theorem 40` ([`T40_complete_suite_forty_theorems_verified`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L315))**: Proves the `20 + 20 = 40` theorem verification total (`0 sorry`, `0 axiom`).
+- **`Theorem 41` ([`T41_periodic_lattice_solenoidal_vertical_energy_identity`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L330))**: Proves the solenoidal vertical energy and double-slope identity `doubleSlope + 2(2π)²η² = 1` in [`PeriodicLattice/Solenoidal.lean`](../proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean#L1-L421).
+- **`Theorem 42` ([`T42_box_transport_motion_lexicographic_rank_bound`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L343))**: Proves strict lexicographic rank ordering `rank_i + 2 ≤ n` across the 5-stage affine motion in [`BoxTransport/Motion.lean`](../proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Motion.lean#L1-L652).
+- **`Theorem 43` ([`T43_shear_flow_energy_comparison_advection_difference`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L357))**: Proves the bilinear advection and Laplacian difference splitting in [`ShearFlows/EnergyComparison.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/EnergyComparison.lean#L1-L125).
+- **`Theorem 44` ([`T44_balanced_transport_energy_curve_and_slice_h2_closure`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L369))**: Proves $C_t H^2_x$ slice difference closure and $L^2$ energy rate control in [`BalancedTransport/EnergyCurve.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/EnergyCurve.lean#L1-L104) and [`EnergySlice.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/EnergySlice.lean#L1-L180).
+- **`Theorem 45` ([`T45_velocity_detection_heat_kernel_and_json_challenge_parity`](../proofs/ns376_gronwall_uniqueness_and_repairs.lean#L384))**: Proves rescaled Gaussian heat-kernel unit mass invariance in [`VelocityDetection/HeatKernels.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/HeatKernels.lean#L1-L97) and parity with the 6 `ComparatorChallenges/*.json` specifications.

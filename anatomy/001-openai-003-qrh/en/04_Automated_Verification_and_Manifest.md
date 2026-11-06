@@ -6,10 +6,10 @@ This document provides the verification commands and artifact hashes for automat
 
 ## 1. Verification Commands
 
-Execute the following commands from the package root directory to verify all 40 Lean 4 theorems (`exit 0`, zero `sorry`/`axiom`), reproduce the symbolic JSON output, and check SHA-256 integrity:
+Execute the following commands from the package root directory to verify all 48 Lean 4 theorems (`exit 0`, zero `sorry`/`axiom`), reproduce the symbolic JSON output, and check SHA-256 integrity:
 
 ```bash
-# 1. Verify formal Lean 4 proofs (Theorems 1-27 & Theorems 28-40, must exit with code 0)
+# 1. Verify formal Lean 4 proofs (Theorems 1-27 & Theorems 28-48, must exit with code 0)
 lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean
 
 # 2. Re-run the symbolic verification script and check output
@@ -30,7 +30,7 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
 | [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) | `cd4343bbd8579febfeaa963b87580fd053522ad1d05b4276d963a15f631b67e8` | 404 lines, 27 Lean 4 theorems (`Theorem 1`~`Theorem 27`), `0` `sorry`, `0` custom `axiom`. |
-| [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `4d3b41086ad86e8bf6a7b0501858901202c0a0579d4938ba1c04b6b527c804c4` | 300 lines, 13 Lean 4 theorems (`Theorem 28`~`Theorem 40`, Tasks 1–3), `0` `sorry`, `0` custom `axiom`. |
+| [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) | `c4c8e3558153db2234a22259e6713ee565fd35b8bd35c9ceddbd8bfe256f092c` | 466 lines, 21 Lean 4 theorems (`Theorem 28`~`Theorem 48`, Tasks 1–4 & 178-decl 1-to-1 audit), `0` `sorry`, `0` custom `axiom`. |
 | [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py) | `f0c2f3e94f1ee422de2e4bdd758f94fc4a7212b2bde50106886a2d864aca6cdb` | Exact `SymPy`/`Fraction` symbolic solver extracting definitions directly from `./proofs/oai_ref/*.lean`. |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55` | Exact rational/symbolic output dictionary for Problems 1 through 5. |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `6cd04e3c6579ced675edd0ab3056338a58e7ccb1cca1a7fcb5e22a6cb337093a` | Problem specification referencing `./oai_ref/*.lean`. |
@@ -40,12 +40,12 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 ## 3. Scope Notes
 
 1. **Formalized Rational/Integer Theorems vs. Future Complex-Analytic Extensions**:
-   - The 40 theorems across [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (Theorems 1–27) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (Theorems 28–40) are kernel-verified over `Rat`, `Int`, and `Nat` (covering algebraic parameter budgets, SOS decompositions, $m \ge 2$ Gauss branch vanishing, exact componentwise Gram exponent differences $\frac{215}{3264}$ and $\frac{487}{3264}$, $(w,z)$ contour-shift exponent budgets, universal 2nd/3rd Euler continuation polynomial cancellations, and master scale-coupling equations).
+   - The 48 theorems across [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (Theorems 1–27) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (Theorems 28–48) are kernel-verified over `Rat`, `Int`, and `Nat` (covering algebraic parameter budgets, SOS decompositions, $m \ge 2$ Gauss branch vanishing, exact componentwise Gram exponent differences $\frac{215}{3264}$ and $\frac{487}{3264}$, $(w,z)$ contour-shift exponent budgets, universal 2nd/3rd Euler continuation polynomial cancellations, master scale-coupling equations, and the complete 26-file / 178-declaration 1-to-1 formal audit including Siegel zero local Bézout cone homogenization and arithmetic cutoff transport).
    - They do **not** formalize the continuous complex-analytic Mellin contour integrals for the separated $m=1$ finite terms or Hilbert-space trace-class operator bounds. Do not summarize this package as a complete unconditional proof of the full Riemann Hypothesis.
 2. **JSON Manifest**:
    - Parse [`manifest.json`](../manifest.json) for programmatic access to all theorem identifiers, line numbers, verified fractions, and SHA-256 hashes.
 
-### 3.6 Section 6 (Anatomy & Completion of Tasks 1–3: Theorems 28–40, [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean))
+### 3.6 Section 6 (Anatomy & Completion of Tasks 1–4: Theorems 28–48, [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean))
 - [`theorem_28_marked_factor_singularity_cancels_identically`](../proofs/qrh_continuation_and_rescaling.lean#L66-L77): Universal `∀ (R V qInv K W D : Int)` polynomial cancellation of the $(1-V)$ factor in `markedFactor` and reduction of the central quotient threshold from $480$ to $112$.
 - [`theorem_29_all_small_eisenstein_norms_nonvanishing`](../proofs/qrh_continuation_and_rescaling.lean#L84-L91): Non-vanishing of Euler denominators across all 21 small Eisenstein prime-power norms in $4 \le Q < 112$.
 - [`theorem_30_universal_finite_bad_prime_mask_absorption`](../proofs/qrh_continuation_and_rescaling.lean#L96-L100): Universal `∀` absorption law for finite bad-prime masks $S = S_0 \cup \text{smallPrimeSet}(N)$.
@@ -59,3 +59,11 @@ sha256sum proofs/qrh_exponent_and_parameter_bounds.lean \
 - [`theorem_38_universal_beta_crit_monotonicity`](../proofs/qrh_continuation_and_rescaling.lean#L258-L268): Universal `∀` monotonicity of $\beta_{\text{crit}}$ preserving Poisson admissibility.
 - [`theorem_39_m1_sextic_pole_residue_and_33_200_remainder_saving`](../proofs/qrh_continuation_and_rescaling.lean#L274-L284): Exact Mellin pole-shift remainder savings (`-13/9600`, `-17/48000`) across the sextic Gauss pole $z = 1/6$.
 - [`theorem_40_energy_induction_compatible_below_seven_eighths`](../proofs/qrh_continuation_and_rescaling.lean#L289-L298): Compatibility of `Energy/CertifiedExistence.lean:19-48` across all $\beta \in [51/100, 7/8]$.
+- [`theorem_41_bezout_homogenized_cone_and_degree_bounds`](../proofs/qrh_continuation_and_rescaling.lean#L311-L319): Universal `∀` local isolated Bézout homogenized cone dimension `h < 5` and 4-variable box degree bound `4*(N-1) < 4*N` (`IsolatedBezoutFromRegularSelection.lean`, `ArithmeticCutoffTransport.lean`).
+- [`theorem_42_arithmetic_cutoff_and_pigeonhole_incompatibility`](../proofs/qrh_continuation_and_rescaling.lean#L329-L344): 4-step derivative ideal pigeonhole (`b < 4`), cutoff coefficient `96 = 3 * 32`, and height-3 length incompatibility `32^3 = 32768 > 4^3 = 64` (`ArithmeticCutoffTransport.lean`).
+- [`theorem_43_biquadratic_galois_and_pivot_constants`](../proofs/qrh_continuation_and_rescaling.lean#L351-L363): Biquadratic field rank `4`, `c₁ = 1/37636`, `C₁ = 192`, `N₀ = 18818`, `H = 86713344`, and greedy pivot weight ratio `(C₁/c₁)/H = 1/12` (`PivotBounds.lean`, `GeometricBoundary.lean`, `BezoutBoundary.lean`, `Theorem.lean`).
+- [`theorem_44_local_compensated_replacement_and_cancellation`](../proofs/qrh_continuation_and_rescaling.lean#L372-L381): Universal `∀ (V W D Pstar B q : Int)` local defect polynomial identity and ramified compensation cancellation (`Local.lean`).
+- [`theorem_45_euler_resummation_and_correction_bounds`](../proofs/qrh_continuation_and_rescaling.lean#L389-L400): Resolvent bound `2` and error multipliers `12` and `4` in `unramified_marked_error_bound` (`Euler.lean`, `CorrectionBounds.lean`).
+- [`theorem_46_euler_coordinates_and_unramified_factorization`](../proofs/qrh_continuation_and_rescaling.lean#L409-L423): Central contour `Q`-exponents of `coordV, coordR, coordW, coordD, coordK` and `3 * 480 = 1440` (`EulerCoordinates.lean`, `HighRowsUnramified.lean`, `HighRowsCentralQuotient.lean`).
+- [`theorem_47_sextic_gauss_valuation_table_and_high_rows_scalar`](../proofs/qrh_continuation_and_rescaling.lean#L431-L438): Universal `∀ (r m j d : Nat)` mod-6 periodicity and unique index decomposition (`ScalarTable.lean`, `HighRowsScalar.lean`, `HighRowsTail.lean`).
+- [`theorem_48_high_data_nine_budget_inequalities`](../proofs/qrh_continuation_and_rescaling.lean#L446-L464): Simultaneous verification of all 9 budget inequalities in `HighData` (`Parameters.lean`, `ParametersHighData.lean`).

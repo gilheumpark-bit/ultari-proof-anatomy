@@ -65,3 +65,191 @@ $$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w
    $$1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = \left(\frac{23}{24} - \frac{1}{2}\right) \times 44064.$$
    - **기존 `0 sorry` 모듈 조립으로 달성 가능한 영역 (`1~4단계`, 합계 $13260 / 44064 \to \beta = 71/108 \approx 0.6574$ 및 $\beta = 2/3$ 극점 제거)**: 가변 하강 스케일($1836$), 3차 모멘트 전환($1836$), 그램 결합 해제 + 슈티켈베르거 이동($1935$), 미연결 `CubicGauss` 연결($7653$)로 달성됩니다.
    - **진정한 미해결 해석적 난제로 남는 영역 (`5~6단계`, 합계 $3264 + 3672 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$)**: 극점 장벽 제거로 길은 열렸으나, 실제 모멘트 에너지 바닥을 $\frac{71}{108}$에서 $\frac{1}{2}$까지 밀어 내리려면 큰 체 부등식을 넘어서는 비대각 스펙트럼/클루스터만 제곱근 상쇄($\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$)에 대한 새로운 해석적 증명이 필요합니다.
+
+
+---
+
+## 8. 원문 26개 파일·178개 선언 전수 1대1 대조 원장 (`100.0%`)
+
+[`proofs/oai_ref/`](../proofs/oai_ref/Endpoint.lean)에 수록된 OpenAI `#003`의 26개 Lean 4 파일(`3,319`줄) 내 모든 선언(`def`, `abbrev`, `structure`, `theorem`, `lemma` 총 `178 / 178`개 = `100.0%`)을 본 3부작 통합 패키지의 45개 형식 정리와 1대1로 대조한 전수 원장입니다:
+
+| 번호 | 원문 파일 (`proofs/oai_ref/`) 및 줄 번호 | 선언 유형 | 선언 식별자 | 대응 3부작 통합 정리 |
+| :---: | :--- | :---: | :--- | :--- |
+| `001` | [`ArithmeticCutoffTransport.lean:L25`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L25) | `theorem` | `support_iteratedInvariant_subset` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `002` | [`ArithmeticCutoffTransport.lean:L35`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L35) | `theorem` | `support_mixedInvariant_subset` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `003` | [`ArithmeticCutoffTransport.lean:L42`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L42) | `theorem` | `mixedInvariant_totalDegree_le` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `004` | [`ArithmeticCutoffTransport.lean:L47`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L47) | `theorem` | `inBox_mixedInvariant` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `005` | [`ArithmeticCutoffTransport.lean:L58`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L58) | `theorem` | `totalDegree_le_of_inBox` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `006` | [`ArithmeticCutoffTransport.lean:L69`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L69) | `theorem` | `mixedInvariant_totalDegree_le_of_inBox` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `007` | [`ArithmeticCutoffTransport.lean:L79`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L79) | `theorem` | `mixedInvariant_totalDegree_lt_of_inBox` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `008` | [`ArithmeticCutoffTransport.lean:L107`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L107) | `def` | `boundedDerivativePolynomial` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `009` | [`ArithmeticCutoffTransport.lean:L112`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L112) | `theorem` | `derivativeIdeal_eq_map_boundedDerivative` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `010` | [`ArithmeticCutoffTransport.lean:L128`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L128) | `theorem` | `source_vanishing_on_four_truncations` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `011` | [`ArithmeticCutoffTransport.lean:L151`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L151) | `theorem` | `original_hyperplane_basis_independent` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `012` | [`ArithmeticCutoffTransport.lean:L157`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L157) | `theorem` | `actual_positive_component_length_lower` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `013` | [`ArithmeticCutoffTransport.lean:L183`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L183) | `theorem` | `actual_component_length_lower` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `014` | [`ArithmeticCutoffTransport.lean:L207`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L207) | `theorem` | `derivative_component_height_bounds` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `015` | [`ArithmeticCutoffTransport.lean:L229`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L229) | `theorem` | `exists_actual_component_with_length_lower` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `016` | [`ArithmeticCutoffTransport.lean:L255`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L255) | `theorem` | `actual_derivative_component_length_upper` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `017` | [`ArithmeticCutoffTransport.lean:L277`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L277) | `theorem` | `actual_rectangularAssertion_of_localBezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `018` | [`ArithmeticCutoffTransport.lean:L296`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L296) | `theorem` | `actual_cutoff_spanning_of_localBezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `019` | [`ArithmeticCutoffTransport.lean:L306`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L306) | `theorem` | `actual_selected_determinant_of_localBezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `020` | [`ArithmeticCutoffTransport.lean:L333`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L333) | `def` | `boxEnumeration` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `021` | [`ArithmeticCutoffTransport.lean:L336`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L336) | `def` | `boxExponents` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `022` | [`ArithmeticCutoffTransport.lean:L339`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L339) | `theorem` | `boxExponents_injective` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `023` | [`ArithmeticCutoffTransport.lean:L342`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L342) | `theorem` | `boxExponents_lt` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `024` | [`ArithmeticCutoffTransport.lean:L347`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L347) | `def` | `sourceCutoff` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `025` | [`ArithmeticCutoffTransport.lean:L350`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L350) | `theorem` | `sourceCutoff_le` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `026` | [`ArithmeticCutoffTransport.lean:L356`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L356) | `def` | `ActualCutoffSpanning` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `027` | [`ArithmeticCutoffTransport.lean:L382`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L382) | `theorem` | `rowSpan_top_of_field_map` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `028` | [`ArithmeticCutoffTransport.lean:L401`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L401) | `theorem` | `rowSpan_top_reindex` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `029` | [`ArithmeticCutoffTransport.lean:L414`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L414) | `theorem` | `actual_omega_independent` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `030` | [`ArithmeticCutoffTransport.lean:L429`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L429) | `theorem` | `actual_complex_cutoff_spanning` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `031` | [`ArithmeticCutoffTransport.lean:L449`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L449) | `theorem` | `map_theta_eigenvalue` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `032` | [`ArithmeticCutoffTransport.lean:L456`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L456) | `theorem` | `arithmeticRow_map_eq_sourceRow` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `033` | [`ArithmeticCutoffTransport.lean:L488`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L488) | `theorem` | `actualCutoffSpanning_of_localBezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `034` | [`BezoutBoundary.lean:L13`](../proofs/oai_ref/BezoutBoundary.lean#L13) | `theorem` | `uniform_exclusion_of_local_isolated_bezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `035` | [`CentralExponent.lean:L11`](../proofs/oai_ref/CentralExponent.lean#L11) | `def` | `sourceExponent` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `036` | [`CentralExponent.lean:L15`](../proofs/oai_ref/CentralExponent.lean#L15) | `def` | `relativeExponent` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `037` | [`CentralExponent.lean:L18`](../proofs/oai_ref/CentralExponent.lean#L18) | `lemma` | `original_exponent_identity` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `038` | [`CentralExponent.lean:L23`](../proofs/oai_ref/CentralExponent.lean#L23) | `lemma` | `frequency_slope_bounds` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `039` | [`CentralExponent.lean:L28`](../proofs/oai_ref/CentralExponent.lean#L28) | `lemma` | `relative_extend` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `040` | [`CentralExponent.lean:L36`](../proofs/oai_ref/CentralExponent.lean#L36) | `lemma` | `balanced_source_margin` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `041` | [`CentralExponent.lean:L53`](../proofs/oai_ref/CentralExponent.lean#L53) | `lemma` | `high_source_margin` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `042` | [`CentralExponent.lean:L66`](../proofs/oai_ref/CentralExponent.lean#L66) | `lemma` | `floor_source_margin` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `043` | [`CentralExponent.lean:L75`](../proofs/oai_ref/CentralExponent.lean#L75) | `lemma` | `intermediate_source_margin` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `044` | [`CentralExponent.lean:L83`](../proofs/oai_ref/CentralExponent.lean#L83) | `def` | `realLoss` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `045` | [`CentralExponent.lean:L86`](../proofs/oai_ref/CentralExponent.lean#L86) | `lemma` | `realLoss_bound` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `046` | [`CentralExponent.lean:L94`](../proofs/oai_ref/CentralExponent.lean#L94) | `lemma` | `physical_scale_identity` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_23` (`L154`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `047` | [`CorrectionBounds.lean:L11`](../proofs/oai_ref/CorrectionBounds.lean#L11) | `lemma` | `one_sub_ne_zero_of_norm_le_half` | `thm_07` (`L124`), `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `048` | [`CorrectionBounds.lean:L17`](../proofs/oai_ref/CorrectionBounds.lean#L17) | `lemma` | `inv_one_sub_norm_le_two` | `thm_07` (`L124`), `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `049` | [`CorrectionBounds.lean:L24`](../proofs/oai_ref/CorrectionBounds.lean#L24) | `theorem` | `unramified_marked_error_bound` | `thm_07` (`L124`), `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `050` | [`CorrectionBounds.lean:L56`](../proofs/oai_ref/CorrectionBounds.lean#L56) | `theorem` | `continuedCorrection_defect_bound` | `thm_07` (`L124`), `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `051` | [`CubeFloorSaving.lean:L17`](../proofs/oai_ref/CubeFloorSaving.lean#L17) | `theorem` | `savingFloorPoolOutside` | `thm_14` (`L270`), `thm_16` (`L18`), `thm_27` (`L242`) |
+| `052` | [`CubeFloorSaving.lean:L21`](../proofs/oai_ref/CubeFloorSaving.lean#L21) | `theorem` | `actual_floor_cube_saving` | `thm_14` (`L270`), `thm_16` (`L18`), `thm_27` (`L242`) |
+| `053` | [`Endpoint.lean:L14`](../proofs/oai_ref/Endpoint.lean#L14) | `def` | `denominator` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `054` | [`Endpoint.lean:L16`](../proofs/oai_ref/Endpoint.lean#L16) | `def` | `primeWeight` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `055` | [`Endpoint.lean:L18`](../proofs/oai_ref/Endpoint.lean#L18) | `def` | `balanceDenominator` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `056` | [`Endpoint.lean:L21`](../proofs/oai_ref/Endpoint.lean#L21) | `def` | `certificateWeight` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `057` | [`Endpoint.lean:L23`](../proofs/oai_ref/Endpoint.lean#L23) | `def` | `balancedCutoff` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `058` | [`Endpoint.lean:L26`](../proofs/oai_ref/Endpoint.lean#L26) | `def` | `balancedRowCount` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `059` | [`Endpoint.lean:L29`](../proofs/oai_ref/Endpoint.lean#L29) | `def` | `balancedExponent` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `060` | [`Endpoint.lean:L33`](../proofs/oai_ref/Endpoint.lean#L33) | `theorem` | `denominator_bounds` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `061` | [`Endpoint.lean:L38`](../proofs/oai_ref/Endpoint.lean#L38) | `theorem` | `primeWeight_bounds` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `062` | [`Endpoint.lean:L45`](../proofs/oai_ref/Endpoint.lean#L45) | `theorem` | `balanceDenominator_bounds` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `063` | [`Endpoint.lean:L58`](../proofs/oai_ref/Endpoint.lean#L58) | `theorem` | `endpoint_identity` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `064` | [`Endpoint.lean:L68`](../proofs/oai_ref/Endpoint.lean#L68) | `theorem` | `balanced_endpoint_margin` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `065` | [`Endpoint.lean:L102`](../proofs/oai_ref/Endpoint.lean#L102) | `theorem` | `balanced_endpoint_strict` | `thm_16` (`L18`), `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_21` (`L116`), `thm_34` (`L130`), `thm_35` (`L144`) |
+| `066` | [`Euler.lean:L11`](../proofs/oai_ref/Euler.lean#L11) | `def` | `markedFactor` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `067` | [`Euler.lean:L14`](../proofs/oai_ref/Euler.lean#L14) | `def` | `markedTableSeries` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `068` | [`Euler.lean:L18`](../proofs/oai_ref/Euler.lean#L18) | `theorem` | `marked_table_resummation` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `069` | [`Euler.lean:L36`](../proofs/oai_ref/Euler.lean#L36) | `theorem` | `unramified_marked_error` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `070` | [`EulerCoordinates.lean:L11`](../proofs/oai_ref/EulerCoordinates.lean#L11) | `def` | `coordV` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `071` | [`EulerCoordinates.lean:L12`](../proofs/oai_ref/EulerCoordinates.lean#L12) | `def` | `coordR` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `072` | [`EulerCoordinates.lean:L13`](../proofs/oai_ref/EulerCoordinates.lean#L13) | `def` | `coordW` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `073` | [`EulerCoordinates.lean:L14`](../proofs/oai_ref/EulerCoordinates.lean#L14) | `def` | `coordD` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `074` | [`EulerCoordinates.lean:L15`](../proofs/oai_ref/EulerCoordinates.lean#L15) | `def` | `coordK` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `075` | [`EulerCoordinates.lean:L17`](../proofs/oai_ref/EulerCoordinates.lean#L17) | `def` | `unramifiedClosed` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `076` | [`EulerCoordinates.lean:L25`](../proofs/oai_ref/EulerCoordinates.lean#L25) | `def` | `actualAPhase` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `077` | [`EulerCoordinates.lean:L28`](../proofs/oai_ref/EulerCoordinates.lean#L28) | `def` | `actualUnramifiedClosed` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `078` | [`EulerCoordinates.lean:L35`](../proofs/oai_ref/EulerCoordinates.lean#L35) | `lemma` | `actualAPhase_norm_le_one` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `079` | [`EulerCoordinates.lean:L42`](../proofs/oai_ref/EulerCoordinates.lean#L42) | `lemma` | `coordV_norm` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `080` | [`EulerCoordinates.lean:L47`](../proofs/oai_ref/EulerCoordinates.lean#L47) | `lemma` | `coordR_norm_le` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `081` | [`EulerCoordinates.lean:L54`](../proofs/oai_ref/EulerCoordinates.lean#L54) | `lemma` | `coordW_norm_le` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `082` | [`EulerCoordinates.lean:L59`](../proofs/oai_ref/EulerCoordinates.lean#L59) | `lemma` | `coordD_norm_le` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `083` | [`EulerCoordinates.lean:L67`](../proofs/oai_ref/EulerCoordinates.lean#L67) | `lemma` | `coordK_norm_le` | `thm_26` (`L224`), `thm_39` (`L232`), `thm_40` (`L249`), `thm_41` (`L264`) |
+| `084` | [`GeometricBoundary.lean:L18`](../proofs/oai_ref/GeometricBoundary.lean#L18) | `theorem` | `uniform_exclusion_of_actual_cutoff` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `085` | [`GramBound.lean:L13`](../proofs/oai_ref/GramBound.lean#L13) | `theorem` | `actual_additive_gram_bound` | `thm_15` (`L289`), `thm_20` (`L95`), `thm_21` (`L116`), `thm_24` (`L179`), `thm_26` (`L224`), `thm_38` (`L212`) |
+| `086` | [`GramScaleLoss.lean:L8`](../proofs/oai_ref/GramScaleLoss.lean#L8) | `lemma` | `nonexceptional_scale_identity` | `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`), `thm_38` (`L212`), `thm_42` (`L284`) |
+| `087` | [`GramScaleLoss.lean:L21`](../proofs/oai_ref/GramScaleLoss.lean#L21) | `lemma` | `nonexceptional_scale_loss` | `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`), `thm_38` (`L212`), `thm_42` (`L284`) |
+| `088` | [`HighRowsCentralQuotient.lean:L8`](../proofs/oai_ref/HighRowsCentralQuotient.lean#L8) | `lemma` | `unramifiedClosed_central_lower` | `thm_07` (`L124`), `thm_28` (`L258`) |
+| `089` | [`HighRowsCentralQuotient.lean:L30`](../proofs/oai_ref/HighRowsCentralQuotient.lean#L30) | `lemma` | `unramifiedSelected_central_quotient` | `thm_07` (`L124`), `thm_28` (`L258`) |
+| `090` | [`HighRowsCentralTerms.lean:L14`](../proofs/oai_ref/HighRowsCentralTerms.lean#L14) | `theorem` | `sourceRowTerm_central_nonstrict` | `thm_22` (`L137`), `thm_24` (`L179`), `thm_41` (`L264`) |
+| `091` | [`HighRowsScalar.lean:L14`](../proofs/oai_ref/HighRowsScalar.lean#L14) | `theorem` | `row_even_kzero` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `092` | [`HighRowsScalar.lean:L29`](../proofs/oai_ref/HighRowsScalar.lean#L29) | `theorem` | `row_nonprincipal_kzero` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `093` | [`HighRowsScalar.lean:L41`](../proofs/oai_ref/HighRowsScalar.lean#L41) | `theorem` | `row_squarefree_kone` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `094` | [`HighRowsScalar.lean:L61`](../proofs/oai_ref/HighRowsScalar.lean#L61) | `theorem` | `row_nonprincipal_kone` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `095` | [`HighRowsTail.lean:L11`](../proofs/oai_ref/HighRowsTail.lean#L11) | `lemma` | `gaussValuationTable_above` | `thm_41` (`L264`), `thm_44` (`L316`) |
+| `096` | [`HighRowsTail.lean:L18`](../proofs/oai_ref/HighRowsTail.lean#L18) | `theorem` | `positiveScalar_stable_large` | `thm_41` (`L264`), `thm_44` (`L316`) |
+| `097` | [`HighRowsTail.lean:L39`](../proofs/oai_ref/HighRowsTail.lean#L39) | `theorem` | `rowMarkedTerm_base_tail` | `thm_41` (`L264`), `thm_44` (`L316`) |
+| `098` | [`HighRowsTail.lean:L50`](../proofs/oai_ref/HighRowsTail.lean#L50) | `theorem` | `rowInner_base_rational` | `thm_41` (`L264`), `thm_44` (`L316`) |
+| `099` | [`HighRowsUnramified.lean:L13`](../proofs/oai_ref/HighRowsUnramified.lean#L13) | `lemma` | `rowMarkedTerm_unramified` | `thm_07` (`L124`), `thm_39` (`L232`) |
+| `100` | [`HighRowsUnramified.lean:L21`](../proofs/oai_ref/HighRowsUnramified.lean#L21) | `lemma` | `rowMarkedSeries_unramified` | `thm_07` (`L124`), `thm_39` (`L232`) |
+| `101` | [`HighRowsUnramified.lean:L36`](../proofs/oai_ref/HighRowsUnramified.lean#L36) | `lemma` | `rowClosedMarked_unramified` | `thm_07` (`L124`), `thm_39` (`L232`) |
+| `102` | [`HighRowsUnramified.lean:L54`](../proofs/oai_ref/HighRowsUnramified.lean#L54) | `theorem` | `sourceRowSeries_unramified_euler` | `thm_07` (`L124`), `thm_39` (`L232`) |
+| `103` | [`IsolatedBezoutFromRegularSelection.lean:L25`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L25) | `def` | `LocalIsolatedBezoutStatement` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `104` | [`IsolatedBezoutFromRegularSelection.lean:L49`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L49) | `theorem` | `local_length_le_of_local_isolated_bezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `105` | [`IsolatedBezoutFromRegularSelection.lean:L104`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L104) | `theorem` | `quotient_length_eq_of_ringEquiv` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `106` | [`IsolatedBezoutFromRegularSelection.lean:L128`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L128) | `def` | `polynomialComponentPrime` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `107` | [`IsolatedBezoutFromRegularSelection.lean:L134`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L134) | `theorem` | `polynomialComponentPrime_mem_minimalPrimes` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `108` | [`IsolatedBezoutFromRegularSelection.lean:L142`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L142) | `theorem` | `polynomialComponentPrime_height` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `109` | [`IsolatedBezoutFromRegularSelection.lean:L146`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L146) | `def` | `polynomialTorusLocalEquiv` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `110` | [`IsolatedBezoutFromRegularSelection.lean:L159`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L159) | `theorem` | `torus_localized_ideal_eq_map_polynomial_localized` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `111` | [`IsolatedBezoutFromRegularSelection.lean:L175`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L175) | `def` | `polynomialTorusLocalQuotientEquiv` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `112` | [`IsolatedBezoutFromRegularSelection.lean:L186`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L186) | `theorem` | `polynomial_torus_local_quotient_length_eq` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `113` | [`IsolatedBezoutFromRegularSelection.lean:L209`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L209) | `theorem` | `torus_local_length_le_of_local_isolated_bezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `114` | [`IsolatedBezoutFromRegularSelection.lean:L247`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L247) | `theorem` | `span_range_list_get` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `115` | [`IsolatedBezoutFromRegularSelection.lean:L253`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L253) | `theorem` | `span_range_map_list_get` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `116` | [`IsolatedBezoutFromRegularSelection.lean:L267`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L267) | `theorem` | `finiteLength_localized_minimal_quotient` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `117` | [`IsolatedBezoutFromRegularSelection.lean:L287`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L287) | `theorem` | `affine_local_regular_list_bezout` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `118` | [`IsolatedBezoutFromRegularSelection.lean:L346`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L346) | `theorem` | `localIsolatedBezout_of_actual_regular_selection` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `119` | [`Local.lean:L11`](../proofs/oai_ref/Local.lean#L11) | `def` | `localFactor` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `120` | [`Local.lean:L13`](../proofs/oai_ref/Local.lean#L13) | `def` | `localCorrection` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `121` | [`Local.lean:L16`](../proofs/oai_ref/Local.lean#L16) | `def` | `continuedCorrection` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `122` | [`Local.lean:L19`](../proofs/oai_ref/Local.lean#L19) | `theorem` | `continuedCorrection_eq_raw` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `123` | [`Local.lean:L26`](../proofs/oai_ref/Local.lean#L26) | `def` | `compensatedReplacement` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `124` | [`Local.lean:L29`](../proofs/oai_ref/Local.lean#L29) | `theorem` | `correction_defect` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `125` | [`Local.lean:L38`](../proofs/oai_ref/Local.lean#L38) | `theorem` | `compensatedReplacement_eq_raw` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `126` | [`Local.lean:L49`](../proofs/oai_ref/Local.lean#L49) | `theorem` | `compensatedReplacement_ramified` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `127` | [`Local.lean:L56`](../proofs/oai_ref/Local.lean#L56) | `theorem` | `normalized_cancellation` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `128` | [`Local.lean:L68`](../proofs/oai_ref/Local.lean#L68) | `theorem` | `continuedCorrection_defect` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `129` | [`Local.lean:L76`](../proofs/oai_ref/Local.lean#L76) | `theorem` | `continued_normalized_cancellation` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `130` | [`Local.lean:L88`](../proofs/oai_ref/Local.lean#L88) | `theorem` | `continued_ramified_compensation` | `thm_07` (`L124`), `thm_39` (`L232`), `thm_40` (`L249`) |
+| `131` | [`LowGramScale.lean:L8`](../proofs/oai_ref/LowGramScale.lean#L8) | `lemma` | `compensated_gram_ratio` | `thm_09` (`L165`), `thm_15` (`L289`), `thm_20` (`L95`), `thm_27` (`L242`), `thm_38` (`L212`) |
+| `132` | [`LowGramScale.lean:L12`](../proofs/oai_ref/LowGramScale.lean#L12) | `lemma` | `compensated_gram_scale_bound` | `thm_09` (`L165`), `thm_15` (`L289`), `thm_20` (`L95`), `thm_27` (`L242`), `thm_38` (`L212`) |
+| `133` | [`LowGramScale.lean:L37`](../proofs/oai_ref/LowGramScale.lean#L37) | `lemma` | `source_gram_power` | `thm_09` (`L165`), `thm_15` (`L289`), `thm_20` (`L95`), `thm_27` (`L242`), `thm_38` (`L212`) |
+| `134` | [`LowGramScale.lean:L44`](../proofs/oai_ref/LowGramScale.lean#L44) | `lemma` | `source_gram_sqrt_power` | `thm_09` (`L165`), `thm_15` (`L289`), `thm_20` (`L95`), `thm_27` (`L242`), `thm_38` (`L212`) |
+| `135` | [`LowSourceScales.lean:L10`](../proofs/oai_ref/LowSourceScales.lean#L10) | `lemma` | `source_scale_ratio` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `136` | [`LowSourceScales.lean:L15`](../proofs/oai_ref/LowSourceScales.lean#L15) | `lemma` | `source_scale_square` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `137` | [`LowSourceScales.lean:L20`](../proofs/oai_ref/LowSourceScales.lean#L20) | `lemma` | `source_compensated_scale_admissible` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `138` | [`LowSourceScales.lean:L38`](../proofs/oai_ref/LowSourceScales.lean#L38) | `lemma` | `source_compensated_gram_scale` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `139` | [`LowSourceScales.lean:L62`](../proofs/oai_ref/LowSourceScales.lean#L62) | `lemma` | `source_compensated_gram_sqrt` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `140` | [`LowSourceScales.lean:L72`](../proofs/oai_ref/LowSourceScales.lean#L72) | `lemma` | `lowGramFactor_source_bound` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `141` | [`LowSourceScales.lean:L79`](../proofs/oai_ref/LowSourceScales.lean#L79) | `lemma` | `eventually_compensated_source_scales` | `thm_04` (`L70`), `thm_17` (`L41`), `thm_36` (`L167`), `thm_37` (`L185`) |
+| `142` | [`Parameters.lean:L12`](../proofs/oai_ref/Parameters.lean#L12) | `theorem` | `compensated_geometry` | `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_20` (`L95`), `thm_35` (`L144`), `thm_37` (`L185`) |
+| `143` | [`Parameters.lean:L28`](../proofs/oai_ref/Parameters.lean#L28) | `theorem` | `exists_height_cutoff` | `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_20` (`L95`), `thm_35` (`L144`), `thm_37` (`L185`) |
+| `144` | [`Parameters.lean:L43`](../proofs/oai_ref/Parameters.lean#L43) | `theorem` | `exists_tail_order` | `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_20` (`L95`), `thm_35` (`L144`), `thm_37` (`L185`) |
+| `145` | [`Parameters.lean:L49`](../proofs/oai_ref/Parameters.lean#L49) | `theorem` | `cumulative_frequency_bound` | `thm_17` (`L41`), `thm_18` (`L59`), `thm_19` (`L77`), `thm_20` (`L95`), `thm_35` (`L144`), `thm_37` (`L185`) |
+| `146` | [`ParametersHighData.lean:L9`](../proofs/oai_ref/ParametersHighData.lean#L9) | `structure` | `HighData` | `thm_24` (`L179`), `thm_28` (`L258`), `thm_44` (`L316`) |
+| `147` | [`ParametersHighData.lean:L52`](../proofs/oai_ref/ParametersHighData.lean#L52) | `theorem` | `exists_high_data` | `thm_24` (`L179`), `thm_28` (`L258`), `thm_44` (`L316`) |
+| `148` | [`PivotBounds.lean:L17`](../proofs/oai_ref/PivotBounds.lean#L17) | `theorem` | `source_pivot_bounds` | `thm_28` (`L258`), `thm_30` (`L298`), `thm_45` (`L338`) |
+| `149` | [`PrincipalRemainderBounds.lean:L16`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L16) | `lemma` | `active_prime_sum_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `150` | [`PrincipalRemainderBounds.lean:L61`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L61) | `def` | `slotConstant` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `151` | [`PrincipalRemainderBounds.lean:L64`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L64) | `lemma` | `slotConstant_nonneg` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `152` | [`PrincipalRemainderBounds.lean:L71`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L71) | `theorem` | `window_sharp_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `153` | [`PrincipalRemainderBounds.lean:L119`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L119) | `def` | `scalePower` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `154` | [`PrincipalRemainderBounds.lean:L122`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L122) | `lemma` | `scalePower_nonneg` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `155` | [`PrincipalRemainderBounds.lean:L138`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L138) | `lemma` | `continued_source_sharp_pointwise` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `156` | [`PrincipalRemainderBounds.lean:L177`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L177) | `lemma` | `full_sharp_pointwise` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `157` | [`PrincipalRemainderBounds.lean:L217`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L217) | `lemma` | `residue_sharp_pointwise` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `158` | [`PrincipalRemainderBounds.lean:L248`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L248) | `lemma` | `vertical_triple_eq_joint` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `159` | [`PrincipalRemainderBounds.lean:L258`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L258) | `lemma` | `vertical_pair_eq_joint` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `160` | [`PrincipalRemainderBounds.lean:L267`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L267) | `lemma` | `normalizer_norm_pos` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `161` | [`PrincipalRemainderBounds.lean:L280`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L280) | `theorem` | `full_scale_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `162` | [`PrincipalRemainderBounds.lean:L335`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L335) | `theorem` | `residue_scale_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `163` | [`PrincipalRemainderBounds.lean:L397`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L397) | `theorem` | `full_vertical_scale_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `164` | [`PrincipalRemainderBounds.lean:L432`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L432) | `theorem` | `residue_vertical_scale_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `165` | [`PrincipalRemainderBounds.lean:L468`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L468) | `theorem` | `ordered_remainders_scale_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `166` | [`PrincipalRemainderBounds.lean:L518`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L518) | `lemma` | `source_scale_identity` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `167` | [`PrincipalRemainderBounds.lean:L531`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L531) | `lemma` | `source_w_scale_identity` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `168` | [`PrincipalRemainderBounds.lean:L538`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L538) | `lemma` | `source_z_scale_identity` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `169` | [`PrincipalRemainderBounds.lean:L545`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L545) | `lemma` | `eventual_annulus_threshold` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `170` | [`PrincipalRemainderBounds.lean:L561`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L561) | `theorem` | `source_remainders_power_bound` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `171` | [`PrincipalRemainderBounds.lean:L594`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L594) | `lemma` | `source_w_strict_exponent` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `172` | [`PrincipalRemainderBounds.lean:L597`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L597) | `lemma` | `source_z_strict_exponent` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `173` | [`PrincipalRemainderBounds.lean:L600`](../proofs/oai_ref/PrincipalRemainderBounds.lean#L600) | `theorem` | `source_remainders_strict_saving` | `thm_05` (`L90`), `thm_22` (`L137`), `thm_26` (`L224`), `thm_41` (`L264`) |
+| `174` | [`ScalarTable.lean:L11`](../proofs/oai_ref/ScalarTable.lean#L11) | `def` | `gaussValuationTable` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `175` | [`ScalarTable.lean:L15`](../proofs/oai_ref/ScalarTable.lean#L15) | `theorem` | `actualSextic_gaussValuationTable` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `176` | [`ScalarTable.lean:L24`](../proofs/oai_ref/ScalarTable.lean#L24) | `theorem` | `positiveScalar_actual_table` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `177` | [`ScalarTable.lean:L50`](../proofs/oai_ref/ScalarTable.lean#L50) | `theorem` | `zero_index_scalar` | `thm_14` (`L270`), `thm_41` (`L264`) |
+| `178` | [`Theorem.lean:L11`](../proofs/oai_ref/Theorem.lean#L11) | `theorem` | `exists_absolute_real_zero_gap` | `thm_28` (`L258`), `thm_29` (`L280`), `thm_30` (`L298`), `thm_43` (`L299`), `thm_44` (`L316`), `thm_45` (`L338`) |

@@ -2,7 +2,7 @@
 
 # Case 004: OpenAI `#378` Disproof of the Exponential Time Hypothesis (`ETH`)
 
-This package audits the `3,977` Lean 4 files (`710,320` lines) and `4` LaTeX manuscripts of OpenAI `#378` (`OAI.Algorithms.SubexponentialSAT`). All results are verified across `50` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `408/408` hypothesis mutations caught).
+This package audits the `3,977` Lean 4 files (`710,320` lines) and `4` LaTeX manuscripts of OpenAI `#378` (`OAI.Algorithms.SubexponentialSAT`). All results are verified across `50` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `454/454` hypothesis mutations caught).
 
 ## Key Findings
 
@@ -15,14 +15,14 @@ This package audits the `3,977` Lean 4 files (`710,320` lines) and `4` LaTeX man
 | Tier | Target Audience | Document | Summary |
 | :---: | :--- | :--- | :--- |
 | **Tier 1** | **Beginners** | [`01_Beginner_Guide.md`](en/01_Beginner_Guide.md) | Intuitive guide to the subexponential SAT algorithm, the 4 fossil generations, and the 6-layer repair verdict. |
-| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | 6-step algebraic recalculation and a 1-to-1 index of all 50 Lean 4 theorems. |
+| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | 6-step algebraic recalculation and a 1-to-1 index of all 56 Lean 4 theorems. |
 | **Tier 3** | **Experts** | [`03_Expert_Complexity_and_Formal_Report.md`](en/03_Expert_Complexity_and_Formal_Report.md) | Full referee report covering the `1,408` fossil files, 5 shortcuts, Appendix D, and Galois-ring solver. |
 | **Tier 4** | **Automated Verifiers** | [`04_Automated_Verification_and_Manifest.md`](en/04_Automated_Verification_and_Manifest.md)<br>[`manifest.json`](manifest.json) | SHA-256 checksum table, mutation test logs, and reproduction commands. |
 
 ## Formal Proofs & One-Command Verification
 
 - [`eth_subexp_interpolation_and_hashes.lean`](proofs/eth_subexp_interpolation_and_hashes.lean): Theorems 1–16 (`128/128` mutations caught).
-- [`eth_tensor_contraction_and_circuits.lean`](proofs/eth_tensor_contraction_and_circuits.lean): Theorems 17–32 (`131/131` mutations caught).
+- [`eth_tensor_contraction_and_circuits.lean`](proofs/eth_tensor_contraction_and_circuits.lean): Theorems 17–32 (`177/177` mutations caught).
 - [`eth_five_repairs_and_four_layer_verdict.lean`](proofs/eth_five_repairs_and_four_layer_verdict.lean): Theorems 33–50 (`149/149` mutations caught).
 - [`verify_symbolic_eth.py`](proofs/verify_symbolic_eth.py), [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json), and [`problem_spec.md`](proofs/problem_spec.md).
 

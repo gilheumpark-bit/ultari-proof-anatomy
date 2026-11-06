@@ -182,13 +182,13 @@
     "README.ko.md": "e123e489661db7c5c6bd670725850e80b4cfb190e995581ca102ffe25aee3ffd",
     "README.md": "fa7381ea644241d6cfa73ac2af9e0d8bf4e198072948699556cf76dd60818f70",
     "en/01_Beginner_Intuitive_Guide.md": "2d433085521c992dcc8b3f4ca75ce70738bfe931d3c160be2f8eabf4bd26b1ce",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "07263bb369cc614011b3a8ea1117865d9f45bbdbfacfcfbc964cf3910aeac3d2",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "cea492f798fb97f955a18a2ef9ba961cffe1ff473645124f2f29825cd6ea5a11",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "8ac7caaf33bcab1f150b33d403d522aceb69fbcbd38eb5161324a100201a11c8",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "3fba49fc80d76630ee9c388397535dbe23a11b6aab70477c0f8575ed646c32fa",
     "en/04_Machine_Verification_and_Parser_Spec.md": "7b0be701f95ae0fa4c606b2e55648b9e170dc710a05219cf847649630554955c",
     "en/README.md": "354b5b9136a348ad5b3922f39ede52c844d74c0884124a8150d8fff1b3a95f57",
     "ko/01_초보자용_쉬운해설.md": "c67aa719099cb2d3c15fca0c59c9b661a3df46b76fba2702492e2bbbe8f26992",
-    "ko/02_중급자용_구조및수식가이드.md": "563660dd184daf47a29920da0d1acb3d2aa5b0e22af3237db9e7c8f37d2f50c8",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "2bf82747eb1eb4769997e7ab4a6e6328caa61a8057ad7f0b236c1f5379ce96b2",
+    "ko/02_중급자용_구조및수식가이드.md": "c6285ec786011c1ae81f47c208734b088c98414a4fa53a7ec0ff369ef1e36a47",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "f4e60ed2b8baa98c9aab60bc77a28af1a14222bb8d6d240abd385c3eb00e4abf",
     "ko/04_자동검증및파서용_명세서.md": "f1faca43b10cc7e805ee5729c04139ee503d7bb6ffc578002ba408ac2d289e32",
     "ko/README.md": "a4f85d4cb52aa93f7676719cac793ecb7891e8417f7f4d5db4d4eec20021e4a5",
     "proofs/problem_spec.md": "274b752f2943dffbb545087ecec16c101579dbf6a62c22f94ef461ca2aca1d3e",
@@ -254,8 +254,8 @@
       "lines": 499,
       "theorems": 38,
       "sorry_count": 0,
-      "sha256": "ad687a5824e113784b5931d8e261dd73bcce8d9367312023626fd47072f8ce9e",
-      "bytes": 37736
+      "sha256": "a8c12268b564044b30b9b068ffe79cfc70a9e22314d5f1b827550df4e0d959f5",
+      "bytes": 37735
     },
     {
       "path": "proofs/qrh_eight_tasks_critical_upgrade.lean",
@@ -263,8 +263,8 @@
       "lines": 242,
       "theorems": 10,
       "sorry_count": 0,
-      "sha256": "8cf658e0b4f1e56e74c3d203bcfa497c0f59255dda74e147f00f22f2b2ed297f",
-      "bytes": 22400
+      "sha256": "0692a4661f613ba0bb12a2ed48a0f9b1d1ce46ee70f20823df5ece03c5be83b0",
+      "bytes": 22385
     },
     {
       "path": "proofs/verify_qrh_mathematician_audit.py",

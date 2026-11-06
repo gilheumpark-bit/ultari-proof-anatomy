@@ -6,10 +6,10 @@ This specification defines the deterministic verification commands, SHA-256 arti
 
 ## 1. Verification Commands
 
-Run the following commands from the case root directory to reproduce all 25 Lean 4 kernel proofs (`exit 0`), SymPy symbolic output, and SHA-256 checksums:
+Run the following commands from the case root directory to reproduce all 35 Lean 4 kernel proofs (`exit 0`), SymPy symbolic output, and SHA-256 checksums:
 
 ```bash
-# 1. Lean 4 kernel compilation check (Theorems 1-27, 0 sorry, 0 axiom)
+# 1. Lean 4 kernel compilation check (Theorems 1-35, 0 sorry, 0 axiom)
 lean proofs/k3_forensic_paths.lean
 
 # 2. Symbolic solver reproduction check
@@ -29,7 +29,7 @@ sha256sum proofs/k3_forensic_paths.lean \
 
 | Relative Path | SHA-256 Checksum | Description |
 | :--- | :--- | :--- |
-| [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean) | `ae0d351013e44771f402000243a2d5d10d86df592a38df3ad21c576c9c735bb4` | 452 lines, 27 Lean 4 theorems (`Theorem 1`..`Theorem 27`), `0 sorry`, `0 axiom`, `112/112 caught` |
+| [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean) | `cac5492d26cb1774bc7a19b83af2498b003a06a235f06ef400d0058e60a66011` | 594 lines, 35 Lean 4 theorems (`Theorem 1`..`Theorem 35`), `0 sorry`, `0 axiom`, `135/135 caught` |
 | [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py) | `1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be` | Independent SymPy symbolic solver for Problems 1-5 |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a` | Deterministic JSON output for Problems 1-5 |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74` | Specification of Problems 1-5 |
@@ -66,3 +66,11 @@ sha256sum proofs/k3_forensic_paths.lean \
 - [`additivity_vs_hyperkahler_rigidity_circularity`](../proofs/k3_forensic_paths.lean#L376-L400)
 - [`universal_mumford_diagonal_overflow_for_all_g_and_M`](../proofs/k3_forensic_paths.lean#L408-L427)
 - [`universal_g1_branch_stokes_and_kummer_moduli_no_go`](../proofs/k3_forensic_paths.lean#L438-L450)
+- [`clifford_octonion_matrix_generation_and_skew_product`](../proofs/k3_forensic_paths.lean#L461-L470)
+- [`kuga_satake_cup_kernel_and_total_h2_dimension`](../proofs/k3_forensic_paths.lean#L479-L490)
+- [`split_eightfold_weil_class_and_nilmanifold_dimensions`](../proofs/k3_forensic_paths.lean#L499-L511)
+- [`eightfold_a_infinity_virtual_dimension_and_mod4_curvature`](../proofs/k3_forensic_paths.lean#L521-L531)
+- [`theta_ring_nine_lines_and_periodic_module_grading`](../proofs/k3_forensic_paths.lean#L540-L547)
+- [`mixed_product_graph_coboundary_and_cycle_sign_invariance`](../proofs/k3_forensic_paths.lean#L556-L560)
+- [`directed_comparison_and_chain_acyclicity_thresholds`](../proofs/k3_forensic_paths.lean#L568-L575)
+- [`cm_remark_7_5_beauville_projector_denominator_invariance`](../proofs/k3_forensic_paths.lean#L584-L592)

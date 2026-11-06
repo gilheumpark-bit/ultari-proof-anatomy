@@ -7,25 +7,25 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_milne.py"
   },
   "artifacts_sha256": {
-    "README.md": "da31729599e9e45d971f451dd251364b535358f12363303786187eff582037a5",
-    "README.ko.md": "9c9752c11d193289bf5f63e047a30e83e3b0b1d2078683e0107e9a7af3e5b16a",
+    "README.md": "2723b59297ab4ae312de4df7ea1d07199fed29ce71e5e907681d6d8791e4c746",
+    "README.ko.md": "54621561c184ff76b066787ba90d1c7fb5eecfe883fc176930870546aadaf712",
     "proofs/milne_transport_and_filtration.lean": "a97d2b96faa7d0124f0b4e239036509a80c60f0515f771f18a2cccf953542591",
-    "proofs/milne_weil_reduction_and_repairs.lean": "19c47d7ee3025dbb667d9d59eb00513f5c4625e3cfc87740ec0d11997a88a860",
+    "proofs/milne_weil_reduction_and_repairs.lean": "cb1a486ea5d9b40d34549ce4a0e4b6e2003f310519815839c392cd141f57bd5f",
     "proofs/verify_symbolic_milne.py": "13cd8628577c1aa90df21b7ea4c8530605f5eaf57fd17ddb2a2d08171e71e620",
     "proofs/symbolic_verification_result.json": "068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100",
     "proofs/problem_spec.md": "e2873e84dc9152d82b37467af932f6ecc58537508018e138064156c51dcdd71b",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
-    "ko/01_초보자용_쉬운해설.md": "583e42140db78762cceb492b1322338c36e04835e278e376562054091b89ee05",
-    "ko/02_중급자용_구조및수식가이드.md": "d8d418adba0273c6b3ee1f37f9694dc5f2f322204cbfac2fa826d45defce797a",
-    "ko/03_전문가용_산술기하및형식증명보고서.md": "b6389ad1e0d45549e09e8f4d61cbd73b9bd4d1f70f4b66584a692913b835b618",
-    "ko/04_자동검증및파서용_명세서.md": "cb2c7866eda5acdd6cac4ed1f1145b407fa8e84baa59007af633d93597c7c6fb",
-    "en/01_Beginner_Guide.md": "ebeeefb5eeffdb04aeabcfe6883272ab4dccad90e9f419f4589c3b444a557ce9",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "0647cd42a250113f44d697738623fef29eead03a03527fcaa2cf913e7ce4f9ff",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "d8b052bf993823503be1c79f5b64612df4d195ecc86279f8be625469a16619e3",
-    "en/04_Automated_Verification_and_Manifest.md": "38cfd4877814494484a8bd701d968a9f8bd740c82218b0159ea217d2a74f6bad"
+    "ko/01_초보자용_쉬운해설.md": "06d3f89f76d2a065281fe9261a5ca46a480033a4cc1890b945c6a41c24a2bd5d",
+    "ko/02_중급자용_구조및수식가이드.md": "b1a780c46d77e0d2c0edad25e1df719b08d82f6647ac331cd9105fc3a858a454",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "9bb9f919115218cf8f092aa8cf4b1e504a02c6f99c81e797b35b28e4cd394569",
+    "ko/04_자동검증및파서용_명세서.md": "787057f5f07a467043609642e2c454bbc3a7e009d88b6e301dc6434d2542691f",
+    "en/01_Beginner_Guide.md": "19692177c239e18b0f7853039ed8f1a26c4891c3e3f49650d8724197b9f6c4d1",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "489fddc5667e58b9476f57f723e7370de6948eb291f37faf219fa2e14bb95d8c",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "aa60c82bd2b8d88892fdcf1a664d2ad47a43098a9742f07221bf03808e3504dc",
+    "en/04_Automated_Verification_and_Manifest.md": "01cdbe2992f3a21ec9ccdcd91c928e9fc707b81158f6644f95f05f2e6ca8e06c"
   },
   "scope_and_limitations": {
-    "formalized_arithmetic_and_linear_algebra": "33 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 211/211 hypothesis mutations caught = 101/101 + 110/110) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and PyTorch tensor verification."
+    "formalized_arithmetic_and_linear_algebra": "36 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 232/232 hypothesis mutations caught = 101/101 + 131/110) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and PyTorch tensor verification."
   },
   "verified_key_results": {
     "transport_and_filtration_theorems": {
@@ -75,10 +75,10 @@
       "proofs/milne_transport_and_filtration.lean",
       "proofs/milne_weil_reduction_and_repairs.lean"
     ],
-    "theorems_proved": 33,
+    "theorems_proved": 36,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_caught": "211/211",
+    "hypothesis_mutations_caught": "232/232",
     "theorems": [
       {
         "index": 1,
@@ -277,6 +277,24 @@
         "name": "repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive",
         "file": "milne_weil_reduction_and_repairs.lean",
         "line": 317
+      },
+      {
+        "index": 34,
+        "name": "lemma_2_1_comparison_isomorphism_and_tate_twist_compatibility",
+        "file": "proofs/milne_weil_reduction_and_repairs.lean",
+        "line": 329
+      },
+      {
+        "index": 35,
+        "name": "lemma_2_2_lefschetz_pairing_functoriality_and_projection_system",
+        "file": "proofs/milne_weil_reduction_and_repairs.lean",
+        "line": 345
+      },
+      {
+        "index": 36,
+        "name": "corollary_3_4_cm_transport_first_factor_pullback_recovery",
+        "file": "proofs/milne_weil_reduction_and_repairs.lean",
+        "line": 368
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"
