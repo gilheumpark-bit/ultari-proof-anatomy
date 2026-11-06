@@ -84,6 +84,25 @@
       "unrounded_kappa_33_20": "11/50",
       "asymptotic_kappa_17_10": "23/100"
     },
+    "effective_ostmann_thresholds": {
+      "siegel_files_total": 33,
+      "siegel_files_pass_only": 32,
+      "siegel_files_destruct": 1,
+      "K_qrh": 8,
+      "K_away": 1600,
+      "denom_no_root_tatuzawa": 384002,
+      "extended_deletion_budget": 3,
+      "L_sec3_qrh": 39613,
+      "L_sec3_away": 56170,
+      "L_sec3_tatuzawa": 87689,
+      "L_eff_gpt_k7041": 4115904,
+      "L_eff_sharp_k1040": 640722,
+      "L_eff_ultra_k1040_beta30": 255983,
+      "saving_sharp_vs_gpt": 3475182,
+      "saving_ultra_vs_gpt": 3859921,
+      "reduction_ratio_sharp": 6.42,
+      "reduction_ratio_ultra": 16.08
+    },
     "engine_b_constants": {
       "Cs": 17,
       "Ccov": 17,

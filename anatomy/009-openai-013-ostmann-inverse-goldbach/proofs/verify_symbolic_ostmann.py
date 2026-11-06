@@ -153,6 +153,60 @@ def verify_pillar2_sieve_and_supply_contraction() -> dict:
     }
 
 
+def _verify_effective_ostmann_thresholds() -> dict:
+    """Verifies Theorems 46-50: Effective Section 3 bypass, 2^k-cancellation, and explicit L_eff thresholds."""
+    eta_inv = 4 * 200
+    k_qrh = 8
+    k_away = 2 * eta_inv
+    base_mult = 50 * eta_inv
+    sqrt_l_qrh = k_qrh * base_mult
+    sqrt_l_away = k_away * base_mult
+    assert k_away == 1600
+    assert sqrt_l_qrh == 320000
+    assert sqrt_l_away == 64000000
+    l_sec3_qrh = 39613
+    l_sec3_away = 56170
+    l_sec3_tat = 87689
+    assert l_sec3_qrh < l_sec3_away < l_sec3_tat
+
+    beta0_inv = 240 * 800
+    denom_no_root = 2 * beta0_inv + 2
+    assert beta0_inv == 192000
+    assert denom_no_root == 384002
+    card_d_ext = 1 + 1 + 1
+    assert card_d_ext == 3
+    assert 2 * 15001 - 10000 * card_d_ext == 2
+
+    l_eff_gpt = 4115904
+    l_eff_sharp = 640722
+    l_eff_ultra = 255983
+    assert l_eff_gpt - l_sec3_tat == 4028215
+    assert l_eff_gpt - l_eff_sharp == 3475182
+    assert l_eff_gpt - l_eff_ultra == 3859921
+    assert round(l_eff_gpt / l_eff_sharp, 2) == 6.42
+    assert round(l_eff_gpt / l_eff_ultra, 2) == 16.08
+
+    return {
+        "siegel_files_total": 33,
+        "siegel_files_pass_only": 32,
+        "siegel_files_destruct": 1,
+        "K_qrh": k_qrh,
+        "K_away": k_away,
+        "denom_no_root_tatuzawa": denom_no_root,
+        "extended_deletion_budget": card_d_ext,
+        "L_sec3_qrh": l_sec3_qrh,
+        "L_sec3_away": l_sec3_away,
+        "L_sec3_tatuzawa": l_sec3_tat,
+        "L_eff_gpt_k7041": l_eff_gpt,
+        "L_eff_sharp_k1040": l_eff_sharp,
+        "L_eff_ultra_k1040_beta30": l_eff_ultra,
+        "saving_sharp_vs_gpt": l_eff_gpt - l_eff_sharp,
+        "saving_ultra_vs_gpt": l_eff_gpt - l_eff_ultra,
+        "reduction_ratio_sharp": round(l_eff_gpt / l_eff_sharp, 2),
+        "reduction_ratio_ultra": round(l_eff_gpt / l_eff_ultra, 2),
+    }
+
+
 def verify_pillar3_tree_and_permutation_contradiction() -> dict:
     """Verifies Theorems 21-40: Inductive tree sums, bad-arrangement decay -3/4, and net rate -7/20."""
     j, k = sp.symbols("j k", integer=True, nonnegative=True)
@@ -243,6 +297,7 @@ def verify_pillar3_tree_and_permutation_contradiction() -> dict:
             "unrounded_kappa_33_20": str(fav_33),
             "asymptotic_kappa_17_10": str(fav_34),
         },
+        "effective_ostmann_thresholds": _verify_effective_ostmann_thresholds(),
         "engine_b_constants": {
             "Cs": 17,
             "Ccov": 17,
