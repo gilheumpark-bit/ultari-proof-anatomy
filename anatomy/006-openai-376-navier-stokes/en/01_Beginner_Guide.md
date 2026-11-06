@@ -16,6 +16,10 @@ Mathematical physicists distinguish two different questions:
 
 OpenAI `#376` addresses the **second setting**: forced flows starting from rest ($u(0, x) = 0$). After encoding the input word $w$ during $t \in [0, 1]$, the velocity field $U$ and force $f = f_0 + \nu f_1$ are time-1 periodic (`PeriodicAfterOne`) and independent of $w$ for all $t \ge 1$.
 
+### Why Choose Inverse Forcing Instead of Autonomous Flow ($f = 0$)?
+- **The Forward-PDE Barrier (Viscous Diffusion vs. Box Geometry)**: In an unforced viscous fluid ($\nu > 0$, $f = 0$), viscous dissipation ($\nu \Delta u$) and nonlinear vortex stretching ($(u\cdot\nabla)u$) deform and blur rectangular fluid parcels over time, which is the core reason why maintaining exact Cantor-box coordinates across unboundedly many Turing steps hits a mathematical barrier.
+- **Necessity of the Curl-Potential & Residual Pivot**: Because of this barrier, `#376` separates symbolic boxes using an odd-digit base $B = 2m+1$, constructs a volume-preserving velocity $U = \nabla\times(\chi\Psi)$ first, and defines the body force $f$ as the PDE residual. For instance, with $m=2$ and $B=5$, stretching one stack coordinate by $s_0 = 5$ while compressing the second by $s_1 = 1/5$ and keeping $s_2 = 1$ preserves the product $5 \times \frac{1}{5} \times 1 = 1$, satisfying incompressibility identically.
+
 ---
 
 ## 2. Three Genuine PDE Mechanisms Verified in `#376`

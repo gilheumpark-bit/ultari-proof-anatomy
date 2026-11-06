@@ -11,7 +11,7 @@ In real source dimension $n = 2k$ ($k = 4$), `topology.tex:557` locks the inters
 $$\operatorname{sign}(x) = (-1)^k (-1)^{|x|}$$
 
 - **Topological cancellation (`topology.tex`)** requires positive sign $+(-1)^k$, forcing $|x|$ to be **even** ([`odd_degree_trace_sign_always_opposite`](../proofs/k3_forensic_paths.lean#L23-L35), [`eliashberg_murphy_cancellation_fails`](../proofs/k3_forensic_paths.lean#L41-L46)).
-- **Curvature vanishing (`curvature.tex:159, 459, 533`)** requires avoiding degree $|x| \in \{2, 2k-2\}$, which fails at the non-loose unknot $\phi_0$ because the forward stabilization trace $G_1 : \phi_0 \to \phi_1$ produces $(|x_{12}|, |x_{21}|) = (2, 2k-2)$ ([`eems_poincare_hopf_and_maslov_degrees`](../proofs/k3_forensic_paths.lean#L141-L158)).
+- **Curvature vanishing (`curvature.tex:159, 459, 533`)** requires avoiding degree $|x| \in \{2, 2k-2\}$, which fails at the non-loose unknot $\phi_0$ because the forward stabilization trace $G_1 : \phi_0 \to \phi_1$ produces $(|x_{12}|, |x_{21}|) = (2, 2k-2)$ ([`eems_poincare_hopf_and_maslov_degrees`](../proofs/k3_forensic_paths.lean#L141-L158)). This parity barrier explains why the three non-CM manuscripts had to be retracted by structural necessity and gives the exact reason why no local stabilization can simultaneously cancel self-intersections and preserve $m_0 = 0$.
 
 ---
 

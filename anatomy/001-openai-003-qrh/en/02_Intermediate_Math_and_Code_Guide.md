@@ -10,7 +10,7 @@ In OpenAI `#003`, the zero-free boundary $\beta$ is determined by balancing the 
 
 $$\beta(\alpha_X, \alpha_Y, \ell, \Delta_{\text{Gram}}) = \frac{5}{6} + \frac{\alpha_X + \alpha_Y - 2\ell}{12} - \Delta_{\text{Gram}} = \frac{7}{8} - \Delta_{\text{Gram}}$$
 
-Evaluating at $\Delta_{\text{Gram}} \in \left\{0, \frac{1}{8}, \frac{37}{200}, \frac{73}{200}\right\}$ gives **$\frac{7}{8}(0.875) \to \frac{3}{4}(0.750) \to \frac{69}{100}(0.690) \to \frac{51}{100}(0.510)$** ([`Theorem 18`](../proofs/qrh_exponent_and_parameter_bounds.lean#L234-L250)).
+Evaluating at $\Delta_{\text{Gram}} \in \left\{0, \frac{1}{8}, \frac{37}{200}, \frac{73}{200}\right\}$ gives **$\frac{7}{8}(0.875) \to \frac{3}{4}(0.750) \to \frac{69}{100}(0.690) \to \frac{51}{100}(0.510)$** ([`Theorem 18`](../proofs/qrh_exponent_and_parameter_bounds.lean#L234-L250)). This explains why the baseline bound stalls at $7/8$ and why off-diagonal Gram saving $\Delta_{\text{Gram}} > 0$ is a mathematical necessity to cross the $z_{\text{re}} = 1/6$ convergence barrier because diagonal Cauchy-Schwarz bounds alone cannot reduce the exponent below $7/8$.
 
 ---
 

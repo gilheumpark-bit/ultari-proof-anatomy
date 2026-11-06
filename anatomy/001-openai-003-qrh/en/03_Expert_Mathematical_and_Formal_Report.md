@@ -15,7 +15,7 @@ An analysis of OpenAI's `#003` formal proof (`openai/math` family `003`) shows t
 2. **Stationary Point of `balancedExponent` (`0.693319`) & $z_{\text{re}} = \frac{1}{6}$ Convergence Boundary**: The quadratic irrational root $a^* = \frac{323}{276} - \frac{35\sqrt{16354}}{9384} \approx 0.6933187811$ (approximated in `DirichletL/Endpoint.lean` by the rational SOS reference point $a_{\text{ref}} = \frac{283}{408} \approx 0.69362745$, [`Theorem 4`](../proofs/qrh_exponent_and_parameter_bounds.lean#L86-L91) and [`Theorem 27`](../proofs/qrh_exponent_and_parameter_bounds.lean#L386-L402)) and the $z_{\text{re}} = \frac{1}{6}$ convergence boundary ([`Theorem 19`](../proofs/qrh_exponent_and_parameter_bounds.lean#L258-L268)).
 3. **Baseline Zero-Free Boundary (`7/8 = 0.875`)**: The baseline zero-free abscissa $\beta_{\text{base}} = \frac{5}{6} + \frac{\alpha_X + \alpha_Y - 2\ell}{12} = \frac{7}{8} = 0.875$ ([`Theorem 18`](../proofs/qrh_exponent_and_parameter_bounds.lean#L234-L250)).
 
-We distinguish between the **Formalized Rational & Integer Theorems** proved in this package and **Future Complex-Analytic Extensions**:
+We distinguish between the **Formalized Rational & Integer Theorems** proved in this package and **Future Complex-Analytic Extensions**, explaining why the $z_{\text{re}} = 1/6$ Mellin pole forms an analytic barrier, why the rational SOS anchor $a_{\text{ref}} = 283/408$ is introduced by necessity because the true saddle $a^*$ is quadratic irrational, and the exact reason why $\beta_{\text{base}} = 7/8$ emerges from the $3 \times 3$ exponent balance:
 
 | Scope | Description | Status |
 | :--- | :--- | :--- |

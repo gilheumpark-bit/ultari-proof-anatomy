@@ -8,7 +8,7 @@
 
 ## 1. Architectural Dependency Audit: `Theorem 1.1` & `Corollary 6.3` vs. `Corollary 6.4` (`[OAI26]` Boundary)
 
-The logical dependency boundary between `#001` and `#032` (`[OAI26]`, *The rational Hodge conjecture for CM abelian varieties*) splits cleanly as follows ([`milne_001_internal_dependency_and_lefschetz_vs_chow_gap`](../proofs/milne_weil_reduction_and_repairs.lean#L164-L174)):
+The logical dependency boundary between `#001` and `#032` (`[OAI26]`, *The rational Hodge conjecture for CM abelian varieties*) splits cleanly as follows ([`milne_001_internal_dependency_and_lefschetz_vs_chow_gap`](../proofs/milne_weil_reduction_and_repairs.lean#L164-L174)), explaining why `Theorem 1.1` and `Corollary 6.3` are self-contained, why exceptional Weil classes create a radical barrier against Lefschetz pairings, and the structural necessity and reason why `Corollary 6.4` invokes `[OAI26]` on the CM product $B_0$:
 
 1. **`Theorem 1.1` and `Corollary 6.3` (Self-Contained, Independent of `[OAI26]`)**:
    * `Theorem 1.1` proves rationality and realization-independence of Frobenius traces paired against **complementary Lefschetz classes $\operatorname{Lef}^{d-r}(A_0)$** (divisor intersection classes).

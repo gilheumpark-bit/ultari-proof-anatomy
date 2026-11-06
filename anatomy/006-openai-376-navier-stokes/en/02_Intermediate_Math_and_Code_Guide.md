@@ -47,7 +47,7 @@ Incompressibility ($\nabla \cdot U_{\text{target}} = 0$) requires the trace cond
 
 $$\nabla \cdot U_{\text{target}} = \ell_0(t) + \ell_1(t) + \ell_2(t) = \frac{d}{dt} \ln\big(s_0(t) s_1(t) s_2(t)\big) = 0 \iff s_2(t) = \frac{1}{s_0(t) s_1(t)}.$$
 
-Multiplying $U_{\text{target}}$ directly by a spatial cutoff $\chi(t, x)$ would violate $\nabla \cdot (\chi U_{\text{target}}) = 0$ on the transition shell where $\nabla \chi \ne 0$. Instead, [`BoxTransport/Flow.lean:114-120, 205-225`](../proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Flow.lean#L114-L225) (with representability proved in [`BoxTransport/Routing.lean:94-108`](../proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Routing.lean#L94-L108)) defines the skew-symmetric potential $\Psi_{i,j}(t, x) = -\Psi_{j,i}(t, x)$ (`potentialComponent` / `movingAffinePotential`):
+Multiplying $U_{\text{target}}$ directly by a spatial cutoff $\chi(t, x)$ hits an immediate **barrier**: it violates $\nabla \cdot (\chi U_{\text{target}}) = 0$ on the transition shell where $\nabla \chi \ne 0$. This is the **reason** why a skew-symmetric potential and the curl operator become a mathematical **necessity** ($\operatorname{div}\operatorname{curl} \equiv 0$ regardless of $\nabla\chi$). Accordingly, [`BoxTransport/Flow.lean:114-120, 205-225`](../proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Flow.lean#L114-L225) (with representability proved in [`BoxTransport/Routing.lean:94-108`](../proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Routing.lean#L94-L108)) defines the skew-symmetric potential $\Psi_{i,j}(t, x) = -\Psi_{j,i}(t, x)$ (`potentialComponent` / `movingAffinePotential`):
 
 $$\Psi_{i,j}(t, x) = \frac{1}{2}\big(v_i(t) y_j - v_j(t) y_i\big) + \frac{1}{3}\big(\ell_i(t) - \ell_j(t)\big) y_i y_j,$$
 

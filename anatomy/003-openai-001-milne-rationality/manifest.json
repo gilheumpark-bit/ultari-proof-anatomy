@@ -16,12 +16,12 @@
     "proofs/problem_spec.md": "5f0103a74a368aedf985607924f06bc3c24cbd6898e0dd54308112340a649268",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
     "ko/01_초보자용_쉬운해설.md": "06d3f89f76d2a065281fe9261a5ca46a480033a4cc1890b945c6a41c24a2bd5d",
-    "ko/02_중급자용_구조및수식가이드.md": "b1a780c46d77e0d2c0edad25e1df719b08d82f6647ac331cd9105fc3a858a454",
-    "ko/03_전문가용_산술기하및형식증명보고서.md": "9bb9f919115218cf8f092aa8cf4b1e504a02c6f99c81e797b35b28e4cd394569",
+    "ko/02_중급자용_구조및수식가이드.md": "fd43770006d7237dceb2917b592a61aab9a696f84f8a53f3bd36140b71039a93",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "eb0201c72e2a19fb8f330c83205afb0be1e1621966ee2845e65a016733333991",
     "ko/04_자동검증및파서용_명세서.md": "a024101cb9012fd7954e5624705953c6d24245acdb6064fb0b96007c39118827",
     "en/01_Beginner_Guide.md": "161521de93ce33e6a290c3c841fd2390652c6b1ac231daced85e6ac5fbbc480e",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "489fddc5667e58b9476f57f723e7370de6948eb291f37faf219fa2e14bb95d8c",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "aa60c82bd2b8d88892fdcf1a664d2ad47a43098a9742f07221bf03808e3504dc",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "8394be2477db8935f996685d6363ba1f4272baf7d0b94eaba1d18ff6bac8b387",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "acfd26cf1e5c2ab4b406264ee846452c35a8f7cea184be0d4b6371343609d263",
     "en/04_Automated_Verification_and_Manifest.md": "aff1808f67265aaa4565a297d7cfd4e7c3dc446322f6ba8b5ba9c96ead10935e"
   },
   "scope_and_limitations": {

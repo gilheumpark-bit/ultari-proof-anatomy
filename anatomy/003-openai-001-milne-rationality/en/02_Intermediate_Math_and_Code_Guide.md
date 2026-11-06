@@ -1,6 +1,6 @@
 # [Level 2: Intermediate Guide] 6-Section Mathematical Structure & Complete Mapping of All 36 Lean 4 Theorems
 
-The 6 LaTeX sections of OpenAI `#001` (*Milne's rationality conjecture for abelian varieties*) correspond one-to-one with our **36 Lean 4 theorems** (split across two modular files under 500 lines, with **`232/232` (`101 + 131`)** hypothesis mutations caught) and **7 SymPy + PyTorch verification audits (`Audit 1–7`)**.
+The 6 LaTeX sections of OpenAI `#001` (*Milne's rationality conjecture for abelian varieties*) correspond one-to-one with our **36 Lean 4 theorems** (split across two modular files under 500 lines, with **`232/232` (`101 + 131`)** hypothesis mutations caught) and **7 SymPy + PyTorch verification audits (`Audit 1–7`)**. Throughout this guide, we explain why exceptional Weil classes form an orthogonality barrier to divisor intersections, why $p$-adic Shimura transport and adapted filtrations are introduced by necessity, and the exact reason why balanced Weil classes split into divisor powers.
 
 ---
 

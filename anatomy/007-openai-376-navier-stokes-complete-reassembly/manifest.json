@@ -17,12 +17,12 @@
     "proofs/symbolic_verification_result.json": "81b3f5f849ee2d4025d4e7aa929ed1ca7b1f892388203d3f1e2ae43811d0d4e9",
     "proofs/problem_spec.md": "7bc6aca6cef36bf987c60282e190a755f087ff50a89e6349ac72333652d3215d",
     "ko/01_고등학생_직관가이드.md": "5632142b907460802dc04349123b869a8fb74f277bee59f0bba45fe46b569f3d",
-    "ko/02_대학생_수리해부.md": "047dad4a3231647e864b1a28fe138adcc9d9d07dd496b7fd0f6bbef9dedb210a",
-    "ko/03_전문가_비평및재구성.md": "b31b8821a1e2f287ca8c6e6eb23f7cbbff590c771588756b1851253007978af8",
+    "ko/02_대학생_수리해부.md": "c79ef2ae76021eb8b8ef59917c969f484d5f276da3b10b4ff6b2ae712d43a145",
+    "ko/03_전문가_비평및재구성.md": "09a3b253d0bf8561968310bd54a97338f53724e07ce91a7cd84a555573cf9a67",
     "ko/04_컴퓨터공학_실증검증.md": "4a15c3f94477bbe1af1f851db878ecd765f7f754e157d0a48ceda6aabc80c3e8",
     "en/01_high_school_intuition_guide.md": "0fb07c8004701143a76aedaaa71a6fd15739721ea7324aee4425862bd64eb789",
-    "en/02_undergraduate_mathematical_anatomy.md": "c3ec41cb184b474b7d4c2b90c444d565a76a54fdcb2c578a562f5ab4b1c71bef",
-    "en/03_expert_critique_and_reconstruction.md": "fdaaa258841536b2c9d964c170382c219d66b096204a2ad1f34ba78bfdb68a9d",
+    "en/02_undergraduate_mathematical_anatomy.md": "10989558bb1bbb13534adab18a1c14cf2b35b32b67cae646e91ba15ce9cf3555",
+    "en/03_expert_critique_and_reconstruction.md": "9e9e463ddf3c0ccebfa71d1b8c0b2184a2a213584ac25d2beb6d8626c294a40c",
     "en/04_cs_empirical_verification.md": "dcaf7cdf6bbbe52818d84464ae42c458f3684c67ad765d8d0d6af82e0f6b53ab"
   },
   "verdict": {

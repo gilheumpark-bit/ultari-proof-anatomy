@@ -9,7 +9,7 @@
 
 ## 1. Executive Summary
 
-By auditing the pre-withdrawal sources (`commit adc7f1241b42`) of the three retracted K3 and eightfold Hodge conjecture manuscripts in OpenAI's `#032` family alongside Ekholm-Eliashberg-Murphy-Smith (`[EEMS13]`, `arXiv:1303.0588v2`), we establish five rigorous conclusions:
+By auditing the pre-withdrawal sources (`commit adc7f1241b42`) of the three retracted K3 and eightfold Hodge conjecture manuscripts in OpenAI's `#032` family alongside Ekholm-Eliashberg-Murphy-Smith (`[EEMS13]`, `arXiv:1303.0588v2`), we explain why the non-CM manuscripts hit an insurmountable topological barrier, why the Shioda-Inose central fiber faces an algebraic rank necessity, and the exact reason why only the CM abelian case survives, establishing five rigorous conclusions:
 
 1. **Symplectic Double-Bind and `[EEMS13]` Internal Poincaré-Hopf Sign Discrepancy**:
    - In `topology.tex:557`, $\operatorname{sign}(x) = (-1)^k(-1)^{|x|}$ ($n = 2k = 8, k = 4$) forces every odd-degree double point ($G_2 : \phi_1 \to \phi_0$, degrees $(1, 2k-1)$) to carry sign $(-1)^{k-1} = -1$, yielding $I_{\mathrm{new}} = -2m \neq 0$ ([`odd_degree_trace_sign_always_opposite`](../proofs/k3_forensic_paths.lean#L23-L35), [`eliashberg_murphy_cancellation_fails`](../proofs/k3_forensic_paths.lean#L41-L46)).

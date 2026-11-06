@@ -16,7 +16,7 @@ $$\begin{cases}
 \dfrac{5\alpha_X + \alpha_Y}{12} = \dfrac{3}{16} \iff 5\alpha_X + \alpha_Y = \dfrac{108}{48} & (\text{Cubic Gauss } P^{1/6}\text{ } L^2\text{-saving})
 \end{cases}$$
 
-Solving gives $\alpha_X = 17/48$ and $\alpha_Y = 23/48$, with non-exceptional Poisson cutoff $2\alpha_X - \alpha_Y = 11/48 = 1/6 + 1/16$. In [`DirichletL/Detector/LowSourceScales.lean:88-98`](proofs/oai_ref/LowSourceScales.lean#L88-L98), the extra $1/16 = 3/48$ slack is used to absorb a constant $B$ via `hB : B ≤ Z^(1/16)`. Without that inflation ($2\alpha_X - \alpha_Y = 1/6$), the system yields $7\alpha_X = 203/84 \implies (\alpha_X, \alpha_Y) = (29/84, 11/21)$ ([`thm_02_constant_B_absorption_inflation_and_uninflated_scales`](proofs/qrh_mathematician_referee_audit.lean#L27-L36)).
+Solving gives $\alpha_X = 17/48$ and $\alpha_Y = 23/48$, with non-exceptional Poisson cutoff $2\alpha_X - \alpha_Y = 11/48 = 1/6 + 1/16$. In [`DirichletL/Detector/LowSourceScales.lean:88-98`](proofs/oai_ref/LowSourceScales.lean#L88-L98), the extra $1/16 = 3/48$ slack is used to absorb a constant $B$ via `hB : B ≤ Z^(1/16)`. Without that inflation ($2\alpha_X - \alpha_Y = 1/6$), the system yields $7\alpha_X = 203/84 \implies (\alpha_X, \alpha_Y) = (29/84, 11/21)$ ([`thm_02_constant_B_absorption_inflation_and_uninflated_scales`](proofs/qrh_mathematician_referee_audit.lean#L27-L36)). This derivation reveals why the hardcoded exponents $(17/48, 23/48, 1/6)$ arise by necessity from the $z_{\mathrm{re}} = 1/6$ Mellin pole barrier and the exact reason why the $1/16$ constant-absorption slack shifts the scales from $(29/84, 11/21)$.
 
 ### 1.2 Irrational Saddle $\delta^*$ vs. Rational SOS Anchor $\delta_{\mathrm{SOS}} = 79/204$ ([`thm_06`](proofs/qrh_mathematician_referee_audit.lean#L78-L87))
 
