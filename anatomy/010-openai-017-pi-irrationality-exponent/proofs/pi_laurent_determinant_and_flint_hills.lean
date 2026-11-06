@@ -57,8 +57,8 @@ def piExponentWitness : PiExponentContradictionSystem Int where
 ## Part I: Gaussian-Integer Determinant Clearing, Euler Period & Cauchy-Schwarz Collision (Theorems 51–56)
 -/
 
-/-- [Theorem 51] Gaussian-integer clearing and Liouville-number obstruction (`Lemma 3.1`, `determinant.tex:120-169`,
-`Eq. (3.7)-(3.9)`, `Approximation/MatrixArithmetic.lean:67-100`, `Approximation/Arithmetic.lean:25`):
+/-- [Theorem 51] Gaussian-integer clearing and Liouville-number obstruction (`Lemma 3.1`, `determinant.tex:83-150`,
+`Eq. (3.6)-(3.8)`, `Approximation/MatrixArithmetic.lean:67-100`, `Approximation/Arithmetic.lean:25`):
 for `ω = 2πi`, `e^(j * ω) = 1` sits in `Z[i]` with algebraic degree `deg_Z_i = 2` (`norm_min = re^2 + im^2 >= 1` for
 any nonzero Gaussian integer `(re, im) ≠ (0, 0)`), and `q_i * (z_i - r_i) = q_i * z_i - 2πi * p_i` clears all rational
 denominators via `D_scale = prod q_i^(v_i) * prod d_{v_i}`. -/
@@ -108,7 +108,7 @@ theorem thm_52_elementary_dyadic_lcm_bound_four_log_two
     total_base2_exp ≤ 3 ∧ 1040 ≤ lambda_lean_milli - lambda_paper_milli := by
   omega
 
-/-- [Theorem 53] Exact row-translation invariance (`Lemma 3.2`, `determinant.tex:171-225`, `Eq. (3.11)-(3.16)`,
+/-- [Theorem 53] Exact row-translation invariance (`Lemma 3.2`, `determinant.tex:172-258`, `Eq. (3.11)-(3.14)`,
 `Approximation/RowTranslation.lean:1-90`):
 because `e^(j_a * ω) = 1` kills the center index in `e^(j_a * z_0) = 1 * e^(j_a * (z_0 - ω))`, expanding both
 `e^(j_a * (z_0 - ω))` and `z_i^(b_i) = ((z_i - r_i) + r_i)^(b_i)` expresses the uncentered basis `P_a` as a
@@ -125,7 +125,7 @@ theorem thm_53_row_translation_invariance_via_euler_period
   subst h_unit_diag
   omega
 
-/-- [Theorem 54] Cauchy-Schwarz Taylor collision lower bound (`Lemma 3.3`, `determinant.tex:227-269`, `Eq. (3.17)-(3.23)`,
+/-- [Theorem 54] Cauchy-Schwarz Taylor collision lower bound (`Lemma 3.3`, `determinant.tex:267-335`, `Eq. (3.15)-(3.16)`,
 `Analysis/CollisionOccupancy.lean:11-50`):
 when `B_size` rows in `B ⊂ A` (`B_size = m_1 + m_2`) are partitioned across `2` degree shells with multiplicities
 `m_1, m_2`, the identity `2 * (m_1^2 + m_2^2) - (m_1 + m_2)^2 = (m_1 - m_2)^2 >= 0` forces
@@ -145,8 +145,8 @@ theorem thm_54_cauchy_schwarz_taylor_collision_degree_lower_bound
     rw [← h_sum]; exact h_diff
   exact ⟨by omega, (show diff = (m_1 - m_2) * (m_1 - m_2) by omega) ▸ int_sq_nonneg (m_1 - m_2)⟩
 
-/-- [Theorem 55] Two-alternative determinant upper bound and contradiction (`Proposition 3.4`, `determinant.tex:271-431`,
-`Eq. (3.24)-(3.47)`, `Approximation/DeterminantContradiction.lean:1-120`, `Analysis/DeterminantAnalyticBound.lean:1-90`):
+/-- [Theorem 55] Two-alternative determinant upper bound and contradiction (`Proposition 3.4`, `determinant.tex:353-432`,
+`Eq. (3.18)-(3.20)`, `Approximation/DeterminantContradiction.lean:1-120`, `Analysis/DeterminantAnalyticBound.lean:1-90`):
 every permutation in the Leibniz expansion of `Δ` either (Case 1) has `> (1 - η) * M` rows outside the
 deep-vanishing set `I_u` or (Case 2) has `>= η * M` rows inside `I_u`, both contradicting `|Δ_H| >= 1`. -/
 theorem thm_55_two_alternative_determinant_upper_bound_and_contradiction
@@ -181,7 +181,7 @@ theorem thm_56_asymptotic_cancellation_of_m_factorial_in_log_d_over_m_log_m
 ## Part II: Quantitative Constants at `ν = 5/2` & Flint-Hills / Generalized Sine Series (Theorems 57–60)
 -/
 
-/-- [Theorem 57] Explicit quantitative thresholds for `ν = 5/2` (`conclusion.tex:61-108`, `Eq. (4.7)`,
+/-- [Theorem 57] Explicit quantitative thresholds for `ν = 5/2` (`conclusion.tex:61-108`, `Eq. (4.4)-(4.9)`,
 `Approximation/AdmissibleParameters.lean:64-120`):
 with `b = 11/20`, `δ = 1/10`, `g = ν(A - θ) - (1 - θ) = 1/80`, and `ε_0 = min(g/2, 1/2) = 1/160`, the initial frequency
 cutoff is `F_0 = ceil(3 * ν / ε_0) + 1 = 1201`. -/
@@ -197,7 +197,7 @@ theorem thm_57_explicit_dimension_and_center_count_at_nu_five_halves
     drift_CB_num = 43 ∧ drift_CthB_num = 8 ∧ drift_one_CB_num + drift_CthB_num ≤ 39 := by
   omega
 
-/-- [Theorem 58] Flint-Hills bad-index uniqueness and `Fin 4` residue grouping (`series.tex:25-88`,
+/-- [Theorem 58] Flint-Hills bad-index uniqueness and `Fin 4` residue grouping (`series.tex:66-91`,
 `Analysis/FlintSine.lean:28-156`):
 in each interval `[q*π - π/2, q*π + π/2)` of length `π in (3, 4)`, at most `4` integers can lie in the interval
 (`4` residue classes `n mod 4` in `sineGroup_residue_injective`), and Lean bounds each bad term by `4 / (q^3 * ||q*π||^2)`
@@ -215,7 +215,7 @@ theorem thm_58_flint_hills_bad_index_uniqueness_and_residue_injectivity
   omega
 
 /-- [Theorem 59] Dyadic semicircle minimum-gap shell exponent for the Flint-Hills series (`Lemma 5.1`, `Corollary 1.2`,
-`series.tex:23-128`, `Analysis/FlintConsequence.lean:1-31`, `Analysis/DyadicSpacing.lean:1-215`):
+`series.tex:23-91`, `Analysis/FlintConsequence.lean:1-31`, `Analysis/DyadicSpacing.lean:1-215`):
 for `sum n^(-a) |sin n|^(-b)` with `a = 3, b = 2` and `||q*π|| >= c * q^(-1-ε)` (`μ = 2 + ε`), sorting the `j`-th point
 on `[0, π/2)` and `[-π/2, 0)` at distance `>= j * d` bounds the `k`-th dyadic shell `[2^k, 2^(k+1))` by `O(2^(k * (-1 + ε)))`. -/
 theorem thm_59_dyadic_partial_summation_exponent_for_flint_hills
@@ -230,8 +230,8 @@ theorem thm_59_dyadic_partial_summation_exponent_for_flint_hills
   subst h_b
   omega
 
-/-- [Theorem 60] Generalized two-parameter sine-series convergence threshold (`Corollary 5.2`, `series.tex:130-154`,
-`Eq. (5.11)-(5.13)`):
+/-- [Theorem 60] Generalized two-parameter sine-series convergence threshold (`Corollary 5.2`, `series.tex:97-155`,
+`series:generalized`):
 for any `a, b > 0` with `a > max(1, b)`, choosing `ε > 0` small enough guarantees that the dyadic shell
 exponent is strictly negative (`<= -1`), establishing convergence of `sum_{n=1}^∞ n^(-a) |sin n|^(-b)`. -/
 theorem thm_60_generalized_sine_series_convergence_threshold_and_gap_audit
