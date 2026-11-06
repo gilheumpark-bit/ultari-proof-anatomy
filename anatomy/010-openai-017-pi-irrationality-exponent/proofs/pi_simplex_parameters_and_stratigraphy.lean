@@ -61,12 +61,12 @@ theorem thm_02_unused_hypothesis_14_and_zero_external_imports
     u_total = 14 ∧ u_geom + u_coh = 8 ∧ u_loc + u_app + u_poly = 6 ∧ u_total + ext_oai ≤ 14 := by
   omega
 
-/-- [Theorem 3] Scope discrepancy audit between `lean/docs/017.md:11`, `ComparatorChallenges/PiExponent.lean:7-15`,
+/-- [Theorem 3] Scope comparison between `lean/docs/017.md:11`, `ComparatorChallenges/PiExponent.lean:7-15`,
 and `OAI/NumberTheory/PiExponent/Main.lean:8-33`:
 `Main.lean` proves `5` top-level theorems (`pi_eventual_lower_bound`, `pi_integer_eventual_lower_bound`,
 `pi_irrationalityExponent_eq_two`, `main`, and `flint_hills_summable`), whereas `PiExponent.lean` exports only `1`
-conjunctive theorem (`main`, `2` conjuncts), leaving `flint_hills_summable` proved in `Main.lean:29-32` despite
-`017.md` claiming Flint-Hills is outside the formalization. -/
+conjunctive theorem (`main`, `2` conjuncts); `017.md:11` notes `Corollary 1.2` is outside `PiExponent.lean`, while
+`Main.lean:29-32` (`flint_hills_summable`) proves `Corollary 1.2` (`0 sorry`), leaving only `Corollary 5.2` unformalized. -/
 theorem thm_03_flint_hills_scope_note_vs_main_lean_audit
     (thms_main thms_chal paper_claims formalized_claims unformalized_generalized : Int)
     (h_main : 5 ≤ thms_main)

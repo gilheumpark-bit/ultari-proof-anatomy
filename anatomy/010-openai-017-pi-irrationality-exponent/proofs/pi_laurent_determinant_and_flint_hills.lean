@@ -91,10 +91,10 @@ theorem thm_51_gaussian_integer_clearing_and_liouville_obstruction
       rw [Int.sub_mul, Int.mul_sub, Int.mul_sub, Int.mul_one, Int.one_mul]; omega
     exact ⟨by omega, by omega⟩
 
-/-- [Theorem 52] Elementary dyadic `lcm(1, ..., n) <= 4^n` bound in Lean (`Approximation/MatrixArithmetic.lean:1-120`,
-`Approximation/Arithmetic.lean:13-22`, `Λ_Lean = 4 * log 2`) versus the Prime Number Theorem bound in the paper:
-in milli-units (`1000`), `Λ_paper ≈ 1039 + 693 = 1732`, whereas Lean uses the PNT-free elementary constant
-`Λ_Lean = 4 * log 2 ≈ 2772`. -/
+/-- [Theorem 52] Elementary dyadic `lcm(1, ..., n) <= 4^n` bound (`determinant.tex:84, 136-143`, `conclusion.tex:89`,
+`Approximation/Arithmetic.lean:13-22`, `Λ = 4 * log 2`) versus the reasoning trace's Prime Number Theorem constant:
+in milli-units (`1000`), the trace's PNT bound gives `Λ_PNT ≈ 1039 + 693 = 1732`, whereas both the final paper and Lean
+adopt the PNT-free elementary dyadic central-binomial constant `Λ = 4 * log 2 ≈ 2772`. -/
 theorem thm_52_elementary_dyadic_lcm_bound_four_log_two
     (chebyshev_milli log2_milli lambda_paper_milli lambda_lean_milli dyadic_exp_lcm dyadic_exp_two total_base2_exp : Int)
     (h_cheb : chebyshev_milli = 1039)
@@ -214,10 +214,10 @@ theorem thm_58_flint_hills_bad_index_uniqueness_and_residue_injectivity
   subst h_pic; subst h_res; subst h_tf
   omega
 
-/-- [Theorem 59] Dyadic partial-summation shell exponent for the Flint-Hills series (`Lemma 5.1`, `Corollary 1.2`,
-`series.tex:12-128`, `Analysis/FlintConsequence.lean:1-31`, `Analysis/FlintSine.lean:1-160`):
-for `sum n^(-a) |sin n|^(-b)` with `a = 3, b = 2` and `||q*π|| >= c * q^(-1-ε)` (`μ = 2 + ε`), the `k`-th dyadic shell
-`[2^k, 2^(k+1))` is bounded by `O(2^(k * (b + (b-1)*ε - a))) = O(2^(k * (-1 + ε)))`. -/
+/-- [Theorem 59] Dyadic semicircle minimum-gap shell exponent for the Flint-Hills series (`Lemma 5.1`, `Corollary 1.2`,
+`series.tex:23-128`, `Analysis/FlintConsequence.lean:1-31`, `Analysis/DyadicSpacing.lean:1-215`):
+for `sum n^(-a) |sin n|^(-b)` with `a = 3, b = 2` and `||q*π|| >= c * q^(-1-ε)` (`μ = 2 + ε`), sorting the `j`-th point
+on `[0, π/2)` and `[-π/2, 0)` at distance `>= j * d` bounds the `k`-th dyadic shell `[2^k, 2^(k+1))` by `O(2^(k * (-1 + ε)))`. -/
 theorem thm_59_dyadic_partial_summation_exponent_for_flint_hills
     (a_exp b_exp eps_250 shell_exp_250 trace_part1_exp_250 : Int)
     (h_a : a_exp = 3)

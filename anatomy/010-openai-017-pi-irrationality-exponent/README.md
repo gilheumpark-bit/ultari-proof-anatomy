@@ -10,7 +10,7 @@ This case (`010-openai-017-pi-irrationality-exponent`) provides a complete mathe
 
 | Tier | English Document (`en/`) | Korean Document (`ko/`) | Core Scope |
 | :---: | :--- | :--- | :--- |
-| **Tier 1** | [`en/01_Executive_Summary_and_General_Guide.md`](en/01_Executive_Summary_and_General_Guide.md) | [`ko/01_일반인용_해설서.md`](ko/01_일반인용_해설서.md) | The 5 causal `Why`s (`62/25 -> 2` pivot, $b \in (1/2, 1-1/\nu)$, Liouville obstruction, `017.md` scope error, 4 Lean adaptations) |
+| **Tier 1** | [`en/01_Executive_Summary_and_General_Guide.md`](en/01_Executive_Summary_and_General_Guide.md) | [`ko/01_일반인용_해설서.md`](ko/01_일반인용_해설서.md) | The 5 causal `Why`s (`62/25 -> 2` pivot, $b \in (1/2, 1-1/\nu)$, Liouville obstruction, `017.md` vs `Main.lean` scope audit, 4 discrete-algebraic substitutions) |
 | **Tier 2** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | [`ko/02_중급자용_구조및수식가이드.md`](ko/02_중급자용_구조및수식가이드.md) | `Sections 2–5` mathematical pipeline, `75`-theorem mapping (`thm_01`–`thm_75`), and numerical witnesses |
 | **Tier 3** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | [`ko/03_전문가용_수리물리및형식증명심사보고서.md`](ko/03_전문가용_수리물리및형식증명심사보고서.md) | `869`-file stratigraphy, `60` `oai_ref` links, `25` BibTeX DOI checks, and 6 uncited classical pillars |
 | **Tier 4** | [`en/04_Automated_Verification_and_Parser_Spec.md`](en/04_Automated_Verification_and_Parser_Spec.md) | [`ko/04_자동검증및파서용_명세서.md`](ko/04_자동검증및파서용_명세서.md) | Cryptographic SHA-256 table and one-click reproduction commands |

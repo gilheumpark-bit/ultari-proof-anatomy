@@ -2,7 +2,7 @@
   OpenAI #017 (The Irrationality Exponent of π Is 2)
   Case 010 — Part II:
   Transverse Multiplicity, Inscribed Rectangle vs Simplex Volume,
-  Local Jet Algebra, and Seshadri-Kodaira Blowup (Theorems 26–50).
+  Local Jet Algebra, and Rees Blowup / Serre-Čech Vanishing (Theorems 26–50).
 
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
@@ -119,7 +119,7 @@ theorem thm_31_bouts_lemma_transverse_w_degree_lower_bound
     sum_T_P ≤ deg_W ∧ sum_T_P + deg_rest ≤ deg_W := by
   omega
 
-/-- [Theorem 32] Curve exclusion threshold (`interpolation.tex:327-350`, `Step 3` of `Theorem 2.1`, `Eq. (2.13)-(2.15)`):
+/-- [Theorem 32] Curve exclusion threshold (`interpolation.tex:327-350`, `Eq. (2.11)-(2.12)`):
 for an irreducible curve `C` of weighted degree `deg_W`, if the transverse multiplicity sum on `Σ' ⊂ C` satisfies
 `(1 + σ) * sum_{P in Σ'} h_P > deg_W` (scaled by common denominator `S`), then the required vanishing order
 `sum_P T_P = (1 + σ) * sum_P h_P * N` strictly exceeds the Bézout capacity `deg_W * N`, excluding `C`. -/
@@ -137,11 +137,11 @@ theorem thm_32_curve_exclusion_when_sum_h_p_exceeds_one_over_one_plus_sigma
     rw [Int.sub_mul]
   omega
 
-/-- [Theorem 33] Lazarsfeld nef-plus-ample divisor decomposition on the blowup `X~ -> X` (`interpolation.tex:486-515`,
-`Eq. (2.23)`, `Ampleness/BlowupIdeal.lean:1-80`, `Ampleness/ExceptionalCurveDegree.lean:1-80`):
-writing `L_N = K_{X~} + M_N + A + sum a_i π^* H_i + b π^* H_Y` with `τ_P = (1 - σ) h_P` and `t_P = (1 - σ/2) h_P`
-requires `a_i = N * κ_i - m - 1 >= 0`, `b = N * λ - m - 1 >= 0`, and `floor(τ_P * N) + 1 <= t_P * N`, which holds
-with slack `>= 1` whenever `(t_P - τ_P) * N = (σ / 2) * h_P * N >= 2`. -/
+/-- [Theorem 33] Reasoning-trace Lazarsfeld nef-plus-ample decomposition (`irrationality-exponent-of-pi.pdf`, `Sections 2-6`)
+versus the final manuscript's Rees blowup ampleness convex combination (`interpolation.tex:480-544`, `Eq. (2.13)-(2.16)`,
+`Ampleness/BlowupIdeal.lean:1-80`, `Ampleness/ExceptionalCurveDegree.lean:1-80`):
+writing `a_i = N * κ_i - m - 1 >= 0`, `b = N * λ - m - 1 >= 0`, and `floor(τ_P * N) + 1 <= t_P * N` with
+`τ_P = (1 - σ) h_P` and `t_P = (1 - σ/2) h_P` holds with slack `>= 1` whenever `(t_P - τ_P) * N = (σ / 2) * h_P * N >= 2`. -/
 theorem thm_33_lazarsfeld_nef_plus_ample_bundle_decomposition
     (N_kappa_min N_lambda m tau_N_plus_1 t_N sigma_h_N_half a_min b_coeff : Int)
     (h_m : 1 ≤ m)
@@ -154,12 +154,12 @@ theorem thm_33_lazarsfeld_nef_plus_ample_bundle_decomposition
     0 ≤ a_min ∧ 0 ≤ b_coeff ∧ 1 ≤ t_N - tau_N_plus_1 ∧ 2 ≤ N_kappa_min := by
   omega
 
-/-- [Theorem 34] Top self-intersection volume bound and Kodaira vanishing contradiction (`interpolation.tex:430-467, 520-564`,
-`Eq. (2.20), (2.26)`, `Cohomology/FiniteCoverCohomology.lean:1-90`, `Cohomology/GradedCech.lean:1-80`):
-because the divisor `M_N` is nef on the `(m+1)`-dimensional blowup `X~`, its top self-intersection
-`M_N^(m+1) = Vol_main - sum_{P in Z_0} u_P^(m+1)` is non-negative (`0 <= M_N^(m+1)`), while if `sum_{P in Z_0} τ_P^(m+1)`
-strictly exceeded `(m+1)! * prod κ_i * λ`, the Hilbert polynomial of `L_N` would become negative, contradicting
-`H^0(X, O(D)) ->> ⊕ O_{X,P} / m_P^{floor(τ_P N)+1}` from `H^1(X~, L_N) = 0`. -/
+/-- [Theorem 34] Serre/Čech `H^1 = 0` jet-evaluation surjectivity (`interpolation.tex:545-580`, `Eq. (2.17)-(2.19)`,
+`Cohomology/FiniteCoverCohomology.lean:1-90`, `Cohomology/GradedCech.lean:1-80`) and reasoning-trace self-intersection
+volume bound (`irrationality-exponent-of-pi.pdf`, `Sections 4-6`):
+vanishing `H^1(X, I^n ⊗ L^n) = 0` (`h1_dim = 0`) makes global evaluation onto the jet quotient surjective
+(`jet_quotient_sum <= h0_dim`), while non-negativity `self_int = vol_main - sum_u_pow >= 0` implies
+`sum_u_pow <= vol_main`, ruling out excessive multiplicity concentration on `Z_0`. -/
 theorem thm_34_top_self_intersection_volume_deficit_and_kodaira_contradiction
     (vol_main sum_u_pow self_int h0_dim jet_quotient_sum h1_dim : Int)
     (h_nef_eq : self_int = vol_main - sum_u_pow)
@@ -169,11 +169,11 @@ theorem thm_34_top_self_intersection_volume_deficit_and_kodaira_contradiction
     sum_u_pow ≤ vol_main ∧ jet_quotient_sum ≤ h0_dim := by
   omega
 
-/-- [Theorem 35] Reverse-Hölder conversion from the `(m+1)`-st power sum on isolated points `Z_0` to the linear `L^1`
-sum on `Σ` (`interpolation.tex:565-583`, `Eq. (2.27)-(2.28)`, `Approximation/WeightSeparation.lean:1-90`):
-partitioning `Σ = (Σ \ Z_0) ∪ Z_0`, where the curve-clustered piece `Σ \ Z_0` undergoes at most `m + 1` dimension drops
-of size `<= 1/(1+σ)` each (`sum_{Σ \ Z_0} h_P <= (m+1)/(1+σ) < (m+2)/(1-σ)`), and on `Z_0` each `h_P >= γ` satisfies
-`γ^m * sum_{Z_0} h_P <= sum_{Z_0} h_P^(m+1) <= Vol_bound`, yields the global `Theorem 2.1` interpolation inequality. -/
+/-- [Theorem 35] Partition of `Σ` into curve-clustered and non-curve strata (`interpolation.tex:259-279, 558-580`,
+`Eq. (2.10), (2.18)-(2.19)`, `Approximation/WeightSeparation.lean:1-90`):
+partitioning `Σ = (Σ \ Z_0) ∪ Z_0`, where the curve-clustered piece `Σ \ Z_0` is bounded by `curve_cap_strict`
+(`sum_{Σ \ Z_0} h_P <= (m+1)/(1+σ) < (m+2)/(1-σ)`) and the non-curve piece `Z_0` is bounded by the asymptotic
+global section / jet capacity `vol_term`, yields the global `Theorem 2.1` interpolation inequality. -/
 theorem thm_35_reverse_holder_sum_from_l_m_plus_1_bound_to_l1_sum
     (sum_total sum_curve sum_Z0 curve_cap_strict vol_term : Int)
     (h_part : sum_total = sum_curve + sum_Z0)

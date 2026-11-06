@@ -10,7 +10,7 @@
 1. **Pillar 1 (Import-Cone Stratigraphy, Reasoning-Trace Evolution, and Simplex Parameters)**:
    - Import cone of `OAI.NumberTheory.PiExponent.Main` (`pi_eventual_lower_bound`, `pi_integer_eventual_lower_bound`, `pi_irrationalityExponent_eq_two`, `main`, `flint_hills_summable`) versus `ComparatorChallenges/PiExponent.lean` and `lean/docs/017.md`.
    - `OAI.NumberTheory.PiExponent.Approximation.Parameters` (`paramB`, `paramDelta`, `paramTheta`, `paramA`, `paramC`, `paramBigB`) and `Approximation.AdmissibleParameters` (`conclusion.tex` Lemma 4.1).
-2. **Pillar 2 (Transverse Multiplicity, Inscribed Discrete Rectangle vs Simplex, and Seshadri-Kodaira Blowup)**:
+2. **Pillar 2 (Transverse Multiplicity, Inscribed Discrete Rectangle vs Simplex, and Rees Blowup / Serre-Čech Vanishing)**:
    - `OAI.NumberTheory.PiExponent.Approximation.RectangularVolume`, `Jets.TransverseWeightedMultiplicity`, and `Approximation.WeightSeparationConstant` (`interpolation.tex` Lemma 2.2) versus `Polynomials.SimplexCounting` (`simplex_count_lower_sandwich`).
    - `OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole`, `Ampleness.BlowupIdeal`, `Ampleness.ExceptionalCurveDegree`, `Cohomology.FiniteCoverCohomology`, and `Approximation.WeightSeparation` (`interpolation.tex` Theorem 2.1 and Proposition 2.3).
 3. **Pillar 3 (Gaussian-Integer Determinant Clearing, Row Translation, Cauchy-Schwarz Collision, and Flint-Hills)**:
