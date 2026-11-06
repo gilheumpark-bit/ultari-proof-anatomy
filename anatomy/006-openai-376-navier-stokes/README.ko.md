@@ -15,14 +15,14 @@
 | 단계 | 대상 독자 | 문서 파일 | 핵심 내용 |
 | :---: | :--- | :--- | :--- |
 | **1단계** | **초보자 (일반 독자)** | [`ko/01_초보자용_쉬운해설.md`](ko/01_초보자용_쉬운해설.md) | 자율 유체 동역학 계산과 역산 외력 상자 수송의 차이 및 핵심 요약. |
-| **2단계** | **중급자 (이공계·개발자)** | [`ko/02_중급자용_구조및수식가이드.md`](ko/02_중급자용_구조및수식가이드.md) | 10개 프리프린트 폴더·6대 챌린지 매핑 및 40개 Lean 4 정리 1대1 색인표. |
+| **2단계** | **중급자 (이공계·개발자)** | [`ko/02_중급자용_구조및수식가이드.md`](ko/02_중급자용_구조및수식가이드.md) | 10개 프리프린트 폴더·6대 챌린지 매핑 및 45개 Lean 4 정리 1대1 색인표. |
 | **3단계** | **전문가 (수리물리·형식증명 연구자)** | [`ko/03_전문가용_수리물리및형식증명심사보고서.md`](ko/03_전문가용_수리물리및형식증명심사보고서.md) | 4계층 심사 판정, `1,010`개 파일 임포트 지층 분석, 르레이 투영 비국소성 및 5대 수리 규격. |
-| **4단계** | **자동 검증기 및 파서** | [`ko/04_자동검증및파서용_명세서.md`](ko/04_자동검증및파서용_명세서.md)<br>[`manifest.json`](manifest.json) | SHA-256 해시 원장 및 40개 Lean 4 정리 줄 번호 매핑표. |
+| **4단계** | **자동 검증기 및 파서** | [`ko/04_자동검증및파서용_명세서.md`](ko/04_자동검증및파서용_명세서.md)<br>[`manifest.json`](manifest.json) | SHA-256 해시 원장 및 45개 Lean 4 정리 줄 번호 매핑표. |
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
 - [`proofs/ns376_kinematic_routing_and_forensics.lean`](proofs/ns376_kinematic_routing_and_forensics.lean): 정리 1~20 (`106/106` 변이 포착).
-- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): 정리 21~40 (`57/57` 변이 포착).
+- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): 정리 21~45 (`70/70` 변이 포착).
 - [`proofs/verify_symbolic_ns376.py`](proofs/verify_symbolic_ns376.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), [`proofs/problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

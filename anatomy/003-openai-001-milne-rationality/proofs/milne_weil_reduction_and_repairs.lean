@@ -1,5 +1,5 @@
 /-!
-# Formal Lean 4 Verification of Weil Dichotomy, CM Reduction, and the 5 Forensic Repairs (Part B: Theorems 17–33)
+# Formal Lean 4 Verification of Weil Dichotomy, CM Reduction, and the 5 Forensic Repairs (Part B: Theorems 17–36)
 # in OpenAI #001 (Milne's Rationality Conjecture for Abelian Varieties)
 Compiles standalone with `lean` (`v4.29.0-rc8`) over exact integer arithmetic (`Int`).
 Zero `sorry`, zero custom axioms.

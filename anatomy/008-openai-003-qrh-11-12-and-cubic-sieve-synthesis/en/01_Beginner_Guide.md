@@ -8,7 +8,7 @@ In [`Case 001`](../../001-openai-003-qrh/README.md) and [`Case 005`](../../005-o
 
 1. **Why Does `ShortDraft` Prove $\text{Re}(s) > 23/24$ When the Paper Claims $11/12$?**
    - Both `paper.tex` and `paper2.tex` state a warm-up zero-free strip of $\text{Re}(s) > 11/12 = 22/24$ (width $1/12$).
-   - Yet `ShortDraft.DirichletTarget` in `ZeroFreeRegion.lean` only proves $\text{Re}(s) > 23/24$ (width $1/24$, half as wide).
+   - Yet `ShortDraft.DirichletTarget` in `DirichletL/RowCompletion/ZeroFreeRegion.lean` only proves $\text{Re}(s) > 23/24$ (width $1/24$, half as wide).
    - We prove in [`thm_01_shortdraft_fixed_reserve_and_23_24_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L19-L33) and [`thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L70-L85) that hardcoding `reserve = 1/20` locked $\vartheta = 1/10$, whereas switching to `CanonicalDescentScale` unlocks $\frac{11}{12} + \varepsilon$.
 2. **Why Is the 30-File Sharp Cubic Large Sieve (`CubicGauss/`) Left Unimported?**
    - Inside `lean/OAI/NumberTheory/CubicGauss/`, OpenAI proved Heath-Brown's cubic large sieve with the sharp exponent $2/3$ (`0 sorry`).
@@ -39,7 +39,7 @@ In [`Case 001`](../../001-openai-003-qrh/README.md) and [`Case 005`](../../005-o
 
 | Tier | Milestone / Source | Exact Boundary $\beta$ | Decimal | Strip Width $1 - \beta$ |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | OpenAI `ShortDraft` (`ZeroFreeRegion.lean`) | $23/24$ | $0.95833333$ | $1/24 \approx 0.04167$ ($1.00\times$) |
+| 1 | OpenAI `ShortDraft` (`DirichletL/RowCompletion/ZeroFreeRegion.lean`) | $23/24$ | $0.95833333$ | $1/24 \approx 0.04167$ ($1.00\times$) |
 | 2 | OpenAI `paper2.tex` & `AlexKontorovich/quasi-rh` | $11/12$ | $0.91666667$ | $1/12 \approx 0.08333$ ($2.00\times$) |
 | 3 | OpenAI `SevenEighths.lean` Baseline | $7/8$ | $0.87500000$ | $1/8 = 0.12500$ ($3.00\times$) |
 | 4 | `Case 005` Fixed-Scale Global SOS Saddle | $(6843 - 7\sqrt{921})/7578$ | $0.87497547$ | $0.12502453$ ($3.0006\times$) |

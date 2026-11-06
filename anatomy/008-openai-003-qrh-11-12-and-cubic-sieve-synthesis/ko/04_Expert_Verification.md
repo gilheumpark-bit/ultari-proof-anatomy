@@ -25,12 +25,12 @@ python3 ../../tools/verify_all.py --root .
 
 | 산출물 파일 | SHA-256 체크섬 |
 | :--- | :--- |
-| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `ac78033ab95046c97c9b09e92728429a74b1df30d058c843beb2a0cf2059439b` |
-| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `4b388614dbc3a259ab2eef695d7e19db98e93450028894e2d719fe4046e164b5` |
+| [`proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `5ca09dcd24bd420f3457f8283637c4b5094f06279045ebd39f7b8e2adfafef68` |
+| [`proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `85a162479c5fe233d10c65e043c72356c4330258b9bc2c513ea855798cb99a2b` |
 | [`proofs/qrh_trilogy_induction_and_algebraic_bridge.lean`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `0acdb6187a5b85ac44fb7060bdb34df245f19d7cf9b3f381b411474db46bea5f` |
 | [`proofs/verify_symbolic_qrh_synthesis.py`](../proofs/verify_symbolic_qrh_synthesis.py) | `3cc6e87a939119a7118e617b9e3fc96e76873c14ac699768f3b91196633d88a4` |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4` |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `56c00cfa270ccd1a6612c2684466b896039a58468d2e7c7d70b94c106f509fcd` |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `a13ed8044caf9e708178651d22d61ee5f23282c795a6b882ce7b41e607f42c52` |
 
 ---
 

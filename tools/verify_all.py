@@ -121,6 +121,9 @@ def check_lean_and_mutations(lean_file):
     hyps = extract_balanced_hyps(src)
     for (_, _, _, _, names, hbody) in hyps:
         assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
+        assert not re.match(r"^\s*[A-Za-z_][\w']*\s*=\s*(?:[A-Za-z_][\w']*\s*\+\s*)?\d{3,}\s*\*\s*[A-Za-z_][\w']*\s*\+\s*(?:[2-9]\d*|1\d+)\s*$", hbody), (
+            f"Euclidean divmod constant smuggling in hypothesis {names} of {lean_file.name}: {hbody}"
+        )
     tasks = [(src, s, e, och, cch, names, lean_file.name) for (s, e, och, cch, names, _) in hyps]
     workers = os.cpu_count() or 8
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:

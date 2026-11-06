@@ -1,4 +1,4 @@
-# [Level 2: Intermediate Guide] 5 Core Forensic Problems and 27 Lean 4 Theorems Mapping
+# [Level 2: Intermediate Guide] 5 Core Forensic Problems and 35 Lean 4 Theorems Mapping
 
 This guide maps the mathematical equations of OpenAI's `#032` withdrawn K3 manuscripts and `[EEMS13]` one-to-one against our Lean 4 formal proof suite ([`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean)) and symbolic solver ([`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py)).
 
@@ -39,7 +39,7 @@ $$\operatorname{sign}(x) = (-1)^k (-1)^{|x|}$$
 
 ---
 
-## 3. Complete Index of All 27 Lean 4 Theorems ([`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean))
+## 3. Complete Index of All 35 Lean 4 Theorems ([`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean))
 
 | Index | Line | Theorem Name | Tactic | Core Formalized Result |
 | :---: | :---: | :--- | :---: | :--- |

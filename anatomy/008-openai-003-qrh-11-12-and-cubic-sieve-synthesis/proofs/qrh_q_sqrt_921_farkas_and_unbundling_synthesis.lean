@@ -7,11 +7,11 @@ import Init
 namespace QRHQSqrt921FarkasSynthesis
 
 /-!
-## Part III: Exact `ℚ(√921)` Unity Between `Case 005` Fixed-Scale Saddle and Baiying Liu's `arXiv:2610.12234` (`V2Optimization.lean`) (Theorems 16–23)
-(`V2Optimization.lean:8-325`, `CombinedPaperVerification.lean:16-80`, `qrh_mathematician_referee_audit.lean:356-441`)
+## Part III: Exact `ℚ(√921)` Unity Between `Case 005` Fixed-Scale Saddle and Baiying Liu's `arXiv:2610.12234` (`geometry/V2Optimization.lean`) (Theorems 16–23)
+(`geometry/V2Optimization.lean:8-325`, `CombinedPaperVerification.lean:16-80`, `qrh_mathematician_referee_audit.lean:356-441`)
 -/
 
-/-- [Theorem 16] Shared critical quadratic `288 * δ_c^2 - 588 * δ_c + 185 = 0` (`V2Optimization.lean:18, 108-127`, `Case 005`):
+/-- [Theorem 16] Shared critical quadratic `288 * δ_c^2 - 588 * δ_c + 185 = 0` (`geometry/V2Optimization.lean:18, 108-127`, `Case 005`):
 in `ℚ(√921)` with `s^2 = 921` (`30347 < s_milli < 30348`), the root `δ_c = (49 - s)/48` (`48 * δ_c = 49 - s`) satisfies
 `288 * (49 - s)^2 - 588 * 48 * (49 - s) + 185 * 48^2 = 0`, lies strictly in `(3/8, 5/6)` (`18000 < 49000 - s_milli < 40000`),
 and makes the sextic count envelope hit `R(δ_c, 1/2) = 2/3` (`count_num = 2, count_den = 3`). -/
@@ -52,7 +52,7 @@ theorem thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r
   subst h_sq; subst h_lBr; subst h_rBr; subst h_l48; subst h_r48
   omega
 
-/-- [Theorem 18] Baiying Liu's 3-face scalar equalization in `ℚ(√921)` (`V2Optimization.lean:13-19, 255-266`):
+/-- [Theorem 18] Baiying Liu's 3-face scalar equalization in `ℚ(√921)` (`geometry/V2Optimization.lean:13-19, 255-266`):
 setting `M = 1 - ℓ` makes `Face_0(ℓ) = 5/6 + (1 - ℓ)/12 - ℓ/6 = 11/12 - ℓ/4` and `Face_K(ℓ) = 1/3 + 7(1 - ℓ)/12 + ℓ/3 = 11/12 - ℓ/4`
 identically equal, and equating `Face_H(δ_c, ℓ) = (1 + δ_c)/2 + (1 + 3δ_c)ℓ/2 = 11/12 - ℓ/4` forces `(3 + 6δ_c)ℓ = 5/6 - δ_c`,
 which for `δ_c = (49 - s)/48` (`s^2 = 921`) yields `ℓ_Liu = (33 + 8s)/1653` and `B_Liu = 11/12 - ℓ_Liu/4 = (1507 - 2s)/1653`. -/
@@ -88,7 +88,7 @@ theorem thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum
   subst h_sq; subst h_gc; subst h_gs; subst h_Brc; subst h_Brs
   omega
 
-/-- [Theorem 20] Liu's Gram-gate parameter `b_new = -4/29 + 230√921/26709` (`V2Optimization.lean:14-17, 135-166`):
+/-- [Theorem 20] Liu's Gram-gate parameter `b_new = -4/29 + 230√921/26709` (`geometry/V2Optimization.lean:14-17, 135-166`):
 over denominator `26709 = 29 * 921`, `b_new = (-3684 + 230s)/26709 ≈ 0.1234054` satisfies
 `0 < b_new < 1/8` (a downward shift from `b = 1/8 = 0.125`), while keeping the bundled Gram gate
 `y - ℓ - 11b/6 = (1 - 3ℓ - 8b/3)/2 = (995601 - 28532s)/1522413 > 0` (`1522413 = 921 * 1653 = 57 * 26709`) strictly positive. -/
@@ -109,7 +109,7 @@ theorem thm_20_liu_gram_gate_parameter_b_new_and_margins
   subst h_slo; subst h_shi; subst h_bc; subst h_bs
   omega
 
-/-- [Theorem 21] Universal `(M, ℓ)`-cancellation and rationalization of Liu's Farkas dual identity (`V2Optimization.lean:211-243`):
+/-- [Theorem 21] Universal `(M, ℓ)`-cancellation and rationalization of Liu's Farkas dual identity (`geometry/V2Optimization.lean:211-243`):
 for ANY `δ_c = p/q`, the numerator weights `w0_num = (4 + 18δ_c)q = 4q + 18p`, `wK_num = 2q`, `wH_num = 3q` (sum `D_w = 9q + 18p`)
 annihilate `M` (`12*M_coeff = q*(4q + 18p) + 7*q*(2q) - 6*(q + p)*(3q) = 0`) and `ℓ` (`6*ell_coeff = -q*(4q + 18p) + 2*q*(2q) + 6*p*(3q) = 0`),
 leaving `(7 + 18δ_c)/(9 + 18δ_c) = (203 - 3s)/(219 - 3s) = 24*(1507 - 2s)/(24*1653) = B_Liu` at `48*δ_c = 49 - s` (`s^2 = 921`). -/
@@ -130,7 +130,7 @@ theorem thm_21_farkas_dual_weights_and_closure_obstruction
   subst h_sq; subst h_nc; subst h_ns; subst h_dc; subst h_ds
   omega
 
-/-- [Theorem 22] Signal-matching identity and algebraic origin of `Face_K` (`CombinedPaperVerification.lean:32-35`, `V2Optimization.lean:163, 277`):
+/-- [Theorem 22] Signal-matching identity and algebraic origin of `Face_K` (`CombinedPaperVerification.lean:32-35`, `geometry/V2Optimization.lean:163, 277`):
 for any `(b, ℓ)` with `x = (1 - b - ℓ)/2` and `y = (1 + b - ℓ)/2` (scaled by `24`: `x24 = 12 - 12b - 12ℓ, y24 = 12 + 12b - 12ℓ, M24 = x24 + y24 = 24 - 24ℓ`),
 `(11/12 - ℓ/4) - (4 + b)/6 = x/2 + b/12` holds identically, and combining `x + y = M` with the bundled Gram inequality
 `y - ℓ - 11b/6 ≥ 0` eliminates `b` (`8b ≤ 12y - 6x - 18ℓ`) to produce `Face_K`: `1/3 + 7M/12 + ℓ/3 ≤ B`. -/
@@ -147,7 +147,7 @@ theorem thm_22_signal_matching_identity_and_face_K_origin
     sig_lhs24 = sig_rhs24 ∧ faceK_at_M24 = 22 - 6 * ell ∧ faceK_at_M24 = face0_at_M24 := by
   omega
 
-/-- [Theorem 23] Complete-the-square uniqueness at `(d, u) = (δ_c, 1/2)` (`V2Optimization.lean:27-86, 292-325`):
+/-- [Theorem 23] Complete-the-square uniqueness at `(d, u) = (δ_c, 1/2)` (`geometry/V2Optimization.lean:27-86, 292-325`):
 in `4 * A_c(v) * Q(d, v) = (2 * A_c(v) * d + D_c(v))^2 + disc(v)` for `v = 1/2 - u ≥ 0`, all four coefficients of `A_c(v)`
 and all four coefficients of `disc(v) = c_1 v + c_2 v^2 + c_3 v^3 + c_4 v^4` are strictly positive (`disc(0) = 0`, `disc(v) > 0` for `v > 0`),
 forcing `Q(d, v) = 0 ↔ v = 0 ∧ d = δ_c` (`u = 1/2 ∧ d = δ_c`). -/
@@ -167,7 +167,7 @@ theorem thm_23_complete_square_uniqueness_at_dc_and_u_half
 
 /-!
 ## Part IV: Parametric Unbundled Farkas Theorem & Breaking the `B_Liu` Obstruction Down to `0.8748867`, `0.8380`, and `0.6574` (Theorems 24–30)
-(`V2Optimization.lean:234-243`, `arXiv:2610.15291`, `qrh_mathematician_referee_audit.lean:356-452`)
+(`geometry/V2Optimization.lean:234-243`, `arXiv:2610.15291`, `qrh_mathematician_referee_audit.lean:356-452`)
 -/
 
 /-- [Theorem 24] Parametric Unbundled Farkas Shift Theorem:
@@ -236,7 +236,7 @@ theorem thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H
   omega
 
 /-- [Theorem 27] Connecting the unimported `CubicGauss/LargeSieve.lean` (`2/3` sharp cubic large sieve) to the Path-A floor `71/108` (`Case 005` `thm_34`):
-replacing the bilinear Cauchy-Schwarz count envelope `R(δ_c, 1/2) = 2/3 = 6/9` (`V2Optimization.lean:117`) with the sharp cubic-sieve
+replacing the bilinear Cauchy-Schwarz count envelope `R(δ_c, 1/2) = 2/3 = 6/9` (`geometry/V2Optimization.lean:117`) with the sharp cubic-sieve
 effective count envelope `R_eff = 7/9` (`gain = 1/9`) and maximum Path-A Gram saving `Δ_gram^max = 53/216` lowers the static barrier to
 `β_min^A = 142/216 = 71/108 ≈ 0.657407`. -/
 theorem thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108

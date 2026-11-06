@@ -6,7 +6,7 @@
 
 ## 핵심 해부 결과
 
-1. **`23/24` 고정 원인 및 `11/12` 확장**: `ClosedRecursion.lean`의 `reserve = 1/20` 상수가 $\vartheta = 1/10 \implies \frac{23}{24}$을 강제한 원인을 밝히고, `CanonicalDescentScale`을 통한 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
+1. **`23/24` 고정 원인 및 `11/12` 확장**: `DirichletL/CubicSieve/ClosedRecursion.lean`의 `reserve = 1/20` 상수가 $\vartheta = 1/10 \implies \frac{23}{24}$을 강제한 원인을 밝히고, `CanonicalDescentScale`을 통한 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
 2. **미연결 `CubicGauss` 발굴 및 귀납법 닫힌 해**: 미연결 30개 파일(`6,252`줄)의 날카로운 $2/3$ 삼차 큰 체를 감사하고, 모든 $n \in \mathbb{N}$에 대해 점화식 `sieveIter`의 일반항 $\frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$을 수학적 귀납법으로 증명합니다.
 3. **$\mathbb{Z}[\sqrt{921}]$ 링 및 `001`·`005`·`008` 3부작 통합**: `Case 005`와 Liu의 $\mathbb{Q}(\sqrt{921})$ 이차방정식을 통합하고, 기존 `0 sorry` 모듈만으로 도달 가능한 $\beta = \frac{71}{108} \approx 0.6574$와 $\beta = \frac{1}{2}$ 도달에 필요한 열린 해석적 조건($\Delta_{\mathrm{hybrid}} = \frac{14}{33}$)의 경계를 확정합니다.
 

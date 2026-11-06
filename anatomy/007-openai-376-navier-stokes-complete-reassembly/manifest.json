@@ -16,11 +16,11 @@
     "proofs/verify_symbolic_ns376_complete.py": "72bd8fee3fa642be7c745e3f22eb2a8c1291de4ce90b2e3a6744c8195b190c14",
     "proofs/symbolic_verification_result.json": "81b3f5f849ee2d4025d4e7aa929ed1ca7b1f892388203d3f1e2ae43811d0d4e9",
     "proofs/problem_spec.md": "7bc6aca6cef36bf987c60282e190a755f087ff50a89e6349ac72333652d3215d",
-    "ko/01_고등학생_직관가이드.md": "f79a05062fcea7839b25674d7e1d020c000213059d4b0722b18bd47cfc3aa65b",
+    "ko/01_고등학생_직관가이드.md": "5632142b907460802dc04349123b869a8fb74f277bee59f0bba45fe46b569f3d",
     "ko/02_대학생_수리해부.md": "047dad4a3231647e864b1a28fe138adcc9d9d07dd496b7fd0f6bbef9dedb210a",
     "ko/03_전문가_비평및재구성.md": "b31b8821a1e2f287ca8c6e6eb23f7cbbff590c771588756b1851253007978af8",
     "ko/04_컴퓨터공학_실증검증.md": "4a15c3f94477bbe1af1f851db878ecd765f7f754e157d0a48ceda6aabc80c3e8",
-    "en/01_high_school_intuition_guide.md": "2aa4f5ae270874b5fb7277b36a8946e33d7237c810f546825a2c7d3a0f48f55d",
+    "en/01_high_school_intuition_guide.md": "0fb07c8004701143a76aedaaa71a6fd15739721ea7324aee4425862bd64eb789",
     "en/02_undergraduate_mathematical_anatomy.md": "c3ec41cb184b474b7d4c2b90c444d565a76a54fdcb2c578a562f5ab4b1c71bef",
     "en/03_expert_critique_and_reconstruction.md": "fdaaa258841536b2c9d964c170382c219d66b096204a2ad1f34ba78bfdb68a9d",
     "en/04_cs_empirical_verification.md": "dcaf7cdf6bbbe52818d84464ae42c458f3684c67ad765d8d0d6af82e0f6b53ab"

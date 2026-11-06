@@ -8,7 +8,7 @@
 
 1. **왜 논문은 $\text{Re}(s) > 11/12$를 주장하는데 예비 Lean 코드는 $23/24$만 증명하는가?**
    - `paper.tex` 1부와 `paper2.tex`의 도입 정리는 무영점 영역의 폭을 $1 - 11/12 = 1/12 \approx 0.0833$으로 제시합니다.
-   - 그런데 `ZeroFreeRegion.lean`의 `ShortDraft.DirichletTarget`은 폭이 절반인 $\text{Re}(s) > 23/24$(폭 $1/24 \approx 0.0417$)만 증명합니다.
+   - 그런데 `DirichletL/RowCompletion/ZeroFreeRegion.lean`의 `ShortDraft.DirichletTarget`은 폭이 절반인 $\text{Re}(s) > 23/24$(폭 $1/24 \approx 0.0417$)만 증명합니다.
    - [`thm_01_shortdraft_fixed_reserve_and_23_24_exponent`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L19-L33)과 [`thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta`](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L70-L85)에서 우리는 `reserve = 1/20` 상수가 하드코딩되어 $\vartheta = 1/10$로 묶였기 때문임을 밝히고, `CanonicalDescentScale`로 $\frac{11}{12} + \varepsilon$이 열림을 증명했습니다.
 2. **왜 30개 파일(`6,252`줄) 분량의 날카로운 삼차 큰 체(`CubicGauss/`)가 미연결 상태로 방치되었는가?**
    - `lean/OAI/NumberTheory/CubicGauss/` 폴더에는 히스-브라운(Heath-Brown)의 날카로운 $2/3$ 삼차 큰 체 부등식이 `0 sorry`로 완성되어 있습니다.
@@ -39,7 +39,7 @@
 
 | 단계 | 출처 및 이정표 | 정확한 경계 $\beta$ | 소수점 수치 | 무영점 영역 폭 $1 - \beta$ |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | OpenAI `ShortDraft` (`ZeroFreeRegion.lean`) | $23/24$ | $0.95833333$ | $1/24 \approx 0.04167$ ($1.00\times$) |
+| 1 | OpenAI `ShortDraft` (`DirichletL/RowCompletion/ZeroFreeRegion.lean`) | $23/24$ | $0.95833333$ | $1/24 \approx 0.04167$ ($1.00\times$) |
 | 2 | OpenAI `paper2.tex` 및 `AlexKontorovich/quasi-rh` | $11/12$ | $0.91666667$ | $1/12 \approx 0.08333$ ($2.00\times$) |
 | 3 | OpenAI `SevenEighths.lean` 기준선 | $7/8$ | $0.87500000$ | $1/8 = 0.12500$ ($3.00\times$) |
 | 4 | `사례 005` 고정 스케일 전역 SOS 안장점 | $(6843 - 7\sqrt{921})/7578$ | $0.87497547$ | $0.12502453$ ($3.0006\times$) |

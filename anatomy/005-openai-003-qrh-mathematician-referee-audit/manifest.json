@@ -8,11 +8,11 @@
     "symbolic_solver_check": "python3 proofs/verify_qrh_mathematician_audit.py"
   },
   "artifacts_sha256": {
-    "proofs/qrh_mathematician_referee_audit.lean": "a8c12268b564044b30b9b068ffe79cfc70a9e22314d5f1b827550df4e0d959f5",
-    "proofs/qrh_eight_tasks_critical_upgrade.lean": "0692a4661f613ba0bb12a2ed48a0f9b1d1ce46ee70f20823df5ece03c5be83b0",
+    "proofs/qrh_mathematician_referee_audit.lean": "9a01a4b8ce5a786853a0c2e861240e03846ac5e30362adf086beed6e9b2906dc",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "25539881bea6c097828a70fba4dc67c3dc1bbe85869131548a2a30c123f40941",
     "proofs/verify_qrh_mathematician_audit.py": "cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713",
     "proofs/symbolic_verification_result.json": "a5006ff42a2b12171c98b20facf6d23c86ed5186e1f43da524f6e42c80727b0e",
-    "proofs/problem_spec.md": "274b752f2943dffbb545087ecec16c101579dbf6a62c22f94ef461ca2aca1d3e"
+    "proofs/problem_spec.md": "5202dd7bec54af1473025dc065684ba5a86ce929acf328cc93aa6f377047813e"
   },
   "verified_key_results": {
     "stage1_magic_exponents_and_saddle": {
@@ -181,19 +181,19 @@
   "file_checksums_sha256": {
     "README.ko.md": "e123e489661db7c5c6bd670725850e80b4cfb190e995581ca102ffe25aee3ffd",
     "README.md": "5e8141ba1c457b7bee948de8474d193ca3ec6692a4020b60cdcf8d09d935ae46",
-    "en/01_Beginner_Intuitive_Guide.md": "2d433085521c992dcc8b3f4ca75ce70738bfe931d3c160be2f8eabf4bd26b1ce",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "8ac7caaf33bcab1f150b33d403d522aceb69fbcbd38eb5161324a100201a11c8",
-    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "3fba49fc80d76630ee9c388397535dbe23a11b6aab70477c0f8575ed646c32fa",
-    "en/04_Machine_Verification_and_Parser_Spec.md": "7b0be701f95ae0fa4c606b2e55648b9e170dc710a05219cf847649630554955c",
+    "en/01_Beginner_Intuitive_Guide.md": "4ef0b85d6af2fc5b0072b18b754ca44aa2666bc967e9c8b50e4c7c36c8da5685",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "0748b07718d98196a80a9d979e5489359b2331104298f4f85346bb35a679982c",
+    "en/03_Expert_Mathematician_Referee_Audit_Report.md": "eff4812fc0d451d7175cb800e2207edaf0d5b6cc4c7f049c3c74fd0ed530fdfe",
+    "en/04_Machine_Verification_and_Parser_Spec.md": "dc60f9250d630c2dedf776e65b43bb5c31664ffc661890b308479a11fbbdee64",
     "en/README.md": "c9682f759728e34b70fec31cf9a252b1f0ae2d271ee4340471db953d59059ce1",
-    "ko/01_초보자용_쉬운해설.md": "c67aa719099cb2d3c15fca0c59c9b661a3df46b76fba2702492e2bbbe8f26992",
-    "ko/02_중급자용_구조및수식가이드.md": "c6285ec786011c1ae81f47c208734b088c98414a4fa53a7ec0ff369ef1e36a47",
-    "ko/03_전문가용_수론학자심층심사보고서.md": "f4e60ed2b8baa98c9aab60bc77a28af1a14222bb8d6d240abd385c3eb00e4abf",
-    "ko/04_자동검증및파서용_명세서.md": "f1faca43b10cc7e805ee5729c04139ee503d7bb6ffc578002ba408ac2d289e32",
+    "ko/01_초보자용_쉬운해설.md": "3a8461ac71daf3c1a12c37f7647df334b6b1edbc86e13a8688de962a07ca41e3",
+    "ko/02_중급자용_구조및수식가이드.md": "e82511247024693747def6025ac4a96ebaf746207c36d0c1c2d9578875276584",
+    "ko/03_전문가용_수론학자심층심사보고서.md": "5ba64c3af644d61a9799fa9ad65b2b2e33b1dbceef89d7f1419fd172c75e3e82",
+    "ko/04_자동검증및파서용_명세서.md": "04c512a263005ff051cd870856587801e53274a5ca67220a4dcde9eb2dd0b3bb",
     "ko/README.md": "a4f85d4cb52aa93f7676719cac793ecb7891e8417f7f4d5db4d4eec20021e4a5",
-    "proofs/problem_spec.md": "274b752f2943dffbb545087ecec16c101579dbf6a62c22f94ef461ca2aca1d3e",
-    "proofs/qrh_eight_tasks_critical_upgrade.lean": "0692a4661f613ba0bb12a2ed48a0f9b1d1ce46ee70f20823df5ece03c5be83b0",
-    "proofs/qrh_mathematician_referee_audit.lean": "a8c12268b564044b30b9b068ffe79cfc70a9e22314d5f1b827550df4e0d959f5",
+    "proofs/problem_spec.md": "5202dd7bec54af1473025dc065684ba5a86ce929acf328cc93aa6f377047813e",
+    "proofs/qrh_eight_tasks_critical_upgrade.lean": "25539881bea6c097828a70fba4dc67c3dc1bbe85869131548a2a30c123f40941",
+    "proofs/qrh_mathematician_referee_audit.lean": "9a01a4b8ce5a786853a0c2e861240e03846ac5e30362adf086beed6e9b2906dc",
     "proofs/symbolic_verification_result.json": "a5006ff42a2b12171c98b20facf6d23c86ed5186e1f43da524f6e42c80727b0e",
     "proofs/verify_qrh_mathematician_audit.py": "cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713"
   },

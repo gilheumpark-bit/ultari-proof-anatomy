@@ -2,7 +2,7 @@
   OpenAI #376 (Universal computation in forced Navier-Stokes flows)
   Part II: Serrin-Gronwall Uniqueness, 2+1D Triangular Passive Scalar PDE,
            Structural Repairs, and Four-Layer Verdict
-  Theorems 21-40 (Zero sorry, Zero axiom, 100% Hypothesis-Usage)
+  Theorems 21-45 (Zero sorry, Zero axiom, 100% Hypothesis-Usage)
 
   This file is part of the split proof architecture (< 500 lines per file,
   KEEP tier under `--plan-lines 310`). Every theorem hypothesis is strictly

@@ -6,6 +6,7 @@ Section 5 Nonsparse Fourier Supply Contraction (-11/125), and Section 6-9 Binary
 Frequency Budget (+2/5 log r) vs. Bad-Permutation Decay (-3/4 log r -> -7/20 log r).
 """
 import json
+import math
 import pathlib
 import sympy as sp
 
@@ -164,9 +165,10 @@ def _verify_effective_ostmann_thresholds() -> dict:
     assert k_away == 1600
     assert sqrt_l_qrh == 320000
     assert sqrt_l_away == 64000000
-    l_sec3_qrh = 39613
-    l_sec3_away = 56170
-    l_sec3_tat = 87689
+    l_sec3_qrh = math.ceil((12500 / 8) * math.log(sqrt_l_qrh**2))
+    l_sec3_away = math.ceil((12500 / 8) * math.log(sqrt_l_away**2))
+    l_sec3_tat = math.ceil((12500 / 8) * math.log((40000 * 38400200) ** 2))
+    assert (l_sec3_qrh, l_sec3_away, l_sec3_tat) == (39613, 56170, 87689)
     assert l_sec3_qrh < l_sec3_away < l_sec3_tat
 
     beta0_inv = 240 * 800
@@ -177,9 +179,18 @@ def _verify_effective_ostmann_thresholds() -> dict:
     assert card_d_ext == 3
     assert 2 * 15001 - 10000 * card_d_ext == 2
 
-    l_eff_gpt = 4115904
-    l_eff_sharp = 640722
-    l_eff_ultra = 255983
+    def _solve_l_sec7(k_val: int, beta_dec: float, bs_v: float, bd_v: float) -> int:
+        b_iter = 6 * math.log(2) + 15
+        c_rate = bs_v + bd_v + 17 * 4 * math.log(k_val) + 0.4 * k_val * math.log(2) + 2 * b_iter + 4
+        l_est = 100000.0
+        for _ in range(100):
+            l_est = (k_val * math.log(2) + 4 * math.log(k_val) + math.log(c_rate) + math.log(l_est)) / beta_dec
+        return math.ceil(l_est)
+
+    l_eff_gpt = _solve_l_sec7(7041, 12 / 10000, 111.7615, 175.1877)
+    l_eff_sharp = _solve_l_sec7(1040, 12 / 10000, 35.0, 91.0)
+    l_eff_ultra = _solve_l_sec7(1040, 30 / 10000, 35.0, 91.0)
+    assert (l_eff_gpt, l_eff_sharp, l_eff_ultra) == (4115904, 640722, 255983)
     assert l_eff_gpt - l_sec3_tat == 4028215
     assert l_eff_gpt - l_eff_sharp == 3475182
     assert l_eff_gpt - l_eff_ultra == 3859921
@@ -307,28 +318,35 @@ def verify_pillar3_tree_and_permutation_contradiction() -> dict:
     assert gamma_deranged == sp.Rational(19, 20)
     assert gamma_fossil == sp.Rational(1, 1)
 
+    log2 = math.log(2)
+    init_rate = 6 * log2 + 13
+    iter_rate = init_rate + 1
+    gap_a = 2 * ((4 - 2 * math.log(1 / 320000)) + 2 + 2 * math.log(4) + (4 * (log2 + 2) + 2 * log2 + 4) + 3)
+    bs_a = 1 + gap_a
+    e_a = log2 - math.log(1 / 16000) + 5 / 4 + 1 + math.log(12) + 1 + 1
+    bd_a = bs_a + 2 * iter_rate + e_a + 9
+    const_a = (bd_a + 2) + 2 * (bs_a + 1) + (math.log(12) + 21 / 4) + 2 * (iter_rate + 1) + 2
+    const_fos = bs_a + 2 * (iter_rate + 1) + e_a + 2
+
     k_min_depths = {
-        "engine_b_gpt": 7041,
-        "engine_a_gpt": 5340,
-        "tuned_17_20": 2036,
-        "deranged_19_20": 1803,
-        "fossil_gen1a_20_20": 1040,
+        "engine_b_gpt": next(k for k in range(2, 9999) if 822 + 100 * math.log(k) < 0.35 * k * log2),
+        "engine_a_gpt": next(k for k in range(2, 9999) if const_a + 100 * math.log(k) < 0.35 * k * log2),
+        "tuned_17_20": next(k for k in range(2, 9999) if const_a + 100 * math.log(k) < 0.85 * k * log2),
+        "deranged_19_20": next(k for k in range(2, 9999) if const_a + 100 * math.log(k) < 0.95 * k * log2),
+        "fossil_gen1a_20_20": next(k for k in range(2, 9999) if const_fos + 80 * math.log(k) < 1.00 * k * log2),
     }
+    assert k_min_depths == {"engine_b_gpt": 7041, "engine_a_gpt": 5340, "tuned_17_20": 2036, "deranged_19_20": 1803, "fossil_gen1a_20_20": 1040}
     assert k_min_depths["engine_b_gpt"] - k_min_depths["fossil_gen1a_20_20"] == 6001
 
     # 3. Section 5 supply contraction favorable mass expansion
     exp_gpt = 1 - sp.Rational(32, 20) * sp.Rational(68, 100)
     exp_33 = 1 - sp.Rational(33, 20) * sp.Rational(61, 100)
     exp_34 = 1 - sp.Rational(34, 20) * sp.Rational(60, 100)
-    assert exp_gpt == sp.Rational(-11, 125)
-    assert exp_33 == sp.Rational(-13, 2000)
-    assert exp_34 == sp.Rational(-1, 50)
+    assert (exp_gpt, exp_33, exp_34) == (sp.Rational(-11, 125), sp.Rational(-13, 2000), sp.Rational(-1, 50))
     fav_gpt = sp.Rational(17, 20) - sp.Rational(2, 100) - sp.Rational(68, 100)
     fav_33 = sp.Rational(17, 20) - sp.Rational(2, 100) - sp.Rational(61, 100)
     fav_34 = sp.Rational(17, 20) - sp.Rational(2, 100) - sp.Rational(60, 100)
-    assert fav_gpt == sp.Rational(3, 20)
-    assert fav_33 == sp.Rational(11, 50)
-    assert fav_34 == sp.Rational(23, 100)
+    assert (fav_gpt, fav_33, fav_34) == (sp.Rational(3, 20), sp.Rational(11, 50), sp.Rational(23, 100))
 
     return {
         "dyadic_leaf_sum_formula": "2^k - 1",
@@ -338,29 +356,14 @@ def verify_pillar3_tree_and_permutation_contradiction() -> dict:
         "net_contradiction_rate": str(net_tree_rate),
         "net_contradiction_decimal": float(net_tree_rate),
         "sharpened_contraction_rates": {
-            "gpt_baseline": str(gamma_gpt),
-            "tuned_threshold": str(gamma_tuned),
-            "deranged_t1_zero": str(gamma_deranged),
-            "restored_gen1a_fossil": str(gamma_fossil),
+            "gpt_baseline": str(gamma_gpt), "tuned_threshold": str(gamma_tuned),
+            "deranged_t1_zero": str(gamma_deranged), "restored_gen1a_fossil": str(gamma_fossil),
         },
         "k_min_depths": k_min_depths,
-        "supply_favorable_mass": {
-            "gpt_baseline": str(fav_gpt),
-            "unrounded_kappa_33_20": str(fav_33),
-            "asymptotic_kappa_17_10": str(fav_34),
-        },
+        "supply_favorable_mass": {"gpt_baseline": str(fav_gpt), "unrounded_kappa_33_20": str(fav_33), "asymptotic_kappa_17_10": str(fav_34)},
         "effective_ostmann_thresholds": _verify_effective_ostmann_thresholds(),
         "paper_to_lean_mechanisms": _verify_paper_to_lean_mechanisms(),
-        "engine_b_constants": {
-            "Cs": 17,
-            "Ccov": 17,
-            "Bs": 200,
-            "BD_min": 322,
-            "Bz_min": 9,
-            "good_margin": 65,
-            "target_rate": -66,
-            "diag_margin": 67,
-        },
+        "engine_b_constants": {"Cs": 17, "Ccov": 17, "Bs": 200, "BD_min": 322, "Bz_min": 9, "good_margin": 65, "target_rate": -66, "diag_margin": 67},
         "engine_a_depth_threshold_k": 5,
         "engine_a_discharge_chain": discharge_chain,
         "paper_sections_lines": sum(sections_lines),

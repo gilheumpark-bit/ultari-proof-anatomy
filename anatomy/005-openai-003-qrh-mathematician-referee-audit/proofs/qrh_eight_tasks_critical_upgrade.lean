@@ -10,14 +10,14 @@ namespace QRHMathematicianRefereeAudit
 
 /-!
 ## Part VI: Stage 1 (`oai_ref` `β = 7/8 → 1/2` Module Refactoring Proofs: Theorems 39–43)
-(`Parameters.lean`, `GramScaleLoss.lean`, `LowGramScale.lean`, `LowSourceScales.lean`, `Local.lean`, `CorrectionBounds.lean`,
- `PrincipalRemainderBounds.lean`, `HighRowsCentralTerms.lean`, `ParametersHighData.lean`, `CentralExponent.lean`, `Endpoint.lean`, `Theorem.lean`)
+(`DirichletL/Parameters.lean`, `DirichletL/Detector/GramScaleLoss.lean`, `DirichletL/Detector/LowGramScale.lean`, `DirichletL/Detector/LowSourceScales.lean`, `DirichletL/Detector/Local.lean`, `DirichletL/Detector/CorrectionBounds.lean`,
+ `DirichletL/Detector/PrincipalRemainderBounds.lean`, `DirichletL/Detector/HighRowsCentralTerms.lean`, `DirichletL/ParametersHighData.lean`, `DirichletL/Detector/CentralExponent.lean`, `DirichletL/Endpoint.lean`, `SiegelZeros/Conclusions/Theorem.lean`)
 -/
 
-/-- [Theorem 39] (Task 1: `Parameters.lean`, `GramScaleLoss.lean`, `LowGramScale.lean`, `LowSourceScales.lean`):
+/-- [Theorem 39] (Task 1: `DirichletL/Parameters.lean`, `DirichletL/Detector/GramScaleLoss.lean`, `DirichletL/Detector/LowGramScale.lean`, `DirichletL/Detector/LowSourceScales.lean`):
 Upgrading scales `(17/48, 23/48) -> (35/66, 59/66)` (`ℓ = 1/6`, unit `1/528`) and Schwartz integration-by-parts order
-`k = 1 -> 2` (`3*α_X - α_Y - 2*ℓ = 4/11 = 192/528 > 0`) expands the `LowSourceScales.lean:88` constant-absorption capacity
-from `1/16 = 33/528` to `2/11 = 96/528` (`+63/528 = +21/176` exponent gain) and sets `LowGramScale.lean:45` to `13/44 = 39/132` with slope `59/132`. -/
+`k = 1 -> 2` (`3*α_X - α_Y - 2*ℓ = 4/11 = 192/528 > 0`) expands the `DirichletL/Detector/LowSourceScales.lean:88` constant-absorption capacity
+from `1/16 = 33/528` to `2/11 = 96/528` (`+63/528 = +21/176` exponent gain) and sets `DirichletL/Detector/LowGramScale.lean:45` to `13/44 = 39/132` with slope `59/132`. -/
 theorem thm_39_task1_oai_ref_parameters_and_gram_k2_upgrade
     (aX_old528 aY_old528 aX_new528 aY_new528 ell528 gap_old528 gap_new528 e_k1_old528 e_k2_old528 e_k2_new528 cap_B_old528 cap_B_new528 g_base132 g_slope132 : Int)
     (haXo : aX_old528 = 187) (haYo : aY_old528 = 253) (haXn : aX_new528 = 280) (haYn : aY_new528 = 472) (hell : ell528 = 88)
@@ -30,8 +30,8 @@ theorem thm_39_task1_oai_ref_parameters_and_gram_k2_upgrade
     cap_B_old528 = 33 ∧ cap_B_new528 = 96 ∧ 11 * cap_B_new528 = 32 * cap_B_old528 ∧ cap_B_old528 < cap_B_new528 ∧
     g_base132 = 39 ∧ g_slope132 = 59 := by omega
 
-/-- [Theorem 40] (Task 2: `Euler.lean`, `Local.lean`, `CorrectionBounds.lean`, `EulerCoordinates.lean`):
-Pre-cancelling `(1 - V)` in `Local.lean:16-31` reduces the `Q⁻¹` geometric series sum in `CorrectionBounds.lean:24-83`
+/-- [Theorem 40] (Task 2: `DirichletL/Detector/Euler.lean`, `DirichletL/Detector/Local.lean`, `DirichletL/Detector/CorrectionBounds.lean`, `DirichletL/Detector/EulerCoordinates.lean`):
+Pre-cancelling `(1 - V)` in `DirichletL/Detector/Local.lean:16-31` reduces the `Q⁻¹` geometric series sum in `DirichletL/Detector/CorrectionBounds.lean:24-83`
 from `240` (`Q_min = 480`) to `64` (`Q_min = 128`), and bi-Stickelberger deflation `(1 + R*q⁻¹)*(1 - R)` eliminates both
 `e_RW = 94/100 < 1` and `e_Rq = 99/100 < 1` at `(a, ξ, υ) = (1/2, 33/200, 19/20)` (`e_R = -1/100`), leaving all 19 surviving
 local tail terms (`20` expanded monomials) with exponent `≥ 144/100 > 1` (`tail_decay = 44/100 = 11/25 > 0`). -/
@@ -50,8 +50,8 @@ theorem thm_40_task2_oai_ref_euler_local_correction_bounds_upgrade
     e_KV100 = 144 ∧ e_DW100 = 145 ∧ e_DV100 = 149 ∧ e_VW100 = 194 ∧ e_RqD100 = 149 ∧ e_RqW100 = 194 ∧ e_R2q2_100 = 198 ∧
     100 < e_KV100 ∧ tail_decay100 = 44 ∧ 0 < tail_decay100 := by omega
 
-/-- [Theorem 41] (Task 3: `PrincipalRemainderBounds.lean`):
-Upgrading `PrincipalRemainderBounds.lean:243, 300, 353, 518-621` from `(17/48, 23/48, 13/16)` and moments `(8, 5)` to
+/-- [Theorem 41] (Task 3: `DirichletL/Detector/PrincipalRemainderBounds.lean`):
+Upgrading `DirichletL/Detector/PrincipalRemainderBounds.lean:243, 300, 353, 518-621` from `(17/48, 23/48, 13/16)` and moments `(8, 5)` to
 `(35/66, 59/66, 7/11)` and moments `(11, 8)` (`+3` for bi-Stickelberger convexity) shifts `source_scale_identity` (`L522`)
 base `11/16 = 22687.5/33000 -> 83/132 = 20750/33000` and establishes strict power savings at `e = 1/1000 = 33/33000`:
 `s_z_rel = -2/33000 = -1/16500 < 0` (`L597`), `s_w_rel = -1421/33000 < 0` (`L594`), and `s_w_dual_rel = -14696/33000 < 0`. -/
@@ -69,10 +69,10 @@ theorem thm_41_task3_oai_ref_principal_remainder_bounds_upgrade
     s_z_rel33000 = -2 ∧ s_w_rel33000 = -1421 ∧ s_w_dual_rel33000 = -14696 ∧
     s_w_dual_rel33000 < s_w_rel33000 ∧ s_w_rel33000 < s_z_rel33000 ∧ s_z_rel33000 < 0 := by omega
 
-/-- [Theorem 42] (Task 4: `HighRowsCentralTerms.lean`, `HighRowsCentralQuotient.lean`, `ParametersHighData.lean`):
+/-- [Theorem 42] (Task 4: `DirichletL/Detector/HighRowsCentralTerms.lean`, `DirichletL/Detector/HighRowsCentralQuotient.lean`, `DirichletL/ParametersHighData.lean`):
 Shifting `z_high` from `17/50 = 34/100` to `7/20 = 35/100` in the dominant branch `5*a_min + 6*z_high = 9/2` lowers the
 maximum 9-branch `HighRows` convergence threshold from `123/250 = 492/1000` to `12/25 = 480/1000 < 500/1000 = 1/2`, and upgrades
-all four high-row exponent budgets in `ParametersHighData.lean:42-47` (`central_budget` margin `49/440640 -> 9180/440640 = 1/48`,
+all four high-row exponent budgets in `DirichletL/ParametersHighData.lean:42-47` (`central_budget` margin `49/440640 -> 9180/440640 = 1/48`,
 `geometric_budget` margin `17/800`, `principal_budget` `2/33000 = 1/16500`, `floor_budget` margin `18/1200 = 3/200` at `a = 1/2`). -/
 theorem thm_42_task4_oai_ref_high_rows_central_data_upgrade
     (z_old100 z_new100 a_min_old1000 a_min_new1000 d0_old176 d0_new176 m_c_old440640 m_c_new440640 m_geom800 m_princ33000 m_floor1200 : Int)
@@ -89,11 +89,11 @@ theorem thm_42_task4_oai_ref_high_rows_central_data_upgrade
     m_geom800 = 17 ∧ m_princ33000 = 2 ∧ m_floor1200 = 18 ∧
     0 < m_c_new440640 ∧ 0 < m_geom800 ∧ 0 < m_princ33000 ∧ 0 < m_floor1200 := by omega
 
-/-- [Theorem 43] (Task 5: `CentralExponent.lean`, `Endpoint.lean`, `LowGramScale.lean`, `Theorem.lean`):
-Removing the static `+3/16` penalty in `CentralExponent.lean:16` shifts `sourceExponent(1/2)` from `-1/2 = -66/132` to `-83/132`;
-in `Endpoint.lean:14-69`, `balanceDenominator` satisfies `35/54 <= b_den <= 5/2 = 135/54` and the 7-monomial certificate
+/-- [Theorem 43] (Task 5: `DirichletL/Detector/CentralExponent.lean`, `DirichletL/Endpoint.lean`, `DirichletL/Detector/LowGramScale.lean`, `SiegelZeros/Conclusions/Theorem.lean`):
+Removing the static `+3/16` penalty in `DirichletL/Detector/CentralExponent.lean:16` shifts `sourceExponent(1/2)` from `-1/2 = -66/132` to `-83/132`;
+in `DirichletL/Endpoint.lean:14-69`, `balanceDenominator` satisfies `35/54 <= b_den <= 5/2 = 135/54` and the 7-monomial certificate
 `(750, 295, 190, 108, 3162, 3300, 1056)` is strictly positive (`sum = 8861`), while the damped `LowRows` exponent `-20/132`
-beats `E_prin(1/2) = -17/132` by `+3/132 = +1/44`, closing `Theorem.lean` down to `β = 1/2`. -/
+beats `E_prin(1/2) = -17/132` by `+3/132 = +1/44`, closing `SiegelZeros/Conclusions/Theorem.lean` down to `β = 1/2`. -/
 theorem thm_43_task5_oai_ref_central_exponent_endpoint_theorem_upgrade
     (src_old132 src_new132 b_den_min108 b_den_max108 c00 c01 c02 c10 c11 c12 c13 sum_7monom e_low_damped132 e_prin_half132 margin_low132 : Int)
     (hso : 4 * src_old132 = 33 * (-11 + 3)) (hsn : src_new132 = -39 - 44)
@@ -150,7 +150,7 @@ theorem thm_45_task7_bi_stickelberger_grossencharakter_entirety_and_convexity
 
 /-- [Theorem 46] (Task 8: Family-to-Individual `ζ(s)` Conductor-Collapse Deficit & Required Amplification Threshold Inversion):
 Collapsing the character family `M_fam ~ Q/Y = Z^(35/66 = 70/132)` to a single character `M_single = 1` (`ζ(s)`) replaces
-`α_X = 70/132` by `α_Y = 118/132` in `GramBound.lean:22`, creating a rank-1 `L²`-sqrt deficit `Δ_collapse = 63/132 - 39/132 = 24/132 = 2/11`
+`α_X = 70/132` by `α_Y = 118/132` in `DirichletL/Detector/GramBound.lean:22`, creating a rank-1 `L²`-sqrt deficit `Δ_collapse = 63/132 - 39/132 = 24/132 = 2/11`
 (critical amplifier length `λ_crit = 48/132 = 4/11`). Achieving the damped `LowRows` target `e_zeta_bridged ≤ -20/132 < -17/132`
 requires an Iwaniec-Conrey amplification + subconvexity gain satisfying the threshold `gain_amp ≥ 24/132 = 2/11` (`λ_amp + 2*θ_t ≥ 48/132`). -/
 theorem thm_46_task8_family_to_individual_zeta_amplification_obstruction_and_bridge

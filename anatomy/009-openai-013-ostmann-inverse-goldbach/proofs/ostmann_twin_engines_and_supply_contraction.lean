@@ -171,31 +171,31 @@ theorem thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window
 
 /-- [Theorem 8] Exact algebraic identity for the collision stability density penalty
 (`02-preliminaries.tex` Lemma 2.5, `eq:src2`):
-for any local residue count `a` modulo `p` (`sigma_p = a / p`, with `p2 = p^2`, `pa = p * a`, `a2 = a^2`),
+for any local residue count `a` modulo `p` (`sigma_p = a / p`),
 clearing denominators by `p^2` in `1 / sigma_p + 1 / (1 - sigma_p) - 4 = (2 * sigma_p - 1)^2 / (sigma_p * (1 - sigma_p))`
-yields `(p2 - pa) + pa - 4 * (pa - a2) = 4 * a2 - 4 * pa + p2 = (2 * a - p)^2`. -/
+yields `(p*p - p*a) + p*a - 4 * (p*a - a*a) = 4 * (a*a) - 4 * (p*a) + p*p = (2 * a - p)^2 >= 0`. -/
 theorem thm_08_collision_stability_reciprocal_penalty_identity
-    (p2 pa a2 lhs rhs : Int)
-    (h_lhs : lhs = (p2 - pa) + pa - 4 * (pa - a2))
-    (h_rhs : rhs = 4 * a2 - 4 * pa + p2) :
-    lhs = rhs ∧ lhs - rhs = 0 := by
-  omega
+    (p a lhs sq : Int) (h_lhs : lhs = (p * p - p * a) + p * a - 4 * (p * a - a * a))
+    (h_sq : sq = (2 * a - p) * (2 * a - p)) : lhs = sq ∧ 0 ≤ lhs := by
+  have h1 : 2 * a * (2 * a) = 4 * (a * a) ∧ 2 * a * p = 2 * (p * a) ∧ p * (2 * a) = 2 * (p * a) := ⟨by rw [Int.mul_assoc, ← Int.mul_assoc a 2 a, Int.mul_comm a 2, Int.mul_assoc 2 a a, ← Int.mul_assoc 2 2]; rfl, by rw [Int.mul_assoc, Int.mul_comm a p], by rw [← Int.mul_assoc, Int.mul_comm p 2, Int.mul_assoc]⟩
+  have h_exp : (2 * a - p) * (2 * a - p) = 4 * (a * a) - 4 * (p * a) + p * p := by rw [Int.sub_mul, Int.mul_sub, Int.mul_sub]; omega
+  exact ⟨by omega, (show lhs = (2 * a - p) * (2 * a - p) by omega) ▸ if h : 0 ≤ 2 * a - p then Int.mul_nonneg h h else Int.neg_mul_neg (2 * a - p) (2 * a - p) ▸ Int.mul_nonneg (by omega) (by omega)⟩
 
 /-- [Theorem 9] Unbalanced residue density penalty lower bound `>= 1/2` outside `[1/3, 2/3]`
 (`02-preliminaries.tex:259`):
 clearing denominators in `2 * (2*sigma_p - 1)^2 - sigma_p * (1 - sigma_p) = (1 - 3*sigma_p) * (2 - 3*sigma_p)`
-gives `2 * (4*a2 - 4*pa + p2) - (pa - a2) = 9*a2 - 9*pa + 2*p2 = (p - 3*a) * (2*p - 3*a)`, which is strictly
-nonnegative whenever `3 * a <= p` or `2 * p <= 3 * a`. -/
+gives `2 * (4*(a*a) - 4*(p*a) + p*p) - (p*a - a*a) = 9*(a*a) - 9*(p*a) + 2*(p*p) = (p - 3*a) * (2*p - 3*a)`, which is
+nonnegative whenever `0 <= p` and `3 * a <= p` or `2 * p <= 3 * a`. -/
 theorem thm_09_unbalanced_density_penalty_lower_bound_one_half
-    (p a p2 pa a2 lhs factored : Int)
-    (h_unbal : 3 * a ≤ p ∧ 0 ≤ (p - 3 * a) * (2 * p - 3 * a) ∨
-               2 * p ≤ 3 * a ∧ 0 ≤ (3 * a - p) * (3 * a - 2 * p))
-    (h_lhs : lhs = 2 * (4 * a2 - 4 * pa + p2) - (pa - a2))
-    (h_fac : factored = 9 * a2 - 9 * pa + 2 * p2) :
-    lhs = factored ∧ (3 * a ≤ p ∨ 2 * p ≤ 3 * a) := by
-  rcases h_unbal with ⟨h1, _⟩ | ⟨h2, _⟩
-  · refine ⟨by omega, Or.inl h1⟩
-  · refine ⟨by omega, Or.inr h2⟩
+    (p a lhs factored : Int) (h_unbal : (0 ≤ p ∧ 3 * a ≤ p) ∨ (0 ≤ p ∧ 2 * p ≤ 3 * a))
+    (h_lhs : lhs = 2 * (4 * (a * a) - 4 * (p * a) + p * p) - (p * a - a * a))
+    (h_fac : factored = (p - 3 * a) * (2 * p - 3 * a)) :
+    lhs = factored ∧ 0 ≤ lhs := by
+  have h1 : p * (2 * p) = 2 * (p * p) ∧ p * (3 * a) = 3 * (p * a) ∧ 3 * a * (2 * p) = 6 * (p * a) ∧ 3 * a * (3 * a) = 9 * (a * a) := ⟨by rw [← Int.mul_assoc, Int.mul_comm p 2, Int.mul_assoc], by rw [← Int.mul_assoc, Int.mul_comm p 3, Int.mul_assoc], by rw [Int.mul_assoc, ← Int.mul_assoc a 2 p, Int.mul_comm a 2, Int.mul_assoc 2 a p, Int.mul_comm a p, ← Int.mul_assoc 3 2]; rfl, by rw [Int.mul_assoc, ← Int.mul_assoc a 3 a, Int.mul_comm a 3, Int.mul_assoc 3 a a, ← Int.mul_assoc 3 3]; rfl⟩
+  have h_exp : (p - 3 * a) * (2 * p - 3 * a) = 9 * (a * a) - 9 * (p * a) + 2 * (p * p) := by rw [Int.sub_mul, Int.mul_sub, Int.mul_sub]; omega
+  rcases h_unbal with ⟨hp, hle⟩ | ⟨hp, hge⟩
+  · exact ⟨by omega, (show lhs = (p - 3 * a) * (2 * p - 3 * a) by omega) ▸ Int.mul_nonneg (by omega) (by omega)⟩
+  · exact ⟨by omega, (show lhs = (p - 3 * a) * (2 * p - 3 * a) by omega) ▸ Int.neg_mul_neg (p - 3 * a) (2 * p - 3 * a) ▸ Int.mul_nonneg (by omega) (by omega)⟩
 
 /-- [Theorem 10] Section 3 quadratic character parameter budget (`03-quadratic.tex:41`):
 with `rho = 3/5`, `mu_0 = 10^(-6)`, `gamma = 10^(-7)`, `X = exp(T^(8/5))`, dyadic tail `[X^(9/10), X]`, and
@@ -486,8 +486,8 @@ theorem thm_54_section7_five_disjoint_prime_scale_hierarchy
     (h_top : c_top_comp = 100)
     (h_giant_lo : 500 ≤ c_giant)
     (h_giant_hi : c_giant ≤ 9000) :
-    c_del = 4 ∧ c_del < c_spec ∧ c_spec + 30 ≤ c_bulk ∧
-    c_bulk + 40 ≤ c_top_comp ∧ c_top_comp + 400 ≤ c_giant ∧ c_giant ≤ 9000 := by
+    c_top_comp - c_del = 96 ∧ c_top_comp + c_del = 104 ∧ c_del + 1 ≤ c_spec ∧ c_spec + 30 ≤ c_bulk ∧
+    c_bulk + 40 ≤ c_top_comp ∧ c_top_comp + 400 ≤ c_giant ∧ c_giant - c_del ≤ 8996 := by
   omega
 
 /-- [Theorem 55] Section 8 two-row progression scale table (`08-arithmetic.tex:162-168, 247-259`, `Lemma 8.1`
@@ -510,8 +510,8 @@ theorem thm_55_section8_progression_table_zero_free_margins
     (h_db : d_b = 14)
     (h_mub : mu_b = 12)
     (h_mb : margin_b = a0_b - 2 * theta_b) :
-    margin_g = 50 ∧ theta_g - dp_g = 40 ∧ dp_g - d_g = 30 ∧ d_g - mu_g = 30 ∧ mu_g = 120 ∧
-    margin_b = 3 ∧ theta_b - dp_b = 2 ∧ dp_b - d_b = 2 ∧ d_b - mu_b = 2 ∧ mu_b = 12 := by
+    margin_g = 50 ∧ theta_g - dp_g = 40 ∧ dp_g - d_g = 30 ∧ d_g - mu_g = 30 ∧ mu_g - margin_g = 70 ∧
+    margin_b = 3 ∧ theta_b - dp_b = 2 ∧ dp_b - d_b = 2 ∧ d_b - mu_b = 2 ∧ mu_b - margin_b = 9 := by
   omega
 
 end OstmannTwinEnginesAndSupply

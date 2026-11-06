@@ -8,10 +8,10 @@ namespace QRHMathematicianRefereeAudit
 
 /-!
 ## Part I: Origin of the Hardcoded Exponents `(17/48, 23/48, 1/6)` & The `B ≤ Z^(1/16)` Inflation Loss (Theorems 1–6)
-(`GramBound.lean:55`, `LowGramScale.lean:12-48`, `LowSourceScales.lean:20-98`, `Parameters.lean:12-17`)
+(`DirichletL/Detector/GramBound.lean:55`, `DirichletL/Detector/LowGramScale.lean:12-48`, `DirichletL/Detector/LowSourceScales.lean:20-98`, `DirichletL/Parameters.lean:12-17`)
 -/
 
-/-- [Theorem 1] Unique solution of the 3x3 physical scale balance system in `LowSourceScales.lean` and `GramBound.lean`:
+/-- [Theorem 1] Unique solution of the 3x3 physical scale balance system in `DirichletL/Detector/LowSourceScales.lean` and `DirichletL/Detector/GramBound.lean`:
 `5 * aX + aY = 108`, `2 * aX - aY = 11`, `aX - ell48 = 9` uniquely force `(aX, aY, ell48) = (17, 23, 8)` in units of `1/48`. -/
 theorem thm_01_magic_exponents_unique_3x3_system
     (aX aY ell48 sum_7aX : Int)
@@ -22,7 +22,7 @@ theorem thm_01_magic_exponents_unique_3x3_system
     sum_7aX = 119 ∧ aX = 17 ∧ aY = 23 ∧ ell48 = 8 ∧ aY - aX = 6 := by
   omega
 
-/-- [Theorem 2] Forensic quantification of the `B ≤ Z^(1/16)` constant-absorption inflation in `LowSourceScales.lean:88-98`:
+/-- [Theorem 2] Forensic quantification of the `B ≤ Z^(1/16)` constant-absorption inflation in `DirichletL/Detector/LowSourceScales.lean:88-98`:
 removing the `3/48 = 21/84` inflation (`2 * α_X - α_Y = 1/6 = 14/84`) yields uninflated scales `(29/84, 44/84 = 11/21)`. -/
 theorem thm_02_constant_B_absorption_inflation_and_uninflated_scales
     (ell84 infl84 L_infl84 aX84 aY84 sum_7aX84 : Int)
@@ -35,7 +35,7 @@ theorem thm_02_constant_B_absorption_inflation_and_uninflated_scales
     L_infl84 = 35 ∧ sum_7aX84 = 203 ∧ aX84 = 29 ∧ aY84 = 44 ∧ aY84 - aX84 = 15 := by
   omega
 
-/-- [Theorem 3] Componentwise Gram 3-mode exponent decomposition (`GramBound.lean:55`, `LowGramScale.lean:15-45`) in units of `1/96`:
+/-- [Theorem 3] Componentwise Gram 3-mode exponent decomposition (`DirichletL/Detector/GramBound.lean:55`, `DirichletL/Detector/LowGramScale.lean:15-45`) in units of `1/96`:
 zero-mode `9/96`, cubic Gauss mode `10/96`, and bundled `18/96 = 3/16` (`+8/96 = 1/12` loss). -/
 theorem thm_03_gram_three_mode_exponent_decomposition
     (aX96 aY96 ell96 exp_zero96 exp_gauss96 exp_bundled96 loss_L96 : Int)
@@ -49,7 +49,7 @@ theorem thm_03_gram_three_mode_exponent_decomposition
   omega
 
 /-- [Theorem 4] Three-tier additive decomposition of the non-exceptional Gram relaxation exponent losses at `δ = 79/204`:
-2-term `1086/19584 = 181/3264`, 3-term `1290/19584 = 215/3264`, and full `2922/19584 = 487/3264` (`GramBound.lean:55-63`). -/
+2-term `1086/19584 = 181/3264`, 3-term `1290/19584 = 215/3264`, and full `2922/19584 = 487/3264` (`DirichletL/Detector/GramBound.lean:55-63`). -/
 theorem thm_04_gram_relaxation_three_tier_exponent_losses
     (loss_a loss_b loss_c loss_2term19584 total_loss19584 full_nonexc19584 : Int)
     (ha : loss_a = 612) (hb : loss_b = 474) (hc : loss_c = 204)
@@ -60,7 +60,7 @@ theorem thm_04_gram_relaxation_three_tier_exponent_losses
     loss_2term19584 < total_loss19584 ∧ total_loss19584 < full_nonexc19584 := by
   omega
 
-/-- [Theorem 5] Dead constraint diagnosis (`Parameters.lean:12-17` vs. active `LowSourceScales.lean:20-36`):
+/-- [Theorem 5] Dead constraint diagnosis (`DirichletL/Parameters.lean:12-17` vs. active `DirichletL/Detector/LowSourceScales.lean:20-36`):
 shifting `(α_X, α_Y)` by `η = 3/73440` with fixed `ℓ = 1/6` keeps Poisson slack `4587 > 0` and lowers `2β*` to `128519/73440 < 7/4`. -/
 theorem thm_05_dead_constraint_parameters_vs_active_poisson
     (aX0 aY0 ell0 eta aX1 aY1 poisson_slack two_beta_active two_beta_frozen : Int)
@@ -74,7 +74,7 @@ theorem thm_05_dead_constraint_parameters_vs_active_poisson
   omega
 
 /-- [Theorem 6] Irrational saddle discriminant `Δ = 140^2 * 16354` vs. rational SOS anchor `δ_SOS = 79/204`
-where `204^2 * P(79/204) = -459816 < 0` (`Endpoint.lean:29-62`). -/
+where `204^2 * P(79/204) = -459816 < 0` (`DirichletL/Endpoint.lean:29-62`). -/
 theorem thm_06_saddle_point_discriminant_and_sos_anchor_sign
     (A B C disc sq140 D_sqfree P_at_sos_num : Int)
     (hA : A = 9384) (hB : B = 25160) (hC : C = 8325)
@@ -88,10 +88,10 @@ theorem thm_06_saddle_point_discriminant_and_sos_anchor_sign
 
 /-!
 ## Part II: Local Euler Factor Cancellation, `m ≥ 2` Gauss Vanishing & The `480 → 128` Threshold (Theorems 7–12)
-(`Local.lean:11-36`, `Euler.lean:11-43`, `CorrectionBounds.lean:24-83`, `HighRowsTail.lean:11-56`, `HighRowsCentralQuotient.lean:9`)
+(`DirichletL/Detector/Local.lean:11-36`, `DirichletL/Detector/Euler.lean:11-43`, `DirichletL/Detector/CorrectionBounds.lean:24-83`, `DirichletL/Detector/HighRowsTail.lean:11-56`, `DirichletL/Detector/HighRowsCentralQuotient.lean:9`)
 -/
 
-/-- [Theorem 7] Identical polynomial cancellation of the `1 - V` denominator in `continuedCorrection` (`Local.lean:16-24`, `Euler.lean:11-13`)
+/-- [Theorem 7] Identical polynomial cancellation of the `1 - V` denominator in `continuedCorrection` (`DirichletL/Detector/Local.lean:16-24`, `DirichletL/Detector/Euler.lean:11-13`)
 over `ℤ[R, V, qInv, K, W, D]`. -/
 theorem thm_07_marked_factor_one_minus_V_polynomial_cancellation
     (R V qInv K W D N_cont_lhs N_cont_rhs : Int)
@@ -102,7 +102,7 @@ theorem thm_07_marked_factor_one_minus_V_polynomial_cancellation
   simp only [Int.mul_add, Int.mul_sub, Int.mul_neg, Int.mul_one, Int.mul_comm, Int.mul_left_comm]
   omega
 
-/-- [Theorem 8] Double triangle-inequality inflation in `CorrectionBounds.lean:26, 58` (`c_raw = 2*(4+2*56) = 232 ≤ c_unred = 240`, `Q ≥ 480`)
+/-- [Theorem 8] Double triangle-inequality inflation in `DirichletL/Detector/CorrectionBounds.lean:26, 58` (`c_raw = 2*(4+2*56) = 232 ≤ c_unred = 240`, `Q ≥ 480`)
 vs. `(1 - V)`-cancelled bound (`c_red = 2*(4+28) = 64`, `Q ≥ 128` linear / `Q ≥ 129` geometric; `46 - 16 = 30` norms / `59` ideals recovered). -/
 theorem thm_08_correction_bounds_unreduced_480_vs_reduced_128
     (c_unred Q_unred c_red Q_red Q_geom split_480 inert_480 split_128 inert_128 norms_saved : Int)
@@ -115,7 +115,7 @@ theorem thm_08_correction_bounds_unreduced_480_vs_reduced_128
     Q_unred - Q_red = 352 ∧ norms_saved = 30 ∧ (2 * split_480 + inert_480) - (2 * split_128 + inert_128) = 59 := by
   omega
 
-/-- [Theorem 9] Second Euler continuation `(1 - R) * continuedCorrection` cancels all 5 first-order poles (`Local.lean:68-74`),
+/-- [Theorem 9] Second Euler continuation `(1 - R) * continuedCorrection` cancels all 5 first-order poles (`DirichletL/Detector/Local.lean:68-74`),
 leaving purely quadratic/higher-order combinations in `R, D, V, W`. -/
 theorem thm_09_second_euler_continuation_five_pole_cancellation
     (R V qInv K W D defect_poly quadratic_form : Int)
@@ -126,7 +126,7 @@ theorem thm_09_second_euler_continuation_five_pole_cancellation
   simp only [Int.mul_add, Int.mul_sub, Int.mul_neg, Int.mul_one, Int.mul_comm, Int.mul_left_comm]
   omega
 
-/-- [Theorem 10] Sextic Gauss valuation table periodicity and `6 / 8` branch vanishing for `m ≥ 2` (`ScalarTable.lean:11-35`, `HighRowsTail.lean:11-48`):
+/-- [Theorem 10] Sextic Gauss valuation table periodicity and `6 / 8` branch vanishing for `m ≥ 2` (`DirichletL/Detector/ScalarTable.lean:11-35`, `DirichletL/Detector/HighRowsTail.lean:11-48`):
 `J = j + 6m ≥ 12 > n + 1` forces `J ≠ n` and `J - 1 ≠ n`, leaving only `(0,2,0)` and `(1,0,1)`. -/
 theorem thm_10_sextic_gauss_table_m_ge_2_six_branches_vanish
     (m j n J_idx J_minus_1 : Int)
@@ -138,7 +138,7 @@ theorem thm_10_sextic_gauss_table_m_ge_2_six_branches_vanish
   omega
 
 /-- [Theorem 11] Exact `z_re ≥ 1/12` (`z60 ≥ 5` in units of `1/60`) continuation threshold for the 2 surviving `m ≥ 2` tail branches
-`(0, 2, 0)` and `(1, 0, 1)` at `x ≥ 1/2` (`HighRowsCentralTerms.lean:47-63`). -/
+`(0, 2, 0)` and `(1, 0, 1)` at `x ≥ 1/2` (`DirichletL/Detector/HighRowsCentralTerms.lean:47-63`). -/
 theorem thm_11_surviving_m_ge_2_branches_z_one_twelfth_threshold
     (x60 w60 z60 margin_branch02_0 margin_branch10_1 : Int)
     (hx : 30 ≤ x60) (hw : 0 ≤ w60) (hxw : x60 + w60 = 60)
@@ -148,7 +148,7 @@ theorem thm_11_surviving_m_ge_2_branches_z_one_twelfth_threshold
     x60 ≤ 60 ∧ 0 ≤ margin_branch02_0 ∧ 60 ≤ margin_branch10_1 := by
   omega
 
-/-- [Theorem 12] Floor source margin root `a_max = 37/72` (`CentralExponent.lean:11-28`, `CubeFloorSaving.lean:20-45`). -/
+/-- [Theorem 12] Floor source margin root `a_max = 37/72` (`DirichletL/Detector/CentralExponent.lean:11-28`, `DirichletL/PrimeRows/CubeFloorSaving.lean:20-45`). -/
 theorem thm_12_floor_source_margin_exact_root_37_72
     (eta72 margin144 a_max72 : Int)
     (h_margin : margin144 = 3 * eta72 - 3)
@@ -159,11 +159,11 @@ theorem thm_12_floor_source_margin_exact_root_37_72
 
 /-!
 ## Part III: Referee Bottlenecks 1 & 2: Double Contour Separation & Off-Diagonal Gram Barrier (Theorems 13–18)
-(`PrincipalRemainderBounds.lean:520-620`, `CentralExponent.lean:11-18`, `HighRowsCentralTerms.lean:47-53`, `GramBound.lean:55`)
+(`DirichletL/Detector/PrincipalRemainderBounds.lean:520-620`, `DirichletL/Detector/CentralExponent.lean:11-18`, `DirichletL/Detector/HighRowsCentralTerms.lean:47-53`, `DirichletL/Detector/GramBound.lean:55`)
 -/
 
 /-- [Theorem 13] Referee Bottleneck 1A: Exact `z_0`-invariance of `sourceExponent` at the saddle point `d_0 = 13/16 = 39/48`
-(`CentralExponent.lean:11-18`), where `c_{z0}(d_0) = 48 + 8 - 17 - 39 = 0`. -/
+(`DirichletL/Detector/CentralExponent.lean:11-18`), where `c_{z0}(d_0) = 48 + 8 - 17 - 39 = 0`. -/
 theorem thm_13_central_exponent_z0_invariance_at_saddle_d0
     (aX48 ell48 d0_48 d_sub48 coeff_d0 coeff_sub : Int)
     (hX : aX48 = 17) (hL : ell48 = 8) (hd0 : d0_48 = 39)
@@ -173,8 +173,8 @@ theorem thm_13_central_exponent_z0_invariance_at_saddle_d0
     coeff_d0 = 0 ∧ 1 ≤ coeff_sub := by
   omega
 
-/-- [Theorem 14] Referee Bottleneck 1B: Double contour split in `PrincipalRemainderBounds.lean:577-581` at `e = 1/1000` (`48/48000`),
-yielding `w = 19/20` saving `1063/48000` and `w = 1, z = 33/200` saving `17/48000 = principal_budget` (`ParametersHighData.lean:45`). -/
+/-- [Theorem 14] Referee Bottleneck 1B: Double contour split in `DirichletL/Detector/PrincipalRemainderBounds.lean:577-581` at `e = 1/1000` (`48/48000`),
+yielding `w = 19/20` saving `1063/48000` and `w = 1, z = 33/200` saving `17/48000 = principal_budget` (`DirichletL/ParametersHighData.lean:45`). -/
 theorem thm_14_double_contour_w_and_z_residue_separation_budget
     (e48000 save_w48000 save_z48000 principal_budget48000 : Int)
     (he : e48000 = 48)
@@ -186,7 +186,7 @@ theorem thm_14_double_contour_w_and_z_residue_separation_budget
   omega
 
 /-- [Theorem 15] Referee Bottleneck 2A: Master coupling law `β_crit = 5/6 + (α_X + α_Y - 2ℓ)/12 = 7/8` (`504/576`)
-(`GramBound.lean:55`, `Parameters.lean:12-17`). -/
+(`DirichletL/Detector/GramBound.lean:55`, `DirichletL/Parameters.lean:12-17`). -/
 theorem thm_15_master_beta_coupling_law_from_gram_and_signal
     (aX48 aY48 ell48 beta576 : Int)
     (h_rel : aX48 + aY48 - 2 * ell48 = 24)
@@ -195,7 +195,7 @@ theorem thm_15_master_beta_coupling_law_from_gram_and_signal
   omega
 
 /-- [Theorem 16] Referee Bottleneck 2B: Bilinear off-diagonal Gauss cancellation thresholds `Δ_gram(β) = (21 - 24β)/16`
-(`1/16`, `3/16`, `111/400` in units of `1/1600`) for `β = 5/6, 3/4, 69/100` (`GramBound.lean:55`). -/
+(`1/16`, `3/16`, `111/400` in units of `1/1600`) for `β = 5/6, 3/4, 69/100` (`DirichletL/Detector/GramBound.lean:55`). -/
 theorem thm_16_bilinear_gram_cancellation_thresholds_5_6_and_3_4
     (b56_300 b34_300 b69_300 g56_1600 g34_1600 g69_1600 : Int)
     (hb56 : b56_300 = 250) (hb34 : b34_300 = 225) (hb69 : b69_300 = 207)
@@ -205,7 +205,7 @@ theorem thm_16_bilinear_gram_cancellation_thresholds_5_6_and_3_4
     g56_1600 < g34_1600 ∧ g34_1600 < g69_1600 := by
   omega
 
-/-- [Theorem 17] Parameter budget admissibility (`ParametersHighData.lean:39-48`, `CubeFloorSaving.lean:41`):
+/-- [Theorem 17] Parameter budget admissibility (`DirichletL/ParametersHighData.lean:39-48`, `DirichletL/PrimeRows/CubeFloorSaving.lean:41`):
 7-term sum `75708 / 4800000 < 99280 / 4800000` with positive slack `23572 / 4800000`. -/
 theorem thm_17_parameter_budget_admissibility_at_05001
     (two_zeta e26 eps30 loss mesh6 nu saving total_used target_cap slack : Int)
@@ -216,7 +216,7 @@ theorem thm_17_parameter_budget_admissibility_at_05001
     total_used = 75708 ∧ slack = 23572 ∧ 0 < slack ∧ total_used < target_cap := by
   omega
 
-/-- [Theorem 18] Three-way dyadic energy contraction closure (`ParametersHighData.lean:39-48, 68-108`):
+/-- [Theorem 18] Three-way dyadic energy contraction closure (`DirichletL/ParametersHighData.lean:39-48, 68-108`):
 `w1 + w2 + w3 = 3` in units of `1/3` gives contraction factor `κ = 3/4` with strict drop `≥ 1` for `E_curr ≥ 4`. -/
 theorem thm_18_energy_induction_contraction_uniform_in_beta
     (w1 w2 w3 w_sum E_curr E_next drop : Int)
@@ -228,11 +228,11 @@ theorem thm_18_energy_induction_contraction_uniform_in_beta
 
 /-!
 ## Part IV: Referee Bottlenecks 3 & 4: Wild Ramification at `p = 3`, `char = 2` Collapse & Siegel Zero Discharge (Theorems 19–26)
-(`HighRowsUnramified.lean:10-12, 36`, `ScalarTable.lean:15-27`, `GeometricBoundary.lean:18-48`, `PivotBounds.lean:17-65`, `Theorem.lean:11-20`)
+(`DirichletL/Detector/HighRowsUnramified.lean:10-12, 36`, `DirichletL/Detector/ScalarTable.lean:15-27`, `SiegelZeros/Estimates/GeometricBoundary.lean:18-48`, `SiegelZeros/Selection/PivotBounds.lean:17-65`, `SiegelZeros/Conclusions/Theorem.lean:11-20`)
 -/
 
 /-- [Theorem 19] Referee Bottleneck 3A: In `O = ℤ[ω]`, `Q = 3` (`λ = 1 - ω`) is wildly ramified (`Q - 1 = 2`) and `Q = 4` (`p = 2` inert)
-collapses sextic symbols (`Q - 1 = 3`), whereas every prime ideal with `Q ≥ 7, p ∤ 6` satisfies `Q ≡ 1 (mod 6)` (`HighRowsUnramified.lean:10-12`). -/
+collapses sextic symbols (`Q - 1 = 3`), whereas every prime ideal with `Q ≥ 7, p ∤ 6` satisfies `Q ≡ 1 (mod 6)` (`DirichletL/Detector/HighRowsUnramified.lean:10-12`). -/
 theorem thm_19_eisenstein_sextic_symbol_requires_Q_ge_7_mod_6_eq_1
     (Q_ram Q_inert2 k_mod6 Q_good mult_order_good : Int)
     (h_ram : Q_ram = 3) (h_in2 : Q_inert2 = 4) (hk : 1 ≤ k_mod6)
@@ -241,7 +241,7 @@ theorem thm_19_eisenstein_sextic_symbol_requires_Q_ge_7_mod_6_eq_1
     7 ≤ Q_good ∧ mult_order_good = 6 * k_mod6 ∧ 6 ≤ mult_order_good := by
   omega
 
-/-- [Theorem 20] Referee Bottleneck 3B: Prime-ideal norm partition in `[3, 128)` (`HighRowsUnramified.lean:10-12`, `HighRowsCentralQuotient.lean:9`):
+/-- [Theorem 20] Referee Bottleneck 3B: Prime-ideal norm partition in `[3, 128)` (`DirichletL/Detector/HighRowsUnramified.lean:10-12`, `DirichletL/Detector/HighRowsCentralQuotient.lean:9`):
 `1` wild norm (`3`), `1` inert char-2 norm (`4`), `14` split norms `p ≡ 1 mod 6`, and `2` inert square norms (`25, 121`), giving `16` norms (`30` ideals) in `[7, 128)`. -/
 theorem thm_20_bad_prime_mask_absorbs_wild_and_char2_primes
     (n_wild_char3 n_inert_char2 n_split_128 n_inert_sq_128 n_norms_7_128 n_ideals_7_128 total_norms_lt_128 : Int)
@@ -253,7 +253,7 @@ theorem thm_20_bad_prime_mask_absorbs_wild_and_char2_primes
   omega
 
 /-- [Theorem 21] Referee Bottleneck 4A: Floor bound `97 = 96 + 1` (`⌊96t⌋+1 ≤ 97t`), `N_0 = 2*97^2 = 18818`, `1/c₁ = 4*97^2 = 37636`, `C₁ = 2*96 = 192`,
-and `H = 12 * (C₁ / c₁) = 86713344` (`GeometricBoundary.lean:26`, `PivotBounds.lean:59-65`). -/
+and `H = 12 * (C₁ / c₁) = 86713344` (`SiegelZeros/Estimates/GeometricBoundary.lean:26`, `SiegelZeros/Selection/PivotBounds.lean:59-65`). -/
 theorem thm_21_siegel_zero_magic_constants_86713344_and_18818
     (p97 sq97 inv_c1 C1 N0 ratio_num H_magic target_inv_slope : Int)
     (hp : p97 = 97) (hsq : sq97 = p97 * p97) (hc1 : inv_c1 = 4 * sq97)
@@ -264,7 +264,7 @@ theorem thm_21_siegel_zero_magic_constants_86713344_and_18818
   subst hp; subst hsq; subst hc1; subst hC1; subst hN0; subst hrat; subst hH
   omega
 
-/-- [Theorem 22] Referee Bottleneck 4B: Biquadratic field `B = ℚ(√d, √2)` Klein 4-group jet weight scaling `N^(16/3) H^(-1)` (`PivotBounds.lean:33-60`). -/
+/-- [Theorem 22] Referee Bottleneck 4B: Biquadratic field `B = ℚ(√d, √2)` Klein 4-group jet weight scaling `N^(16/3) H^(-1)` (`SiegelZeros/Selection/PivotBounds.lean:33-60`). -/
 theorem thm_22_biquadratic_klein4_torus_jet_exponent_gap
     (dim_B card_gal exp3_N_base exp3_N_jet exp3_N_tot exp3_H_num exp3_H_den exp3_H_ratio : Int)
     (hd : dim_B = 4) (hg : card_gal = 4) (hNb : exp3_N_base = 3 * dim_B)
@@ -273,7 +273,7 @@ theorem thm_22_biquadratic_klein4_torus_jet_exponent_gap
     exp3_N_tot = 16 ∧ exp3_H_ratio = -3 ∧ dim_B = card_gal := by
   omega
 
-/-- [Theorem 23] 4-step Bézout-to-Siegel-zero discharge chain (`Theorem.lean:11-20`, common `97^2` floor factor `2 * N0 = 4 * 97^2 = 37636 = inv_c1`)
+/-- [Theorem 23] 4-step Bézout-to-Siegel-zero discharge chain (`SiegelZeros/Conclusions/Theorem.lean:11-20`, common `97^2` floor factor `2 * N0 = 4 * 97^2 = 37636 = inv_c1`)
 vs. cubic character independence (`ord_χ = 3 ⇒ ord_conj = 2 ≠ 1`, `χ_bar = χ^2 ≠ χ`). -/
 theorem thm_23_siegel_zero_conditional_hgeometry_vs_cubic_independence
     (ord_cubic ord_conj_cubic ord_real_quad N0 inv_c1 bezout_gap_margin : Int)
@@ -310,7 +310,7 @@ structure BezoutSiegelChain (Family Cutoff Cert : Type) where
   ax_step4_geometric_exclusion : ∀ (F : Family) (c : Cutoff),
     ActualCutoffSpanning F c → RealZeroGapExcluded F gapDenom
 
-/-- [Theorem 25] Universal functorial discharge of `ActualCutoffSpanning` (`hgeometry`) in `Theorem.lean:11-20`. -/
+/-- [Theorem 25] Universal functorial discharge of `ActualCutoffSpanning` (`hgeometry`) in `SiegelZeros/Conclusions/Theorem.lean:11-20`. -/
 theorem thm_25_abstract_unconditional_siegel_zero_exclusion
     {Family Cutoff Cert : Type} (C : BezoutSiegelChain Family Cutoff Cert)
     (F : Family) (hF : C.AdmissibleFamily F) :
@@ -322,7 +322,7 @@ theorem thm_25_abstract_unconditional_siegel_zero_exclusion
   have hexcl : C.RealZeroGapExcluded F C.gapDenom := C.ax_step4_geometric_exclusion F c hspan
   exact ⟨⟨c, hspan⟩, hexcl, C.ax_gap_denom_pos⟩
 
-/-- Concrete arithmetic witness for `ArithmeticCutoffTransport.lean:51` (`D = 4*N_0 = 75272`), `GeometricBoundary.lean` (`N_0 = 2*97^2`), & `PivotBounds.lean` (`H = 12*(2*96)*(2*N_0)`). -/
+/-- Concrete arithmetic witness for `SiegelZeros/Structure/ArithmeticCutoffTransport.lean:51` (`D = 4*N_0 = 75272`), `SiegelZeros/Estimates/GeometricBoundary.lean` (`N_0 = 2*97^2`), & `SiegelZeros/Selection/PivotBounds.lean` (`H = 12*(2*96)*(2*N_0)`). -/
 def siegel_concrete_witness : BezoutSiegelChain (Nat × Nat) Nat Nat where
   AdmissibleFamily := fun dq => dq.2 ≥ 3 ∧ dq.1 ≥ 3 ∧ dq.1 ≠ 1 ∧ dq.1 ≠ 2
   RegularSelection := fun dq n0 => dq.2 ≥ 3 ∧ dq.1 ≥ 3 ∧ dq.1 ≠ 1 ∧ dq.1 ≠ 2 ∧ n0 = 2 * 97 * 97 ∧ 4 * n0 = 75272
@@ -336,7 +336,7 @@ def siegel_concrete_witness : BezoutSiegelChain (Nat × Nat) Nat Nat where
   ax_step3_transport_spanning := fun _ _ _ ⟨hq, hd, h1, h2, hn0, hd4, _⟩ => ⟨hq, hd, h1, h2, by omega, hd4⟩
   ax_step4_geometric_exclusion := fun _ _ ⟨hq, hd, h1, h2, _, _⟩ => ⟨hq, hd, h1, h2, by decide⟩
 
-/-- [Theorem 26] Dual-witness verification (`Theorem.lean:13`): active at `(d, q) = (5, 5)`, refuted at degenerate `d = 1, 2`. -/
+/-- [Theorem 26] Dual-witness verification (`SiegelZeros/Conclusions/Theorem.lean:13`): active at `(d, q) = (5, 5)`, refuted at degenerate `d = 1, 2`. -/
 theorem thm_26_siegel_witness_and_bad_prime_countermodel (dq_good : Nat × Nat) (hgood : dq_good = (5, 5)) :
     siegel_concrete_witness.RealZeroGapExcluded dq_good 37636 ∧
     (¬ ∃ n0 : Nat, siegel_concrete_witness.ActualCutoffSpanning (1, 5) n0) ∧
@@ -348,7 +348,7 @@ theorem thm_26_siegel_witness_and_bad_prime_countermodel (dq_good : Nat × Nat) 
 
 /-!
 ## Part V: Sub-`0.69` to the Critical Line `β = 1/2`: Master Transfer & Hybrid A+B Blueprint (Theorems 27–38)
-(`CentralExponent.lean:15-95`, `GramBound.lean:47-56`, `GramScaleLoss.lean:8-29`, `EulerCoordinates.lean:11-48`)
+(`DirichletL/Detector/CentralExponent.lean:15-95`, `DirichletL/Detector/GramBound.lean:47-56`, `DirichletL/Detector/GramScaleLoss.lean:8-29`, `DirichletL/Detector/EulerCoordinates.lean:11-48`)
 -/
 
 /-- [Theorem 27] Stage 0 & Stage 1: `HighRows` openness down to `β = 1/2` (`high_crit48 = -1 < 0`) and isolated
@@ -374,8 +374,8 @@ theorem thm_28_generalized_scale_equilibrium_and_master_transfer_law
     dgram_051_1800 = 654 ∧ dgram_050_1800 = 672 ∧ shift_aX1200 = 33 := by
   omega
 
-/-- [Theorem 29] Stage 3 Stickelberger Hecke Factorization: Factorization of `coordR` (`EulerCoordinates.lean:11-48`) + `(1 - R_p)`
-cancellation (`Euler.lean:38`, `thm_09`) lowers the Euler convergence boundary from `401/600` (`→ 2/3`) to `351/600 = 117/200` (`→ 7/12`) and `301/600` (`→ 1/2`). -/
+/-- [Theorem 29] Stage 3 Stickelberger Hecke Factorization: Factorization of `coordR` (`DirichletL/Detector/EulerCoordinates.lean:11-48`) + `(1 - R_p)`
+cancellation (`DirichletL/Detector/Euler.lean:38`, `thm_09`) lowers the Euler convergence boundary from `401/600` (`→ 2/3`) to `351/600 = 117/200` (`→ 7/12`) and `301/600` (`→ 1/2`). -/
 theorem thm_29_stickelberger_coordR_factorization_breaks_two_thirds_wall
     (z600 b_KV600 b_R_naive600 b_R_quad600 b_R_full600 k_arch_freq : Int)
     (hz : z600 = 99) (h_kv : b_KV600 = 36) (h_rn : 6 * b_R_naive600 = 3000 - 6 * z600)
@@ -395,7 +395,7 @@ theorem thm_30_master_transfer_theorem_unconditional_vs_conditional_boundary
     b_euler_naive < b_069 ∧ b_069 < b_3_4 ∧ b_3_4 < b_floor ∧ b_floor < b_oai := by
   omega
 
-/-- [Theorem 31] Path B (`HighRowsCentralTerms.lean:38-114`): Exact branch thresholds `(492, 490, 480, 320, 284, 230, 105)/1000` at `z_high = 17/50`
+/-- [Theorem 31] Path B (`DirichletL/Detector/HighRowsCentralTerms.lean:38-114`): Exact branch thresholds `(492, 490, 480, 320, 284, 230, 105)/1000` at `z_high = 17/50`
 and simultaneous opening of all 9 high-row branches down to `480/1000 = 0.4800 < 1/2` under the `+1/100` shift `z_high' = 7/20 = 350/1000`. -/
 theorem thm_31_high_rows_nine_branch_exact_rational_thresholds_and_048_opening
     (z34 z35 x1a_34 x3a_34 x3b_34 x4a_34 x1b_34 x4b_34 x1c_34 x1a_35 x3a_35 x3b_35 : Int)
@@ -423,11 +423,11 @@ theorem thm_32_z_high_saddle_invariance_and_symmetric_pincer_box_048_052
   omega
 
 /-- [Theorem 33] End-to-End 20-Module Global SOS Saddle & Critical-Line (`β = 1/2`) Cutoff Theorem
-(`PrincipalRemainderBounds.lean:522`, `LowGramScale.lean:38`, `Parameters.lean:16`, `CentralExponent.lean:41,76`, `Endpoint.lean:60`):
+(`DirichletL/Detector/PrincipalRemainderBounds.lean:522`, `DirichletL/Detector/LowGramScale.lean:38`, `DirichletL/Parameters.lean:16`, `DirichletL/Detector/CentralExponent.lean:41,76`, `DirichletL/Endpoint.lean:60`):
 (1) Principal signal offset `29/36 - α_X/3 = 99/144 = 11/16` + LowRows `A₂` exponent `27/144 = 3/16` gives `β_0 = 126/144 = 7/8`;
 (2) Global SOS saddle witness `(α_X, α_Y) = (71/200, 5737/12000)` (`s = 9997/12000 < 5/6`) gives `β_SOS(0) = 41999/48000 < 7/8`;
 (3) At `β = 1/2`, the exact uninflated + tuple-barrier + `z_0`-invariant triple is `(α_X**, α_Y**, d_0**) = (2/3, 7/6, 1/2)`
-(`(96, 168, 72)/144`, matching `d ≤ 1/2` in `CentralExponent.lean:76`), with `max_{δ,y} β_High = 1/4 = 36/144 < 1/2` and `Δ_gram(1/2) = 11/24 = 66/144`. -/
+(`(96, 168, 72)/144`, matching `d ≤ 1/2` in `DirichletL/Detector/CentralExponent.lean:76`), with `max_{δ,y} β_High = 1/4 = 36/144 < 1/2` and `Δ_gram(1/2) = 11/24 = 66/144`. -/
 theorem thm_33_global_sos_saddle_and_critical_line_half_cutoff_theorem
     (sig_off144 E_low144 beta0_144 aX12k aY12k s12k beta_sos48k aX_crit144 aY_crit144 d0_crit144 b_high_crit144 dgram_crit144 : Int)
     (hsig : sig_off144 = 116 - 17) (hlow : E_low144 = 3 * 9) (hb0 : beta0_144 = sig_off144 + E_low144)

@@ -8,9 +8,9 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ostmann.py"
   },
   "artifacts_sha256": {
-    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "522055ee8bbb20f5b9dc92cecc3546d72e476a75e8cbf5029c19897e3b089aee",
-    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "727e3dcb4149aacb3beba1d87793c911002687bd7cc979abd20fb3f38a4d8d61",
-    "proofs/verify_symbolic_ostmann.py": "372e75ff2e8e0274aee5d2ba8ae4ffc306c677263f164bc3b4a472590799a24e",
+    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "2c4bf7205f936a8455eb1bc9437183feed23542823505294887bcec013a5ac73",
+    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "cfafd39ff6759d5c91710be9aca2693e3cfc925a88d7e163f44a796c05d6e6af",
+    "proofs/verify_symbolic_ostmann.py": "3da992dc2e90d47920afa3c0419dbc662ec7beb11b1e449b21ab51e008334dda",
     "proofs/symbolic_verification_result.json": "a4c633c4e291dbfc200f7ea4348f6da9232db260fc796b5f37668a3f87ecca63",
     "proofs/problem_spec.md": "e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02"
   },
@@ -42,7 +42,10 @@
     "pillar2_sieve_and_supply_contraction": {
       "collision_penalty_identity": "(2*sigma - 1)^2 / (sigma*(1 - sigma))",
       "unbalanced_penalty_floor": "1/2",
-      "harmonic_band": ["1/20", "9/10"],
+      "harmonic_band": [
+        "1/20",
+        "9/10"
+      ],
       "nonsparse_target": "3/20",
       "sparse_threshold": "17/25",
       "local_contraction_c_loc": "8/5",

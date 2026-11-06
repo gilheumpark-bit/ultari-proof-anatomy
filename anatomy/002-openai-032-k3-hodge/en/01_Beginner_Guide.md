@@ -6,7 +6,7 @@ This guide explains what happened in the three K3 Hodge Conjecture preprints tha
 
 ## 1. Core Summary
 
-We reconstructed the three withdrawn K3 Hodge Conjecture manuscripts from OpenAI `#032` (commit `adc7f1241b42`) and proved 27 standalone Lean 4 theorems (`0 sorry`). The proof collapsed not because of a simple typo, but because of a two-sided symplectic trap and a circularity between rank additivity and hyperkähler rigidity. At the same time, we verified that the paper's `Part I` Clifford reduction engine and the companion CM abelian variety proof remain completely sound.
+We reconstructed the three withdrawn K3 Hodge Conjecture manuscripts from OpenAI `#032` (commit `adc7f1241b42`) and proved 35 standalone Lean 4 theorems (`0 sorry`). The proof collapsed not because of a simple typo, but because of a two-sided symplectic trap and a circularity between rank additivity and hyperkähler rigidity. At the same time, we verified that the paper's `Part I` Clifford reduction engine and the companion CM abelian variety proof remain completely sound.
 
 ---
 

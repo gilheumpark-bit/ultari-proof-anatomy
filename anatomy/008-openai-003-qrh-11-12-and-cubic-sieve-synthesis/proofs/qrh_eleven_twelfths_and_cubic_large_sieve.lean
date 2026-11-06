@@ -73,8 +73,8 @@ theorem thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta
     (h_rup : reserve_up1000 = 50)
     (h_bup : 1000 * budget_up = reserve_up1000 * denom_up)
     (hM : 1 ≤ M)
-    (h_dsym : denom_sym = 100 * M + 1)
     (h_lhs : lhs_budget = 50 * (2 * M))
+    (h_dsym : denom_sym = lhs_budget + 1)
     (h_rhs : rhs_budget = denom_sym)
     (h_s_lhs : short25_lhs = 25 * (4 * M))
     (h_s_rhs : short25_rhs = denom_sym) :
@@ -86,7 +86,7 @@ theorem thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta
 /-- [Theorem 5] Subdominance of the Poisson/divisibility remainder (`Mellin/SixthPowerAverage.lean:381-406`, `paper2.tex:715`):
 at sixth-power scale `α = (1 + θ)/6`, the remainder exponent after dividing `O(Z^(1+ε))` by `Y = Z^α` is
 `E_rem(θ) = 1 - α = (5 - θ)/6`, so `E_CS(θ) - E_rem(θ) = (11 + 5θ)/12 - (5 - θ)/6 = (1 + 7θ)/12 > 0` for all `θ > -1/7`
-(and at `θ = 1/10`, `E_CS(1/10) - E_rem(1/10) = 23/24 - 49/60 = 17/120`, matching `137/120 - 1 = 17/120` in `SixthPowerAverage.lean:392`). -/
+(and at `θ = 1/10`, `E_CS(1/10) - E_rem(1/10) = 23/24 - 49/60 = 17/120`, matching `137/120 - 1 = 17/120` in `DirichletL/Mellin/SixthPowerAverage.lean:392`). -/
 theorem thm_05_remainder_exponent_subdominance_and_crossover
     (p q cs_num12q rem_num12q gap_num12q cs_tenth120 rem_tenth120 gap_tenth120 : Int)
     (hq : 0 < q)
@@ -101,10 +101,10 @@ theorem thm_05_remainder_exponent_subdominance_and_crossover
     gap_tenth120 = 17 ∧ rem_tenth120 < cs_tenth120 := by
   omega
 
-/-- [Theorem 6] Algebraic origin of the `768 = 6 * 128` Cauchy-Schwarz constant (`ThetaDensity.lean:611-625`, `SixthPowerAverage.lean:199-237`):
+/-- [Theorem 6] Algebraic origin of the `768 = 6 * 128` Cauchy-Schwarz constant (`DirichletL/MeanSquare/ThetaDensity.lean:611-625`, `DirichletL/Mellin/SixthPowerAverage.lean:199-237`):
 in an integral domain (`ActualEisensteinCubic.O`), `b ↦ b^6` has fiber size `fiber_deg ≤ 6` (`Polynomial.card_nthRoots 6 z`),
 and combining `fiber_deg = 6` with the lattice disk bound `disk_const = 128` yields `cauchy_const = 768`, whereas
-injective prime-row extraction (`NormFiberExtraction.lean:355`) uses `prime_const = 384 = 3 * 128`. -/
+injective prime-row extraction (`DirichletL/PrimeRows/NormFiberExtraction.lean:355`) uses `prime_const = 384 = 3 * 128`. -/
 theorem thm_06_sixth_power_fiber_cauchy_constant_768
     (fiber_deg disk_const cauchy_const dyadic_prime_factor prime_const : Int)
     (h_fib : fiber_deg = 6)
@@ -117,7 +117,7 @@ theorem thm_06_sixth_power_fiber_cauchy_constant_768
   subst h_fib; subst h_disk; subst h_dyad
   omega
 
-/-- [Theorem 7] Totient-density Euler correction identity (`ThetaDensity.lean:502-563`, `Hecke/MobiusEulerCorrection.lean`, `ThetaNonvanishing.lean:85-104`):
+/-- [Theorem 7] Totient-density Euler correction identity (`DirichletL/MeanSquare/ThetaDensity.lean:502-563`, `Hecke/MobiusEulerCorrection.lean`, `DirichletL/MeanSquare/ThetaNonvanishing.lean:85-104`):
 for any prime norm `N_p ≥ 2`, the local totient density `1 - 1/N_p = (N_p - 1)/N_p` lies in `[1/2, 1)`, and multiplying the Dirichlet series
 by the local Euler correction `(1 - χ(p) N_p^(-s)) / (1 - (1 - 1/N_p) χ(p) N_p^(-s))` has difference term `-χ(p) / N_p^(s+1)`,
 which converges absolutely for `Re(s) > 0` (`s_re + 1 > 1`). -/
@@ -133,10 +133,10 @@ theorem thm_07_totient_euler_correction_vs_prime_amplification_tradeoff
     0 ≤ min_conv_exp120 ∧ min_conv_exp120 < target_11_12_120 ∧ target_11_12_120 < diff_exp_at_zero120 := by
   omega
 
-/-- [Theorem 8] Unformalized `paper.tex` Part I margin table (`paper.tex:6501`) vs. upstream `ShortDraft.DirichletTarget` (`ZeroFreeRegion.lean:204-214`):
+/-- [Theorem 8] Unformalized `paper.tex` Part I margin table (`paper.tex:6501`) vs. upstream `ShortDraft.DirichletTarget` (`DirichletL/RowCompletion/ZeroFreeRegion.lean:204-214`):
 in `paper.tex` (`L6501`), Part I lists four regime margins `(1021/25000, 1/40, 1/1200, 43/300)` for `Re(s) > 11/12`
 (in units of `1/150000`: `6126, 3750, 125, 21500`, minimum `125/150000 = 1/1200`), none of which appear in `lean/OAI/NumberTheory/DirichletL/`,
-where `ZeroFreeRegion.lean` instead formalizes `Re(s) > 23/24` (`gap = 23/24 - 11/12 = 1/24 = 6250/150000 = 50 * (1/1200)`). -/
+where `DirichletL/RowCompletion/ZeroFreeRegion.lean` instead formalizes `Re(s) > 23/24` (`gap = 23/24 - 11/12 = 1/24 = 6250/150000 = 50 * (1/1200)`). -/
 theorem thm_08_part_one_paper_tex_table_vs_shortdraft_gap
     (m1_150k m2_150k m3_150k m4_150k min_m150k gap_sd_11_12_150k ratio_gap_to_min : Int)
     (hm1 : m1_150k = 1021 * 6)
@@ -224,7 +224,7 @@ theorem thm_11_mobius_conjugacy_exact_closed_form_solution
   simp only [Int.mul_assoc, Int.mul_comm, Int.mul_left_comm]
 
 /-- [Theorem 12] Exact comparison at `n = 0, 1, 2, 3` between the true nonlinear iterates `α̃_n = (4*3^n - 2^(n+1))/(3*3^n - 2^(n+1))`
-(`2, 8/5, 28/19, 92/65`) and OpenAI's linearized upper envelope `sieveExponent n = 4/3 + (2/3)^(n+1)` (`2, 16/9, 44/27, 124/81` in `LargeSieve.lean:75`):
+(`2, 8/5, 28/19, 92/65`) and OpenAI's linearized upper envelope `sieveExponent n = 4/3 + (2/3)^(n+1)` (`2, 16/9, 44/27, 124/81` in `CubicGauss/LargeSieve.lean:75`):
 for every `n ≥ 1`, `4/3 < α̃_n < α_n`, and the excess ratio `(α̃_n - 4/3)/(α_n - 4/3) = (1/3)/(1 - (2/3)^(n+1))` converges to `1/3`. -/
 theorem thm_12_nonlinear_vs_linearized_sieve_iterates_comparison
     (nl1_num nl1_den lin1_num lin1_den nl2_num nl2_den lin2_num lin2_den nl3_num nl3_den lin3_num lin3_den : Int)

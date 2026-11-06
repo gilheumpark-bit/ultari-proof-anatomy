@@ -47,6 +47,6 @@ While `Theorem 1.1` has zero high-severity flaws, we identified and repaired 2 M
 
 ## 4. Verification Summary (`Category A`)
 
-- **Lean 4 Proofs**: All 33 theorems in [`milne_transport_and_filtration.lean`](../proofs/milne_transport_and_filtration.lean) and [`milne_weil_reduction_and_repairs.lean`](../proofs/milne_weil_reduction_and_repairs.lean) compile with `0 sorry` and `0` custom axioms.
+- **Lean 4 Proofs**: All 36 theorems in [`milne_transport_and_filtration.lean`](../proofs/milne_transport_and_filtration.lean) and [`milne_weil_reduction_and_repairs.lean`](../proofs/milne_weil_reduction_and_repairs.lean) compile with `0 sorry` and `0` custom axioms.
 - **Mutation Testing**: All `232/232` hypothesis mutations are rejected by the Lean 4 compiler.
 - **Symbolic & Numerical Checks**: All 7 audit suites in [`verify_symbolic_milne.py`](../proofs/verify_symbolic_milne.py) pass deterministically.

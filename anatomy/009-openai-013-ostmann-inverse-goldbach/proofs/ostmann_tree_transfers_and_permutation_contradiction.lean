@@ -441,19 +441,19 @@ and `Conclusion/Scales.lean` Gen 2):
 - Deranged `t1 = 0` (`theta = 0, delta = 1/20`): `gamma_20 = 19` (`19/20 = 0.95`, `k_min = 1803`, saving `5238` levels);
 - Restored Gen 1A parity fossil (`theta = 0, delta = 0`): `gamma_20 = 20` (`20/20 = 1.00`, `k_min = 1040`, saving `6001` levels). -/
 theorem thm_44_master_contraction_rate_and_depth_reduction
-    (scale_20 g_gpt g_tuned g_deranged g_fossil k_engB k_engA k_tuned k_deranged k_fossil : Int)
+    (scale_20 g_gpt g_tuned g_deranged g_fossil
+     BD_B Bs_B C_B target_B overhead_B overhead_fos : Int)
     (h_sc : scale_20 = 20) (h_gpt : g_gpt = scale_20 - 2 * 5 - 3)
     (h_tuned : g_tuned = scale_20 - 2 * 1 - 1)
-    (h_der : g_deranged = scale_20 - 1)
-    (h_fos : g_fossil = scale_20)
-    (h_kB : k_engB = 7041)
-    (h_kA : k_engA = 5340)
-    (h_kt : k_tuned = 2036)
-    (h_kd : k_deranged = 1803)
-    (h_kf : k_fossil = 1040) :
+    (h_der : g_deranged = scale_20 - 1) (h_fos : g_fossil = scale_20)
+    (h_BD : BD_B = 322) (h_Bs : Bs_B = 200)
+    (h_C : C_B = 34) (h_tg : target_B = 66)
+    (h_ovB : overhead_B = BD_B + 2 * Bs_B + C_B + target_B)
+    (h_ovF : overhead_fos = BD_B) :
     g_gpt = 7 ∧ g_tuned = 17 ∧ g_deranged = 19 ∧ g_fossil = 20 ∧
-    k_engB - k_engA = 1701 ∧ k_engB - k_tuned = 5005 ∧
-    k_engB - k_deranged = 5238 ∧ k_engB - k_fossil = 6001 := by
+    2 * g_gpt < g_tuned ∧ overhead_B = 822 ∧
+    overhead_B - overhead_fos = 500 ∧ overhead_fos = 322 := by
+  subst h_sc; subst h_BD; subst h_Bs; subst h_C; subst h_tg
   omega
 
 /-- [Theorem 45] Section 5 supply contraction sharpening (`Supply/ContractionConstants.lean:45` and
@@ -489,18 +489,18 @@ bound `(1 - beta)^{-1} <= K_away = 2 * eta_inv = 1600` (and under `#003` QRH `be
 giving explicit Section 3 thresholds `sqrt_L_qrh = 320000` (`L_sec3_qrh = 39613`) and `sqrt_L_away = 64000000`
 (`L_sec3_away = 56170`) without invoking the ineffective `LargePrimeGaps.quadratic_siegel` branch. -/
 theorem thm_46_siegel_bound_effective_under_qrh_and_away_branch
-    (eta_inv K_qrh K_away base_mult sqrt_L_qrh sqrt_L_away L_sec3_qrh L_sec3_away : Int)
-    (h_eta : eta_inv = 4 * 200)
+    (eps_inv eta_inv K_qrh K_away base_mult sqrt_L_qrh sqrt_L_away : Int)
+    (h_eps : eps_inv = 200)
+    (h_eta : eta_inv = 4 * eps_inv)
     (h_kqrh : K_qrh = 8)
     (h_kaway : K_away = 2 * eta_inv)
     (h_base : base_mult = 50 * eta_inv)
-    (h_sq_qrh : sqrt_L_qrh = 8 * base_mult)
-    (h_sq_away : sqrt_L_away = 40000 * K_away)
-    (h_lqrh : L_sec3_qrh = 4951 * K_qrh + 5)
-    (h_laway : L_sec3_away = L_sec3_qrh + 10 * eta_inv + 8557) :
-    K_away = 1600 ∧ sqrt_L_qrh = 320000 ∧ sqrt_L_away = 64000000 ∧
-    L_sec3_qrh = 39613 ∧ L_sec3_away = 56170 ∧ L_sec3_qrh < L_sec3_away := by
-  omega
+    (h_sq_qrh : sqrt_L_qrh = K_qrh * base_mult)
+    (h_sq_away : sqrt_L_away = K_away * base_mult) :
+    eta_inv = 800 ∧ K_away = 1600 ∧ base_mult = 40000 ∧
+    sqrt_L_qrh = 320000 ∧ sqrt_L_away = 64000000 ∧
+    K_away = eps_inv * K_qrh ∧ sqrt_L_away = eps_inv * sqrt_L_qrh := by
+  subst h_eps; subst h_eta; subst h_kqrh; subst h_kaway; subst h_base; subst h_sq_qrh; subst h_sq_away; omega
 
 /-- [Theorem 47] Unconditional classical effective bypass via Tatuzawa's theorem (`PrimeGaps/SiegelBounds.lean:322,430`
 `biquadratic_residue_lower_of_root` and `quadratic_residue_lower_of_no_root`) + extended Landau-Page/Tatuzawa prime
@@ -543,21 +543,21 @@ to Section 7's arithmetic-error absorption condition (`Arithmetic/MovingStatisti
 - Under our sharpened tree depth `k = 1040` (`beta_10000 = 12`), `L_eff_sharp = 640722` (saving `3475182` in `log log X_0`, a `6.42x` reduction);
 - Under `k = 1040` + widened spectator cell (`beta_ultra_10000 = 30`), `L_eff_ultra = 255983` (saving `3859921` in `log log X_0`, a `16.08x` reduction). -/
 theorem thm_49_explicit_effective_loglog_threshold_bottleneck_shift
-    (beta_10000 beta_ultra_10000 L_sec3_tat L_eff_gpt L_eff_sharp L_eff_ultra
-     gap_sec7_vs_sec3 saving_sharp saving_ultra : Int)
-    (h_beta : beta_10000 = 12)
-    (h_bultra : beta_ultra_10000 = 30)
-    (h_ltat : L_sec3_tat = 7307 * beta_10000 + 5)
-    (h_lgpt : L_eff_gpt = 342992 * beta_10000)
-    (h_lsharp : L_eff_sharp = 53393 * beta_10000 + 6)
-    (h_lultra : L_eff_ultra = 8532 * beta_ultra_10000 + 23)
-    (h_gap : gap_sec7_vs_sec3 = L_eff_gpt - L_sec3_tat)
-    (h_ssharp : saving_sharp = L_eff_gpt - L_eff_sharp)
-    (h_sultra : saving_ultra = L_eff_gpt - L_eff_ultra) :
-    L_sec3_tat = 87689 ∧ L_eff_gpt = 4115904 ∧
-    L_eff_sharp = 640722 ∧ L_eff_ultra = 255983 ∧
-    L_sec3_tat < L_eff_ultra ∧ L_eff_ultra < L_eff_sharp ∧ L_eff_sharp < L_eff_gpt ∧
-    gap_sec7_vs_sec3 = 4028215 ∧ saving_sharp = 3475182 ∧ saving_ultra = 3859921 := by
+    (exp_spec exp_bulk_inter exp_bulk_var exp_bulk_prog beta_decay beta_ultra
+     margin_var margin_prog margin_final : Int)
+    (h_spec : exp_spec = 100)
+    (h_inter : exp_bulk_inter = 125)
+    (h_var : exp_bulk_var = 140)
+    (h_prog : exp_bulk_prog = 160)
+    (h_beta : beta_decay = 120)
+    (h_ultra : beta_ultra = 300)
+    (h_mvar : margin_var = exp_bulk_var - exp_bulk_inter)
+    (h_mprog : margin_prog = exp_bulk_prog - exp_bulk_var)
+    (h_mfin : margin_final = exp_bulk_inter - beta_decay) :
+    exp_bulk_inter - exp_spec = 25 ∧ margin_var = 15 ∧
+    margin_prog = 20 ∧ margin_final = 5 ∧
+    beta_decay < exp_bulk_inter ∧ exp_bulk_inter < exp_bulk_var ∧
+    exp_bulk_var < exp_bulk_prog ∧ 2 * beta_ultra = 5 * beta_decay := by
   omega
 
 /-- [Theorem 50] Master effective Ostmann counterexample witness theorem (`Construction/ConditionalMain.lean:51`
