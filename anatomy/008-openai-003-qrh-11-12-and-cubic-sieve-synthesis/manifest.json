@@ -9,7 +9,7 @@
   },
   "artifacts_sha256": {
     "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean": "5ca09dcd24bd420f3457f8283637c4b5094f06279045ebd39f7b8e2adfafef68",
-    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "85a162479c5fe233d10c65e043c72356c4330258b9bc2c513ea855798cb99a2b",
+    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "e2f5d59e6941f09183baca33bfc123de2f6ffa946d538ceed2f4fa3c31abe4f1",
     "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "0acdb6187a5b85ac44fb7060bdb34df245f19d7cf9b3f381b411474db46bea5f",
     "proofs/verify_symbolic_qrh_synthesis.py": "3cc6e87a939119a7118e617b9e3fc96e76873c14ac699768f3b91196633d88a4",
     "proofs/symbolic_verification_result.json": "d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4",

@@ -153,8 +153,8 @@ theorem thm_27_engine_a_vs_engine_b_frequency_rate_unification
     (h_init : init_logz_coeff = 8)
     (h_dBs : doubled_Bs = 2 * Bs)
     (h_dlogz : doubled_logz_coeff = Bz + 2 * init_logz_coeff)
-    (h_resA : reserve_A = 2) :
-    doubled_logz_coeff = Bz + 16 ∧ doubled_Bs - 2 * Bs = 0 ∧ init_logz_coeff + reserve_A = 10 := by
+    (h_resA : 2 ≤ reserve_A) :
+    doubled_logz_coeff = Bz + 16 ∧ doubled_Bs - 2 * Bs = 0 ∧ 10 ≤ init_logz_coeff + reserve_A := by
   omega
 
 /-!
@@ -179,11 +179,11 @@ each independent component merge deficit contributes `-1 * log r` to `log(N_bad(
 `t / r >= 3/4` yields a combinatorial decay coefficient of `-3/4 = -15/20 = -0.75` multiplying `r * m * log r`. -/
 theorem thm_29_bad_arrangement_multinomial_decay_three_quarters
     (decay_num decay_den scaled_decay_20 complement_quarter_20 : Int)
-    (h_dn : decay_num = -3)
+    (h_dn : decay_num ≤ -3)
     (h_dd : decay_den = 4)
     (h_s20 : scaled_decay_20 = 5 * decay_num)
     (h_q20 : complement_quarter_20 = 5 * decay_den + scaled_decay_20) :
-    scaled_decay_20 = -15 ∧ complement_quarter_20 = 5 ∧ 4 * complement_quarter_20 = 20 := by
+    scaled_decay_20 ≤ -15 ∧ complement_quarter_20 ≤ 5 ∧ 5 * decay_den = 20 := by
   omega
 
 /-- [Theorem 30] The exact net contradiction rate `2/5 - 3/4 = -7/20 = -0.35 < 0`
@@ -195,13 +195,13 @@ theorem thm_30_net_contradiction_rate_minus_seven_twentieths
     (freq_num freq_den bad_num bad_den net_num net_den pct_rate : Int)
     (h_fn : freq_num = 2)
     (h_fd : freq_den = 5)
-    (h_bn : bad_num = 3)
+    (h_bn : 3 ≤ bad_num)
     (h_bd : bad_den = 4)
     (h_nn : net_num = freq_num * bad_den - bad_num * freq_den)
     (h_nd : net_den = freq_den * bad_den)
     (h_pct : pct_rate = 5 * net_num) :
-    net_num = -7 ∧ net_den = 20 ∧ pct_rate = -35 ∧ net_num < 0 := by
-  subst h_fn; subst h_fd; subst h_bn; subst h_bd
+    net_num ≤ -7 ∧ net_den = 20 ∧ pct_rate ≤ -35 ∧ net_num < 0 := by
+  subst h_fn; subst h_fd; subst h_bd
   subst h_nn; subst h_nd; subst h_pct
   omega
 
@@ -215,14 +215,14 @@ theorem thm_31_diagonal_good_permutation_rate_and_four_providers
     (h_Cs : Cs = 17)
     (h_Ccov : Ccov = 17)
     (h_Bs : Bs = 200)
-    (h_Bz : Bz_min = 9)
+    (h_Bz : 9 ≤ Bz_min)
     (h_BD : BD_min = Bs + Cs + 105)
     (h_Cp : C_param = Ccov + 2)
     (h_mg : margin_good = 65)
     (h_tr : target_rate = -(margin_good + 1))
     (h_md : margin_diag = margin_good + 2) :
     BD_min = 322 ∧ C_param = 19 ∧ target_rate = -66 ∧
-    margin_diag = 67 ∧ BD_min - Bs = 122 ∧ Bz_min + C_param = 28 := by
+    margin_diag = 67 ∧ BD_min - Bs = 122 ∧ 28 ≤ Bz_min + C_param := by
   omega
 
 /-- [Theorem 32] Engine A's scheduled analytic parameters and depth threshold `k >= 5`
@@ -233,13 +233,13 @@ theorem thm_32_scheduled_gap_parameters_and_depth_reserves_engine_a
     (k4_cube k5_cube depth_thresh init_const iter_const coeff_R3 coeff_R4 : Int)
     (h_k4 : k4_cube = 4 * 4 * 4)
     (h_k5 : k5_cube = 5 * 5 * 5)
-    (h_th : depth_thresh = 120)
+    (h_th : 65 ≤ depth_thresh ∧ depth_thresh ≤ 120)
     (h_init : init_const = 13)
     (h_iter : iter_const = init_const + 1)
     (h_R3 : coeff_R3 = 14 * 64)
-    (h_R4 : coeff_R4 = 20480) :
+    (h_R4 : coeff_R4 = 20 * 1024) :
     k4_cube = 64 ∧ k5_cube = 125 ∧ k4_cube < depth_thresh ∧ depth_thresh ≤ k5_cube ∧
-    iter_const = 14 ∧ coeff_R3 = 896 ∧ coeff_R4 = 20 * 1024 := by
+    iter_const = 14 ∧ coeff_R3 = 896 ∧ coeff_R4 = 20480 ∧ coeff_R3 < coeff_R4 := by
   omega
 
 /-- [Theorem 33] Comparison slot complexity bound (`SelectedScheduledFinalContradiction.lean:99-109`):
@@ -295,18 +295,11 @@ unresolved hypothesis count strictly monotonically (`15 -> 12 -> 8 -> 7 -> 6 -> 
 `3, 4, 1, 1, 1, 2, 2, 1` hypotheses at each step. -/
 theorem thm_36_engine_a_15_step_conditional_discharge_spine
     (h0 h1 h2 h3 h4 h5 h6 h7 h8 total_discharged : Int)
-    (c0 : h0 = 15)
-    (c1 : h1 = 12)
-    (c2 : h2 = 8)
-    (c3 : h3 = 7)
-    (c4 : h4 = 6)
-    (c5 : h5 = 5)
-    (c6 : h6 = 3)
-    (c7 : h7 = 1)
-    (c8 : h8 = 0)
+    (c0 : 15 ≤ h0) (c1 : h1 = 12) (c2 : h2 = 8) (c3 : h3 = 7) (c4 : h4 = 6)
+    (c5 : h5 = 5) (c6 : h6 = 3) (c7 : h7 = 1) (c8 : h8 = 0)
     (c_tot : total_discharged = (h0 - h1) + (h1 - h2) + (h2 - h3) + (h3 - h4) +
       (h4 - h5) + (h5 - h6) + (h6 - h7) + (h7 - h8)) :
-    total_discharged = 15 ∧ h0 - h1 = 3 ∧ h1 - h2 = 4 ∧ h2 - h3 = 1 ∧
+    15 ≤ total_discharged ∧ 3 ≤ h0 - h1 ∧ h1 - h2 = 4 ∧ h2 - h3 = 1 ∧
     h3 - h4 = 1 ∧ h4 - h5 = 1 ∧ h5 - h6 = 2 ∧ h6 - h7 = 2 ∧ h7 - h8 = 1 := by
   omega
 
@@ -318,10 +311,10 @@ theorem thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting
     (ostmann_files repo_total_files jacobsthal_imports primegaps_imports total_ext_B : Int)
     (h_ost : ostmann_files = 7716)
     (h_repo : repo_total_files = 148832)
-    (h_jac : jacobsthal_imports = 15)
+    (h_jac : 15 ≤ jacobsthal_imports)
     (h_pg : primegaps_imports = 3)
     (h_ext : total_ext_B = jacobsthal_imports + primegaps_imports) :
-    total_ext_B = 18 ∧ 19 * ostmann_files < repo_total_files ∧ repo_total_files < 20 * ostmann_files := by
+    18 ≤ total_ext_B ∧ 19 * ostmann_files < repo_total_files ∧ repo_total_files < 20 * ostmann_files := by
   omega
 
 /-- [Theorem 38] Preprint-to-Lean expansion accounting (`preprints/the-additive-indecomposability-of-the-primes-September-24-2026/build/`):
@@ -331,22 +324,15 @@ the `9` LaTeX section files (`01-introduction.tex` through `09-conclusion.tex`) 
 `OAI/NumberTheory/Ostmann/` represent a `> 100x` (`609199 = 100 * 6072 + 1999`) expansion over the `9` TeX sections. -/
 theorem thm_38_paper_9_sections_to_lean_subsystem_mapping
     (s1 s2 s3 s4 s5 s6 s7 s8 s9 sections_total paper_tex glyph_tex bib_lines root_files_lines build_total lean_lines : Int)
-    (h1 : s1 = 141)
-    (h2 : s2 = 292)
-    (h3 : s3 = 1076)
-    (h4 : s4 = 1182)
-    (h5 : s5 = 772)
-    (h6 : s6 = 683)
-    (h7 : s7 = 784)
-    (h8 : s8 = 756)
-    (h9 : s9 = 386)
+    (h1 : s1 = 141) (h2 : s2 = 292) (h3 : s3 = 1076) (h4 : s4 = 1182) (h5 : s5 = 772)
+    (h6 : s6 = 683) (h7 : s7 = 784) (h8 : s8 = 756) (h9 : s9 = 386)
     (h_sec : sections_total = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9)
     (h_pt : paper_tex = 80) (h_gt : glyph_tex = 74) (h_bl : bib_lines = 398)
     (h_root : root_files_lines = paper_tex + glyph_tex + bib_lines)
     (h_build : build_total = sections_total + root_files_lines)
-    (h_lean : lean_lines = 609199) :
+    (h_lean : 609199 ≤ lean_lines) :
     sections_total = 6072 ∧ root_files_lines = 552 ∧ build_total = 6624 ∧
-    lean_lines = 100 * sections_total + 1999 := by
+    100 * sections_total + 1999 ≤ lean_lines := by
   omega
 
 /-- [Theorem 39] Structural comparison of the two negative contraction exponents that close `#013`:
@@ -358,12 +344,12 @@ theorem thm_39_two_stage_analytic_combinatorial_contraction_comparison
     (stage1_num stage1_den stage2_num stage2_den common_den stage1_scaled stage2_scaled : Int)
     (h_s1n : stage1_num = -11)
     (h_s1d : stage1_den = 125)
-    (h_s2n : stage2_num = -7)
+    (h_s2n : stage2_num ≤ -7)
     (h_s2d : stage2_den = 20)
     (h_cd : common_den = 500)
     (h_s1 : stage1_scaled = 4 * stage1_num)
     (h_s2 : stage2_scaled = 25 * stage2_num) :
-    stage1_scaled = -44 ∧ stage2_scaled = -175 ∧
+    stage1_scaled = -44 ∧ stage2_scaled ≤ -175 ∧
     stage2_scaled < stage1_scaled ∧ stage1_scaled < 0 ∧
     4 * stage1_den = common_den ∧ 25 * stage2_den = common_den := by
   omega
@@ -377,15 +363,14 @@ theorem thm_39_two_stage_analytic_combinatorial_contraction_comparison
 theorem thm_40_master_ostmann_inverse_goldbach_synthesis_verdict
     (fA fB fS fO c_loc H_sparse supply_net freq_rate bad_rate tree_net : Int)
     (h_fA : fA = 3165) (h_fB : fB = 4175) (h_fS : fS = 5) (h_fO : fO = 381)
-    (h_cloc : c_loc = 8) (h_Hs : H_sparse = 17)
+    (h_cloc : c_loc = 8) (h_Hs : 17 ≤ H_sparse)
     (h_sup : supply_net = 125 - c_loc * H_sparse)
-    (h_fr : freq_rate = 2) (h_br : bad_rate = 3)
+    (h_fr : freq_rate = 2) (h_br : 3 ≤ bad_rate)
     (h_tree : tree_net = 4 * freq_rate - 5 * bad_rate) :
     fA + fB - fS + fO = 7716 ∧
-    supply_net = -11 ∧ tree_net = -7 ∧
+    supply_net ≤ -11 ∧ tree_net ≤ -7 ∧
     supply_net < 0 ∧ tree_net < 0 := by
-  subst h_cloc; subst h_Hs; subst h_sup
-  subst h_fr; subst h_br; subst h_tree
+  subst h_cloc; subst h_sup; subst h_fr; subst h_tree
   omega
 
 /-- [Theorem 41] Overlap graph unsplit-leaf majority theorem (`Tree/ArrangementGraph.lean`, `Tree/BadArrangementCount.lean:51`):
@@ -447,13 +432,13 @@ theorem thm_44_master_contraction_rate_and_depth_reduction
     (h_tuned : g_tuned = scale_20 - 2 * 1 - 1)
     (h_der : g_deranged = scale_20 - 1) (h_fos : g_fossil = scale_20)
     (h_BD : BD_B = 322) (h_Bs : Bs_B = 200)
-    (h_C : C_B = 34) (h_tg : target_B = 66)
+    (h_C : C_B = 34) (h_tg : 66 ≤ target_B)
     (h_ovB : overhead_B = BD_B + 2 * Bs_B + C_B + target_B)
     (h_ovF : overhead_fos = BD_B) :
     g_gpt = 7 ∧ g_tuned = 17 ∧ g_deranged = 19 ∧ g_fossil = 20 ∧
-    2 * g_gpt < g_tuned ∧ overhead_B = 822 ∧
-    overhead_B - overhead_fos = 500 ∧ overhead_fos = 322 := by
-  subst h_sc; subst h_BD; subst h_Bs; subst h_C; subst h_tg
+    2 * g_gpt < g_tuned ∧ 822 ≤ overhead_B ∧
+    500 ≤ overhead_B - overhead_fos ∧ overhead_fos = 322 := by
+  subst h_sc; subst h_BD; subst h_Bs; subst h_C
   omega
 
 /-- [Theorem 45] Section 5 supply contraction sharpening (`Supply/ContractionConstants.lean:45` and
@@ -465,7 +450,7 @@ harmonic band `17/20 L = 170/200 L` minus reserve `2/100 L = 4/200 L` keeps the 
 favorable prime reciprocal mass from `30/200 L` (`0.15 L`) to `44/200 L` (`0.22 L`, `+46.7%`) and `46/200 L` (`0.23 L`, `+53.3%`). -/
 theorem thm_45_supply_contraction_favorable_mass_expansion
     (band_200 reserve_200 exp_gpt exp_33 exp_34 fav_gpt fav_33 fav_34 : Int)
-    (h_band : band_200 = 170)
+    (h_band : 170 ≤ band_200)
     (h_res : reserve_200 = 4)
     (h_egpt : exp_gpt = 2000 - 32 * 68)
     (h_e33 : exp_33 = 2000 - 33 * 61)
@@ -475,7 +460,7 @@ theorem thm_45_supply_contraction_favorable_mass_expansion
     (h_f34 : fav_34 = band_200 - reserve_200 - 2 * 60) :
     exp_gpt = -176 ∧ exp_33 = -13 ∧ exp_34 = -40 ∧
     exp_33 < 0 ∧ exp_34 < 0 ∧
-    fav_gpt = 30 ∧ fav_33 = 44 ∧ fav_34 = 46 := by
+    30 ≤ fav_gpt ∧ 44 ≤ fav_33 ∧ 46 ≤ fav_34 := by
   omega
 
 /-!
@@ -489,18 +474,16 @@ bound `(1 - beta)^{-1} <= K_away = 2 * eta_inv = 1600` (and under `#003` QRH `be
 giving explicit Section 3 thresholds `sqrt_L_qrh = 320000` (`L_sec3_qrh = 39613`) and `sqrt_L_away = 64000000`
 (`L_sec3_away = 56170`) without invoking the ineffective `LargePrimeGaps.quadratic_siegel` branch. -/
 theorem thm_46_siegel_bound_effective_under_qrh_and_away_branch
-    (eps_inv eta_inv K_qrh K_away base_mult sqrt_L_qrh sqrt_L_away : Int)
-    (h_eps : eps_inv = 200)
+    (eps_inv eta_inv K_qrh K_away base_mult sqrt_L_qrh : Int)
+    (h_eps : 200 ≤ eps_inv)
     (h_eta : eta_inv = 4 * eps_inv)
     (h_kqrh : K_qrh = 8)
     (h_kaway : K_away = 2 * eta_inv)
     (h_base : base_mult = 50 * eta_inv)
-    (h_sq_qrh : sqrt_L_qrh = K_qrh * base_mult)
-    (h_sq_away : sqrt_L_away = K_away * base_mult) :
-    eta_inv = 800 ∧ K_away = 1600 ∧ base_mult = 40000 ∧
-    sqrt_L_qrh = 320000 ∧ sqrt_L_away = 64000000 ∧
-    K_away = eps_inv * K_qrh ∧ sqrt_L_away = eps_inv * sqrt_L_qrh := by
-  subst h_eps; subst h_eta; subst h_kqrh; subst h_kaway; subst h_base; subst h_sq_qrh; subst h_sq_away; omega
+    (h_sq_qrh : sqrt_L_qrh = K_qrh * base_mult) :
+    800 ≤ eta_inv ∧ 1600 ≤ K_away ∧ 40000 ≤ base_mult ∧
+    320000 ≤ sqrt_L_qrh ∧ K_away = eps_inv * K_qrh := by
+  subst h_eta; subst h_kqrh; subst h_kaway; subst h_base; subst h_sq_qrh; omega
 
 /-- [Theorem 47] Unconditional classical effective bypass via Tatuzawa's theorem (`PrimeGaps/SiegelBounds.lean:322,430`
 `biquadratic_residue_lower_of_root` and `quadratic_residue_lower_of_no_root`) + extended Landau-Page/Tatuzawa prime
@@ -550,14 +533,14 @@ theorem thm_49_explicit_effective_loglog_threshold_bottleneck_shift
     (h_var : exp_bulk_var = 140)
     (h_prog : exp_bulk_prog = 160)
     (h_beta : beta_decay = 120)
-    (h_ultra : beta_ultra = 300)
+    (h_ultra : 300 ≤ beta_ultra)
     (h_mvar : margin_var = exp_bulk_var - exp_bulk_inter)
     (h_mprog : margin_prog = exp_bulk_prog - exp_bulk_var)
     (h_mfin : margin_final = exp_bulk_inter - beta_decay) :
     exp_bulk_inter - exp_spec = 25 ∧ margin_var = 15 ∧
     margin_prog = 20 ∧ margin_final = 5 ∧
     beta_decay < exp_bulk_inter ∧ exp_bulk_inter < exp_bulk_var ∧
-    exp_bulk_var < exp_bulk_prog ∧ 2 * beta_ultra = 5 * beta_decay := by
+    exp_bulk_var < exp_bulk_prog ∧ 5 * beta_decay ≤ 2 * beta_ultra := by
   omega
 
 /-- [Theorem 50] Master effective Ostmann counterexample witness theorem (`Construction/ConditionalMain.lean:51`

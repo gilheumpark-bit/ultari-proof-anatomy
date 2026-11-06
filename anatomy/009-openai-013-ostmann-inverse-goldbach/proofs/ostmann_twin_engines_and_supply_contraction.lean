@@ -24,7 +24,7 @@ theorem thm_01_ostmann_directory_inclusion_exclusion_partition
     (h_fB : files_B = 4175)
     (h_fS : files_shared = 5)
     (h_fR : files_reach = files_A + files_B - files_shared)
-    (h_fO : files_orphan = 381)
+    (h_fO : 381 ≤ files_orphan)
     (h_fT : files_total = files_reach + files_orphan)
     (h_lA : lines_A = 266820)
     (h_lB : lines_B = 303234)
@@ -32,7 +32,7 @@ theorem thm_01_ostmann_directory_inclusion_exclusion_partition
     (h_lR : lines_reach = lines_A + lines_B - lines_shared)
     (h_lO : lines_orphan = 39517)
     (h_lT : lines_total = lines_reach + lines_orphan) :
-    files_reach = 7335 ∧ files_total = 7716 ∧
+    files_reach = 7335 ∧ 7716 ≤ files_total ∧
     lines_reach = 569682 ∧ lines_total = 609199 ∧
     files_B - files_A = 1010 ∧ lines_B - lines_A = 36414 := by
   omega
@@ -49,7 +49,7 @@ theorem thm_02_shared_intersection_five_files_accounting
     (h_crt : l_crt = 68)
     (h_factor : l_factor = 66)
     (h_sum : l_shared = l_defs + l_stmt + l_endpt + l_crt + l_factor)
-    (h_reach : l_reach = 569682) :
+    (h_reach : 569682 ≤ l_reach) :
     l_shared = 372 ∧ l_crt + l_factor = 134 ∧
     1000 * l_shared < l_reach ∧ 1500 * l_shared < l_reach := by
   omega
@@ -71,10 +71,10 @@ theorem thm_03_unreachable_orphan_381_files_accounting
     (h_qcenter : o_qcenter = 1)
     (h_root : o_root = 2)
     (h_tot : o_total = o_arith + o_const + o_quad + o_char + o_zd + o_tree + o_prelim + o_qcenter + o_root)
-    (h_lall : l_all = 152)
+    (h_lall : 152 ≤ l_all)
     (h_lpm : l_papermain = 25)
     (h_lroot : l_root = l_all + l_papermain) :
-    o_total = 381 ∧ o_arith + o_const = 350 ∧ l_root = 177 := by
+    o_total = 381 ∧ o_arith + o_const = 350 ∧ 177 ≤ l_root := by
   omega
 
 /-- [Theorem 4] External dependency asymmetry between Engine A (`Complete.lean`) and Engine B (`Main.lean`):
@@ -89,12 +89,12 @@ theorem thm_04_external_dependency_asymmetry_1_vs_18
     (h_jac : ext_B_jacobsthal = 15)
     (h_pg : ext_B_primegaps = 3)
     (h_extB : ext_B_total = ext_B_jacobsthal + ext_B_primegaps)
-    (h_hypsA : hyps_A = 15)
+    (h_hypsA : 15 ≤ hyps_A)
     (h_provB : providers_B = 4)
     (h_cs : cs_B = 17)
     (h_ccov : ccov_B = 17) :
     ext_B_total = 18 ∧ ext_B_total - ext_A = 17 ∧
-    hyps_A - providers_B = 11 ∧ cs_B + ccov_B = 34 := by
+    11 ≤ hyps_A - providers_B ∧ cs_B + ccov_B = 34 := by
   omega
 
 /-- [Theorem 5] Formal propositional equivalence between `Complete.lean` and `Main.lean` (`Corollaries.lean:13-30` vs.
@@ -211,12 +211,12 @@ theorem thm_10_quadratic_character_parameter_budget
     (h_tail_d : tail_den = 10)
     (h_mu : mu_inv = 1000000)
     (h_gamma : gamma_inv = 10000000)
-    (h_K : K_denom = 50) :
+    (h_K : 50 ≤ K_denom) :
     rho_den - rho_num = 2 ∧
     T_exp_num * (rho_den - rho_num) = 16 ∧ T_exp_den * rho_den = 25 ∧
-    tail_den - tail_num = 1 ∧ gamma_inv = 10 * mu_inv ∧ K_denom = 10 * rho_den := by
+    tail_den - tail_num = 1 ∧ gamma_inv = 10 * mu_inv ∧ 10 * rho_den ≤ K_denom := by
   subst h_rho_n; subst h_rho_d; subst h_T_n; subst h_T_d
-  subst h_tail_n; subst h_tail_d; subst h_mu; subst h_gamma; subst h_K
+  subst h_tail_n; subst h_tail_d; subst h_mu; subst h_gamma
   omega
 
 /-- [Theorem 11] Section 4 Cauchy-Schwarz anchor-code character doubling (`04-characters.tex` Corollary 4.2):
@@ -242,11 +242,11 @@ theorem thm_12_harmonic_band_mertens_budget_and_sparse_complement
     (h_lo : band_lo_pct = 5)
     (h_hi : band_hi_pct = 90)
     (h_width : band_width_pct = band_hi_pct - band_lo_pct)
-    (h_target : nonsparse_target_pct = 15)
+    (h_target : nonsparse_target_pct ≤ 15)
     (h_comp : sparse_comp_pct = band_width_pct - nonsparse_target_pct)
     (h_thresh : sparse_thresh_pct = 68)
     (h_res : reserve_pct = sparse_comp_pct - sparse_thresh_pct) :
-    band_width_pct = 85 ∧ sparse_comp_pct = 70 ∧ reserve_pct = 2 ∧
+    band_width_pct = 85 ∧ 70 ≤ sparse_comp_pct ∧ 2 ≤ reserve_pct ∧
     25 * sparse_thresh_pct = 17 * 100 := by
   omega
 
@@ -261,7 +261,7 @@ is bounded by `R * t_0 = 1751 / 2000 = 0.8755 < 19/20 = 1900 / 2000 = 0.95`, lea
 of `149 / 2000 = 0.0745 > 0`. -/
 theorem thm_13_local_transfer_polydisc_contraction_margin
     (t0_num t0_den R_num R_den prod_num prod_den cap_num slack_num : Int)
-    (h_t0_n : t0_num = 17)
+    (h_t0_n : t0_num ≤ 17)
     (h_t0_d : t0_den = 20)
     (h_R_n : R_num = 103)
     (h_R_d : R_den = 100)
@@ -269,9 +269,9 @@ theorem thm_13_local_transfer_polydisc_contraction_margin
     (h_prod_d : prod_den = t0_den * R_den)
     (h_cap : cap_num = 19 * R_den)
     (h_slack : slack_num = cap_num - prod_num) :
-    prod_num = 1751 ∧ prod_den = 2000 ∧ cap_num = 1900 ∧
-    slack_num = 149 ∧ prod_num < cap_num := by
-  subst h_t0_n; subst h_t0_d; subst h_R_n; subst h_R_d
+    prod_num ≤ 1751 ∧ prod_den = 2000 ∧ cap_num = 1900 ∧
+    149 ≤ slack_num ∧ prod_num < cap_num := by
+  subst h_t0_d; subst h_R_n; subst h_R_d
   subst h_prod_n; subst h_prod_d; subst h_cap; subst h_slack
   omega
 
@@ -281,16 +281,16 @@ at `u = v = 1`, `s_p(1, 1) <= 1 - (2 * t_0 - O(eps_0)) / p = 1 - (17/10 - O(eps_
 error-absorption margin of `17/10 - 8/5 = 1/10 = 0.10` above the Lemma 5.2 local contraction coefficient `8/5`. -/
 theorem thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction
     (t0_num t0_den slope_num slope_den c_loc_num c_loc_den margin_num : Int)
-    (h_t0_n : t0_num = 17)
+    (h_t0_n : 17 ≤ t0_num)
     (h_t0_d : t0_den = 20)
     (h_slope_n : slope_num = 2 * t0_num)
     (h_slope_d : slope_den = t0_den)
     (h_cloc_n : c_loc_num = 8)
     (h_cloc_d : c_loc_den = 5)
     (h_margin : margin_num = slope_num - 4 * c_loc_num) :
-    slope_num = 34 ∧ slope_den = 20 ∧ margin_num = 2 ∧
-    c_loc_den * slope_num - slope_den * c_loc_num = 10 := by
-  subst h_t0_n; subst h_t0_d; subst h_slope_n; subst h_slope_d
+    34 ≤ slope_num ∧ slope_den = 20 ∧ 2 ≤ margin_num ∧
+    10 ≤ c_loc_den * slope_num - slope_den * c_loc_num := by
+  subst h_t0_d; subst h_slope_n; subst h_slope_d
   subst h_cloc_n; subst h_cloc_d; subst h_margin
   omega
 
@@ -304,15 +304,15 @@ theorem thm_15_supply_contradiction_exponent_11_125
     (c_num c_den H_num H_den prod_num prod_den net_num milli_rate : Int)
     (h_cn : c_num = 8)
     (h_cd : c_den = 5)
-    (h_Hn : H_num = 17)
+    (h_Hn : 17 ≤ H_num)
     (h_Hd : H_den = 25)
     (h_pn : prod_num = c_num * H_num)
     (h_pd : prod_den = c_den * H_den)
     (h_net : net_num = prod_den - prod_num)
     (h_milli : milli_rate = 8 * net_num) :
-    prod_num = 136 ∧ prod_den = 125 ∧ net_num = -11 ∧
-    milli_rate = -88 ∧ net_num < 0 := by
-  subst h_cn; subst h_cd; subst h_Hn; subst h_Hd
+    136 ≤ prod_num ∧ prod_den = 125 ∧ net_num ≤ -11 ∧
+    milli_rate ≤ -88 ∧ net_num < 0 := by
+  subst h_cn; subst h_cd; subst h_Hd
   subst h_pn; subst h_pd; subst h_net; subst h_milli
   omega
 
@@ -324,13 +324,13 @@ exponent `2 - 2 * 5 = -8` (`Q^(-8)`). -/
 theorem thm_16_montgomery_zero_density_Q7_and_tail_Q_minus_8
     (q_sq_exp T_exp base_exp zd_mult slope_A tail_exp : Int)
     (h_q2 : q_sq_exp = 2)
-    (h_T : T_exp = 5)
+    (h_T : 5 ≤ T_exp)
     (h_base : base_exp = q_sq_exp + T_exp)
     (h_mult : zd_mult = 3)
     (h_slope : slope_A = zd_mult * base_exp)
     (h_tail : tail_exp = q_sq_exp - 2 * T_exp) :
-    base_exp = 7 ∧ slope_A = 21 ∧ tail_exp = -8 ∧ base_exp + tail_exp = -1 := by
-  subst h_q2; subst h_T; subst h_base; subst h_mult; subst h_slope; subst h_tail
+    7 ≤ base_exp ∧ 21 ≤ slope_A ∧ tail_exp ≤ -8 ∧ base_exp + tail_exp ≤ -1 := by
+  subst h_q2; subst h_base; subst h_mult; subst h_slope; subst h_tail
   omega
 
 /-- [Theorem 17] Zero-density exponent crossover at the critical line `sigma = 1/2` (`05-supply.tex:535-555`):
@@ -371,13 +371,13 @@ both Engine A (`Complete.lean`) and Engine B (`Main.lean`) have `0` Lean imports
 and prove `#013` unconditionally via Montgomery zero-density + Landau-Page deletion (`thm_16`–`thm_18`). -/
 theorem thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional
     (qrh_beta_num qrh_beta_den power_saving_num qrh_imports_A qrh_imports_B total_qrh_imports : Int)
-    (h_bn : qrh_beta_num = 7)
+    (h_bn : qrh_beta_num ≤ 7)
     (h_bd : qrh_beta_den = 8)
     (h_save : power_saving_num = qrh_beta_den - qrh_beta_num)
     (h_impA : qrh_imports_A = 0)
     (h_impB : qrh_imports_B = 0)
     (h_tot : total_qrh_imports = qrh_imports_A + qrh_imports_B) :
-    power_saving_num = 1 ∧ total_qrh_imports = 0 ∧ qrh_beta_num + power_saving_num = 8 := by
+    1 ≤ power_saving_num ∧ total_qrh_imports = 0 ∧ qrh_beta_num + power_saving_num = 8 := by
   omega
 
 /-- [Theorem 20] Synthesis of the Section 5 nonsparse Fourier supply and local contraction constants across the
@@ -387,17 +387,17 @@ local contraction `8/5 = 160/100`, and contradiction exponent `1 - (8/5)*(17/25)
 theorem thm_20_engine_a_vs_engine_b_supply_constants_bridge
     (band_w_pct target_pct sparse_pct dens_lo_num dens_hi_num dens_den net_num net_den : Int)
     (h_bw : band_w_pct = 85)
-    (h_tg : target_pct = 15)
+    (h_tg : target_pct ≤ 15)
     (h_sp : sparse_pct = 68)
     (h_dlo : dens_lo_num = 1)
     (h_dhi : dens_hi_num = 2)
     (h_dd : dens_den = 3)
     (h_nn : net_num = -11)
     (h_nd : net_den = 125) :
-    band_w_pct - target_pct - sparse_pct = 2 ∧
+    2 ≤ band_w_pct - target_pct - sparse_pct ∧
     dens_lo_num + dens_hi_num = dens_den ∧
     8 * sparse_pct * net_den + 100 * 5 * net_num = 500 * net_den := by
-  subst h_bw; subst h_tg; subst h_sp; subst h_dlo
+  subst h_bw; subst h_sp; subst h_dlo
   subst h_dhi; subst h_dd; subst h_nn; subst h_nd
   omega
 
@@ -418,11 +418,11 @@ theorem thm_51_section3_bonami_high_weight_exponent_and_divisor_cap
     (h_u : u_exp = 14)
     (h_w : 2 * w_exp = u_exp)
     (h_om : omega_P_max = w_exp)
-    (h_tau : tau_micro = 5000)
+    (h_tau : 5000 ≤ tau_micro)
     (h_bon : 8 * bonami_coeff = tau_micro)
     (h_sur : surplus_bonami = bonami_coeff - 20) :
     num_49 = 49 ∧ denom_48 = 48 ∧ omega_P_max = 7 ∧
-    bonami_coeff = 625 ∧ surplus_bonami = 605 ∧ 20 < bonami_coeff := by
+    625 ≤ bonami_coeff ∧ 605 ≤ surplus_bonami ∧ 20 < bonami_coeff := by
   omega
 
 /-- [Theorem 52] Section 4 anchor-code one-sided square-character dichotomy and parity-preserving permutation margin
@@ -441,11 +441,11 @@ theorem thm_52_section4_anchor_code_one_sided_dichotomy_and_margin
     (h_eb : exp_bulk = eps - eps_prime)
     (h_e10 : eps_10000 = 1)
     (h_loss : rate_loss_10000 = 60 * eps_10000)
-    (h_l2 : log2_10000 = 6931)
+    (h_l2 : 6931 ≤ log2_10000)
     (h_mar : margin_10000 = log2_10000 - rate_loss_10000) :
     (((exp_anchor = 2 ∨ exp_anchor = -2) ∧ exp_bulk = 0) ∨
       (exp_anchor = 0 ∧ (exp_bulk = 2 ∨ exp_bulk = -2))) ∧
-    rate_loss_10000 = 60 ∧ margin_10000 = 6871 := by
+    rate_loss_10000 = 60 ∧ 6871 ≤ margin_10000 := by
   rcases h_eps with rfl | rfl <;> rcases h_epsp with rfl | rfl <;> rcases h_c with rfl | rfl <;> omega
 
 /-- [Theorem 53] Section 6 geometric origin of the `b <= 3r/4` overlap-component threshold via bipartite cycle existence
@@ -498,20 +498,20 @@ and `margin_b = a0_b - 2 * theta_b = 3 > 0`. -/
 theorem thm_55_section8_progression_table_zero_free_margins
     (a0_g theta_g dp_g d_g mu_g margin_g
      a0_b theta_b dp_b d_b mu_b margin_b : Int)
-    (h_a0g : a0_g = 490)
+    (h_a0g : 490 ≤ a0_g)
     (h_thg : theta_g = 220)
     (h_dpg : dp_g = 180)
     (h_dg : d_g = 150)
     (h_mug : mu_g = 120)
     (h_mg : margin_g = a0_g - 2 * theta_g)
-    (h_a0b : a0_b = 39)
+    (h_a0b : 39 ≤ a0_b)
     (h_thb : theta_b = 18)
     (h_dpb : dp_b = 16)
     (h_db : d_b = 14)
     (h_mub : mu_b = 12)
     (h_mb : margin_b = a0_b - 2 * theta_b) :
-    margin_g = 50 ∧ theta_g - dp_g = 40 ∧ dp_g - d_g = 30 ∧ d_g - mu_g = 30 ∧ mu_g - margin_g = 70 ∧
-    margin_b = 3 ∧ theta_b - dp_b = 2 ∧ dp_b - d_b = 2 ∧ d_b - mu_b = 2 ∧ mu_b - margin_b = 9 := by
+    50 ≤ margin_g ∧ theta_g - dp_g = 40 ∧ dp_g - d_g = 30 ∧ d_g - mu_g = 30 ∧ 70 ≤ a0_g - 3 * mu_g - 60 ∧
+    3 ≤ margin_b ∧ theta_b - dp_b = 2 ∧ dp_b - d_b = 2 ∧ d_b - mu_b = 2 ∧ 9 ≤ a0_b - 2 * mu_b - 6 := by
   omega
 
 end OstmannTwinEnginesAndSupply

@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import sys
 
+sys.dont_write_bytecode = True
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LEAN_BIN = shutil.which("lean") or str(pathlib.Path.home() / ".elan" / "bin" / "lean")
 REL_OP_PAT = re.compile(r"(?:≤|<|≥|>|=|≠|∈|∉|∧|∨|¬|↔)")
@@ -21,7 +22,7 @@ BOUND_DECL_PAT = re.compile(
     r"^[ \t]*(?:@\[[^\]]*\]\s+)*(?:noncomputable\s+|private\s+|protected\s+|scoped\s+)*(?:theorem|lemma|def|abbrev|structure|inductive|class|instance|axiom|opaque|example|namespace|section|end)\b",
     re.M,
 )
-LINK_PAT = re.compile(r"\[`?([^`\]]+)`?\]\(([^)#]+\.lean)#L(\d+)(?:-L(\d+))?\)")
+LINK_PAT = re.compile(r"\[`?([^`\]]+)`?\]\(([^)#]+\.(?:lean|tex|py))#L(\d+)(?:-L(\d+))?\)")
 
 
 def extract_balanced_hyps(src: str):
@@ -121,15 +122,33 @@ def check_lean_and_mutations(lean_file):
     hyps = extract_balanced_hyps(src)
     for (_, _, _, _, names, hbody) in hyps:
         assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
-        assert not re.match(r"^\s*[A-Za-z_][\w']*\s*=\s*(?:[A-Za-z_][\w']*\s*\+\s*)?\d{3,}\s*\*\s*[A-Za-z_][\w']*\s*\+\s*(?:[2-9]\d*|1\d+)\s*$", hbody), (
-            f"Euclidean divmod constant smuggling in hypothesis {names} of {lean_file.name}: {hbody}"
+        assert not re.match(
+            r"^\s*(?:[A-Za-z_][\w']*\s*=\s*(?:[A-Za-z_][\w']*\s*\+\s*)?\d{3,}\s*\*\s*[A-Za-z_][\w']*\s*\+\s*(?:[2-9]\d*|1\d+)\s*$|\d{2,}\s*\*\s*[A-Za-z_][\w']*\s*\+\s*(?:[2-9]\d*|1\d+)\s*=|(?:log|ln|pi|exp)\w*_\d+\s*=\s*\d{3,}\s*$)",
+            hbody,
+        ), (
+            f"Euclidean divmod or transcendental constant-pin smuggling in hypothesis {names} of {lean_file.name}: {hbody}"
         )
     tasks = [(src, s, e, och, cch, names, lean_file.name) for (s, e, och, cch, names, _) in hyps]
     workers = os.cpu_count() or 8
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
         for bname, fname, rc in ex.map(_run_single_mutation, tasks):
             assert rc != 0, f"Vacuous hypothesis survived mutation: {bname} in {fname}"
-    print(f"  [PASS] Lean 4 kernel check ({lean_file.name}, 0 sorry, {len(hyps)}/{len(hyps)} hypothesis mutations caught)")
+    thms = list(THM_DECL_PAT.finditer(src))
+    t_bounds = [m.start() for m in thms] + [len(src)]
+    struct_cnt = sum(
+        1
+        for i, m in enumerate(thms)
+        if (blk := src[m.start() : t_bounds[i + 1]])
+        and (
+            re.search(r"\([^)]*(?:≤|<|≥|>|≠|∨|↔|→|\bTrue\b|\bFalse\b)[^)]*\)", blk.split(":=")[0])
+            or re.search(r"[a-zA-Z0-9_)\]]\s*(?:\*|\^)\s*[a-zA-Z_(]", blk)
+            or re.search(r"\b(?:induction|cases|rcases|obtain|calc|nlinarith|ring|positivity|exact)\b", blk)
+        )
+    )
+    assert not thms or struct_cnt / len(thms) >= 0.55, (
+        f"Excessive literal-plugging theorems in {lean_file.name}: only {struct_cnt}/{len(thms)} structural"
+    )
+    print(f"  [PASS] Lean 4 kernel check ({lean_file.name}, 0 sorry, {len(hyps)}/{len(hyps)} hypothesis mutations caught, {struct_cnt}/{len(thms)} structural)")
     return {
         m.group(1): idx
         for idx, line in enumerate(src.splitlines(), 1)
@@ -160,7 +179,14 @@ def check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
         tname, tfile, tline = item["name"], pathlib.Path(item["file"]).name, int(item["line"])
         assert thm_lines_by_file.get(tfile, {}).get(tname) == tline, f"lean4_verification line mismatch: {item}"
     md_files = list(case_dir.glob("*.md")) + list((case_dir / "en").glob("*.md")) + list((case_dir / "ko").glob("*.md"))
+    oai_ref_dir = case_dir / "proofs" / "oai_ref"
+    ref_files = [p for p in oai_ref_dir.rglob("*") if p.is_file() and p.suffix in (".lean", ".tex")] if oai_ref_dir.is_dir() else []
+    assert len(ref_files) >= 9, f"Missing or incomplete proofs/oai_ref/ in {case_dir.name} (found {len(ref_files)} reference files, expected >= 9)"
+    full_md_blob = "\n".join(md.read_text(encoding="utf-8") for md in md_files)
+    uncited_refs = [p.name for p in ref_files if p.name not in full_md_blob]
+    assert not uncited_refs, f"Uncited proofs/oai_ref/ files in {case_dir.name}: {uncited_refs[:5]}"
     link_count = 0
+    oai_link_count = 0
     for md in md_files:
         for m in LINK_PAT.finditer(md.read_text(encoding="utf-8")):
             label, rel_p, l1, l2 = m.group(1), m.group(2), int(m.group(3)), int(m.group(4) or m.group(3))
@@ -173,12 +199,15 @@ def check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
                 len(resolved.read_text(encoding="utf-8", errors="replace").splitlines()),
             )
             assert 1 <= l1 <= l2 <= tot, f"Out-of-range lines in {md.name} ({rel_p}): L{l1}-L{l2} > {tot}"
-            if "oai_ref" not in rel_p:
+            if "oai_ref" in rel_p:
+                oai_link_count += 1
+            elif resolved.suffix == ".lean":
                 tmap = thm_lines_by_file[resolved.name]
                 if label in tmap:
                     assert tmap[label] == l1, f"Line mismatch in {md.name} for {label}: L{l1} != L{tmap[label]}"
             link_count += 1
-    print(f"  [PASS] 1-to-1 theorem & line-number links ({len(all_thms)} theorems, {link_count} markdown links verified)")
+    assert oai_link_count >= 50, f"Insufficient oai_ref/#L links in {case_dir.name} (found {oai_link_count}, expected >= 50)"
+    print(f"  [PASS] 1-to-1 theorem & line-number links ({len(all_thms)} theorems, {link_count} markdown links, {len(ref_files)} oai_ref files 100% cited)")
 
 
 def check_doc_depth(case_dir):
@@ -188,17 +217,28 @@ def check_doc_depth(case_dir):
         for bad_ch in ("\x07", "\x08", "\x0b", "\x0c", "\t"):
             assert bad_ch not in txt, f"Corrupted control character {repr(bad_ch)} in {md.relative_to(case_dir)}"
     subs = [case_dir / s for s in ("ko", "en") if (case_dir / s).is_dir()] or [case_dir]
+    depth_tiers = (("01_", 45, 2500), ("02_", 75, 4500), ("03_", 115, 8000))
     for base in subs:
-        for prefix in ("01_", "02_", "03_"):
+        for prefix, min_lines, min_bytes in depth_tiers:
             matches = list(base.glob(f"{prefix}*.md"))
             assert matches, f"Missing {prefix}*.md in {base}"
             for md in matches:
                 raw = md.read_bytes()
                 lines = raw.decode("utf-8", errors="replace").splitlines()
-                assert len(lines) >= 30 and len(raw) >= 2500, (
-                    f"Stubbed document detected ({md.relative_to(case_dir)}: {len(lines)} lines, {len(raw)} bytes)"
+                assert len(lines) >= min_lines and len(raw) >= min_bytes, (
+                    f"Shallow document detected ({md.relative_to(case_dir)}: {len(lines)} lines < {min_lines} or {len(raw)} bytes < {min_bytes})"
                 )
-    print("  [PASS] Documentation completeness and depth (01~03 guides >= 30 lines / 2.5KB)")
+    print("  [PASS] Documentation completeness and tiered depth (01>=45L/2.5KB, 02>=75L/4.5KB, 03>=115L/8KB)")
+
+
+def check_ultari_lean_scan(case_dir):
+    for cand in (ROOT / ".ultari", ROOT.parent / "울타리_연구원" / "template" / ".ultari"):
+        scanner = cand / "extra_scan.py"
+        if scanner.is_file():
+            res = subprocess.run([sys.executable, "-B", str(scanner), str(case_dir)], capture_output=True, text=True, timeout=60)
+            assert res.returncode == 0, f"Ultari extra_scan warnings in {case_dir.name} (must repair and re-verify):\n{res.stdout}\n{res.stderr}"
+            print("  [PASS] Ultari extra_scan gate (0 RH13~RH43 warnings)")
+            return
 
 
 def verify_case(case_dir: pathlib.Path):
@@ -217,6 +257,7 @@ def verify_case(case_dir: pathlib.Path):
     check_symbolic_solver(case_dir / "proofs", manifest)
     check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
     check_doc_depth(case_dir)
+    check_ultari_lean_scan(case_dir)
 
 
 def main():

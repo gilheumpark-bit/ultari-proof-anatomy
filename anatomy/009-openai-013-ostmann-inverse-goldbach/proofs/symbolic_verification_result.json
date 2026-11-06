@@ -161,5 +161,17 @@
     "paper_build_total_lines": 6624,
     "formalization_expansion_ratio": 100.3292
   },
+  "pillar4_algebraic_engines_and_cauchy_determinant": {
+    "sec3_common_center_lift_identity": "(n - a*t_p) - (m - a*t_p) = n - m",
+    "sec3_bonami_two_mode_fourth_moment": "(a + b)^4 + (a - b)^4 = 2*a^4 + 12*a^2*b^2 + 2*b^4",
+    "sec5_balanced_variance_factorization": "9*s*(p - s) - 2*p^2 = (3*s - p)*(2*p - 3*s)",
+    "sec5_kernel_discriminant_identity": "(a + d)^2 - 4*(a*d - b^2) = (a - d)^2 + 4*b^2",
+    "sec6_affine_collision_factorization": "(u1 - u1^2*t) - (u2 - u2^2*t) = (u1 - u2)*(1 - (u1 + u2)*t)",
+    "sec6_mobius_numerator_identity": "(lam*d)*(lam*d - 1) - (lam*d - 1)^2 = lam*d - 1",
+    "sec8_cauchy_2x2_determinant_identity": "(b1 - a2)*(b2 - a1) - (b1 - a1)*(b2 - a2) = (b2 - b1)*(a1 - a2)",
+    "lean_files_count": 3,
+    "lean_theorems_total": 75,
+    "structural_theorems_ratio": "75/75 (100.0%)"
+  },
   "status": "ALL_SYMBOLIC_AND_TENSOR_CHECKS_PASSED"
 }

@@ -209,7 +209,7 @@ theorem thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction
     (h_shi : s_hi1000 = 30348)
     (h_ss : s_shi_scaled = s_hi1000 * 10000)
     (h_w0 : w0_gt_2_3_lo1000 = 1000 * 123 - 3 * s_hi1000)
-    (h_bliu : 1653 * B_liu_lo10m + 790 = 1507 * 10000000 - 2 * s_shi_scaled)
+    (h_bliu : 1653 * B_liu_lo10m ≤ 1507 * 10000000 - 2 * s_shi_scaled ∧ 1507 * 10000000 - 2 * s_shi_scaled < 1653 * (B_liu_lo10m + 1))
     (h_bxs : B_xs10m = 8748867)
     (h_gap : gap_liu_xs10m = B_liu_lo10m - B_xs10m) :
     s_lo1000 < s_hi1000 ∧ 0 < w0_gt_2_3_lo1000 ∧ B_liu_lo10m = 8749570 ∧ gap_liu_xs10m = 703 ∧
@@ -258,16 +258,16 @@ in integer scale `10^9` (`ppb`), verifies the strict monotone ordering across al
 theorem thm_28_ten_tier_qrh_boundary_hierarchy
     (b_rh b_pathA b_unb3 b_unb2 b_xs b_liu b_Br b_sos0 b_7_8 b_11_12 b_23_24 : Int)
     (h_rh : 2 * b_rh = 1000000000)
-    (h_pA : 108 * b_pathA + 44 = 71 * 1000000000)
-    (h_u3 : 4896 * b_unb3 + 1504 = 4069 * 1000000000)
-    (h_u2 : 4896 * b_unb2 + 3680 = 4103 * 1000000000)
+    (h_pA : 108 * b_pathA ≤ 71 * 1000000000 ∧ 71 * 1000000000 < 108 * (b_pathA + 1))
+    (h_u3 : 4896 * b_unb3 ≤ 4069 * 1000000000 ∧ 4069 * 1000000000 < 4896 * (b_unb3 + 1))
+    (h_u2 : 4896 * b_unb2 ≤ 4103 * 1000000000 ∧ 4103 * 1000000000 < 4896 * (b_unb2 + 1))
     (h_xs : b_xs = 874886700)
-    (h_liu : 1653 * b_liu + 1290 = (1507 * 1000000 - 2 * 30347981) * 1000)
+    (h_liu : 1653 * b_liu ≤ (1507 * 1000000 - 2 * 30347981) * 1000 ∧ (1507 * 1000000 - 2 * 30347981) * 1000 < 1653 * (b_liu + 1))
     (h_Br : 40000 * b_Br = 34999 * 1000000000)
-    (h_sos : 7578 * b_sos0 + 6184 = (6843 * 1000000 - 7 * 30347981) * 1000)
+    (h_sos : 7578 * b_sos0 ≤ (6843 * 1000000 - 7 * 30347981) * 1000 ∧ (6843 * 1000000 - 7 * 30347981) * 1000 < 7578 * (b_sos0 + 1))
     (h_78 : 8 * b_7_8 = 7 * 1000000000)
-    (h_11 : 12 * b_11_12 + 8 = 11 * 1000000000)
-    (h_23 : 24 * b_23_24 + 8 = 23 * 1000000000) :
+    (h_11 : 12 * b_11_12 ≤ 11 * 1000000000 ∧ 11 * 1000000000 < 12 * (b_11_12 + 1))
+    (h_23 : 24 * b_23_24 ≤ 23 * 1000000000 ∧ 23 * 1000000000 < 24 * (b_23_24 + 1)) :
     b_rh < b_pathA ∧ b_pathA < b_unb3 ∧ b_unb3 < b_unb2 ∧ b_unb2 < b_xs ∧
     b_xs < b_liu ∧ b_liu < b_Br ∧ b_Br < b_sos0 ∧ b_sos0 < b_7_8 ∧
     b_7_8 < b_11_12 ∧ b_11_12 < b_23_24 := by

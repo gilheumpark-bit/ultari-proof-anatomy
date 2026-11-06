@@ -4,14 +4,15 @@
   "target_repository": "openai/math (Family 013: OAI/NumberTheory/Ostmann/, ComparatorChallenges/OstmannComplete.lean, ComparatorChallenges/OstmannPrimes.lean, and preprints/the-additive-indecomposability-of-the-primes-September-24-2026)",
   "date": "2026-11-06",
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean && ~/.elan/bin/lean proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ostmann.py"
   },
   "artifacts_sha256": {
-    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "2c4bf7205f936a8455eb1bc9437183feed23542823505294887bcec013a5ac73",
-    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "cfafd39ff6759d5c91710be9aca2693e3cfc925a88d7e163f44a796c05d6e6af",
-    "proofs/verify_symbolic_ostmann.py": "3da992dc2e90d47920afa3c0419dbc662ec7beb11b1e449b21ab51e008334dda",
-    "proofs/symbolic_verification_result.json": "a4c633c4e291dbfc200f7ea4348f6da9232db260fc796b5f37668a3f87ecca63",
+    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "de1dc0ff11a3205dfa16998d300b0bd5195259d34831972941a17d52fd7f1c7d",
+    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "5e1cba290f76db87e71940b8fb8bff04dae4f87b74db3f3df7f102f6507e203a",
+    "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean": "20bd47f0bf25d68ed3b04e4d891c00aff497addbf32d491f165aa2acff53e832",
+    "proofs/verify_symbolic_ostmann.py": "dd14880ab1aaed9a94e80d5228485264346a8b2230488ead675957ab7b75b47e",
+    "proofs/symbolic_verification_result.json": "c6c4fa27af9686d43667e708e00d34dfd3daa789c5a91ad502b03cb3b27208fa",
     "proofs/problem_spec.md": "e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02"
   },
   "verified_key_results": {
@@ -100,31 +101,62 @@
         "thm_34_linear_k_log_2_dominates_logarithmic_4_log_k (Theorem 34, L264)",
         "thm_35_final_amplitude_upper_vs_lower_contradiction (Theorem 35, L278)",
         "thm_36_engine_a_15_step_conditional_discharge_spine (Theorem 36, L296)",
-        "thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting (Theorem 37, L317)",
-        "thm_38_paper_9_sections_to_lean_subsystem_mapping (Theorem 38, L332)",
-        "thm_39_two_stage_analytic_combinatorial_contraction_comparison (Theorem 39, L357)",
-        "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict (Theorem 40, L377)",
-        "thm_41_bad_arrangement_requires_majority_unsplit_leaves (Theorem 41, L396)",
-        "thm_42_deranged_slot_pair_eliminates_bad_arrangements (Theorem 42, L411)",
-        "thm_43_bad_component_max_size_quarter_bound (Theorem 43, L427)",
-        "thm_44_master_contraction_rate_and_depth_reduction (Theorem 44, L443)",
-        "thm_45_supply_contraction_favorable_mass_expansion (Theorem 45, L466)",
-        "thm_46_siegel_bound_effective_under_qrh_and_away_branch (Theorem 46, L491)",
-        "thm_47_tatuzawa_effective_single_exception_and_extended_deletion_budget (Theorem 47, L512)",
-        "thm_48_combinatorial_2k_cancellation_in_bulk_exp_margin (Theorem 48, L530)",
-        "thm_49_explicit_effective_loglog_threshold_bottleneck_shift (Theorem 49, L545)",
-        "thm_50_effective_ostmann_counterexample_bound_master (Theorem 50, L569)"
+        "thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting (Theorem 37, L310)",
+        "thm_38_paper_9_sections_to_lean_subsystem_mapping (Theorem 38, L325)",
+        "thm_39_two_stage_analytic_combinatorial_contraction_comparison (Theorem 39, L343)",
+        "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict (Theorem 40, L363)",
+        "thm_41_bad_arrangement_requires_majority_unsplit_leaves (Theorem 41, L381)",
+        "thm_42_deranged_slot_pair_eliminates_bad_arrangements (Theorem 42, L396)",
+        "thm_43_bad_component_max_size_quarter_bound (Theorem 43, L412)",
+        "thm_44_master_contraction_rate_and_depth_reduction (Theorem 44, L428)",
+        "thm_45_supply_contraction_favorable_mass_expansion (Theorem 45, L451)",
+        "thm_46_siegel_bound_effective_under_qrh_and_away_branch (Theorem 46, L476)",
+        "thm_47_tatuzawa_effective_single_exception_and_extended_deletion_budget (Theorem 47, L495)",
+        "thm_48_combinatorial_2k_cancellation_in_bulk_exp_margin (Theorem 48, L513)",
+        "thm_49_explicit_effective_loglog_threshold_bottleneck_shift (Theorem 49, L528)",
+        "thm_50_effective_ostmann_counterexample_bound_master (Theorem 50, L552)"
+      ]
+    },
+    "pillar4_algebraic_engines_and_cauchy_determinant": {
+      "common_center_cancellation_identity": "(a*n - a*t) - (a*m - a*t) = a*(n - m)",
+      "bonami_fourth_moment_excess": "(a + b)^4 + (a - b)^4 - 2*(a^4 + b^4) = 12*a^2*b^2",
+      "balanced_variance_factorization": "9*s*(p - s) - 2*p^2 = (3*s - p)*(2*p - 3*s)",
+      "rank2_kernel_discriminant": "(a + d)^2 - 4*(a*d - b^2) = (a - d)^2 + 4*b^2",
+      "affine_collision_factorization": "(u1 - u1^2*t) - (u2 - u2^2*t) = (u1 - u2)*(1 - (u1 + u2)*t)",
+      "cauchy_2x2_determinant_identity": "(b1 - a2)*(b2 - a1) - (b1 - a1)*(b2 - a2) = (b2 - b1)*(a1 - a2)",
+      "lean_theorems": [
+        "thm_56_common_center_lift_difference_cancellation (Theorem 56, L54)",
+        "thm_57_common_center_crt_uniqueness_below_modulus (Theorem 57, L66)",
+        "thm_58_incidence_second_moment_cauchy_schwarz (Theorem 58, L90)",
+        "thm_59_bonami_two_mode_fourth_moment_excess (Theorem 59, L114)",
+        "thm_60_heath_brown_bilinear_square_defect (Theorem 60, L136)",
+        "thm_61_balanced_support_variance_quadratic_lower_bound (Theorem 61, L153)",
+        "thm_62_rank2_transfer_kernel_characteristic_discriminant (Theorem 62, L188)",
+        "thm_63_schur_complement_quadratic_contraction (Theorem 63, L206)",
+        "thm_64_square_kernel_trace_and_double_slope (Theorem 64, L224)",
+        "thm_65_affine_collision_polynomial_factorization (Theorem 65, L243)",
+        "thm_66_affine_quadratic_three_way_collision_vandermonde (Theorem 66, L260)",
+        "thm_67_affine_pair_mobius_numerator_identity (Theorem 67, L277)",
+        "thm_68_reciprocal_twist_involution_phase_cancellation (Theorem 68, L291)",
+        "thm_69_cauchy_2x2_determinant_polynomial_identity (Theorem 69, L314)",
+        "thm_70_cauchy_2x2_determinant_strict_positivity (Theorem 70, L332)",
+        "thm_71_schwartz_zippel_weighted_root_bound (Theorem 71, L349)",
+        "thm_72_prime_factors_pow2_lower_bound (Theorem 72, L368)",
+        "thm_73_bulk_quadratic_congruence_factorization (Theorem 73, L382)",
+        "thm_74_universal_ostmann_system_contraction (Theorem 74, L391)",
+        "thm_75_countermodel_cauchy_det_vanishes_when_degenerate (Theorem 75, L409)"
       ]
     }
   },
   "lean4_verification": {
     "files": [
       "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-      "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean"
+      "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
+      "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean"
     ],
     "sorry_count": 0,
-    "hypothesis_mutations_tested": 370,
-    "hypothesis_mutations_killed": 370,
+    "hypothesis_mutations_tested": 393,
+    "hypothesis_mutations_killed": 393,
     "theorems": [
       {
         "name": "thm_01_ostmann_directory_inclusion_exclusion_partition",
@@ -309,72 +341,72 @@
       {
         "name": "thm_37_engine_b_jacobsthal_and_prime_gaps_reuse_accounting",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 317
+        "line": 310
       },
       {
         "name": "thm_38_paper_9_sections_to_lean_subsystem_mapping",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 332
+        "line": 325
       },
       {
         "name": "thm_39_two_stage_analytic_combinatorial_contraction_comparison",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 357
+        "line": 343
       },
       {
         "name": "thm_40_master_ostmann_inverse_goldbach_synthesis_verdict",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 377
+        "line": 363
       },
       {
         "name": "thm_41_bad_arrangement_requires_majority_unsplit_leaves",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 396
+        "line": 381
       },
       {
         "name": "thm_42_deranged_slot_pair_eliminates_bad_arrangements",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 411
+        "line": 396
       },
       {
         "name": "thm_43_bad_component_max_size_quarter_bound",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 427
+        "line": 412
       },
       {
         "name": "thm_44_master_contraction_rate_and_depth_reduction",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 443
+        "line": 428
       },
       {
         "name": "thm_45_supply_contraction_favorable_mass_expansion",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 466
+        "line": 451
       },
       {
         "name": "thm_46_siegel_bound_effective_under_qrh_and_away_branch",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 491
+        "line": 476
       },
       {
         "name": "thm_47_tatuzawa_effective_single_exception_and_extended_deletion_budget",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 512
+        "line": 495
       },
       {
         "name": "thm_48_combinatorial_2k_cancellation_in_bulk_exp_margin",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 530
+        "line": 513
       },
       {
         "name": "thm_49_explicit_effective_loglog_threshold_bottleneck_shift",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 545
+        "line": 528
       },
       {
         "name": "thm_50_effective_ostmann_counterexample_bound_master",
         "file": "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean",
-        "line": 569
+        "line": 552
       },
       {
         "name": "thm_51_section3_bonami_high_weight_exponent_and_divisor_cap",
@@ -400,6 +432,106 @@
         "name": "thm_55_section8_progression_table_zero_free_margins",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
         "line": 498
+      },
+      {
+        "name": "thm_56_common_center_lift_difference_cancellation",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 54
+      },
+      {
+        "name": "thm_57_common_center_crt_uniqueness_below_modulus",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 66
+      },
+      {
+        "name": "thm_58_incidence_second_moment_cauchy_schwarz",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 90
+      },
+      {
+        "name": "thm_59_bonami_two_mode_fourth_moment_excess",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 114
+      },
+      {
+        "name": "thm_60_heath_brown_bilinear_square_defect",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 136
+      },
+      {
+        "name": "thm_61_balanced_support_variance_quadratic_lower_bound",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 153
+      },
+      {
+        "name": "thm_62_rank2_transfer_kernel_characteristic_discriminant",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 188
+      },
+      {
+        "name": "thm_63_schur_complement_quadratic_contraction",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 206
+      },
+      {
+        "name": "thm_64_square_kernel_trace_and_double_slope",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 224
+      },
+      {
+        "name": "thm_65_affine_collision_polynomial_factorization",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 243
+      },
+      {
+        "name": "thm_66_affine_quadratic_three_way_collision_vandermonde",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 260
+      },
+      {
+        "name": "thm_67_affine_pair_mobius_numerator_identity",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 277
+      },
+      {
+        "name": "thm_68_reciprocal_twist_involution_phase_cancellation",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 291
+      },
+      {
+        "name": "thm_69_cauchy_2x2_determinant_polynomial_identity",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 314
+      },
+      {
+        "name": "thm_70_cauchy_2x2_determinant_strict_positivity",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 332
+      },
+      {
+        "name": "thm_71_schwartz_zippel_weighted_root_bound",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 349
+      },
+      {
+        "name": "thm_72_prime_factors_pow2_lower_bound",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 368
+      },
+      {
+        "name": "thm_73_bulk_quadratic_congruence_factorization",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 382
+      },
+      {
+        "name": "thm_74_universal_ostmann_system_contraction",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 391
+      },
+      {
+        "name": "thm_75_countermodel_cauchy_det_vanishes_when_degenerate",
+        "file": "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+        "line": 409
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"
