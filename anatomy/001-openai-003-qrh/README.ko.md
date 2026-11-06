@@ -1,32 +1,29 @@
 > **언어 선택 (Language)**: [**English (`README.md`)**](./README.md) | **한국어**
 
-# OpenAI `#003` (준리만 가설 Lean 4 형식증명) 수식 구조 분석 및 검증 패키지 (한국어판)
+# 사례 001: OpenAI `#003` 준리만 가설 ($\text{Re}(s) > 7/8$) 해부 및 형식증명
 
-- **작성 기준일**: 2026-10-31
-- **분석 대상**: `openai/math` (Family `003`: 디리클레·헤케 $L$-함수 준리만 가설 Lean 4 증명 저장소, `lean/OAI/NumberTheory/DirichletL/` 및 `SiegelZeros/`)
-- **핵심 검증 산출물**:
-  - Lean 4 형식증명(40개 정리, 404+295행, `0 sorry`, `0 axiom`): [`proofs/qrh_exponent_and_parameter_bounds.lean`](./proofs/qrh_exponent_and_parameter_bounds.lean), [`proofs/qrh_continuation_and_rescaling.lean`](./proofs/qrh_continuation_and_rescaling.lean)
-  - 기호 연산 검산 스크립트(`SymPy` / 유리수 정밀 연산): [`proofs/verify_symbolic_qrh.py`](./proofs/verify_symbolic_qrh.py)
-  - 기호 연산 검산 결과 데이터(JSON): [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json)
+이 패키지는 OpenAI `#003`(`DirichletL/` 및 `SiegelZeros/` `3,414`개 `.lean` 파일)을 감사한 결과물입니다. 유리수 근사 상수 뒤의 정확한 대수 방정식을 복원하고 `40`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `22/22`건 포착)로 검증했습니다.
 
----
+## 핵심 해부 결과
 
-## 독자 수준별 맞춤 읽기 안내 (4단계 구성)
+1. **정확한 무리수 정류점 복원**: `Endpoint.lean`의 유리수 근사점($\frac{283}{408}$) 뒤에 숨은 2차 방정식 해 $a^* = \frac{323}{276} - \frac{35\sqrt{16354}}{9384} \approx 0.6933$과 바닥 마진 영점 $a_{\max} = \frac{37}{72}$를 도출합니다.
+2. **그람 행렬 지수 여유분 분리**: 성분별 지수($\frac{14+17\delta}{96}$, 차이 $\frac{215}{3264}$)와 쌍선형 지수($\frac{1}{16}+\frac{17\delta}{96}$, 차이 $\frac{487}{3264}$)를 묶음 상한($\frac{3}{16}+\frac{23\delta}{96}$)과 분리합니다.
+3. **꼬리항 소멸 및 임계치 축소**: $m \ge 2$ 비주항 가우스 분기 8개 중 6개가 항등 소멸함($z_{\text{re}} \ge \frac{1}{6} \to \frac{1}{12}$)과 $(1 - V)$ 약분으로 소수 노름 하한이 $Q \ge 480 \to 112$로 줄어듦을 증명합니다.
 
-본 패키지는 **초보자(비전공자)**, **중급자(이공계·개발자)**, **전문가(해석적 수론·형식증명 연구자)**, **AI 및 자동 검증 시스템** 모두가 자신의 수준과 목적에 맞게 이해하고 검증할 수 있도록 4단계로 구성되어 있습니다.
+## 4단계 독자 맞춤형 가이드
 
-| 단계 | 대상 독자 | 문서 파일 | 핵심 내용 요약 |
+| 단계 | 대상 독자 | 문서 파일 | 핵심 내용 |
 | :---: | :--- | :--- | :--- |
-| **1단계** | **초보자 (비전공자·일반 독자)** | [`01_초보자용_쉬운해설.md`](./ko/01_초보자용_쉬운해설.md) | 복잡한 수식 없이 이해하는 리만 가설과 준리만 가설, OpenAI `#003` 증명 코드의 유리수 근사 방식과 주요 경계값(`0.51 / 0.69 / 0.875`)의 수학적 의미 |
-| **2단계** | **중급자 (이공계 학부·개발자)** | [`02_중급자용_구조및수식가이드.md`](./ko/02_중급자용_구조및수식가이드.md) | 5대 핵심 수식 과제의 방정식과 코드 구조 해설, OpenAI 원본 `.lean` 파일과 40개 Lean 4 정리 일대일 매핑 |
-| **3단계** | **전문가 (수론·형식증명 연구자)** | [`03_전문가용_수론및형식증명보고서.md`](./ko/03_전문가용_수론및형식증명보고서.md) | 학술 기술 보고서, 유리수·정수 형식 증명 완료 범위와 향후 복소해석적 멜린 적분 형식화 과제의 구분 명세 |
-| **4단계** | **AI 및 자동 검증 파이프라인** | [`04_자동검증및파서용_명세서.md`](./ko/04_자동검증및파서용_명세서.md)<br>[`manifest.json`](./manifest.json) | 1줄 재현 명령어(`lean`, `python3`, `sha256sum`), SHA-256 해시 목록, 해석상 유의사항 및 JSON 매니페스트 |
+| **1단계** | **초보자 (일반 독자)** | [`01_초보자용_쉬운해설.md`](./ko/01_초보자용_쉬운해설.md) | 준리만 가설의 개념과 3대 임계치(`0.51`, `0.69`, `0.875`)의 쉬운 해설. |
+| **2단계** | **중급자 (이공계·개발자)** | [`02_중급자용_구조및수식가이드.md`](./ko/02_중급자용_구조및수식가이드.md) | 핵심 대수 방정식 유도 및 40개 Lean 4 정리 1대1 줄 번호 색인표. |
+| **3단계** | **전문가 (수론·형식증명 연구자)** | [`03_전문가용_수론및형식증명보고서.md`](./ko/03_전문가용_수론및형식증명보고서.md) | 무리수 정류점, 그람 지수 여유분, `영역 A` 대수 검증 범위 상세 보고서. |
+| **4단계** | **자동 검증기 및 파서** | [`04_자동검증및파서용_명세서.md`](./ko/04_자동검증및파서용_명세서.md)<br>[`manifest.json`](./manifest.json) | 1줄 재현 명령어, SHA-256 해시 원장 및 JSON 매니페스트. |
 
----
+## 형식증명 코드 및 1줄 검증 명령어
 
-## 1줄 즉시 검증 방법
-
-패키지 루트 폴더에서 아래 명령어를 실행하면 40개 Lean 4 정리의 커널 컴파일(`exit 0`)과 기호 연산 결과를 즉시 재현할 수 있습니다.
+- [`proofs/qrh_exponent_and_parameter_bounds.lean`](./proofs/qrh_exponent_and_parameter_bounds.lean): 정리 1~27 (`0 sorry`).
+- [`proofs/qrh_continuation_and_rescaling.lean`](./proofs/qrh_continuation_and_rescaling.lean): 정리 28~40 (`0 sorry`).
+- [`proofs/verify_symbolic_qrh.py`](./proofs/verify_symbolic_qrh.py): [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json)을 재현하는 결정론적 `SymPy` 스크립트.
 
 ```bash
 lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean && (cd proofs && python3 verify_symbolic_qrh.py)

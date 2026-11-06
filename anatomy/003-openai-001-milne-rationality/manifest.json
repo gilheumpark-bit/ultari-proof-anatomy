@@ -7,19 +7,19 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_milne.py"
   },
   "artifacts_sha256": {
-    "README.md": "b1bff6bdd19b6a42c96f71ee8a3eb9e687a262fff50019924f0b82c45ef0090b",
-    "README.ko.md": "69c4e053aa50a783e3c11874d44fe35796d80e1ea64f3e62f19dd8ff6bc92963",
+    "README.md": "da31729599e9e45d971f451dd251364b535358f12363303786187eff582037a5",
+    "README.ko.md": "9c9752c11d193289bf5f63e047a30e83e3b0b1d2078683e0107e9a7af3e5b16a",
     "proofs/milne_transport_and_filtration.lean": "a97d2b96faa7d0124f0b4e239036509a80c60f0515f771f18a2cccf953542591",
     "proofs/milne_weil_reduction_and_repairs.lean": "19c47d7ee3025dbb667d9d59eb00513f5c4625e3cfc87740ec0d11997a88a860",
     "proofs/verify_symbolic_milne.py": "13cd8628577c1aa90df21b7ea4c8530605f5eaf57fd17ddb2a2d08171e71e620",
     "proofs/symbolic_verification_result.json": "068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100",
     "proofs/problem_spec.md": "e2873e84dc9152d82b37467af932f6ecc58537508018e138064156c51dcdd71b",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
-    "ko/01_초보자용_쉬운해설.md": "5bae81b88950cf8c529871780ad33762ce3b47fd52c7be058ef6f2577195c981",
+    "ko/01_초보자용_쉬운해설.md": "583e42140db78762cceb492b1322338c36e04835e278e376562054091b89ee05",
     "ko/02_중급자용_구조및수식가이드.md": "d8d418adba0273c6b3ee1f37f9694dc5f2f322204cbfac2fa826d45defce797a",
     "ko/03_전문가용_산술기하및형식증명보고서.md": "b6389ad1e0d45549e09e8f4d61cbd73b9bd4d1f70f4b66584a692913b835b618",
     "ko/04_자동검증및파서용_명세서.md": "cb2c7866eda5acdd6cac4ed1f1145b407fa8e84baa59007af633d93597c7c6fb",
-    "en/01_Beginner_Guide.md": "e02de6ebb83f2a2e82c300412bdfe5dbe351603b3884565805d18ed5e0b95142",
+    "en/01_Beginner_Guide.md": "ebeeefb5eeffdb04aeabcfe6883272ab4dccad90e9f419f4589c3b444a557ce9",
     "en/02_Intermediate_Math_and_Code_Guide.md": "0647cd42a250113f44d697738623fef29eead03a03527fcaa2cf913e7ce4f9ff",
     "en/03_Expert_Mathematical_and_Formal_Report.md": "d8b052bf993823503be1c79f5b64612df4d195ecc86279f8be625469a16619e3",
     "en/04_Automated_Verification_and_Manifest.md": "38cfd4877814494484a8bd701d968a9f8bd740c82218b0159ea217d2a74f6bad"

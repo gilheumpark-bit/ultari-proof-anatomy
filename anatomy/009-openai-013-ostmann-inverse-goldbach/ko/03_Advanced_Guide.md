@@ -10,8 +10,8 @@
 | **엔진 B (`Main.lean` 원뿔)** | `4,175` | `303,234` | `53.23%` | 상향식 `Actual*` 4-공급자 결합기(`ActualFourComparisonConsumer.lean`, `Cs = 17, Ccov = 17`); 외부 `OAI` 임포트 `18`개 |
 | **공유 코어 (`Complete ∩ Main`)** | `5` | `372` | `0.0653%` | `Defs.lean` (`46`), `Statement.lean` (`2`), `Endpoint.lean` (`190`), `FiniteCRT.lean` (`68`), `FiniteFactor.lean` (`66`) |
 | **도달 가능 합집합 (`Complete ∪ Main`)** | `7,335` | `569,682` | `100.00%` | $3165 + 4175 - 5 = 7335$개 파일; $266820 + 303234 - 372 = 569682$줄 |
-| **미사용 고아 화석 (`Orphans`)** | `381` | `39,517` | — | `Arithmetic` (`264`), `Construction` (`86`), `Quadratic` (`10`), `Characters` (`8`), `ZeroDensity` (`7`), `Tree` (`2`), `Preliminaries` (`1`), `QuadraticCenter` (`1`), `All.lean` + `PaperMain.lean` (`2`) |
-| **`OAI/NumberTheory/Ostmann/` 총계** | **`7,716`** | **`609,199`** | — | $7335 + 381 = 7716$개 파일; $569682 + 39517 = 609199$줄 |
+| **미사용 고아 화석 (`Orphans`)** | `381` | `39,517` | - | `Arithmetic` (`264`), `Construction` (`86`), `Quadratic` (`10`), `Characters` (`8`), `ZeroDensity` (`7`), `Tree` (`2`), `Preliminaries` (`1`), `QuadraticCenter` (`1`), `All.lean` + `PaperMain.lean` (`2`) |
+| **`OAI/NumberTheory/Ostmann/` 총계** | **`7,716`** | **`609,199`** | - | $7335 + 381 = 7716$개 파일; $569682 + 39517 = 609199$줄 |
 
 ---
 

@@ -9,20 +9,20 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "421ab2de7bda56467f5e553093270c713cfce253b4ff3db550f5eb130a9c811c",
-    "README.ko.md": "b683123781c3df07fb6e2801ec88807e2191106ef1e6c30ca2fcd99676addd27",
+    "README.md": "6597fed3942b1f655151d045c12f94d3a0e64fa5def2be4535e3a7a6bd2d52c1",
+    "README.ko.md": "83466a96c3948310b1752c30a8a5109e189742bfff19fce23a54cadfd14c429b",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "7a04cc360fed5e1772718a92540734c9bb549d26804009378685678a8b23a391",
     "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "886dd43c3cc555daff1d8d33a8b0b1276fb5d1deb37ae5e51aefd0d18c06a3e7",
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
-    "ko/01_초보자용_쉬운해설.md": "7d2ddb9d2423f4250d45a5ce9c04d3623ccd0ee3afb85207de19394822334a3e",
+    "ko/01_초보자용_쉬운해설.md": "96aadda378bec5906dcf5615fabc684b01ae60891beebd55c6cc8c0f00d04818",
     "ko/02_중급자용_구조및수식가이드.md": "3182545a271331c2f5f697b4efe1176123713a7960df54f10f9b6a98ad73595f",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "e3e9cfc7e3802d8a8a56845667a7b23b46d5fa62bd59b84108a0192d9c935f19",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "1969bb825a34ab17f5d85116d737a8c07b20a7f3835f8b6b31e506d70cab2d41",
     "ko/04_자동검증및파서용_명세서.md": "9ff61a59ada0eea75da1545ffa56f6630cd0327c4334da0d58d5aac95978d4f7",
-    "en/01_Beginner_Guide.md": "fc82586c2aa4b897d8bb46463661ae63c7516c12f319fa22589d41d3ef594eef",
+    "en/01_Beginner_Guide.md": "dfdbf1b762d040d8d28f0e5db39e5a564f283834297eb5dc2abd76e2475c3be0",
     "en/02_Intermediate_Math_and_Code_Guide.md": "a11081a36c3f4b3dd843d8a47873db19114ea5cab16077e8a99ef69f5da1c974",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "e1c4656bc451e6607f80cd45b8a832799213c2ca6123c76f7a59822f74172fe9",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "94236dc1780de0d2951726757083b4dcdd2b1c00e64e3b5b77cb98e005a7e8d1",
     "en/04_Automated_Verification_and_Parser_Spec.md": "b85ed39a0606044e5e15df070f19bb258d72e3051537d3c9de88e1faf78d6c3d"
   },
   "verdict": {

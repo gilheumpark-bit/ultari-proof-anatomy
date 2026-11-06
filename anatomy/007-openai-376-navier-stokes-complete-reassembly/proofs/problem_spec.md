@@ -1,7 +1,7 @@
 # OpenAI #376 미연결 650(718) 모듈 전수 재조립 및 10월 6일 개정판 명세 (Zero-Hint Problem Specification)
 
 ## 1. 대상 문제 및 진입점 파일
-- **문제 식별자**: OpenAI Math `#376` (`Universal computation in forced Navier–Stokes flows` — 미연결 `650` (`718`) `OAI/` Lean 4 모듈 및 2026년 10월 6일 개정판 `Incompressible-Box-Transport-and-Finite-Computation-October-6-2026` 전수 재조립)
+- **문제 식별자**: OpenAI Math `#376` (`Universal computation in forced Navier–Stokes flows` - 미연결 `650` (`718`) `OAI/` Lean 4 모듈 및 2026년 10월 6일 개정판 `Incompressible-Box-Transport-and-Finite-Computation-October-6-2026` 전수 재조립)
 - **검증 대상 마스터 허브 및 미연결 모듈 (`proofs/oai_ref/lean/OAI/**/*.lean` 및 `proofs/oai_ref/tex/**/*.tex`)**:
   1. `OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean` (30개 서브 메인 모듈을 결합하는 770개 파일 마스터 허브)
   2. `OAI/Analysis/PeriodicLattice/Solenoidal.lean`, `PeriodicInverse.lean`, `Main.lean` 및 `ForcedComputation/Programs/PeriodicLatticeCorollaryMain.lean` (비영 압력 $p = -\phi \neq 0$, 무발산 외력 $\operatorname{div} f_{\text{sol}} = 0$, 1차원 차폐 그린 연산자 $\mathcal{S}_{4\pi}$)

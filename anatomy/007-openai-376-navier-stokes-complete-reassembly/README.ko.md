@@ -1,42 +1,30 @@
-# OpenAI `#376` (`강제 나비에-스토크스 유동의 보편 계산`) 미연결 `650`(`718`) 모듈 전수 재조립, 10월 6일 개정판 및 5대 수리 돌파 검증 패키지 (`48`개 Lean 4 정리)
+> **언어 선택 (Language)**: [**English (`README.md`)**](./README.md) | **한국어**
 
-## 1. 핵심 요약 및 5대 수리 돌파
+# 사례 007: OpenAI `#376` 미연결 `650` 모듈 전수 재조립 및 10월 6일 개정판 검증
 
-선행 포렌식 감사(`006-openai-376-navier-stokes`)에 이어, 본 패키지는 공식 6개 챌린지가 임포트하지 않았던 **나머지 `650`개(엄밀한 `import` 그래프 기준 `718`개, `73,367`줄) `OAI/` Lean 4 모듈**과 **2026년 10월 6일 개정판(`Incompressible-Box-Transport-and-Finite-Computation-October-6-2026`)** 을 전수 재조립하고 1부터 재계산한 결과를 담고 있습니다.
+이 패키지는 OpenAI `#376`에서 6개 공식 챌린지에 연결되지 않았던 `650`개(`718`개 순수 미연결) `OAI/` 모듈과 2026년 10월 6일 자 개정 프리프린트를 전수 재조립하고 재계산한 결과물입니다. 모든 결론은 `48`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `136/136`건 포착)로 검증했습니다.
 
-1. **전체 `1,004`개 `OAI/` 파일(`139,847`줄, 전수 `0` 빈칸)의 4계층 무누락 분할 및 마스터 허브 복원**:
-   - **계층 1 (`286`개 / 보조 루트 포함 `354`개, `66,480`줄)**: 6개 공식 챌린지 진입점에서 도달 가능한 파일군.
-   - **계층 2 (추가 `696`개 / 총 `770`개 도달, `64,877`줄)**: [`ForcedComputation/Main.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean#L1-L33) 마스터 허브가 결합하는 30개 서브 메인 모듈군. 비영 압력($p = -\phi \neq 0$) 및 무발산 외력($\operatorname{div} f_{\text{sol}} = 0$, [`PeriodicLattice/Solenoidal.lean`](proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean#L315-L366)), 고체 관 4단 전단 유동([`ShearFlows/Main.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Main.lean#L55-L66)), 고정 입자 검출기([`FixedParticleMain.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FixedParticleMain.lean#L45-L56)), 그리고 `ComputablePred.halting_problem` 기반의 무조건부 결정 불가능성 방출 사슬([`VelocityUnconditional.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean#L60-L130))이 모두 이 계층에 완결되어 있습니다.
-   - **계층 3 (`19`개 파일, `7,851`줄)**: `Material/` 하위의 피카르-린델뢰프 단위 시간 슬래브 궤적 접합([`MaterialFlow.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/Material/MaterialFlow.lean#L85-L115)) 및 짝수 진법 칸토어 부호화([`Encoding.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/Material/Encoding.lean#L12-L58)).
-   - **계층 4 (`3`개 파일, `639`줄)**: 축대칭 비선회 정상 나비에-스토크스 비유일성 논문의 [`HomogeneousDatum.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/HomogeneousDatum.lean#L1-L65), [`FiniteRankGap.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/FiniteRankGap.lean#L1-L60), [`StationaryContraction.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/StationaryContraction.lean#L1-L72).
-2. **OpenAI가 버린 여유분(slack)을 1부터 다시 계산해 도출한 5대 정량 수리 돌파**:
-   - **돌파 #1 (차폐 그린 연산자 $\mathcal{S}_{4\pi}$ 노름 `45,282,268`배 정밀화, [`PeriodicInverse.lean:183,340`](proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/PeriodicInverse.lean#L183-L345))**: 양수 그린 커널의 직접 적분으로 $(e^{4\pi}-1)$을 약분하여 OpenAI 상수 $\frac{e^{12\pi}}{(e^{4\pi}-1)^2} \approx 286,753.31$을 정확한 연산자 노름 $\frac{1}{16\pi^2} \approx 0.006333$으로 **`4,528만 배`** 압축했습니다.
-   - **돌파 #2 (10월 6일 개정판 3차원 토러스 르레이 투영 상수 `52` $\to$ `16.5321`, `3.145`배 정밀화, [`oct06/build/analysis.tex:187,219`](proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L187-L224))**: 정육면체 껍질 $S_n$을 5개 유클리드 계층으로 분할하여 `52`를 3차원 엡스타인 제타 상수 $Z_3(2) \approx \mathbf{16.532149}$로 축소했습니다($L^\infty$ 유지 유리수 상한은 $\frac{134}{3} = 44.\overline{6}$, 정확한 $L^\infty$ 제타 합은 $4\pi^2 + \frac{\pi^4}{45} \approx 41.6431$).
-   - **돌파 #3 (4단 전단 유동 중간 궤적 이탈 정밀화, [`ShearFlows/Affine.lean:40,67`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Affine.lean#L40-L82))**: 부호 보존 성질로 $|(\lambda^{-1}-1)s| \le (1-\min(\lambda,\lambda^{-1}))h < h$ 및 중간 $x$-이탈 한계 $(2-\min(\lambda,\lambda^{-1}))h < 2h$를 증명했습니다.
-   - **돌파 #4 (속도 검출기 잔류 질량 `157.5`배 압축 및 증폭 한계 $H$ `7,560`배 확장, [`VelocityDetectorScales.lean:23,64,78`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityDetectorScales.lean#L23-L92) & [`DetectorMargins.lean:22`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/DetectorMargins.lean#L17-L27))**: $L \ge 1$에서 $\text{massBound}(L) \le \frac{1}{15.75 \times 10^{12}}$(`157.5`배 축소) 및 확산 손실 $< \frac{1}{50}$(`3.125`배 축소)을 적용해 허용 증폭 계수를 $H \le 10^9$에서 **$H \le 7,559,999,999,984$ (`7,560`배)** 로 확장했습니다.
-   - **돌파 #5 (짝수 진법 칸토어 부호화 실린더 분리 간격 $b$배 확장, [`Material/Encoding.lean:12,37`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/Material/Encoding.lean#L12-L58))**: 허용 자릿수가 짝수($d, d+2 \in 2\mathbb{N}$)이므로 인접 실린더 간격이 $\frac{1}{b(b-1)}$에서 $\frac{1}{b-1}$로 **$b$배** 넓어짐을 규명했습니다.
+## 핵심 해부 결과
 
----
+1. **전수 재조립 (`1,004`개 모듈)**: [`ForcedComputation/Main.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean#L1-L33)(`770`개), [`MaterialFlow.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/Material/MaterialFlow.lean#L85-L115)(`19`개), [`StationaryContraction.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/StationaryContraction.lean#L1-L72)(`3`개)을 통해 미연결 모듈을 전수 복원합니다.
+2. **비영 압력($p \neq 0$) 및 그린 연산자 상한 정밀화 (`4,528만 배`)**: [`Solenoidal.lean`](proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean#L315-L366)의 무발산 외력 구성을 검증하고, [`PeriodicInverse.lean`](proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/PeriodicInverse.lean#L183-L345)의 차폐 그린 노름 상한을 $\approx 286,753$에서 $\frac{1}{16\pi^2} \approx 0.00633$으로 압축합니다.
+3. **르레이·검출기·칸토어 상한 개선**: 3차원 토러스 르레이 상수를 `52`에서 $16.5321$($3.15$배)로 줄이고, 검출기 작동 한계 $H_{\max}$를 $7,560$배($10^9 \to 7.56\times 10^{12}$), 짝수 진법 칸토어 간격을 $b$배($\frac{1}{b-1}$) 확장합니다.
 
-## 2. 수준별 문서 및 증명 파일 안내
+## 4단계 독자 맞춤형 가이드
 
-- **한국어 4단계 해설서 (`ko/`)**:
-  - [`ko/01_고등학생_직관가이드.md`](ko/01_고등학생_직관가이드.md)
-  - [`ko/02_대학생_수리해부.md`](ko/02_대학생_수리해부.md)
-  - [`ko/03_전문가_비평및재구성.md`](ko/03_전문가_비평및재구성.md)
-  - [`ko/04_컴퓨터공학_실증검증.md`](ko/04_컴퓨터공학_실증검증.md)
-- **영어 4단계 해설서 (`en/`)**:
-  - [`en/01_high_school_intuition_guide.md`](en/01_high_school_intuition_guide.md)
-  - [`en/02_undergraduate_mathematical_anatomy.md`](en/02_undergraduate_mathematical_anatomy.md)
-  - [`en/03_expert_critique_and_reconstruction.md`](en/03_expert_critique_and_reconstruction.md)
-  - [`en/04_cs_empirical_verification.md`](en/04_cs_empirical_verification.md)
-- **형식 증명 및 기호·수치 검증 (`proofs/`)**:
-  - [`proofs/ns376_unimported_solenoidal_and_leray_bounds.lean`](proofs/ns376_unimported_solenoidal_and_leray_bounds.lean) (`Theorems 1–24`, `346`줄, `0` 빈칸, `68/68` 가설 변이 사살)
-  - [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](proofs/ns376_detector_margins_and_undecidability_chains.lean) (`Theorems 25–48`, `336`줄, `0` 빈칸, `66/66` 가설 변이 사살)
-  - [`proofs/verify_symbolic_ns376_complete.py`](proofs/verify_symbolic_ns376_complete.py) 및 [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json)
-  - [`proofs/problem_spec.md`](proofs/problem_spec.md)
+| 단계 | 대상 독자 | 문서 파일 | 핵심 내용 |
+| :---: | :--- | :--- | :--- |
+| **1단계** | **초보자 (일반 독자)** | [`ko/01_고등학생_직관가이드.md`](ko/01_고등학생_직관가이드.md) | 4대 모듈 지층 구조와 5대 상한 정밀화 결과의 직관적 해설. |
+| **2단계** | **중급자 (이공계·개발자)** | [`ko/02_대학생_수리해부.md`](ko/02_대학생_수리해부.md) | 핵심 수식 유도 및 48개 Lean 4 정리 1대1 줄 번호 색인표. |
+| **3단계** | **전문가 (수리물리·형식증명 연구자)** | [`ko/03_전문가_비평및재구성.md`](ko/03_전문가_비평및재구성.md) | 미연결 모듈 전수 해부 및 10월 6일 토러스 에너지 상한 심층 보고서. |
+| **4단계** | **자동 검증기 및 파서** | [`ko/04_컴퓨터공학_실증검증.md`](ko/04_컴퓨터공학_실증검증.md)<br>[`manifest.json`](manifest.json) | SHA-256 해시 원장, 가설 변이 시험 결과 및 1줄 재현 명령어. |
 
-## 상태
+## 형식증명 코드 및 1줄 검증 명령어
 
-- 완료 시각: 2026-11-05
-- 검증 상태: `PASS` (`48`개 Lean 4 정리 컴파일 통과, `134/134` 가설 변이 사살 `100.0%`, SymPy 및 수치 검증 통과)
+- [`proofs/ns376_unimported_solenoidal_and_leray_bounds.lean`](proofs/ns376_unimported_solenoidal_and_leray_bounds.lean): 정리 1~24 (`68/68` 변이 포착).
+- [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](proofs/ns376_detector_margins_and_undecidability_chains.lean): 정리 25~48 (`68/68` 변이 포착).
+- [`proofs/verify_symbolic_ns376_complete.py`](proofs/verify_symbolic_ns376_complete.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), [`proofs/problem_spec.md`](proofs/problem_spec.md).
+
+```bash
+lean proofs/ns376_unimported_solenoidal_and_leray_bounds.lean && lean proofs/ns376_detector_margins_and_undecidability_chains.lean && (cd proofs && python3 verify_symbolic_ns376_complete.py)
+```

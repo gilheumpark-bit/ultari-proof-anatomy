@@ -1,23 +1,31 @@
-# Case 008: OpenAI `#003` 유사 리만 가설(QRH) 생태계 심층 합성 (`23/24` 대 `11/12` 격차, 미연결 `CubicGauss` 3차 큰 체, $\mathbb{Z}[\sqrt{921}]$ 파카스 결합 해제, 그리고 `001`·`005`·`008` 3부작 통합)
+> **언어 선택 (Language)**: [**English (`README.md`)**](./README.md) | **한국어**
 
-본 디렉터리는 OpenAI `#003` 유사 리만 가설(QRH) 생태계 전체(`DirichletL/ShortDraft`, `CubicGauss/`, `paper.tex` 1부, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu의 `arXiv:2610.12234`, Xu–Sang의 `arXiv:2610.15291`, 그리고 선행 [`Case 001`](../001-openai-003-qrh/README.ko.md) 및 [`Case 005`](../005-openai-003-qrh-mathematician-referee-audit/README.ko.md))를 교차 해부하여 45개의 Lean 4 정리 + 7개 `def`(`0 sorry`, `344/344` 가설 돌연변이 포착)로 형식화한 패키지입니다.
+# 사례 008: OpenAI `#003` `23/24` 대 `11/12`, 미연결 `CubicGauss` 및 3부작 통합
 
-## 4단계 해설 문서 (`ko/` · `en/`)
+이 패키지는 OpenAI `#003` 생태계 전체(`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, [`사례 001`](../001-openai-003-qrh/README.ko.md) 및 [`사례 005`](../005-openai-003-qrh-mathematician-referee-audit/README.ko.md))를 통합 검증한 결과물입니다. 모든 결론은 `45`개 독립 Lean 4 정리와 `7`개 `def`(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `344/344`건 포착)로 증명했습니다.
 
-- **한국어 (`ko/`)**:
-  - [01_Beginner_Guide.md](ko/01_Beginner_Guide.md)
-  - [02_Intermediate_Guide.md](ko/02_Intermediate_Guide.md)
-  - [03_Advanced_Guide.md](ko/03_Advanced_Guide.md)
-  - [04_Expert_Verification.md](ko/04_Expert_Verification.md)
-- **English (`en/`)**:
-  - [01_Beginner_Guide.md](en/01_Beginner_Guide.md)
-  - [02_Intermediate_Guide.md](en/02_Intermediate_Guide.md)
-  - [03_Advanced_Guide.md](en/03_Advanced_Guide.md)
-  - [04_Expert_Verification.md](en/04_Expert_Verification.md)
+## 핵심 해부 결과
 
-## 형식 증명 및 기호 검증 스크립트 (`proofs/`)
+1. **`23/24` 고정 원인 및 `11/12` 확장**: `ClosedRecursion.lean`의 `reserve = 1/20` 상수가 $\vartheta = 1/10 \implies \frac{23}{24}$을 강제한 원인을 밝히고, `CanonicalDescentScale`을 통한 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
+2. **미연결 `CubicGauss` 발굴 및 귀납법 닫힌 해**: 미연결 30개 파일(`6,252`줄)의 날카로운 $2/3$ 삼차 큰 체를 감사하고, 모든 $n \in \mathbb{N}$에 대해 점화식 `sieveIter`의 일반항 $\frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$을 수학적 귀납법으로 증명합니다.
+3. **$\mathbb{Z}[\sqrt{921}]$ 링 및 `001`·`005`·`008` 3부작 통합**: `Case 005`와 Liu의 $\mathbb{Q}(\sqrt{921})$ 이차방정식을 통합하고, 기존 `0 sorry` 모듈만으로 도달 가능한 $\beta = \frac{71}{108} \approx 0.6574$와 $\beta = \frac{1}{2}$ 도달에 필요한 열린 해석적 조건($\Delta_{\mathrm{hybrid}} = \frac{14}{33}$)의 경계를 확정합니다.
 
-- [`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L305): 정리 1–15 (`0 sorry`, `115/115` 가설 돌연변이 포착). 제1축($\text{Re}(s) > 23/24$ 대 $\text{Re}(s) > 11/12$ 스케일링 격차 및 `CanonicalDescentScale`)과 제2축(미연결 30개 파일 `CubicGauss/`의 날카로운 Heath-Brown 3차 큰 체 및 뫼비우스 좌표 선형화) 검증.
-- [`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L313): 정리 16–30 (`0 sorry`, `125/125` 가설 돌연변이 포착). 제3축(`Case 005`의 $\beta_{\mathrm{SOS}}(0)$와 Baiying Liu의 $B_{\mathrm{Liu}}$ 사이의 $\mathbb{Q}(\sqrt{921})$ 대수적 통합 및 정확한 격차 $\frac{1195\sqrt{921}-36189}{4175478}$)과 제4축(매개변수 파카스 쌍대성 정리 및 10단계 영점 비존재 경계 계보) 검증.
-- [`qrh_trilogy_induction_and_algebraic_bridge.lean`](proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L1-L356): 정리 31–45 + `def` 7개 (`0 sorry`, `104/104` 가설 돌연변이 포착). 모든 자연수 $n \in \mathbb{N}$에 대한 `sieveIter` 수학적 귀납법(`induction n`) 증명, 이차 정역 $\mathbb{Z}[\sqrt{921}]$ 구조체 연산, 3부작(`Case 001` $\leftrightarrow$ `Case 005` $\leftrightarrow$ `Case 008`) 대수적 통합(`3264`/`4896`/`215`/`44064` 및 아이젠슈타인 극점 쌍대성 $\alpha^* + \beta_{\mathrm{pole}} = 2$), 그리고 기존 `0 sorry` 모듈 조립으로 도달 가능한 $\beta = 71/108 \approx 0.6574$(극점 장벽 제거 포함)와 미해결 해석적 난제 구간($\frac{71}{108} \to \frac{1}{2} = 0.5$, 추가 절감량 $\Delta_{\mathrm{hybrid}} = 14/33$ 필요) 사이의 엄밀한 경계 검증.
-- [`verify_symbolic_qrh_synthesis.py`](proofs/verify_symbolic_qrh_synthesis.py): [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json)을 결정론적으로 재현하는 SymPy 기호 검증기.
+## 4단계 독자 맞춤형 가이드
+
+| 단계 | 대상 독자 | 문서 파일 | 핵심 내용 |
+| :---: | :--- | :--- | :--- |
+| **1단계** | **초보자 (일반 독자)** | [`ko/01_Beginner_Guide.md`](ko/01_Beginner_Guide.md) | 5대 생태계 수수께끼와 10단계 비영점 경계 진화표의 쉬운 해설. |
+| **2단계** | **중급자 (이공계·개발자)** | [`ko/02_Intermediate_Guide.md`](ko/02_Intermediate_Guide.md) | 핵심 대수 유도 과정과 45개 Lean 4 정리 1대1 줄 번호 색인표. |
+| **3단계** | **전문가 (수론·형식증명 연구자)** | [`ko/03_Advanced_Guide.md`](ko/03_Advanced_Guide.md) | `CubicGauss` 큰 체, $\mathbb{Z}[\sqrt{921}]$, 파카스 쌍대 해체 및 3부작 통합 보고서. |
+| **4단계** | **자동 검증기 및 파서** | [`ko/04_Expert_Verification.md`](ko/04_Expert_Verification.md)<br>[`manifest.json`](manifest.json) | SHA-256 해시 원장, 가설 돌연변이 시험 결과 및 1줄 재현 명령어. |
+
+## 형식증명 코드 및 1줄 검증 명령어
+
+- [`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L305): 정리 1~15 (`115/115` 변이 포착).
+- [`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L313): 정리 16~30 (`125/125` 변이 포착).
+- [`qrh_trilogy_induction_and_algebraic_bridge.lean`](proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L1-L356): 정리 31~45 + `def` 7개 (`104/104` 변이 포착).
+- [`verify_symbolic_qrh_synthesis.py`](proofs/verify_symbolic_qrh_synthesis.py) 및 [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json).
+
+```bash
+lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean && lean proofs/qrh_trilogy_induction_and_algebraic_bridge.lean && (cd proofs && python3 verify_symbolic_qrh_synthesis.py)
+```

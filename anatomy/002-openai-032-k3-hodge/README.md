@@ -1,32 +1,29 @@
 > **Language**: **English** | [**한국어 (`README.ko.md`)**](./README.ko.md)
 
-# OpenAI `#032` (Retracted K3 Hodge Conjecture Manuscripts) Forensic Anatomy & Lean 4 Verification Package (English Edition)
+# Case 002: OpenAI `#032` Retracted K3 Hodge Conjecture Forensics
 
-- **Release Date**: 2026-11-01
-- **Target Repository**: `openai/math` Family `#032` (`The rational Hodge conjecture for CM abelian varieties` & 3 retracted K3/Eightfold Hodge conjecture manuscripts at commit `adc7f1241b42` + `[EEMS13]` `arXiv:1303.0588v2`)
-- **Primary Formal & Symbolic Artifacts**:
-  - Formal Lean 4 Proofs (27 Theorems, 452 lines, `0 sorry`, `0 axiom`, `112/112` hypothesis mutations killed): [`proofs/k3_forensic_paths.lean`](./proofs/k3_forensic_paths.lean)
-  - Symbolic Verification Script (`SymPy` / Exact Integer & Determinant Arithmetic): [`proofs/verify_symbolic_k3.py`](./proofs/verify_symbolic_k3.py)
-  - Symbolic Verification Output Data (JSON): [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json)
+This package dissects the three retracted K3 Hodge Conjecture preprints in OpenAI `#032` (commit `adc7f12`) alongside `[EEMS13]`. All findings are verified across `27` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `112/112` hypothesis mutations caught).
 
----
+## Key Findings
 
-## 4-Tier Reader Guide (Tailored by Background)
+1. **Symplectic Double-Bind**: Using the reverse trace $G_2$ leaves intersection sum $-2m 
+eq 0$, while switching to the forward trace $G_1$ creates a degree-$2$ point that breaks Floer curvature vanishing ($m_0 = 0$).
+2. **`[EEMS13]` Boundary Sign Error**: We locate an omitted odd-dimensional Poincaré-Hopf boundary sign $(-1)^{\dim U} = -1$ on $D^{2k-1}$ in `min-intersectYETI-final.tex:410, 694`.
+3. **Part I Rescue vs. Part II Barriers**: We verify that the `Part I` Clifford reduction (`4-7-10` degree split) is sound, while proving rank and dimension obstructions across 7 `Part II` repair paths.
 
-This package is structured into 4 self-contained tiers so that **Beginners**, **Intermediates**, **Experts**, and **Automated Verification Systems** can understand and verify the results.
+## 4-Tier Reader Guide
 
-| Tier | Target Audience | Document | Summary of Contents |
+| Tier | Target Audience | Document | Summary |
 | :---: | :--- | :--- | :--- |
-| **Tier 1** | **Beginners (General Readers)** | [`01_Beginner_Guide.md`](./en/01_Beginner_Guide.md) | Plain-language introduction to the Hodge Conjecture and K3 surfaces, why fixing a single sign fails (the Double Bind), rescued `Part I` reduction engine, and key forensic invariants (`-2m / 2 / 2,747,136 vs 523,779 vs 140,033`) |
-| **Tier 2** | **Intermediates (STEM / Engineers)** | [`02_Intermediate_Math_and_Code_Guide.md`](./en/02_Intermediate_Math_and_Code_Guide.md) | Step-by-step algebraic equations for Problems 1 to 5 and a complete 1-to-1 index of all 27 Lean 4 theorems |
-| **Tier 3** | **Experts (Algebraic & Symplectic Geometers, Formal Verification Researchers)** | [`03_Expert_Mathematical_and_Formal_Report.md`](./en/03_Expert_Mathematical_and_Formal_Report.md) | Technical report covering the `[EEMS13]` Poincaré-Hopf sign discrepancy, Shioda-Inose central fiber No-Go theorems, Additivity vs. Hyperkähler Rigidity circularity, and Bogomolov discriminant sign-flip obstruction |
-| **Tier 4** | **AI Parsers & Automated Verification** | [`04_Automated_Verification_and_Manifest.md`](./en/04_Automated_Verification_and_Manifest.md)<br>[`manifest.json`](./manifest.json) | One-command verification pipeline (`lean`, `python3`, `sha256sum`), SHA-256 hash list, scope notes, and JSON manifest |
+| **Tier 1** | **Beginners** | [`01_Beginner_Guide.md`](./en/01_Beginner_Guide.md) | Equation-light overview of the Hodge Conjecture, the double-bind trap, and the rescued `Part I` reduction. |
+| **Tier 2** | **Intermediates** | [`02_Intermediate_Math_and_Code_Guide.md`](./en/02_Intermediate_Math_and_Code_Guide.md) | Algebraic equations for Problems 1–5 and a 1-to-1 index of all 27 Lean 4 theorems. |
+| **Tier 3** | **Experts** | [`03_Expert_Mathematical_and_Formal_Report.md`](./en/03_Expert_Mathematical_and_Formal_Report.md) | Technical report on the `[EEMS13]` sign error, Shioda-Inose obstructions, and hyperkähler rigidity. |
+| **Tier 4** | **Automated Verifiers** | [`04_Automated_Verification_and_Manifest.md`](./en/04_Automated_Verification_and_Manifest.md)<br>[`manifest.json`](./manifest.json) | Verification pipeline, SHA-256 hash table, and JSON theorem manifest. |
 
----
+## Formal Proofs & One-Command Verification
 
-## One-Command Verification
-
-Run the following command from the package root directory to compile all 27 Lean 4 theorems (`exit 0`) and reproduce the symbolic verification JSON:
+- [`proofs/k3_forensic_paths.lean`](./proofs/k3_forensic_paths.lean): Theorems 1–27 (`0 sorry`, `112/112` mutations caught).
+- [`proofs/verify_symbolic_k3.py`](./proofs/verify_symbolic_k3.py): SymPy verifier reproducing [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json).
 
 ```bash
 lean proofs/k3_forensic_paths.lean && (cd proofs && python3 verify_symbolic_k3.py)
