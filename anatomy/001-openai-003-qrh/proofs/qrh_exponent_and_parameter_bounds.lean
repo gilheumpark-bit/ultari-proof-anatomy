@@ -6,12 +6,12 @@ Verifies:
    - At $z_{\text{re}} = 17/50 = 0.34$: $4 - 6(51/100) - 6(17/50) = -11/10$
    - At $z_{\text{re}} = 6/25 = 0.24$: $2(4 - 6(51/100 + 16/1000) - 6(6/25)) = -149/125 < -1$
    - At $z_{\text{re}} = 17/100 = 0.17$: $6 - 2(1 + 3(51/100)) - 6(17/100) = -2/25 \le -1/100$
-2. **Rational Sum-of-Squares (SOS) Identities (`Endpoint.lean`) & Stationary Point ($\delta = 79/204$)**:
+2. **Rational Sum-of-Squares (SOS) Identities (`DirichletL/Endpoint.lean`) & Stationary Point ($\delta = 79/204$)**:
    - Polynomial identity at $\delta = 79/204, y = 0$ ($a = (1 + \delta)/2 = 283/408 \approx 0.693627$):
      `10368 * certificateWeight(0) * balanceDenominator(79/204, 0) * (-balancedExponent(79/204, 0)) = 3 * 49 = 147`
      and `-balancedExponent(79/204, 0) = 7 / 30672 > 49 / 440640`.
    - Certified exponent margins for $\beta \in \{7/8, 5/6, 3/4, 69/100\}$.
-3. **Cube Floor Exponent Margin (`CentralExponent.lean` & `CubeFloorSaving.lean`)**:
+3. **Cube Floor Exponent Margin (`DirichletL/Detector/CentralExponent.lean` & `DirichletL/PrimeRows/CubeFloorSaving.lean`)**:
    - Linear relation `sourceExponent(1/2 + η, 13/16, 1, η) - 3/16 = -1/48 + (3/2)*η`.
    - Evaluations at $\eta \in \{1/100, 1/200, 1/1000, 1/10000\}$ and root $\eta = 1/72$ ($a = 37/72 \approx 0.513889$).
 -/
@@ -19,7 +19,7 @@ Verifies:
 namespace QRHExponentBounds
 
 -- ============================================================================
--- 1. Definitions from OpenAI #003 (`Endpoint.lean` & `CentralExponent.lean`)
+-- 1. Definitions from OpenAI #003 (`DirichletL/Endpoint.lean` & `DirichletL/Detector/CentralExponent.lean`)
 -- ============================================================================
 
 def denominator (y : Rat) : Rat := (37 + 34 * y) / 18
@@ -78,10 +78,10 @@ theorem gauss_branch_exponent_at_z_017 :
     (-2 / 25 : Rat) ≤ 1 / 2 - 51 / 100 := by decide +kernel
 
 -- ============================================================================
--- 3. Sum-of-Squares (SOS) Certificates (`Endpoint.lean`)
+-- 3. Sum-of-Squares (SOS) Certificates (`DirichletL/Endpoint.lean`)
 -- ============================================================================
 
-/-- [Theorem 4] The rational root of the squared linear term `(4*51*δ - 79)^2` in `Endpoint.lean` is
+/-- [Theorem 4] The rational root of the squared linear term `(4*51*δ - 79)^2` in `DirichletL/Endpoint.lean` is
     `δ_ref = 79/204`, corresponding to abscissa `a_ref = (1 + δ_ref)/2 = 283/408 ≈ 0.693627`. -/
 theorem rational_sos_reference_abscissa :
     let δ_ref : Rat := 79 / 204
@@ -112,7 +112,7 @@ theorem certified_exponent_margins_by_beta :
     -(49 / 440640 : Rat) - 1566 / 44064 = -15709 / 440640 := by decide +kernel
 
 -- ============================================================================
--- 4. Cube Floor Exponent Margin (`CentralExponent.lean` & `CubeFloorSaving.lean`)
+-- 4. Cube Floor Exponent Margin (`DirichletL/Detector/CentralExponent.lean` & `DirichletL/PrimeRows/CubeFloorSaving.lean`)
 -- ============================================================================
 
 /-- [Theorem 8] At `a_floor = 51/100` (`0.51`), the floor source margin equals `-7/1200`. -/
@@ -139,13 +139,13 @@ theorem floor_source_margin_root_37_72 :
     sourceExponent (37 / 72) (13 / 16) 1 (1 / 72) - 3 / 16 = 0 := by decide +kernel
 
 -- ============================================================================
--- 5. Non-Strict Gauss-Sum Branches (`HighRowsCentralTerms.lean`) & Parameter Budget
+-- 5. Non-Strict Gauss-Sum Branches (`DirichletL/Detector/HighRowsCentralTerms.lean`) & Parameter Budget
 -- ============================================================================
 
 def gaussBranchExponent (nu x_re w_re z_re : Rat) (e l k m : Rat) : Rat :=
   nu - (x_re + 1 / 2) * e - (1 + 3 * x_re) * l - w_re * k - 6 * z_re * m
 
-/-- [Theorem 13] All 9 non-strict finite Gauss-sum branches `(e, l, k, m)` in `HighRowsCentralTerms.lean`
+/-- [Theorem 13] All 9 non-strict finite Gauss-sum branches `(e, l, k, m)` in `DirichletL/Detector/HighRowsCentralTerms.lean`
     satisfy `gaussBranchExponent <= 1/2 - x_re` at `z_re = 17/100` and `x_re = 5001/10000`. -/
 theorem nonstrict_gauss_branches_at_05001_and_017 :
     let x : Rat := 5001 / 10000
@@ -162,7 +162,7 @@ theorem nonstrict_gauss_branches_at_05001_and_017 :
     gaussBranchExponent (7 / 2) x w z 1 1 0 0 ≤ target ∧
     gaussBranchExponent 4 x w z 1 1 1 0 ≤ target := by decide +kernel
 
-/-- [Theorem 14] Rational parameter budget inequality (`CubeFloorSaving.lean:41` & `Parameters.lean`)
+/-- [Theorem 14] Rational parameter budget inequality (`DirichletL/PrimeRows/CubeFloorSaving.lean:41` & `DirichletL/Parameters.lean`)
     at `β = 69/100`, `r_ext = 17/100`, `a_floor = 5001/10000 = 0.5001`, `N = 22`. -/
 theorem parameter_budget_inequality_at_05001 :
     let floor_budget : Rat := 1241 / 60000
@@ -186,7 +186,7 @@ theorem parameter_budget_inequality_at_05001 :
 -- 6. SiegelZeros Constants, Zero-Free Region Union, and Reflection Symmetry
 -- ============================================================================
 
-/-- [Theorem 15] In `SiegelZeros/Selection/PivotBounds.lean:63` and `Estimates/GeometricBoundary.lean:26`,
+/-- [Theorem 15] In `SiegelZeros/Selection/PivotBounds.lean:63` and `SiegelZeros/Estimates/GeometricBoundary.lean:26`,
     the constants `c₁ = 1 / (4 * 97^2) = 1 / 37636`, `C₁ = 192`, and `H = 86713344` satisfy `(C₁ / c₁) / H = 1 / 12`. -/
 theorem siegel_zeros_constants_ratio_identity :
     let c1 : Rat := 1 / (4 * 97 ^ 2)
@@ -227,10 +227,10 @@ theorem functional_equation_reflection_and_quotient_thresholds :
 -- 7. Exponent Balance Relation, z_re = 1/6 Boundary, and m >= 2 Tail Margins
 -- ============================================================================
 
-/-- [Theorem 18] Exponent balance relation combining `LowGramScale.lean` (`α_X = 17/48, α_Y = 23/48 -> gram_sqrt = 3/16`),
-    `PrincipalMellinResidues.lean:392` (`s + 1/6 - 1 = s - 5/6`),
-    `PrincipalSignalComparison.lean:411` (`signal_shift = -5/6 + α_X/3 + ℓ/6 = -11/16`),
-    and `CommonProbe.lean:19-21` (`β = gram_sqrt - signal_shift = 5/6 + (α_X + α_Y - 2ℓ)/12 = 7/8`). -/
+/-- [Theorem 18] Exponent balance relation combining `DirichletL/Detector/LowGramScale.lean` (`α_X = 17/48, α_Y = 23/48 -> gram_sqrt = 3/16`),
+    `DirichletL/PrincipalMellinResidues.lean:392` (`s + 1/6 - 1 = s - 5/6`),
+    `DirichletL/PrincipalSignalComparison.lean:411` (`signal_shift = -5/6 + α_X/3 + ℓ/6 = -11/16`),
+    and `DirichletL/Hecke/CommonProbe.lean:19-21` (`β = gram_sqrt - signal_shift = 5/6 + (α_X + α_Y - 2ℓ)/12 = 7/8`). -/
 theorem exponent_balance_relation_identity :
     let α_X : Rat := 17 / 48
     let α_Y : Rat := 23 / 48
@@ -251,10 +251,10 @@ theorem exponent_balance_relation_identity :
     β_base - (73 / 200 : Rat) = 51 / 100 := by decide +kernel
 
 /-- [Theorem 19] Convergence boundary at `z_re = 1/6` and principal contour shift budget `17/48000`:
-    (1) Branch `(e=0, l=2, k=0, m=1)` in `HighRowsCentralTerms.lean:47-53` at `x = 1/2` satisfies
+    (1) Branch `(e=0, l=2, k=0, m=1)` in `DirichletL/Detector/HighRowsCentralTerms.lean:47-53` at `x = 1/2` satisfies
         `6 - 2*(1 + 3*(1/2)) - 6*z_re*1 = 1/2 - 1/2` at `z_re = 1/6`.
-    (2) Shifting across `z_pole = 1/6` to `z_shifted = 33/200 < 1/6` in `PrincipalRemainderBounds.lean:577-598`
-        yields `13/16 * (1/6 - 33/200) - 1/1000 = 17/48000` (`principal_budget` in `ParametersHighData.lean:45`). -/
+    (2) Shifting across `z_pole = 1/6` to `z_shifted = 33/200 < 1/6` in `DirichletL/Detector/PrincipalRemainderBounds.lean:577-598`
+        yields `13/16 * (1/6 - 33/200) - 1/1000 = 17/48000` (`principal_budget` in `DirichletL/ParametersHighData.lean:45`). -/
 theorem convergence_boundary_at_one_sixth :
     let x_crit : Rat := 1 / 2
     let z_barrier : Rat := 1 / 6
@@ -267,7 +267,7 @@ theorem convergence_boundary_at_one_sixth :
     d0 * (z_barrier - z_shifted) = 13 / 9600 ∧
     (13 / 9600 : Rat) - e_max = 17 / 48000 := by decide +kernel
 
-/-- [Theorem 20] Exponent margins for the `m >= 2` geometric tail (`HighRowsTail.lean:50-56`):
+/-- [Theorem 20] Exponent margins for the `m >= 2` geometric tail (`DirichletL/Detector/HighRowsTail.lean:50-56`):
     For `m >= 2`, the surviving branches `(0,2,0,m>=2)` and `(1,0,1,m>=2)` require `z_re >= 1/12`.
     At `z_re = 9/100 > 1/12` and `x = 51/100`, all `m >= 2` branch margins are strictly positive. -/
 theorem tail_m_ge_2_exponent_margins :
@@ -335,7 +335,7 @@ theorem general_order_m_tail_exponent_bound (M m x_num z_m_prod D : Nat)
   revert hM hm hx hzm
   omega
 
-/-- [Theorem 24] Componentwise Gram exponent differences (`Detector/LowSourceScales.lean:81`, `Detector/GramScaleLoss.lean:9`, `Detector/GramBound.lean:55`, `Detector/LowGramScale.lean:45`):
+/-- [Theorem 24] Componentwise Gram exponent differences (`DirichletL/Detector/LowSourceScales.lean:81`, `DirichletL/Detector/GramScaleLoss.lean:9`, `DirichletL/Detector/GramBound.lean:55`, `DirichletL/Detector/LowGramScale.lean:45`):
     Comparing the individual square-root `Z`-exponents (`17/96`, `14/96 + (17/96)*δ`, `18/96`) against the bundled
     upper bound `18/96 + (23/96)*δ` at `δ = 79/204` yields componentwise differences `2021/19584`, `215/3264`,
     and `1817/19584` (and `487/3264` at `L = 1` vs. the SOS rounding residual `49/440640`). -/
@@ -358,7 +358,7 @@ theorem componentwise_gram_exponent_differences :
     baseline_sos_margin < diff_term1 := by decide +kernel
 
 /-- [Theorem 25] For all `y_num ≥ 0` and `D > 0` (`y = y_num / D ≥ 0`),
-    `51*D + 41*y_num ≤ 17 * (3*D + 5*y_num)` and `49 * (3*D + 5*y_num) ≥ 147 * D > 0` (`Endpoint.lean:83-88`). -/
+    `51*D + 41*y_num ≤ 17 * (3*D + 5*y_num)` and `49 * (3*D + 5*y_num) ≥ 147 * D > 0` (`DirichletL/Endpoint.lean:83-88`). -/
 theorem sos_certificate_weight_linear_bound (y_num D : Int)
     (hy : 0 ≤ y_num) (hD : 0 < D) :
     51 * D + 41 * y_num ≤ 17 * (3 * D + 5 * y_num) ∧
@@ -378,7 +378,7 @@ theorem zero_free_region_union_and_symmetry (σ_num β_num c_num D : Int)
   omega
 
 /-- [Theorem 27] Quadratic stationary-point root and boundary second-derivative identities (`323/276 - 35*√16354/9384`):
-    At `y = 0` in `Endpoint.lean`:
+    At `y = 0` in `DirichletL/Endpoint.lean`:
     (1) `dE_bal(δ, 0) / dδ = 0` reduces to `9384 * δ^2 - 25160 * δ + 8325 = 0`,
     (2) The root `δ* = 185/138 - 35*√16354/4692` gives abscissa `a* = (1 + δ*)/2 = 323/276 - 35*√16354/9384`,
     (3) At `δ = 79/204`, `balancedExponent(79/204, 0) = -7/30672`,

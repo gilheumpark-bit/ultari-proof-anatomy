@@ -12,7 +12,7 @@ In `floor_source_margin`, the floor abscissa is parameterized as `a = 1/2 + eta`
 Read `oai_ref/Endpoint.lean` and extract the exact rational function `balancedExponent δ y` on the domain `0 ≤ δ ≤ 5/6`, `0 ≤ y ≤ 1/2`.
 1. At the boundary `y = 0`, solve `d/dδ (balancedExponent δ 0) = 0` symbolically on `0 ≤ δ ≤ 5/6` to find the exact quadratic irrational root `delta_true` and corresponding abscissa `a_true = (1 + delta_true) / 2`.
 2. Express `a_true` in canonical radical form `p/q - r*sqrt(D)/s` with positive integers `p, q, r, D, s` (`D` square-free, `gcd(p,q)=1`, `gcd(r,s)=1`), and record `[p, q, r, D, s]` and its 10-digit float value.
-3. Identify the rational point `delta_SOS` where the squared term in `Endpoint.lean`'s `certificateIdentity` vanishes at `y = 0`, and evaluate the exact rational values of `balancedExponent delta_SOS 0` and `d^2/dδ^2 (balancedExponent δ 0)` at `δ = delta_SOS`.
+3. Identify the rational point `delta_SOS` where the squared term in `DirichletL/Endpoint.lean`'s `certificateIdentity` vanishes at `y = 0`, and evaluate the exact rational values of `balancedExponent delta_SOS 0` and `d^2/dδ^2 (balancedExponent δ 0)` at `δ = delta_SOS`.
 
 ## Problem 3: Componentwise Gram Scale Exponents (`oai_ref/LowSourceScales.lean`, `oai_ref/GramScaleLoss.lean`, `oai_ref/GramBound.lean`, `oai_ref/LowGramScale.lean`; upstream `lean/OAI/NumberTheory/DirichletL/Detector/`)
 Read `oai_ref/LowSourceScales.lean`, `oai_ref/GramScaleLoss.lean`, `oai_ref/GramBound.lean`, and `oai_ref/LowGramScale.lean`.

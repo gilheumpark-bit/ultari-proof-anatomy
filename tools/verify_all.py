@@ -119,9 +119,8 @@ def check_lean_and_mutations(lean_file):
     res = subprocess.run([LEAN_BIN, str(lean_file)], capture_output=True, text=True, timeout=60)
     assert res.returncode == 0, f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}"
     hyps = extract_balanced_hyps(src)
-    if "001-" not in str(lean_file):
-        for (_, _, _, _, names, hbody) in hyps:
-            assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
+    for (_, _, _, _, names, hbody) in hyps:
+        assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
     tasks = [(src, s, e, och, cch, names, lean_file.name) for (s, e, och, cch, names, _) in hyps]
     workers = os.cpu_count() or 8
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
@@ -180,6 +179,11 @@ def check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
 
 
 def check_doc_depth(case_dir):
+    all_mds = list(case_dir.glob("*.md")) + list((case_dir / "en").glob("*.md")) + list((case_dir / "ko").glob("*.md"))
+    for md in all_mds:
+        txt = md.read_text(encoding="utf-8")
+        for bad_ch in ("\x07", "\x08", "\x0b", "\x0c", "\t"):
+            assert bad_ch not in txt, f"Corrupted control character {repr(bad_ch)} in {md.relative_to(case_dir)}"
     subs = [case_dir / s for s in ("ko", "en") if (case_dir / s).is_dir()] or [case_dir]
     for base in subs:
         for prefix in ("01_", "02_", "03_"):

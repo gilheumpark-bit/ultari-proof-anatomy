@@ -23,7 +23,7 @@
 
 - [`eth_subexp_interpolation_and_hashes.lean`](proofs/eth_subexp_interpolation_and_hashes.lean): 정리 1~16 (`128/128` 변이 포착).
 - [`eth_tensor_contraction_and_circuits.lean`](proofs/eth_tensor_contraction_and_circuits.lean): 정리 17~32 (`177/177` 변이 포착).
-- [`eth_five_repairs_and_four_layer_verdict.lean`](proofs/eth_five_repairs_and_four_layer_verdict.lean): 정리 33~50 (`149/149` 변이 포착).
+- [`eth_five_repairs_and_four_layer_verdict.lean`](proofs/eth_five_repairs_and_four_layer_verdict.lean): 정리 33~56 (`149/149` 변이 포착).
 - [`verify_symbolic_eth.py`](proofs/verify_symbolic_eth.py), [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json), [`problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

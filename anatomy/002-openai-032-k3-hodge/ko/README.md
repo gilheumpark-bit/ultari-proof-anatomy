@@ -2,7 +2,7 @@
 
 # 사례 002: OpenAI `#032` K3 유리 호지 추측 철회본 포렌식 및 형식증명
 
-이 패키지는 OpenAI `#032`(커밋 `adc7f12`)에서 철회된 K3 호지 추측 원고 3편과 인용 논문 `[EEMS13]`을 해부합니다. 모든 결론은 `27`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `135/135`건 포착)로 검증했습니다.
+이 패키지는 OpenAI `#032`(커밋 `adc7f12`)에서 철회된 K3 호지 추측 원고 3편과 인용 논문 `[EEMS13]`을 해부합니다. 모든 결론은 `35`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `135/135`건 포착)로 검증했습니다.
 
 ## 핵심 해부 결과
 
@@ -21,7 +21,7 @@
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
-- [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean): 정리 1~27 (`0 sorry`, 가설 변이 `135/135`건 포착).
+- [`proofs/k3_forensic_paths.lean`](../proofs/k3_forensic_paths.lean): 정리 1~35 (`0 sorry`, 가설 변이 `135/135`건 포착).
 - [`proofs/verify_symbolic_k3.py`](../proofs/verify_symbolic_k3.py): [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json)을 재현하는 `SymPy` 스크립트.
 
 ```bash

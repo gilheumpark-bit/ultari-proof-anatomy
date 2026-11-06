@@ -7,23 +7,23 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "d7005804e3e27d9b32ec053bf34a9fb26848509bbff26568a5369ba0abce546c",
-    "README.ko.md": "0a03f600ec4ce8e4fde4f4d0d1f711f2b99a870065917ed4e20b138789d44555",
-    "proofs/qrh_exponent_and_parameter_bounds.lean": "cd4343bbd8579febfeaa963b87580fd053522ad1d05b4276d963a15f631b67e8",
-    "proofs/qrh_continuation_and_rescaling.lean": "c4c8e3558153db2234a22259e6713ee565fd35b8bd35c9ceddbd8bfe256f092c",
+    "README.md": "453064d251a3c3efac1e854e170996db4f43fd1bda3fdb8dd5f3373b27ac2f0b",
+    "README.ko.md": "498fee876a283d41bf9350f1d130fba52af2412491c3679d54b90accc8f466a7",
+    "proofs/qrh_exponent_and_parameter_bounds.lean": "b04012886b320c1f6e32012638f81d2be0f7ea7c75001f44ce72ab5f8e7cc92c",
+    "proofs/qrh_continuation_and_rescaling.lean": "92db90ed0b1dc93050188c1ceba83ac81597ade1bc01e1572585d15f4168d4e3",
     "proofs/verify_symbolic_qrh.py": "f0c2f3e94f1ee422de2e4bdd758f94fc4a7212b2bde50106886a2d864aca6cdb",
     "proofs/symbolic_verification_result.json": "072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55",
-    "proofs/problem_spec.md": "6cd04e3c6579ced675edd0ab3056338a58e7ccb1cca1a7fcb5e22a6cb337093a",
+    "proofs/problem_spec.md": "1a57a59bb4bfec2cbd4bfd62316c31a21e6a756155f4b64016ecad09aa78bc58",
     "ko/01_초보자용_쉬운해설.md": "bbe4c8babd21924bfbc2ff4ad9495b3200e98df84debe5b983a8164df509281c",
-    "ko/02_중급자용_구조및수식가이드.md": "3a5d1d08fa42739b05aa9a08fa72d7f0992cd3b3acee1664babd44c333f19eaf",
-    "ko/03_전문가용_수론및형식증명보고서.md": "93a75692565d43eecbacfe3600c3897dda07ce17532f3d29cb7ddffae4285cb4",
-    "ko/04_자동검증및파서용_명세서.md": "3d4b96edceaac88de4fecb026a4a9ea729f603374525046cf80ed5897f379051",
-    "ko/README.md": "b97976a51f02a9ace686fc2c646bf722cc01772e54fb53671de2c01b22a88806",
+    "ko/02_중급자용_구조및수식가이드.md": "ebd6420b2b7787a8cc313b2617485d3b76a39460b151846ac876c3528fd265ae",
+    "ko/03_전문가용_수론및형식증명보고서.md": "419ec383255c6f60b993e230a4f7a2f3f1fb1ebcd8ace375480de96ff7164638",
+    "ko/04_자동검증및파서용_명세서.md": "bab80f42b8397a47a26d1f96e2bdc76cd79aee000ca4b93508d833a6f020bc00",
+    "ko/README.md": "c8349e9c986b4b50cef4d9c963f86f3548f932b6426f46d3dabcabe590208213",
     "en/01_Beginner_Guide.md": "9c8b8f2f9f6ccd5a55e383c71a5c36eb15d82f8269b1c01bfffa0f3b16c94c09",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "48d143ce5af91e8eed3dca779a24eae4904328a7b61741ce99b0f7f6c55babec",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "916d0e5b77000cf7db8e42415c1b73eaa1c46ca505539a3c76b9a2c75e2052e4",
-    "en/04_Automated_Verification_and_Manifest.md": "f1fdb896ea8ee4ed5644ccf145b84dd228e79be4263c65a4892757a1c5a4cd47",
-    "en/README.md": "082165c0ba0a620d0402b8b8a6a4574ffc5c24815cc47b95783ba88d543a27ec"
+    "en/02_Intermediate_Math_and_Code_Guide.md": "79dcb90199da432ad5d679c230d8ce60c69385e499c00519da6642c0c7742e06",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "aa4f9e800da4b922ec0b01177651b890da4aa4e0d6ba9f075d826cf2a2797c22",
+    "en/04_Automated_Verification_and_Manifest.md": "830a1d23197208dc19a0c16b2d65f7b12d1dd6c1a6cf2c397c6c3a71eb648b8f",
+    "en/README.md": "2db524c28e4c10ee44dd6ebb83a0909489b1facbe50b817740be7b3776d459fd"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "48 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-48) + 100% 1-to-1 audit of all 26 OpenAI #003 reference files (178 declarations).",
@@ -398,7 +398,7 @@
     ],
     "sorry_count": 0,
     "axiom_count": 0,
-    "scope_and_limitations": "Proves 40 core theorems covering universal polynomial factor cancellation over Int (Theorems 28, 31), non-vanishing on all 21 small Eisenstein prime-power norms 4 <= Q < 112 (Theorem 29), second continuation barrier reduction to 97/600 < 1/6 and exact z0-invariance at d0 = 13/16 (Theorems 32-34), exact affine master equations for base exponents 3/16 and -11/16, the active LowSourceScales.lean vs. dead Parameters.lean split trade-off, and the rescaled target beta < 7/8 with zero-free zone width 29/100 (Theorems 35-40)."
+    "scope_and_limitations": "Proves 48 core theorems covering universal polynomial factor cancellation over Int (Theorems 28, 31), non-vanishing on all 21 small Eisenstein prime-power norms 4 <= Q < 112 (Theorem 29), second continuation barrier reduction to 97/600 < 1/6 and exact z0-invariance at d0 = 13/16 (Theorems 32-34), exact affine master equations for base exponents 3/16 and -11/16, the active DirichletL/Detector/LowSourceScales.lean vs. dead DirichletL/Parameters.lean split trade-off, the rescaled target beta < 7/8 with zero-free zone width 29/100 (Theorems 35-40), and the complete 1-to-1 formal audit of all 26 reference files (178 declarations, Theorems 41-48)."
   },
   "lean_version": "v4.29.0-rc8"
 }

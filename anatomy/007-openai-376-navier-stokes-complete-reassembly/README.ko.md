@@ -2,7 +2,7 @@
 
 # 사례 007: OpenAI `#376` 미연결 `650` 모듈 전수 재조립 및 10월 6일 개정판 검증
 
-이 패키지는 OpenAI `#376`에서 6개 공식 챌린지에 연결되지 않았던 `650`개(`718`개 순수 미연결) `OAI/` 모듈과 2026년 10월 6일 자 개정 프리프린트를 전수 재조립하고 재계산한 결과물입니다. 모든 결론은 `48`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `136/136`건 포착)로 검증했습니다.
+이 패키지는 OpenAI `#376`에서 6개 공식 챌린지에 연결되지 않았던 `650`개(`718`개 순수 미연결) `OAI/` 모듈과 2026년 10월 6일 자 개정 프리프린트를 전수 재조립하고 재계산한 결과물입니다. 모든 결론은 `48`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `134/134`건 포착)로 검증했습니다.
 
 ## 핵심 해부 결과
 
@@ -22,7 +22,7 @@
 ## 형식증명 코드 및 1줄 검증 명령어
 
 - [`proofs/ns376_unimported_solenoidal_and_leray_bounds.lean`](proofs/ns376_unimported_solenoidal_and_leray_bounds.lean): 정리 1~24 (`68/68` 변이 포착).
-- [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](proofs/ns376_detector_margins_and_undecidability_chains.lean): 정리 25~48 (`68/68` 변이 포착).
+- [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](proofs/ns376_detector_margins_and_undecidability_chains.lean): 정리 25~48 (`66/66` 변이 포착).
 - [`proofs/verify_symbolic_ns376_complete.py`](proofs/verify_symbolic_ns376_complete.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), [`proofs/problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

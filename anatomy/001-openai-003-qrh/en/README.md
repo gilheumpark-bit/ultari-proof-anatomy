@@ -1,14 +1,14 @@
 > **Language**: **English** | [**한국어 (`README.ko.md`)**](../README.ko.md)
 
-# Case 001: OpenAI `#003` Quasi-Riemann Hypothesis ($	ext{Re}(s) > 7/8$)
+# Case 001: OpenAI `#003` Quasi-Riemann Hypothesis ($\text{Re}(s) > 7/8$)
 
-This package audits the `3,414` Lean 4 files of OpenAI `#003` (`DirichletL/` and `SiegelZeros/`, including a 1-to-1 declaration-level audit of all `26/26` core reference files and `178/178` declarations). We recover the exact algebraic roots behind its rational proxies and verify `48` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `28/28` hypothesis mutations caught).
+This package audits the `3,414` Lean 4 files of OpenAI `#003` (`lean/OAI/NumberTheory/DirichletL/` and `SiegelZeros/`, including a 1-to-1 declaration-level audit of all `26/26` core reference files and `178/178` declarations). We recover the exact algebraic roots behind its rational proxies and verify `48` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `28/28` hypothesis mutations caught).
 
 ## Key Findings
 
-1. **Exact Stationary Point**: We recover the quadratic root $a^* = rac{323}{276} - rac{35\sqrt{16354}}{9384} pprox 0.6933$ behind the rational proxy $rac{283}{408}$ in `Endpoint.lean`, along with the floor root $a_{\max} = rac{37}{72}$.
-2. **Gram Exponent Slack**: We separate the componentwise exponent ($rac{14+17\delta}{96}$, gap $rac{215}{3264}$) and bilinear exponent ($rac{1}{16}+rac{17\delta}{96}$, gap $rac{487}{3264}$) from the bundled upper bound ($rac{3}{16}+rac{23\delta}{96}$).
-3. **Branch Vanishing & Threshold Reduction**: We prove that 6 of 8 non-principal Gauss branches vanish for $m \ge 2$ ($z_{	ext{re}} \ge rac{1}{6} 	o rac{1}{12}$), and that $(1 - V)$ cancellation lowers the prime-norm cutoff from $Q \ge 480$ to $Q \ge 112$.
+1. **Exact Stationary Point**: We recover the quadratic root $a^* = \frac{323}{276} - \frac{35\sqrt{16354}}{9384} \approx 0.6933$ behind the rational proxy $\frac{283}{408}$ in `DirichletL/Endpoint.lean`, along with the floor root $a_{\max} = \frac{37}{72}$ (`DirichletL/Detector/CentralExponent.lean`, `DirichletL/PrimeRows/CubeFloorSaving.lean`).
+2. **Gram Exponent Slack**: Across `DirichletL/Detector/LowSourceScales.lean`, `DirichletL/Detector/GramScaleLoss.lean`, `DirichletL/Detector/GramBound.lean`, and `DirichletL/Detector/LowGramScale.lean`, we separate the componentwise exponent ($\frac{14+17\delta}{96}$, gap $\frac{215}{3264}$) and bilinear exponent ($\frac{1}{16}+\frac{17\delta}{96}$, gap $\frac{487}{3264}$) from the bundled upper bound ($\frac{3}{16}+\frac{23\delta}{96}$).
+3. **Branch Vanishing & Threshold Reduction**: We prove that 6 of 8 non-principal Gauss branches in `DirichletL/Detector/HighRowsTail.lean` vanish for $m \ge 2$ ($z_{\text{re}} \ge \frac{1}{6} \to \frac{1}{12}$), and that $(1 - V)$ cancellation in `DirichletL/Detector/Local.lean` lowers the prime-norm cutoff from $Q \ge 480$ to $Q \ge 112$.
 
 ## 4-Tier Reader Guide
 
@@ -21,8 +21,8 @@ This package audits the `3,414` Lean 4 files of OpenAI `#003` (`DirichletL/` and
 
 ## Formal Proofs & One-Command Verification
 
-- [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean): Theorems 1–27 (`0 sorry`).
-- [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean): Theorems 28–48 (`0 sorry`).
+- [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean): Theorems 1–27 (`0 sorry`, `17/17` mutations caught).
+- [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean): Theorems 28–48 (`0 sorry`, `11/11` mutations caught).
 - [`proofs/verify_symbolic_qrh.py`](../proofs/verify_symbolic_qrh.py): Deterministic SymPy verification script reproducing [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json).
 
 ```bash

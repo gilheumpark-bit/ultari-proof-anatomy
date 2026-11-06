@@ -6,9 +6,9 @@ This package synthesizes the full OpenAI `#003` QRH ecosystem (`DirichletL/Short
 
 ## Key Findings
 
-1. **Why `ShortDraft` Stops at `23/24` vs. `11/12`**: Fixing `reserve = 1/20` in `ClosedRecursion.lean` locks $artheta = 1/10 \implies rac{23}{24}$, whereas `CanonicalDescentScale` unlocks $rac{11}{12}+arepsilon$ (`cauchy_const = 768`).
-2. **Unimported `CubicGauss` & All-$n$ Induction**: We audit the unimported 30-file sharp $2/3$ cubic large sieve and prove by `Nat` induction that `sieveIter` has exact closed form $rac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$.
-3. **$\mathbb{Z}[\sqrt{921}]$ Ring & Trilogy Bridge**: We unify `Case 005` and Liu's $\mathbb{Q}(\sqrt{921})$ roots and link `Case 001`–`005`–`008` down to $eta = rac{71}{108} pprox 0.6574$, separating it from the open $\Delta_{\mathrm{hybrid}} = rac{14}{33}$ threshold needed for $eta = rac{1}{2}$.
+1. **Why `ShortDraft` Stops at `23/24` vs. `11/12`**: Fixing `reserve = 1/20` in `ClosedRecursion.lean` locks $\vartheta = 1/10 \implies \frac{23}{24}$, whereas `CanonicalDescentScale` unlocks $\frac{11}{12}+\varepsilon$ (`cauchy_const = 768`).
+2. **Unimported `CubicGauss` & All-$n$ Induction**: We audit the unimported 30-file sharp $2/3$ cubic large sieve and prove by `Nat` induction that `sieveIter` has exact closed form $\frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$.
+3. **$\mathbb{Z}[\sqrt{921}]$ Ring & Trilogy Bridge**: We unify `Case 005` and Liu's $\mathbb{Q}(\sqrt{921})$ roots and link `Case 001`–`005`–`008` down to $\beta = \frac{71}{108} \approx 0.6574$, separating it from the open $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$ threshold needed for $\beta = \frac{1}{2}$.
 
 ## 4-Tier Reader Guide
 

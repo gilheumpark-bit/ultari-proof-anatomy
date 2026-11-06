@@ -9,44 +9,44 @@
   Contents:
   1. Task 1 (Theorems 28–30): Universal `(1 - V)` polynomial factor cancellation in `markedFactor`,
      threshold reduction `480 → 112`, non-vanishing across all 21 small Eisenstein prime-power norms
-     `4 ≤ Q < 112`, and universal finite bad-prime mask absorption (`FirstTail.lean:81-100`).
+     `4 ≤ Q < 112`, and universal finite bad-prime mask absorption (`DirichletL/PrimeRows/FirstTail.lean:81-100`).
   2. Task 2 (Theorems 31–34): Universal 5-term polynomial cancellation in `secondContinuedCorrection`,
      convergence barrier drop `17/50 → 97/600 < 1/6`, exact `z₀`-invariance of `sourceExponent`
      at `d₀ = 13/16`, and universal sub-critical conductor `z₀`-shift improvement (`d < d₀`).
   3. Task 3 (Theorems 35–40): Master scale-coupling equations for `c_sig = -11/16`, `e_low = 3/16`,
      and `β_crit(α_X, α_Y, ℓ) = 5/6 + (α_X + α_Y - 2*ℓ)/12`, Regime A (`128519/146880 < 7/8` via
-     `LowSourceScales.lean:80-104` vs. `Parameters.lean:12` split invariance), Regime B (`5/6`, `3/4`,
+     `DirichletL/Detector/LowSourceScales.lean:80-104` vs. `DirichletL/Parameters.lean:12` split invariance), Regime B (`5/6`, `3/4`,
      `69/100`), universal monotonicity, `z = 1/6` Mellin pole-shift remainder saving (`-17/48000`),
      and Capped-Width Energy Induction compatibility down to `β = 51/100`.
 -/
 
 namespace QRHContinuationAndRescaling
 
-/-- Reference balanced row count `R_bal(δ, y)` (`Endpoint.lean:26`). -/
+/-- Reference balanced row count `R_bal(δ, y)` (`DirichletL/Endpoint.lean:26`). -/
 def refBalancedRowCount (δ y : Rat) : Rat :=
   let den := (5 / 6 - δ) * ((37 + 34 * y) / 18) + δ * ((7 + 18 * y + 8 * y ^ 2) / 9)
   let cut := 1 + δ * ((7 + 18 * y + 8 * y ^ 2) / 9) / (2 * den)
   1 - 5 / 6 + (5 / 6 - δ) * cut
 
-/-- Reference `balancedExponent` (`Endpoint.lean:29`). -/
+/-- Reference `balancedExponent` (`DirichletL/Endpoint.lean:29`). -/
 def refBalancedExponent (δ y : Rat) : Rat :=
   -(1 / 48) + (2 / 3) * δ + δ * (1 / 2 - y) / 6 - (13 / 16) * (1 - refBalancedRowCount δ y)
 
-/-- Generalized `sourceExponent` (`CentralExponent.lean:11-14`) parameterized by contour abscissa `z0`. -/
+/-- Generalized `sourceExponent` (`DirichletL/Detector/CentralExponent.lean:11-14`) parameterized by contour abscissa `z0`. -/
 def sourceExponentAtZ0 (a d R q z0 : Rat) : Rat :=
   (17 / 48) * (1 / 2 - z0) + a + z0 - 1 - a * (23 / 48) - d * z0 + d * R +
     d * (a - 1 / 2) + (1 / 6) * (z0 - 1 / 2 + q)
 
-/-- Signal exponent `c_sig(α_X, ℓ) = α_X / 3 + ℓ / 6 - 5 / 6` (`PrincipalSignalComparison.lean:412`). -/
+/-- Signal exponent `c_sig(α_X, ℓ) = α_X / 3 + ℓ / 6 - 5 / 6` (`DirichletL/PrincipalSignalComparison.lean:412`). -/
 def signalExponentOffset (αX ell : Rat) : Rat := αX / 3 + ell / 6 - 5 / 6
 
-/-- Low Gram square-root exponent `e_gauss(α_X, α_Y) = (5*α_X + α_Y) / 12` (`LowSourceScales.lean:64-68`). -/
+/-- Low Gram square-root exponent `e_gauss(α_X, α_Y) = (5*α_X + α_Y) / 12` (`DirichletL/Detector/LowSourceScales.lean:64-68`). -/
 def lowGramGaussExponent (αX αY : Rat) : Rat := (5 * αX + αY) / 12
 
 /-- Critical contradiction threshold `β_crit(α_X, α_Y, ℓ) = e_gauss - c_sig = 5/6 + (α_X + α_Y - 2*ℓ) / 12` (`Supremum.lean:40-43`). -/
 def criticalBeta (αX αY ell : Rat) : Rat := 5 / 6 + (αX + αY - 2 * ell) / 12
 
-/-- Generalized `balancedExponent` (`Endpoint.lean:30`, `CentralExponent.lean:11-20`) as a function of `(α_X, α_Y, ℓ)`. -/
+/-- Generalized `balancedExponent` (`DirichletL/Endpoint.lean:30`, `DirichletL/Detector/CentralExponent.lean:11-20`) as a function of `(α_X, α_Y, ℓ)`. -/
 def generalizedBalancedExponent (αX αY ell δ y : Rat) : Rat :=
   let d0 : Rat := 1 + ell - αX
   let c_end : Rat := 1 / 2 + (6 * ell - 11 * αX - 7 * αY) / 12
@@ -58,7 +58,7 @@ def generalizedBalancedExponent (αX αY ell δ y : Rat) : Rat :=
 -- ============================================================================
 
 /-- [Theorem 28] Task 1 — Universal `(1 - V)` polynomial factor cancellation and threshold reduction `480 → 112`
-    (`HighRowsCentralQuotient.lean:8-28`, `Local.lean:16-17`, `Euler.lean:11`):
+    (`DirichletL/Detector/HighRowsCentralQuotient.lean:8-28`, `DirichletL/Detector/Local.lean:16-17`, `DirichletL/Detector/Euler.lean:11`):
     For all `(R V qInv K W D : Int)`, after clearing `(1 - V)` in `markedFactor`, the 1st-order central defect
     `(1 - D) * (1 - R) * (continuedCorrection - 1)` reduces identically in `ℤ[R, V, qInv, K, W, D]` to
     `R - V*W + W*D - R*D + R*V*W - R*(W*W) + (1 - W)*(-R*qInv - K*V + V*D - V*W*R)`,
@@ -77,7 +77,7 @@ theorem theorem_28_marked_factor_singularity_cancels_identically (R V qInv K W D
   · decide +kernel
 
 /-- [Theorem 29] Task 1 — Explicit non-vanishing of Euler denominators across all 21 small Eisenstein prime-power norms
-    `4 ≤ Q < 112` (`FirstTail.lean:81-100`, `CubePrimeThresholds.lean:13-33`):
+    `4 ≤ Q < 112` (`DirichletL/PrimeRows/FirstTail.lean:81-100`, `DirichletL/PrimeRows/CubePrimeThresholds.lean:13-33`):
     Across all 21 Eisenstein prime-power norms `Q ∈ {4,7,9,13,16,19,25,27,31,37,43,49,61,64,67,73,79,81,97,103,109}`,
     on the central contour (`x_re ≥ 51/100 > 1/2`, `z_re = 17/50 > 1/3`), `|V| ≤ 4^(-2) = 1/16`, `|D| ≤ 4^(-1/2) = 1/2`,
     and `|R| ≤ 4^(-1) = 1/4`, keeping `1 - |V| ≥ 15/16`, `1 - |D| ≥ 1/2`, and `1 - |R| ≥ 3/4` strictly positive. -/
@@ -90,7 +90,7 @@ theorem theorem_29_all_small_eisenstein_norms_nonvanishing :
     1 - (1 : Rat) / 4 = 3 / 4 ∧
     (240 : Rat) / 480 = 1 / 2 := by decide +kernel
 
-/-- [Theorem 30] Task 1 — Universal finite bad-prime mask absorption law (`FirstTail.lean:53-100`, `ParametersFixedSource.lean:26-37`):
+/-- [Theorem 30] Task 1 — Universal finite bad-prime mask absorption law (`DirichletL/PrimeRows/FirstTail.lean:53-100`, `DirichletL/ParametersFixedSource.lean:26-37`):
     For any prime norm `Q : Nat` and finite exclusion cutoff `N_cut ≥ 480`, if `Q` is not in `smallPrimeSet N_cut` (`¬(Q ≤ N_cut)`),
     then `Q ≥ 481 > 480` and `240 < Q` (`240 * Q⁻¹ < 1/2`). -/
 theorem theorem_30_universal_finite_bad_prime_mask_absorption (Q N_cut : Nat)
@@ -103,7 +103,7 @@ theorem theorem_30_universal_finite_bad_prime_mask_absorption (Q N_cut : Nat)
 -- 2. Task 2: 2nd/3rd-Order Euler Continuation & `z₀`-Invariance at `d₀ = 13/16`
 -- ============================================================================
 
-/-- [Theorem 31] Task 2 — Universal 2nd-order Euler continuation polynomial cancellation (`Local.lean:16-75`, `Euler.lean:38-43`):
+/-- [Theorem 31] Task 2 — Universal 2nd-order Euler continuation polynomial cancellation (`DirichletL/Detector/Local.lean:16-75`, `DirichletL/Detector/Euler.lean:38-43`):
     For all `(R V qInv K W D : Int)`, in `(1 - D) * (secondContinuedCorrection - 1)`, all five first-order terms
     (`1 - 1 = 0`, `-R + R = 0`, `-D + D = 0`, `+W*R - W*R = 0`, `+R*D - R*D = 0`) cancel identically in `ℤ[R, V, qInv, K, W, D]`. -/
 theorem theorem_31_second_continuation_exact_polynomial_identity (R V qInv K W D : Int) :
@@ -141,7 +141,7 @@ theorem theorem_32_second_and_third_continuation_convergence_barrier :
     exp_RV_at_sixth < -1 := by decide +kernel
 
 /-- [Theorem 33] Task 2 — Exact `z₀`-invariance of `sourceExponent` at `d₀ = 13/16` and strict saving at `d = 1/2`
-    (`CentralExponent.lean:11-22`, `75-81`):
+    (`DirichletL/Detector/CentralExponent.lean:11-22`, `75-81`):
     (1) Because `1 + 1/6 - 17/48 - 13/16 = 0`, at `d = 13/16` `sourceExponentAtZ0 a (13/16) R q z0` is completely independent of `z0`,
     (2) At the intermediate conductor `d = 1/2` (`intermediate_source_margin`), shifting `z0` from `17/50` down to `1/6`
         strictly improves the exponent margin by `(13/16 - 1/2) * (17/50 - 1/6) = 13/240`, strengthening `-49/14400` to `-829/14400`. -/
@@ -182,8 +182,8 @@ theorem theorem_34_universal_z0_shift_improves_subcritical_d (d_n d0_n z_old_n z
 -- 3. Task 3: Master Scale-Coupling Equations & Rescaling Anatomy
 -- ============================================================================
 
-/-- [Theorem 35] Task 3 — Master scale-coupling identities (`PrincipalSignalComparison.lean:412`, `LowSourceScales.lean:40-68`,
-    `CentralExponent.lean:11-20`, `Endpoint.lean:30`):
+/-- [Theorem 35] Task 3 — Master scale-coupling identities (`DirichletL/PrincipalSignalComparison.lean:412`, `DirichletL/Detector/LowSourceScales.lean:40-68`,
+    `DirichletL/Detector/CentralExponent.lean:11-20`, `DirichletL/Endpoint.lean:30`):
     At OpenAI's baseline `(α_X, α_Y, ℓ) = (17/48, 23/48, 1/6)`, the general coupling formulas reproduce
     `c_sig = -11/16`, `e_gauss = 3/16`, `β_crit = 7/8`, `d₀ = 13/16`, `C_end = -1/48`, and `slope_δ = 2/3`. -/
 theorem theorem_35_master_scale_coupling_identities :
@@ -202,12 +202,12 @@ theorem theorem_35_master_scale_coupling_identities :
     slope_δ = 2 / 3 ∧
     generalizedBalancedExponent αX αY ell (79 / 204) 0 = refBalancedExponent (79 / 204) 0 := by decide +kernel
 
-/-- [Theorem 36] Task 3 (Regime A) — SOS-slack rescaling `β_crit = 128519/146880 < 7/8` under `LowSourceScales.lean:80-104`
-    vs. conductor-split invariance under `Parameters.lean:12`:
+/-- [Theorem 36] Task 3 (Regime A) — SOS-slack rescaling `β_crit = 128519/146880 < 7/8` under `DirichletL/Detector/LowSourceScales.lean:80-104`
+    vs. conductor-split invariance under `DirichletL/Parameters.lean:12`:
     (1) Shifting `(α_X', α_Y') = (17/48 - η, 23/48 - η)` by `η = 3/73440` with fixed split `ℓ = 1/6` preserves
-        `LowSourceScales.lean:80-104` across all `d ∈ [0, 1/6]` via Poisson slack `2*α_X' - α_Y' - ℓ = 4587/73440 > 0`,
+        `DirichletL/Detector/LowSourceScales.lean:80-104` across all `d ∈ [0, 1/6]` via Poisson slack `2*α_X' - α_Y' - ℓ = 4587/73440 > 0`,
         keeps the worst-case endpoint exponent `≤ -7/440640 < 0`, and yields `criticalBeta αX' αY' (1/6) = 128519/146880 < 7/8`.
-    (2) Conversely, if `ℓ' = 1/6 - η` is shifted simultaneously to keep `α_X' - ℓ' = 3/16` in `Parameters.lean:14`,
+    (2) Conversely, if `ℓ' = 1/6 - η` is shifted simultaneously to keep `α_X' - ℓ' = 3/16` in `DirichletL/Parameters.lean:14`,
         then `α_X' + α_Y' - 2*ℓ' = 1/2` is invariant and `criticalBeta αX' αY' ℓ' = 7/8`. -/
 theorem theorem_36_regime_A_sos_slack_rescaling_and_conductor_split :
     let η : Rat := 3 / 73440
@@ -267,8 +267,8 @@ theorem theorem_38_universal_beta_crit_monotonicity (αX_n αY_n ell_n η_n : In
   revert hη h_poisson
   omega
 
-/-- [Theorem 39] Task 2 & 3 — Exact `z = 1/6` Mellin pole-shift remainder exponents (`PrincipalMellinResidues.lean:292-348`,
-    `PrincipalRemainderBounds.lean:518-599`):
+/-- [Theorem 39] Task 2 & 3 — Exact `z = 1/6` Mellin pole-shift remainder exponents (`DirichletL/PrincipalMellinResidues.lean:292-348`,
+    `DirichletL/Detector/PrincipalRemainderBounds.lean:518-599`):
     When the `w`-contour shifts to `19/20 < 1` and the `z`-contour shifts across the sextic Gauss pole `z = 1/6` to `33/200 = 0.165`,
     the remainder exponents at `e = 1/1000` have strict savings `-1063/48000` and `-17/48000` below `β - 11/16`. -/
 theorem theorem_39_m1_sextic_pole_residue_and_33_200_remainder_saving :
@@ -283,7 +283,7 @@ theorem theorem_39_m1_sextic_pole_residue_and_33_200_remainder_saving :
     w_shift_saving ≤ target_saving ∧
     z_total_saving ≤ target_saving := by decide +kernel
 
-/-- [Theorem 40] Task 3 — Full compatibility of OpenAI's Capped-Width Energy Induction tree (`Energy/CertifiedExistence.lean:19-48`,
+/-- [Theorem 40] Task 3 — Full compatibility of OpenAI's Capped-Width Energy Induction tree (`DirichletL/Energy/CertifiedExistence.lean:19-48`,
     `FinalAssemblyUnconditional.lean:15-36`) down to `β = 51/100`:
     Setting `κ = 3/4` satisfies `51/100 ≤ β`, `3/4 ≤ κ`, and `2*β - 1 ≤ κ` simultaneously for all `β ∈ {7/8, 5/6, 3/4, 69/100, 51/100}`. -/
 theorem theorem_40_energy_induction_compatible_below_seven_eighths :
@@ -302,7 +302,7 @@ theorem theorem_40_energy_induction_compatible_below_seven_eighths :
 -- ============================================================================
 
 /-- [Theorem 41] Local Isolated Bézout Cone Dimension & 4-Variable Box Degree Bounds
-    (`IsolatedBezoutFromRegularSelection.lean:25-366`, `ArithmeticCutoffTransport.lean:25-83`):
+    (`SiegelZeros/Intersection/IsolatedBezoutFromRegularSelection.lean:25-366`, `SiegelZeros/Structure/ArithmeticCutoffTransport.lean:25-83`):
     For any height `h`, degree bound `D`, and box width `N` with `1 ≤ h`, `h ≤ 4`, `1 ≤ D`, `1 ≤ N`,
     (1) the homogenized cone in `Option (Fin 4)` has dimension `4 + 1 = 5 > h` (`affine_local_regular_list_bezout`, `L311-L313`),
     (2) any polynomial in `MonomialBox N` (`n_i < N` for `i ∈ Fin 4`) has total degree `≤ 4 * (N - 1) < 4 * N`
@@ -319,7 +319,7 @@ theorem theorem_41_bezout_homogenized_cone_and_degree_bounds (h D N : Nat)
   omega
 
 /-- [Theorem 42] Arithmetic Cutoff Transport & 4-Step Derivative Ideal Pigeonhole Incompatibility
-    (`ArithmeticCutoffTransport.lean:107-515`):
+    (`SiegelZeros/Structure/ArithmeticCutoffTransport.lean:107-515`):
     (1) In `exists_actual_component_with_length_lower` (`L229-L254`) and `source_vanishing_on_four_truncations` (`L128-L150`),
         4-step iteration `b < 4` (`b ∈ {0, 1, 2, 3}`) across truncation widths `32 * H^(2/3) * N^(4/3)` and `32 * H^(-1/3) * N^(4/3)`
         yields total cutoff scale `3 * 32 = 96` (`sourceCutoff H N = ⌊96 * H^(2/3) * N^(4/3)⌋₊`, `L347-L355`).
@@ -343,9 +343,9 @@ theorem theorem_42_arithmetic_cutoff_and_pigeonhole_incompatibility :
     bezout_coeff_h3 = 64 ∧
     bezout_coeff_h3 < lower_coeff_h3 := by decide +kernel
 
-/-- [Theorem 43] Biquadratic Galois Field `ℚ(√d, √2)`, Greedy Pivot Constants, and `Theorem.lean` Chain
-    (`PivotBounds.lean:17-89`, `GeometricBoundary.lean:18-49`, `BezoutBoundary.lean:13-20`, `Theorem.lean:11-20`):
-    In `source_pivot_bounds` (`PivotBounds.lean:63-65`) and `uniform_exclusion_of_actual_cutoff` (`GeometricBoundary.lean:26`):
+/-- [Theorem 43] Biquadratic Galois Field `ℚ(√d, √2)`, Greedy Pivot Constants, and `SiegelZeros/Conclusions/Theorem.lean` Chain
+    (`SiegelZeros/Selection/PivotBounds.lean:17-89`, `SiegelZeros/Estimates/GeometricBoundary.lean:18-49`, `SiegelZeros/Intersection/BezoutBoundary.lean:13-20`, `SiegelZeros/Conclusions/Theorem.lean:11-20`):
+    In `source_pivot_bounds` (`SiegelZeros/Selection/PivotBounds.lean:63-65`) and `uniform_exclusion_of_actual_cutoff` (`SiegelZeros/Estimates/GeometricBoundary.lean:26`):
     `c₁ = 1 / (4 * 97^2) = 1 / 37636`, `C₁ = 192`, `N₀ = 18818 = 2 * 97^2`, and `H = 86713344 = 12 * (C₁ / c₁)`,
     so the greedy pivot weight ratio `(C₁ / c₁) / H` equals `1 / 12` over the biquadratic field `B` of rank `4 = 2 * 2`. -/
 theorem theorem_43_biquadratic_galois_and_pivot_constants :
@@ -363,11 +363,11 @@ theorem theorem_43_biquadratic_galois_and_pivot_constants :
     biquad_rank = 2 * 2 := by decide +kernel
 
 /-- [Theorem 44] Universal Local Correction Defect, Ramified Specialization, and Normalized Cancellation
-    (`Local.lean:11-94`):
+    (`DirichletL/Detector/Local.lean:11-94`):
     For all `(V W D Pstar B q : Int)`:
-    (1) Clearing `(1 - D)` in `continuedCorrection_defect` (`Local.lean:68-74`) yields the exact polynomial identity
+    (1) Clearing `(1 - D)` in `continuedCorrection_defect` (`DirichletL/Detector/Local.lean:68-74`) yields the exact polynomial identity
         `((1 - V*W) + (1 - V)*(1 - W)*Pstar) - (1 - D) = D*(V + W - V*W) - V*W + (1 - V)*(1 - W)*(Pstar + D)`,
-    (2) At ramified primes (`W = 0, D = 0`, `continued_ramified_compensation`, `Local.lean:88-94`),
+    (2) At ramified primes (`W = 0, D = 0`, `continued_ramified_compensation`, `DirichletL/Detector/Local.lean:88-94`),
         `((B - q)*(1 - V)*Pstar - q) + q*(1 + (1 - V)*Pstar) = B*(1 - V)*Pstar`. -/
 theorem theorem_44_local_compensated_replacement_and_cancellation (V W D Pstar B q : Int) :
     ((1 - V * W) + (1 - V) * (1 - W) * Pstar) - (1 - D) =
@@ -381,9 +381,9 @@ theorem theorem_44_local_compensated_replacement_and_cancellation (V W D Pstar B
     omega
 
 /-- [Theorem 45] Euler Resummation Error & Norm Bound Multipliers
-    (`Euler.lean:11-44`, `CorrectionBounds.lean:11-83`):
-    (1) When `‖a‖ ≤ 1/2`, the resolvent upper bound `inv_one_sub_norm_le_two` (`CorrectionBounds.lean:17-22`) is `(1 - 1/2)⁻¹ = 2`.
-    (2) In `unramified_marked_error_bound` (`CorrectionBounds.lean:24-55`), for `‖V‖ ≤ 1/2` and `‖D‖ ≤ 1/2`,
+    (`DirichletL/Detector/Euler.lean:11-44`, `DirichletL/Detector/CorrectionBounds.lean:11-83`):
+    (1) When `‖a‖ ≤ 1/2`, the resolvent upper bound `inv_one_sub_norm_le_two` (`DirichletL/Detector/CorrectionBounds.lean:17-22`) is `(1 - 1/2)⁻¹ = 2`.
+    (2) In `unramified_marked_error_bound` (`DirichletL/Detector/CorrectionBounds.lean:24-55`), for `‖V‖ ≤ 1/2` and `‖D‖ ≤ 1/2`,
         `(2 + (1 + 1/2)*(0 + 1/2)) = 11/4 ≤ 3` and multiplying by `(1 - R)⁻¹ * (1 - V)⁻¹ ≤ 2 * 2 = 4` gives the exact
         leading coefficients `3 * 4 = 12` on `‖R‖*(1 + ‖W‖)` and `1 * 4 = 4` on `‖K‖*‖V‖`. -/
 theorem theorem_45_euler_resummation_and_correction_bounds :
@@ -400,12 +400,12 @@ theorem theorem_45_euler_resummation_and_correction_bounds :
     coeff_KV = 4 := by decide +kernel
 
 /-- [Theorem 46] Euler Coordinate Norm Exponents & Unramified Factorization
-    (`EulerCoordinates.lean:11-80`, `HighRowsUnramified.lean:13-86`, `HighRowsCentralQuotient.lean:8-49`):
+    (`DirichletL/Detector/EulerCoordinates.lean:11-80`, `DirichletL/Detector/HighRowsUnramified.lean:13-86`, `DirichletL/Detector/HighRowsCentralQuotient.lean:8-49`):
     At the central contour point `(x_re, w_re, z_re) = (51/100, 49/100, 17/50)` (`e → 0`):
     `coordV` has exponent `-6*z_re = -51/25`, `coordR` has exponent `4 - 6*x_re - 6*z_re = -11/10`,
     `coordW` has exponent `-w_re = -49/100`, `coordD` has exponent `-x_re = -51/100`,
     `coordK` has exponent `1 - x_re - w_re = 0`, and the central quotient threshold in
-    `HighRowsCentralQuotient.lean:8-35` uses `Q_min = 480` and `3 * 480 = 1440` with exponent `-51/100`. -/
+    `DirichletL/Detector/HighRowsCentralQuotient.lean:8-35` uses `Q_min = 480` and `3 * 480 = 1440` with exponent `-51/100`. -/
 theorem theorem_46_euler_coordinates_and_unramified_factorization :
     let x_re : Rat := 51 / 100
     let w_re : Rat := 1 - x_re
@@ -423,11 +423,11 @@ theorem theorem_46_euler_coordinates_and_unramified_factorization :
     (3 : Nat) * 480 = 1440 := by decide +kernel
 
 /-- [Theorem 47] Sextic Gauss Valuation Table Periodicity & HighRowsScalar Index Arithmetic
-    (`ScalarTable.lean:11-60`, `HighRowsScalar.lean:14-77`, `HighRowsTail.lean:11-72`):
+    (`DirichletL/Detector/ScalarTable.lean:11-60`, `DirichletL/Detector/HighRowsScalar.lean:14-77`, `DirichletL/Detector/HighRowsTail.lean:11-72`):
     For all `r m j d : Nat` with `j < 6` and `d < 5`:
-    (1) `6 * r + 5 + 1 = 6 * (r + 1)` is divisible by 6 (`row_even_kzero`, `HighRowsScalar.lean:14-28`),
+    (1) `6 * r + 5 + 1 = 6 * (r + 1)` is divisible by 6 (`row_even_kzero`, `DirichletL/Detector/HighRowsScalar.lean:14-28`),
     (2) `6 * r + d + 1` is not a multiple of 6 because `1 ≤ d + 1 ≤ 5` (`row_nonprincipal_kzero`, `L29-L40`),
-    (3) `j + 6 * m = 6 * r + d` holds if and only if `j = d ∧ m = r` (`HighRowsScalar.lean:38`). -/
+    (3) `j + 6 * m = 6 * r + d` holds if and only if `j = d ∧ m = r` (`DirichletL/Detector/HighRowsScalar.lean:38`). -/
 theorem theorem_47_sextic_gauss_valuation_table_and_high_rows_scalar (r m j d : Nat)
     (hj : j < 6) (hd : d < 5) :
     6 * r + 5 + 1 = 6 * (r + 1) ∧
@@ -437,11 +437,11 @@ theorem theorem_47_sextic_gauss_valuation_table_and_high_rows_scalar (r m j d : 
   revert hj hd
   omega
 
-/-- [Theorem 48] Complete Verification of `Parameters.lean` & All 9 Budget Inequalities in `ParametersHighData.lean`
-    (`Parameters.lean:12-63`, `ParametersHighData.lean:9-110`):
-    (1) At `d = 1/6` (`compensated_geometry`, `Parameters.lean:12-26`), the five geometric bounds achieve equality:
+/-- [Theorem 48] Complete Verification of `DirichletL/Parameters.lean` & All 9 Budget Inequalities in `DirichletL/ParametersHighData.lean`
+    (`DirichletL/Parameters.lean:12-63`, `DirichletL/ParametersHighData.lean:9-110`):
+    (1) At `d = 1/6` (`compensated_geometry`, `DirichletL/Parameters.lean:12-26`), the five geometric bounds achieve equality:
         `5/6 - 2*d = 1/2`, `17/48 - d = 3/16`, `23/48 - d = 5/16`, `23/48 - d - 11/48 = 1/12`, `(17/48)/2 + (1/8)/12 = 3/16`.
-    (2) In `ParametersHighData.lean:39-50`, under the constructor scalings `t = 1/100000000`, `ε = t / 2000`,
+    (2) In `DirichletL/ParametersHighData.lean:39-50`, under the constructor scalings `t = 1/100000000`, `ε = t / 2000`,
         `e = t / 2000`, `eps = t / (2 * (N + 2000))`, `sigma = t / 2`, all 9 budget inequalities hold simultaneously. -/
 theorem theorem_48_high_data_nine_budget_inequalities :
     let t : Rat := 1 / 100000000

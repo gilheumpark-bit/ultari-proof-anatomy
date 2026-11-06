@@ -6,12 +6,8 @@ This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX fi
 
 ## Key Findings
 
-1. **Core PDE Mechanisms Verified**: We verify volume-preserving affine box routing $U = 
-abla	imes(\chi\Psi)$ ([`BoxTransport/Flow.lean`](proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Flow.lean#L114-L225)), Serrin-Grönwall $L^2$ uniqueness ([`Comparison.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Comparison.lean#L85-L132)), and 2+1D Gaussian scalar detection ([`MildScalar.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/MildScalar.lean#L1-L120)).
-2. **Inverse-Forcing Scope Boundary**: The 5 box/sheet challenges define the external force via the residual $f := \partial_t U + (U\cdot
-abla)U - 
-u\Delta U$ with zero pressure ($p = 0$, [`BoxCoding.lean:53-66`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/BoxCoding.lean#L53-L66)) or use shear sheets where $(u\cdot
-abla)u = 0$ ([`SolenoidalSheetPrograms.lean:188`](proofs/oai_ref/lean/ComparatorChallenges/SolenoidalSheetPrograms.lean#L188)).
+1. **Core PDE Mechanisms Verified**: We verify volume-preserving affine box routing $U = \nabla\times(\chi\Psi)$ ([`BoxTransport/Flow.lean`](proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Flow.lean#L114-L225)), Serrin-Grönwall $L^2$ uniqueness ([`Comparison.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Comparison.lean#L85-L132)), and 2+1D Gaussian scalar detection ([`MildScalar.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/MildScalar.lean#L1-L120)).
+2. **Inverse-Forcing Scope Boundary**: The 5 box/sheet challenges define the external force via the residual $f := \partial_t U + (U\cdot\nabla)U - \nu\Delta U$ with zero pressure ($p = 0$, [`BoxCoding.lean:53-66`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/BoxCoding.lean#L53-L66)) or use shear sheets where $(u\cdot\nabla)u = 0$ ([`SolenoidalSheetPrograms.lean:188`](proofs/oai_ref/lean/ComparatorChallenges/SolenoidalSheetPrograms.lean#L188)).
 3. **Repository Packaging Audit**: The 6 challenges import `354` of `1,004` `OAI/` files, leaving `650` files (`64.7%`, including `ForcedComputation/`) unimported, while [`ForcedNavierStokesComputation.lean`](proofs/oai_ref/lean/ComparatorChallenges/ForcedNavierStokesComputation.lean#L1-L232) duplicates [`BalancedThreeStack.lean`](proofs/oai_ref/lean/ComparatorChallenges/BalancedThreeStack.lean#L1-L239).
 
 ## 4-Tier Reader Guide

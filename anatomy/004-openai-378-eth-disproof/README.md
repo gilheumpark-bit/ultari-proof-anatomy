@@ -2,13 +2,13 @@
 
 # Case 004: OpenAI `#378` Disproof of the Exponential Time Hypothesis (`ETH`)
 
-This package audits the `3,977` Lean 4 files (`710,320` lines) and `4` LaTeX manuscripts of OpenAI `#378` (`OAI.Algorithms.SubexponentialSAT`). All results are verified across `50` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `454/454` hypothesis mutations caught).
+This package audits the `3,977` Lean 4 files (`710,320` lines) and `4` LaTeX manuscripts of OpenAI `#378` (`OAI.Algorithms.SubexponentialSAT`). All results are verified across `56` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `454/454` hypothesis mutations caught).
 
 ## Key Findings
 
 1. **4-Generation Fossil Archaeology**: Only `2,569` files are reachable from [`SqrtLogSpace/Final.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean#L1-L201), while `1,408` files (`35.4%`, `226,053` lines) are discarded fossils spanning `Gen 1` ($2^{0.9n}$) to `Gen 4`.
 2. **5 Formalization Shortcuts Audited**: We dissect DFA truth-table embedding, the nonconstructive `sparsifySchedule = 0` cutoff ($n \le 2^{65,535}$), unary input padding, slack-constant inflation, and the char-3 (`Lean`) vs. char-0 (`LaTeX`) split.
-3. **Appendix D & Fossil Hybrids**: We formalize Appendix D's $2$-adic Hermite decay ($1/32$) and combine discarded `Gen 2–3` fossils ([`SubexpParameters.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SubexpParameters.lean#L51-L115), [`ExponentArithmetic.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/ExponentArithmetic.lean#L15-L48)) to compress the polynomial constant by $171,835	imes$.
+3. **Appendix D & Fossil Hybrids**: We formalize Appendix D's $2$-adic Hermite decay ($1/32$) and combine discarded `Gen 2–3` fossils ([`SubexpParameters.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SubexpParameters.lean#L51-L115), [`ExponentArithmetic.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/ExponentArithmetic.lean#L15-L48)) to compress the polynomial constant by $171,835\times$.
 
 ## 4-Tier Reader Guide
 
@@ -23,7 +23,7 @@ This package audits the `3,977` Lean 4 files (`710,320` lines) and `4` LaTeX man
 
 - [`eth_subexp_interpolation_and_hashes.lean`](proofs/eth_subexp_interpolation_and_hashes.lean): Theorems 1–16 (`128/128` mutations caught).
 - [`eth_tensor_contraction_and_circuits.lean`](proofs/eth_tensor_contraction_and_circuits.lean): Theorems 17–32 (`177/177` mutations caught).
-- [`eth_five_repairs_and_four_layer_verdict.lean`](proofs/eth_five_repairs_and_four_layer_verdict.lean): Theorems 33–50 (`149/149` mutations caught).
+- [`eth_five_repairs_and_four_layer_verdict.lean`](proofs/eth_five_repairs_and_four_layer_verdict.lean): Theorems 33–56 (`149/149` mutations caught).
 - [`verify_symbolic_eth.py`](proofs/verify_symbolic_eth.py), [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json), and [`problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

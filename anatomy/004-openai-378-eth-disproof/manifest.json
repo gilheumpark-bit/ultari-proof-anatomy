@@ -7,8 +7,8 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_eth.py"
   },
   "artifacts_sha256": {
-    "README.md": "d90e619572f508c7761977510b7949124f50925f2758cd00674b5c72ce36cb8c",
-    "README.ko.md": "eac40847a3c45f0de85bc7cb0db2a8097f3e57e169ccdb8f3a764838d286f83d",
+    "README.md": "e13e451a1ec58af8441a6e60cc84cd116dd63ad8420147292cea1ba3581b15ae",
+    "README.ko.md": "0dbb19a2ae63322319212f928089bf490f96cce13652661f7c2cb09cb277193d",
     "proofs/eth_subexp_interpolation_and_hashes.lean": "c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9",
     "proofs/eth_tensor_contraction_and_circuits.lean": "b86142b58bba1ec2c6ada53e26aa626d64daa2bb5ab335398d687bb5a830d9e8",
     "proofs/eth_five_repairs_and_four_layer_verdict.lean": "1d9cc84de4b1c08f5050c968f9eb754f069061ac65e2caab896a36dcdb46a425",
