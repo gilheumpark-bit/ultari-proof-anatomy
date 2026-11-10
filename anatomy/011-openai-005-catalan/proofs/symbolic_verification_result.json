@@ -1,0 +1,226 @@
+{
+  "case_id": "011-openai-005-catalan",
+  "problem": "Catalan's constant G = sum_{j>=0} (-1)^j / (2j+1)^2 is irrational",
+  "two_adic_and_parameters": {
+    "parameters_per_N": {
+      "n": 48,
+      "a": 11,
+      "b": 7,
+      "q": 4,
+      "g": 4,
+      "h": 2,
+      "L": 59,
+      "C": 63,
+      "H": 65,
+      "A": 19
+    },
+    "delta": "5/24",
+    "minimizer_mu_star": "53/96",
+    "minimum_coefficient": "-505/4608",
+    "discrete_min_m_at_N1": 26,
+    "discrete_min_val_at_N1": "-252",
+    "continuous_lower_bound_at_N1": "-505/2"
+  },
+  "odd_prime_loss_profile": {
+    "interval_integrals": [
+      "2400",
+      "368",
+      "308",
+      "172",
+      "803/2",
+      "630",
+      "7",
+      "18"
+    ],
+    "total_integral_area": "8609/2",
+    "normalized_odd_prime_coeff": "-8609/4608",
+    "log2_rational_cutoff": "693149/1000000",
+    "finite_place_rational_lower_exact": "-10556055541/4608000000",
+    "finite_place_rational_lower_float": -2.290810664,
+    "finite_place_true_lower_float": -2.290809555,
+    "certified_liminf_threshold": "-2.29084"
+  },
+  "nonvanishing_and_mod101": {
+    "modulus": 101,
+    "pivot_counts": {
+      "0": 48,
+      "1": 48,
+      "-1": 48
+    },
+    "swap_pairs": {
+      "0": [],
+      "1": [
+        [
+          30,
+          31
+        ],
+        [
+          45,
+          46
+        ]
+      ],
+      "-1": []
+    },
+    "swap_counts": {
+      "0": 0,
+      "1": 2,
+      "-1": 0
+    },
+    "det_mod_101": {
+      "0": 27,
+      "1": 50,
+      "-1": 74
+    },
+    "scaling_integer_mod_101": 62,
+    "pivots_verified_against_lean_and_tex": true,
+    "palindromic_basis_checks": {
+      "3": {
+        "det_U": 8,
+        "det_Q": 1,
+        "det_U_mod_p": 2
+      },
+      "5": {
+        "det_U": 1024,
+        "det_Q": 1,
+        "det_U_mod_p": 4
+      },
+      "7": {
+        "det_U": 2097152,
+        "det_Q": 1,
+        "det_U_mod_p": 1
+      }
+    }
+  },
+  "real_place_and_certificate": {
+    "log2_prefactor": "-11/16",
+    "derivative_numerator_degrees": {
+      "kappa_2": {
+        "A_X": 36,
+        "A_Y": 24
+      },
+      "kappa_1": {
+        "A_X": 13,
+        "A_Y": 9
+      }
+    },
+    "candidate_evaluations": {
+      "total": 50,
+      "root_brackets_B": 43,
+      "division_points_P": 7
+    },
+    "mvt_bracket_allowance_per_sup": "3/125000",
+    "case_2_upper_bound": "-18327519/8000000",
+    "case_2_upper_float": -2.290939875,
+    "case_1_upper_bound": "-18374319/8000000",
+    "case_1_upper_float": -2.296789875,
+    "certified_limsup_bound": "-18327519/8000000",
+    "coarse_contradiction_gap": "3/50000",
+    "coarse_contradiction_gap_float": 6e-05,
+    "sharp_rational_contradiction_gap_float": 0.000129211
+  },
+  "forensic_stratigraphy": {
+    "tex_files_count": 9,
+    "tex_total_lines": 3001,
+    "bib_lines": 319,
+    "bib_total_keys": 28,
+    "tex_total_cite_calls": 37,
+    "bib_unique_cited_keys": 28,
+    "bib_uncited_keys_count": 0,
+    "main_lean_lines": 30,
+    "main_lean_total_imports": 29,
+    "main_lean_active_cone_imports": 1,
+    "main_lean_manuscript_imports": 24,
+    "main_lean_non_manuscript_wrapper_imports": 4,
+    "main_lean_unreachable_imports": 28,
+    "catalan_dir_total_files": 981,
+    "catalan_dir_total_lines": 573816,
+    "catalan_dir_active_files": 473,
+    "catalan_dir_active_lines": 124449,
+    "catalan_dir_unreachable_files": 508,
+    "catalan_dir_unreachable_lines": 449367,
+    "external_zetafive_active_files": 7,
+    "external_zetafive_active_lines": 1086,
+    "smuggled_patch_catalan_files": 8,
+    "smuggled_patch_catalan_lines": 2452,
+    "smuggled_patch_zetafive_files": 6,
+    "smuggled_patch_zetafive_lines": 2915,
+    "smuggled_patch_active_files": 14,
+    "smuggled_patch_active_lines": 5367,
+    "total_custom_active_files_with_zetafive_and_patch": 494,
+    "total_custom_active_lines_with_zetafive_and_patch": 130902,
+    "real_determinant_factorial_sq_discarded_at_lines": [
+      39,
+      50
+    ],
+    "fixed_determinants_nonzero_lines": 523,
+    "verified_duplicate_declarations_count": 13,
+    "verified_duplicate_barrier_T": [
+      "barrier_T_3",
+      "barrier_T_4",
+      "barrier_T_5",
+      "barrier_T_6",
+      "barrier_T_7",
+      "barrier_T_8"
+    ],
+    "verified_duplicate_case2_U": [
+      "barrier_case2_U_3",
+      "barrier_case2_U_4",
+      "barrier_case2_U_5",
+      "barrier_case2_U_6",
+      "barrier_case2_U_7",
+      "barrier_case2_U_8",
+      "barrier_case2_U_9"
+    ],
+    "verified_unused_binder_and_dummy_defects_count": 9,
+    "verified_post_colon_filter_defects_count": 1,
+    "verified_total_active_tree_defects_count": 10,
+    "verified_defects": [
+      {
+        "file": "OddLowerPairPool.lean",
+        "line": 232,
+        "pattern": "have _ := hlo"
+      },
+      {
+        "file": "FinitePlaceAssembly.lean",
+        "line": 479,
+        "pattern": "(_hrep : oddPrimeRepresented p N ell)"
+      },
+      {
+        "file": "FinitePlaceAssembly.lean",
+        "line": 626,
+        "pattern": "def oddPrimeExceptionalPartRat (_z : ℚ)"
+      },
+      {
+        "file": "OddPrimeCentralZetaContraction.lean",
+        "line": 773,
+        "pattern": "(_hN : 0 < N)"
+      },
+      {
+        "file": "OddPrimeCentralZetaContraction.lean",
+        "line": 773,
+        "pattern": "(_hH : H N ≤ 2 * p)"
+      },
+      {
+        "file": "OddPrimeExtractionIndices.lean",
+        "line": 36,
+        "pattern": "(_hp : 0 < p)"
+      },
+      {
+        "file": "FixedCompactRowsAll.lean",
+        "line": 115,
+        "pattern": "def fixedRowDCoeff_4 (_n : ℕ)"
+      },
+      {
+        "file": "FixedCompactRowsAll.lean",
+        "line": 122,
+        "pattern": "(_hn : 65 ≤ n)"
+      },
+      {
+        "file": "BarrierCaseTwoBracketYGroup0.lean",
+        "line": 138,
+        "pattern": "(_hk : k < 37)"
+      }
+    ]
+  },
+  "all_verifications_passed": true
+}

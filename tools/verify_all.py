@@ -106,11 +106,20 @@ def check_manifest_hashes(case_dir, manifest):
     print(f"  [PASS] SHA-256 checksums ({len(manifest.get('artifacts_sha256', {}))} artifacts + 04_*.md tables)")
 
 
+def _lean_env(cwd):
+    env = os.environ.copy()
+    if not env.get("LEAN_PATH"):
+        lps = [str(p) for b in (cwd, pathlib.Path.home() / ".cache" / "qcts_mathlib_v435") for p in [b / ".lake" / "build" / "lib" / "lean", *b.glob(".lake/packages/*/.lake/build/lib/lean")] if p.is_dir()]
+        if lps:
+            env["LEAN_PATH"] = ":".join(lps)
+    return env
+
+
 def _run_single_mutation(args):
-    src, start, end, open_ch, close_ch, names, fname = args
+    src, start, end, open_ch, close_ch, names, fname, env = args
     binder_str = " ".join(names)
     mutated = src[:start] + f"{open_ch}{binder_str} : True{close_ch}" + src[end:]
-    r = subprocess.run([LEAN_BIN, "--stdin"], input=mutated, capture_output=True, text=True, timeout=30)
+    r = subprocess.run([LEAN_BIN, "--stdin"], input=mutated, env=env, capture_output=True, text=True, timeout=60)
     return binder_str, fname, r.returncode
 
 
@@ -119,15 +128,17 @@ def check_lean_and_mutations(lean_file):
     assert not re.search(r"\b(?:sorry|admit)\b", re.sub(r"--[^\n]*|/-.*?-/", "", src, flags=re.S))
     meta_p = next(
         (
-            c / "patterns" / "70-lean-meta.txt"
+            p
             for c in (ROOT / ".ultari", ROOT.parent / "울타리_연구원" / "template" / ".ultari")
-            if (c / "patterns" / "70-lean-meta.txt").is_file()
+            for sub in ("checks", "patterns")
+            if (p := c / sub / "70-lean-meta.txt").is_file()
         ),
         None,
     )
     meta_h = meta_p.read_text(encoding="utf-8") if meta_p else ""
     m_in = ("import Lean\n" if not re.search(r"(?m)^\s*import\s+Lean\b", src) else "") + src + ("\n" + meta_h if meta_h else "")
-    res = subprocess.run([LEAN_BIN, "--stdin"], input=m_in, cwd=str(lean_file.parent), capture_output=True, text=True, timeout=60)
+    env = _lean_env(lean_file.parent)
+    res = subprocess.run([LEAN_BIN, "--stdin"], input=m_in, cwd=str(lean_file.parent), env=env, capture_output=True, text=True, timeout=60)
     assert res.returncode == 0, f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}"
     meta_issues = re.findall(r"^META_ISSUE:(\S+)$", res.stdout, re.M)
     assert not meta_issues, f"Lean.Elab MetaM AST/Proof-Term/DoF violation in {lean_file.name}: {meta_issues}"
@@ -141,7 +152,7 @@ def check_lean_and_mutations(lean_file):
         ), (
             f"Euclidean divmod or transcendental constant-pin smuggling in hypothesis {names} of {lean_file.name}: {hbody}"
         )
-    tasks = [(src, s, e, och, cch, names, lean_file.name) for (s, e, och, cch, names, _) in hyps]
+    tasks = [(src, s, e, och, cch, names, lean_file.name, env) for (s, e, och, cch, names, _) in hyps]
     workers = os.cpu_count() or 8
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
         for bname, fname, rc in ex.map(_run_single_mutation, tasks):
@@ -251,7 +262,7 @@ def check_ultari_lean_scan(case_dir):
         if scanner.is_file():
             res = subprocess.run([sys.executable, "-B", str(scanner), str(case_dir)], capture_output=True, text=True, timeout=60)
             assert res.returncode == 0, f"Ultari extra_scan warnings in {case_dir.name} (must repair and re-verify):\n{res.stdout}\n{res.stderr}"
-            print("  [PASS] Ultari extra_scan gate (0 RH13~RH43 warnings)")
+            print("  [PASS] Ultari extra_scan gate (0 RH13~RH52 warnings)")
             return
 
 
