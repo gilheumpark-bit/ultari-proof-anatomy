@@ -25,4 +25,7 @@ Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
    and Google DeepMind (`google-deepmind/code-verification`) included for
    line-by-line academic refereeing, citation verification, and reproducible
    comparison. They remain the property of their respective copyright holders
-   and are subject to their upstream license terms.
+   and are subject to their upstream license terms. For `Case 013`, only
+   `Apache-2.0` specification, configuration, and SHA-256 pin files
+   (`CliElf.lean`) are retained in `oai_ref/`; no `AGPL-3.0-only` ELF binaries
+   or derived machine-code byte dumps are redistributed.

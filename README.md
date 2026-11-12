@@ -1,4 +1,4 @@
-# `ultari-proof-anatomy`: Dissecting Human & AI Mathematical Proofs
+# `ultari-proof-anatomy`: Dissecting Frontier AI Mathematical, Cryptographic & Code Verification Proofs
 
 > **Language**: **English** | [**한국어 (`README.ko.md`)**](./README.ko.md)
 
@@ -10,9 +10,9 @@
 
 In Korean, **울타리 (*Ultari*)** means a **protective boundary or enclosure**.
 
-**`ultari-proof-anatomy`** breaks down math and science papers and their Lean 4 code into **exact closed-form roots**, **standalone zero-`sorry` Lean 4 theorems**, and **4-tier reader guides**.
+**`ultari-proof-anatomy`** dissects frontier AI and human mathematical, cryptographic, and binary code-verification proofs (`Lean 4`, `Rust`, `ARM64`, `LaTeX`) into **exact closed-form invariants**, **standalone zero-`sorry` Lean 4 theorems**, **TCB & boundary audits**, and **4-tier reader guides**.
 
-> **Archive Scale (`001`..`014`)**: **14 Case Studies** · **817 Standalone Lean 4 Theorems** (`0 sorry`, `0 axiom`) · **4,198 / 4,198 Hypothesis Mutations Killed (`100%`)** · **48,603 Upstream `.lean` Files Audited**.
+> **Archive Scale (`001`..`014`)**: **14 Case Studies** · **817 Standalone Lean 4 Theorems** (`0 sorry`, `0 axiom`) · **4,198 / 4,198 Hypothesis Mutations Killed (`100%`)** · **48,603 Upstream `.lean` Files (`>12.4M` Lines, incl. DeepMind `11,323` files / `7.53M` lines & OpenAI `#266` `3,397` files / `2.84M` lines) Audited**.
 
 ---
 
@@ -117,4 +117,4 @@ python3 tools/verify_all.py
 
 - **Original Code & Proofs** (`proofs/*.lean` excluding `oai_ref/`, `proofs/verify_*.py`, `tools/*.py`, `manifest.json`): Licensed under [**Apache-2.0**](./LICENSE).
 - **Original Reports & 4-Tier Guides** (`*.md`): Dual-licensed under [**Apache-2.0**](./LICENSE) and [**CC BY 4.0**](https://creativecommons.org/licenses/by/4.0/). See [`NOTICE`](./NOTICE) for attribution details.
-- **Reference Snapshots** (`anatomy/*/proofs/oai_ref/`): Included for line-by-line refereeing and verification; subject to their upstream license terms (see [`NOTICE`](./NOTICE)).
+- **Reference Snapshots** (`anatomy/*/proofs/oai_ref/`): Included for line-by-line refereeing and verification; subject to their upstream license terms (see [`NOTICE`](./NOTICE)). In `Case 013`, only `Apache-2.0` specification, configuration, and SHA-256 pin files (`CliElf.lean`) are retained; no `AGPL-3.0-only` ELF binaries or derived machine-code byte dumps are redistributed.
