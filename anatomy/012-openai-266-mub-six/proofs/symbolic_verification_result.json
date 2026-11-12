@@ -1,0 +1,180 @@
+{
+  "case_id": "012-openai-266-mub-six",
+  "problem": "Mutually unbiased bases in dimension six (MRW Fourier vanishing & N(6) <= 5 in Lean 4 vs N(6) = 3 in binary64 C++)",
+  "kronecker_three_mubs": {
+    "dimension": 6,
+    "constructed_bases_count": 3,
+    "orthonormality_verified": true,
+    "cross_inner_products_verified": 108,
+    "modulus_squared": "1/6",
+    "matches_orphaned_lean_files": [
+      "SmallMatrices.lean",
+      "Tensor.lean",
+      "ThreeBases.lean",
+      "ThreeMain.lean"
+    ]
+  },
+  "newton_cube_fibers_and_tao": {
+    "sextic_vanishing_coeffs": [
+      "e1=0",
+      "e2=0",
+      "e4=0",
+      "e5=0"
+    ],
+    "tao_biunimodular_verified": true,
+    "tao_automorphism_order": 720,
+    "balanced_alpha_permutations": 20,
+    "tao_fourier_modulus_sq_all_20": "1/4",
+    "complete_family_S0": "-4/5",
+    "complete_family_cubic_norm_sq": -18
+  },
+  "pair_table_and_weiner_rigidity": {
+    "pair_table_equations": 8871,
+    "pair_table_coordinates": 909,
+    "pair_table_rank": 897,
+    "fourier_weight_w": [
+      -3,
+      -2,
+      0,
+      1,
+      2,
+      2
+    ],
+    "fourier_L_terms": 26,
+    "weiner_dimension_table_d6": {
+      "3": {
+        "traceless_span_plus_id": 16,
+        "complement_dim": 21,
+        "equals_abelian_max_d": false
+      },
+      "4": {
+        "traceless_span_plus_id": 21,
+        "complement_dim": 16,
+        "equals_abelian_max_d": false
+      },
+      "5": {
+        "traceless_span_plus_id": 26,
+        "complement_dim": 11,
+        "equals_abelian_max_d": false
+      },
+      "6": {
+        "traceless_span_plus_id": 31,
+        "complement_dim": 6,
+        "equals_abelian_max_d": true
+      },
+      "7": {
+        "traceless_span_plus_id": 36,
+        "complement_dim": 1,
+        "equals_abelian_max_d": false
+      }
+    }
+  },
+  "gram_schur_blocks_and_block0": {
+    "non_singleton_partitions_of_5": 6,
+    "block_dimensions": [
+      5,
+      21,
+      11,
+      27,
+      22,
+      12
+    ],
+    "block_scaling_exponents": [
+      14,
+      13,
+      13,
+      14,
+      14,
+      15
+    ],
+    "total_schur_pivots": 98,
+    "total_lower_triangle_entries": 1021,
+    "block0_leading_2x2_minor": 35303779555791,
+    "block0_min_pivot_floor": 1069676,
+    "block0_exact_ldl_entries_verified": 25
+  },
+  "mixed_positivstellensatz_bridge": {
+    "mixed_equations": 46041,
+    "mixed_coordinates_total": 3429,
+    "mixed_coordinates_retained": 3237,
+    "mixed_pivots": 2767,
+    "expression_binary_tree_leaves": 2425,
+    "paper_denominator": 6480,
+    "lean_denominator": 37623398400,
+    "clearance_factor": 5806080,
+    "head_lean": -3560885105927675258880,
+    "tail_chunks_lean": [
+      129038594601492817920,
+      57809244737470464000,
+      208460565551960064000,
+      342451535685706137600,
+      57870913835040768000,
+      247845907767951360000
+    ],
+    "tail_sum_lean": 1043476762179621611520,
+    "net_margin_lean": -2517408343748053647360,
+    "exact_rational_bound": "-2007321335237/30"
+  },
+  "preprint1_stage_abc_and_abi": {
+    "c116_5": 160389488,
+    "seed_pairs_checked": 151744086,
+    "seed_centers": 249878,
+    "stage_a_coarse_records": 3083,
+    "stage_b_mid_records": 600,
+    "stage_b_fine_records": 22379,
+    "stage_b_batches": 88,
+    "stage_c_initial_clean_batches": 73,
+    "stage_c_initial_cap_batches": 15,
+    "stage_c_fallback_input_records": 163,
+    "stage_c_fallback_refined_records": 1127,
+    "final_unresolved_records": 0,
+    "native_process_invocations": 100,
+    "saved_artifact_files": 196,
+    "record_byte_formula_base": 356,
+    "record_byte_formula_stride": 288,
+    "lean4_formalized_lines": 0
+  },
+  "forensic_stratigraphy": {
+    "nanoda_enabled_mub_six": false,
+    "nanoda_enabled_hadamard_fiber": false,
+    "main_lean_imports": 16,
+    "main_lean_active_imports": 1,
+    "main_lean_unused_umbrella_imports": 15,
+    "mutually_unbiased_total_files": 3386,
+    "mutually_unbiased_total_lines": 2835031,
+    "mutually_unbiased_active_files": 3365,
+    "mutually_unbiased_active_lines": 2804944,
+    "mutually_unbiased_umbrella_waste_files": 16,
+    "mutually_unbiased_umbrella_waste_lines": 29683,
+    "mutually_unbiased_orphan_files": 5,
+    "mutually_unbiased_orphan_lines": 404,
+    "orphaned_attainable_3_lines": 342,
+    "hadamard_total_files": 9,
+    "hadamard_total_lines": 1329,
+    "hadamard_active_files": 5,
+    "hadamard_active_lines": 863,
+    "small_partitions_unused_premises": 40,
+    "total_unused_underscore_premises": 62767,
+    "reflected_canonicalizer_lines_saved": 2015523,
+    "preprint1_bib_keys": 27,
+    "preprint1_cite_commands": 33,
+    "preprint1_cited_key_occurrences": 33,
+    "preprint2_bib_keys": 26,
+    "preprint2_cite_commands": 38,
+    "preprint2_cited_key_occurrences": 41
+  },
+  "cpp_and_verifier_sources": {
+    "oai_ref_total_files": 69,
+    "small_partitions_unused_by_arity": {
+      "arity_1_2": 0,
+      "arity_3": 4,
+      "arity_4": 36,
+      "pattern5_theorems": 0
+    },
+    "extracted_cpp_sources_verified": 7,
+    "check_records_is_derived_format_bounds_checker": true,
+    "covout_omits_checkcpu_mxcsr": true,
+    "verify_py_sha256_matches_run_py": "104a7306205b8544c8f913f6afdb59603f2e04a207c9ac592c383b80eb0e2aa9"
+  },
+  "all_verifications_passed": true
+}

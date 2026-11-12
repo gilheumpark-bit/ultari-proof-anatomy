@@ -22,6 +22,7 @@ Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
 3. Third-Party Reference Snapshots (`oai_ref/`)
    Files located under `proofs/oai_ref/` (and `anatomy/*/proofs/oai_ref/`) are
    upstream reference snapshots from OpenAI (`openai/math` / First Proof 2026)
-   included for line-by-line academic refereeing, citation verification, and
-   reproducible comparison. They remain the property of their respective copyright
-   holders and are subject to their upstream license terms.
+   and Google DeepMind (`google-deepmind/code-verification`) included for
+   line-by-line academic refereeing, citation verification, and reproducible
+   comparison. They remain the property of their respective copyright holders
+   and are subject to their upstream license terms.

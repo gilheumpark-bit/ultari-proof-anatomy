@@ -1,0 +1,538 @@
+{
+  "case_id": "openai_reasoning_traces_ten_full_audit",
+  "title": "OpenAI 10 Publicly Released Reasoning Traces (#007, #017, #087, #102, #159, #197, #221, #271, #287, #362): Post-Hoc LuaLaTeX Compiler Pipeline, 69.28% (230/332) Citation Attrition & 100% (3/3) Companion Self-Citation Drop, 3-Stage Scope Funnel (22 -> 11 -> 9 -> 7), Ten-Domain Mathematical Proof Engines, and OAI/ 2,170-Vacuous-Binder No-Go Audit",
+  "target_repository": "openai/math (HEAD 4eaee87548250b2682affda7d05d947c05554bae: all 10 reasoning_traces/*.pdf, 22 family preprints, lean/docs/{007..362}.md, 21 ComparatorChallenges/*.lean, and 9,929 OAI/ files)",
+  "date": "2026-11-12",
+  "lean_version": "v4.29.0-rc8",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/traces10_compiler_and_citation_drop.lean && ~/.elan/bin/lean proofs/traces10_algebraic_combinatorial_engines.lean && ~/.elan/bin/lean proofs/traces10_analytic_operator_and_scope_audit.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_traces10.py"
+  },
+  "artifacts_sha256": {
+    "proofs/traces10_compiler_and_citation_drop.lean": "1c96229c436f33d5ac72bd5ab3fffa90d47acfab5da54b4074f79ecf5137184d",
+    "proofs/traces10_algebraic_combinatorial_engines.lean": "64df0ca7c8b741235ee9da2526ffa8029772a6f94ad685b2f04c50415e0d5a62",
+    "proofs/traces10_analytic_operator_and_scope_audit.lean": "fbe8685b917b390052f51f73caaa6d208c25b808073e490590f00ecd17a29697",
+    "proofs/verify_symbolic_traces10.py": "c0e92bca74105ee11a2dd90cd26314de0ae59f7cc5ffae43e88541d3154ea540",
+    "proofs/symbolic_verification_result.json": "f018edf7128ebe7dbb410bc27603e4de64c4d37c36bc750ac540d85e8f2dfe15",
+    "proofs/problem_spec.md": "38d9ca5639a7bdefdc324af0c5f270b6d4a36861e9cc02c8c8c69b16c3f8e919"
+  },
+  "verified_key_results": {
+    "pillar1_compiler_and_citation_laundering": {
+      "openai_math_total_families": 373,
+      "released_reasoning_traces": 10,
+      "total_trace_pages": 202,
+      "total_extracted_lines": 9308,
+      "prompt_blocks_total": 13,
+      "zero_prompt_traces": 2,
+      "multipart_stitched_traces": 5,
+      "trace_references_total": 332,
+      "retained_in_primary_papers": 102,
+      "dropped_from_primary_papers": 230,
+      "drop_fraction_exact": "115/166",
+      "openai_2026_self_citations_dropped": 3,
+      "primary_paper_bib_entries": 315,
+      "posthoc_added_bib_entries": 213,
+      "citation_union_size": 545,
+      "minuncut_space_masked_lines": 22,
+      "minuncut_space_masked_bytes": 1401,
+      "binary_elliott_header_open_lines": 27,
+      "binary_elliott_measure_theory_repeats": 7,
+      "lean_theorems": [
+        "thm_01_corpus_sampling_coverage_and_pages (Theorem 1, L22)",
+        "thm_02_leaked_mezard_parisi_tex_deletion_asymmetry (Theorem 2, L38)",
+        "thm_03_cjk_active_char_fallback_in_fandolfang (Theorem 3, L54)",
+        "thm_04_prompt_omission_and_multipart_stitching_split (Theorem 4, L68)",
+        "thm_05_pi017_page_asymmetry_39_vs_2 (Theorem 5, L85)",
+        "thm_06_mahler087_supplied_premise_dag (Theorem 6, L98)",
+        "thm_07_minuncut_blank_space_byte_masking (Theorem 7, L111)",
+        "thm_08_binary_corrected_elliott_duplicate_open_block (Theorem 8, L127)",
+        "thm_09_mahler087_scope_doc_internal_contradiction (Theorem 9, L140)",
+        "thm_10_ten_trace_citation_sum_332 (Theorem 10, L154)",
+        "thm_11_ten_trace_retained_vs_dropped_partition (Theorem 11, L167)",
+        "thm_12_free_group_287_extreme_citation_scrubbing (Theorem 12, L180)",
+        "thm_13_kaplansky197_mahler087_pi017_high_drop_trio (Theorem 13, L194)",
+        "thm_14_internal_openai_2026_self_citation_erasure (Theorem 14, L207)",
+        "thm_15_posthoc_bibliography_inflation_213 (Theorem 15, L220)",
+        "thm_16_bidirectional_citation_jaccard_bound (Theorem 16, L233)",
+        "thm_17_inductive_cumulative_citation_drop (Theorem 17, L250)",
+        "thm_18_nonlinear_reward_hacking_novelty_score_distortion (Theorem 18, L265)",
+        "thm_19_family_lean_scale_9929_and_1537_progressions_unused (Theorem 19, L294)",
+        "thm_20_provenance_integrity_zero_drop (Theorem 20, L329)",
+        "thm_21_provenance_scrubbing_counter_model (Theorem 21, L339)",
+        "thm_22_ug102_headline_inversion_and_lean_omission (Theorem 22, L351)",
+        "thm_23_progressions159_qualitative_vs_quasipolynomial_gap (Theorem 23, L365)",
+        "thm_24_kaplansky197_and_heisenberg271_unformalized_flagships (Theorem 24, L379)",
+        "thm_25_pillar1_grand_compiler_and_citation_ledger (Theorem 25, L389)"
+      ]
+    },
+    "pillar2_algebraic_and_combinatorial_engines": {
+      "elliott007_partition_blocks": 7,
+      "pi017_part1_bound": "62/25",
+      "pi017_part2_exact": 2,
+      "pi017_flint_hills_exponent": "-1/25",
+      "mahler087_dim3_cube_minus_simplex": "32/9",
+      "mahler087_bernstein_degree": 32,
+      "ug102_sibling_preprints": 5,
+      "kaplansky197_planar_euler_gap": "1/2",
+      "lean_theorems": [
+        "thm_26_elliott007_log_saving_exponent_denom (Theorem 26, L25)",
+        "thm_27_elliott007_three_scale_entropy_pigeonhole (Theorem 27, L65)",
+        "thm_28_pi017_dirichlet_barrier_on_box_parameter (Theorem 28, L78)",
+        "thm_29_pi017_flint_hills_dyadic_exponent_62_25 (Theorem 29, L89)",
+        "thm_30_pi017_simplex_factorial_cancellation_pivot (Theorem 30, L102)",
+        "thm_31_pi017_box_saturation_degeneracy_lock (Theorem 31, L114)",
+        "thm_32_pi017_two_stage_irrationality_drop (Theorem 32, L124)",
+        "thm_33_mahler087_hanner_product_polar_duality (Theorem 33, L147)",
+        "thm_34_mahler087_riccati_curvature_margin_194_vs_180 (Theorem 34, L160)",
+        "thm_35_mahler087_bernstein_window_and_simplex_gap (Theorem 35, L181)",
+        "thm_36_ug102_quadratic_latent_noise_trilinear_lock (Theorem 36, L195)",
+        "thm_37_ug102_rank_one_acceptance_drop_bound (Theorem 37, L219)",
+        "thm_38_ug102_sparse_projection_window_k_neg_two_thirds (Theorem 38, L234)",
+        "thm_39_ug102_five_preprint_reduction_fanout (Theorem 39, L259)",
+        "thm_40_ap159_doubly_exponential_precision_blowup (Theorem 40, L281)",
+        "thm_41_kaplansky197_linnik_congruence_degree_divisibility (Theorem 41, L321)",
+        "thm_42_kaplansky197_planar_euler_obstruction_contradiction (Theorem 42, L339)",
+        "thm_43_kaplansky197_direct_finiteness_defect_idempotent (Theorem 43, L352)",
+        "thm_44_sparse_window_axioms_force_m_ge_two (Theorem 44, L387)",
+        "thm_45_sparse_window_m1_counter_model (Theorem 45, L397)",
+        "thm_46_nt_pair_007_vs_017_challenge_and_file_balance (Theorem 46, L410)",
+        "thm_47_mahler087_four_challenges_from_three_preprints (Theorem 47, L421)",
+        "thm_48_ap159_harmonic_block_divergence_threshold (Theorem 48, L433)",
+        "thm_49_kaplansky197_positive_characteristic_partition (Theorem 49, L446)",
+        "thm_50_pillar2_six_trace_citation_and_challenge_share (Theorem 50, L458)"
+      ]
+    },
+    "pillar3_analytic_operator_and_scope_no_go": {
+      "family_manuscripts_total": 22,
+      "untraced_sibling_manuscripts": 11,
+      "full_headline_comparator_retained": 7,
+      "comparator_challenge_files": 21,
+      "comparator_challenge_lines": 1949,
+      "oai_family_files_total": 9929,
+      "stub_scanner_false_positives": 5,
+      "genuine_oai_vacuous_hypotheses": 2170,
+      "freegroup287_drop_count": 49,
+      "vlasov362_bootstrap_gap": "43/500",
+      "hypothesis_mutants_killed": 346,
+      "lean_theorems": [
+        "thm_51_mezard221_quadratic_cavity_convexity_sos (Theorem 51, L21)",
+        "thm_52_mezard221_quartic_cavity_sos_identity (Theorem 52, L46)",
+        "thm_53_heisenberg271_spin_magnetization_floor (Theorem 53, L68)",
+        "thm_54_heisenberg271_triangular_spectral_integral_and_beta0 (Theorem 54, L80)",
+        "thm_55_freegroup287_haagerup_radial_word_bound (Theorem 55, L115)",
+        "thm_56_freegroup287_dykema_radulescu_compression_lock (Theorem 56, L135)",
+        "thm_57_vlasov362_glassey_strauss_bootstrap_contradiction (Theorem 57, L149)",
+        "thm_58_vlasov362_relativistic_subluminal_gap (Theorem 58, L161)",
+        "thm_59_inductive_dyadic_shell_budget (Theorem 59, L180)",
+        "thm_60_ten_trace_domain_classification_balance (Theorem 60, L195)",
+        "thm_61_three_stage_scope_funnel (Theorem 61, L214)",
+        "thm_62_manuscript_coverage_11_of_22 (Theorem 62, L229)",
+        "thm_63_citation_audit_recovery_gain (Theorem 63, L241)",
+        "thm_64_prompt_directive_vs_bernstein_degree32 (Theorem 64, L253)",
+        "thm_65_bidirectional_citation_conservation (Theorem 65, L264)",
+        "thm_66_five_challenge_stub_false_positives_verified_used (Theorem 66, L284)",
+        "thm_67_internal_oai_2170_vacuous_hypotheses_sum (Theorem 67, L298)",
+        "thm_68_proof_term_scanner_zero_false_positives (Theorem 68, L330)",
+        "thm_69_stub_only_scanner_blindness_no_go_counter_model (Theorem 69, L345)",
+        "thm_70_clean_vs_defective_internal_lemma_ratio (Theorem 70, L359)",
+        "thm_71_comparator_challenge_21_files_1949_lines (Theorem 71, L381)",
+        "thm_72_trace_length_dispersion_2191_vs_210 (Theorem 72, L395)",
+        "thm_73_citation_polarity_swing_mezard_vs_freegroup (Theorem 73, L408)",
+        "thm_74_nonlinear_joint_provenance_fidelity_under_one_quarter (Theorem 74, L420)",
+        "thm_75_case014_grand_ten_traces_anatomy_ledger (Theorem 75, L448)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "compiler": "leanprover/lean4:v4.29.0-rc8",
+    "theorems_proved": 75,
+    "lean4_lines": 1337,
+    "files": [
+      "proofs/traces10_compiler_and_citation_drop.lean",
+      "proofs/traces10_algebraic_combinatorial_engines.lean",
+      "proofs/traces10_analytic_operator_and_scope_audit.lean"
+    ],
+    "hypothesis_mutations_tested": 346,
+    "hypothesis_mutations_killed": 346,
+    "theorems": [
+      {
+        "name": "thm_01_corpus_sampling_coverage_and_pages",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 22
+      },
+      {
+        "name": "thm_02_leaked_mezard_parisi_tex_deletion_asymmetry",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 38
+      },
+      {
+        "name": "thm_03_cjk_active_char_fallback_in_fandolfang",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 54
+      },
+      {
+        "name": "thm_04_prompt_omission_and_multipart_stitching_split",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 68
+      },
+      {
+        "name": "thm_05_pi017_page_asymmetry_39_vs_2",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 85
+      },
+      {
+        "name": "thm_06_mahler087_supplied_premise_dag",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 98
+      },
+      {
+        "name": "thm_07_minuncut_blank_space_byte_masking",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 111
+      },
+      {
+        "name": "thm_08_binary_corrected_elliott_duplicate_open_block",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 127
+      },
+      {
+        "name": "thm_09_mahler087_scope_doc_internal_contradiction",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 140
+      },
+      {
+        "name": "thm_10_ten_trace_citation_sum_332",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 154
+      },
+      {
+        "name": "thm_11_ten_trace_retained_vs_dropped_partition",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 167
+      },
+      {
+        "name": "thm_12_free_group_287_extreme_citation_scrubbing",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 180
+      },
+      {
+        "name": "thm_13_kaplansky197_mahler087_pi017_high_drop_trio",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 194
+      },
+      {
+        "name": "thm_14_internal_openai_2026_self_citation_erasure",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 207
+      },
+      {
+        "name": "thm_15_posthoc_bibliography_inflation_213",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 220
+      },
+      {
+        "name": "thm_16_bidirectional_citation_jaccard_bound",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 233
+      },
+      {
+        "name": "thm_17_inductive_cumulative_citation_drop",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 250
+      },
+      {
+        "name": "thm_18_nonlinear_reward_hacking_novelty_score_distortion",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 265
+      },
+      {
+        "name": "thm_19_family_lean_scale_9929_and_1537_progressions_unused",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 294
+      },
+      {
+        "name": "thm_20_provenance_integrity_zero_drop",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 329
+      },
+      {
+        "name": "thm_21_provenance_scrubbing_counter_model",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 339
+      },
+      {
+        "name": "thm_22_ug102_headline_inversion_and_lean_omission",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 351
+      },
+      {
+        "name": "thm_23_progressions159_qualitative_vs_quasipolynomial_gap",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 365
+      },
+      {
+        "name": "thm_24_kaplansky197_and_heisenberg271_unformalized_flagships",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 379
+      },
+      {
+        "name": "thm_25_pillar1_grand_compiler_and_citation_ledger",
+        "file": "proofs/traces10_compiler_and_citation_drop.lean",
+        "line": 389
+      },
+      {
+        "name": "thm_26_elliott007_log_saving_exponent_denom",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 25
+      },
+      {
+        "name": "thm_27_elliott007_three_scale_entropy_pigeonhole",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 65
+      },
+      {
+        "name": "thm_28_pi017_dirichlet_barrier_on_box_parameter",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 78
+      },
+      {
+        "name": "thm_29_pi017_flint_hills_dyadic_exponent_62_25",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 89
+      },
+      {
+        "name": "thm_30_pi017_simplex_factorial_cancellation_pivot",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 102
+      },
+      {
+        "name": "thm_31_pi017_box_saturation_degeneracy_lock",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 114
+      },
+      {
+        "name": "thm_32_pi017_two_stage_irrationality_drop",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 124
+      },
+      {
+        "name": "thm_33_mahler087_hanner_product_polar_duality",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 147
+      },
+      {
+        "name": "thm_34_mahler087_riccati_curvature_margin_194_vs_180",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 160
+      },
+      {
+        "name": "thm_35_mahler087_bernstein_window_and_simplex_gap",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 181
+      },
+      {
+        "name": "thm_36_ug102_quadratic_latent_noise_trilinear_lock",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 195
+      },
+      {
+        "name": "thm_37_ug102_rank_one_acceptance_drop_bound",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 219
+      },
+      {
+        "name": "thm_38_ug102_sparse_projection_window_k_neg_two_thirds",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 234
+      },
+      {
+        "name": "thm_39_ug102_five_preprint_reduction_fanout",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 259
+      },
+      {
+        "name": "thm_40_ap159_doubly_exponential_precision_blowup",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 281
+      },
+      {
+        "name": "thm_41_kaplansky197_linnik_congruence_degree_divisibility",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 321
+      },
+      {
+        "name": "thm_42_kaplansky197_planar_euler_obstruction_contradiction",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 339
+      },
+      {
+        "name": "thm_43_kaplansky197_direct_finiteness_defect_idempotent",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 352
+      },
+      {
+        "name": "thm_44_sparse_window_axioms_force_m_ge_two",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 387
+      },
+      {
+        "name": "thm_45_sparse_window_m1_counter_model",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 397
+      },
+      {
+        "name": "thm_46_nt_pair_007_vs_017_challenge_and_file_balance",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 410
+      },
+      {
+        "name": "thm_47_mahler087_four_challenges_from_three_preprints",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 421
+      },
+      {
+        "name": "thm_48_ap159_harmonic_block_divergence_threshold",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 433
+      },
+      {
+        "name": "thm_49_kaplansky197_positive_characteristic_partition",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 446
+      },
+      {
+        "name": "thm_50_pillar2_six_trace_citation_and_challenge_share",
+        "file": "proofs/traces10_algebraic_combinatorial_engines.lean",
+        "line": 458
+      },
+      {
+        "name": "thm_51_mezard221_quadratic_cavity_convexity_sos",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 21
+      },
+      {
+        "name": "thm_52_mezard221_quartic_cavity_sos_identity",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 46
+      },
+      {
+        "name": "thm_53_heisenberg271_spin_magnetization_floor",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 68
+      },
+      {
+        "name": "thm_54_heisenberg271_triangular_spectral_integral_and_beta0",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 80
+      },
+      {
+        "name": "thm_55_freegroup287_haagerup_radial_word_bound",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 115
+      },
+      {
+        "name": "thm_56_freegroup287_dykema_radulescu_compression_lock",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 135
+      },
+      {
+        "name": "thm_57_vlasov362_glassey_strauss_bootstrap_contradiction",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 149
+      },
+      {
+        "name": "thm_58_vlasov362_relativistic_subluminal_gap",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 161
+      },
+      {
+        "name": "thm_59_inductive_dyadic_shell_budget",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 180
+      },
+      {
+        "name": "thm_60_ten_trace_domain_classification_balance",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 195
+      },
+      {
+        "name": "thm_61_three_stage_scope_funnel",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 214
+      },
+      {
+        "name": "thm_62_manuscript_coverage_11_of_22",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 229
+      },
+      {
+        "name": "thm_63_citation_audit_recovery_gain",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 241
+      },
+      {
+        "name": "thm_64_prompt_directive_vs_bernstein_degree32",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 253
+      },
+      {
+        "name": "thm_65_bidirectional_citation_conservation",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 264
+      },
+      {
+        "name": "thm_66_five_challenge_stub_false_positives_verified_used",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 284
+      },
+      {
+        "name": "thm_67_internal_oai_2170_vacuous_hypotheses_sum",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 298
+      },
+      {
+        "name": "thm_68_proof_term_scanner_zero_false_positives",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 330
+      },
+      {
+        "name": "thm_69_stub_only_scanner_blindness_no_go_counter_model",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 345
+      },
+      {
+        "name": "thm_70_clean_vs_defective_internal_lemma_ratio",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 359
+      },
+      {
+        "name": "thm_71_comparator_challenge_21_files_1949_lines",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 381
+      },
+      {
+        "name": "thm_72_trace_length_dispersion_2191_vs_210",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 395
+      },
+      {
+        "name": "thm_73_citation_polarity_swing_mezard_vs_freegroup",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 408
+      },
+      {
+        "name": "thm_74_nonlinear_joint_provenance_fidelity_under_one_quarter",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 420
+      },
+      {
+        "name": "thm_75_case014_grand_ten_traces_anatomy_ledger",
+        "file": "proofs/traces10_analytic_operator_and_scope_audit.lean",
+        "line": 448
+      }
+    ]
+  },
+  "scope_and_limitations": {
+    "lean_formalization_scope": "75 Lean 4 theorems (1,337 lines, 0 sorry, 346/346 hypothesis mutations caught = 100%, 74/75 structural, 19 nonlinear/inductive proof terms) verifying exact compiler-pipeline forensics, bidirectional 332-vs-315 citation conservation, algebraic/analytic proof invariants across all 10 released traces, and the 3-stage scope & OAI/ vacuous-binder No-Go audit."
+  }
+}

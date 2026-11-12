@@ -1,0 +1,584 @@
+{
+  "case_id": "deepmind_code_verification_signal_cli",
+  "title": "Google DeepMind code-verification (libsignal-cli, Commit 808b4b7ffef1): 7,528,295-Line Build Stratigraphy, 55/64 (85.94%) Binary Hook Bypass, 16,767-Line Unproved Arm64/Trusted TCB & Syscall Divergences, 153,682-Line Comparator TCB Laundering, and SPQR V1 8-Byte MAC Vacuity (q = 35,211) & .base-keys 2 MiB Bricking (56,680 Keys) Audit",
+  "target_repository": "google-deepmind/code-verification (commit 808b4b7ffef198e6a91f71ed776d641a1c236882, accompanying the October 26, 2026 draft Formally Verifying Signal's Security Using AI)",
+  "date": "2026-11-12",
+  "lean_version": "v4.29.0-rc8",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean && ~/.elan/bin/lean proofs/deepmind_arm64_tcb_and_syscall_divergences.lean && ~/.elan/bin/lean proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_deepmind_signal.py"
+  },
+  "artifacts_sha256": {
+    "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean": "f74ceceffc91ea0fa3b20c44c4b95dca4c1fd8694be364320dc130b249add4f0",
+    "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean": "433e50b87076690b5846ca7c3756de9aec2b62b02252ad4590b64c4add5a281b",
+    "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean": "14707d5125702e40acc32f758a09ec8acbbe9ba852429e07cc2c13d7dfdb8198",
+    "proofs/deepmind_signal_forensic_parsers.py": "543de4c779793fdf574652f0ccd97b60ccf00c8409d158d0522abf2d743cdb07",
+    "proofs/verify_symbolic_deepmind_signal.py": "b3a48690d8bd8f7d7e7046db61794f5aa2fa9ba819fd28a0d6f817600583275b",
+    "proofs/symbolic_verification_result.json": "c900845ba7c37bfb924c9edb268f52a29d36fb0d648c18adee52bb364d1d71fd",
+    "proofs/problem_spec.md": "8d49a505316f4c3d08e9066c7462b158f28542d29e0de7da05e468392b2a01cf"
+  },
+  "verified_key_results": {
+    "pillar1_stratigraphy_and_hook_boundary": {
+      "total_lean_files": 11323,
+      "total_lean_lines": 7528295,
+      "default_build_files": 10722,
+      "default_build_lines": 7258642,
+      "non_default_module_files": 592,
+      "non_default_module_lines": 267194,
+      "cli_elf_exclusive_files": 120,
+      "cli_elf_exclusive_lines": 85249,
+      "repository_sorry_count": 38,
+      "hook_table_placed_symbols": 37,
+      "panic_sigabrt_symbols": 18,
+      "dehooked_elf_symbols": 9,
+      "bypassed_symbol_ratio": "55/64",
+      "peak_heap_slack_bytes": 37366328,
+      "reflected_decoder_lines_saved": 18373,
+      "lean_theorems": [
+        "thm_01_repo_module_and_lakefile_partition (Theorem 1, L25)",
+        "thm_02_default_vs_excluded_line_closure (Theorem 2, L38)",
+        "thm_03_non_default_eight_bucket_decomposition (Theorem 3, L52)",
+        "thm_04_cli_elf_exclusive_headline_isolation (Theorem 4, L70)",
+        "thm_05_deviations_ledger_off_by_one_and_undocumented_tags (Theorem 5, L87)",
+        "thm_06_inline_scope_disclaimer_tag_census (Theorem 6, L102)",
+        "thm_07_complete_repository_sorry_distribution (Theorem 7, L119)",
+        "thm_08_missing_audit_scripts_and_trusted_base_doc (Theorem 8, L137)",
+        "thm_09_placed_elf_hook_bypass_ratio (Theorem 9, L154)",
+        "thm_10_pre_vs_post_dehook_symbol_transfer (Theorem 10, L169)",
+        "thm_11_thirty_seven_hook_category_partition (Theorem 11, L185)",
+        "thm_12_stock_ld_text_a_text_b_address_quarantine (Theorem 12, L199)",
+        "thm_13_pre_boot_five_byte_data_token_overwrite (Theorem 13, L214)",
+        "thm_14_bitvec_cpufeature_probe_suppression (Theorem 14, L226)",
+        "thm_15_one_gib_peak_budget_slack_and_512mib_violation (Theorem 15, L239)",
+        "thm_16_fixed_aslr_off_virtual_layout_separation (Theorem 16, L253)",
+        "thm_17_hardcoded_pc_decode_and_sp_offset_coupling (Theorem 17, L268)",
+        "thm_18_fds_hi_frame_guarantees_fd3_allocation (Theorem 18, L307)",
+        "thm_19_inherited_parent_fd_breaks_fds_hi_frame_counter_model (Theorem 19, L324)",
+        "thm_20_unrolled_decode_cost_closed_form (Theorem 20, L348)",
+        "thm_21_reflected_decode_cost_closed_form (Theorem 21, L358)",
+        "thm_22_alternative_reflected_block_decoder_savings (Theorem 22, L369)",
+        "thm_23_alternative_concrete_decode_table_compression (Theorem 23, L381)",
+        "thm_24_nonlinear_frame_forwarding_vs_interval_tree (Theorem 24, L397)",
+        "thm_25_pillar1_stratigraphy_and_hook_ledger (Theorem 25, L417)",
+        "thm_76_refinement_hygiene_self_failure_and_exempt_debt (Theorem 76, L436)",
+        "thm_77_binary_validcall_five_restrictions_and_spqr_non_regression (Theorem 77, L457)"
+      ],
+      "oai_ref_preserved_files": 82,
+      "oai_ref_lean_files": 59,
+      "hygiene_cli_allowlist_total": 38,
+      "hygiene_stale_kept_theorems": 7,
+      "validcall_restriction_clauses": 5
+    },
+    "pillar2_arm64_tcb_and_syscall_divergences": {
+      "arm64_trusted_files": 61,
+      "arm64_trusted_lines": 16767,
+      "arm64_trusted_kernel_theorems": 0,
+      "tcb_exception_branches": 177,
+      "tcb_oom_branches": 12,
+      "tcb_trap_branches": 10,
+      "modeled_linux_syscalls": 31,
+      "max_rw_count_bytes": 2147479552,
+      "lean_theorems": [
+        "thm_26_arm64_trusted_six_subsystem_partition (Theorem 26, L24)",
+        "thm_27_arm64_trusted_line_budget_decomposition (Theorem 27, L43)",
+        "thm_28_tcb_exception_oom_and_trap_census (Theorem 28, L61)",
+        "thm_29_modeled_vs_unmodeled_linux_syscall_gap (Theorem 29, L78)",
+        "thm_30_hoare_exception_guard_vacuous_satisfaction (Theorem 30, L92)",
+        "thm_31_inductive_terminal_fault_absorption (Theorem 31, L109)",
+        "thm_32_at_random_zeroing_entropy_collapse (Theorem 32, L126)",
+        "thm_33_mmap_oom_halt_vs_linux_enomem_return (Theorem 33, L146)",
+        "thm_34_bitvec64_enomem_abi_encoding (Theorem 34, L160)",
+        "thm_35_exit_group_unmasked_x0_posix_divergence (Theorem 35, L174)",
+        "thm_36_exit_code_256_multiple_aliasing_family (Theorem 36, L186)",
+        "thm_37_closed_stdio_fd_ebadf_vs_exception (Theorem 37, L197)",
+        "thm_38_max_rw_count_clamp_vs_exception_and_einval (Theorem 38, L210)",
+        "thm_39_mid_buffer_fault_short_io_erasure (Theorem 39, L225)",
+        "thm_40_openat_mode_erasure_vs_linux_eacces (Theorem 40, L237)",
+        "thm_41_ppoll_high_descriptor_trap_divergence (Theorem 41, L251)",
+        "thm_42_zero_eintr_signal_interruption_gap (Theorem 42, L262)",
+        "thm_43_nonlinear_mmap_arena_page_footprint (Theorem 43, L274)",
+        "thm_44_inductive_short_read_accumulation (Theorem 44, L291)",
+        "thm_45_faithful_enomem_enforces_caller_null_safety (Theorem 45, L331)",
+        "thm_46_excused_oom_hides_null_deref_counter_model (Theorem 46, L344)",
+        "thm_47_bitvec32_openat_flag_composition (Theorem 47, L354)",
+        "thm_48_nonlinear_iovec_product_exceeds_max_rw_count (Theorem 48, L369)",
+        "thm_49_signal_handler_table_bypass_on_sync_faults (Theorem 49, L383)",
+        "thm_50_pillar2_arm64_tcb_master_ledger (Theorem 50, L396)",
+        "thm_78_rust_harness_zero_rng_and_frozen_epoch_bypass (Theorem 78, L418)",
+        "thm_79_sail_unicorn_fault_skip_and_hooked_zeroize_gap (Theorem 79, L439)"
+      ],
+      "frozen_epoch_30day_expiry_seconds": 2592000,
+      "testing_status_fault_other": 13,
+      "alink_displaced_weak_atomics": 3,
+      "hooked_drop_zeroize_symbols": 2
+    },
+    "pillar3_comparator_laundering_and_crypto_bounds": {
+      "headline_reachable_files": 9873,
+      "headline_reachable_lines": 6933064,
+      "headline_unreachable_files": 1450,
+      "headline_unreachable_lines": 595231,
+      "comparator_json_entries": 24,
+      "unique_headline_theorems": 21,
+      "comparator_challenge_tcb_files": 326,
+      "comparator_challenge_tcb_lines": 153682,
+      "enable_nanoda": false,
+      "dev_ls31_qep_eq_q_vacuity": 38967,
+      "dev_c14_qep_eq_q_vacuity_actual": 35211,
+      "mac16_rigidity_vacuity": 2307621357,
+      "u32_ratchet_counter_ceiling": 2147471145,
+      "base_keys_bricking_handshakes": 56680,
+      "hypothesis_mutants_killed": 391,
+      "lean_theorems": [
+        "thm_51_six_headline_reverse_dependency_closure (Theorem 51, L26)",
+        "thm_52_comparator_twenty_four_to_twenty_one_deduplication (Theorem 52, L42)",
+        "thm_53_comparator_challenge_153682_line_tcb_laundering (Theorem 53, L60)",
+        "thm_54_nanoda_disabled_and_linux_510_landlock_bypass (Theorem 54, L80)",
+        "thm_55_bug_injection_retarget_gap_and_synthetic_sorrys (Theorem 55, L95)",
+        "thm_56_hardened_comparator_isolation_guarantees (Theorem 56, L139)",
+        "thm_57_upstream_comparator_laundering_counter_model (Theorem 57, L149)",
+        "thm_58_inductive_triangular_leak_guess_sum (Theorem 58, L170)",
+        "thm_59_dev_ls31_qep0_2pow32_sharp_threshold (Theorem 59, L197)",
+        "thm_60_dev_ls31_qep0_vacuity_sharp_threshold (Theorem 60, L211)",
+        "thm_61_dev_ls31_qep1_and_qep10_vacuity_thresholds (Theorem 61, L224)",
+        "thm_62_dev_ls31_quartic_qep_eq_q_vacuity_cliff (Theorem 62, L241)",
+        "thm_63_nonlinear_c14_exceeds_ls31_for_all_q_ge_2 (Theorem 63, L258)",
+        "thm_64_dev_c14_stale_threshold_drift_35211_vs_38967 (Theorem 64, L279)",
+        "thm_65_rigidity_16byte_mac_eliminates_u32_session_vacuity (Theorem 65, L300)",
+        "thm_66_dev_cli21_base_keys_56680_bricking_cliff (Theorem 66, L322)",
+        "thm_67_base_keys_append_only_permanent_dos (Theorem 67, L338)",
+        "thm_68_u32_ratchet_counter_sharp_ceiling (Theorem 68, L350)",
+        "thm_69_cli_plaintext_stdin_record_and_file_caps (Theorem 69, L365)",
+        "thm_70_refuse_corr_b0_ten_epoch_blind_window (Theorem 70, L378)",
+        "thm_71_multi_session_1024_vacuity_at_2pow21_sessions (Theorem 71, L391)",
+        "thm_72_nonlinear_unhoisted_slot_mac_blowup (Theorem 72, L407)",
+        "thm_73_nonlinear_x25519_clamped_scalar_torsion_annihilation (Theorem 73, L427)",
+        "thm_74_inductive_multi_session_prefix_sum (Theorem 74, L448)",
+        "thm_75_case_013_grand_forensic_anatomy_ledger (Theorem 75, L460)",
+        "thm_80_pqxdh_signature_bound_vacuity_and_torsion_regression (Theorem 80, L484)",
+        "thm_81_uncommitted_agpl_elf_and_unreferenced_heap_brittleness (Theorem 81, L507)"
+      ],
+      "pqxdh_gapdh_term5_ratio": "17441/16384",
+      "pinned_agpl_elf_size_bytes": 617448,
+      "heap_sync_mirrored_files": 22
+    }
+  },
+  "lean4_verification": {
+    "compiler": "leanprover/lean4:v4.29.0-rc8",
+    "theorems_proved": 81,
+    "lean4_lines": 1457,
+    "files": [
+      "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+      "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+      "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean"
+    ],
+    "hypothesis_mutations_tested": 391,
+    "hypothesis_mutations_killed": 391,
+    "theorems": [
+      {
+        "name": "thm_01_repo_module_and_lakefile_partition",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 25
+      },
+      {
+        "name": "thm_02_default_vs_excluded_line_closure",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 38
+      },
+      {
+        "name": "thm_03_non_default_eight_bucket_decomposition",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 52
+      },
+      {
+        "name": "thm_04_cli_elf_exclusive_headline_isolation",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 70
+      },
+      {
+        "name": "thm_05_deviations_ledger_off_by_one_and_undocumented_tags",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 87
+      },
+      {
+        "name": "thm_06_inline_scope_disclaimer_tag_census",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 102
+      },
+      {
+        "name": "thm_07_complete_repository_sorry_distribution",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 119
+      },
+      {
+        "name": "thm_08_missing_audit_scripts_and_trusted_base_doc",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 137
+      },
+      {
+        "name": "thm_09_placed_elf_hook_bypass_ratio",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 154
+      },
+      {
+        "name": "thm_10_pre_vs_post_dehook_symbol_transfer",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 169
+      },
+      {
+        "name": "thm_11_thirty_seven_hook_category_partition",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 185
+      },
+      {
+        "name": "thm_12_stock_ld_text_a_text_b_address_quarantine",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 199
+      },
+      {
+        "name": "thm_13_pre_boot_five_byte_data_token_overwrite",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 214
+      },
+      {
+        "name": "thm_14_bitvec_cpufeature_probe_suppression",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 226
+      },
+      {
+        "name": "thm_15_one_gib_peak_budget_slack_and_512mib_violation",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 239
+      },
+      {
+        "name": "thm_16_fixed_aslr_off_virtual_layout_separation",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 253
+      },
+      {
+        "name": "thm_17_hardcoded_pc_decode_and_sp_offset_coupling",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 268
+      },
+      {
+        "name": "thm_18_fds_hi_frame_guarantees_fd3_allocation",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 307
+      },
+      {
+        "name": "thm_19_inherited_parent_fd_breaks_fds_hi_frame_counter_model",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 324
+      },
+      {
+        "name": "thm_20_unrolled_decode_cost_closed_form",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 348
+      },
+      {
+        "name": "thm_21_reflected_decode_cost_closed_form",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 358
+      },
+      {
+        "name": "thm_22_alternative_reflected_block_decoder_savings",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 369
+      },
+      {
+        "name": "thm_23_alternative_concrete_decode_table_compression",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 381
+      },
+      {
+        "name": "thm_24_nonlinear_frame_forwarding_vs_interval_tree",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 397
+      },
+      {
+        "name": "thm_25_pillar1_stratigraphy_and_hook_ledger",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 417
+      },
+      {
+        "name": "thm_76_refinement_hygiene_self_failure_and_exempt_debt",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 436
+      },
+      {
+        "name": "thm_77_binary_validcall_five_restrictions_and_spqr_non_regression",
+        "file": "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean",
+        "line": 457
+      },
+      {
+        "name": "thm_26_arm64_trusted_six_subsystem_partition",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 24
+      },
+      {
+        "name": "thm_27_arm64_trusted_line_budget_decomposition",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 43
+      },
+      {
+        "name": "thm_28_tcb_exception_oom_and_trap_census",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 61
+      },
+      {
+        "name": "thm_29_modeled_vs_unmodeled_linux_syscall_gap",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 78
+      },
+      {
+        "name": "thm_30_hoare_exception_guard_vacuous_satisfaction",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 92
+      },
+      {
+        "name": "thm_31_inductive_terminal_fault_absorption",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 109
+      },
+      {
+        "name": "thm_32_at_random_zeroing_entropy_collapse",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 126
+      },
+      {
+        "name": "thm_33_mmap_oom_halt_vs_linux_enomem_return",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 146
+      },
+      {
+        "name": "thm_34_bitvec64_enomem_abi_encoding",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 160
+      },
+      {
+        "name": "thm_35_exit_group_unmasked_x0_posix_divergence",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 174
+      },
+      {
+        "name": "thm_36_exit_code_256_multiple_aliasing_family",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 186
+      },
+      {
+        "name": "thm_37_closed_stdio_fd_ebadf_vs_exception",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 197
+      },
+      {
+        "name": "thm_38_max_rw_count_clamp_vs_exception_and_einval",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 210
+      },
+      {
+        "name": "thm_39_mid_buffer_fault_short_io_erasure",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 225
+      },
+      {
+        "name": "thm_40_openat_mode_erasure_vs_linux_eacces",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 237
+      },
+      {
+        "name": "thm_41_ppoll_high_descriptor_trap_divergence",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 251
+      },
+      {
+        "name": "thm_42_zero_eintr_signal_interruption_gap",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 262
+      },
+      {
+        "name": "thm_43_nonlinear_mmap_arena_page_footprint",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 274
+      },
+      {
+        "name": "thm_44_inductive_short_read_accumulation",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 291
+      },
+      {
+        "name": "thm_45_faithful_enomem_enforces_caller_null_safety",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 331
+      },
+      {
+        "name": "thm_46_excused_oom_hides_null_deref_counter_model",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 344
+      },
+      {
+        "name": "thm_47_bitvec32_openat_flag_composition",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 354
+      },
+      {
+        "name": "thm_48_nonlinear_iovec_product_exceeds_max_rw_count",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 369
+      },
+      {
+        "name": "thm_49_signal_handler_table_bypass_on_sync_faults",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 383
+      },
+      {
+        "name": "thm_50_pillar2_arm64_tcb_master_ledger",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 396
+      },
+      {
+        "name": "thm_78_rust_harness_zero_rng_and_frozen_epoch_bypass",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 418
+      },
+      {
+        "name": "thm_79_sail_unicorn_fault_skip_and_hooked_zeroize_gap",
+        "file": "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean",
+        "line": 439
+      },
+      {
+        "name": "thm_51_six_headline_reverse_dependency_closure",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 26
+      },
+      {
+        "name": "thm_52_comparator_twenty_four_to_twenty_one_deduplication",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 42
+      },
+      {
+        "name": "thm_53_comparator_challenge_153682_line_tcb_laundering",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 60
+      },
+      {
+        "name": "thm_54_nanoda_disabled_and_linux_510_landlock_bypass",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 80
+      },
+      {
+        "name": "thm_55_bug_injection_retarget_gap_and_synthetic_sorrys",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 95
+      },
+      {
+        "name": "thm_56_hardened_comparator_isolation_guarantees",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 139
+      },
+      {
+        "name": "thm_57_upstream_comparator_laundering_counter_model",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 149
+      },
+      {
+        "name": "thm_58_inductive_triangular_leak_guess_sum",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 170
+      },
+      {
+        "name": "thm_59_dev_ls31_qep0_2pow32_sharp_threshold",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 197
+      },
+      {
+        "name": "thm_60_dev_ls31_qep0_vacuity_sharp_threshold",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 211
+      },
+      {
+        "name": "thm_61_dev_ls31_qep1_and_qep10_vacuity_thresholds",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 224
+      },
+      {
+        "name": "thm_62_dev_ls31_quartic_qep_eq_q_vacuity_cliff",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 241
+      },
+      {
+        "name": "thm_63_nonlinear_c14_exceeds_ls31_for_all_q_ge_2",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 258
+      },
+      {
+        "name": "thm_64_dev_c14_stale_threshold_drift_35211_vs_38967",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 279
+      },
+      {
+        "name": "thm_65_rigidity_16byte_mac_eliminates_u32_session_vacuity",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 300
+      },
+      {
+        "name": "thm_66_dev_cli21_base_keys_56680_bricking_cliff",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 322
+      },
+      {
+        "name": "thm_67_base_keys_append_only_permanent_dos",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 338
+      },
+      {
+        "name": "thm_68_u32_ratchet_counter_sharp_ceiling",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 350
+      },
+      {
+        "name": "thm_69_cli_plaintext_stdin_record_and_file_caps",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 365
+      },
+      {
+        "name": "thm_70_refuse_corr_b0_ten_epoch_blind_window",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 378
+      },
+      {
+        "name": "thm_71_multi_session_1024_vacuity_at_2pow21_sessions",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 391
+      },
+      {
+        "name": "thm_72_nonlinear_unhoisted_slot_mac_blowup",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 407
+      },
+      {
+        "name": "thm_73_nonlinear_x25519_clamped_scalar_torsion_annihilation",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 427
+      },
+      {
+        "name": "thm_74_inductive_multi_session_prefix_sum",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 448
+      },
+      {
+        "name": "thm_75_case_013_grand_forensic_anatomy_ledger",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 460
+      },
+      {
+        "name": "thm_80_pqxdh_signature_bound_vacuity_and_torsion_regression",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 484
+      },
+      {
+        "name": "thm_81_uncommitted_agpl_elf_and_unreferenced_heap_brittleness",
+        "file": "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+        "line": 507
+      }
+    ]
+  }
+}

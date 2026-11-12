@@ -1,0 +1,177 @@
+{
+  "case_id": "014_openai_reasoning_traces_ten",
+  "compiler_forensics": {
+    "administrative_redaction_present": true,
+    "anti_computer_directive_present": true,
+    "cjk_active_chars": [
+      "\u81ea",
+      "\u7531"
+    ],
+    "cjk_codepoints": [
+      33258,
+      30001
+    ],
+    "fandol_font_loaded": true,
+    "inherited_complexity_macros": [
+      "\\UGC",
+      "\\CSP",
+      "\\NP",
+      "\\OPT",
+      "\\SDP"
+    ],
+    "mezard_active_gdefs": 14,
+    "mezard_tex_lines": 211,
+    "preprint_cjk_glyphs": 0,
+    "preprint_glyph_mappings": 38,
+    "ug102_raghavendra_corollary_demoted": true
+  },
+  "lean_and_scope_audit": {
+    "ap159_preprint_tex_lines": 15551,
+    "binary_elliott_lines": 56,
+    "binary_elliott_measure_theory_repeats": 7,
+    "binary_elliott_open_lines": 27,
+    "challenge_file_count": 21,
+    "challenge_total_lines": 1949,
+    "doc_087_nonsym_contradiction": true,
+    "family_manuscripts_total": 22,
+    "family_traced_manuscripts": 11,
+    "lean_docs_file_count": 10,
+    "lean_docs_total_lines": 211,
+    "minuncut_masked_blank_lines": 22,
+    "minuncut_masked_space_bytes": 1401,
+    "oai_lean_files_total": 9929,
+    "oai_proof_term_uses_hNP_and_hK": true,
+    "oai_unused_hyps_total": 2170,
+    "upstream_total_families": 373
+  },
+  "symbolic_math_invariants": {
+    "freegroup287_sqrt2_compression_rank": 2,
+    "heisenberg271_infrared_ratio": "4*s",
+    "kaplansky197_euler_gap": "1/2",
+    "mahler087_dim3_cube_minus_simplex": "32/9",
+    "mahler087_dim3_cube_scaled_36": 384,
+    "mahler087_dim3_simplex_scaled_36": 256,
+    "mezard221_quartic_sos_verified": true,
+    "pi017_drop1_scaled_1e4": 46232,
+    "pi017_drop2_scaled_1e4": 4800,
+    "pi017_flint_hills_exponent": "-1/25",
+    "pi017_part1_scaled_1e4": 24800,
+    "pi017_part2_scaled_1e4": 20000,
+    "pi017_zz_benchmark_scaled_1e4": 71032,
+    "ug102_collision_and_degree": [
+      "1/m",
+      "m"
+    ],
+    "vlasov362_bootstrap_gap_exact": "43/500"
+  },
+  "trace_and_citation_audit": {
+    "citation_union_total": 545,
+    "drop_fraction_exact": "115/166",
+    "dropped_trace_refs": 230,
+    "openai_2026_self_cites_dropped": 3,
+    "per_trace": {
+      "007": {
+        "dropped": 8,
+        "lines": 284,
+        "pages": 7,
+        "paper_bib": 21,
+        "prompts": 2,
+        "retained": 9,
+        "trace_refs": 17
+      },
+      "017": {
+        "dropped": 16,
+        "lines": 2073,
+        "pages": 42,
+        "paper_bib": 25,
+        "prompts": 0,
+        "retained": 7,
+        "trace_refs": 23
+      },
+      "087": {
+        "dropped": 50,
+        "lines": 2191,
+        "pages": 45,
+        "paper_bib": 58,
+        "prompts": 3,
+        "retained": 17,
+        "trace_refs": 67
+      },
+      "102": {
+        "dropped": 36,
+        "lines": 708,
+        "pages": 16,
+        "paper_bib": 42,
+        "prompts": 1,
+        "retained": 20,
+        "trace_refs": 56
+      },
+      "159": {
+        "dropped": 27,
+        "lines": 1779,
+        "pages": 41,
+        "paper_bib": 48,
+        "prompts": 2,
+        "retained": 26,
+        "trace_refs": 53
+      },
+      "197": {
+        "dropped": 33,
+        "lines": 1045,
+        "pages": 23,
+        "paper_bib": 21,
+        "prompts": 2,
+        "retained": 9,
+        "trace_refs": 42
+      },
+      "221": {
+        "dropped": 3,
+        "lines": 210,
+        "pages": 5,
+        "paper_bib": 18,
+        "prompts": 1,
+        "retained": 2,
+        "trace_refs": 5
+      },
+      "271": {
+        "dropped": 6,
+        "lines": 277,
+        "pages": 6,
+        "paper_bib": 36,
+        "prompts": 1,
+        "retained": 3,
+        "trace_refs": 9
+      },
+      "287": {
+        "dropped": 49,
+        "lines": 490,
+        "pages": 11,
+        "paper_bib": 17,
+        "prompts": 0,
+        "retained": 5,
+        "trace_refs": 54
+      },
+      "362": {
+        "dropped": 2,
+        "lines": 251,
+        "pages": 6,
+        "paper_bib": 29,
+        "prompts": 1,
+        "retained": 4,
+        "trace_refs": 6
+      }
+    },
+    "posthoc_added_bib_min": 213,
+    "primary_paper_bib_total": 315,
+    "retained_trace_refs": 102,
+    "total_extracted_lines": 9308,
+    "total_pages": 202,
+    "total_prompt_blocks": 13,
+    "total_trace_refs": 332,
+    "total_traces": 10,
+    "zero_prompt_families": [
+      "017",
+      "287"
+    ]
+  }
+}

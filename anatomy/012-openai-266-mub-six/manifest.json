@@ -1,0 +1,530 @@
+{
+  "case_id": "openai_266_mutually_unbiased_bases_six",
+  "title": "OpenAI #266 (Mutually Unbiased Bases in Dimension Six): 2,835,031-Line Unrolling Stratigraphy, MRW Fourier Vanishing & Cubic 5-Cycle Classification, Weiner Kraus Rigidity & 6-Block Schur-Gram Positivstellensatz (N(6) <= 5), Orphaned Attainable 3, and Unformalized binary64 N(6) = 3 Audit",
+  "target_repository": "openai/math (Family 266: OAI/Analysis/MutuallyUnbiased/, OAI/LinearAlgebra/Hadamard/, ComparatorChallenges/{MUBSix,HadamardCubeFiber}.lean, and two September 24, 2026 MUB-6 preprints)",
+  "date": "2026-11-12",
+  "lean_version": "v4.29.0-rc8",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/mub6_hadamard_fourier_and_cubic_fibers.lean && ~/.elan/bin/lean proofs/mub6_weiner_completion_and_gram_sos.lean && ~/.elan/bin/lean proofs/mub6_stratigraphy_and_binary64_audit.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_mub266.py"
+  },
+  "artifacts_sha256": {
+    "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean": "1cbdf44e2ac2264afe7ea1442eb02dfbf39af1ce553c923afa170e8f8b1a5d40",
+    "proofs/mub6_weiner_completion_and_gram_sos.lean": "e9b89f4f5a2d535a2a5454560d289c19d6a02d5d30249ee5412cb5d7cf3fec73",
+    "proofs/mub6_stratigraphy_and_binary64_audit.lean": "f8e5845ad731044fecbf8e6ae8548508223171c06e917ceefd89dffd005726e3",
+    "proofs/verify_symbolic_mub266.py": "1c14ea9d1e931fac06bd0e935b2099bdb6271fe72f1e5ae06b829ab445f8e93b",
+    "proofs/symbolic_verification_result.json": "92bb0e153e4f664ea4c9250be709630beae0db07e1e1199f67cdd63f3e84b47b",
+    "proofs/problem_spec.md": "7ceb936e9585544f11cbb9b066073e8faae6d7fbd359968e84ab8a019586afcf"
+  },
+  "verified_key_results": {
+    "pillar1_hadamard_fourier_and_cubic_fibers": {
+      "pair_table_equations": 8871,
+      "pair_table_coordinates": 909,
+      "pair_table_rank": 897,
+      "fourier_witness_terms": 26,
+      "tao_automorphism_order": 720,
+      "complete_family_cubic_norm_sq": -18,
+      "small_partitions_redundant_binders": 40,
+      "lean_theorems": [
+        "thm_01_kronecker_mub_lower_bound_scale (Theorem 1, L22)",
+        "thm_02_qutrit_gauss_sum_eisenstein_norm (Theorem 2, L42)",
+        "thm_03_balanced_charge_phase_cancellation (Theorem 3, L67)",
+        "thm_04_order_one_row_contraction_identity (Theorem 4, L79)",
+        "thm_05_falling_factorial_six_cutoff (Theorem 5, L96)",
+        "thm_06_pair_certificate_charge_conservation (Theorem 6, L111)",
+        "thm_07_pair_nonnegative_sos_vanishing (Theorem 7, L125)",
+        "thm_08_fourier_or_entrywise_square_dichotomy (Theorem 8, L147)",
+        "thm_09_pair_table_rank_nullity_margin (Theorem 9, L161)",
+        "thm_10_newton_sextic_power_sum_collapse (Theorem 10, L181)",
+        "thm_11_unimodular_palindromic_duality (Theorem 11, L201)",
+        "thm_12_cube_fiber_three_three_multiplicity (Theorem 12, L217)",
+        "thm_13_cube_fiber_sum_zero_challenge (Theorem 13, L240)",
+        "thm_14_support_intersection_multiplicity_clash (Theorem 14, L260)",
+        "thm_15_cubic_block_subspace_dimension_no_go (Theorem 15, L276)",
+        "thm_16_collinear_restriction_rank_contradiction (Theorem 16, L290)",
+        "thm_17_five_vertex_two_regular_connected_five_cycle (Theorem 17, L303)",
+        "thm_18_tao_cubic_symmetry_order_720 (Theorem 18, L316)",
+        "thm_19_tao_complete_family_orbit_contradiction (Theorem 19, L333)",
+        "thm_20_cube_fiber_axioms_force_three_three (Theorem 20, L370)",
+        "thm_21_cube_fiber_degenerate_equal_roots_counter_model (Theorem 21, L379)",
+        "thm_22_repaired_small_partitions_pattern3_0 (Theorem 22, L389)",
+        "thm_23_repaired_small_partitions_pattern3_1 (Theorem 23, L398)",
+        "thm_24_repaired_small_partitions_pattern4_0 (Theorem 24, L408)",
+        "thm_25_small_partitions_redundancy_accounting (Theorem 25, L419)"
+      ]
+    },
+    "pillar2_weiner_completion_and_gram_sos": {
+      "weiner_complement_dim_at_6": 6,
+      "weiner_complement_dim_at_5": 11,
+      "weiner_complement_dim_at_4": 16,
+      "young_blocks_of_5": 6,
+      "total_schur_pivots": 98,
+      "schur_pivot_floor": 40000,
+      "mixed_equations": 46041,
+      "mixed_coordinates_total": 3429,
+      "mixed_coordinates_retained": 3237,
+      "expression_tree_leaves": 2425,
+      "paper_denominator": 6480,
+      "lean_denominator": 37623398400,
+      "clearance_factor": 5806080,
+      "exact_rational_bound": "-2007321335237/30",
+      "lean_theorems": [
+        "thm_26_cartan_killing_hilbert_schmidt_orthogonality (Theorem 26, L22)",
+        "thm_27_complete_family_traceless_dimension_bound (Theorem 27, L35)",
+        "thm_28_weiner_complement_dimension_at_six_bases (Theorem 28, L48)",
+        "thm_29_realigned_kraus_maximal_abelian_saturation (Theorem 29, L65)",
+        "thm_30_weiner_no_go_obstruction_below_six_bases (Theorem 30, L78)",
+        "thm_31_weiner_abelian_dimension_lock_general_d (Theorem 31, L91)",
+        "thm_32_shared_column_gram_expectation_split (Theorem 32, L109)",
+        "thm_33_singleton_label_order_two_reduction (Theorem 33, L125)",
+        "thm_34_partitions_of_five_young_block_count (Theorem 34, L142)",
+        "thm_35_gram_block_dimensions_and_pivot_sum_98 (Theorem 35, L156)",
+        "thm_36_gram_decimal_exponent_integer_weights (Theorem 36, L168)",
+        "thm_37_schur_complement_pivot_floor_40000 (Theorem 37, L179)",
+        "thm_38_complex_hermitian_real_symmetric_psd_split (Theorem 38, L192)",
+        "thm_39_block0_leading_minor_sylvester_positivity (Theorem 39, L213)",
+        "thm_40_mixed_table_rank_and_retained_coordinates (Theorem 40, L230)",
+        "thm_41_binary_combination_tree_depth_saving (Theorem 41, L245)",
+        "thm_42_l1_residual_bound_under_bounded_moments (Theorem 42, L259)",
+        "thm_43_exact_rational_mixed_certificate_margin (Theorem 43, L284)",
+        "thm_44_denominator_clearance_factorization (Theorem 44, L300)",
+        "thm_45_integer_cleared_head_and_tail_bridge (Theorem 45, L313)",
+        "thm_46_six_chunk_mixed_residual_contradiction (Theorem 46, L333)",
+        "thm_47_repaired_unified_residual_contradiction (Theorem 47, L351)",
+        "thm_48_weiner_contrapositive_family_size_le_five (Theorem 48, L364)",
+        "thm_49_weiner_completion_axioms_lock_k_eq_d (Theorem 49, L398)",
+        "thm_50_weiner_completion_k5_counter_model (Theorem 50, L407)"
+      ]
+    },
+    "pillar3_stratigraphy_and_binary64_audit": {
+      "mutually_unbiased_files_total": 3386,
+      "mutually_unbiased_lines_total": 2835031,
+      "mutually_unbiased_files_active": 3365,
+      "mutually_unbiased_lines_active": 2804944,
+      "main_lean_total_imports": 16,
+      "main_lean_unused_imports": 15,
+      "orphaned_attainable_3_files": 4,
+      "orphaned_attainable_3_lines": 342,
+      "unused_underscore_premises": 62767,
+      "reflected_canonicalizer_lines_saved": 2015523,
+      "preprint1_lean_formalized_lines": 0,
+      "preprint1_native_invocations": 100,
+      "preprint1_saved_files": 196,
+      "hypothesis_mutants_killed": 358,
+      "lean_theorems": [
+        "thm_51_mutually_unbiased_file_and_line_stratigraphy (Theorem 51, L22)",
+        "thm_52_main_lean_umbrella_import_laundering (Theorem 52, L36)",
+        "thm_53_orphaned_three_mub_attainment_paradox (Theorem 53, L52)",
+        "thm_54_hadamard_cube_fiber_orphan_split (Theorem 54, L66)",
+        "thm_55_unrolled_semantics_dominates_codebase (Theorem 55, L81)",
+        "thm_56_vacuous_underscore_binder_accounting (Theorem 56, L96)",
+        "thm_57_python_vs_unrolled_lean_inflation_ratio (Theorem 57, L109)",
+        "thm_58_reflected_canonicalizer_compression_discovery (Theorem 58, L122)",
+        "thm_59_inductive_unrolled_vs_reflected_savings (Theorem 59, L145)",
+        "thm_60_nine_phase_seed_combinatorial_bounds (Theorem 60, L166)",
+        "thm_61_stage_a_modulo_four_shard_conservation (Theorem 61, L180)",
+        "thm_62_stage_b_batching_and_radius_enlargement (Theorem 62, L196)",
+        "thm_63_stage_c_fallback_resolution_conservation (Theorem 63, L212)",
+        "thm_64_record_binary_byte_size_formula (Theorem 64, L226)",
+        "thm_65_stage_c_bipartite_clique_edge_budget (Theorem 65, L238)",
+        "thm_66_polar_unitary_compression_kernel_dimensions (Theorem 66, L251)",
+        "thm_67_binary64_fma_contraction_soundness_hazard (Theorem 67, L266)",
+        "thm_68_citation_concentration_both_preprints (Theorem 68, L283)",
+        "thm_69_mub6_formalization_gap_three_vs_five (Theorem 69, L295)",
+        "thm_70_nanoda_external_checker_disabled_both_challenges (Theorem 70, L308)",
+        "thm_71_inductive_schur_pivot_trace_lower_bound (Theorem 71, L324)",
+        "thm_72_nonlinear_complete_mub_saturation_identity (Theorem 72, L339)",
+        "thm_73_certified_cover_contract_nonnegative_slack (Theorem 73, L372)",
+        "thm_74_unverified_abi_or_cap_counter_model (Theorem 74, L381)",
+        "thm_75_family_266_grand_anatomy_ledger (Theorem 75, L392)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "compiler": "leanprover/lean4:v4.29.0-rc8",
+    "files": [
+      "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+      "proofs/mub6_weiner_completion_and_gram_sos.lean",
+      "proofs/mub6_stratigraphy_and_binary64_audit.lean"
+    ],
+    "hypothesis_mutations_tested": 358,
+    "hypothesis_mutations_killed": 358,
+    "theorems": [
+      {
+        "name": "thm_01_kronecker_mub_lower_bound_scale",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 22
+      },
+      {
+        "name": "thm_02_qutrit_gauss_sum_eisenstein_norm",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 42
+      },
+      {
+        "name": "thm_03_balanced_charge_phase_cancellation",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 67
+      },
+      {
+        "name": "thm_04_order_one_row_contraction_identity",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 79
+      },
+      {
+        "name": "thm_05_falling_factorial_six_cutoff",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 96
+      },
+      {
+        "name": "thm_06_pair_certificate_charge_conservation",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 111
+      },
+      {
+        "name": "thm_07_pair_nonnegative_sos_vanishing",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 125
+      },
+      {
+        "name": "thm_08_fourier_or_entrywise_square_dichotomy",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 147
+      },
+      {
+        "name": "thm_09_pair_table_rank_nullity_margin",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 161
+      },
+      {
+        "name": "thm_10_newton_sextic_power_sum_collapse",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 181
+      },
+      {
+        "name": "thm_11_unimodular_palindromic_duality",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 201
+      },
+      {
+        "name": "thm_12_cube_fiber_three_three_multiplicity",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 217
+      },
+      {
+        "name": "thm_13_cube_fiber_sum_zero_challenge",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 240
+      },
+      {
+        "name": "thm_14_support_intersection_multiplicity_clash",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 260
+      },
+      {
+        "name": "thm_15_cubic_block_subspace_dimension_no_go",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 276
+      },
+      {
+        "name": "thm_16_collinear_restriction_rank_contradiction",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 290
+      },
+      {
+        "name": "thm_17_five_vertex_two_regular_connected_five_cycle",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 303
+      },
+      {
+        "name": "thm_18_tao_cubic_symmetry_order_720",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 316
+      },
+      {
+        "name": "thm_19_tao_complete_family_orbit_contradiction",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 333
+      },
+      {
+        "name": "thm_20_cube_fiber_axioms_force_three_three",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 370
+      },
+      {
+        "name": "thm_21_cube_fiber_degenerate_equal_roots_counter_model",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 379
+      },
+      {
+        "name": "thm_22_repaired_small_partitions_pattern3_0",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 389
+      },
+      {
+        "name": "thm_23_repaired_small_partitions_pattern3_1",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 398
+      },
+      {
+        "name": "thm_24_repaired_small_partitions_pattern4_0",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 408
+      },
+      {
+        "name": "thm_25_small_partitions_redundancy_accounting",
+        "file": "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean",
+        "line": 419
+      },
+      {
+        "name": "thm_26_cartan_killing_hilbert_schmidt_orthogonality",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 22
+      },
+      {
+        "name": "thm_27_complete_family_traceless_dimension_bound",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 35
+      },
+      {
+        "name": "thm_28_weiner_complement_dimension_at_six_bases",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 48
+      },
+      {
+        "name": "thm_29_realigned_kraus_maximal_abelian_saturation",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 65
+      },
+      {
+        "name": "thm_30_weiner_no_go_obstruction_below_six_bases",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 78
+      },
+      {
+        "name": "thm_31_weiner_abelian_dimension_lock_general_d",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 91
+      },
+      {
+        "name": "thm_32_shared_column_gram_expectation_split",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 109
+      },
+      {
+        "name": "thm_33_singleton_label_order_two_reduction",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 125
+      },
+      {
+        "name": "thm_34_partitions_of_five_young_block_count",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 142
+      },
+      {
+        "name": "thm_35_gram_block_dimensions_and_pivot_sum_98",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 156
+      },
+      {
+        "name": "thm_36_gram_decimal_exponent_integer_weights",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 168
+      },
+      {
+        "name": "thm_37_schur_complement_pivot_floor_40000",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 179
+      },
+      {
+        "name": "thm_38_complex_hermitian_real_symmetric_psd_split",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 192
+      },
+      {
+        "name": "thm_39_block0_leading_minor_sylvester_positivity",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 213
+      },
+      {
+        "name": "thm_40_mixed_table_rank_and_retained_coordinates",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 230
+      },
+      {
+        "name": "thm_41_binary_combination_tree_depth_saving",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 245
+      },
+      {
+        "name": "thm_42_l1_residual_bound_under_bounded_moments",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 259
+      },
+      {
+        "name": "thm_43_exact_rational_mixed_certificate_margin",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 284
+      },
+      {
+        "name": "thm_44_denominator_clearance_factorization",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 300
+      },
+      {
+        "name": "thm_45_integer_cleared_head_and_tail_bridge",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 313
+      },
+      {
+        "name": "thm_46_six_chunk_mixed_residual_contradiction",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 333
+      },
+      {
+        "name": "thm_47_repaired_unified_residual_contradiction",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 351
+      },
+      {
+        "name": "thm_48_weiner_contrapositive_family_size_le_five",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 364
+      },
+      {
+        "name": "thm_49_weiner_completion_axioms_lock_k_eq_d",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 398
+      },
+      {
+        "name": "thm_50_weiner_completion_k5_counter_model",
+        "file": "proofs/mub6_weiner_completion_and_gram_sos.lean",
+        "line": 407
+      },
+      {
+        "name": "thm_51_mutually_unbiased_file_and_line_stratigraphy",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 22
+      },
+      {
+        "name": "thm_52_main_lean_umbrella_import_laundering",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 36
+      },
+      {
+        "name": "thm_53_orphaned_three_mub_attainment_paradox",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 52
+      },
+      {
+        "name": "thm_54_hadamard_cube_fiber_orphan_split",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 66
+      },
+      {
+        "name": "thm_55_unrolled_semantics_dominates_codebase",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 81
+      },
+      {
+        "name": "thm_56_vacuous_underscore_binder_accounting",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 96
+      },
+      {
+        "name": "thm_57_python_vs_unrolled_lean_inflation_ratio",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 109
+      },
+      {
+        "name": "thm_58_reflected_canonicalizer_compression_discovery",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 122
+      },
+      {
+        "name": "thm_59_inductive_unrolled_vs_reflected_savings",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 145
+      },
+      {
+        "name": "thm_60_nine_phase_seed_combinatorial_bounds",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 166
+      },
+      {
+        "name": "thm_61_stage_a_modulo_four_shard_conservation",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 180
+      },
+      {
+        "name": "thm_62_stage_b_batching_and_radius_enlargement",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 196
+      },
+      {
+        "name": "thm_63_stage_c_fallback_resolution_conservation",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 212
+      },
+      {
+        "name": "thm_64_record_binary_byte_size_formula",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 226
+      },
+      {
+        "name": "thm_65_stage_c_bipartite_clique_edge_budget",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 238
+      },
+      {
+        "name": "thm_66_polar_unitary_compression_kernel_dimensions",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 251
+      },
+      {
+        "name": "thm_67_binary64_fma_contraction_soundness_hazard",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 266
+      },
+      {
+        "name": "thm_68_citation_concentration_both_preprints",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 283
+      },
+      {
+        "name": "thm_69_mub6_formalization_gap_three_vs_five",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 295
+      },
+      {
+        "name": "thm_70_nanoda_external_checker_disabled_both_challenges",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 308
+      },
+      {
+        "name": "thm_71_inductive_schur_pivot_trace_lower_bound",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 324
+      },
+      {
+        "name": "thm_72_nonlinear_complete_mub_saturation_identity",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 339
+      },
+      {
+        "name": "thm_73_certified_cover_contract_nonnegative_slack",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 372
+      },
+      {
+        "name": "thm_74_unverified_abi_or_cap_counter_model",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 381
+      },
+      {
+        "name": "thm_75_family_266_grand_anatomy_ledger",
+        "file": "proofs/mub6_stratigraphy_and_binary64_audit.lean",
+        "line": 392
+      }
+    ]
+  }
+}

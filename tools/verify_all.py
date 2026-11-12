@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Deterministic repository-wide verifier for ultari-proof-anatomy."""
+import ast
 import concurrent.futures
 import hashlib
 import json
@@ -22,7 +23,7 @@ BOUND_DECL_PAT = re.compile(
     r"^[ \t]*(?:@\[[^\]]*\]\s+)*(?:noncomputable\s+|private\s+|protected\s+|scoped\s+)*(?:theorem|lemma|def|abbrev|structure|inductive|class|instance|axiom|opaque|example|namespace|section|end)\b",
     re.M,
 )
-LINK_PAT = re.compile(r"\[`?([^`\]]+)`?\]\(([^)#]+\.(?:lean|tex|py))#L(\d+)(?:-L(\d+))?\)")
+LINK_PAT = re.compile(r"\[`?([^`\]]+)`?\]\(([^)#]+\.(?:lean|tex|py|patch))#L(\d+)(?:-L(\d+))?\)")
 
 
 def extract_balanced_hyps(src: str):
@@ -205,11 +206,17 @@ def check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
         assert thm_lines_by_file.get(tfile, {}).get(tname) == tline, f"lean4_verification line mismatch: {item}"
     md_files = list(case_dir.glob("*.md")) + list((case_dir / "en").glob("*.md")) + list((case_dir / "ko").glob("*.md"))
     oai_ref_dir = case_dir / "proofs" / "oai_ref"
-    ref_files = [p for p in oai_ref_dir.rglob("*") if p.is_file() and p.suffix in (".lean", ".tex")] if oai_ref_dir.is_dir() else []
+    ref_files = [p for p in oai_ref_dir.rglob("*") if p.is_file() and p.suffix in (".lean", ".tex", ".patch")] if oai_ref_dir.is_dir() else []
     assert len(ref_files) >= 9, f"Missing or incomplete proofs/oai_ref/ in {case_dir.name} (found {len(ref_files)} reference files, expected >= 9)"
     full_md_blob = "\n".join(md.read_text(encoding="utf-8") for md in md_files)
     uncited_refs = [p.name for p in ref_files if p.name not in full_md_blob]
     assert not uncited_refs, f"Uncited proofs/oai_ref/ files in {case_dir.name}: {uncited_refs[:5]}"
+    py_fn_spans = {
+        (p.name, n.name): (n.lineno, getattr(n, "end_lineno", n.lineno))
+        for p in (case_dir / "proofs").glob("verify_*.py")
+        for n in ast.walk(ast.parse(p.read_text(encoding="utf-8", errors="replace")))
+        if isinstance(n, ast.FunctionDef)
+    }
     link_count = 0
     oai_link_count = 0
     for md in md_files:
@@ -230,6 +237,10 @@ def check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
                 tmap = thm_lines_by_file[resolved.name]
                 if label in tmap:
                     assert tmap[label] == l1, f"Line mismatch in {md.name} for {label}: L{l1} != L{tmap[label]}"
+            elif resolved.suffix == ".py" and re.match(r"^verify_[A-Za-z0-9_]+$", label):
+                assert (resolved.name, label) in py_fn_spans, f"Ghost verifier function in {md.name}: {label} not in {resolved.name}"
+                fn_s, fn_e = py_fn_spans[(resolved.name, label)]
+                assert l1 <= fn_e and l2 >= fn_s, f"Line range mismatch in {md.name} for {label}: L{l1}-L{l2} vs AST L{fn_s}-L{fn_e}"
             link_count += 1
     assert oai_link_count >= 50, f"Insufficient oai_ref/#L links in {case_dir.name} (found {oai_link_count}, expected >= 50)"
     print(f"  [PASS] 1-to-1 theorem & line-number links ({len(all_thms)} theorems, {link_count} markdown links, {len(ref_files)} oai_ref files 100% cited)")
