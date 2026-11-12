@@ -1,4 +1,4 @@
-# Problem Specification: OpenAI `#266` Mutually Unbiased Bases in Dimension Six (Zero-Hint Problem Specification)
+# Problem Specification: OpenAI `#266` Mutually Unbiased Bases in Dimension Six
 
 ## 1. Scope & Target Repository
 - **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#266`: *Mutually unbiased bases in dimension six*):

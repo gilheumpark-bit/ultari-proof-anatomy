@@ -30,7 +30,7 @@ Tracing the complete transitive import graph of `OAI/Analysis/MutuallyUnbiased/`
 
 Within the active cone itself, we identified and repaired three classes of structural defects ([`thm_22_repaired_small_partitions_pattern3_0`](../proofs/mub6_hadamard_fourier_and_cubic_fibers.lean#L389-L394)..[`thm_25_small_partitions_redundancy_accounting`](../proofs/mub6_hadamard_fourier_and_cubic_fibers.lean#L419-L429), [`thm_47_repaired_unified_residual_contradiction`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L351-L358), [`thm_56_vacuous_underscore_binder_accounting`](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L96-L105)):
 
-1. **`62,767` Unused Underscore (`_h*`) Hypothesis Binders (`RH13/RH25`)**:
+1. **`62,767` Unused Underscore (`_h*`) Hypothesis Binders (Vacuous & Redundant Premise Audit)**:
    - **Code-generated modules (`62,727` binders)**: `MixedSemantics/` (e.g. [`Canonical0.lean`](../proofs/oai_ref/lean/Canonical0.lean#L12-L90)) carries **`48,742`** unused `(_hB : IsMUBFamily B)` binders plus **`5,934`** auxiliary `(_h* : ...)` binders; `PairSemantics/` carries **`7,685`** unused `(_hH : IsHadamard H)` binders; `PairTargets/` adds **`107`** and `MixedSources/` adds **`259`**. Because finite-sum Fubini reindexing holds for arbitrary complex arrays without unitarity or unbiasedness, all `56,534` `_hB`/`_hH` assumptions are purely vacuous.
    - **Hand-written [`SmallPartitions.lean`](../proofs/oai_ref/lean/SmallPartitions.lean#L77-L307) (`40` redundant transitive-equality premises)**: Arities `1..2` (`pattern1_0..covers2`, `L21-L64`) carry `0` `_h*` binders; arity `3` (`4` of `B_3 = 5` non-injective patterns `pattern3_0..3`, `L77-L107`: `_h20` at `L79`, `_h21` at `L87`, `_h10` at `L95`, `_h20` at `L103`) carries `4 * 1` = **`4` binders**; and arity `4` (`14` of `B_4 = 15` non-injective patterns `pattern4_0..13`, `L154-L307`: `8 * 3 = 24` plus `6 * 2 = 12`) carries **`36` binders**, totaling **`4 + 36 = 40` redundant premises** (`PairTargets/PartitionRules.lean` expands pair moments only up to arity `4`, so `SmallPartitions.lean` ends at `covers4` `L319-L395` with zero `pattern5_*` declarations), repaired cleanly in `thm_22`..`thm_24`.
 2. **Dead Theorem `contradiction_of_residual` & `6` Redeclared Core Concepts**:
@@ -83,33 +83,33 @@ Preprint 1 (`5,945` lines of LaTeX + `2,316` lines of C++) rests on a strictly c
 
 ---
 
-## 5. Citation Stratigraphy Audit (`60.6%` & `58.5%` Front-Loading + `5` Omitted Classical Pillars)
+## 5. Citation Stratigraphy Audit (`60.6%` & `58.5%` Front-Loading + `5` Uncited Technical & Classical Pillars)
 
 Cross-checking every `\cite` command against both `.bib` files ([`thm_68_citation_concentration_both_preprints`](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L283-L289), [`verify_forensic_stratigraphy`](../proofs/verify_symbolic_mub266.py#L285-L363)) reveals:
 
-- **Front-Loaded Concentration**: Preprint 1 places **`20 / 33 (60.6%)`** of all citations inside [`introduction.tex`](../proofs/oai_ref/tex_mub/introduction.tex#L1-L246) (`0` cites in `refinement.tex`, `execution.tex`, and `conclusion.tex`), while Preprint 2 places **`24 / 41 (58.5%)`** of all cited key-occurrences (`23 / 38` `\cite` commands) inside [`paper.tex`](../proofs/oai_ref/tex_fourier/paper.tex#L1-L278).
-- **Five Classical Primary Pillars Named/Used in Body Sections Yet Omitted (Missing) from Both `.bib` Files**:
-  1. **Hadamard (1893)** ([`paper.tex`](../proofs/oai_ref/tex_fourier/paper.tex#L23-L27)): J. Hadamard's 1893 foundational paper introducing Hadamard matrices is missing from both `.bib` files.
-  2. **Newton (1707) & Girard (1629)** ([`03-cubic.tex`](../proofs/oai_ref/tex_fourier/03-cubic.tex#L25-L34)): Explicitly invoked by name (*"Newton's identities give $e_1=e_2=0$"*) yet omitted from `.bib`.
-  3. **Schur (1905, 1917) & Young (1900)** ([`04-mixed.tex`](../proofs/oai_ref/tex_fourier/04-mixed.tex#L195-L265)): $S_5$ Young symmetrizers and `98` rational Schur-complement pivots form the PSD engine yet omit Schur and Young.
-  4. **Kraus (1971) & Choi (1975)** ([`Superoperator.lean`](../proofs/oai_ref/lean/Superoperator.lean#L1-L202), [`03-complete-family.tex`](../proofs/oai_ref/tex_fourier/03-complete-family.tex#L15-L90)): Completely positive Kraus operator-sum representations power Weiner completion yet omit Kraus (1971) and Choi (1975).
-  5. **Delsarte (1973)** ([`paper.tex`](../proofs/oai_ref/tex_fourier/paper.tex#L93-L95)): Named directly (*"Fourier and Delsarte approach"*, `L93`) while citing only `Matolcsi2012` and omitting P. Delsarte (1973).
+- **Front-Loaded Concentration & Zero-Citation Proof Sections**: Preprint 1 places **`20 / 33 (60.6%)`** of all citations inside [`introduction.tex`](../proofs/oai_ref/tex_mub/introduction.tex#L1-L246) (`0` cites across the core technical sections `refinement.tex`, `execution.tex`, and `conclusion.tex`), while Preprint 2 places **`24 / 41 (58.5%)`** of all cited key-occurrences (`23 / 38` `\cite` commands) inside [`paper.tex`](../proofs/oai_ref/tex_fourier/paper.tex#L1-L278).
+- **Five Technical & Eponymous Pillars Invoked in Body Sections Without `.bib` Entries**:
+  1. **Delsarte (1973)** ([`paper.tex`](../proofs/oai_ref/tex_fourier/paper.tex#L93-L95)): Named directly (*"Fourier and Delsarte approach"*, `L93`) while citing only `Matolcsi2012` and omitting P. Delsarte's 1973 LP bound monograph from `.bib`.
+  2. **Kraus (1971) & Choi (1975)** ([`Superoperator.lean`](../proofs/oai_ref/lean/Superoperator.lean#L1-L202), [`03-complete-family.tex`](../proofs/oai_ref/tex_fourier/03-complete-family.tex#L15-L90)): Completely positive Kraus operator-sum representations power Weiner completion in `Superoperator.lean` without `.bib` entries for Kraus (1971) or Choi (1975).
+  3. **Schur (1905, 1917) & Young (1900)** ([`04-mixed.tex`](../proofs/oai_ref/tex_fourier/04-mixed.tex#L195-L265)): $S_5$ Young symmetrizers and `98` rational Schur-complement pivots form the PSD engine and are invoked as standard eponyms without `.bib` entries.
+  4. **Hadamard (1893)** ([`paper.tex`](../proofs/oai_ref/tex_fourier/paper.tex#L23-L27)): J. Hadamard's 1893 foundational paper introducing Hadamard matrices is absent from both `.bib` files.
+  5. **Newton (1707) & Girard (1629)** ([`03-cubic.tex`](../proofs/oai_ref/tex_fourier/03-cubic.tex#L25-L34)): Eponymously invoked (*"Newton's identities give $e_1=e_2=0$"*) as the classical symmetric-function foundation of Section 3.
 
 ---
 
-## 6. Offensive Why: Discovery A (`>2.01M`-Line Reflected Canonicalizer) & Discovery B (Weiner Rigidity)
+## 6. Structural Synthesis: Discovery A (`>2.01M`-Line Reflected Canonicalizer) & Discovery B (Weiner Rigidity)
 
 1. **Discovery A (Alternative Solution): Eliminating `2,073,150` Unrolled Fubini Lines via Kernel Reflection (`2,015,523` Lines Saved)**:
-   - **Why 1 (Obstacle)**: Upstream unrolled bespoke Fubini sum-swap proofs for `48,742` keys in `MixedSemantics` (`911` files, `1,729,610` lines) and `7,685` keys in `PairSemantics` (`519` files, `343,540` lines), generating `2,073,150` lines and `56,534` vacuous `_hB`/`_hH` binders.
-   - **Why 2 (Necessary Operator/Transform)**: Represent exponent matrices syntactically as `Array (Array Int)` and prove **one** polymorphic theorem (`eval_perm_invariant`, `~1,200` lines of reusable infrastructure) stating that row/column permutations $(\sigma, \tau)$ and sign flips $s \in \{\pm 1\}$ preserve finite sums, discharging each key in `1` `by decide` line.
-   - **Why 3 (Derived Formula)**: Across $K = 48,742 + 7,685 = 56,427$ keys, replacing $L_{\text{unroll}} = 2,073,150$ with $L_{\text{refl}} = 1,200 + K = 57,627$ saves
+   - **Structural Bottleneck**: Upstream unrolled bespoke Fubini sum-swap proofs for `48,742` keys in `MixedSemantics` (`911` files, `1,729,610` lines) and `7,685` keys in `PairSemantics` (`519` files, `343,540` lines), generating `2,073,150` lines and `56,534` vacuous `_hB`/`_hH` binders.
+   - **Kernel Reflection Transform**: Represent exponent matrices syntactically as `Array (Array Int)` and prove **one** polymorphic theorem (`eval_perm_invariant`, `~1,200` lines of reusable infrastructure) stating that row/column permutations $(\sigma, \tau)$ and sign flips $s \in \{\pm 1\}$ preserve finite sums, discharging each key in `1` `by decide` line.
+   - **Derived Savings Formula**: Across $K = 48,742 + 7,685 = 56,427$ keys, replacing $L_{\text{unroll}} = 2,073,150$ with $L_{\text{refl}} = 1,200 + K = 57,627$ saves
      $$L_{\text{unroll}} - L_{\text{refl}} = 2,073,150 - 57,627 = 2,015,523\text{ lines (eliminating }71.1\%\text{ of the entire 2.835M-line tree),}$$
      verified in [`thm_58_reflected_canonicalizer_compression_discovery`](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L122-L133) and by `∀ k : Nat` induction in [`thm_59_inductive_unrolled_vs_reflected_savings`](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L145-L156).
 2. **Discovery B (No-Go Rigidity Barrier): Sharp Abelian Saturation $d^2 - k(d-1) = d \iff k = d$**:
-   - **Why 4 (No-Go Barrier)**: Why does Weiner's realigned Kraus completion promote $6 \to 7$ MUBs automatically yet fail to promote $5 \to 6$ or $4 \to 5$? Because $k$ MUBs span $1 + k(d-1)$ orthogonal operators in $M_d(\mathbb{C})$, leaving an orthogonal complement of dimension $C(d, k) = d^2 - k(d-1)$ that equals the maximal commuting diagonalizable dimension $d$ if and only if
+   - **Dimension-Rigidity Barrier**: Why does Weiner's realigned Kraus completion promote $6 \to 7$ MUBs automatically yet fail to promote $5 \to 6$ or $4 \to 5$? Because $k$ MUBs span $1 + k(d-1)$ orthogonal operators in $M_d(\mathbb{C})$, leaving an orthogonal complement of dimension $C(d, k) = d^2 - k(d-1)$ that equals the maximal commuting diagonalizable dimension $d$ if and only if
      $$d^2 - k(d-1) - d = (d - k)(d - 1) = 0 \iff k = d \quad (d \ge 2),$$
      giving $C(6,6) = 6 = d$ at $k = 6$ versus $C(6,5) = 11 > 6$ at $k = 5$ and $C(6,4) = 16 > 6$ at $k = 4$.
-   - **Why 5 (Formalization)**: Once $C(d,k) > d$ (`5` excess dimensions at $k = 5$), fixed-point orthogonality no longer forces normality ($[X, X^*] = 0$) or commutativity ($[X_i, X_j] = 0$), proved in [`thm_31_weiner_abelian_dimension_lock_general_d`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L91-L103), [`thm_49_weiner_completion_axioms_lock_k_eq_d`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L398-L404), and the $k = 5$ counter-model [`thm_50_weiner_completion_k5_counter_model`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L407-L416).
+   - **Formalization & Counter-Model**: Once $C(d,k) > d$ (`5` excess dimensions at $k = 5$), fixed-point orthogonality no longer forces normality ($[X, X^*] = 0$) or commutativity ($[X_i, X_j] = 0$), proved in [`thm_31_weiner_abelian_dimension_lock_general_d`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L91-L103), [`thm_49_weiner_completion_axioms_lock_k_eq_d`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L398-L404), and the $k = 5$ counter-model [`thm_50_weiner_completion_k5_counter_model`](../proofs/mub6_weiner_completion_and_gram_sos.lean#L407-L416).
 
 ---
 

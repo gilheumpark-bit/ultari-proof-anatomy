@@ -2,7 +2,7 @@
 
 > **English Guide**: [README.md](README.md) | **상위 저장소**: [`ultari-proof-anatomy`](../../README.md)
 
-본 케이스(`012-openai-266-mub-six`)는 OpenAI의 양자정보이론 대표 난제군 **`#266` (`Mutually unbiased bases in dimension six`, 2026년 9월 24일)**의 두 프리프린트(`N(6) = 3` 컴퓨터 보조 원고 `12`개 `.tex` `5,945`줄 + `references.bib` `363`줄 + `8`개 `.cpp` `2,316`줄, 그리고 복소 아다마르 푸리에 인증서 원고 `8`개 `.tex` `1,997`줄 + `references.bib` `326`줄 + `verify.py` `576`줄)와 저장소 단일 최대 규모인 `OAI/Analysis/MutuallyUnbiased/`의 **`3,386`개 Lean 4 파일(`2,835,031`줄)** 및 `OAI/LinearAlgebra/Hadamard/`의 **`9`개 파일(`1,329`줄)** 전수를 해부하고, `75`개 독립 Lean 4 정리(`1,249`줄, `0 sorry`, `358/358` 가설 변이 100% 포착, `74/75` 대수·논리 정리, `14`개 비선형·귀납 증명, `RH31` 이중 증인 검증)로 재검증한 패키지입니다.
+본 케이스(`012-openai-266-mub-six`)는 OpenAI의 양자정보이론 대표 난제군 **`#266` (`Mutually unbiased bases in dimension six`, 2026년 9월 24일)**의 두 프리프린트(`N(6) = 3` 컴퓨터 보조 원고 `12`개 `.tex` `5,945`줄 + `references.bib` `363`줄 + `8`개 `.cpp` `2,316`줄, 그리고 복소 아다마르 푸리에 인증서 원고 `8`개 `.tex` `1,997`줄 + `references.bib` `326`줄 + `verify.py` `576`줄)와 저장소 단일 최대 규모인 `OAI/Analysis/MutuallyUnbiased/`의 **`3,386`개 Lean 4 파일(`2,835,031`줄)** 및 `OAI/LinearAlgebra/Hadamard/`의 **`9`개 파일(`1,329`줄)** 전수를 해부하고, `75`개 독립 Lean 4 정리(`1,249`줄, `0 sorry`, `358/358` 가설 변이 100% 포착, `74/75` 대수·논리 정리, `14`개 비선형·귀납 증명, 이중 증인 비공허성 검증)로 재검증한 패키지입니다.
 
 ---
 

@@ -1,0 +1,284 @@
+diff --git a/PrimeNumberTheoremAnd/Catalan.lean b/PrimeNumberTheoremAnd/Catalan.lean
+new file mode 100644
+index 0000000..0c4ccd6
+--- /dev/null
++++ b/PrimeNumberTheoremAnd/Catalan.lean
+@@ -0,0 +1 @@
++import PrimeNumberTheoremAnd.Catalan.Consequences
+diff --git a/PrimeNumberTheoremAnd/Catalan/Consequences.lean b/PrimeNumberTheoremAnd/Catalan/Consequences.lean
+new file mode 100644
+index 0000000..470ade9
+--- /dev/null
++++ b/PrimeNumberTheoremAnd/Catalan/Consequences.lean
+@@ -0,0 +1,68 @@
++import Mathlib.Analysis.Asymptotics.SpecificAsymptotics
++import Mathlib.Analysis.SpecialFunctions.Log.Basic
++import PrimeNumberTheoremAnd.Catalan.Wiener
++
++namespace CatalanPNT
++
++open ZetaFivePNT
++
++open ArithmeticFunction hiding log
++open Nat hiding log
++open _root_.Finset
++open BigOperators _root_.Filter _root_.Real _root_.Asymptotics
++open scoped Chebyshev
++
++theorem WeakPNT' : Tendsto (fun N ↦ (∑ n ∈ Iic N, Λ n) / N) atTop (nhds 1) := by
++  have : (fun N ↦ (∑ n ∈ Iic N, Λ n) / N) =
++      (fun N ↦ (∑ n ∈ range N, Λ n)/N + Λ N / N) := by
++    ext N
++    have : N ∈ Iic N := mem_Iic.mpr (le_refl _)
++    rw [← Finset.sum_erase_add _ _ this, ← Nat.Iio_eq_range, Iic_erase]
++    exact add_div _ _ _
++  rw [this, ← add_zero 1]
++  apply Tendsto.add WeakPNT
++  convert squeeze_zero (f := fun N ↦ Λ N / N) (g := fun N ↦ log N / N) (t₀ := atTop) ?_ ?_ ?_
++  · intro N
++    exact div_nonneg vonMangoldt_nonneg (cast_nonneg N)
++  · intro N
++    exact div_le_div_of_nonneg_right vonMangoldt_le_log (cast_nonneg N)
++  simpa only [Function.comp_def, pow_one, one_mul, add_zero] using
++    (Real.tendsto_pow_log_div_mul_add_atTop 1 0 1 one_ne_zero).comp
++      tendsto_natCast_atTop_atTop
++
++theorem WeakPNT'' : ψ ~[atTop] (fun x ↦ x) := by
++    rw [(by rfl : ψ = (fun x ↦ ψ x))]
++    simp_rw [Chebyshev.psi_eq_sum_Icc]
++    apply IsEquivalent.trans (v := fun x ↦ (⌊x⌋₊:ℝ))
++    · rw [isEquivalent_iff_tendsto_one]
++      · convert Tendsto.comp WeakPNT' (tendsto_nat_floor_atTop (α := ℝ)) using 1
++        ext x
++        rfl
++      rw [eventually_iff]
++      simp only [ne_eq, cast_eq_zero, floor_eq_zero, not_lt, mem_atTop_sets,
++        Set.mem_ofPred_eq]
++      use 1
++      simp only [imp_self, implies_true]
++    exact Asymptotics.isEquivalent_nat_floor
++
++theorem isLittleO_sqrt_mul_log : (fun x : ℝ ↦ x.sqrt * x.log) =o[atTop] _root_.id := by
++  have : (fun x : ℝ ↦ x.sqrt * x.log) =o[atTop] fun x ↦ x := by
++    refine (isLittleO_mul_iff_isLittleO_div ?_).mpr ?_
++    · filter_upwards [eventually_gt_atTop 0] with x hx; exact (sqrt_ne_zero hx.le).mpr hx.ne'
++    · convert isLittleO_log_rpow_atTop (by norm_num : (0 : ℝ) < 1 / 2) using 2 with x
++      rw [div_sqrt, sqrt_eq_rpow]
++  exact this
++
++theorem chebyshev_asymptotic : θ ~[atTop] id := by
++  rw [← sub_sub_self ψ θ]
++  refine WeakPNT''.sub_isLittleO
++    (IsBigO.trans_isLittleO (g := fun x ↦ 2 * x.sqrt * x.log) ?_ ?_)
++  · rw [isBigO_iff']; refine ⟨1, one_pos, ?_⟩
++    simp only [one_mul, eventually_atTop]
++    exact ⟨2, fun x hx ↦ by
++      rw [Pi.sub_apply, norm_eq_abs, norm_eq_abs, abs_of_nonneg (by bound : 0 ≤ 2 * √x * log x)]
++      exact (abs_of_nonneg (sub_nonneg.mpr (Chebyshev.theta_le_psi x))).symm ▸
++        Chebyshev.abs_psi_sub_theta_le_sqrt_mul_log (by linarith : 1 ≤ x)⟩
++  · convert isLittleO_sqrt_mul_log.const_mul_left 2 using 1 <;> first | rfl | (funext x; ring)
++
++end CatalanPNT
+diff --git a/PrimeNumberTheoremAnd/Catalan/OrdinaryZetaContinuation.lean b/PrimeNumberTheoremAnd/Catalan/OrdinaryZetaContinuation.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Catalan/OrdinaryZetaZeroFree.lean b/PrimeNumberTheoremAnd/Catalan/OrdinaryZetaZeroFree.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Catalan/Wiener.lean b/PrimeNumberTheoremAnd/Catalan/Wiener.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Catalan/WienerBounds.lean b/PrimeNumberTheoremAnd/Catalan/WienerBounds.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Catalan/WienerFourier.lean b/PrimeNumberTheoremAnd/Catalan/WienerFourier.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Catalan/WienerLimits.lean b/PrimeNumberTheoremAnd/Catalan/WienerLimits.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970.lean b/PrimeNumberTheoremAnd/Erdos970.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Auxiliary.lean b/PrimeNumberTheoremAnd/Erdos970/Auxiliary.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Consequences.lean b/PrimeNumberTheoremAnd/Erdos970/Consequences.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Defs.lean b/PrimeNumberTheoremAnd/Erdos970/Defs.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/EulerMaclaurin.lean b/PrimeNumberTheoremAnd/Erdos970/EulerMaclaurin.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Fourier.lean b/PrimeNumberTheoremAnd/Erdos970/Fourier.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/HadamardSupport.lean b/PrimeNumberTheoremAnd/Erdos970/HadamardSupport.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Mathlib/Algebra/Notation/Support.lean b/PrimeNumberTheoremAnd/Erdos970/Mathlib/Algebra/Notation/Support.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Mathlib/Analysis/Asymptotics/Asymptotics.lean b/PrimeNumberTheoremAnd/Erdos970/Mathlib/Analysis/Asymptotics/Asymptotics.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean b/PrimeNumberTheoremAnd/Erdos970/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/MellinCalculus.lean b/PrimeNumberTheoremAnd/Erdos970/MellinCalculus.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/MertensClassical.lean b/PrimeNumberTheoremAnd/Erdos970/MertensClassical.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Rectangle.lean b/PrimeNumberTheoremAnd/Erdos970/Rectangle.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/ResidueCalcOnRectangles.lean b/PrimeNumberTheoremAnd/Erdos970/ResidueCalcOnRectangles.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/SmoothExistence.lean b/PrimeNumberTheoremAnd/Erdos970/SmoothExistence.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Sobolev.lean b/PrimeNumberTheoremAnd/Erdos970/Sobolev.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Tactic/AdditiveCombination.lean b/PrimeNumberTheoremAnd/Erdos970/Tactic/AdditiveCombination.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/Wiener.lean b/PrimeNumberTheoremAnd/Erdos970/Wiener.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/ZetaBounds.lean b/PrimeNumberTheoremAnd/Erdos970/ZetaBounds.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Erdos970/ZetaConj.lean b/PrimeNumberTheoremAnd/Erdos970/ZetaConj.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/Fourier.lean b/PrimeNumberTheoremAnd/Fourier.lean
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/CartanBounds.lean b/PrimeNumberTheoremAnd/SiegelZeros/CartanBounds.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/Counting.lean b/PrimeNumberTheoremAnd/SiegelZeros/Counting.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/DivisorBasics.lean b/PrimeNumberTheoremAnd/SiegelZeros/DivisorBasics.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/DivisorLimits.lean b/PrimeNumberTheoremAnd/SiegelZeros/DivisorLimits.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/DivisorProducts.lean b/PrimeNumberTheoremAnd/SiegelZeros/DivisorProducts.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/Exponential.lean b/PrimeNumberTheoremAnd/SiegelZeros/Exponential.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/Factorization.lean b/PrimeNumberTheoremAnd/SiegelZeros/Factorization.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/Growth.lean b/PrimeNumberTheoremAnd/SiegelZeros/Growth.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/HadamardSupport.lean b/PrimeNumberTheoremAnd/SiegelZeros/HadamardSupport.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/NOTICE.md b/PrimeNumberTheoremAnd/SiegelZeros/NOTICE.md
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/ProductBounds.lean b/PrimeNumberTheoremAnd/SiegelZeros/ProductBounds.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/Products.lean b/PrimeNumberTheoremAnd/SiegelZeros/Products.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SiegelZeros/Summability.lean b/PrimeNumberTheoremAnd/SiegelZeros/Summability.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/SmoothExistence.lean b/PrimeNumberTheoremAnd/SmoothExistence.lean
+diff --git a/PrimeNumberTheoremAnd/Sobolev.lean b/PrimeNumberTheoremAnd/Sobolev.lean
+diff --git a/PrimeNumberTheoremAnd/ZetaFive.lean b/PrimeNumberTheoremAnd/ZetaFive.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/ZetaFive/Consequences.lean b/PrimeNumberTheoremAnd/ZetaFive/Consequences.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/ZetaFive/Fourier.lean b/PrimeNumberTheoremAnd/ZetaFive/Fourier.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/ZetaFive/SmoothExistence.lean b/PrimeNumberTheoremAnd/ZetaFive/SmoothExistence.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/ZetaFive/Sobolev.lean b/PrimeNumberTheoremAnd/ZetaFive/Sobolev.lean
+new file mode 100644
+diff --git a/PrimeNumberTheoremAnd/ZetaFive/Wiener.lean b/PrimeNumberTheoremAnd/ZetaFive/Wiener.lean
+new file mode 100644
+diff --git a/lakefile.toml b/lakefile.toml
+diff --git a/lean-toolchain b/lean-toolchain
+diff --git a/PrimeNumberTheoremAnd/PerronFormula.lean b/PrimeNumberTheoremAnd/PerronFormula.lean
+diff --git a/PrimeNumberTheoremAnd/Wiener.lean b/PrimeNumberTheoremAnd/Wiener.lean
+index 59fd506..d69b893 100644
+--- a/PrimeNumberTheoremAnd/Wiener.lean
++++ b/PrimeNumberTheoremAnd/Wiener.lean
+@@ -1,22 +1,18 @@
+-import Architect
++/-
++Adapted from PrimeNumberTheoremAnd by Alex Kontorovich and contributors.
++Licensed under the Apache License, Version 2.0; see the upstream LICENSE.
++This compatibility port retains the proven declarations used by this project.
++-/
+ import Mathlib.Analysis.Fourier.RiemannLebesgueLemma
+ import Mathlib.Analysis.Normed.Group.Tannery
+ import Mathlib.Analysis.SumIntegralComparisons
+ import Mathlib.NumberTheory.Chebyshev
+ import Mathlib.NumberTheory.LSeries.PrimesInAP
+ import Mathlib.NumberTheory.MulChar.Lemmas
+-import Mathlib.Topology.EMetricSpace.BoundedVariation
+-import PrimeNumberTheoremAnd.Mathlib.Analysis.Asymptotics.Asymptotics
+ import PrimeNumberTheoremAnd.Fourier
+ import PrimeNumberTheoremAnd.SmoothExistence
+ import Mathlib.Analysis.Convolution
+-
+-set_option lang.lemmaCmd true
+-set_option linter.style.header false
+-
+--- note: the opening of ArithmeticFunction introduces a notation σ that seems
+--- impossible to hide, and hence parameters that are traditionally called σ will
+--- have to be called σ' instead in this file.
++import Mathlib.MeasureTheory.Group.Circle
+ 
+ open Real BigOperators ArithmeticFunction MeasureTheory Filter Set FourierTransform LSeries
+   Asymptotics SchwartzMap
+@@ -28,31 +24,17 @@ open scoped ComplexConjugate
+ variable {n : ℕ} {A a b c d u x y t σ' : ℝ} {ψ Ψ : ℝ → ℂ} {F G : ℂ → ℂ} {f : ℕ → ℂ} {𝕜 : Type}
+   [RCLike 𝕜]
+ 
+-blueprint_comment /--
+-The Fourier transform of an absolutely integrable function $\psi: \R \to \C$ is defined by the
+-formula $$ \hat \psi(u) := \int_\R e(-tu) \psi(t)\ dt$$ where $e(\theta) := e^{2\pi i \theta}$.
+-
+-Let $f: \N \to \C$ be an arithmetic function such that $\sum_{n=1}^\infty \frac{|f(n)|}{n^\sigma} <
+-\infty$ for all $\sigma>1$.  Then the Dirichlet series
+-$$ F(s) := \sum_{n=1}^\infty \frac{f(n)}{n^s}$$
+-is absolutely convergent for $\sigma>1$.
+--/
+-
+ noncomputable
+ def nterm (f : ℕ → ℂ) (σ' : ℝ) (n : ℕ) : ℝ := if n = 0 then 0 else ‖f n‖ / n ^ σ'
+ 
+diff --git a/PrimeNumberTheoremAnd/IEANTN/Mertens.lean b/PrimeNumberTheoremAnd/IEANTN/Mertens.lean
+--- a/PrimeNumberTheoremAnd/IEANTN/Mertens.lean
++++ b/PrimeNumberTheoremAnd/IEANTN/Mertens.lean
+@@ -14,7 +14,7 @@
+ import Mathlib.Analysis.SpecialFunctions.Log.Summable
+ import Mathlib.Algebra.Group.Submonoid.BigOperators
+ import PrimeNumberTheoremAnd.EulerMaclaurin
+-import Architect
++
+ 
+ 
+ theorem Filter.EventuallyEq.iff_eventually {α : Type _} {β : Type _} {l : Filter α} {f g : α → β} : f =ᶠ[l] g ↔ ∀ᶠ (x : α) in l, f x = g x := by rfl
+@@ -284,23 +284,23 @@
+ 
+ namespace Mertens
+ 
+-blueprint_comment /--
+-\section{Mertens' theorems}
+-
+-In this section we give explicit versions of Mertens' theorems:
+-\begin{itemize}
+-\item Mertens' first theorem (von Mangoldt form): $\sum_{n \leq x} \frac{\Lambda(n)}{n} = \log x + O(1)$.
+-\item Mertens' first theorem (prime form): $\sum_{p \leq x} \frac{\log p}{p} = \log x + O(1)$.
+-\item Mertens' second theorem (von Mangoldt form): $\sum_{n \leq x} \frac{\Lambda(n)}{n \log n} = \log \log x + \gamma + O(1/\log x)$.
+-\item Mertens' second theorem (prime form): $\sum_{p \leq x} \frac{1}{p} = \log \log x + M + O(1/\log x)$, where $M$ is the Meissel-Mertens constant.
+-\item Mertens' third theorem: $\prod_{p \leq x} (1 - \frac{1}{p}) = e^{-\gamma}/\log x + O(1/\log^2 x)$.
+-\end{itemize}
+-We aim to upstreaming these results to Mathlib.  In particular, the arguments here should be self-contained and written for efficiency, coherency, and clarity.  As such, extensive use of AI tools is \emph{strongly discouraged} in this section.
+-
+-The arguments here are drawn from Leo Goldmakher's ``A quick proof of Mertens' theorem'' from https://web.williams.edu/Mathematics/lg5/mertens.pdf
+-
+-The unfinished formalization of Mertens' theorems by Arend Mellendijk in https://github.com/FLDutchmann/Analytic/blob/main/Analytic/Mertens.lean may also be relevant here.
+--/
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+ 
+ 
+ open Real Finset Filter Asymptotics Topology
+@@ -311,17 +311,17 @@
+   rw [(by rfl : Ioc 0 x = Icc 1 x), ← add_sum_Ioc_eq_sum_Icc hx]
+   simpa
+ 

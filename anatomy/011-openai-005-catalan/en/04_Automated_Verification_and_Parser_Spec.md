@@ -32,6 +32,6 @@ sha256sum -c proofs/checksums.sha256
 # 3. Reproduce symbolic/numerical solver output
 python3 -B proofs/verify_symbolic_catalan005.py
 
-# 4. Run full Ultari verification gate (432/432 mutations + Elab MetaM DoF 51/75 + nonlin 12 + oai_ref 57/57 100%)
+# 4. Run full Ultari verification gate (432/432 mutations + Elab MetaM DoF 51/75 + nonlin 12 + oai_ref 58/58 100% [59 total with references.bib])
 python3 -B ../../tools/verify_all.py --root .
 ```

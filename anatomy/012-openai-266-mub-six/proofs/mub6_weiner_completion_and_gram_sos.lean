@@ -5,7 +5,7 @@
   No-Go Below 6 Bases (Discovery B), Six Young-Symmetrizer Gram Blocks (98 Pivots > 40,000),
   and Exact Integer-Cleared Positivstellensatz Contradiction (Theorems 26–50).
 
-  Scope Classification: Category A (Exact Algebraic & Positivstellensatz Formalization, AXIOMATIC_DUAL_WITNESS_V2).
+  Verification Scope: Exact Algebraic & Positivstellensatz Formalization with Dual-Witness Non-Vacuity Checks.
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
 

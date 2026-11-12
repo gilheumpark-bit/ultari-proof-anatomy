@@ -5,7 +5,7 @@
   Unimodular Palindromic Sextic, Cube-Fiber (3,3) Cancellation, Cubic Block 2+2 > 3 No-Go,
   Tao 5-Cycle Classification, and Repaired Partition Transitivity (Theorems 1–25).
 
-  Scope Classification: Category A (Exact Algebraic & Combinatorial Formalization, AXIOMATIC_DUAL_WITNESS_V2).
+  Verification Scope: Exact Algebraic & Combinatorial Formalization with Dual-Witness Non-Vacuity Checks.
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
 

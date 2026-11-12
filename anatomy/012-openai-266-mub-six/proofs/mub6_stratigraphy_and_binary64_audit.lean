@@ -5,7 +5,7 @@
   Laundering, Orphaned `Attainable 3`, Reflected Canonicalization Compression (Discovery A),
   Preprint 1 `binary64` Stage A/B/C Conservation & Hardware-ABI Contract, and Citation Audit (Theorems 51–75).
 
-  Scope Classification: Category A & B Boundary Audit (Exact Stratigraphy & Conditional Contract, AXIOMATIC_DUAL_WITNESS_V2).
+  Verification Scope: Exact Repository Stratigraphy & Conditional Hardware-ABI Boundary Audit.
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
 
