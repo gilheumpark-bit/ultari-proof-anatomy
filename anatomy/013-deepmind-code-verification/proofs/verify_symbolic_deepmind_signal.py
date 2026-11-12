@@ -3,8 +3,8 @@
 Deterministic symbolic and forensic verification suite for Case 013:
 Google DeepMind `code-verification` (`libsignal-cli`, commit `808b4b7ffef1`).
 
-Delegates live regex/text extraction over `proofs/oai_ref/` (`82` preserved
-upstream files: `59` `.lean` + `23` non-Lean) to `deepmind_signal_forensic_parsers.py`,
+Delegates live regex/text extraction over `proofs/oai_ref/` (`83` preserved
+upstream files: `59` `.lean` + `24` non-Lean) to `deepmind_signal_forensic_parsers.py`,
 cross-checks all 13 structural, cryptographic, hardware, runtime, hygiene, and
 AGPL-3.0-only licensing perspectives alongside exact `SymPy`/`Fraction` bounds,
 verifies all `81` Lean 4 theorems (`3` files, `0` `sorry`) through the Lean 4
@@ -53,8 +53,8 @@ def verify_forensic_oai_ref_and_hook_cutplane() -> dict:
     rust = parsers.parse_rust_cli_harness_and_elf_pin(OAI_REF_DIR)
     hyg = parsers.parse_hygiene_and_tcb_caveats(OAI_REF_DIR)
 
-    assert p1["oai_ref_total_files"] == 82 and p1["oai_ref_lean_files"] == 59
-    assert p1["oai_ref_non_lean_files"] == 23 and p1["oai_ref_lean_total_lines"] == 16837
+    assert p1["oai_ref_total_files"] == 83 and p1["oai_ref_lean_files"] == 59
+    assert p1["oai_ref_non_lean_files"] == 24 and p1["oai_ref_lean_total_lines"] == 16837
     assert p1["lakefile_root_lines"] == 972 and p1["lakefile_default_targets"] == 11
     assert p1["cli_elf_hub_line_tuple"] == [103, 59, 90, 75] and p1["cli_elf_hub_lines_sum"] == 327
     assert p1["hook_table_placed_symbols"] == 37 and p1["panic_sigabrt_symbols"] == 18
@@ -150,6 +150,8 @@ def verify_forensic_comparator_and_headlines() -> dict:
     assert pq["total_json_entries"] == 24 and pq["unique_headline_theorems"] == 21
     assert not pq["enable_nanoda_computational"] and not pq["enable_nanoda_symbolic"]
     assert pq["prewarm_outside_landrun"] and len(pub_imports) == 4
+    assert pq["comparator_readme_808b4b7_lines"] == 138 and pq["comparator_readme_what_not_covered_line"] == 112
+    assert pq["comparator_readme_malicious_pr_admitted"] and pq["comparator_readme_linux_510_unsandboxed_admitted"]
 
     c3_exact = Fraction(pq["pqxdh_c3_numerator"], pq["pqxdh_c3_denominator"]) * (1 << 60)
     c3_sum = (1 << 60) + (1 << 56) + (1 << 51) + (1 << 46)
@@ -187,9 +189,7 @@ def verify_forensic_comparator_and_headlines() -> dict:
             "PARTIAL_SPEC": 4,
         },
         "repository_sorry_distribution": {
-            "ComparatorChallenge": 24,
-            "SyntheticDisproofs": pq["synthetic_disproof_sorry_files"],
-            "AxiomAuditFixtures": pq["axiom_audit_fixture_sorrys"],
+            "ComparatorChallenge": 24, "SyntheticDisproofs": pq["synthetic_disproof_sorry_files"], "AxiomAuditFixtures": pq["axiom_audit_fixture_sorrys"],
         },
         "pqxdh_gapdh_term5_fraction": f"{gapdh_prod.numerator}/{gapdh_prod.denominator}",
         "pqxdh_ed25519_pair_over_2pow64": 65536,

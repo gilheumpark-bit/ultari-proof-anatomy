@@ -277,24 +277,20 @@ def parse_pqxdh_deviations_and_comparator(oai_ref_dir: Path) -> dict:
     m_mkeys = re.search(r"`MAX_MESSAGE_KEYS`\s*\|\s*([0-9,]+)", glossary_md)
     assert m_tot and m_c3 and m_q40 and m_chains and m_jumps and m_mkeys
 
-    dev_headers = re.findall(r"(?m)^### (DEV-[A-Z0-9-]+)\b", dev_md)
-    dev_lines = dev_md.splitlines()
+    dev_headers, dev_lines = re.findall(r"(?m)^### (DEV-[A-Z0-9-]+)\b", dev_md), dev_md.splitlines()
     cheval_files = sorted((oai_ref_dir / "Symbolic/BugInjection/Disproofs").glob("Cheval26*Cli.lean"))
     carriers, unchecked = set(), 0
     for cf in cheval_files:
         raw = cf.read_text(encoding="utf-8")
         unchecked += int("not machine-checked as a counterexample" in raw)
-        m_car = re.search(r"Disproofs\.Impl\.(Cheval26\w+)\.disproof", strip_lean_comments(raw))
-        if m_car:
-            carriers.add(m_car.group(1))
-
+        carriers.update(re.findall(r"Disproofs\.Impl\.(Cheval26\w+)\.disproof", strip_lean_comments(raw)))
     synth_files = sorted((oai_ref_dir / "Symbolic/BugInjection/Synthetic/Disproofs").glob("*.lean"))
     synth_sorry = sum("sorry" in strip_lean_comments(sf.read_text(encoding="utf-8")) for sf in synth_files)
     fixtures_txt = strip_lean_comments((oai_ref_dir / "arm64-semantics/ProofLib/Testing/AxiomAudit/Fixtures.lean").read_text(encoding="utf-8"))
     comp_cfg = json.loads((oai_ref_dir / "comparator/computational.json").read_text(encoding="utf-8"))
     sym_cfg = json.loads((oai_ref_dir / "comparator/symbolic.json").read_text(encoding="utf-8"))
-    run_sh = (oai_ref_dir / "comparator/run.sh").read_text(encoding="utf-8")
-    all_entries = comp_cfg["theorem_names"] + sym_cfg["theorem_names"]
+    run_sh, comp_readme = (oai_ref_dir / "comparator/run.sh").read_text(encoding="utf-8"), (oai_ref_dir / "comparator/README.md").read_text(encoding="utf-8")
+    comp_readme_lines, all_entries = comp_readme.splitlines(), comp_cfg["theorem_names"] + sym_cfg["theorem_names"]
     short_names = [t.rsplit(".", 1)[-1] for t in all_entries]
 
     return {
@@ -327,4 +323,8 @@ def parse_pqxdh_deviations_and_comparator(oai_ref_dir: Path) -> dict:
         "enable_nanoda_computational": comp_cfg["enable_nanoda"],
         "enable_nanoda_symbolic": sym_cfg["enable_nanoda"],
         "prewarm_outside_landrun": ("prewarm_targets" in run_sh and "landrun" in run_sh),
+        "comparator_readme_808b4b7_lines": len(comp_readme_lines),
+        "comparator_readme_what_not_covered_line": next(i + 1 for i, ln in enumerate(comp_readme_lines) if ln.startswith("## What this check does not cover")),
+        "comparator_readme_malicious_pr_admitted": "Code that runs while the solution is elaborated could change the challenge" in comp_readme,
+        "comparator_readme_linux_510_unsandboxed_admitted": ("Landlock needs Linux" in comp_readme and "5.10" in comp_readme and "run unsandboxed" in comp_readme),
     }

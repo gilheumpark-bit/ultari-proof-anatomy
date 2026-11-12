@@ -72,20 +72,20 @@ theorem thm_53_comparator_challenge_153682_line_tcb_laundering
     153682 ≤ c_tcb ∧ 448 * c_chal < c_tcb ∧ 17321 ≤ c_arm_tr + c_arm_leg := by
   omega
 
-/-- [Theorem 54] Triple comparator isolation failure (`computational.json:19`, `symbolic.json:23`,
-`run.sh:60-100`): external kernel checker `nanoda` is disabled on both challenges (`nanoda_on = 0`),
-untrusted `CliElfLib` is elaborated before `comparator` executes (`untrusted_pre_elab = 1`), and CI
-Linux kernel `5.10` (`510`) falls below Landlock ABI v1 minimum `5.13` (`513`), degrading
-`landrun --best-effort` to unsandboxed execution! -/
+/-- [Theorem 54] Comparator isolation failure & `PR #2` deletion (`computational.json:19`, `symbolic.json:23`,
+`run.sh:44-48`, `comparator/README.md:112-131`): `nanoda` is disabled (`0`), CI Linux `5.10 < 5.13`
+runs `landrun` unsandboxed after pre-building `CliElfLib`, and `PR #2` (`b0f729accbc2`) deleted `67`
+lines (`L65-L131`, including `## What this check does not cover`) while adding `30` lines to shrink
+`comparator/README.md` from `138` to `101` lines! -/
 theorem thm_54_nanoda_disabled_and_linux_510_landlock_bypass
-    (nanoda_comp nanoda_sym untrusted_pre_elab ci_kernel landlock_min : Int)
-    (hnc : nanoda_comp = 0)
-    (hns : nanoda_sym = 0)
-    (hpre : untrusted_pre_elab = 1)
+    (nanoda_on ci_kernel landlock_min readme_808b4b7 pr2_deleted : Int)
+    (hnan : nanoda_on = 0)
     (hci : ci_kernel = 510)
-    (hll : landlock_min = 513) :
-    nanoda_comp + nanoda_sym = 0 ∧ ci_kernel < landlock_min ∧
-      landlock_min - ci_kernel = 3 * untrusted_pre_elab := by
+    (hll : landlock_min = 513)
+    (hr0 : readme_808b4b7 = 138)
+    (hdel : pr2_deleted = 67) :
+    ci_kernel < landlock_min ∧ landlock_min - ci_kernel = 3 + nanoda_on ∧
+      readme_808b4b7 + 30 - pr2_deleted = 101 := by
   omega
 
 /-- [Theorem 55] Bug-injection carrier-aliasing, `PAPER_MAP.md` drift (`PAPER_MAP.md:216-238` vs

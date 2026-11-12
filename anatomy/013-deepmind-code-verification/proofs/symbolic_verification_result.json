@@ -3,9 +3,9 @@
   "upstream_commit": "808b4b7ffef198e6a91f71ed776d641a1c236882",
   "status": "ALL_CLAIMS_VERIFIED",
   "pillar1_hook_and_budget": {
-    "oai_ref_total_files": 82,
+    "oai_ref_total_files": 83,
     "oai_ref_lean_files": 59,
-    "oai_ref_non_lean_files": 23,
+    "oai_ref_non_lean_files": 24,
     "oai_ref_lean_total_lines": 16837,
     "lakefile_root_lines": 972,
     "lakefile_default_targets": 11,
@@ -210,7 +210,11 @@
     ],
     "enable_nanoda_computational": false,
     "enable_nanoda_symbolic": false,
-    "prewarm_outside_landrun": true
+    "prewarm_outside_landrun": true,
+    "comparator_readme_808b4b7_lines": 138,
+    "comparator_readme_what_not_covered_line": 112,
+    "comparator_readme_malicious_pr_admitted": true,
+    "comparator_readme_linux_510_unsandboxed_admitted": true
   },
   "mac_vacuity_and_rigidity": {
     "ls31_thresholds_2pow32": {
