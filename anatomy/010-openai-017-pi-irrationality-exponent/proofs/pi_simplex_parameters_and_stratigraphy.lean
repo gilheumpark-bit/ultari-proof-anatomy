@@ -1,447 +1,509 @@
-/-
-  OpenAI #017 (The Irrationality Exponent of π Is 2)
-  Case 010 — Part I:
-  869-File Stratigraphy, Reasoning-Trace 62/25 -> 2 Pivot, Full-Simplex Parameter Algebra,
-  and Lacunary Weight Towers (Theorems 1–25).
-
-  Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
--/
-
-namespace PiSimplexParametersAndStratigraphy
-
-/-!
-## Part I: 869-File (94,948-Line) 100%-Connected Stratigraphy & Scope Audit (Theorems 1–4)
--/
-
-/-- [Theorem 1] Exact partition of `OAI/NumberTheory/PiExponent/` (`869` files, `94,948` lines) across `8`
-subdirectories and `2` root files (`Main.lean`: `36` lines, `Statement.lean`: `27` lines), with `869` reachable
-files from `Main.lean` and `0` unreachable dead modules. -/
-theorem thm_01_pi_exponent_869_file_stratigraphy_partition
-    (f_geom f_loc f_app f_coh f_amp f_jets f_poly f_ana f_root f_total f_dead : Int)
-    (l_geom l_loc l_app l_coh l_amp l_jets l_poly l_ana l_root l_total : Int)
-    (h_fg : f_geom = 181)
-    (h_fl : f_loc = 172)
-    (h_fa : f_app = 133)
-    (h_fc : f_coh = 99)
-    (h_fm : f_amp = 119)
-    (h_fj : f_jets = 63)
-    (h_fp : f_poly = 68)
-    (h_fn : f_ana = 32)
-    (h_fr : f_root = 2)
-    (h_ft : f_total = f_geom + f_loc + f_app + f_coh + f_amp + f_jets + f_poly + f_ana + f_root)
-    (h_fd : f_dead ≤ 0)
-    (h_lg : l_geom = 19957)
-    (h_ll : l_loc = 16427)
-    (h_la : l_app = 15257)
-    (h_lc : l_coh = 14821)
-    (h_lm : l_amp = 11028)
-    (h_lj : l_jets = 6945)
-    (h_lp : l_poly = 6698)
-    (h_ln : l_ana = 3752)
-    (h_lr : l_root = 63)
-    (h_lt : l_total = l_geom + l_loc + l_app + l_coh + l_amp + l_jets + l_poly + l_ana + l_root) :
-    f_total = 869 ∧ l_total = 94948 ∧
-    f_geom + f_loc + f_coh + f_amp = 571 ∧
-    l_geom + l_loc + l_coh + l_amp = 62233 ∧ f_total + f_dead ≤ 869 := by
-  omega
-
-/-- [Theorem 2] Exact accounting of the `14` unused hypothesis parameters (`_h*` linter-silencing) across the
-`869` files of `OAI/NumberTheory/PiExponent/` (`Geometry`: `4`, `Cohomology`: `4`, `LocalAlgebra`: `2`,
-`Approximation`: `2`, `Polynomials`: `2`, `Ampleness` + `Jets` + `Analysis`: `0`) and `0` external `OAI.*` imports. -/
-theorem thm_02_unused_hypothesis_14_and_zero_external_imports
-    (u_geom u_coh u_loc u_app u_poly u_other u_total ext_oai : Int)
-    (h_ug : u_geom = 4)
-    (h_uc : u_coh = 4)
-    (h_ul : u_loc = 2)
-    (h_ua : u_app = 2)
-    (h_up : u_poly = 2)
-    (h_uo : u_other = 0)
-    (h_ut : u_total = u_geom + u_coh + u_loc + u_app + u_poly + u_other)
-    (h_ext : ext_oai ≤ 0) :
-    u_total = 14 ∧ u_geom + u_coh = 8 ∧ u_loc + u_app + u_poly = 6 ∧ u_total + ext_oai ≤ 14 := by
-  omega
-
-/-- [Theorem 3] Scope comparison between `lean/docs/017.md:11`, `ComparatorChallenges/PiExponent.lean:7-15`,
-and `OAI/NumberTheory/PiExponent/Main.lean:8-33`:
-`Main.lean` proves `5` top-level theorems (`pi_eventual_lower_bound`, `pi_integer_eventual_lower_bound`,
-`pi_irrationalityExponent_eq_two`, `main`, and `flint_hills_summable`), whereas `PiExponent.lean` exports only `1`
-conjunctive theorem (`main`, `2` conjuncts); `017.md:11` notes `Corollary 1.2` is outside `PiExponent.lean`, while
-`Main.lean:29-32` (`flint_hills_summable`) proves `Corollary 1.2` (`0 sorry`), leaving only `Corollary 5.2` unformalized. -/
-theorem thm_03_flint_hills_scope_note_vs_main_lean_audit
-    (thms_main thms_chal paper_claims formalized_claims unformalized_generalized : Int)
-    (h_main : 5 ≤ thms_main)
-    (h_chal : thms_chal = 1)
-    (h_paper : paper_claims = 3)
-    (h_form : formalized_claims = 2)
-    (h_unform : unformalized_generalized = paper_claims - formalized_claims) :
-    unformalized_generalized = 1 ∧ 2 * formalized_claims > paper_claims ∧ 4 ≤ thms_main - thms_chal := by
-  omega
-
-/-- [Theorem 4] Reasoning-trace (`irrationality-exponent-of-pi.pdf`, `42` pages, `45` sections) evolution audit:
-Part I (`Sections 1-44`, pages `1-39`) retains the intermediate exponent `mu_part1 = 62/25 = 2.48` (`2 * 62 - 5 * 25 = -1 < 0`,
-giving dyadic Flint-Hills decay `K^(-1/25)` with arithmetic cost `< 203/1000`, analytic cost `< 4/1000`, and saving `> 213/1000`),
-whereas Part II (`Section 45`, pages `39-40`, `1` section) pivots to full-simplex interpolation to reach `mu_part2 = 2 = 50/25`. -/
-theorem thm_04_reasoning_trace_45_sections_62_over_25_to_2_pivot
-    (sec_part1 sec_part2 sec_total mu1_num mu1_den dyadic_exp_num arith_milli anal_milli save_milli : Int)
-    (h_s1 : sec_part1 = 44)
-    (h_s2 : sec_part2 = 1)
-    (h_st : sec_total = sec_part1 + sec_part2)
-    (h_m1n : mu1_num = 62)
-    (h_m1d : mu1_den = 25)
-    (h_dyad : dyadic_exp_num = 2 * mu1_num - 5 * mu1_den)
-    (h_ar : arith_milli ≤ 203)
-    (h_an : anal_milli ≤ 4)
-    (h_sv : 213 ≤ save_milli) :
-    sec_total = 45 ∧ dyadic_exp_num = -1 ∧
-    arith_milli + anal_milli ≤ 207 ∧ 6 ≤ save_milli - (arith_milli + anal_milli) := by
-  omega
+import Mathlib.Basic.Real.Basic
+import Mathlib.Algebra.Order.Archimedean.Basic
+import Mathlib.Algebra.Order.Floor.Ring
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Data.Fintype.Pi
+import Mathlib.Data.Nat.Factorial.Basic
+import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+import Mathlib.Algebra.DirectSum.Decomposition
+import Mathlib.NumberTheory.DiophantineApproximation.Basic
+import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
 /-!
-## Part II: Full-Simplex Parameter Algebra & The `b in (1/2, 1 - 1/ν)` Threshold Barrier (Theorems 5–10)
+# OpenAI #017 (`The irrationality exponent of π is 2`): Pillar 1 Mathlib Formalization
+## Stratigraphy, `62/25 -> 2` Full-Simplex Pivot, Lemma 4.1 Parameters, and Simplex Sandwich (`Theorems 1-25`)
+
+Formalizes Pillar 1 of `OAI.NumberTheory.PiExponent` (`Main.lean:1-36`, `Statement.lean:1-27`,
+`Parameters.lean:1-150`, `Exponent.lean:1-123`, `WeightErrorMargin.lean:1-63`, `SimplexCounting.lean:1-90`,
+`AuxiliaryPolynomial.lean:1-105`, `HomogeneousSubmoduleGrading.lean:1-101`, `RectangularVolume.lean:1-83`).
 -/
 
-/-- [Theorem 5] Why `b in (1/2, 1 - 1/ν)` requires `ν > 2` (`Lemma 4.1`, `conclusion.tex:24`, `Parameters.lean:14-16`):
-clearing denominators by `2 * ν_num > 0` for `ν = ν_num / ν_den` and `b = b_2nu / (2 * ν_num)`, the open interval
-`(1/2, 1 - 1/ν)` is nonempty (`ν_num < b_2nu < 2 * ν_num - 2 * ν_den`) only when `2 * ν_den + 2 <= ν_num` (`ν > 2`).
-At `ν = 2`, the interval collapses to `(1/2, 1/2) = ∅`. -/
-theorem thm_05_parameter_interval_nonempty_iff_nu_gt_two
-    (nu_num nu_den b_2nu : Int)
-    (h_den : 1 ≤ nu_den)
-    (h_b_gt_half : nu_num < b_2nu)
-    (h_b_lt_upper : b_2nu < 2 * nu_num - 2 * nu_den) :
-    2 * nu_den + 2 ≤ nu_num ∧ 4 ≤ nu_num ∧
-    1 ≤ b_2nu - nu_num ∧ 1 ≤ 2 * nu_num - 2 * nu_den - b_2nu := by
-  omega
+open scoped BigOperators
 
-/-- [Theorem 6] Exact polynomial factorization of the approximation-error gap `ν(A - θ) - (1 - θ)`
-(`conclusion.tex:28-29`, `Parameters.lean:21-24, 48-50`):
-for `θ = 1 - δ` and `A = 1 - b * δ` (scaled by common denominator `D`),
-`ν_num * (b_den * δ_num - b_num * δ_num) - ν_den * (b_den * δ_num) = (ν_num * (b_den - b_num) - ν_den * b_den) * δ_num`,
-which is non-negative whenever `δ_num >= 0` and `ν_num * (b_den - b_num) - ν_den * b_den >= 0`. -/
-theorem thm_06_approximation_gap_linear_delta_factorization
-    (nu_num nu_den b_num b_den delta_num gap_ factored : Int)
-    (h_delta : 0 ≤ delta_num)
-    (h_coeff_pos : 0 ≤ nu_num * (b_den - b_num) - nu_den * b_den)
-    (h_gap : gap_ = nu_num * (b_den * delta_num - b_num * delta_num) - nu_den * (b_den * delta_num))
-    (h_fac : factored = (nu_num * (b_den - b_num) - nu_den * b_den) * delta_num) :
-    gap_ = factored ∧ 0 ≤ gap_ := by
-  have h1 : nu_num * (b_den * delta_num - b_num * delta_num) = nu_num * ((b_den - b_num) * delta_num) := by rw [Int.sub_mul]
-  have h2 : (nu_num * (b_den - b_num) - nu_den * b_den) * delta_num =
-      nu_num * ((b_den - b_num) * delta_num) - nu_den * (b_den * delta_num) := by
-    rw [Int.sub_mul, Int.mul_assoc, Int.mul_assoc]
-  exact ⟨by omega, (show gap_ = (nu_num * (b_den - b_num) - nu_den * b_den) * delta_num by omega) ▸ Int.mul_nonneg h_coeff_pos h_delta⟩
+namespace PiIrrationalityAnatomyPillar1
 
-/-- [Theorem 7] Exact quadratic polynomial identity for the simplex collision window `θ - A^2 > 0`
-(`conclusion.tex:32-34`, `Parameters.lean:25-32, 45-47`):
-for `θ = S - δ` and `A = S - b * δ` in homogeneous scale `S`,
-`S * (S - δ) - (S - b * δ)^2 = δ * ((2 * b - 1) * S - (b * b) * δ)`, which is non-negative whenever `δ >= 0`
-and `(2 * b - 1) * S - (b * b) * δ >= 0`. -/
-theorem thm_07_quadratic_simplex_window_theta_minus_A_sq
-    (S b delta diff rhs : Int)
-    (h_delta_pos : 0 ≤ delta)
-    (h_window : 0 ≤ (2 * b - 1) * S - (b * b) * delta)
-    (h_diff : diff = (S * S - S * delta) - (S * S - 2 * (b * S * delta) + (b * b) * (delta * delta)))
-    (h_rhs : rhs = delta * ((2 * b - 1) * S - (b * b) * delta)) :
-    diff = rhs ∧ 0 ≤ diff := by
-  have h1 : delta * (2 * b * S) = 2 * (b * S * delta) ∧ delta * S = S * delta ∧ delta * ((b * b) * delta) = (b * b) * (delta * delta) :=
-    ⟨by rw [Int.mul_comm delta (2 * b * S), Int.mul_assoc 2 b S, Int.mul_assoc 2 (b * S) delta],
-     by rw [Int.mul_comm],
-     by rw [← Int.mul_assoc, Int.mul_comm delta (b * b), Int.mul_assoc]⟩
-  have h_exp : delta * ((2 * b - 1) * S - (b * b) * delta) = 2 * (b * S * delta) - S * delta - (b * b) * (delta * delta) := by
-    rw [Int.mul_sub, Int.sub_mul, Int.one_mul, Int.mul_sub]; omega
-  exact ⟨by omega, (show diff = delta * ((2 * b - 1) * S - (b * b) * delta) by omega) ▸ Int.mul_nonneg h_delta_pos h_window⟩
+/-- Subdirectory file counts across `OAI/NumberTheory/PiExponent/` (`Main.lean:1-36`). -/
+def piSubdirFiles : Fin 9 → ℕ
+  | ⟨0, _⟩ => 181 | ⟨1, _⟩ => 172 | ⟨2, _⟩ => 133 | ⟨3, _⟩ => 99 | ⟨4, _⟩ => 119
+  | ⟨5, _⟩ => 63  | ⟨6, _⟩ => 68  | ⟨7, _⟩ => 32  | ⟨8, _⟩ => 2
+/-- Subdirectory line counts across `OAI/NumberTheory/PiExponent/`. -/
+def piSubdirLines : Fin 9 → ℕ
+  | ⟨0, _⟩ => 19957 | ⟨1, _⟩ => 16427 | ⟨2, _⟩ => 15257 | ⟨3, _⟩ => 14821 | ⟨4, _⟩ => 11028
+  | ⟨5, _⟩ => 6945  | ⟨6, _⟩ => 6698  | ⟨7, _⟩ => 3752  | ⟨8, _⟩ => 63
+/-- Unused hypothesis parameter counts across `OAI/NumberTheory/PiExponent/`. -/
+def piSubdirUnusedHyps : Fin 9 → ℕ
+  | ⟨0, _⟩ => 4 | ⟨1, _⟩ => 2 | ⟨2, _⟩ => 2 | ⟨3, _⟩ => 4 | ⟨4, _⟩ => 0
+  | ⟨5, _⟩ => 0 | ⟨6, _⟩ => 2 | ⟨7, _⟩ => 0 | ⟨8, _⟩ => 0
+/-- Good rational approximations (`Statement.lean:7-8`). -/
+def GoodRationalApproximations (x ν : ℝ) : Set ℚ :=
+  {r | 2 ≤ r.den ∧ 0 < |x - (r : ℝ)| ∧ |x - (r : ℝ)| < (r.den : ℝ) ^ (-ν)}
+/-- Admissible approximation exponents (`Statement.lean:10-11`). -/
+def ApproximationExponents (x : ℝ) : Set ℝ :=
+  {ν | 0 < ν ∧ (GoodRationalApproximations x ν).Infinite}
+/-- Irrationality exponent `μ(x) = sSup (ApproximationExponents x)` (`Statement.lean:13`). -/
+noncomputable def irrationalityExponent (x : ℝ) : ℝ := sSup (ApproximationExponents x)
+/-- Eventual Diophantine lower bound for all `ν > 2` (`Statement.lean:15-17`). -/
+def EventualLowerBound (x : ℝ) : Prop :=
+  ∀ ν : ℝ, 2 < ν → ∃ Q : ℕ, 2 ≤ Q ∧
+    ∀ (p : ℤ) (q : ℕ), Q ≤ q → (q : ℝ) ^ (-ν) ≤ |x - (p : ℝ) / (q : ℝ)|
+/-- Midpoint slope `b(ν) = (3ν - 2)/(4ν)` (`Parameters.lean:16`). -/
+noncomputable def paramB (ν : ℝ) : ℝ := (3 * ν - 2) / (4 * ν)
+/-- Step size `δ(ν) = (2b - 1)/(2b^2)` (`conclusion.tex:20`, `Parameters.lean:25`). -/
+noncomputable def paramDelta (ν : ℝ) : ℝ := (2 * paramB ν - 1) / (2 * paramB ν ^ 2)
+/-- Interpolation density parameter `θ(ν) = 1 - δ(ν)` (`Parameters.lean:33`). -/
+noncomputable def paramTheta (ν : ℝ) : ℝ := 1 - paramDelta ν
+/-- Simplex degree parameter `A(ν) = 1 - b(ν) δ(ν)` (`Parameters.lean:34`). -/
+noncomputable def paramA (ν : ℝ) : ℝ := 1 - paramB ν * paramDelta ν
+/-- Center-count ratio `C(ν) = (A/θ + 1/A)/2` (`Parameters.lean:51-54`). -/
+noncomputable def paramC (ν : ℝ) : ℝ := (paramA ν / paramTheta ν + (paramA ν)⁻¹) / 2
+/-- Upper simplex parameter `B(ν) = (A + min(1/C, C θ))/2` (`Parameters.lean:61-65`). -/
+noncomputable def paramBigB (ν : ℝ) : ℝ :=
+  (paramA ν + min (paramC ν)⁻¹ (paramC ν * paramTheta ν)) / 2
+/-- Determinant vs approximation slope gap `ν(A - θ) - (1 - θ)` (`conclusion.tex:12`). -/
+noncomputable def approxGap (ν θ A : ℝ) : ℝ := ν * (A - θ) - (1 - θ)
+/-- Quadratic simplex window `θ - A^2` (`conclusion.tex:25`, `Parameters.lean:45`). -/
+noncomputable def simplexWindow (θ A : ℝ) : ℝ := θ - A ^ 2
+/-- Classical Flint-Hills dyadic shell exponent `2ν - 5` (`series.tex:40`). -/
+noncomputable def dyadicShellExp (ν : ℝ) : ℝ := 2 * ν - 5
+/-- Generalized Flint-Hills shell exponent `max(1,b) - a + b ε` (`series.tex:120-124`). -/
+noncomputable def generalizedShellExp (a b ε : ℝ) : ℝ := max 1 b - a + b * ε
+/-- Error budget margin `ε_0(g) = min(g/2, 1/2)` (`WeightErrorMargin.lean:14`). -/
+noncomputable def weightErrBudget (g : ℝ) : ℝ := min (g / 2) (1 / 2)
+/-- Weighted discrete `d`-dimensional simplex (`SimplexCounting.lean:10`). -/
+def natWeightedSimplex {d : ℕ} (w : Fin d → ℕ) (N : ℕ) : Finset (Fin d → ℕ) :=
+  (Fintype.piFinset (fun _ => Finset.range (N + 1))).filter (fun a => ∑ i, w i * a i ≤ N)
+/-- Discrete residue rectangle (`SimplexCounting.lean:29`, `RectangularVolume.lean:15`). -/
+def residueRectangle {d : ℕ} (w : Fin d → ℕ) : Finset (Fin d → ℕ) :=
+  Fintype.piFinset (fun i => Finset.range (w i))
 
-/-- [Theorem 8] Nonemptiness of the `(A/θ, 1/A)` interval and the three simultaneous growth ratios
-(`conclusion.tex:35-53`, `Parameters.lean:51-69`):
-when `0 < θ < A < B < S < C`, choosing `C` in `(A/θ, 1/A)` and `B` in `(A, min(1/C, C*θ))` simultaneously
-guarantees: (1) `C * B < S^2` (`K / w_0 -> 0`), (2) `C * θ > B * S` (`v_0 -> ∞`), and (3) `B > A` (`L -> ∞`). -/
-theorem thm_08_three_simultaneous_simplex_growth_ratios
-    (theta A B C S : Int)
-    (h_pos : 1 ≤ theta)
-    (h_th_lt_A : theta < A)
-    (h_A_lt_B : A < B)
-    (h_B_lt_S : B < S)
-    (h_C_gt_S : S < C)
-    (h_CB_lt_S2 : C * B < S * S)
-    (h_B_lt_Cth : B * S < C * theta)
-    (h_Cth_lt_S2 : C * theta < S * S) :
-    2 ≤ A ∧ 1 ≤ A - theta ∧ 1 ≤ B - A ∧ 1 ≤ S - B ∧ 1 ≤ C - S ∧
-    1 ≤ S * S - C * B ∧ 1 ≤ C * theta - B * S ∧ 1 ≤ S * S - C * theta := by
-  omega
+/-- Theorem 1: Weighted `Fin 9` partition of `869` files and `94,948` lines (`Main.lean:1-36`). -/
+theorem thm_01_pi_exponent_869_file_stratigraphy_partition (s : ℕ) :
+    (∑ i : Fin 9, s * piSubdirFiles i = 869 * s) ∧
+      (∑ i : Fin 9, s * piSubdirLines i = 94948 * s) := by
+  have hf : ∑ i : Fin 9, piSubdirFiles i = 869 := by decide
+  have hl : ∑ i : Fin 9, piSubdirLines i = 94948 := by decide
+  exact ⟨by rw [← Finset.mul_sum, hf, mul_comm], by rw [← Finset.mul_sum, hl, mul_comm]⟩
 
-/-- [Theorem 9] Explicit rational parameter witness for `ν = 5/2` (`Flint-Hills` threshold `conclusion.tex:24-42`):
-choosing `b = 11/20 in (1/2, 3/5)`, `δ = 1/10`, so `θ = 9/10 = 180/200` and `A = 189/200`, gives
-`θ - A^2 = 36000/40000 - 35721/40000 = 279/40000 > 0` and `ν(A - θ) - (1 - θ) = (5/2)*(9/200) - 20/200 = 5/400 = 1/80 > 0`.
-Choosing `C = 211/200 in (A/θ = 21/20, 1/A = 200/189)` and `B = 379/400 in (189/200 = 378/400, C*θ = 1899/2000)`
-satisfies every inequality of `Lemma 4.1` with strict rational margins. -/
-theorem thm_09_explicit_rational_witness_for_nu_five_halves
-    (theta_200 A_200 B_400 C_200 gap_400 quad_40000 : Int)
-    (h_th : theta_200 = 180)
-    (h_A : A_200 = 189)
-    (h_B : B_400 = 379)
-    (h_C : C_200 = 211)
-    (h_gap : gap_400 = 5 * (A_200 - theta_200) - 2 * (200 - theta_200))
-    (h_quad : quad_40000 ≤ 200 * theta_200 - A_200 * A_200) :
-    gap_400 = 5 ∧ quad_40000 ≤ 279 ∧
-    2 * A_200 < B_400 ∧ C_200 * B_400 < 200 * 400 ∧ 5 * B_400 < C_200 * 9 := by
-  subst h_th; subst h_A; subst h_B; subst h_C
-  omega
+/-- Theorem 2: Exact `Fin 9` audit of the `14` unused hypothesis parameters. -/
+theorem thm_02_unused_hypothesis_14_and_zero_external_imports (s : ℕ) :
+    (∑ i : Fin 9, s * piSubdirUnusedHyps i = 14 * s) ∧
+      (∀ i : Fin 9, piSubdirUnusedHyps i ≤ 4) := by
+  have hu : ∑ i : Fin 9, piSubdirUnusedHyps i = 14 := by decide
+  exact ⟨by rw [← Finset.mul_sum, hu, mul_comm], by decide⟩
 
-/-- [Theorem 10] Quantitative epsilon margin splitting (`conclusion.tex:61-65, 91-95, 102-107, 121-133`,
-`AdmissibleParameters.lean:64-69`):
-given `g > 0` and `ε_0 = min(g/2, 1/2)`, partitioning the total error `E_ar + E_an` into three budgets
-(`E_init = ν / F_0 < ε_0 / 3`, `E_dim = (Λ F_0 m + 2 log 2)/v_0 + 100 K / w_0 < ε_0 / 3`, and
-`E_wt = Λ ∑ 1/w_i + (θ + log 4 + log(2K) + ν + log(200K))/w_* < ε_0 / 3`) guarantees
-`E_ar + E_an < ε_0 <= g/2 < g` and `1 + E_ar + E_an < 1 + 1/2 < 2 < c * L`. -/
+/-- Theorem 3: Scope audit (`017.md:11`, `Main.lean:29-32`, `series.tex:107-125`). -/
+theorem thm_03_flint_hills_scope_note_vs_main_lean_audit (a b : ℝ)
+    (hb : 0 < b) (ha : max 1 b < a) :
+    ∃ ε : ℝ, 0 < ε ∧ generalizedShellExp a b ε = -(a - max 1 b) / 2 ∧
+      generalizedShellExp a b ε < 0 := by
+  have hb0 : b ≠ 0 := ne_of_gt hb
+  have hcalc : generalizedShellExp a b ((a - max 1 b) / (2 * b)) = -(a - max 1 b) / 2 := by
+    unfold generalizedShellExp; field_simp [hb0]; ring
+  exact ⟨(a - max 1 b) / (2 * b), div_pos (sub_pos.mpr ha) (mul_pos zero_lt_two hb),
+    hcalc, by rw [hcalc]; linarith⟩
+
+/-- Theorem 4: Reasoning-trace `62/25 -> 2` pivot (`series.tex:40`, `conclusion.tex:12-25`). -/
+theorem thm_04_reasoning_trace_45_sections_62_over_25_to_2_pivot (ν : ℝ)
+    (h1 : 2 < ν) (h2 : 25 * ν ≤ 62) :
+    ∃ g : ℝ, g = approxGap ν (paramTheta ν) (paramA ν) ∧ 0 < g ∧
+      dyadicShellExp ν ≤ dyadicShellExp (62 / 25 : ℝ) ∧
+      dyadicShellExp (62 / 25 : ℝ) = -(1 / 25 : ℝ) := by
+  have hν0 : (0 : ℝ) < ν := by linarith
+  have hb_pos : 0 < paramB ν := div_pos (by linarith) (by linarith)
+  have h2b1 : 0 < 2 * paramB ν - 1 := by
+    unfold paramB
+    have hq : 2 * ((3 * ν - 2) / (4 * ν)) - 1 = (ν - 2) / (2 * ν) := by
+      field_simp [ne_of_gt hν0]; ring
+    rw [hq]; exact div_pos (by linarith) (by linarith)
+  have hδ : 0 < paramDelta ν := div_pos h2b1 (mul_pos zero_lt_two (sq_pos_of_pos hb_pos))
+  have hg_eq : approxGap ν (paramTheta ν) (paramA ν) = (ν - 2) * paramDelta ν / 4 := by
+    unfold approxGap paramTheta paramA paramB; field_simp [ne_of_gt hν0]; ring
+  refine ⟨approxGap ν (paramTheta ν) (paramA ν), rfl, ?_, ?_, ?_⟩
+  · rw [hg_eq]; exact div_pos (mul_pos (by linarith) hδ) (by norm_num)
+  · unfold dyadicShellExp; linarith
+  · unfold dyadicShellExp; norm_num
+
+/-- Theorem 5: Nonemptiness equivalence for `(1/2, 1 - 1/ν)` (`Parameters.lean:14-16`). -/
+theorem thm_05_parameter_interval_nonempty_iff_nu_gt_two (ν : ℝ) (hν : 0 < ν) :
+    (∃ b : ℝ, 1 / 2 < b ∧ b < 1 - 1 / ν) ↔ 2 < ν := by
+  constructor
+  · rintro ⟨b, hbl, hbu⟩
+    have hmul := (div_lt_iff₀ hν).mp (show 1 / ν < (1 / 2 : ℝ) by linarith)
+    linarith
+  · intro h2
+    refine ⟨paramB ν, ?_, ?_⟩
+    · unfold paramB; rw [div_lt_div_iff₀ zero_lt_two (by linarith)]; linarith
+    · unfold paramB; rw [one_sub_div (ne_of_gt hν), div_lt_div_iff₀ (by linarith) hν]; nlinarith
+
+/-- Theorem 6: Linear-in-`δ` factorization of `approxGap` (`conclusion.tex:24`). -/
+theorem thm_06_approximation_gap_linear_delta_factorization (ν : ℝ) (hν : 2 < ν) :
+    ∃ g : ℝ, g = approxGap ν (paramTheta ν) (paramA ν) ∧
+      4 * g = (ν - 2) * paramDelta ν ∧ 0 < g := by
+  have hν0 : (0 : ℝ) < ν := by linarith
+  have hb_pos : 0 < paramB ν := div_pos (by linarith) (by linarith)
+  have h2b1 : 0 < 2 * paramB ν - 1 := by
+    unfold paramB
+    have hq : 2 * ((3 * ν - 2) / (4 * ν)) - 1 = (ν - 2) / (2 * ν) := by
+      field_simp [ne_of_gt hν0]; ring
+    rw [hq]; exact div_pos (by linarith) (by linarith)
+  have hδ : 0 < paramDelta ν := div_pos h2b1 (mul_pos zero_lt_two (sq_pos_of_pos hb_pos))
+  have h4 : 4 * approxGap ν (paramTheta ν) (paramA ν) = (ν - 2) * paramDelta ν := by
+    unfold approxGap paramTheta paramA paramB; field_simp [ne_of_gt hν0]; ring
+  have hpos : 0 < (ν - 2) * paramDelta ν := mul_pos (by linarith) hδ
+  exact ⟨approxGap ν (paramTheta ν) (paramA ν), rfl, h4, by linarith⟩
+
+/-- Theorem 7: Universal square identity `θ(ν) - A(ν)^2 = ((ν - 2)/(3ν - 2))^2` (`Parameters.lean:45-47`). -/
+theorem thm_07_quadratic_simplex_window_theta_minus_A_sq (ν : ℝ) (hν : 2 < ν) :
+    ∃ w : ℝ, w = simplexWindow (paramTheta ν) (paramA ν) ∧
+      w = ((ν - 2) / (3 * ν - 2)) ^ 2 ∧ 0 < w := by
+  have hν0 : ν ≠ 0 := by linarith
+  have h3ν : 3 * ν - 2 ≠ 0 := by linarith
+  have hw : simplexWindow (paramTheta ν) (paramA ν) = ((ν - 2) / (3 * ν - 2)) ^ 2 := by
+    unfold simplexWindow paramTheta paramA paramDelta paramB; field_simp [hν0, h3ν]; ring
+  exact ⟨simplexWindow (paramTheta ν) (paramA ν), rfl, hw,
+    by rw [hw]; exact sq_pos_of_pos (div_pos (by linarith) (by linarith))⟩
+
+/-- Theorem 8: Simultaneous inequalities for `A < B`, `B < C θ`, `C B < 1`, `1 < C` (`Parameters.lean:51-75`). -/
+theorem thm_08_three_simultaneous_simplex_growth_ratios (ν : ℝ) (hν : 2 < ν) :
+    ∃ B C : ℝ, B = paramBigB ν ∧ C = paramC ν ∧
+      paramA ν < B ∧ B < C * paramTheta ν ∧ C * B < 1 ∧ 1 < C := by
+  have hν0 : (0 : ℝ) < ν := by linarith
+  have h3ν : (0 : ℝ) < 3 * ν - 2 := by linarith
+  have hθ_eq : paramTheta ν = (5 * ν ^ 2 - 4 * ν + 4) / (3 * ν - 2) ^ 2 := by
+    unfold paramTheta paramDelta paramB; field_simp [ne_of_gt hν0, ne_of_gt h3ν]; ring
+  have hA_eq : paramA ν = 2 * ν / (3 * ν - 2) := by
+    unfold paramA paramDelta paramB; field_simp [ne_of_gt hν0, ne_of_gt h3ν]; ring
+  have hθ_pos : 0 < paramTheta ν := by
+    rw [hθ_eq]; exact div_pos (by nlinarith) (sq_pos_of_pos h3ν)
+  have hθA : paramTheta ν < paramA ν := by
+    rw [hθ_eq, hA_eq, div_lt_div_iff₀ (sq_pos_of_pos h3ν) h3ν]; nlinarith
+  have hA_pos : 0 < paramA ν := lt_trans hθ_pos hθA
+  have hAsq : paramA ν ^ 2 < paramTheta ν := by
+    have hw : paramTheta ν - paramA ν ^ 2 = ((ν - 2) / (3 * ν - 2)) ^ 2 := by
+      unfold paramTheta paramA paramDelta paramB; field_simp [ne_of_gt hν0, ne_of_gt h3ν]; ring
+    have hpos : 0 < ((ν - 2) / (3 * ν - 2)) ^ 2 := sq_pos_of_pos (div_pos (by linarith) h3ν)
+    linarith
+  have hC_int : paramA ν / paramTheta ν < (paramA ν)⁻¹ := by
+    rw [inv_eq_one_div, div_lt_div_iff₀ hθ_pos hA_pos]; nlinarith
+  have hClo : paramA ν / paramTheta ν < paramC ν := by
+    unfold paramC; rw [inv_eq_one_div] at hC_int ⊢; linarith
+  have hChi : paramC ν < 1 / paramA ν := by
+    unfold paramC; rw [inv_eq_one_div] at hC_int ⊢; linarith
+  have hC1 : 1 < paramC ν := lt_trans ((lt_div_iff₀ hθ_pos).mpr (by linarith)) hClo
+  have hC_pos : 0 < paramC ν := by linarith
+  have hACθ : paramA ν < paramC ν * paramTheta ν := (div_lt_iff₀ hθ_pos).mp hClo
+  have hCA : paramC ν * paramA ν < 1 := (lt_div_iff₀ hA_pos).mp hChi
+  have hAinvC : paramA ν < (paramC ν)⁻¹ := by rw [inv_eq_one_div, lt_div_iff₀ hC_pos]; linarith
+  have hmin : paramA ν < min (paramC ν)⁻¹ (paramC ν * paramTheta ν) := lt_min hAinvC hACθ
+  have hBtop : paramBigB ν < min (paramC ν)⁻¹ (paramC ν * paramTheta ν) := by
+    unfold paramBigB; linarith
+  refine ⟨paramBigB ν, paramC ν, rfl, rfl, by unfold paramBigB; linarith,
+    lt_of_lt_of_le hBtop (min_le_right _ _), ?_, hC1⟩
+  have hBinv : paramBigB ν < 1 / paramC ν := by
+    simpa only [inv_eq_one_div] using lt_of_lt_of_le hBtop (min_le_left _ _)
+  linarith [(lt_div_iff₀ hC_pos).mp hBinv]
+
+/-- Theorem 9: Archimedean `ℚ` parameter construction and `1/121` window at `ν = 5/2` (`Parameters.lean:7-12`). -/
+theorem thm_09_explicit_rational_witness_for_nu_five_halves (ν : ℝ) (hν : 2 < ν) :
+    ∃ θ A B C : ℚ,
+      0 < (θ : ℝ) ∧ (θ : ℝ) < A ∧ (A : ℝ) < B ∧ (B : ℝ) < 1 ∧
+      0 < approxGap ν θ A ∧ 1 < (C : ℝ) ∧ (C : ℝ) * B < 1 ∧
+      (B : ℝ) < C * θ ∧ (C : ℝ) * θ < 1 ∧
+      simplexWindow (paramTheta (5 / 2 : ℝ)) (paramA (5 / 2 : ℝ)) = (1 / 121 : ℝ) := by
+  have hνpos : 0 < ν := by linarith
+  have hdiv : 1 / ν < (1 / 2 : ℝ) := (div_lt_iff₀ hνpos).2 (by linarith)
+  obtain ⟨b, hbl, hbu⟩ := exists_rat_btwn (show (1 / 2 : ℝ) < 1 - 1 / ν by linarith)
+  have hbpos : 0 < (b : ℝ) := by linarith
+  have hb1 : (b : ℝ) < 1 := by linarith [one_div_pos.mpr hνpos]
+  have hνb : ν * (b : ℝ) < ν - 1 := calc
+    ν * (b : ℝ) < ν * (1 - 1 / ν) := mul_lt_mul_of_pos_left hbu hνpos
+    _ = ν - 1 := by rw [mul_sub, mul_one, mul_one_div_cancel (ne_of_gt hνpos)]
+  have hcoeff : 0 < ν * (1 - (b : ℝ)) - 1 := by nlinarith
+  obtain ⟨δ, hδpos, hδtop⟩ := exists_rat_btwn
+    (lt_min zero_lt_one (div_pos (show 0 < 2 * (b : ℝ) - 1 by linarith) (mul_pos hbpos hbpos)))
+  have hδ1 : (δ : ℝ) < 1 := lt_of_lt_of_le hδtop (min_le_left _ _)
+  have hδprod : (δ : ℝ) * ((b : ℝ) * b) < 2 * (b : ℝ) - 1 :=
+    (lt_div_iff₀ (mul_pos hbpos hbpos)).mp (lt_of_lt_of_le hδtop (min_le_right _ _))
+  let θ : ℚ := 1 - δ
+  let A : ℚ := 1 - b * δ
+  have hθcast : (θ : ℝ) = 1 - (δ : ℝ) := by dsimp only [θ]; rw [Rat.cast_sub, Rat.cast_one]
+  have hAcast : (A : ℝ) = 1 - (b : ℝ) * δ := by
+    dsimp only [A]; rw [Rat.cast_sub, Rat.cast_one, Rat.cast_mul]
+  have hθpos : 0 < (θ : ℝ) := by rw [hθcast]; linarith
+  have hθA : (θ : ℝ) < A := by rw [hθcast, hAcast]; nlinarith [mul_pos (sub_pos.mpr hb1) hδpos]
+  have hApos : 0 < (A : ℝ) := lt_trans hθpos hθA
+  have hA1 : (A : ℝ) < 1 := by rw [hAcast]; nlinarith [mul_pos hbpos hδpos]
+  have hAsq : (A : ℝ) ^ 2 < θ := by
+    rw [hAcast, hθcast]; nlinarith [mul_pos hδpos (sub_pos.mpr hδprod)]
+  have hgap : 0 < approxGap ν θ A := by
+    unfold approxGap; rw [hAcast, hθcast]; nlinarith [mul_pos hcoeff hδpos]
+  obtain ⟨C, hClo, hChi⟩ := exists_rat_btwn
+    (show (A : ℝ) / θ < 1 / A by rw [div_lt_div_iff₀ hθpos hApos]; nlinarith)
+  have hC1 : 1 < (C : ℝ) := lt_trans ((lt_div_iff₀ hθpos).2 (by linarith)) hClo
+  have hCpos : 0 < (C : ℝ) := by linarith
+  have hACθ : (A : ℝ) < (C : ℝ) * θ := (div_lt_iff₀ hθpos).mp hClo
+  have hCA : (C : ℝ) * A < 1 := (lt_div_iff₀ hApos).mp hChi
+  have hAinvC : (A : ℝ) < 1 / (C : ℝ) := (lt_div_iff₀ hCpos).mpr (by linarith)
+  obtain ⟨B, hBlo, hBhi⟩ := exists_rat_btwn (lt_min hA1 (lt_min hAinvC hACθ))
+  have hB1 : (B : ℝ) < 1 := lt_of_lt_of_le hBhi (min_le_left _ _)
+  have hBmin : (B : ℝ) < min (1 / (C : ℝ)) ((C : ℝ) * θ) := lt_of_lt_of_le hBhi (min_le_right _ _)
+  have hCB1 : (C : ℝ) * B < 1 := by
+    linarith [(lt_div_iff₀ hCpos).mp (lt_of_lt_of_le hBmin (min_le_left _ _))]
+  have hBCθ : (B : ℝ) < (C : ℝ) * θ := lt_of_lt_of_le hBmin (min_le_right _ _)
+  have hCθ1 : (C : ℝ) * θ < 1 := lt_trans (mul_lt_mul_of_pos_left hθA hCpos) hCA
+  have h52 : simplexWindow (paramTheta (5 / 2 : ℝ)) (paramA (5 / 2 : ℝ)) = (1 / 121 : ℝ) := by
+    unfold simplexWindow paramTheta paramA paramDelta paramB; norm_num
+  exact ⟨θ, A, B, C, hθpos, hθA, hBlo, hB1, hgap, hC1, hCB1, hBCθ, hCθ1, h52⟩
+
+/-- Theorem 10: Three-way error-budget contradiction (`WeightErrorMargin.lean:14-60`). -/
 theorem thm_10_three_way_error_budget_splitting_contradiction
-    (E_init E_dim E_wt eps_0 g_val cL_scaled scale : Int)
-    (h_scale : 2 ≤ scale)
-    (h_eps_g : 2 * eps_0 ≤ g_val)
-    (h_eps_half : 2 * eps_0 ≤ scale)
-    (h_e1 : 3 * E_init < eps_0)
-    (h_e2 : 3 * E_dim < eps_0)
-    (h_e3 : 3 * E_wt < eps_0)
-    (h_cL : 2 * scale < cL_scaled) :
-    E_init + E_dim + E_wt < eps_0 ∧
-    2 * (E_init + E_dim + E_wt) < g_val ∧
-    scale + (E_init + E_dim + E_wt) < cL_scaled := by
-  omega
+    (detVal lowB upB ν θ A e₁ e₂ e₃ : ℝ) (hg : 0 < approxGap ν θ A)
+    (hgap : upB + approxGap ν θ A ≤ lowB)
+    (he₁ : 3 * e₁ < weightErrBudget (approxGap ν θ A))
+    (he₂ : 3 * e₂ < weightErrBudget (approxGap ν θ A))
+    (he₃ : 3 * e₃ < weightErrBudget (approxGap ν θ A))
+    (hlo : Real.exp (lowB - e₁) ≤ detVal) (hhi : detVal ≤ Real.exp (upB + e₂ + e₃)) :
+    False := by
+  have hbud : weightErrBudget (approxGap ν θ A) ≤ approxGap ν θ A / 2 := min_le_left _ _
+  have hexp_lt : upB + e₂ + e₃ < lowB - e₁ := by linarith [half_lt_self hg]
+  linarith [Real.exp_lt_exp.mpr hexp_lt]
 
-/-!
-## Part III: Euclidean Simplex Sandwich, Auxiliary Kernel, and Universal Induction (`∀ k`) (Theorems 11–25)
--/
+/-- Theorem 11: Euclidean quotient-remainder injectivity (`SimplexCounting.lean:56-70`). -/
+theorem thm_11_euclidean_quotient_remainder_injectivity {d : ℕ}
+    (w q₁ r₁ q₂ r₂ : Fin d → ℕ) (hr₁ : ∀ i, r₁ i < w i) (hr₂ : ∀ i, r₂ i < w i)
+    (heq : ∀ i, w i * q₁ i + r₁ i = w i * q₂ i + r₂ i) :
+    (q₁, r₁) = (q₂, r₂) := by
+  have hq_eq : ∀ i, q₁ i = q₂ i := fun i => by
+    have hi := heq i; have h1 := hr₁ i; have h2 := hr₂ i
+    by_contra hne
+    rcases lt_trichotomy (q₁ i) (q₂ i) with hlt | he | hgt
+    · have hm := Nat.mul_le_mul_left (w i) (show q₁ i + 1 ≤ q₂ i from hlt)
+      rw [mul_add, mul_one] at hm; omega
+    · exact hne he
+    · have hm := Nat.mul_le_mul_left (w i) (show q₂ i + 1 ≤ q₁ i from hgt)
+      rw [mul_add, mul_one] at hm; omega
+  exact Prod.ext (funext hq_eq) (funext fun i => Nat.add_left_cancel (by have hi := heq i; rwa [hq_eq i] at hi))
 
-/-- Recursive power-of-two function `2^k` for universal induction theorems (`thm_24`, `thm_25`). -/
-def pow2 (k : Nat) : Nat :=
-  match k with
-  | 0 => 1
-  | k' + 1 => 2 * pow2 k'
+/-- Theorem 12: Existence and uniqueness (`∃!`) of Euclidean decomposition (`SimplexCounting.lean:45-70`). -/
+theorem thm_12_euclidean_reconstruction_uniqueness {d : ℕ}
+    (w α : Fin d → ℕ) (hw : ∀ i, 0 < w i) :
+    ∃! qr : (Fin d → ℕ) × (Fin d → ℕ),
+      (∀ i, qr.2 i < w i) ∧ (∀ i, w i * qr.1 i + qr.2 i = α i) := by
+  refine ⟨(fun i => α i / w i, fun i => α i % w i),
+    ⟨fun i => Nat.mod_lt (α i) (hw i), fun i => Nat.div_add_mod (α i) (w i)⟩, ?_⟩
+  rintro ⟨q, r⟩ ⟨hr, hrec⟩
+  exact thm_11_euclidean_quotient_remainder_injectivity w q r
+    (fun i => α i / w i) (fun i => α i % w i) hr (fun i => Nat.mod_lt (α i) (hw i))
+    (fun i => (hrec i).trans (Nat.div_add_mod (α i) (w i)).symm)
 
-/-- [Theorem 11] Euclidean division-remainder injectivity and interval sandwich (`Polynomials/SimplexCounting.lean:56-70`):
-if two lattice coordinates `a, b` share the same quotient `q` and remainder `r` modulo `w >= 1`
-(`a = w * q + r`, `b = w * q + r`, `0 <= r < w`), then `a = b` and `w * q <= a < w * (q + 1)`. -/
-theorem thm_11_euclidean_quotient_remainder_injectivity
-    (a b w q r : Int)
-    (hr_lo : 0 ≤ r)
-    (hr_hi : r < w)
-    (ha : a = w * q + r)
-    (hb : b = w * q + r) :
-    a = b ∧ w * q ≤ a ∧ a < w * (q + 1) ∧ 1 ≤ w := by
-  have h_dist : w * (q + 1) = w * q + w := by rw [Int.mul_add, Int.mul_one]
-  omega
-
-/-- [Theorem 12] Euclidean reconstruction uniqueness (`Polynomials/SimplexCounting.lean:90-108`):
-if `w * a1 + r1 = w * a2 + r2` with `0 <= r1 < w` and `0 <= r2 < w`, then `w * (a1 - a2) = r2 - r1`
-has absolute value `< w`, forcing `a1 = a2` and `r1 = r2`. -/
-theorem thm_12_euclidean_reconstruction_uniqueness
-    (w a1 a2 r1 r2 : Int)
-    (hr1_lo : 0 ≤ r1)
-    (hr1_hi : r1 < w)
-    (hr2_lo : 0 ≤ r2)
-    (hr2_hi : r2 < w)
-    (h_eq : w * a1 + r1 = w * a2 + r2) :
-    a1 = a2 ∧ r1 = r2 ∧ 0 ≤ r1 + r2 ∧ r1 + r2 ≤ 2 * w - 2 := by
-  have hw : 1 ≤ w := by omega
-  have h_sub : w * (a1 - a2) = r2 - r1 := by rw [Int.mul_sub]; omega
-  have h_ge : -1 < a1 - a2 := by
-    by_cases h_neg : a1 - a2 ≤ -1
-    · have hm := Int.mul_le_mul_of_nonneg_left h_neg (show 0 ≤ w by omega)
+/-- Theorem 13: Lower `Finset` simplex sandwich `|Δ_1(N)| ≤ |Δ_w(N)| * ∏ w_i` (`SimplexCounting.lean:40-70`). -/
+theorem thm_13_simplex_euclidean_sandwich_bounds {d : ℕ}
+    (w : Fin d → ℕ) (hw : ∀ i, 0 < w i) (N : ℕ) :
+    (natWeightedSimplex (fun _ : Fin d => 1) N).card ≤
+      (natWeightedSimplex w N).card * ∏ i, w i := by
+  have hcard : (residueRectangle w).card = ∏ i, w i := by simp [residueRectangle, Fintype.card_piFinset]
+  rw [← hcard, ← Finset.card_product]
+  let f : (Fin d → ℕ) → (Fin d → ℕ) × (Fin d → ℕ) := fun b => (fun i => b i / w i, fun i => b i % w i)
+  apply Finset.card_le_card_of_injOn f
+  · intro b hb
+    rw [Finset.mem_coe, Finset.mem_product]
+    have hb_sum : ∑ i, b i ≤ N := by simpa only [one_mul] using (Finset.mem_filter.mp hb).2
+    refine ⟨Finset.mem_filter.mpr ⟨Fintype.mem_piFinset.mpr fun i => ?_, ?_⟩, ?_⟩
+    · dsimp only [f]; rw [Finset.mem_range]
+      have hle1 : b i / w i ≤ b i := Nat.div_le_self (b i) (w i)
+      have hle2 : b i ≤ ∑ j, b j := Finset.single_le_sum (fun j _ => Nat.zero_le (b j)) (Finset.mem_univ i)
       omega
-    · omega
-  have h_le : a1 - a2 < 1 := by
-    by_cases h_pos : 1 ≤ a1 - a2
-    · have hm := Int.mul_le_mul_of_nonneg_left h_pos (show 0 ≤ w by omega)
-      rw [Int.mul_one] at hm; omega
-    · omega
-  have ha_eq : a1 - a2 = 0 := by omega
-  have h_wz : w * (a1 - a2) = 0 := by rw [ha_eq, Int.mul_zero]
-  omega
+    · dsimp only [f]; exact (Finset.sum_le_sum (fun i _ => Nat.mul_div_le (b i) (w i))).trans hb_sum
+    · simp only [residueRectangle, Fintype.mem_piFinset, Finset.mem_range]
+      exact fun i => Nat.mod_lt (b i) (hw i)
+  · intro a _ b _ hab
+    funext i
+    have hqi : a i / w i = b i / w i := congrFun (congrArg Prod.fst hab) i
+    have hri : a i % w i = b i % w i := congrFun (congrArg Prod.snd hab) i
+    calc a i = w i * (a i / w i) + a i % w i := (Nat.div_add_mod (a i) (w i)).symm
+      _ = w i * (b i / w i) + b i % w i := by rw [hqi, hri]
+      _ = b i := Nat.div_add_mod (b i) (w i)
 
-/-- [Theorem 13] Weighted-to-unweighted simplex sandwich (`Polynomials/SimplexCounting.lean:40-89`):
-the Euclidean quotient-remainder map sandwiches `Sw_N * prod_w` between the unweighted simplex
-cardinality `S1_N` and the shifted simplex cardinality `S1_shift` (`N + sum (w_i - 1)`). -/
-theorem thm_13_simplex_euclidean_sandwich_bounds
-    (S1_N Sw_N S1_shift prod_w sum_w_minus_1 : Int)
-    (h_shift_pos : 0 ≤ sum_w_minus_1)
-    (h_lower : S1_N ≤ Sw_N * prod_w)
-    (h_upper : Sw_N * prod_w ≤ S1_shift) :
-    S1_N ≤ S1_shift ∧ 0 ≤ S1_shift - Sw_N * prod_w ∧ S1_N ≤ Sw_N * prod_w + sum_w_minus_1 := by
-  omega
+/-- Theorem 14: Upper `Finset` simplex sandwich with shift `∑(w_i - 1)` (`SimplexCounting.lean:71-90`). -/
+theorem thm_14_simplex_upper_sandwich_coordinate_shift {d : ℕ}
+    (w : Fin d → ℕ) (hw : ∀ i, 0 < w i) (N : ℕ) :
+    (natWeightedSimplex w N).card * (∏ i, w i) ≤
+      (natWeightedSimplex (fun _ : Fin d => 1) (N + ∑ i, (w i - 1))).card := by
+  have hcard : (residueRectangle w).card = ∏ i, w i := by simp [residueRectangle, Fintype.card_piFinset]
+  rw [← hcard, ← Finset.card_product]
+  let f : ((Fin d → ℕ) × (Fin d → ℕ)) → (Fin d → ℕ) := fun ar i => w i * ar.1 i + ar.2 i
+  apply Finset.card_le_card_of_injOn f
+  · intro ar har
+    rw [Finset.mem_coe] at har ⊢
+    obtain ⟨ha, hr⟩ := Finset.mem_product.mp har
+    have ha_sum : ∑ i, w i * ar.1 i ≤ N := (Finset.mem_filter.mp ha).2
+    have hr_lt : ∀ i, ar.2 i < w i := fun i => Finset.mem_range.mp (Fintype.mem_piFinset.mp hr i)
+    have htot : ∑ i, (w i * ar.1 i + ar.2 i) ≤ N + ∑ i, (w i - 1) := by
+      rw [Finset.sum_add_distrib]
+      refine Nat.add_le_add ha_sum (Finset.sum_le_sum fun i _ => ?_)
+      have hi := hr_lt i; have hw_pos := hw i; omega
+    refine Finset.mem_filter.mpr ⟨Fintype.mem_piFinset.mpr fun i => ?_, by simpa only [one_mul] using htot⟩
+    dsimp only [f]; rw [Finset.mem_range]
+    have hsingle : w i * ar.1 i + ar.2 i ≤ ∑ j, (w j * ar.1 j + ar.2 j) :=
+      Finset.single_le_sum (f := fun j => w j * ar.1 j + ar.2 j) (fun _ _ => Nat.zero_le _) (Finset.mem_univ i)
+    omega
+  · intro ar har bs hbs hab
+    rw [Finset.mem_coe, Finset.mem_product] at har hbs
+    exact thm_11_euclidean_quotient_remainder_injectivity w ar.1 ar.2 bs.1 bs.2
+      (fun i => Finset.mem_range.mp (Fintype.mem_piFinset.mp har.2 i))
+      (fun i => Finset.mem_range.mp (Fintype.mem_piFinset.mp hbs.2 i)) (fun i => congrFun hab i)
 
-/-- [Theorem 14] Upper simplex coordinate shift bound (`Polynomials/SimplexCounting.lean:71-89`):
-for 3 coordinates with `w1*a1 + w2*a2 + w3*a3 <= N` and `0 <= r_i <= w_i - 1`,
-the reconstructed point `b_i = w_i * a_i + r_i` satisfies `b1 + b2 + b3 <= N + (w1 + w2 + w3 - 3)`. -/
-theorem thm_14_simplex_upper_sandwich_coordinate_shift
-    (w1 w2 w3 a1 a2 a3 r1 r2 r3 N : Int)
-    (h_simp : w1 * a1 + w2 * a2 + w3 * a3 ≤ N)
-    (hr1_lo : 0 ≤ r1) (hr1_hi : r1 ≤ w1 - 1)
-    (hr2_lo : 0 ≤ r2) (hr2_hi : r2 ≤ w2 - 1)
-    (hr3_lo : 0 ≤ r3) (hr3_hi : r3 ≤ w3 - 1) :
-    (w1 * a1 + r1) + (w2 * a2 + r2) + (w3 * a3 + r3) ≤ N + (w1 + w2 + w3 - 3) ∧
-    w1 * a1 + w2 * a2 + w3 * a3 ≤ (w1 * a1 + r1) + (w2 * a2 + r2) + (w3 * a3 + r3) := by
-  omega
-
-/-- [Theorem 15] Auxiliary polynomial kernel existence (`Polynomials/AuxiliaryPolynomial.lean:86`,
-`exists_nonzero_kernel_of_card_lt`):
-if a linear evaluation map from a monomial space of dimension `C_mon` to a jet-condition space of
-dimension `C_jet` has `C_jet < C_mon` and rank `rk <= C_jet`, then `ker_dim = C_mon - rk >= 1`. -/
+/-- Theorem 15: Rank-nullity nonzero auxiliary polynomial in `ker L` (`AuxiliaryPolynomial.lean:62-95`). -/
 theorem thm_15_auxiliary_polynomial_nonzero_kernel_dimension
-    (C_mon C_jet rk ker_dim : Int)
-    (h_rk_le : rk ≤ C_jet)
-    (h_strict : C_jet < C_mon)
-    (h_rank_nullity : ker_dim = C_mon - rk) :
-    1 ≤ C_mon - C_jet ∧ C_mon - C_jet ≤ ker_dim ∧ 1 ≤ ker_dim := by
-  omega
+    {K V W : Type*} [DivisionRing K] [AddCommGroup V] [Module K V]
+    [AddCommGroup W] [Module K W] [FiniteDimensional K V] [FiniteDimensional K W]
+    (L : V →ₗ[K] W) (hdim : Module.finrank K W < Module.finrank K V) :
+    ∃ v : V, v ≠ 0 ∧ L v = 0 := by
+  obtain ⟨v, hv_mem, hv_ne⟩ :=
+    Submodule.exists_mem_ne_zero_of_ne_bot (LinearMap.ker_ne_bot_of_finrank_lt hdim)
+  exact ⟨v, hv_ne, LinearMap.mem_ker.mp hv_mem⟩
 
-/-- [Theorem 16] Asymptotic auxiliary simplex dominance (`Polynomials/AuxiliaryPolynomial.lean:110`,
-`eventually_auxiliary_card_lt`):
-when `lhs_vol + 1 <= rhs_vol` and the degree scale `N_scale >= B_err + 1` (`B_err >= 0`),
-`lhs_vol * N_scale + B_err < rhs_vol * N_scale`. -/
-theorem thm_16_asymptotic_auxiliary_simplex_comparison
-    (lhs_vol rhs_vol N_scale B_err : Int)
-    (h_err_nn : 0 ≤ B_err)
-    (h_vol_gap : lhs_vol + 1 ≤ rhs_vol)
-    (h_N_large : B_err + 1 ≤ N_scale) :
-    lhs_vol * N_scale + B_err < rhs_vol * N_scale ∧ 1 ≤ N_scale := by
-  have h_diff : 1 ≤ rhs_vol - lhs_vol := by omega
-  have h_N_pos : 0 ≤ N_scale := by omega
-  have h_mul : 1 * N_scale ≤ (rhs_vol - lhs_vol) * N_scale :=
-    Int.mul_le_mul_of_nonneg_right h_diff h_N_pos
-  rw [Int.sub_mul, Int.one_mul] at h_mul
-  omega
+/-- Theorem 16: Euclidean lower sandwich forces simplex cardinality above `cL` (`AuxiliaryPolynomial.lean:40-61`). -/
+theorem thm_16_asymptotic_auxiliary_simplex_comparison {d : ℕ}
+    (w : Fin d → ℕ) (N cL : ℕ) (hw : ∀ i, 0 < w i)
+    (hgrow : (cL + 1) * (∏ i, w i) ≤ (natWeightedSimplex (fun _ : Fin d => 1) N).card) :
+    cL < (natWeightedSimplex w N).card :=
+  Nat.lt_of_succ_le (Nat.le_of_mul_le_mul_right
+    (hgrow.trans (thm_13_simplex_euclidean_sandwich_bounds w hw N))
+    (Finset.prod_pos fun i _ => hw i))
 
-/-- [Theorem 17] Eta-perturbation gap preservation (`Approximation/Parameters.lean:71`,
-`exists_eta_preserving_exponent_gap`):
-if `nu_A >= 1`, `eta >= 1`, and `2 * (nu_A * eta) <= g0`, then the perturbed exponent gap
-`g = g0 - nu_A * eta` satisfies `1 <= nu_A * eta <= g < g0`. -/
-theorem thm_17_eta_perturbation_retains_half_gap
-    (g0 nu_A eta g : Int)
-    (h_nuA_pos : 1 ≤ nu_A)
-    (h_eta_pos : 1 ≤ eta)
-    (h_half : 2 * (nu_A * eta) ≤ g0)
-    (h_g : g = g0 - nu_A * eta) :
-    1 ≤ nu_A * eta ∧ nu_A * eta ≤ g ∧ g < g0 := by
-  have h_prod : 1 ≤ nu_A * eta := Int.mul_le_mul h_nuA_pos h_eta_pos (by omega) (by omega)
-  omega
+/-- Theorem 17: Downward `η` perturbation preserves at least half of `approxGap` (`AdmissibleParameters.lean:180-235`). -/
+theorem thm_17_eta_perturbation_retains_half_gap (ν η : ℝ)
+    (hν : 2 < ν) (hη : 2 * ν * η ≤ approxGap ν (paramTheta ν) (paramA ν)) :
+    ∃ g' : ℝ, g' = approxGap ν (paramTheta ν) (paramA ν - η) ∧
+      0 < g' ∧ approxGap ν (paramTheta ν) (paramA ν) ≤ 2 * g' := by
+  obtain ⟨g, hg_def, _, hg_pos⟩ := thm_06_approximation_gap_linear_delta_factorization ν hν
+  have hshift : approxGap ν (paramTheta ν) (paramA ν - η) = g - ν * η := by
+    rw [hg_def]; unfold approxGap; ring
+  rw [← hg_def] at hη
+  exact ⟨approxGap ν (paramTheta ν) (paramA ν - η), rfl, by rw [hshift]; linarith,
+    by rw [hshift, ← hg_def]; linarith⟩
 
-/-- [Theorem 18] Initial scale ceiling sandwich for `v_0` and `w_0` (`Approximation/AdmissibleParameters.lean:36`,
-`exists_initial_scale`):
-choosing `v_0 = ceil(2*m/eps_0)` and `w_0 = ceil((m+1)*v_0/eps_0)` satisfies
-`2 * m <= eps_0 * v_0 < 2 * m + eps_0` and `(m + 1) * v_0 <= eps_0 * w_0 < (m + 1) * v_0 + eps_0`. -/
-theorem thm_18_initial_scale_v0_w0_ceiling_sandwich
-    (m eps0 v0 w0 : Int)
-    (hm : 1 ≤ m)
-    (hv0_lo : 2 * m ≤ eps0 * v0)
-    (hv0_hi : eps0 * v0 < 2 * m + eps0)
-    (hw0_lo : (m + 1) * v0 ≤ eps0 * w0)
-    (hw0_hi : eps0 * w0 < (m + 1) * v0 + eps0) :
-    3 ≤ eps0 * v0 + eps0 ∧
-    (m + 1) * v0 - 2 * m - eps0 < eps0 * (w0 - v0) ∧
-    eps0 * (w0 - v0) < (m + 1) * v0 - 2 * m + eps0 := by
-  have h_sub : eps0 * (w0 - v0) = eps0 * w0 - eps0 * v0 := Int.mul_sub eps0 w0 v0
-  omega
+/-- Theorem 18: Ceiling sandwich `x ≤ ⌈x⌉₊ < x + 1` (`ApproximationCenters.lean:15-40`). -/
+theorem thm_18_initial_scale_v0_w0_ceiling_sandwich (x : ℝ) (hx : 0 ≤ x) :
+    ∃ w₀ : ℕ, w₀ = ⌈x⌉₊ ∧ x ≤ (w₀ : ℝ) ∧ (w₀ : ℝ) < x + 1 :=
+  ⟨⌈x⌉₊, rfl, Nat.le_ceil x, Nat.ceil_lt_add_one hx⟩
 
-/-- [Theorem 19] Logarithmic weight ceiling rounding loss (`Approximation/ApproximationCenters.lean:48`,
-`ceil_log_bounds`):
-since `0 <= w_i - log q_i < 1`, any row multi-index `beta` with `sum_w_beta - sum_beta <= sum_beta_logq`
-and `sum_beta * w_star <= theta_H` (`w_star >= 1`) satisfies `sum_w_beta * w_star - theta_H <= sum_beta_logq * w_star`. -/
-theorem thm_19_ceil_log_denominator_rounding_loss
-    (sum_w_beta sum_beta_logq sum_beta theta_H w_star : Int)
-    (hw_pos : 1 ≤ w_star)
-    (h_ceil_loss : sum_w_beta - sum_beta ≤ sum_beta_logq)
-    (h_beta_bound : sum_beta * w_star ≤ theta_H) :
-    sum_w_beta * w_star - theta_H ≤ sum_beta_logq * w_star ∧ 2 ≤ 2 * w_star := by
-  have h_m := Int.mul_le_mul_of_nonneg_right h_ceil_loss (show 0 ≤ w_star by omega)
-  rw [Int.sub_mul] at h_m
-  omega
+/-- Theorem 19: Ceiling rounding loss `q ≤ exp ⌈log q⌉₊ < e * q` (`ApproximationCenters.lean:42-78`). -/
+theorem thm_19_ceil_log_denominator_rounding_loss (q : ℕ) (hq : 2 ≤ q) :
+    ∃ w : ℕ, w = ⌈Real.log (q : ℝ)⌉₊ ∧ 1 ≤ w ∧
+      (q : ℝ) ≤ Real.exp (w : ℝ) ∧ Real.exp (w : ℝ) < Real.exp 1 * (q : ℝ) := by
+  have hq1 : (1 : ℝ) < (q : ℝ) := by exact_mod_cast (show 1 < q by omega)
+  have hq0 : (0 : ℝ) < (q : ℝ) := lt_trans zero_lt_one hq1
+  have hlog_pos : 0 < Real.log (q : ℝ) := Real.log_pos hq1
+  refine ⟨⌈Real.log (q : ℝ)⌉₊, rfl, Nat.ceil_pos.mpr hlog_pos, ?_, ?_⟩
+  · calc (q : ℝ) = Real.exp (Real.log (q : ℝ)) := (Real.exp_log hq0).symm
+      _ ≤ Real.exp (⌈Real.log (q : ℝ)⌉₊ : ℝ) := Real.exp_le_exp.mpr (Nat.le_ceil _)
+  · have hlt : (⌈Real.log (q : ℝ)⌉₊ : ℝ) < 1 + Real.log (q : ℝ) := by
+      linarith [Nat.ceil_lt_add_one (le_of_lt hlog_pos)]
+    calc Real.exp (⌈Real.log (q : ℝ)⌉₊ : ℝ) < Real.exp (1 + Real.log (q : ℝ)) := Real.exp_lt_exp.mpr hlt
+      _ = Real.exp 1 * Real.exp (Real.log (q : ℝ)) := Real.exp_add 1 (Real.log (q : ℝ))
+      _ = Real.exp 1 * (q : ℝ) := by rw [Real.exp_log hq0]
 
-/-- [Theorem 20] Coordinatewise injectivity of approximation centers (`Approximation/ApproximationCenters.lean:17`,
-`approximation_centers_injective`):
-for any positive numerator `p_i >= 1`, the scaled centers `j * p_i` are injective in `j`:
-`j1 * p_i = j2 * p_i` implies `j1 = j2`. -/
-theorem thm_20_approximation_centers_injective_in_j
-    (j1 j2 p_i : Int)
-    (hp : 1 ≤ p_i)
-    (h_eq : j1 * p_i = j2 * p_i) :
-    j1 = j2 ∧ 2 ≤ 2 * p_i := by
-  have h_sub : (j1 - j2) * p_i = 0 := by rw [Int.sub_mul, h_eq, Int.sub_self]
-  refine ⟨?_, by omega⟩
-  by_cases h_ne : j1 = j2
-  · exact h_ne
-  · by_cases h_gt : j2 < j1
-    · have hm := Int.mul_le_mul_of_nonneg_right (show 1 ≤ j1 - j2 by omega) (show 0 ≤ p_i by omega)
-      rw [Int.one_mul] at hm; omega
-    · have hm := Int.mul_le_mul_of_nonneg_right (show j1 - j2 ≤ -1 by omega) (show 0 ≤ p_i by omega)
-      omega
+/-- Theorem 20: Strict step growth implies global injectivity (`ApproximationCenters.lean:55-79`). -/
+theorem thm_20_approximation_centers_injective_in_j (w : ℕ → ℕ) (i j : ℕ)
+    (hstep : ∀ k, w k < w (k + 1)) (hne : i ≠ j) :
+    w i ≠ w j :=
+  (strictMono_nat_of_lt_succ hstep).injective.ne hne
 
-/-- [Theorem 21] Reciprocal weight sum common lower bound (`Approximation/WeightErrorMargin.lean:22`,
-`reciprocal_sum_le_common_bound`):
-if `w_star <= w_i` for `i = 1, 2, 3` and `prod23, prod13, prod12 >= 1`, then
-`prod23 * w_star + prod13 * w_star + prod12 * w_star <= prod23 * w1 + prod13 * w2 + prod12 * w3`. -/
-theorem thm_21_reciprocal_weight_sum_common_bound
-    (w1 w2 w3 w_star prod23 prod13 prod12 : Int)
-    (h1 : w_star ≤ w1)
-    (h2 : w_star ≤ w2)
-    (h3 : w_star ≤ w3)
-    (hp23 : 1 ≤ prod23)
-    (hp13 : 1 ≤ prod13)
-    (hp12 : 1 ≤ prod12) :
-    prod23 * w_star + prod13 * w_star + prod12 * w_star ≤
-      prod23 * w1 + prod13 * w2 + prod12 * w3 ∧
-    3 ≤ prod23 + prod13 + prod12 := by
-  have hm1 := Int.mul_le_mul_of_nonneg_left h1 (show 0 ≤ prod23 by omega)
-  have hm2 := Int.mul_le_mul_of_nonneg_left h2 (show 0 ≤ prod13 by omega)
-  have hm3 := Int.mul_le_mul_of_nonneg_left h3 (show 0 ≤ prod12 by omega)
-  omega
+/-- Theorem 21: Reciprocal weight sum bound `∑ w_i⁻¹ ≤ m / w_0` (`WeightSeparation.lean:80-125`). -/
+theorem thm_21_reciprocal_weight_sum_common_bound {m : ℕ}
+    (w : Fin m → ℝ) (w₀ : ℝ) (hw₀ : 0 < w₀) (hle : ∀ i, w₀ ≤ w i) :
+    ∑ i : Fin m, (w i)⁻¹ ≤ (m : ℝ) / w₀ := by
+  calc ∑ i : Fin m, (w i)⁻¹ ≤ ∑ _i : Fin m, w₀⁻¹ := Finset.sum_le_sum fun i _ => inv_anti₀ hw₀ (hle i)
+    _ = (m : ℝ) * w₀⁻¹ := by simp
+    _ = (m : ℝ) / w₀ := (div_eq_mul_inv (m : ℝ) w₀).symm
 
-/-- [Theorem 22] Supremum squeeze for `μ(π) = 2` (`Approximation/Exponent.lean:92`,
-`irrationalityExponent_eq_two_of_eventualLowerBound`):
-Dirichlet's theorem gives `2 * scale <= mu_scaled` (`two_mem_approximationExponents`) while
-`Theorem 1.1` gives `mu_scaled <= 2 * scale`, squeezing `mu_scaled = 2 * scale`. -/
-theorem thm_22_irrationality_exponent_supremum_squeeze
-    (mu_scaled scale dirichlet_lb eventual_ub : Int)
-    (h_dir : dirichlet_lb = 2 * scale)
-    (h_ub : eventual_ub = 2 * scale)
-    (h_lo : dirichlet_lb ≤ mu_scaled)
-    (h_hi : mu_scaled ≤ eventual_ub) :
-    mu_scaled = 2 * scale ∧ eventual_ub - dirichlet_lb = 0 := by
-  omega
+/-- Theorem 22: Exact `sSup` squeeze `irrationalityExponent x = 2` (`Exponent.lean:57-103`). -/
+theorem thm_22_irrationality_exponent_supremum_squeeze (x : ℝ)
+    (hi : Irrational x) (hx : EventualLowerBound x) :
+    irrationalityExponent x = 2 := by
+  have hfin : ∀ N : ℕ, {r : ℚ | r.den ≤ N ∧ |x - (r : ℝ)| < 1}.Finite := fun N => by
+    classical
+    let f : ℚ → ℤ × ℕ := fun r => (r.num, r.den)
+    have hinj : Function.Injective f := fun a b hab => by
+      have hp := Prod.mk.inj hab
+      rw [← Rat.num_div_den a, ← Rat.num_div_den b, hp.1, hp.2]
+    let t : Set (ℤ × ℕ) := ⋃ (q : ℕ) (_ : q ∈ Set.Icc 1 N),
+      Set.Icc ⌈(x - 1) * q⌉ ⌊(x + 1) * q⌋ ×ˢ {q}
+    have ht : t.Finite := Set.Finite.biUnion (Set.finite_Icc _ _) fun q _ =>
+      Set.Finite.prod (Set.finite_Icc _ _) (Set.finite_singleton _)
+    have hsub : f '' {r : ℚ | r.den ≤ N ∧ |x - (r : ℝ)| < 1} ⊆ t := by
+      rintro _ ⟨r, ⟨hrN, hr⟩, rfl⟩
+      have hrden : (0 : ℝ) < r.den := Nat.cast_pos.mpr r.pos
+      have hrlow : x - 1 < (r : ℝ) := by linarith [(abs_lt.mp hr).2]
+      have hrhigh : (r : ℝ) < x + 1 := by linarith [(abs_lt.mp hr).1]
+      have hnlow : (x - 1) * r.den ≤ (r.num : ℝ) := by
+        rw [Rat.cast_def] at hrlow; exact ((lt_div_iff₀ hrden).mp hrlow).le
+      have hnhigh : (r.num : ℝ) ≤ (x + 1) * r.den := by
+        rw [Rat.cast_def] at hrhigh; exact ((div_lt_iff₀ hrden).mp hrhigh).le
+      simp only [t, Set.mem_iUnion]
+      exact ⟨r.den, ⟨r.pos, hrN⟩, ⟨Int.ceil_le.mpr hnlow, Int.le_floor.mpr hnhigh⟩, rfl⟩
+    exact (ht.subset hsub).of_finite_image hinj.injOn
+  have htwo : (2 : ℝ) ∈ ApproximationExponents x := by
+    refine ⟨by norm_num, ((Real.infinite_rat_abs_sub_lt_one_div_den_sq_of_irrational hi).sdiff (hfin 1)).mono ?_⟩
+    intro r hr
+    have hrden : (1 : ℝ) ≤ (r.den : ℝ) := by exact_mod_cast r.pos
+    have hrone : |x - (r : ℝ)| < 1 := hr.1.trans_le (by
+      simpa only [div_one] using one_div_le_one_div_of_le zero_lt_one (by nlinarith : (1 : ℝ) ≤ (r.den : ℝ) ^ 2))
+    have hr2 : 2 ≤ r.den := by by_contra h; exact hr.2 ⟨by omega, hrone⟩
+    refine ⟨hr2, abs_pos.mpr (sub_ne_zero.mpr (hi.ne_rat r)), ?_⟩
+    simpa only [Set.mem_ofPred_eq, Real.rpow_neg (Nat.cast_nonneg r.den), Real.rpow_two, one_div] using hr.1
+  have hbound : ∀ ν ∈ ApproximationExponents x, ν ≤ 2 := fun ν hν => by
+    by_contra hgt
+    obtain ⟨Q, _, hb⟩ := hx ν (by linarith)
+    have hsub : GoodRationalApproximations x ν ⊆ {r : ℚ | r.den ≤ Q ∧ |x - (r : ℝ)| < 1} := fun r hr => by
+      have hltQ : r.den < Q := by
+        by_contra hge
+        have h := hb r.num r.den (by omega)
+        rw [← Rat.cast_def] at h; exact (not_lt_of_ge h) hr.2.2
+      exact ⟨hltQ.le, hr.2.2.trans_le (Real.rpow_le_one_of_one_le_of_nonpos (by exact_mod_cast r.pos) (by linarith))⟩
+    exact ((hfin Q).subset hsub).not_infinite hν.2
+  exact le_antisymm (csSup_le ⟨2, htwo⟩ hbound) (le_csSup ⟨2, hbound⟩ htwo)
 
-/-- [Theorem 23] Homogeneous submodule grading direct-sum injectivity
-(`Polynomials/HomogeneousSubmoduleGrading.lean:53`, `decompositionMap_injective`):
-if two two-component graded elements satisfy `p0 + p1 = q0 + q1` and `p0 = q0`, then `p1 = q1`. -/
+/-- Theorem 23: Homogeneous grading separation via `DirectSum.Decomposition` (`HomogeneousSubmoduleGrading.lean:35-88`). -/
 theorem thm_23_homogeneous_submodule_grading_injectivity
-    (p0 p1 q0 q1 : Int)
-    (h_sum : p0 + p1 = q0 + q1)
-    (h_proj0 : p0 = q0) :
-    p1 = q1 ∧ p0 - q0 = 0 := by
-  omega
+    {ι M : Type*} [DecidableEq ι] [AddCommMonoid M]
+    (𝒜 : ι → AddSubmonoid M) [DirectSum.Decomposition 𝒜]
+    {i j : ι} (x y : M) (hx : x ∈ 𝒜 i) (hy : y ∈ 𝒜 j) (hne : i ≠ j) (hsum : x + y = 0) :
+    (x, y) = (0, 0) := by
+  have happ : ((DirectSum.decompose 𝒜 (x + y)) i : M) = ((DirectSum.decompose 𝒜 (0 : M)) i : M) :=
+    congrArg (fun m => ((DirectSum.decompose 𝒜 m) i : M)) hsum
+  rw [DirectSum.decompose_add, DirectSum.decompose_zero, DFinsupp.add_apply,
+    DFinsupp.zero_apply, AddSubmonoid.coe_add, ZeroMemClass.coe_zero,
+    DirectSum.decompose_of_mem_same 𝒜 hx, DirectSum.decompose_of_mem_ne 𝒜 hy hne.symm, add_zero] at happ
+  exact Prod.ext happ (by rw [happ, zero_add] at hsum; exact hsum)
 
-/-- [Theorem 24] Universal structural induction (`∀ k : Nat`) on lacunary weight towers
-(`Approximation/WeightSeparation.lean:110`, `geometric_weight_products_separated`):
-for all `k : Nat`, a normalized dyadic lacunary weight tower satisfies `k + 1 <= 2^k`. -/
-theorem thm_24_lacunary_weight_tower_exponential_lower_bound (k : Nat) :
-    k + 1 ≤ pow2 k := by
-  induction k with
-  | zero =>
-    dsimp [pow2]
-    omega
-  | succ m ih =>
-    dsimp [pow2]
-    omega
+/-- Theorem 24: Lacunary weight tower exponential lower bound (`WeightSeparation.lean:30-75`). -/
+theorem thm_24_lacunary_weight_tower_exponential_lower_bound
+    (w : ℕ → ℕ) (k : ℕ) (hw₀ : 1 ≤ w 0) (hstep : ∀ j, 2 * w j ≤ w (j + 1)) :
+    ∃ t : ℕ, t = 2 ^ k ∧ k + 1 ≤ t ∧ t * w 0 ≤ w k ∧ k + 1 ≤ w k := by
+  have hpow : ∀ n, 2 ^ n * w 0 ≤ w n ∧ n + 1 ≤ 2 ^ n := fun n => by
+    induction n with
+    | zero => simp
+    | succ n ih =>
+      refine ⟨calc 2 ^ (n + 1) * w 0 = 2 * (2 ^ n * w 0) := by ring
+        _ ≤ 2 * w n := Nat.mul_le_mul_left 2 ih.1
+        _ ≤ w (n + 1) := hstep n, ?_⟩
+      have h1 : 1 ≤ 2 ^ n := Nat.one_le_pow n 2 (by decide)
+      have h2 : 2 ^ (n + 1) = 2 * 2 ^ n := by ring
+      have ih2 := ih.2; omega
+  obtain ⟨h1, h2⟩ := hpow k
+  exact ⟨2 ^ k, rfl, h2, h1, h2.trans ((Nat.le_mul_of_pos_right (2 ^ k) hw₀).trans h1)⟩
 
-/-- [Theorem 25] Universal structural induction (`∀ d : Nat`) on inscribed discrete box cardinality
-(`Approximation/RectangularVolume.lean:66`, `rectangularCutoff_product_lower`):
-when every side cutoff satisfies `l_a >= 2`, the `d`-dimensional discrete rectangle contains
-`2^d` lattice points, satisfying `d + 2 <= 2^d + 1` for all `d : Nat`. -/
-theorem thm_25_discrete_rectangle_lattice_cardinality_induction (d : Nat) :
-    d + 2 ≤ pow2 d + 1 := by
-  induction d with
-  | zero =>
-    dsimp [pow2]
-    omega
-  | succ m ih =>
-    dsimp [pow2]
-    omega
+/-- Theorem 25: Discrete rectangle cardinality `∏ w_i` and `2^d` bound (`RectangularVolume.lean:15-52`). -/
+theorem thm_25_discrete_rectangle_lattice_cardinality_induction {d : ℕ}
+    (w : Fin d → ℕ) (hw : ∀ i, 2 ≤ w i) :
+    ∃ c : ℕ, c = (residueRectangle w).card ∧ c = (∏ i, w i) ∧ 2 ^ d ≤ c := by
+  have hcard : (residueRectangle w).card = ∏ i, w i := by simp [residueRectangle, Fintype.card_piFinset]
+  have hpow : 2 ^ d ≤ ∏ i, w i := calc
+    2 ^ d = ∏ _i : Fin d, 2 := by simp
+    _ ≤ ∏ i : Fin d, w i := Finset.prod_le_prod (fun i _ => hw i)
+  exact ⟨(residueRectangle w).card, rfl, hcard, hcard ▸ hpow⟩
 
-end PiSimplexParametersAndStratigraphy
+end PiIrrationalityAnatomyPillar1

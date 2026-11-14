@@ -10,47 +10,30 @@ import Mathlib.Data.Fintype.Pi
 
 /-!
 # OpenAI #017 (`The irrationality exponent of π is 2`): Pillar 2 Mathlib Formalization
-## Transverse Multiplicity, Inscribed Rectangle vs Simplex, Logarithmic Residue Rigidity, and Rees/Seshadri Blowup
+## Transverse Multiplicity, Inscribed Rectangle vs Simplex, Logarithmic Rigidity, and Blowup (`Theorems 26-50`)
 
-This Lean 4 + Mathlib module (`Theorems 26-50`) formalizes Pillar 2 of the forensic audit of
-`OAI.NumberTheory.PiExponent` (`Approximation/WeightSeparationConstant.lean:1-77`,
-`Approximation/RectangularVolume.lean:1-83`, `Polynomials/SimplexCounting.lean:1-90`,
-`Jets/TransverseMultiplicity.lean:1-90`, `Jets/TransverseWeightedMultiplicity.lean:1-91`,
-`Analysis/LogarithmicObstruction.lean:1-100`, `Analysis/FormalLogTruncation.lean:1-90`,
-`Geometry/CurveZeroPole.lean:1-90`, `Geometry/AdmissibleCurveInequality.lean:1-51`,
-`Ampleness/BlowupIdeal.lean:1-90`, `Ampleness/ExceptionalCurveDegree.lean:1-120`,
-`Ampleness/AdmissibleBlowupAmple.lean:1-19`, `Ampleness/ReesPushdown.lean:1-90`,
-`Cohomology/CechH1Transfer.lean:1-100`, and `Cohomology/FiniteCoverCohomology.lean:1-120`):
-- Continuous simplex covering `2 * k!` (`interpolation.tex:118`) vs Lean's inscribed discrete
-  rectangle `k^k` and enlarged `C_*^Lean` (`5,000x` at `m = 2, σ = 1`);
-- Riemann-free descending-factorial binomial bound `(Q - k)^k ≤ k! * Q.choose k`;
-- `LaurentSeries.derivative` zero-residue rigidity and `[Field K] [CharZero K]` logarithmic
-  derivative simple-pole impossibility `X * (P' Q - P Q') ≠ C c * Q^2`;
-- `Derivation` Leibniz rule on `Ideal`, `Polynomial` monic division packets, Seshadri blowup
-  nef+ample module convex combination, `Ideal` power filtration, and Čech `d^1 ∘ d^0 = 0`.
+Formalizes Pillar 2 of `OAI.NumberTheory.PiExponent` (`WeightSeparationConstant.lean:1-77`,
+`RectangularVolume.lean:1-83`, `SimplexCounting.lean:1-90`, `TransverseMultiplicity.lean:1-90`,
+`TransverseWeightedMultiplicity.lean:1-91`, `LogarithmicObstruction.lean:1-100`,
+`FormalLogTruncation.lean:1-90`, `CurveZeroPole.lean:1-90`, `AdmissibleCurveInequality.lean:1-51`,
+`BlowupIdeal.lean:1-90`, `ExceptionalCurveDegree.lean:1-120`, `AdmissibleBlowupAmple.lean:1-19`,
+`ReesPushdown.lean:1-90`, `CechH1Transfer.lean:1-100`, `FiniteCoverCohomology.lean:1-120`).
 -/
 
 open scoped BigOperators LaurentSeries Polynomial
 
 namespace PiIrrationalityAnatomyPillar2
 
-/-- Paper Lemma 2.2 continuous-simplex multiplicity term `2 * k! * ((m + 2)/σ)^k`
-(`WeightSeparationConstant.lean:13`, `interpolation.tex:118`). -/
+/-- Continuous-simplex term `2 * k! * ((m + 2)/σ)^k` (`WeightSeparationConstant.lean:13`, `interpolation.tex:118`). -/
 noncomputable def cStarPaperTerm (m k : ℕ) (σ : ℝ) : ℝ :=
   2 * (k.factorial : ℝ) * (((m : ℝ) + 2) / σ) ^ k
-
-/-- Inscribed-rectangle multiplicity term `k^k * ((m + 2)/σ)^k`
-(`WeightSeparationConstant.lean:39`). -/
+/-- Inscribed-rectangle term `k^k * ((m + 2)/σ)^k` (`WeightSeparationConstant.lean:39`). -/
 noncomputable def cStarRectTerm (m k : ℕ) (σ : ℝ) : ℝ :=
   (k : ℝ) ^ k * (((m : ℝ) + 2) / σ) ^ k
-
-/-- Enlarged Lean weight-separation constant `2 * (m + 2)^(m + 2) * (1 + (m + 2)/σ)^(m + 2)`
-(`WeightSeparationConstant.lean:40-41`). -/
+/-- Enlarged Lean constant `2 * (m + 2)^(m + 2) * (1 + (m + 2)/σ)^(m + 2)` (`WeightSeparationConstant.lean:40-41`). -/
 noncomputable def cStarLean (m : ℕ) (σ : ℝ) : ℝ :=
   2 * ((m : ℝ) + 2) ^ (m + 2) * (1 + ((m : ℝ) + 2) / σ) ^ (m + 2)
-
-/-- Pullback-minus-exceptional intersection pairing `d_0 - (1 + σ) * ∑_{p ∈ s} mult_p`
-(`ExceptionalCurveDegree.lean:1-90`, `interpolation.tex:210-245`). -/
+/-- Pullback-minus-exceptional pairing `d_0 - (1 + σ) * ∑ mult_p` (`ExceptionalCurveDegree.lean:1-90`). -/
 noncomputable def blowupLineDeg {ι : Type*} (s : Finset ι) (d₀ σ : ℝ) (mult : ι → ℝ) : ℝ :=
   d₀ - (1 + σ) * ∑ p ∈ s, mult p
 

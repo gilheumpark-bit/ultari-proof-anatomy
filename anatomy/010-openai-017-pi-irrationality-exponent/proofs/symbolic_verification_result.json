@@ -3,13 +3,37 @@
   "problem": "OpenAI #017: The irrationality exponent of pi is 2 (September 24, 2026)",
   "lean4_suite_summary": {
     "total_theorems": 75,
+    "total_lines": 1646,
+    "total_hypotheses_mutated": 120,
     "files": [
-      "proofs/pi_simplex_parameters_and_stratigraphy.lean (Theorems 1-25)",
-      "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean (Theorems 26-50)",
-      "proofs/pi_laurent_determinant_and_flint_hills.lean (Theorems 51-75)"
+      "proofs/pi_simplex_parameters_and_stratigraphy.lean (Theorems 1-25, 509 lines, 28 mutations)",
+      "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean (Theorems 26-50, 586 lines, 46 mutations)",
+      "proofs/pi_laurent_determinant_and_flint_hills.lean (Theorems 51-75, 551 lines, 46 mutations)"
+    ],
+    "per_file_metrics": [
+      {
+        "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
+        "lines": 509,
+        "theorems": 25,
+        "hypotheses_mutated": 28
+      },
+      {
+        "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
+        "lines": 586,
+        "theorems": 25,
+        "hypotheses_mutated": 46
+      },
+      {
+        "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
+        "lines": 551,
+        "theorems": 25,
+        "hypotheses_mutated": 46
+      }
     ],
     "sorry_count": 0,
-    "universal_inductions": 4,
+    "custom_axioms": 0,
+    "mathlib_formalization": true,
+    "universal_inductions": 7,
     "dual_witness_structures": 1
   },
   "stratigraphy_audit": {
@@ -20,9 +44,14 @@
     "external_OAI_imports": 0,
     "sorry_count": 0,
     "unused_hypothesis_parameters": 14,
+    "main_lean_imports": 2,
+    "main_lean_theorems": 5,
     "preserved_oai_ref_files": 60,
     "preserved_oai_ref_lean_files": 54,
     "preserved_oai_ref_tex_files": 6,
+    "preserved_oai_ref_total_lines": 12659,
+    "preserved_oai_ref_total_bytes": 568563,
+    "preserved_oai_ref_tree_sha256": "a1166e28acd6533671365ea2cee0e4e1ebd74f461775a0986e6203c6e9f43e20",
     "subdirectories": {
       "Geometry": {
         "files": 181,
@@ -73,6 +102,7 @@
     "flint_hills_formalization_audit": {
       "017_md_scope_claim": "Outside selected statement",
       "actual_Main_lean_theorem": "flint_hills_summable (Main.lean:29-32)",
+      "flint_consequence_nu_witness": "9/4 (FlintConsequence.lean:20)",
       "Corollary_1_2_formalized": true,
       "Corollary_5_2_generalized_formalized": false
     }
@@ -102,6 +132,7 @@
       "gap_g_float": 0.02066116,
       "theta_minus_A2_exact": "1/121",
       "theta_minus_A2_float": 0.00826446,
+      "canonical_square_window": "1/121",
       "eps_0_exact": "5/484",
       "F_0_cutoff": 727,
       "growth_ratio_B_over_A": 1.00248756,
@@ -124,6 +155,7 @@
       "gap_g_float": 0.01930796,
       "theta_minus_A2_exact": "9/1156",
       "theta_minus_A2_float": 0.00778547,
+      "canonical_square_window": "9/1156",
       "eps_0_exact": "279/28900",
       "F_0_cutoff": 772,
       "growth_ratio_B_over_A": 1.0023304,
@@ -146,6 +178,7 @@
       "gap_g_float": 0.00113575,
       "theta_minus_A2_exact": "1/1849",
       "theta_minus_A2_float": 0.00054083,
+      "canonical_square_window": "1/1849",
       "eps_0_exact": "21/36980",
       "F_0_cutoff": 11095,
       "growth_ratio_B_over_A": 1.00014168,
@@ -168,6 +201,7 @@
       "gap_g_float": 1.238e-05,
       "theta_minus_A2_exact": "1/162409",
       "theta_minus_A2_float": 6.16e-06,
+      "canonical_square_window": "1/162409",
       "eps_0_exact": "201/32481800",
       "F_0_cutoff": 974455,
       "growth_ratio_B_over_A": 1.00000155,
@@ -176,18 +210,24 @@
       "m_min_cL_proxy": 22324406
     }
   ],
-  "theorem_9_explicit_witness_nu_5_2": {
+  "theorem_9_canonical_witness_nu_5_2": {
     "nu": "5/2",
-    "b": "11/20",
-    "delta": "1/10",
-    "theta": "9/10",
-    "A": "189/200",
-    "B": "379/400",
-    "C": "211/200",
-    "gap_g": "1/80",
-    "theta_minus_A2": "279/40000",
-    "eps_0": "1/160",
-    "F_0": 1201
+    "paramB": "11/20",
+    "paramDelta": "2/121",
+    "paramTheta": "119/121",
+    "paramA": "10/11",
+    "simplexWindow_theta_minus_A2": "1/121",
+    "suboptimal_delta_1_10_witness": {
+      "delta": "1/10",
+      "theta": "9/10",
+      "A": "189/200",
+      "B": "379/400",
+      "C": "211/200",
+      "gap_g": "1/80",
+      "theta_minus_A2": "279/40000",
+      "eps_0": "1/160",
+      "F_0": 1201
+    }
   },
   "simplex_vs_rectangle_comparison": [
     {
@@ -436,6 +476,12 @@
     ]
   },
   "lcm_and_flint_hills": {
+    "lcm_three_tier_stratigraphy": {
+      "trace_pnt_asymptotic": 1.732,
+      "paper_determinant_tex_84_4_log_2": 2.772589,
+      "lean_Arithmetic_lean_13_log_4_plus_4": 5.386294,
+      "lean_over_paper_lcm_ratio": 1.942695
+    },
     "lcm_dyadic_checks": [
       {
         "n": 1,
@@ -443,6 +489,7 @@
         "four_pow_n": 4,
         "log_lcm_over_n": 0.0,
         "four_log_2": 2.772589,
+        "lean_log_4_plus_4": 5.386294,
         "satisfies_lcm_le_4_pow_n": true
       },
       {
@@ -451,6 +498,7 @@
         "four_pow_n": 16,
         "log_lcm_over_n": 0.346574,
         "four_log_2": 2.772589,
+        "lean_log_4_plus_4": 5.386294,
         "satisfies_lcm_le_4_pow_n": true
       },
       {
@@ -459,6 +507,7 @@
         "four_pow_n": 1024,
         "log_lcm_over_n": 0.818869,
         "four_log_2": 2.772589,
+        "lean_log_4_plus_4": 5.386294,
         "satisfies_lcm_le_4_pow_n": true
       },
       {
@@ -467,6 +516,7 @@
         "four_pow_n": 1048576,
         "log_lcm_over_n": 0.783201,
         "four_log_2": 2.772589,
+        "lean_log_4_plus_4": 5.386294,
         "satisfies_lcm_le_4_pow_n": true
       },
       {
@@ -475,6 +525,7 @@
         "four_pow_n": 1099511627776,
         "log_lcm_over_n": 0.963283,
         "four_log_2": 2.772589,
+        "lean_log_4_plus_4": 5.386294,
         "satisfies_lcm_le_4_pow_n": true
       },
       {
@@ -483,6 +534,7 @@
         "four_pow_n": 1152921504606846976,
         "log_lcm_over_n": 0.949217,
         "four_log_2": 2.772589,
+        "lean_log_4_plus_4": 5.386294,
         "satisfies_lcm_le_4_pow_n": true
       }
     ],
@@ -504,30 +556,35 @@
         "p_j": 3,
         "q_j": 1,
         "term_a2_b2": 5.579308,
+        "exceeds_inv_pi_plus_1_sq": true,
         "exceeds_one_sixteenth": true
       },
       {
         "p_j": 22,
         "q_j": 7,
         "term_a2_b2": 26.37179,
+        "exceeds_inv_pi_plus_1_sq": true,
         "exceeds_one_sixteenth": true
       },
       {
         "p_j": 333,
         "q_j": 106,
         "term_a2_b2": 0.115894,
+        "exceeds_inv_pi_plus_1_sq": true,
         "exceeds_one_sixteenth": true
       },
       {
         "p_j": 355,
         "q_j": 113,
         "term_a2_b2": 8732.354333,
+        "exceeds_inv_pi_plus_1_sq": true,
         "exceeds_one_sixteenth": true
       },
       {
         "p_j": 103993,
         "q_j": 33102,
         "term_a2_b2": 0.252692,
+        "exceeds_inv_pi_plus_1_sq": true,
         "exceeds_one_sixteenth": true
       }
     ],

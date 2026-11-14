@@ -2,17 +2,17 @@
   "case_id": "openai_017_pi_irrationality_exponent",
   "title": "OpenAI #017 (The Irrationality Exponent of π Is 2): 869-File Stratigraphy, 62/25 -> 2 Full-Simplex Pivot, Rees Blowup & Serre-Čech Vanishing, and Flint-Hills Convergence Audit",
   "target_repository": "openai/math (Family 017: OAI/NumberTheory/PiExponent/, ComparatorChallenges/PiExponent.lean, and preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026)",
-  "date": "2026-11-07",
+  "date": "2026-11-14",
   "verification_commands": {
     "lean4_kernel_check": "~/.elan/bin/lean proofs/pi_simplex_parameters_and_stratigraphy.lean && ~/.elan/bin/lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean && ~/.elan/bin/lean proofs/pi_laurent_determinant_and_flint_hills.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_pi017.py"
   },
   "artifacts_sha256": {
-    "proofs/pi_simplex_parameters_and_stratigraphy.lean": "4d9f2e00cfa6215b2dbce2f0ca9f611b92ebd61c0fc2ea1e6dfa45b64ca6dfd8",
-    "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean": "a3b16ccedc007def013154531fe7cae80e9ec500fce880c625cf501b18d4f770",
-    "proofs/pi_laurent_determinant_and_flint_hills.lean": "2ecc9f3161416794e1c1ea811b5ef62b16346ae662efe97b66ca709f112afc11",
-    "proofs/verify_symbolic_pi017.py": "602bac70e252b0b0fd517fed6554e8cde6056739e93f55a0d8d7d5e68f352d5b",
-    "proofs/symbolic_verification_result.json": "f3e31e46b8f9d17fc9a8f51572adc062f33dc25139a1f4c6e10a687a32a55caf",
+    "proofs/pi_simplex_parameters_and_stratigraphy.lean": "b53f4c754771710f92d0b355516914d3aa5305263f2971d554b2a32a4e6779c3",
+    "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean": "5c215fc726921ac6fbc7d9fdf97b6ff057eac982f2fbd7e5cacbe19950fcc3ba",
+    "proofs/pi_laurent_determinant_and_flint_hills.lean": "517c79e6ac21f03193f1746ef4542128433199308b7f719c016bde95459aa902",
+    "proofs/verify_symbolic_pi017.py": "86860a82755dc12927c1f6734b555838103a7321d5e8ce0426d82ca410e8c6d7",
+    "proofs/symbolic_verification_result.json": "01470abe37f8962dd8b5e9fe2331d0c3184993848ae371f3d4fd65859bda73a1",
     "proofs/problem_spec.md": "70e1e27817538d6bc7b9d1aef3964d33057c72e5eaf2c496a0e4d91dd046f2d5"
   },
   "verified_key_results": {
@@ -25,31 +25,31 @@
       "trace_sections_part1": 44,
       "trace_sections_part2": 1,
       "lean_theorems": [
-        "thm_01_pi_exponent_869_file_stratigraphy_partition (Theorem 1, L19)",
-        "thm_02_unused_hypothesis_14_and_zero_external_imports (Theorem 2, L51)",
-        "thm_03_flint_hills_scope_note_vs_main_lean_audit (Theorem 3, L70)",
-        "thm_04_reasoning_trace_45_sections_62_over_25_to_2_pivot (Theorem 4, L84)",
-        "thm_05_parameter_interval_nonempty_iff_nu_gt_two (Theorem 5, L107)",
-        "thm_06_approximation_gap_linear_delta_factorization (Theorem 6, L121)",
-        "thm_07_quadratic_simplex_window_theta_minus_A_sq (Theorem 7, L139)",
-        "thm_08_three_simultaneous_simplex_growth_ratios (Theorem 8, L158)",
-        "thm_09_explicit_rational_witness_for_nu_five_halves (Theorem 9, L177)",
-        "thm_10_three_way_error_budget_splitting_contradiction (Theorem 10, L196)",
-        "thm_11_euclidean_quotient_remainder_injectivity (Theorem 11, L223)",
-        "thm_12_euclidean_reconstruction_uniqueness (Theorem 12, L236)",
-        "thm_13_simplex_euclidean_sandwich_bounds (Theorem 13, L263)",
-        "thm_14_simplex_upper_sandwich_coordinate_shift (Theorem 14, L274)",
-        "thm_15_auxiliary_polynomial_nonzero_kernel_dimension (Theorem 15, L288)",
-        "thm_16_asymptotic_auxiliary_simplex_comparison (Theorem 16, L300)",
-        "thm_17_eta_perturbation_retains_half_gap (Theorem 17, L317)",
-        "thm_18_initial_scale_v0_w0_ceiling_sandwich (Theorem 18, L331)",
-        "thm_19_ceil_log_denominator_rounding_loss (Theorem 19, L348)",
-        "thm_20_approximation_centers_injective_in_j (Theorem 20, L362)",
-        "thm_21_reciprocal_weight_sum_common_bound (Theorem 21, L381)",
-        "thm_22_irrationality_exponent_supremum_squeeze (Theorem 22, L401)",
-        "thm_23_homogeneous_submodule_grading_injectivity (Theorem 23, L413)",
-        "thm_24_lacunary_weight_tower_exponential_lower_bound (Theorem 24, L423)",
-        "thm_25_discrete_rectangle_lattice_cardinality_induction (Theorem 25, L437)"
+        "thm_01_pi_exponent_869_file_stratigraphy_partition (Theorem 1, L80)",
+        "thm_02_unused_hypothesis_14_and_zero_external_imports (Theorem 2, L88)",
+        "thm_03_flint_hills_scope_note_vs_main_lean_audit (Theorem 3, L95)",
+        "thm_04_reasoning_trace_45_sections_62_over_25_to_2_pivot (Theorem 4, L106)",
+        "thm_05_parameter_interval_nonempty_iff_nu_gt_two (Theorem 5, L127)",
+        "thm_06_approximation_gap_linear_delta_factorization (Theorem 6, L139)",
+        "thm_07_quadratic_simplex_window_theta_minus_A_sq (Theorem 7, L156)",
+        "thm_08_three_simultaneous_simplex_growth_ratios (Theorem 8, L167)",
+        "thm_09_explicit_rational_witness_for_nu_five_halves (Theorem 9, L207)",
+        "thm_10_three_way_error_budget_splitting_contradiction (Theorem 10, L259)",
+        "thm_11_euclidean_quotient_remainder_injectivity (Theorem 11, L272)",
+        "thm_12_euclidean_reconstruction_uniqueness (Theorem 12, L288)",
+        "thm_13_simplex_euclidean_sandwich_bounds (Theorem 13, L300)",
+        "thm_14_simplex_upper_sandwich_coordinate_shift (Theorem 14, L328)",
+        "thm_15_auxiliary_polynomial_nonzero_kernel_dimension (Theorem 15, L357)",
+        "thm_16_asymptotic_auxiliary_simplex_comparison (Theorem 16, L367)",
+        "thm_17_eta_perturbation_retains_half_gap (Theorem 17, L376)",
+        "thm_18_initial_scale_v0_w0_ceiling_sandwich (Theorem 18, L388)",
+        "thm_19_ceil_log_denominator_rounding_loss (Theorem 19, L393)",
+        "thm_20_approximation_centers_injective_in_j (Theorem 20, L409)",
+        "thm_21_reciprocal_weight_sum_common_bound (Theorem 21, L415)",
+        "thm_22_irrationality_exponent_supremum_squeeze (Theorem 22, L423)",
+        "thm_23_homogeneous_submodule_grading_injectivity (Theorem 23, L470)",
+        "thm_24_lacunary_weight_tower_exponential_lower_bound (Theorem 24, L483)",
+        "thm_25_discrete_rectangle_lattice_cardinality_induction (Theorem 25, L500)"
       ]
     },
     "pillar2_transverse_multiplicity_and_seshadri_blowup": {
@@ -58,64 +58,65 @@
       "c_star_lean_m2_sigma1": 320000,
       "stabilization_chain_levels": "m + 3",
       "lean_theorems": [
-        "thm_26_weighted_simplex_vs_inscribed_rectangle_quotient_length (Theorem 26, L21)",
-        "thm_27_paper_vs_lean_weight_separation_constant_c_star (Theorem 27, L41)",
-        "thm_28_euclidean_quotient_remainder_simplex_sandwich (Theorem 28, L57)",
-        "thm_29_pigeonhole_stabilization_of_derivative_vanishing_locus (Theorem 29, L81)",
-        "thm_30_gauss_bonnet_logarithmic_residue_rigidity (Theorem 30, L98)",
-        "thm_31_bouts_lemma_transverse_w_degree_lower_bound (Theorem 31, L113)",
-        "thm_32_curve_exclusion_when_sum_h_p_exceeds_one_over_one_plus_sigma (Theorem 32, L126)",
-        "thm_33_lazarsfeld_nef_plus_ample_bundle_decomposition (Theorem 33, L145)",
-        "thm_34_top_self_intersection_volume_deficit_and_kodaira_contradiction (Theorem 34, L163)",
-        "thm_35_reverse_holder_sum_from_l_m_plus_1_bound_to_l1_sum (Theorem 35, L177)",
-        "thm_36_triangular_log_taylor_coordinate_shift_inverse (Theorem 36, L195)",
-        "thm_37_leibniz_derivation_vanishing_on_square_ideal (Theorem 37, L207)",
-        "thm_38_complete_intersection_bezout_degree_product (Theorem 38, L221)",
-        "thm_39_formal_unit_geometric_series_cubic_identity (Theorem 39, L236)",
-        "thm_40_logarithmic_derivative_simple_pole_obstruction (Theorem 40, L258)",
-        "thm_41_rectangular_quotient_packet_dimension_product (Theorem 41, L271)",
-        "thm_42_projective_embedding_pole_clearing_identity (Theorem 42, L287)",
-        "thm_43_curve_branch_valuation_weighted_additivity (Theorem 43, L303)",
-        "thm_44_complete_curve_zero_pole_vanishing_criterion (Theorem 44, L324)",
-        "thm_45_seshadri_blowup_nef_curve_intersection (Theorem 45, L336)",
-        "thm_46_contracted_exceptional_curve_strict_positivity (Theorem 46, L355)",
-        "thm_47_rees_blowup_ample_convex_combination_identity (Theorem 47, L371)",
-        "thm_48_rees_pushdown_ideal_power_weight_inclusion (Theorem 48, L394)",
-        "thm_49_cech_cochain_differential_squared_zero (Theorem 49, L412)",
-        "thm_50_finite_affine_cover_uniform_vanishing_threshold (Theorem 50, L425)"
+        "thm_26_weighted_simplex_vs_inscribed_rectangle_quotient_length (Theorem 26, L66)",
+        "thm_27_paper_vs_lean_weight_separation_constant_c_star (Theorem 27, L83)",
+        "thm_28_euclidean_quotient_remainder_simplex_sandwich (Theorem 28, L120)",
+        "thm_29_pigeonhole_stabilization_of_derivative_vanishing_locus (Theorem 29, L137)",
+        "thm_30_gauss_bonnet_logarithmic_residue_rigidity (Theorem 30, L159)",
+        "thm_31_bouts_lemma_transverse_w_degree_lower_bound (Theorem 31, L174)",
+        "thm_32_curve_exclusion_when_sum_h_p_exceeds_one_over_one_plus_sigma (Theorem 32, L196)",
+        "thm_33_lazarsfeld_nef_plus_ample_bundle_decomposition (Theorem 33, L212)",
+        "thm_34_top_self_intersection_volume_deficit_and_kodaira_contradiction (Theorem 34, L225)",
+        "thm_35_reverse_holder_sum_from_l_m_plus_1_bound_to_l1_sum (Theorem 35, L262)",
+        "thm_36_triangular_log_taylor_coordinate_shift_inverse (Theorem 36, L308)",
+        "thm_37_leibniz_derivation_vanishing_on_square_ideal (Theorem 37, L328)",
+        "thm_38_complete_intersection_bezout_degree_product (Theorem 38, L338)",
+        "thm_39_formal_unit_geometric_series_cubic_identity (Theorem 39, L346)",
+        "thm_40_logarithmic_derivative_simple_pole_obstruction (Theorem 40, L358)",
+        "thm_41_rectangular_quotient_packet_dimension_product (Theorem 41, L417)",
+        "thm_42_projective_embedding_pole_clearing_identity (Theorem 42, L441)",
+        "thm_43_curve_branch_valuation_weighted_additivity (Theorem 43, L454)",
+        "thm_44_complete_curve_zero_pole_vanishing_criterion (Theorem 44, L468)",
+        "thm_45_seshadri_blowup_nef_curve_intersection (Theorem 45, L498)",
+        "thm_46_contracted_exceptional_curve_strict_positivity (Theorem 46, L519)",
+        "thm_47_rees_blowup_ample_convex_combination_identity (Theorem 47, L535)",
+        "thm_48_rees_pushdown_ideal_power_weight_inclusion (Theorem 48, L556)",
+        "thm_49_cech_cochain_differential_squared_zero (Theorem 49, L567)",
+        "thm_50_finite_affine_cover_uniform_vanishing_threshold (Theorem 50, L575)"
       ]
     },
     "pillar3_laurent_determinant_and_flint_hills": {
       "gaussian_degree": 2,
-      "lambda_lean": "4 * log 2",
+      "lambda_paper": "4 * log 2",
+      "lambda_lean": "Real.log 4 + 4",
       "flint_hills_bad_index_const_lean": 16,
       "flint_hills_bad_index_const_paper": "8 / pi",
       "lean_theorems": [
-        "thm_51_gaussian_integer_clearing_and_liouville_obstruction (Theorem 51, L65)",
-        "thm_52_elementary_dyadic_lcm_bound_four_log_two (Theorem 52, L98)",
-        "thm_53_row_translation_invariance_via_euler_period (Theorem 53, L117)",
-        "thm_54_cauchy_schwarz_taylor_collision_degree_lower_bound (Theorem 54, L133)",
-        "thm_55_two_alternative_determinant_upper_bound_and_contradiction (Theorem 55, L152)",
-        "thm_56_asymptotic_cancellation_of_m_factorial_in_log_d_over_m_log_m (Theorem 56, L168)",
-        "thm_57_explicit_dimension_and_center_count_at_nu_five_halves (Theorem 57, L188)",
-        "thm_58_flint_hills_bad_index_uniqueness_and_residue_injectivity (Theorem 58, L205)",
-        "thm_59_dyadic_partial_summation_exponent_for_flint_hills (Theorem 59, L221)",
-        "thm_60_generalized_sine_series_convergence_threshold_and_gap_audit (Theorem 60, L237)",
-        "thm_61_brahmagupta_fibonacci_gaussian_norm_multiplicativity (Theorem 61, L256)",
-        "thm_62_matrix_2x2_row_column_scaling_determinant_identity (Theorem 62, L302)",
-        "thm_63_dyadic_lcm_increment_sum_universal_induction (Theorem 63, L322)",
-        "thm_64_row_translation_binomial_error_decomposition (Theorem 64, L341)",
-        "thm_65_distinct_taylor_degree_sum_universal_induction (Theorem 65, L355)",
-        "thm_66_collision_multiplicity_square_minus_card_lower_bound (Theorem 66, L375)",
-        "thm_67_three_group_cauchy_schwarz_occupancy_variance (Theorem 67, L393)",
-        "thm_68_repeated_taylor_degree_2x2_minor_cancellation (Theorem 68, L423)",
-        "thm_69_vandermonde_3x3_determinant_factorization_and_positivity (Theorem 69, L440)",
-        "thm_70_high_weight_row_fraction_sum_lower_bound (Theorem 70, L484)",
-        "thm_71_jordan_sine_chord_squared_lower_bound (Theorem 71, L498)",
-        "thm_72_sine_group_mod_four_residue_injectivity (Theorem 72, L511)",
-        "thm_73_continued_fraction_convergent_divergence_term_bound (Theorem 73, L524)",
+        "thm_51_gaussian_integer_clearing_and_liouville_obstruction (Theorem 51, L77)",
+        "thm_52_elementary_dyadic_lcm_bound_four_log_two (Theorem 52, L112)",
+        "thm_53_row_translation_invariance_via_euler_period (Theorem 53, L129)",
+        "thm_54_cauchy_schwarz_taylor_collision_degree_lower_bound (Theorem 54, L139)",
+        "thm_55_two_alternative_determinant_upper_bound_and_contradiction (Theorem 55, L155)",
+        "thm_56_asymptotic_cancellation_of_m_factorial_in_log_d_over_m_log_m (Theorem 56, L167)",
+        "thm_57_explicit_dimension_and_center_count_at_nu_five_halves (Theorem 57, L190)",
+        "thm_58_flint_hills_bad_index_uniqueness_and_residue_injectivity (Theorem 58, L209)",
+        "thm_59_dyadic_partial_summation_exponent_for_flint_hills (Theorem 59, L281)",
+        "thm_60_generalized_sine_series_convergence_threshold_and_gap_audit (Theorem 60, L316)",
+        "thm_61_brahmagupta_fibonacci_gaussian_norm_multiplicativity (Theorem 61, L332)",
+        "thm_62_matrix_2x2_row_column_scaling_determinant_identity (Theorem 62, L343)",
+        "thm_63_dyadic_lcm_increment_sum_universal_induction (Theorem 63, L353)",
+        "thm_64_row_translation_binomial_error_decomposition (Theorem 64, L370)",
+        "thm_65_distinct_taylor_degree_sum_universal_induction (Theorem 65, L387)",
+        "thm_66_collision_multiplicity_square_minus_card_lower_bound (Theorem 66, L403)",
+        "thm_67_three_group_cauchy_schwarz_occupancy_variance (Theorem 67, L437)",
+        "thm_68_repeated_taylor_degree_2x2_minor_cancellation (Theorem 68, L453)",
+        "thm_69_vandermonde_3x3_determinant_factorization_and_positivity (Theorem 69, L460)",
+        "thm_70_high_weight_row_fraction_sum_lower_bound (Theorem 70, L470)",
+        "thm_71_jordan_sine_chord_squared_lower_bound (Theorem 71, L478)",
+        "thm_72_sine_group_mod_four_residue_injectivity (Theorem 72, L485)",
+        "thm_73_continued_fraction_convergent_divergence_term_bound (Theorem 73, L509)",
         "thm_74_universal_pi_exponent_contradiction_system (Theorem 74, L538)",
-        "thm_75_countermodel_vandermonde_vanishes_when_centers_collide (Theorem 75, L555)"
+        "thm_75_countermodel_vandermonde_vanishes_when_centers_collide (Theorem 75, L546)"
       ]
     }
   },
@@ -129,367 +130,367 @@
       {
         "name": "thm_01_pi_exponent_869_file_stratigraphy_partition",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 19
+        "line": 80
       },
       {
         "name": "thm_02_unused_hypothesis_14_and_zero_external_imports",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 51
+        "line": 88
       },
       {
         "name": "thm_03_flint_hills_scope_note_vs_main_lean_audit",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 70
+        "line": 95
       },
       {
         "name": "thm_04_reasoning_trace_45_sections_62_over_25_to_2_pivot",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 84
+        "line": 106
       },
       {
         "name": "thm_05_parameter_interval_nonempty_iff_nu_gt_two",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 107
+        "line": 127
       },
       {
         "name": "thm_06_approximation_gap_linear_delta_factorization",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 121
+        "line": 139
       },
       {
         "name": "thm_07_quadratic_simplex_window_theta_minus_A_sq",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 139
+        "line": 156
       },
       {
         "name": "thm_08_three_simultaneous_simplex_growth_ratios",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 158
+        "line": 167
       },
       {
         "name": "thm_09_explicit_rational_witness_for_nu_five_halves",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 177
+        "line": 207
       },
       {
         "name": "thm_10_three_way_error_budget_splitting_contradiction",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 196
+        "line": 259
       },
       {
         "name": "thm_11_euclidean_quotient_remainder_injectivity",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 223
+        "line": 272
       },
       {
         "name": "thm_12_euclidean_reconstruction_uniqueness",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 236
+        "line": 288
       },
       {
         "name": "thm_13_simplex_euclidean_sandwich_bounds",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 263
+        "line": 300
       },
       {
         "name": "thm_14_simplex_upper_sandwich_coordinate_shift",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 274
+        "line": 328
       },
       {
         "name": "thm_15_auxiliary_polynomial_nonzero_kernel_dimension",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 288
+        "line": 357
       },
       {
         "name": "thm_16_asymptotic_auxiliary_simplex_comparison",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 300
+        "line": 367
       },
       {
         "name": "thm_17_eta_perturbation_retains_half_gap",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 317
+        "line": 376
       },
       {
         "name": "thm_18_initial_scale_v0_w0_ceiling_sandwich",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 331
+        "line": 388
       },
       {
         "name": "thm_19_ceil_log_denominator_rounding_loss",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 348
+        "line": 393
       },
       {
         "name": "thm_20_approximation_centers_injective_in_j",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 362
+        "line": 409
       },
       {
         "name": "thm_21_reciprocal_weight_sum_common_bound",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 381
+        "line": 415
       },
       {
         "name": "thm_22_irrationality_exponent_supremum_squeeze",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 401
+        "line": 423
       },
       {
         "name": "thm_23_homogeneous_submodule_grading_injectivity",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 413
+        "line": 470
       },
       {
         "name": "thm_24_lacunary_weight_tower_exponential_lower_bound",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 423
+        "line": 483
       },
       {
         "name": "thm_25_discrete_rectangle_lattice_cardinality_induction",
         "file": "proofs/pi_simplex_parameters_and_stratigraphy.lean",
-        "line": 437
+        "line": 500
       },
       {
         "name": "thm_26_weighted_simplex_vs_inscribed_rectangle_quotient_length",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 21
+        "line": 66
       },
       {
         "name": "thm_27_paper_vs_lean_weight_separation_constant_c_star",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 41
+        "line": 83
       },
       {
         "name": "thm_28_euclidean_quotient_remainder_simplex_sandwich",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 57
+        "line": 120
       },
       {
         "name": "thm_29_pigeonhole_stabilization_of_derivative_vanishing_locus",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 81
+        "line": 137
       },
       {
         "name": "thm_30_gauss_bonnet_logarithmic_residue_rigidity",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 98
+        "line": 159
       },
       {
         "name": "thm_31_bouts_lemma_transverse_w_degree_lower_bound",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 113
+        "line": 174
       },
       {
         "name": "thm_32_curve_exclusion_when_sum_h_p_exceeds_one_over_one_plus_sigma",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 126
+        "line": 196
       },
       {
         "name": "thm_33_lazarsfeld_nef_plus_ample_bundle_decomposition",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 145
+        "line": 212
       },
       {
         "name": "thm_34_top_self_intersection_volume_deficit_and_kodaira_contradiction",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 163
+        "line": 225
       },
       {
         "name": "thm_35_reverse_holder_sum_from_l_m_plus_1_bound_to_l1_sum",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 177
+        "line": 262
       },
       {
         "name": "thm_36_triangular_log_taylor_coordinate_shift_inverse",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 195
+        "line": 308
       },
       {
         "name": "thm_37_leibniz_derivation_vanishing_on_square_ideal",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 207
+        "line": 328
       },
       {
         "name": "thm_38_complete_intersection_bezout_degree_product",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 221
+        "line": 338
       },
       {
         "name": "thm_39_formal_unit_geometric_series_cubic_identity",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 236
+        "line": 346
       },
       {
         "name": "thm_40_logarithmic_derivative_simple_pole_obstruction",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 258
+        "line": 358
       },
       {
         "name": "thm_41_rectangular_quotient_packet_dimension_product",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 271
+        "line": 417
       },
       {
         "name": "thm_42_projective_embedding_pole_clearing_identity",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 287
+        "line": 441
       },
       {
         "name": "thm_43_curve_branch_valuation_weighted_additivity",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 303
+        "line": 454
       },
       {
         "name": "thm_44_complete_curve_zero_pole_vanishing_criterion",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 324
+        "line": 468
       },
       {
         "name": "thm_45_seshadri_blowup_nef_curve_intersection",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 336
+        "line": 498
       },
       {
         "name": "thm_46_contracted_exceptional_curve_strict_positivity",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 355
+        "line": 519
       },
       {
         "name": "thm_47_rees_blowup_ample_convex_combination_identity",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 371
+        "line": 535
       },
       {
         "name": "thm_48_rees_pushdown_ideal_power_weight_inclusion",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 394
+        "line": 556
       },
       {
         "name": "thm_49_cech_cochain_differential_squared_zero",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 412
+        "line": 567
       },
       {
         "name": "thm_50_finite_affine_cover_uniform_vanishing_threshold",
         "file": "proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean",
-        "line": 425
+        "line": 575
       },
       {
         "name": "thm_51_gaussian_integer_clearing_and_liouville_obstruction",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 65
+        "line": 77
       },
       {
         "name": "thm_52_elementary_dyadic_lcm_bound_four_log_two",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 98
+        "line": 112
       },
       {
         "name": "thm_53_row_translation_invariance_via_euler_period",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 117
+        "line": 129
       },
       {
         "name": "thm_54_cauchy_schwarz_taylor_collision_degree_lower_bound",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 133
+        "line": 139
       },
       {
         "name": "thm_55_two_alternative_determinant_upper_bound_and_contradiction",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 152
+        "line": 155
       },
       {
         "name": "thm_56_asymptotic_cancellation_of_m_factorial_in_log_d_over_m_log_m",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 168
+        "line": 167
       },
       {
         "name": "thm_57_explicit_dimension_and_center_count_at_nu_five_halves",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 188
+        "line": 190
       },
       {
         "name": "thm_58_flint_hills_bad_index_uniqueness_and_residue_injectivity",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 205
+        "line": 209
       },
       {
         "name": "thm_59_dyadic_partial_summation_exponent_for_flint_hills",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 221
+        "line": 281
       },
       {
         "name": "thm_60_generalized_sine_series_convergence_threshold_and_gap_audit",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 237
+        "line": 316
       },
       {
         "name": "thm_61_brahmagupta_fibonacci_gaussian_norm_multiplicativity",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 256
+        "line": 332
       },
       {
         "name": "thm_62_matrix_2x2_row_column_scaling_determinant_identity",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 302
+        "line": 343
       },
       {
         "name": "thm_63_dyadic_lcm_increment_sum_universal_induction",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 322
+        "line": 353
       },
       {
         "name": "thm_64_row_translation_binomial_error_decomposition",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 341
+        "line": 370
       },
       {
         "name": "thm_65_distinct_taylor_degree_sum_universal_induction",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 355
+        "line": 387
       },
       {
         "name": "thm_66_collision_multiplicity_square_minus_card_lower_bound",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 375
+        "line": 403
       },
       {
         "name": "thm_67_three_group_cauchy_schwarz_occupancy_variance",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 393
+        "line": 437
       },
       {
         "name": "thm_68_repeated_taylor_degree_2x2_minor_cancellation",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 423
+        "line": 453
       },
       {
         "name": "thm_69_vandermonde_3x3_determinant_factorization_and_positivity",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 440
+        "line": 460
       },
       {
         "name": "thm_70_high_weight_row_fraction_sum_lower_bound",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 484
+        "line": 470
       },
       {
         "name": "thm_71_jordan_sine_chord_squared_lower_bound",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 498
+        "line": 478
       },
       {
         "name": "thm_72_sine_group_mod_four_residue_injectivity",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 511
+        "line": 485
       },
       {
         "name": "thm_73_continued_fraction_convergent_divergence_term_bound",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 524
+        "line": 509
       },
       {
         "name": "thm_74_universal_pi_exponent_contradiction_system",
@@ -499,7 +500,7 @@
       {
         "name": "thm_75_countermodel_vandermonde_vanishes_when_centers_collide",
         "file": "proofs/pi_laurent_determinant_and_flint_hills.lean",
-        "line": 555
+        "line": 546
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"
