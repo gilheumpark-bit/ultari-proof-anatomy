@@ -3,7 +3,7 @@
 - **Date**: 2026-10-31
 - **Target Repository**: `openai/math` (Family `003`: Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis, `lean/OAI/NumberTheory/DirichletL/` & `SiegelZeros/`)
 - **Verification Toolchain**: `Lean 4 (v4.29.0-rc8)` and `Python 3 (SymPy / Fractions)` (`verify_symbolic_qrh.py`)
-- **Primary Formal Proof Artifacts**: [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (`SHA-256: b04012886b320c1f6e32012638f81d2be0f7ea7c75001f44ce72ab5f8e7cc92c`, 404 lines, 27 `theorem` declarations) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (`SHA-256: 92db90ed0b1dc93050188c1ceba83ac81597ade1bc01e1572585d15f4168d4e3`, 466 lines, 21 `theorem` declarations; total **48 theorems**, `0` `sorry`, `0` custom `axiom`, `lean` `exit 0`)
+- **Primary Formal Proof Artifacts**: [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (`SHA-256: 2342f19e01fb591321616aefdd1770faf25d4253d6a47f52a1cf188c767c4a8e`, 404 lines, 27 `theorem` declarations) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (`SHA-256: 264ce426ee8cdd45eba29fecc35ece3eb71801a9d11e36560506b9357ae0faf9`, 466 lines, 21 `theorem` declarations; total **48 theorems**, `0` `sorry`, `0` custom `axiom`, `lean` `exit 0`)
 - **Symbolic Verification Artifact**: [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) (`SHA-256: 072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55`)
 
 ---
@@ -281,3 +281,10 @@ This section provides the exhaustive declaration-by-declaration 1-to-1 cross-ref
 | 176 | [`DirichletL/Detector/ScalarTable.lean`](../proofs/oai_ref/ScalarTable.lean#L24-L49) | `theorem` | [`positiveScalar_actual_table`](../proofs/oai_ref/ScalarTable.lean#L24-L49) (`L24-L49`) | `theorem positiveScalar_actual_table (p : O) (hp : Prime p)` | [`Theorem 21`](../proofs/qrh_exponent_and_parameter_bounds.lean#L302-L310), [`Theorem 47`](../proofs/qrh_continuation_and_rescaling.lean#L431-L439) |
 | 177 | [`DirichletL/Detector/ScalarTable.lean`](../proofs/oai_ref/ScalarTable.lean#L50-L64) | `theorem` | [`zero_index_scalar`](../proofs/oai_ref/ScalarTable.lean#L50-L64) (`L50-L64`) | `theorem zero_index_scalar (p : O) (_hp : Prime p)` | [`Theorem 21`](../proofs/qrh_exponent_and_parameter_bounds.lean#L302-L310), [`Theorem 47`](../proofs/qrh_continuation_and_rescaling.lean#L431-L439) |
 | 178 | [`SiegelZeros/Conclusions/Theorem.lean`](../proofs/oai_ref/Theorem.lean#L11-L27) | `theorem` | [`exists_absolute_real_zero_gap`](../proofs/oai_ref/Theorem.lean#L11-L27) (`L11-L27`) | `theorem exists_absolute_real_zero_gap :` | [`Theorem 16`](../proofs/qrh_exponent_and_parameter_bounds.lean#L200-L210), [`Theorem 26`](../proofs/qrh_exponent_and_parameter_bounds.lean#L372-L380), [`Theorem 43`](../proofs/qrh_continuation_and_rescaling.lean#L351-L361) |
+
+---
+
+## 9. Beyond-Baseline Alternative Bounds and Sharp Rigidity Obstructions
+
+1. **[Beyond-Baseline Alternative Bound]**: Eliminates the baseline finite cutoff compromise $Q \ge 480$ across the full finite range $4 \le Q < 480$ via finite bad-prime mask absorption (`thm_28`–`thm_30`) and restores the $m=1$ residue structure with 2nd/3rd-order Euler product continuation (`thm_31`–`thm_40`).
+2. **[Sharp No-Go / Rigidity Obstruction]**: Proves that quadratic Cauchy-Schwarz amplification alone hits a strict parity rigidity floor at the baseline exponent $3/16$ (signal exponent $-11/16$), preventing any further reduction without higher-order cubic reciprocity.

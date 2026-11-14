@@ -1,0 +1,572 @@
+{
+  "case_id": "classical_riemann_five_barriers_full_anatomy",
+  "title": "Five Foundational Classical Riemann Hypothesis Barriers (1896-2024): de la Vallee Poussin & Korobov-Vinogradov Zero-Free Slack Recovery vs Fejer-Riesz Barrier, Ingham-Huxley-Guth-Maynard Zero-Density Inflection Shift (3/4 -> 7/10) & QRH Gram Unbundling, Landau-Siegel Classical.em Ineffectiveness vs Elliptic Rank-3 Effectivization, Selberg-Levinson-Conrey Mollifier Calculus (J_AB = -1/2 => kappa < 1), and Burgess (3/16) SOS Trap vs Kim-Sarnak (7/64) GL_5 Amplification",
+  "target_repository": "Classical Riemann Hypothesis Barrier Literature (1896-2024) cross-audited against PrimeNumberTheoremAnd (ZetaBounds.lean) and openai/math (#001 QRH, #002 SiegelZeros, #005 Nonquadratic, Ostmann, Jacobsthal; 15 staged reference files in proofs/oai_ref/)",
+  "date": "2026-11-13",
+  "lean_version": "v4.29.0-rc8",
+  "verification_commands": {
+    "lean4_kernel_check": "~/.elan/bin/lean proofs/classical_dlvp_korobov_and_zero_free.lean && ~/.elan/bin/lean proofs/classical_ingham_huxley_zero_density.lean && ~/.elan/bin/lean proofs/classical_guth_maynard_and_qrh_gram.lean && ~/.elan/bin/lean proofs/classical_siegel_zero_and_ineffectiveness.lean && ~/.elan/bin/lean proofs/classical_levinson_conrey_and_mollifier_barrier.lean && ~/.elan/bin/lean proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+    "symbolic_solver_check": "python3 proofs/verify_symbolic_classical_riemann.py"
+  },
+  "artifacts_sha256": {
+    "proofs/classical_dlvp_korobov_and_zero_free.lean": "af6541ccf6b13c36569f9f404073ba2b2f67082fdf69d99e59eb1629609f44ed",
+    "proofs/classical_ingham_huxley_zero_density.lean": "ce28dcbc8557015d7ce4c12de6cc4f796f9d9795e350313ffb0b50d725d51215",
+    "proofs/classical_guth_maynard_and_qrh_gram.lean": "063a458575e8bdf4ca04583c2675b6a0fdde9f98ceb1eb09848b0e7862a81ce4",
+    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "a9ac0f98d367306960a4578dfe3a1bf5c2a98c32187650aa79e1cb41d551611d",
+    "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "86b85b06ff93f7ff6ba799a18913106ede607986a1bd16aec7af8f223da44198",
+    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "0af3b9d26d65e527aa42364a668bb7bf7f0cef875716ccf6143afc2194b18eed",
+    "proofs/verify_symbolic_classical_riemann.py": "2126c51dd29f929d792e08d235efe371741f32f4b23e61108b64305f726ebddf",
+    "proofs/symbolic_siegel_conrey_burgess.py": "0fc01ccd985065d164d2dd0d9d24d684b894d9e2a8f10ad55e43287f02148c28",
+    "proofs/symbolic_verification_result.json": "6314872da8f8f84b4ae3c240ed0e9d625a4943181e737270136641a52eefc326",
+    "proofs/problem_spec.md": "89a5ebbf0e9e9b4e238a18e25bc729c71ecff31c28a975a37ce37be89451b64a"
+  },
+  "verified_key_results": {
+    "paper1_zero_free_and_fejer_riesz": {
+      "textbook_constant": "1/100",
+      "dlvp_amgm_exact": "(7 - 4*sqrt(3))/5",
+      "dlvp_amgm_float": 0.014359353945,
+      "poly_17_24_8_exact": "(41 - 4*sqrt(102))/32",
+      "poly_17_24_8_float": 0.018811882705,
+      "deg2_global_max_float": 0.018818544672,
+      "fejer_riesz_universal_ceiling_float": 0.057190958418,
+      "korobov_vinogradov_exponent": "2/3",
+      "lean_theorems": [
+        "thm_01_dlvp_three_four_one_sos_identity (Theorem 1, L33)",
+        "thm_02_pole_zero_sos_decomposition (Theorem 2, L40)",
+        "thm_03_stationary_point_zero_free_implication (Theorem 3, L53)",
+        "thm_04_three_four_one_four_tier_slack_cascade (Theorem 4, L78)",
+        "thm_05_tao_zetabounds_exponentiated_norm_log9_loss (Theorem 5, L99)",
+        "thm_06_degree2_cosine_vertex_completion_of_squares (Theorem 6, L109)",
+        "thm_07_seventeen_twentyfour_eight_perfect_square (Theorem 7, L125)",
+        "thm_08_seventeen_twentyfour_eight_exact_constant_and_gain (Theorem 8, L132)",
+        "thm_09_degree2_global_quintic_stationarity_and_root (Theorem 9, L155)",
+        "thm_10_degree2_global_ceiling_and_9996_tightness (Theorem 10, L171)",
+        "thm_11_fejer_riesz_autocorrelation_strict_two_c0_barrier (Theorem 11, L285)",
+        "thm_12_general_cosine_pi_weight_lower_bound (Theorem 12, L329)",
+        "thm_13_fejer_riesz_universal_constant_ceilings (Theorem 13, L378)",
+        "thm_14_korobov_vinogradov_two_thirds_exponent_balance (Theorem 14, L423)",
+        "thm_15_asymptotic_sigma_eq_one_minus_o1_barrier_no_go (Theorem 15, L461)"
+      ]
+    },
+    "paper2_zero_density_and_qrh_gram": {
+      "ingham_huxley_inflection": [
+        "3/4",
+        "12/5"
+      ],
+      "guth_maynard_inflection": [
+        "7/10",
+        "30/13"
+      ],
+      "peak_saving_exact": "6/65",
+      "prime_gap_shift": "7/12 -> 17/30",
+      "qrh_unbundled_margins": [
+        "215/3264",
+        "487/3264"
+      ],
+      "hybrid_critical_line_required_saving": "14/33",
+      "hybrid_coarse_net_margin": "-17/132",
+      "lean_theorems": [
+        "thm_16_ingham_three_term_zero_detection_balance (Theorem 16, L29)",
+        "thm_17_ingham_slope_strict_monotonicity_and_conservation (Theorem 17, L56)",
+        "thm_18_halasz_schur_gram_phase_destruction_bound (Theorem 18, L82)",
+        "thm_19_huxley_reflection_subdivision_large_values_derivation (Theorem 19, L134)",
+        "thm_20_huxley_k2_k3_amplification_and_cutoff_compatibility (Theorem 20, L178)",
+        "thm_21_ingham_huxley_minimax_three_quarters_inflection (Theorem 21, L214)",
+        "thm_22_density_hypothesis_gap_and_prime_gap_seven_twelfths (Theorem 22, L242)",
+        "thm_23_huxley_higher_amplification_strict_decay (Theorem 23, L270)",
+        "thm_24_phase_cancellation_loss_witness_signed_vs_abs (Theorem 24, L322)",
+        "thm_25_global_ingham_huxley_exponent_strict_monotonicity (Theorem 25, L382)",
+        "thm_26_guth_maynard_k2_k3_amplification_and_sos_middle_margin (Theorem 26, L23)",
+        "thm_27_guth_maynard_vs_huxley_exact_four_fifths_crossover (Theorem 27, L78)",
+        "thm_28_guth_maynard_ingham_seven_tenths_minimax_envelope (Theorem 28, L99)",
+        "thm_29_inflection_shift_barrier_saving_and_seventeen_thirtieths_prime_gap (Theorem 29, L135)",
+        "thm_30_guth_maynard_det3_rank_defect_s2_collapse_barrier (Theorem 30, L151)",
+        "thm_31_qrh_gram_scale_loss_and_coarse_bundled_exponent (Theorem 31, L188)",
+        "thm_32_qrh_three_mode_unbundling_215_and_487_over_3264 (Theorem 32, L232)",
+        "thm_33_qrh_rescaled_five_sixths_and_three_quarters_bridge (Theorem 33, L262)",
+        "thm_34_qrh_endpoint_sos_identity_and_box_margin (Theorem 34, L283)",
+        "thm_35_hybrid_ab_coupled_critical_line_fourteen_thirtythirds (Theorem 35, L363)"
+      ]
+    },
+    "paper3_siegel_ineffectiveness_and_goldfeld": {
+      "estermann_euler_factor_values": [
+        0,
+        4
+      ],
+      "siegel_threshold": "1 - eps/(2*(A + eps))",
+      "landau_page_pair_margin": "5/46",
+      "openai_002_bezout_cutoff": 86713344,
+      "ostmann_conductor_ladder": [
+        87689,
+        255983,
+        640722,
+        4115904
+      ],
+      "gross_zagier_elliptic_conductor": 5077,
+      "lean_theorems": [
+        "thm_36_estermann_siegel_biquadratic_euler_factor_sos (Theorem 36, L21)",
+        "thm_37_estermann_dirichlet_series_first_term_floor (Theorem 37, L38)",
+        "thm_38_perron_contour_dichotomy_zero_kills_f_value (Theorem 38, L48)",
+        "thm_39_siegel_perron_optimal_truncation_scale (Theorem 39, L57)",
+        "thm_40_siegel_exponent_threshold_equivalence (Theorem 40, L87)",
+        "thm_41_siegel_implied_constant_decay_with_q1_blowup (Theorem 41, L114)",
+        "thm_42_siegel_two_case_nonconstructive_lem_barrier (Theorem 42, L135)",
+        "thm_43_landau_page_repulsion_pair_exclusion (Theorem 43, L157)",
+        "thm_44_tatuzawa_one_exceptional_modulus_effective_dichotomy (Theorem 44, L190)",
+        "thm_45_dirichlet_class_number_formula_siegel_transfer (Theorem 45, L207)",
+        "thm_46_goldfeld_gross_zagier_rank3_order_vanishing_mechanism (Theorem 46, L246)",
+        "thm_47_gross_zagier_oesterle_rate_vs_effectivity_tradeoff (Theorem 47, L281)",
+        "thm_48_openai_002_siegel_zeros_bezout_cutoff_and_by_contra_audit (Theorem 48, L312)",
+        "thm_49_case009_ostmann_single_destruct_and_loglog_bottleneck_bridge (Theorem 49, L323)",
+        "thm_50_paper3_siegel_ineffectiveness_and_effectivization_master_ledger (Theorem 50, L334)"
+      ]
+    },
+    "paper4_levinson_conrey_and_mollifiers": {
+      "mollifier_scale_ladder": [
+        "1/2",
+        "17/33",
+        "35/66",
+        "4/7"
+      ],
+      "universal_boundary_invariant_jab": "-1/2",
+      "levinson_linear_proportion_floor": "1/3",
+      "conrey_deg17_at_four_sevenths": 0.408058,
+      "qrh_theorem_fraction": "55264/135375",
+      "lean_theorems": [
+        "thm_51_selberg_levinson_littlewood_jensen_proportion_floor (Theorem 51, L28)",
+        "thm_52_deshouillers_iwaniec_kuznetsov_four_sevenths_barrier (Theorem 52, L43)",
+        "thm_53_asymmetric_di_gap_and_bcr_17_33_unfactored_window (Theorem 53, L57)",
+        "thm_54_mollifier_kloosterman_scale_ladder_one_sixtysixth (Theorem 54, L67)",
+        "thm_55_mollifier_antiderivative_has_deriv_at_and_boundary_invariant (Theorem 55, L79)",
+        "thm_56_cauchy_schwarz_discriminant_from_nonnegative_quadratic_form (Theorem 56, L104)",
+        "thm_57_hyperbolic_coth_strictly_exceeds_one_from_exp (Theorem 57, L137)",
+        "thm_58_conrey_variational_mean_square_strictly_above_one (Theorem 58, L149)",
+        "thm_59_finite_theta_strictly_below_hundred_percent_no_go (Theorem 59, L171)",
+        "thm_60_functional_equation_symmetry_pointwise_iaa_floor (Theorem 60, L185)",
+        "thm_61_levinson_linear_polynomial_closed_form_integrals (Theorem 61, L234)",
+        "thm_62_levinson_one_third_proportion_kernel_certificate (Theorem 62, L279)",
+        "thm_63_deg17_actual_limit_vs_relaxed_coth_ceiling_separation (Theorem 63, L298)"
+      ]
+    },
+    "paper5_burgess_selberg_and_kim_sarnak": {
+      "burgess_unique_min_r": 2,
+      "burgess_subconvexity_exponent": "3/16",
+      "petrow_young_cubic_exponent": "1/6",
+      "landau_gl5_convexity": "3/26",
+      "kim_sarnak_gl5_amplified": "7/64",
+      "kim_sarnak_saving": "5/832",
+      "kloosterman_phase_cancellation_pct": 98.005376,
+      "lean_theorems": [
+        "thm_64_burgess_weil_moment_balance_optimal_interval_h (Theorem 64, L21)",
+        "thm_65_burgess_short_character_sum_exponent_derivation (Theorem 65, L34)",
+        "thm_66_burgess_nontrivial_threshold_one_quarter_limit (Theorem 66, L70)",
+        "thm_67_burgess_subconvexity_exponent_sos_trap_at_r_eq_2 (Theorem 67, L90)",
+        "thm_68_burgess_strict_degradation_for_higher_moments (Theorem 68, L127)",
+        "thm_69_conrey_iwaniec_petrow_young_cubic_collision_removal (Theorem 69, L147)",
+        "thm_70_qrh_parameters_burgess_three_sixteenths_identity (Theorem 70, L158)",
+        "thm_71_selberg_1965_kloosterman_zeta_weil_abscissa_vs_spectral_line (Theorem 71, L167)",
+        "thm_72_landau_rankin_selberg_gln_convexity_pole_formula (Theorem 72, L181)",
+        "thm_73_kim_sarnak_gl5_character_amplification_seven_sixtyfourths (Theorem 73, L214)",
+        "thm_74_sym_power_langlands_functoriality_limit_to_ramanujan (Theorem 74, L235)",
+        "thm_75_case015_five_classical_barriers_unified_synthesis (Theorem 75, L254)"
+      ]
+    }
+  },
+  "lean4_verification": {
+    "compiler": "leanprover/lean4:v4.29.0-rc8",
+    "theorems_proved": 75,
+    "lean4_lines": 2238,
+    "sorry_count": 0,
+    "custom_axioms": 0,
+    "hypothesis_mutations_tested": 188,
+    "hypothesis_mutations_killed": 188,
+    "files": [
+      "proofs/classical_dlvp_korobov_and_zero_free.lean",
+      "proofs/classical_ingham_huxley_zero_density.lean",
+      "proofs/classical_guth_maynard_and_qrh_gram.lean",
+      "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+      "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+      "proofs/classical_burgess_and_kim_sarnak_barrier.lean"
+    ],
+    "theorems": [
+      {
+        "name": "thm_01_dlvp_three_four_one_sos_identity",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 33
+      },
+      {
+        "name": "thm_02_pole_zero_sos_decomposition",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 40
+      },
+      {
+        "name": "thm_03_stationary_point_zero_free_implication",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 53
+      },
+      {
+        "name": "thm_04_three_four_one_four_tier_slack_cascade",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 78
+      },
+      {
+        "name": "thm_05_tao_zetabounds_exponentiated_norm_log9_loss",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 99
+      },
+      {
+        "name": "thm_06_degree2_cosine_vertex_completion_of_squares",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 109
+      },
+      {
+        "name": "thm_07_seventeen_twentyfour_eight_perfect_square",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 125
+      },
+      {
+        "name": "thm_08_seventeen_twentyfour_eight_exact_constant_and_gain",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 132
+      },
+      {
+        "name": "thm_09_degree2_global_quintic_stationarity_and_root",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 155
+      },
+      {
+        "name": "thm_10_degree2_global_ceiling_and_9996_tightness",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 171
+      },
+      {
+        "name": "thm_11_fejer_riesz_autocorrelation_strict_two_c0_barrier",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 285
+      },
+      {
+        "name": "thm_12_general_cosine_pi_weight_lower_bound",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 329
+      },
+      {
+        "name": "thm_13_fejer_riesz_universal_constant_ceilings",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 378
+      },
+      {
+        "name": "thm_14_korobov_vinogradov_two_thirds_exponent_balance",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 423
+      },
+      {
+        "name": "thm_15_asymptotic_sigma_eq_one_minus_o1_barrier_no_go",
+        "file": "proofs/classical_dlvp_korobov_and_zero_free.lean",
+        "line": 461
+      },
+      {
+        "name": "thm_16_ingham_three_term_zero_detection_balance",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 29
+      },
+      {
+        "name": "thm_17_ingham_slope_strict_monotonicity_and_conservation",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 56
+      },
+      {
+        "name": "thm_18_halasz_schur_gram_phase_destruction_bound",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 82
+      },
+      {
+        "name": "thm_19_huxley_reflection_subdivision_large_values_derivation",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 134
+      },
+      {
+        "name": "thm_20_huxley_k2_k3_amplification_and_cutoff_compatibility",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 178
+      },
+      {
+        "name": "thm_21_ingham_huxley_minimax_three_quarters_inflection",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 214
+      },
+      {
+        "name": "thm_22_density_hypothesis_gap_and_prime_gap_seven_twelfths",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 242
+      },
+      {
+        "name": "thm_23_huxley_higher_amplification_strict_decay",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 270
+      },
+      {
+        "name": "thm_24_phase_cancellation_loss_witness_signed_vs_abs",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 322
+      },
+      {
+        "name": "thm_25_global_ingham_huxley_exponent_strict_monotonicity",
+        "file": "proofs/classical_ingham_huxley_zero_density.lean",
+        "line": 382
+      },
+      {
+        "name": "thm_26_guth_maynard_k2_k3_amplification_and_sos_middle_margin",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 23
+      },
+      {
+        "name": "thm_27_guth_maynard_vs_huxley_exact_four_fifths_crossover",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 78
+      },
+      {
+        "name": "thm_28_guth_maynard_ingham_seven_tenths_minimax_envelope",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 99
+      },
+      {
+        "name": "thm_29_inflection_shift_barrier_saving_and_seventeen_thirtieths_prime_gap",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 135
+      },
+      {
+        "name": "thm_30_guth_maynard_det3_rank_defect_s2_collapse_barrier",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 151
+      },
+      {
+        "name": "thm_31_qrh_gram_scale_loss_and_coarse_bundled_exponent",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 188
+      },
+      {
+        "name": "thm_32_qrh_three_mode_unbundling_215_and_487_over_3264",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 232
+      },
+      {
+        "name": "thm_33_qrh_rescaled_five_sixths_and_three_quarters_bridge",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 262
+      },
+      {
+        "name": "thm_34_qrh_endpoint_sos_identity_and_box_margin",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 283
+      },
+      {
+        "name": "thm_35_hybrid_ab_coupled_critical_line_fourteen_thirtythirds",
+        "file": "proofs/classical_guth_maynard_and_qrh_gram.lean",
+        "line": 363
+      },
+      {
+        "name": "thm_36_estermann_siegel_biquadratic_euler_factor_sos",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 21
+      },
+      {
+        "name": "thm_37_estermann_dirichlet_series_first_term_floor",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 38
+      },
+      {
+        "name": "thm_38_perron_contour_dichotomy_zero_kills_f_value",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 48
+      },
+      {
+        "name": "thm_39_siegel_perron_optimal_truncation_scale",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 57
+      },
+      {
+        "name": "thm_40_siegel_exponent_threshold_equivalence",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 87
+      },
+      {
+        "name": "thm_41_siegel_implied_constant_decay_with_q1_blowup",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 114
+      },
+      {
+        "name": "thm_42_siegel_two_case_nonconstructive_lem_barrier",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 135
+      },
+      {
+        "name": "thm_43_landau_page_repulsion_pair_exclusion",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 157
+      },
+      {
+        "name": "thm_44_tatuzawa_one_exceptional_modulus_effective_dichotomy",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 190
+      },
+      {
+        "name": "thm_45_dirichlet_class_number_formula_siegel_transfer",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 207
+      },
+      {
+        "name": "thm_46_goldfeld_gross_zagier_rank3_order_vanishing_mechanism",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 246
+      },
+      {
+        "name": "thm_47_gross_zagier_oesterle_rate_vs_effectivity_tradeoff",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 281
+      },
+      {
+        "name": "thm_48_openai_002_siegel_zeros_bezout_cutoff_and_by_contra_audit",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 312
+      },
+      {
+        "name": "thm_49_case009_ostmann_single_destruct_and_loglog_bottleneck_bridge",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 323
+      },
+      {
+        "name": "thm_50_paper3_siegel_ineffectiveness_and_effectivization_master_ledger",
+        "file": "proofs/classical_siegel_zero_and_ineffectiveness.lean",
+        "line": 334
+      },
+      {
+        "name": "thm_51_selberg_levinson_littlewood_jensen_proportion_floor",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 28
+      },
+      {
+        "name": "thm_52_deshouillers_iwaniec_kuznetsov_four_sevenths_barrier",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 43
+      },
+      {
+        "name": "thm_53_asymmetric_di_gap_and_bcr_17_33_unfactored_window",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 57
+      },
+      {
+        "name": "thm_54_mollifier_kloosterman_scale_ladder_one_sixtysixth",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 67
+      },
+      {
+        "name": "thm_55_mollifier_antiderivative_has_deriv_at_and_boundary_invariant",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 79
+      },
+      {
+        "name": "thm_56_cauchy_schwarz_discriminant_from_nonnegative_quadratic_form",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 104
+      },
+      {
+        "name": "thm_57_hyperbolic_coth_strictly_exceeds_one_from_exp",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 137
+      },
+      {
+        "name": "thm_58_conrey_variational_mean_square_strictly_above_one",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 149
+      },
+      {
+        "name": "thm_59_finite_theta_strictly_below_hundred_percent_no_go",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 171
+      },
+      {
+        "name": "thm_60_functional_equation_symmetry_pointwise_iaa_floor",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 185
+      },
+      {
+        "name": "thm_61_levinson_linear_polynomial_closed_form_integrals",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 234
+      },
+      {
+        "name": "thm_62_levinson_one_third_proportion_kernel_certificate",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 279
+      },
+      {
+        "name": "thm_63_deg17_actual_limit_vs_relaxed_coth_ceiling_separation",
+        "file": "proofs/classical_levinson_conrey_and_mollifier_barrier.lean",
+        "line": 298
+      },
+      {
+        "name": "thm_64_burgess_weil_moment_balance_optimal_interval_h",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 21
+      },
+      {
+        "name": "thm_65_burgess_short_character_sum_exponent_derivation",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 34
+      },
+      {
+        "name": "thm_66_burgess_nontrivial_threshold_one_quarter_limit",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 70
+      },
+      {
+        "name": "thm_67_burgess_subconvexity_exponent_sos_trap_at_r_eq_2",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 90
+      },
+      {
+        "name": "thm_68_burgess_strict_degradation_for_higher_moments",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 127
+      },
+      {
+        "name": "thm_69_conrey_iwaniec_petrow_young_cubic_collision_removal",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 147
+      },
+      {
+        "name": "thm_70_qrh_parameters_burgess_three_sixteenths_identity",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 158
+      },
+      {
+        "name": "thm_71_selberg_1965_kloosterman_zeta_weil_abscissa_vs_spectral_line",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 167
+      },
+      {
+        "name": "thm_72_landau_rankin_selberg_gln_convexity_pole_formula",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 181
+      },
+      {
+        "name": "thm_73_kim_sarnak_gl5_character_amplification_seven_sixtyfourths",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 214
+      },
+      {
+        "name": "thm_74_sym_power_langlands_functoriality_limit_to_ramanujan",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 235
+      },
+      {
+        "name": "thm_75_case015_five_classical_barriers_unified_synthesis",
+        "file": "proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+        "line": 254
+      }
+    ]
+  },
+  "scope_and_limitations": {
+    "lean_formalization_scope": "75 Lean 4 theorems (2,238 lines over Real, 0 sorry, 0 custom axioms, 188/188 hypothesis mutations caught = 100%, 73/75 structural, 48 nonlinear/calculus/inductive proof terms) reconstructing from first principles the intermediate derivations, recoverable hand-calculation slack, and genuine structural obstructions of the five classical Riemann Hypothesis barrier pillars (1896-2024), cross-audited against 15 upstream reference formalizations in proofs/oai_ref/."
+  }
+}

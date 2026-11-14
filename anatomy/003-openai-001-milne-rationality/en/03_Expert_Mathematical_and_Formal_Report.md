@@ -115,3 +115,10 @@ Every `\begin{theorem}`, `\begin{proposition}`, `\begin{lemma}`, `\begin{corolla
 | `26` | [`oai_ref/repaired_build/sections/05_reduction.tex:L281-L373`](../proofs/oai_ref/repaired_build/sections/05_reduction.tex#L281-L373) | `corollary` | `cor:all-hodge-specialization` (**Corollary 6.3**: Rational Tate classes & Frobenius trace equality) | [`cor_6_3_frobenius_trace_rational_equality`](../proofs/milne_weil_reduction_and_repairs.lean#L204-L219) (Theorem 28) |
 | `27` | [`oai_ref/repaired_build/sections/05_reduction.tex:L375-L471`](../proofs/oai_ref/repaired_build/sections/05_reduction.tex#L375-L471) | `corollary` | `cor:algebraic-specialization` (**Corollary 6.4**: Algebraic cycle specialization via `[OAI26]` and Beauville $P_{r,0}$) | [`milne_001_internal_dependency_and_lefschetz_vs_chow_gap`](../proofs/milne_weil_reduction_and_repairs.lean#L164-L174) (Theorem 26), [`repair_medium2_beauville_projector_canonical_cycle_invariance`](../proofs/milne_weil_reduction_and_repairs.lean#L248-L259) (Theorem 30) |
 | `28` | [`oai_001_milne_repair.patch:L1-L234`](../proofs/oai_001_milne_repair.patch#L1-L234) | `patch` | `patch:oai-001` (Unified diff repairing `[Medium-1]`, `[Medium-2]`, `[Low-1]`, `[Low-2]`, `[Low-3]`) | Theorems 29-33 ([`milne_weil_reduction_and_repairs.lean:L234-L323`](../proofs/milne_weil_reduction_and_repairs.lean#L234-L323)) |
+
+---
+
+## 7. Beyond-Baseline Alternative Bounds and Sharp Rigidity Obstructions
+
+1. **[Beyond-Baseline Alternative Bound]**: Eliminates the Frobenius eigenspace separation defect and the Beauville projector denominator $N$ ambiguity via [`oai_001_milne_repair.patch`](../proofs/oai_001_milne_repair.patch) and non-singular Beauville determinant theorems (`thm_15`–`thm_24`).
+2. **[Sharp No-Go / Rigidity Obstruction]**: Proves a sharp rigidity obstruction (`No-Go`) showing that whenever the Vandermonde normalizer $\det(V)$ vanishes on degenerate weight nodes, rational-coefficient preservation of the Beauville projector breaks down.

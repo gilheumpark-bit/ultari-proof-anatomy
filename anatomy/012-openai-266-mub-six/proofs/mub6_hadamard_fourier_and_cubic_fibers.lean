@@ -426,4 +426,4 @@ theorem thm_25_small_partitions_redundancy_accounting
     total_red = 40 * s ∧ 25 * s ≤ total_red - bell4 ∧ 40 ≤ total_red := by
   omega
 
-end Mub6HadamardFourierAndCubicFibers
+end Mub6HadamardFourierAndCubicFibers -- Seal Seq 2 (2026-11-13, prev_sha256: 1cbdf44e2ac2264afe7ea1442eb02dfbf39af1ce553c923afa170e8f8b1a5d40): L8 header comment wording cleanup (0 theorem/proof edits)

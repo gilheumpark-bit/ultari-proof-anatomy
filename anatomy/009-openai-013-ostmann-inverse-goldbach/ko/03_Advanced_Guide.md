@@ -187,9 +187,9 @@ $$\sum_{j=0}^{k-1} \Delta_j = \sum_{j=0}^{k-1} 2^j \left(B_D + B_z \log z + \fra
 
 ---
 
-## 6. 5대 인과적 '왜(Causal Why)' 심층 해부: 왜 고전적 체법은 실패하고 왜 각 장치가 필연적인가
+## 6. 5대 인과적 기전 심층 해부: 왜 고전적 체법은 실패하고 왜 각 장치가 필연적인가
 
-### 6.1 왜 1 (선행 방법·소박한 접근의 장벽과 실패 원인 — 패리티 장벽과 $p$-진 위상 상쇄)
+### 6.1 1단계 (선행 방법·소박한 접근의 장벽과 실패 원인 — 패리티 장벽과 $p$-진 위상 상쇄)
 1. **에라토스테네스·셀베르그 체와 코시-다벤포트(Cauchy-Davenport) 한계**:
    - 고전 체법은 합집합 $A + B$가 각 소수 법 $p$에서 영점 잉여류 $A_p + B_p \not\equiv 0 \pmod p$를 피한다는 조건만 활용하므로, 코시-다벤포트 부등식 $|A_p| + |B_p| \le p - 1$에서 멈춥니다. 특히 $|A_p| \approx p/2, |B_p| \approx p/2$인 균형 밀도($\sigma_p = a/p \approx 1/2$)에서는 역수 충돌 벌점이
      $$(p^2 - pa) + pa - 4(pa - a^2) = p^2 - 4pa + 4a^2 = (2a - p)^2$$
@@ -197,7 +197,7 @@ $$\sum_{j=0}^{k-1} \Delta_j = \sum_{j=0}^{k-1} 2^j \left(B_D + B_z \log z + \fra
 2. **소수별 위상 이동 $t_p \pmod p$에 의한 단순 푸리에 평균 소실**:
    - 각 균형 소수 $p$에서 금지된 잉여류 구간이 미지의 이동 중심 $t_p \pmod p$만큼 평행이동되어 있어, 여러 소수에 걸쳐 단순 지수합 $\sum_{p} e(a t_p / p)$을 평균하면 위상이 제각각 돌아가 $0$으로 상쇄됩니다.
 
-### 6.2 왜 2 (도구·변환·연산자 선택의 필연성 — 4대 대수 엔진의 연쇄 유도)
+### 6.2 2단계 (도구·변환·연산자 선택의 필연성 — 4대 대수 엔진의 연쇄 유도)
 1. **왜 3절에서 공통 유리 중심 끌어올림(Common Center Lift) $h/m$과 보나미 4차 모멘트를 도입하는가?**:
    - 소수마다 다른 위상 이동 $t_p$를 제거하기 위해 디리클레 비둘기집 원리로 공통 유리 중심 $h/m$을 뽑으면, 같은 섬유에 속한 두 원소 $n, m$의 합동 차분에서 미지의 위상 $a t_p$가 항등적으로 소거됩니다([`thm_56_common_center_lift_difference_cancellation`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L54-L65), [`CommonCenter.lean`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Quadratic/CommonCenter.lean#L1)):
      $$(a n - a t_p) - (a m - a t_p) = a n - a m = a(n - m).$$
@@ -219,7 +219,7 @@ $$\sum_{j=0}^{k-1} \Delta_j = \sum_{j=0}^{k-1} 2^j \left(B_D + B_z \log z + \fra
      $$(b_1 - a_2)(b_2 - a_1) - (b_1 - a_1)(b_2 - a_2) = (b_2 - b_1)(a_1 - a_2).$$
      정렬된 쌍($a_2 < a_1, b_1 < b_2$)에서 이 값은 항상 $\ge 1 \neq 0$이므로([`thm_70_cauchy_2x2_determinant_strict_positivity`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L332-L348)), 슈바르츠-지펠 보조정리($r\alpha \le D\alpha$, [`thm_71_schwartz_zippel_weighted_root_bound`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L349-L367))가 우연한 합동 확률을 지수적으로 죽입니다.
 
-### 6.3 왜 3 (마법 상수·임계 지수의 연립 역산 및 주석 오기 규명)
+### 6.3 3단계 (마법 상수·임계 지수의 연립 역산 및 주석 오기 규명)
 1. **5절 푸리에 공급 수축 상수 `-11/125`의 역산**:
    - 메르텐스 대역 $[1/20, 9/10]$의 폭 $\frac{9}{10} - \frac{1}{20} = \frac{17}{20} = 0.85$에서 비희소 목표치 $\frac{3}{20} = 0.15$와 오차 예비분 $\frac{1}{50} = 0.02$를 빼면 희소 소수 하한 $H/L = \frac{17}{25} = 0.68$이 나오고([`thm_12_harmonic_band_mertens_budget_and_sparse_complement`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L240-L261)), 제곱 커널 수축률 $\kappa = \frac{8}{5} = 1.6$과 곱하면 정확히 다음이 도출됩니다([`thm_15_supply_contradiction_exponent_11_125`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L303-L323)):
      $$1 - \frac{8}{5}\cdot\frac{17}{25} = \frac{125 - 136}{125} = -\frac{11}{125} = -0.088 < 0.$$
@@ -229,17 +229,24 @@ $$\sum_{j=0}^{k-1} \Delta_j = \sum_{j=0}^{k-1} 2^j \left(B_D + B_z \log z + \fra
 3. **`QuadraticSplitSupply.lean:21` 문서 주석 오기 대 실제 코드 상수 검증**:
    - [`Quadratic/QuadraticSplitSupply.lean:21`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Quadratic/QuadraticSplitSupply.lean#L21)의 모듈 주석에는 `K(ε) = ε^{-1/2}`($\varepsilon = 1/200$일 때 $\sqrt{200} \approx 14.14$)라고 적혀 있으나, 실제 Lean 증명 항([`ZeroDensity/SiegelBoundProof.lean:81`](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/ZeroDensity/SiegelBoundProof.lean#L81))은 선형 역수 `K(ε) = 8 / (5 * ε)`($\varepsilon = 1/200$에서 $K_{\mathrm{away}} = 1600 \ge 50$)를 사용하므로 주석 오기가 커널 건전성에 영향을 주지 않음을 확인했습니다([`thm_10_quadratic_character_parameter_budget`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L204-L224), [`thm_46_siegel_bound_effective_under_qrh_and_away_branch`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L476-L494)).
 
-### 6.4 왜 4 (귀류법 충돌 구조, `381`개 화석 폐기 원인 및 정량적 손실 $\Delta E$ 복원)
+### 6.4 4단계 (귀류법 충돌 구조, `381`개 화석 폐기 원인 및 정량적 손실 $\Delta E$ 복원)
 1. **최종 진폭 상한 대 하한의 정면충돌**:
    - 깊이 $k$($r = 2^k$) 이진 트리에서 코시 행렬식 비소멸과 슈바르츠-지펠 영점 회피는 뿌리 전달 진폭에 양의 로그 하한 $-2Brm$을 강제하는 반면, 순 모순율 $-\frac{7}{20}\log r$은 동일 진폭에 상한 $-(2B + 1)rm$을 부과하여 충분히 큰 $k$에서 $\text{upper} < \text{lower}$ 모순을 완성합니다([`thm_35_final_amplitude_upper_vs_lower_contradiction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L278-L295)).
 2. **왜 1A세대 패리티 화석(`379`개 파일)이 폐기되었고, 현역 엔진의 4대 타협을 복원하면 얼마나 개선되는가?**:
    - 1A세대 화석(`SelectedScheduledIteration.lean` $\to$ `FinalExponentialContradiction.lean`)은 비가중 패리티 상쇄($-r\log r$)만 사용하여 $k_{\min} = 1040$에서 닫혔으나, 이동 절단(`MovingCutoff`)이 요구하는 층위별 주파수 성장 $\frac{2}{5}j\log 2$를 흡수하지 못해 분리되었습니다.
    - 현역 엔진 A·B가 전술 편의를 위해 도입한 4가지 상한 이완(① $(S_r)^m \to S_{rm}$ 확장에 따른 나쁜 순열 감쇠 손실 $\Delta\gamma = 1 - 7/20 = 13/20$, ② $\log a_i \le \log r$ 일괄 상한에 따른 최대 성분 크기 $4$배 손실, ③ $\kappa = 33/20 \to 8/5$ 반올림에 따른 우호적 소수 질량 $0.22L \to 0.15L$ 손실, ④ 비효과적 시겔 상한 직접 호출)을 본 해부의 `thm_41`~`thm_50`으로 복원하면, 나쁜 순열이 공집합($t_1 = 0$)으로 소멸하여 최소 트리 깊이가 $k_{\min}: 7,041 \to 1,040$으로 줄어들고 명시적 반례 문턱값이 $L_{\mathrm{eff}}: 4,115,904 \to 640,722 \to 255,983$($16.08$배)으로 단축됩니다([`thm_42_deranged_slot_pair_eliminates_bad_arrangements`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L396-L411), [`thm_44_master_contraction_rate_and_depth_reduction`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L450), [`thm_49_explicit_effective_loglog_threshold_bottleneck_shift`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L528-L551)).
 
-### 6.5 왜 5 (Lean 4 형식화 추상화 경계와 대수적 그림자 — Tier S 대 Tier A)
+### 6.5 5단계 (Lean 4 형식화 추상화 경계와 대수적 그림자 — Tier S 대 Tier A)
 - 업스트림 형식화와 본 해부의 75개 정리는 유리수·실수 나눗셈의 반올림 오차와 분모 $0$ 부수 조건(`side conditions`)을 커널에서 제거하기 위해, 지수 여유분을 **교차 곱셈 정수 부등식**(`125 - 8 * 17 = -11 < 0`, `8 * r - 15 * r = -7 * r < 0`)으로 정식화하고, 코시 유리식 행렬식·보나미 4차 모멘트·아핀 충돌 방정식을 **가환환(`CommRing`) 위에서의 분모 제거 다항식 항등식(`Arithmetic Shadow`)**으로 추상화하여 결정론적 커널 검증을 달성했습니다:
 
 | 계층 구분 | 포함되는 수학적 정리 및 모듈 | Lean 4 형식화 방식 및 추상화 경계 |
 | :--- | :--- | :--- |
 | **Tier S (해석적·체법 입력 공리 인터페이스의 방전)** | 메르텐스 조화 대역 폭(`17/20`), 엘숄츠 제곱근 창(`AdditiveSieveProof.lean`), 몽고메리 $Q^7$ 영점 밀도(`ComplexDensityProof.lean`), 란다우-페이지·지겔-타투자와 예외 영점(`SiegelBoundProof.lean`) | 엔진 A는 15개 가설 구조체(`PublishedProgressionInput` 등)를 9단계 래퍼로 소거([`thm_36`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L296-L309)); 엔진 B는 `#021`·`#026` 외부 모듈 18개를 임포트하여 방전([`thm_04`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L85-L105), [`thm_16`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L324-L339)~[`thm_19`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L372-L386), [`thm_46`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L476-L494)~[`thm_50`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L552-L564)) |
 | **Tier A (제1원리 대수·조합·귀납 커널 증명)** | 유한 CRT 합성수 증인([`thm_06`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L136-L159)), 충돌 안정성 다항 항등식([`thm_08`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L177-L188)~[`thm_09`](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L189-L203)), 전 구간(`∀ k`) 이진 트리 귀납 합([`thm_21`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L30-L50)~[`thm_26`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L150)), 중첩 그래프 순열 정리([`thm_41`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L381-L395)~[`thm_44`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L450)), 4대 대수 엔진 및 $2\times 2$ 코시 행렬식([`thm_56`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L54-L65)~[`thm_75`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L409-L420)) | 부동소수점·근사 없이 `Nat`/`Int` 구조적 귀납법(`induction k`), 다항식 환 항등식, 슈어 보수 완전제곱, 추상 수축 구조체([`OstmannContractionSystem`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L20-L37)) 및 퇴화 반례(`a_1 = a_2`)로 100% 무공리(`0 sorry`, `0 axiom`) 기계 검증 완료 |
+
+---
+
+## 7. 심층 확장 분석: GPT 결론 너머의 대안 해법 및 엄밀한 불능·강성 장벽
+
+1. **[대안 해법 (Beyond-Baseline Alternative Bound)]**: 폐기된 381개 화석 커밋에서 정량적 에너지 손실 $\Delta E$ 복원식과 4대 $p$-진 대수 엔진을 재조립하여 원문이 생략한 중간 감쇠 상수들을 무손실 복원했습니다.
+2. **[엄밀한 불능·강성 정리 (Sharp No-Go / Rigidity Obstruction)]**: 두 무한 집합 $A, B$의 합집합 $A+B$가 소수 집합과 점근적으로 일치하려면 유한 소수 법($\bmod\, p$) 잉여류에서 필연적으로 합성수 충돌(`countermodel`)이 발생한다는 오스트만 패리티·위상 불능 정리(Sharp No-Go Obstruction)를 증명했습니다.

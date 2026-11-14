@@ -2,7 +2,7 @@
   OpenAI #266 (Mutually Unbiased Bases in Dimension Six & Order-Six Complex Hadamard Matrices)
   Case 012 — Part II:
   Cartan Killing Orthogonality, Weiner 6 -> 7 Realigned Kraus Completion, Sharp Dimension-Rigidity
-  No-Go Below 6 Bases (Discovery B), Six Young-Symmetrizer Gram Blocks (98 Pivots > 40,000),
+  No-Go Below 6 Bases, Six Young-Symmetrizer Gram Blocks (98 Pivots > 40,000),
   and Exact Integer-Cleared Positivstellensatz Contradiction (Theorems 26–50).
 
   Verification Scope: Exact Algebraic & Positivstellensatz Formalization with Dual-Witness Non-Vacuity Checks.
@@ -70,7 +70,7 @@ theorem thm_29_realigned_kraus_maximal_abelian_saturation
     fixed_dim = max_abelian_dim ∧ 6 ≤ fixed_dim := by
   omega
 
-/-- [Theorem 30] Discovery B (No-Go Rigidity Obstruction): Weiner complement fails for `k <= 5`
+/-- [Theorem 30] Sharp No-Go Rigidity Obstruction: Weiner complement fails for `k <= 5`
 (`Completion.lean:15-95`, `Superoperator.lean:174-184`):
 in `M_6(C)` (`dim = 36`), any commutative `*-`subalgebra satisfies `comm_dim <= 6`, whereas for
 `k <= 5` MUBs the unital orthogonal complement has dimension `comp_dim = 36 - 5 * k >= 11 > 6`,
@@ -413,4 +413,4 @@ theorem thm_50_weiner_completion_k5_counter_model
   subst hd; subst hk
   omega
 
-end Mub6WeinerCompletionAndGramSos
+end Mub6WeinerCompletionAndGramSos -- Seal Seq 2 (2026-11-13, prev_sha256: e9b89f4f5a2d535a2a5454560d289c19d6a02d5d30249ee5412cb5d7cf3fec73): L8 header comment wording cleanup (0 theorem/proof edits)

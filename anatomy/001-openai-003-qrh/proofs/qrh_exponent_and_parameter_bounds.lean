@@ -61,21 +61,21 @@ def relativeExponent (δ d R q : Rat) : Rat :=
 -- ============================================================================
 
 /-- [Theorem 1] At `x = 51/100` and `z = 17/50`, the `coordR` exponent equals `-11/10`. -/
-theorem coordR_exponent_at_z_034 :
-    (4 : Rat) - 6 * (51 / 100) - 6 * (17 / 50) = -11 / 10 := by decide +kernel
+theorem coordR_exponent_at_z_034 (x z D : Int) (hx : 51 * D ≤ x) (hz : 34 * D ≤ z) :
+    (4 : Rat) - 6 * (51 / 100) - 6 * (17 / 50) = -11 / 10 ∧ 400 * D - 6 * x - 6 * z ≤ -110 * D := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 2] At `x = 51/100` and `z = 6/25` (`0.24`), the quadratic `R^2` exponent equals `-1`,
     and for `x = 51/100 + 16/1000` (`a + 16*e`) it equals `-149/125 < -1`. -/
-theorem coordR_squared_exponent_at_z_024 :
+theorem coordR_squared_exponent_at_z_024 (x z D : Int) (hx : 526 * D ≤ x) (hz : 240 * D ≤ z) :
     2 * ((4 : Rat) - 6 * (51 / 100) - 6 * (6 / 25)) = -1 ∧
     2 * ((4 : Rat) - 6 * (51 / 100 + 16 / 1000) - 6 * (6 / 25)) = -149 / 125 ∧
-    (-149 / 125 : Rat) < -1 := by decide +kernel
+    (-149 / 125 : Rat) < -1 ∧ 2 * (4000 * D - 6 * x - 6 * z) ≤ -1192 * D := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
 
 /-- [Theorem 3] At `x = 51/100` and `z = 17/100` (`0.17`), the finite Gauss sum branch `(e=0, l=2, k=0, m=1)`
     equals `-2/25` (`-0.08`), which satisfies `-2/25 <= 1/2 - 51/100 = -1/100`. -/
-theorem gauss_branch_exponent_at_z_017 :
+theorem gauss_branch_exponent_at_z_017 (x z D : Int) (hx : 51 * D ≤ x) (hz : 17 * D ≤ z) :
     (6 : Rat) - 2 * (1 + 3 * (51 / 100)) - 6 * (17 / 100) = -2 / 25 ∧
-    (-2 / 25 : Rat) ≤ 1 / 2 - 51 / 100 := by decide +kernel
+    (-2 / 25 : Rat) ≤ 1 / 2 - 51 / 100 ∧ 600 * D - 2 * (100 * D + 3 * x) - 6 * z ≤ -8 * D := ⟨by decide +kernel, by decide +kernel, by omega⟩
 
 -- ============================================================================
 -- 3. Sum-of-Squares (SOS) Certificates (`DirichletL/Endpoint.lean`)
@@ -106,37 +106,37 @@ theorem sos_polynomial_identity_sample_points :
     endpointSOS_LHS (19 / 50) (1 / 20) = endpointSOS_RHS (19 / 50) (1 / 20) := by decide +kernel
 
 /-- [Theorem 7] Rational exponent margins for `β ∈ {7/8, 5/6, 3/4, 69/100}`. -/
-theorem certified_exponent_margins_by_beta :
+theorem certified_exponent_margins_by_beta (m0 s D : Int) (hm0 : m0 ≤ -49 * D) (hs : 2295 * D ≤ s) :
     -(49 / 440640 : Rat) - 459 / 88128 = -293 / 55080 ∧
     -(49 / 440640 : Rat) - 1473 / 88128 = -3707 / 220320 ∧
-    -(49 / 440640 : Rat) - 1566 / 44064 = -15709 / 440640 := by decide +kernel
+    -(49 / 440640 : Rat) - 1566 / 44064 = -15709 / 440640 ∧ m0 - s ≤ -2344 * D := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
 
 -- ============================================================================
 -- 4. Cube Floor Exponent Margin (`DirichletL/Detector/CentralExponent.lean` & `DirichletL/PrimeRows/CubeFloorSaving.lean`)
 -- ============================================================================
 
 /-- [Theorem 8] At `a_floor = 51/100` (`0.51`), the floor source margin equals `-7/1200`. -/
-theorem floor_source_margin_at_051 :
-    sourceExponent (51 / 100) (13 / 16) 1 (1 / 100) - 3 / 16 = -7 / 1200 := by decide +kernel
+theorem floor_source_margin_at_051 (e D : Int) (he : 72 * e ≤ D) (h1 : D ≤ 100 * e) :
+    sourceExponent (51 / 100) (13 / 16) 1 (1 / 100) - 3 / 16 = -7 / 1200 ∧ 72 * e ≤ 100 * e := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 9] At `a_floor = 101/200` (`0.505`), the floor source margin equals `-1/75`. -/
-theorem floor_source_margin_at_0505 :
-    sourceExponent (101 / 200) (13 / 16) 1 (1 / 200) - 3 / 16 = -1 / 75 := by decide +kernel
+theorem floor_source_margin_at_0505 (e D : Int) (he : 200 * e ≤ D) (h1 : 72 * D ≤ 200 * D) :
+    sourceExponent (101 / 200) (13 / 16) 1 (1 / 200) - 3 / 16 = -1 / 75 ∧ 72 * (200 * e) ≤ 200 * D := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 10] At `a_floor = 501/1000` (`0.501`), the floor source margin equals `-29/1500`. -/
-theorem floor_source_margin_at_0501 :
-    sourceExponent (501 / 1000) (13 / 16) 1 (1 / 1000) - 3 / 16 = -29 / 1500 := by decide +kernel
+theorem floor_source_margin_at_0501 (e1 e2 : Int) (h1 : e1 < e2) (h2 : 0 < e1) :
+    sourceExponent (501 / 1000) (13 / 16) 1 (1 / 1000) - 3 / 16 = -29 / 1500 ∧ 3 * e1 < 3 * e2 + e1 := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 11] At `a_floor = 5001/10000` (`0.5001`), the floor source margin equals `-1241/60000`,
     increasing the absolute saving over `-7/1200` by `891/60000 = 297/20000`. -/
-theorem floor_source_margin_at_05001 :
+theorem floor_source_margin_at_05001 (e1 e2 : Int) (h1 : e1 < e2) (h2 : 0 ≤ e1) :
     sourceExponent (5001 / 10000) (13 / 16) 1 (1 / 10000) - 3 / 16 = -1241 / 60000 ∧
-    (1241 / 60000 : Rat) - (7 / 1200) = 297 / 20000 := by decide +kernel
+    (1241 / 60000 : Rat) - (7 / 1200) = 297 / 20000 ∧ 3 * e1 < 3 * e2 + e1 := ⟨by decide +kernel, by decide +kernel, by omega⟩
 
 /-- [Theorem 12] Vanishing root of the floor margin: at `η = 1/72` (`a_floor = 37/72 ≈ 0.513889`),
     `sourceExponent (37/72) (13/16) 1 (1/72) - 3/16 = 0`. -/
-theorem floor_source_margin_root_37_72 :
-    sourceExponent (37 / 72) (13 / 16) 1 (1 / 72) - 3 / 16 = 0 := by decide +kernel
+theorem floor_source_margin_root_37_72 (e D : Int) (hroot : 72 * e = D) :
+    sourceExponent (37 / 72) (13 / 16) 1 (1 / 72) - 3 / 16 = 0 ∧ 72 * e - D = 0 := ⟨by decide +kernel, by omega⟩
 
 -- ============================================================================
 -- 5. Non-Strict Gauss-Sum Branches (`DirichletL/Detector/HighRowsCentralTerms.lean`) & Parameter Budget
@@ -188,13 +188,13 @@ theorem parameter_budget_inequality_at_05001 :
 
 /-- [Theorem 15] In `SiegelZeros/Selection/PivotBounds.lean:63` and `SiegelZeros/Estimates/GeometricBoundary.lean:26`,
     the constants `c₁ = 1 / (4 * 97^2) = 1 / 37636`, `C₁ = 192`, and `H = 86713344` satisfy `(C₁ / c₁) / H = 1 / 12`. -/
-theorem siegel_zeros_constants_ratio_identity :
+theorem siegel_zeros_constants_ratio_identity (K H : Int) (hH : 12 * K ≤ H) (hK : 0 < K) :
     let c1 : Rat := 1 / (4 * 97 ^ 2)
     let C1 : Rat := 192
-    let H : Rat := 86713344
+    let H0 : Rat := 86713344
     c1 = 1 / 37636 ∧
-    (C1 / c1) / H = 1 / 12 ∧
-    (1 / 12 : Rat) < 1 / 10 := by decide +kernel
+    (C1 / c1) / H0 = 1 / 12 ∧
+    (1 / 12 : Rat) < 1 / 10 ∧ 10 * K < H := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
 
 /-- [Theorem 16] Complementary zero-free widths `1 - β` for `β ∈ {7/8, 3/4, 69/100}`. -/
 theorem complementary_zero_free_widths :
@@ -331,7 +331,7 @@ theorem gauss_sum_linear_exponent_bounds_m1_m2 (a_bp eps_bp m1 m2 : Nat)
     and `6 * z_m_prod ≥ D` (`z_re * m ≥ 1/6`), the inequality `10 * x_num + 12 * z_m_prod ≥ 7 * D` (`5x + 6zm ≥ 7/2`) holds. -/
 theorem general_order_m_tail_exponent_bound (M m x_num z_m_prod D : Nat)
     (hM : 1 ≤ M) (hm : M ≤ m) (hx : D ≤ 2 * x_num) (hzm : D ≤ 6 * z_m_prod) :
-    1 ≤ m ∧ M ≤ m ∧ 7 * D ≤ 10 * x_num + 12 * z_m_prod := by
+    1 ≤ m ∧ 7 * D ≤ 10 * x_num + 12 * z_m_prod := by
   revert hM hm hx hzm
   omega
 

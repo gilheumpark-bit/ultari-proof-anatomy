@@ -1,8 +1,8 @@
-# Case 011: OpenAI `#005` (`Catalan's constant is irrational`) — 포렌식 해부 및 형식 검증 패키지
+# Case 011: OpenAI `#005` (`Catalan's constant is irrational`): 포렌식 해부 및 형식 검증 패키지
 
 > **English Guide**: [README.md](README.md) | **상위 저장소**: [`ultari-proof-anatomy`](../../README.md)
 
-본 케이스(`011-openai-005-catalan`)는 OpenAI의 대표 수론 문제군 **`#005` (`Catalan's constant is irrational`, 2026년 9월 24일)**의 `9`개 LaTeX 원고 파일(`3,001`줄 + `references.bib` `319`줄)과 `OAI/NumberTheory/Catalan/`의 `981`개 Lean 4 파일(`573,816`줄; `ComparatorChallenges/Catalan.lean` 포함 시 `982`개 파일 / `573,829`줄) 전수를 수리·포렌식 관점에서 해부하고, `75`개 독립 Lean 4 정리(`1,313`줄, `0 sorry`, `432/432` 가설 변이 100% 포착, `69/75` 구조적 정리, `12`개 비선형·귀납 증명, `6`개 `∀ k : Nat` 귀납 정리, `RH31` 이중 증인 검증)로 재검증한 패키지입니다.
+본 케이스(`011-openai-005-catalan`)는 OpenAI의 대표 수론 문제군 **`#005` (`Catalan's constant is irrational`, 2026년 9월 24일)**의 `9`개 LaTeX 원고 파일(`3,001`줄 + `references.bib` `319`줄)과 `OAI/NumberTheory/Catalan/`의 `981`개 Lean 4 파일(`573,816`줄; `ComparatorChallenges/Catalan.lean` 포함 시 `982`개 파일 / `573,829`줄) 전수를 수리·포렌식 관점에서 해부하고, `75`개 독립 Lean 4 정리(`1,333`줄, `0 sorry`, `432/432` 가설 변이 100% 포착, `69/75` 구조적 정리, `15`개 비선형·귀납 증명, `6`개 `∀ k : Nat` 귀납 정리, 이중 증인 검증)로 재검증한 패키지입니다.
 
 ---
 
@@ -19,8 +19,8 @@
 
 ## 2. 검증 산출물 (`proofs/`)
 
-- [`proofs/catalan_rows_two_adic_and_odd_primes.lean`](proofs/catalan_rows_two_adic_and_odd_primes.lean#L1-L439) (`Theorems 1–25`, `439`줄, `144/144` 변이 포착, `nonlin: 5`)
-- [`proofs/catalan_palindromic_frobenius_and_modular.lean`](proofs/catalan_palindromic_frobenius_and_modular.lean#L1-L443) (`Theorems 26–50`, `443`줄, `153/153` 변이 포착, `nonlin: 5`)
-- [`proofs/catalan_real_place_energy_and_contradiction.lean`](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L431) (`Theorems 51–75`, `431`줄, `135/135` 변이 포착, `nonlin: 2`)
+- [`proofs/catalan_rows_two_adic_and_odd_primes.lean`](proofs/catalan_rows_two_adic_and_odd_primes.lean#L1-L446) (`Theorems 1–25`, `446`줄, `144/144` 변이 포착, `nonlin: 7`)
+- [`proofs/catalan_palindromic_frobenius_and_modular.lean`](proofs/catalan_palindromic_frobenius_and_modular.lean#L1-L454) (`Theorems 26–50`, `454`줄, `153/153` 변이 포착, `nonlin: 6`)
+- [`proofs/catalan_real_place_energy_and_contradiction.lean`](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L433) (`Theorems 51–75`, `433`줄, `135/135` 변이 포착, `nonlin: 2`)
 - [`proofs/verify_symbolic_catalan005.py`](proofs/verify_symbolic_catalan005.py#L1-L631) $\to$ [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json#L1-L226)
 - [`proofs/problem_spec.md`](proofs/problem_spec.md#L1-L19) & [`manifest.json`](manifest.json#L1-L524)

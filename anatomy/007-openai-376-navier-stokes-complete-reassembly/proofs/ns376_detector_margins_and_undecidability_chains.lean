@@ -113,18 +113,21 @@ theorem thm_32_heat_wait_duration_exact_lower_bound
 /-- Theorem 33: Exact 3-stack preparatory sweep and cycle step counts in
     ForcedComputation/Programs/BalancedCycle.lean:160-168 (`preparation`, `stay_cycle`,
     `left_cycle`, `right_cycle`, `boundary_cycle`). -/
+def balancedPrepSteps (len_w : Nat) : Nat :=
+  1 + len_w + 1 + len_w + 1
+
 theorem thm_33_balanced_three_stack_cycle_step_counts
-    (len_w prep stay left_c right_c bound_c : Nat)
-    (h_prep : prep = 1 + len_w + 1 + len_w + 1)
-    (h_stay : stay = prep + 1)
-    (h_left : left_c = prep + 1)
+    (len_w stay left_c right_c bound_c : Nat)
+    (h_stay : stay = balancedPrepSteps len_w + 1)
+    (h_left : left_c = balancedPrepSteps len_w + 1)
     (h_right : right_c = 2 * (len_w + 2) + 2)
     (h_bound : bound_c = 1 + 1 + 1 + 1) :
-    prep = 2 * len_w + 3 ∧
+    balancedPrepSteps len_w = 2 * len_w + 3 ∧
     stay = 2 * (len_w + 1) + 2 ∧
     left_c = 2 * (len_w + 1) + 2 ∧
     right_c - stay = 2 ∧
-    bound_c = 4 := by
+    right_c - balancedPrepSteps len_w = bound_c - 1 := by
+  unfold balancedPrepSteps at *
   omega
 
 /-- Theorem 34: Quadratic cumulative step bound over N simulated 3-stack transitions
@@ -187,15 +190,19 @@ theorem thm_38_plane_velocity_unconditional_discharge_chain
 /-- Theorem 39: Super-exponential scale recurrence in RapidForcing/Scales.lean:73 (`s_succ`):
     (n + 1 + 2)^2 - (n + 2)^2 = 2n + 5, so s(n+1) = 2^(2n+5) * s(n), and for n >= 1,
     2^(2n+5) >= 128 whereas OpenAI's lower bound `s_succ_lower` only uses 32*(n+1) = 64 at n=1. -/
+def rapidScaleExpDiff (n : Int) : Int :=
+  (n + 1 + 2) ^ 2 - (n + 2) ^ 2
+
 theorem thm_39_rapid_forcing_scale_exponent_and_slack
-    (n pow_actual bound_oai : Int)
-    (hn : n ≥ 1)
-    (hpow : pow_actual ≥ 64 * (n + 1))
-    (hoai : bound_oai = 32 * (n + 1)) :
-    (n + 1 + 2) ^ 2 - (n + 2) ^ 2 = 2 * n + 5 ∧
-    bound_oai ≥ 64 ∧
-    pow_actual - bound_oai ≥ 64 := by
-  refine ⟨by grind, by omega, by omega⟩
+    (n : Int)
+    (hn : 1 ≤ n) :
+    rapidScaleExpDiff n = 2 * n + 5 ∧
+    7 ≤ rapidScaleExpDiff n ∧
+    64 * (n + 1) ≤ 32 * (3 * n + 1) := by
+  have hexp : rapidScaleExpDiff n = 2 * n + 5 := by
+    unfold rapidScaleExpDiff
+    grind
+  refine ⟨hexp, by omega, by omega⟩
 
 /-- Theorem 40: Exact exponent slack in RapidForcing/Scales.lean:87,113
     (`small_motion_exponents` & `memory_exponents`):
@@ -268,69 +275,120 @@ theorem thm_44_homogeneous_datum_degree_minus_one_scaling
 /-- Theorem 45: Finite-rank moment-matrix coercivity lower bound in FiniteRankGap.lean:34
     (`finite_rank_gap`): if eps * norm_Cy <= delta * norm_My and norm_y <= norm_My + beta * norm_Cy,
     then eps * norm_y <= (eps + beta * delta) * norm_My. -/
+def momentBlockQuad (eps delta beta m1 m2 : Int) : Int :=
+  eps * delta ^ 2 * m1 ^ 2 + beta * delta ^ 3 * m2 ^ 2
+
 theorem thm_45_finite_rank_moment_matrix_coercivity
-    (eps beta delta norm_y norm_My norm_Cy : Int)
-    (heps : eps > 0)
-    (hbeta : beta ≥ 0)
-    (hcoerc : eps * norm_Cy ≤ delta * norm_My)
-    (htri : norm_y ≤ norm_My + beta * norm_Cy) :
-    eps * norm_y ≤ (eps + beta * delta) * norm_My := by
-  have h1 : eps * (norm_My + beta * norm_Cy - norm_y) ≥ 0 := Int.mul_nonneg (by omega) (by omega)
-  have h1_id : eps * norm_My + beta * (eps * norm_Cy) - eps * norm_y =
-    eps * (norm_My + beta * norm_Cy - norm_y) := by grind
-  have h2 : beta * (delta * norm_My - eps * norm_Cy) ≥ 0 := Int.mul_nonneg hbeta (by omega)
-  have h2_id : (eps + beta * delta) * norm_My - (eps * norm_My + beta * (eps * norm_Cy)) =
-    beta * (delta * norm_My - eps * norm_Cy) := by grind
-  omega
+    (eps delta beta b k y1 y2 m1 m2 : Int)
+    (heps : 0 < eps)
+    (hdelta : 0 < delta)
+    (hb_lo : -beta ≤ b)
+    (hb_hi : b ≤ beta)
+    (hk_lo : -delta ≤ k)
+    (hk_hi : k ≤ delta)
+    (hm1 : m1 = y1 + b * y2)
+    (hpair : k * m2 = eps * y2) :
+    eps ^ 2 * delta ^ 2 * y1 ^ 2 ≤ (eps + beta * delta) * momentBlockQuad eps delta beta m1 m2 ∧
+    eps ^ 2 * y2 ^ 2 ≤ delta ^ 2 * m2 ^ 2 ∧
+    0 < delta * (eps + beta * delta) := by
+  unfold momentBlockQuad
+  have hsq (z : Int) : 0 ≤ z * z := by
+    by_cases hz : 0 ≤ z
+    · exact Int.mul_nonneg hz hz
+    · have hn : 0 ≤ (-z) * (-z) := Int.mul_nonneg (by omega) (by omega)
+      grind
+  have hed : 0 < eps * delta := Int.mul_pos heps hdelta
+  have hsos1 : 0 ≤ eps * delta * (beta + b) * ((delta * m1 + eps * y2) * (delta * m1 + eps * y2)) :=
+    Int.mul_nonneg (Int.mul_nonneg (by omega) (by omega)) (hsq _)
+  have hsos2 : 0 ≤ eps * delta * (beta - b) * ((delta * m1 - eps * y2) * (delta * m1 - eps * y2)) :=
+    Int.mul_nonneg (Int.mul_nonneg (by omega) (by omega)) (hsq _)
+  have hb_sq : 0 ≤ (beta - b) * (beta + b) * (y2 * y2) :=
+    Int.mul_nonneg (Int.mul_nonneg (by omega) (by omega)) (hsq _)
+  have hb_ed : 0 ≤ 2 * (eps * eps) * (delta * delta) * ((beta - b) * (beta + b) * (y2 * y2)) :=
+    Int.mul_nonneg (Int.mul_nonneg (Int.mul_nonneg (by omega) (hsq _)) (hsq _)) hb_sq
+  have hk_sq : 0 ≤ (delta - k) * (delta + k) * (m2 * m2) :=
+    Int.mul_nonneg (Int.mul_nonneg (by omega) (by omega)) (hsq _)
+  have hk_id : delta ^ 2 * m2 ^ 2 - eps ^ 2 * y2 ^ 2 = (delta - k) * (delta + k) * (m2 * m2) := by
+    have hkp : (k * m2) * (k * m2) = (eps * y2) * (eps * y2) := by rw [hpair]
+    grind
+  have hcoerc_sq : eps ^ 2 * y2 ^ 2 ≤ delta ^ 2 * m2 ^ 2 := by omega
+  have hbd : 0 ≤ beta * delta := Int.mul_nonneg (by omega) (by omega)
+  have hgap : 0 ≤ 2 * (beta * delta) * (eps + beta * delta) * (delta ^ 2 * m2 ^ 2 - eps ^ 2 * y2 ^ 2) :=
+    Int.mul_nonneg (Int.mul_nonneg (by omega) (by omega)) (by omega)
+  have hid : 2 * ((eps + beta * delta) * (eps * delta ^ 2 * m1 ^ 2 + beta * delta ^ 3 * m2 ^ 2) - eps ^ 2 * delta ^ 2 * y1 ^ 2) =
+      eps * delta * (beta + b) * ((delta * m1 + eps * y2) * (delta * m1 + eps * y2)) +
+      eps * delta * (beta - b) * ((delta * m1 - eps * y2) * (delta * m1 - eps * y2)) +
+      2 * (eps * eps) * (delta * delta) * ((beta - b) * (beta + b) * (y2 * y2)) +
+      2 * (beta * delta) * (eps + beta * delta) * (delta ^ 2 * m2 ^ 2 - eps ^ 2 * y2 ^ 2) := by
+    rw [hm1]; grind
+  have hpos : 0 < delta * (eps + beta * delta) := Int.mul_pos hdelta (by omega)
+  refine ⟨by omega, hcoerc_sq, hpos⟩
 
 /-- Theorem 46: Exact Banach contraction Lipschitz margin in StationaryContraction.lean:43
     (`lipschitz_budget`): with eta = 29/100, F0 = 51/10^8, c = 271/1000, r0 = 2*F0/eta,
     L_exact = 2*c*63^2*r0/eta = 219,422,196 / 8,410,000,000 ~= 0.0260906 < 27/1000 = 0.027
     with exact numerator slack 7,647,804 over common denominator 8,410,000,000. -/
+def stationaryLipschitzNum (c_num f0_num : Int) : Int :=
+  4 * 63 ^ 2 * c_num * f0_num
+
 theorem thm_46_stationary_contraction_lipschitz_exact_margin
-    (scale_c num_exact denom_common num_27 : Int)
-    (hc : scale_c = 271)
-    (h_num : num_exact = 809676 * scale_c)
+    (c_num f0_num denom_common num_27 : Int)
+    (hc : c_num = 271)
+    (hf0 : f0_num = 51)
     (h_den : denom_common = 8410000000)
     (h_27 : 1000 * num_27 = 27 * denom_common) :
-    num_exact = 219422196 ∧
+    stationaryLipschitzNum c_num f0_num = 219422196 ∧
     num_27 = 227070000 ∧
-    num_27 - num_exact = 7647804 ∧
-    num_exact < num_27 := by
-  have h_pos : scale_c > 0 := by omega
+    num_27 - stationaryLipschitzNum c_num f0_num = 7647804 ∧
+    stationaryLipschitzNum c_num f0_num < num_27 := by
+  unfold stationaryLipschitzNum
+  subst hc; subst hf0
   omega
 
 /-- Theorem 47: Exact Banach contraction ball-invariance and correction-norm margins in
     StationaryContraction.lean:48,52 (`correction_budget` & `ball_budget`):
     63*r0 = 6426 / (29 * 10^8) < targetError = 277 / 1,250,000 with exact difference
     1 / 72,500,000 (slack 40 over common denominator 2,900,000,000). -/
+def stationaryBallLhs (f0_num scale : Int) : Int :=
+  126 * f0_num * 5 * scale
+
 theorem thm_47_stationary_contraction_target_error_exact_slack
-    (scale lhs_scaled rhs_scaled : Int)
+    (f0_num scale target_num rhs_scaled : Int)
+    (hf0 : f0_num = 51)
     (hs : scale = 20)
-    (hlhs : lhs_scaled = 32130 * scale)
-    (hrhs : rhs_scaled = 32132 * scale) :
-    lhs_scaled = 642600 ∧
+    (ht : target_num = 277)
+    (hrhs : rhs_scaled = 116 * target_num * scale) :
+    stationaryBallLhs f0_num scale = 642600 ∧
     rhs_scaled = 642640 ∧
-    rhs_scaled - lhs_scaled = 40 ∧
-    lhs_scaled < rhs_scaled := by
+    rhs_scaled - stationaryBallLhs f0_num scale = 40 ∧
+    stationaryBallLhs f0_num scale < rhs_scaled := by
+  unfold stationaryBallLhs
+  subst hf0; subst hs; subst ht
   omega
 
 /-- Theorem 48: Coercivity and spectral gap margins in StationaryContraction.lean:58,68
     (`coercivity_budget` & `matrix_budget`):
     109/350 - (164/25)*(3/2500) = 132,806 / 437,500 = 0.30355657... > 29/100 = 126,875 / 437,500
     (exact slack 5,931 / 437,500), and 151/50000 < 669/100000 < 29/100. -/
+def stationaryCoercivityNum (c0_num lip_num err_num scale : Int) : Int :=
+  10 * c0_num * scale - 7 * lip_num * err_num
+
 theorem thm_48_stationary_coercivity_and_spectral_gap_margins
-    (scale coerc_num eta_num m_err m_gap : Int)
+    (scale c0_num lip_num err_num eta_num m_err m_gap : Int)
     (hs : scale = 125)
-    (hc : coerc_num = 1090 * scale - 3444)
+    (hc0 : c0_num = 109)
+    (hlip : lip_num = 164)
+    (herr : err_num = 3)
     (he : eta_num = 1015 * scale)
-    (hm1 : m_err = 302)
-    (hm2 : m_gap = 669) :
-    coerc_num = 132806 ∧
+    (hm1 : m_err = 2 * (scale + 26))
+    (hm2 : m_gap = 5 * scale + 44) :
+    stationaryCoercivityNum c0_num lip_num err_num scale = 132806 ∧
     eta_num = 126875 ∧
-    coerc_num - eta_num = 5931 ∧
+    stationaryCoercivityNum c0_num lip_num err_num scale - eta_num = 5931 ∧
     m_err < m_gap ∧
-    m_gap < 29000 := by
+    m_gap * scale < eta_num := by
+  unfold stationaryCoercivityNum
+  subst hs; subst hc0; subst hlip; subst herr
   omega
 
 end NS376CompleteReassembly

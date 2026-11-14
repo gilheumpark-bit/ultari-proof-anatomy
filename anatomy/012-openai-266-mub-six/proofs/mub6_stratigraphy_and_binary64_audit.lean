@@ -2,7 +2,7 @@
   OpenAI #266 (Mutually Unbiased Bases in Dimension Six & Order-Six Complex Hadamard Matrices)
   Case 012 — Part III:
   2,835,031-Line Stratigraphy of `MutuallyUnbiased/` (3,386 Files), `Main.lean` 15/16 Umbrella
-  Laundering, Orphaned `Attainable 3`, Reflected Canonicalization Compression (Discovery A),
+  Laundering, Orphaned `Attainable 3`, Reflected Canonicalization Compression,
   Preprint 1 `binary64` Stage A/B/C Conservation & Hardware-ABI Contract, and Citation Audit (Theorems 51–75).
 
   Verification Scope: Exact Repository Stratigraphy & Conditional Hardware-ABI Boundary Audit.
@@ -12,7 +12,7 @@
 namespace Mub6StratigraphyAndBinary64Audit
 
 /-!
-## Part I: `2,835,031`-Line Stratigraphy, Umbrella Laundering, and Discovery A Compression (Theorems 51–59)
+## Part I: `2,835,031`-Line Stratigraphy, Umbrella Laundering, and Reflected Canonicalization Compression (Theorems 51–59)
 -/
 
 /-- [Theorem 51] Exact `3,386`-file (`2,835,031`-line) reachability stratigraphy of `MutuallyUnbiased/`
@@ -115,7 +115,7 @@ theorem thm_57_python_vs_unrolled_lean_inflation_ratio
     4921 * py_lines < lean_lines ∧ lean_lines < 4922 * py_lines ∧ rem = 535 * N ∧ 535 ≤ rem := by
   omega
 
-/-- [Theorem 58] Discovery A (Beyond-Baseline Reflected Canonicalization Compression):
+/-- [Theorem 58] Beyond-Baseline Reflected Canonicalization Compression:
 replacing the `2,073,150` unrolled canonicalization lines (`1,729,610` in `MixedSemantics` + `343,540` in `PairSemantics`
 across `56,427` keys) with a `1,200`-line reflected permutation/label canonicalizer plus `1`-line compact certificates
 (`56,427` lines) saves `2,015,523` lines (`> 71%` of the entire `2,835,031`-line codebase). -/
@@ -401,4 +401,4 @@ theorem thm_75_family_266_grand_anatomy_ledger
     l_tot = 2835031 * N ∧ sos_margin < 0 ∧ l_noncone < saved_lines ∧ 62767 ≤ unused_binders := by
   omega
 
-end Mub6StratigraphyAndBinary64Audit
+end Mub6StratigraphyAndBinary64Audit -- Seal Seq 2 (2026-11-13, prev_sha256: f8e5845ad731044fecbf8e6ae8548508223171c06e917ceefd89dffd005726e3): L8 header comment wording cleanup (0 theorem/proof edits)

@@ -2,7 +2,7 @@
 
 ## 1. Core Summary
 
-In `Case 006`, we found that the 6 official Comparator Challenges of OpenAI `#376` imported only `354` of the `1,004` `OAI/` Lean 4 files, leaving `650` files (`718` strictly unimported, `73,367` lines) disconnected. In this study, we reassembled all `1,004` files alongside the October 6, 2026 revision and verified 48 standalone Lean 4 theorems (`0 sorry`, `134/134` hypothesis mutations caught).
+In `Case 006`, we found that the 6 official Comparator Challenges of OpenAI `#376` imported only `354` of the `1,004` `OAI/` Lean 4 files, leaving `650` files (`718` strictly unimported, `73,367` lines) disconnected. In this study, we reassembled all `1,004` files alongside the October 6, 2026 revision and verified 48 standalone Lean 4 theorems (`0 sorry`, `150/150` hypothesis mutations caught).
 
 ---
 

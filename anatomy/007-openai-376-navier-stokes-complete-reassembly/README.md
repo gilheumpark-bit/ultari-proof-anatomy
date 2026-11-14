@@ -2,7 +2,7 @@
 
 # Case 007: OpenAI `#376` Reassembly of the `650` Unimported Modules & Oct 6 Bounds
 
-This package reassembles all `650` (`718` strictly unimported) `OAI/` Lean 4 modules in OpenAI `#376` alongside the October 6, 2026 revision. All results are verified across `48` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `134/134` hypothesis mutations caught).
+This package reassembles all `650` (`718` strictly unimported) `OAI/` Lean 4 modules in OpenAI `#376` alongside the October 6, 2026 revision. All results are verified across `48` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `150/150` hypothesis mutations caught).
 
 ## Key Findings
 
@@ -21,8 +21,8 @@ This package reassembles all `650` (`718` strictly unimported) `OAI/` Lean 4 mod
 
 ## Formal Proofs & One-Command Verification
 
-- [`proofs/ns376_unimported_solenoidal_and_leray_bounds.lean`](proofs/ns376_unimported_solenoidal_and_leray_bounds.lean): Theorems 1–24 (`68/68` mutations caught).
-- [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](proofs/ns376_detector_margins_and_undecidability_chains.lean): Theorems 25–48 (`66/66` mutations caught).
+- [`proofs/ns376_unimported_solenoidal_and_leray_bounds.lean`](proofs/ns376_unimported_solenoidal_and_leray_bounds.lean): Theorems 1–24 (`80/80` mutations caught).
+- [`proofs/ns376_detector_margins_and_undecidability_chains.lean`](proofs/ns376_detector_margins_and_undecidability_chains.lean): Theorems 25–48 (`70/70` mutations caught).
 - [`proofs/verify_symbolic_ns376_complete.py`](proofs/verify_symbolic_ns376_complete.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), and [`proofs/problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

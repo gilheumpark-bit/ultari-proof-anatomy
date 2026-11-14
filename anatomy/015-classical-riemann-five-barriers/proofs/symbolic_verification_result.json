@@ -1,0 +1,196 @@
+{
+  "case": "015-classical-riemann-five-barriers",
+  "paper1_deg2_quintic_and_17_24_8": {
+    "deg2_global_max_float": 0.018818544672,
+    "deg2_global_max_gain_over_textbook_pct": 88.185447,
+    "poly_17_24_8_efficiency_pct": 99.964599,
+    "poly_17_24_8_exact": "(41 - 4*sqrt(102)) / 32",
+    "poly_17_24_8_float": 0.018811882705,
+    "poly_17_24_8_gain_over_textbook_pct": 88.118827,
+    "quintic_optimal_ratio_r": 2.966229549437,
+    "quintic_polynomial": "r^5 + 4*r^4 - 12*r^3 - 40*r^2 + 64*r - 64"
+  },
+  "paper1_fejer_riesz_and_korobov_barrier": {
+    "fejer_riesz_c0_ceiling_exact": "3 - 2*sqrt(2)",
+    "fejer_riesz_c0_ceiling_float": 0.171572875254,
+    "fejer_riesz_higher_degree_optima_abs_weight": {
+      "N=2": 0.01881854,
+      "N=3": 0.02708559,
+      "N=4": 0.02865393,
+      "N=8": 0.02925694
+    },
+    "fejer_riesz_higher_degree_optima_nonneg_ck": {
+      "N=2": 0.01881854,
+      "N=3": 0.0270856,
+      "N=4": 0.02865393,
+      "N=8": 0.02894712
+    },
+    "fejer_riesz_pi_weight_ceiling_exact": "(3 - 2*sqrt(2)) / 3",
+    "fejer_riesz_pi_weight_ceiling_float": 0.057190958418,
+    "fejer_riesz_sign_change_counterexample_deg3": {
+      "W_abs": "11/2",
+      "W_pos": "9/2",
+      "coeffs": [
+        "65/16",
+        "9/2",
+        "0",
+        "-1"
+      ],
+      "two_c1_minus_c0": "79/16"
+    },
+    "korobov_vinogradov_exponents": {
+      "log_log_t": "1/3",
+      "log_t": "2/3"
+    }
+  },
+  "paper1_pole_zero_and_slack_cascade": {
+    "dlvp_amgm_exact": "(7 - 4*sqrt(3)) / 5",
+    "dlvp_amgm_float": 0.014359353945,
+    "dlvp_amgm_gain_pct": 43.593539,
+    "integer_s1_eq_6_or_7delta": "1/70 = 0.0142857143 (+42.8571%)",
+    "oai_ac_at_5A": "1/160 = 0.0062500000",
+    "oai_ac_at_9A": "1/288 = 0.0034722222",
+    "oai_nonquadratic_Kc_limit": "1/32 = 0.03125 (vs tight 7 - 4*sqrt(3) = 0.07179677)",
+    "oai_ref_combined_sha256": "5c73561fb2dba8cbc73b4baf1763673756eb07b150330ba3476233a8141a1c83",
+    "oai_ref_file_count": 15,
+    "oai_ref_parsed_files": [
+      "oai_ref/ActualPageUniqueness.lean",
+      "oai_ref/CharacterPositivity.lean",
+      "oai_ref/CubeFloorSaving.lean",
+      "oai_ref/Endpoint.lean",
+      "oai_ref/GeometricBoundary.lean",
+      "oai_ref/GramBound.lean",
+      "oai_ref/GramScaleLoss.lean",
+      "oai_ref/LowGramScale.lean",
+      "oai_ref/NonquadraticZeroFree.lean",
+      "oai_ref/OrdinaryZetaZeroFree.lean",
+      "oai_ref/Parameters.lean",
+      "oai_ref/PrimitiveTransfer.lean",
+      "oai_ref/SiegelBoundProof.lean",
+      "oai_ref/Theorem.lean",
+      "oai_ref/ZetaBounds_ZeroFree_excerpt.lean"
+    ],
+    "oai_ref_theorem_decl_count": 73,
+    "oai_ref_total_lines": 1988,
+    "pell_convergent_identity": "97^2 - 3 * 56^2 = 1",
+    "tao_zetabounds_log_exponent": 9,
+    "tao_zetabounds_lost_log_powers": 8,
+    "tao_zetabounds_norm_exponent": 7,
+    "textbook_s1_eq_4delta": "1/100 = 0.0100000000"
+  },
+  "paper2_ingham_huxley_and_guth_maynard": {
+    "dirichlet_gram_phase_audit_R64_N128": {
+      "inflation_factor": 1.500758,
+      "schur_abs_row_bound": 4.53901002,
+      "true_signed_rayleigh": 3.02447839
+    },
+    "guth_maynard_huxley_crossover": {
+      "A": "15/7",
+      "sigma": "4/5"
+    },
+    "guth_maynard_inflection": {
+      "A": "30/13",
+      "A_float": 2.307692307692,
+      "dh_gap": "4/13",
+      "prime_gap_saving": "1/60",
+      "prime_gap_theta": "17/30",
+      "saving_over_huxley": "6/65",
+      "sigma": "7/10"
+    },
+    "guth_maynard_slope": "15 / (5*sigma + 3)",
+    "guth_maynard_sos_middle_numerator": "250*(sigma - 3/4)^2 + 3/8",
+    "huxley_slope": "3 / (3*sigma - 1)",
+    "ingham_huxley_inflection": {
+      "A": "12/5 = 2.4",
+      "dh_gap": "2/5",
+      "prime_gap_theta": "7/12",
+      "sigma": "3/4"
+    },
+    "ingham_slope": "3 / (2 - sigma)"
+  },
+  "paper2_qrh_gram_and_hybrid_bridges": {
+    "endpoint_box_uniform_margin": "49/440640",
+    "hybrid_critical_line_certificate": {
+      "Delta_hybrid_at_beta_half": "14/33",
+      "alpha_X": "35/66",
+      "alpha_Y": "59/66",
+      "coarse_bundled_at_delta_0": "13/44",
+      "critical_line_net_margin": "-17/132",
+      "d0": "7/11",
+      "dual_capacity_reserve": "7/22",
+      "gap_above_BCR_17_33": "1/66",
+      "welch_rank_excess": "1/33"
+    },
+    "qrh_physical_scales": {
+      "alpha_X": "17/48",
+      "alpha_Y": "23/48",
+      "delta_SOS": "79/204",
+      "ell": "1/6"
+    },
+    "rescaled_five_sixths_net_margin": "79/3264",
+    "unbundled_gram_saving_full": "487/3264",
+    "unbundled_gram_saving_kept_L": "215/3264"
+  },
+  "paper3_siegel_goldfeld_and_ostmann": {
+    "estermann_siegel_dirichlet_values": [
+      0,
+      4
+    ],
+    "goldfeld_gross_zagier_curve_5077_rank": 3,
+    "landau_page_pair_margin": "5/46 = 0.1086956522",
+    "ostmann_009_conductor_ladder": [
+      87689,
+      255983,
+      640722,
+      4115904
+    ],
+    "siegel_threshold_formula": "1 - eps / (2*(A + eps))",
+    "siegel_zeros_002_threshold_H": 86713344
+  },
+  "paper4_levinson_conrey_and_mollifiers": {
+    "conrey_deg17_symmetric_kappa": {
+      "1": 0.573606,
+      "1/2": 0.3635,
+      "2": 0.645155,
+      "4/7": 0.408058
+    },
+    "conrey_relaxed_coth_ceiling": {
+      "1": 0.835166,
+      "1/2": 0.463437,
+      "2": 0.993355,
+      "4/7": 0.528097
+    },
+    "kuznetsov_kim_sarnak_limit": "128/231",
+    "mollifier_ladder": {
+      "bcr_2017": "17/33",
+      "conrey_1989": "4/7",
+      "qrh_hybrid": "35/66",
+      "selberg_levinson": "1/2"
+    },
+    "qrh_theorem_fraction": "55264/135375 = 0.40822899"
+  },
+  "paper5_burgess_selberg_and_kim_sarnak": {
+    "burgess_sos_identity": "(r^2 - r + 1)/(4*r^2) - 3/16 = (r - 2)^2 / (16*r^2)",
+    "burgess_unique_optimum": {
+      "exponent": "3/16",
+      "r": 2,
+      "r3_degraded": "7/36"
+    },
+    "kim_sarnak_gl5_saving": {
+      "kim_sarnak_gl5": "7/64",
+      "landau_sym4": "3/26",
+      "saving": "5/832"
+    },
+    "kloosterman_p_le_1999_audit": {
+      "abs_normalized_sum": 251.76781732,
+      "odd_primes_count": 302,
+      "phase_cancellation_pct": 98.005376,
+      "signed_normalized_sum": -5.02182173
+    },
+    "petrow_young_cubic_exponent": {
+      "exponent": "1/6",
+      "saving_over_burgess": "1/48"
+    }
+  },
+  "status": "ALL_FIVE_PAPERS_VERIFIED"
+}

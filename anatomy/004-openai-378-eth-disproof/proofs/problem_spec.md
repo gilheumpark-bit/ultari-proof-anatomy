@@ -1,6 +1,6 @@
-# Zero-Hint Clean-Room Blind Audit Specification: OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`)
+# Zero-Context Symbolic Audit Specification: OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`)
 
-Using only the raw reference files in `./oai_ref/` (`.lean` modules and `.tex` manuscripts) and standard Python (`sympy`, `fractions`, `math`), extract the definitions directly from the source files, solve the 6 problems below from scratch without external hints, and write the resulting JSON dictionary to `blind_cleanroom_result.json`.
+Using only the raw reference files in `./oai_ref/` (`.lean` modules and `.tex` manuscripts) and standard Python (`sympy`, `fractions`, `math`), extract the definitions directly from the source files, solve the 6 problems below from scratch without external hints, and write the resulting JSON dictionary to `symbolic_reproduction_result.json`.
 
 ## Problem 1: Generation 1 & Generation 2 Discarded Fossil Bottlenecks (`ExponentArithmetic.lean`, `SubexpParameters.lean`)
 Read `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/ExponentArithmetic.lean` and `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SubexpParameters.lean`.

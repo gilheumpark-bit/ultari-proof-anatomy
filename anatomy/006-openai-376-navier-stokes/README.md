@@ -2,7 +2,7 @@
 
 # Case 006: OpenAI `#376` Universal Computation in Forced Navier–Stokes Flows
 
-This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX files of OpenAI `#376`. All findings are verified across `45` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `176/176` hypothesis mutations caught).
+This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX files of OpenAI `#376`. All findings are verified across `45` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `184/184` hypothesis mutations caught).
 
 ## Key Findings
 
@@ -23,7 +23,7 @@ This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX fi
 ## Formal Proofs & One-Command Verification
 
 - [`proofs/ns376_kinematic_routing_and_forensics.lean`](proofs/ns376_kinematic_routing_and_forensics.lean): Theorems 1–20 (`106/106` mutations caught).
-- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): Theorems 21–45 (`70/70` mutations caught).
+- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): Theorems 21–45 (`78/78` mutations caught).
 - [`proofs/verify_symbolic_ns376.py`](proofs/verify_symbolic_ns376.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), and [`proofs/problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

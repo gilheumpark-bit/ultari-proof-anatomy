@@ -9,21 +9,21 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376_complete.py"
   },
   "artifacts_sha256": {
-    "README.md": "aa40e9555e27312c1bef983cd87cd24bf4f3c975790011213de1b9c78ef9b975",
-    "README.ko.md": "0652835141173cbe18adcacdb0cf43e0ab4bf2131196695b7d5c979b599135d3",
-    "proofs/ns376_unimported_solenoidal_and_leray_bounds.lean": "9f2a806ed1ed1c9be40fc63aeb33ae8ab260d8f1b8c670b46c1bb2f8a0cf12a2",
-    "proofs/ns376_detector_margins_and_undecidability_chains.lean": "16f2d152cdc00bc02fb3657306835402a9b4eccaeaaaab43e0212e4caff47d56",
+    "README.md": "8a8d8768c1107ef97b569034dce17b10992e3ee64e5997ce0b7338fa84072da4",
+    "README.ko.md": "561b9ca7fcd9a564cc3a9c889be5dafc93f5e30981eac1e007b904ac7e28f83c",
+    "proofs/ns376_unimported_solenoidal_and_leray_bounds.lean": "b694134e690d06b2fb2c9bee858baf78b617c8948bd801ceafac2b0c3c33c9bd",
+    "proofs/ns376_detector_margins_and_undecidability_chains.lean": "49a72908d179df8d37cc66c94635572b18accb6f970aa5ca3bb3dfc90ca240dc",
     "proofs/verify_symbolic_ns376_complete.py": "72bd8fee3fa642be7c745e3f22eb2a8c1291de4ce90b2e3a6744c8195b190c14",
     "proofs/symbolic_verification_result.json": "81b3f5f849ee2d4025d4e7aa929ed1ca7b1f892388203d3f1e2ae43811d0d4e9",
     "proofs/problem_spec.md": "7bc6aca6cef36bf987c60282e190a755f087ff50a89e6349ac72333652d3215d",
-    "ko/01_고등학생_직관가이드.md": "5632142b907460802dc04349123b869a8fb74f277bee59f0bba45fe46b569f3d",
-    "ko/02_대학생_수리해부.md": "c79ef2ae76021eb8b8ef59917c969f484d5f276da3b10b4ff6b2ae712d43a145",
-    "ko/03_전문가_비평및재구성.md": "09a3b253d0bf8561968310bd54a97338f53724e07ce91a7cd84a555573cf9a67",
-    "ko/04_컴퓨터공학_실증검증.md": "4a15c3f94477bbe1af1f851db878ecd765f7f754e157d0a48ceda6aabc80c3e8",
-    "en/01_high_school_intuition_guide.md": "0fb07c8004701143a76aedaaa71a6fd15739721ea7324aee4425862bd64eb789",
-    "en/02_undergraduate_mathematical_anatomy.md": "10989558bb1bbb13534adab18a1c14cf2b35b32b67cae646e91ba15ce9cf3555",
-    "en/03_expert_critique_and_reconstruction.md": "9e9e463ddf3c0ccebfa71d1b8c0b2184a2a213584ac25d2beb6d8626c294a40c",
-    "en/04_cs_empirical_verification.md": "dcaf7cdf6bbbe52818d84464ae42c458f3684c67ad765d8d0d6af82e0f6b53ab"
+    "ko/01_고등학생_직관가이드.md": "360694a9c78439078ce15394eab469a475d73498ed4f7ab23b1ab13db370eee2",
+    "ko/02_대학생_수리해부.md": "dfe72635c2ba988dffc359529945451c3632a0a07fb58b36bf3ce21f0fd745a4",
+    "ko/03_전문가_비평및재구성.md": "440b720c554b21dfce508931446f89a12dfbb2ba461301b09934abc1b43ed203",
+    "ko/04_컴퓨터공학_실증검증.md": "676a9c37ec6c8c0fd8d28e8301f538c372ce5455be7b23c6167598d2c9fe5077",
+    "en/01_high_school_intuition_guide.md": "681ed6215ed7669d296d5742b75a11c73fb7b2861e8b8d957c413f7825f9364b",
+    "en/02_undergraduate_mathematical_anatomy.md": "d478a69656eb22c0109465940f06241586f0a9f12357e64676c22f772f518213",
+    "en/03_expert_critique_and_reconstruction.md": "b20e4ff6d42109130f3829d5c07c90eec9fac15dfb585429d01ace987d472b25",
+    "en/04_cs_empirical_verification.md": "d63526161574879c4290b8c34ecbec8526bd4bceead5eae8688bbe280dd77725"
   },
   "verdict": {
     "stratum_partition_1004_oai_files": "PASS (286/354 challenge-reachable files + 696/628 ForcedComputation/Main.lean master-hub files + 19 Material/ files + 3 StationaryNS files = 1,004 files, 139,847 lines, 0 sorry, 0 custom axioms)",
@@ -45,21 +45,21 @@
         "thm_07_periodic_inverse_sign_aware_pointwise_saving (Theorem 7, L97)",
         "thm_08_exact_green_kernel_integral_cancellation (Theorem 8, L112)",
         "thm_09_screened_green_operator_45million_tightening (Theorem 9, L139)",
-        "thm_10_symmetric_cosh_green_kernel_sum (Theorem 10, L152)",
-        "thm_11_cubic_shell_cardinality_and_slack (Theorem 11, L164)",
-        "thm_12_leray_projection_linfty_rational_tightening (Theorem 12, L178)",
-        "thm_13_exact_linfty_shell_zeta_enclosure (Theorem 13, L190)",
-        "thm_14_cubic_shell_five_strata_partition (Theorem 14, L204)",
-        "thm_15_unit_shell_euclidean_vs_linfty_saving (Theorem 15, L216)",
-        "thm_16_shell_strata_euclidean_weight_reduction (Theorem 16, L231)",
-        "thm_17_epstein_zeta_z3_vs_openai_52 (Theorem 17, L240)",
-        "thm_18_four_shears_reciprocal_diagonal_identity (Theorem 18, L252)",
-        "thm_19_partial_shear_determinant_one (Theorem 19, L264)",
-        "thm_20_reciprocal_correction_sharpened_sub_unit (Theorem 20, L275)",
-        "thm_21_reciprocal_correction_sharpened_super_unit (Theorem 21, L294)",
-        "thm_22_four_shears_x_excursion_sharpened (Theorem 22, L313)",
-        "thm_23_unidirectional_shear_zero_advection_solenoidal (Theorem 23, L326)",
-        "thm_24_shear_schedule_collar_margin (Theorem 24, L338)"
+        "thm_10_symmetric_cosh_green_kernel_sum (Theorem 10, L155)",
+        "thm_11_cubic_shell_cardinality_and_slack (Theorem 11, L190)",
+        "thm_12_leray_projection_linfty_rational_tightening (Theorem 12, L207)",
+        "thm_13_exact_linfty_shell_zeta_enclosure (Theorem 13, L224)",
+        "thm_14_cubic_shell_five_strata_partition (Theorem 14, L243)",
+        "thm_15_unit_shell_euclidean_vs_linfty_saving (Theorem 15, L258)",
+        "thm_16_shell_strata_euclidean_weight_reduction (Theorem 16, L277)",
+        "thm_17_epstein_zeta_z3_vs_openai_52 (Theorem 17, L286)",
+        "thm_18_four_shears_reciprocal_diagonal_identity (Theorem 18, L298)",
+        "thm_19_partial_shear_determinant_one (Theorem 19, L310)",
+        "thm_20_reciprocal_correction_sharpened_sub_unit (Theorem 20, L324)",
+        "thm_21_reciprocal_correction_sharpened_super_unit (Theorem 21, L350)",
+        "thm_22_four_shears_x_excursion_sharpened (Theorem 22, L377)",
+        "thm_23_unidirectional_shear_zero_advection_solenoidal (Theorem 23, L398)",
+        "thm_24_shear_schedule_collar_margin (Theorem 24, L410)"
       ]
     },
     "part2_detector_margins_and_undecidability": {
@@ -72,22 +72,22 @@
         "thm_30_detector_wait_margin_7560x_expansion (Theorem 30, L79)",
         "thm_31_detector_wait_margin_with_oai_loss_term (Theorem 31, L92)",
         "thm_32_heat_wait_duration_exact_lower_bound (Theorem 32, L104)",
-        "thm_33_balanced_three_stack_cycle_step_counts (Theorem 33, L116)",
-        "thm_34_three_stack_quadratic_cumulative_work (Theorem 34, L133)",
-        "thm_35_finite_machine_halting_undecidable_chain (Theorem 35, L144)",
-        "thm_36_rapid_lattice_torus_halting_equivalence_chain (Theorem 36, L154)",
-        "thm_37_torus_velocity_unconditional_discharge_chain (Theorem 37, L166)",
-        "thm_38_plane_velocity_unconditional_discharge_chain (Theorem 38, L178)",
-        "thm_39_rapid_forcing_scale_exponent_and_slack (Theorem 39, L190)",
-        "thm_40_rapid_forcing_small_motion_exponent_slack (Theorem 40, L203)",
-        "thm_41_cantor_encoding_single_slot_guard_gap (Theorem 41, L219)",
-        "thm_42_cantor_encoding_even_digit_b_fold_gap (Theorem 42, L234)",
-        "thm_43_picard_lindelof_slab_stitching_window (Theorem 43, L247)",
-        "thm_44_homogeneous_datum_degree_minus_one_scaling (Theorem 44, L259)",
-        "thm_45_finite_rank_moment_matrix_coercivity (Theorem 45, L271)",
-        "thm_46_stationary_contraction_lipschitz_exact_margin (Theorem 46, L290)",
-        "thm_47_stationary_contraction_target_error_exact_slack (Theorem 47, L307)",
-        "thm_48_stationary_coercivity_and_spectral_gap_margins (Theorem 48, L322)"
+        "thm_33_balanced_three_stack_cycle_step_counts (Theorem 33, L119)",
+        "thm_34_three_stack_quadratic_cumulative_work (Theorem 34, L136)",
+        "thm_35_finite_machine_halting_undecidable_chain (Theorem 35, L147)",
+        "thm_36_rapid_lattice_torus_halting_equivalence_chain (Theorem 36, L157)",
+        "thm_37_torus_velocity_unconditional_discharge_chain (Theorem 37, L169)",
+        "thm_38_plane_velocity_unconditional_discharge_chain (Theorem 38, L181)",
+        "thm_39_rapid_forcing_scale_exponent_and_slack (Theorem 39, L196)",
+        "thm_40_rapid_forcing_small_motion_exponent_slack (Theorem 40, L210)",
+        "thm_41_cantor_encoding_single_slot_guard_gap (Theorem 41, L226)",
+        "thm_42_cantor_encoding_even_digit_b_fold_gap (Theorem 42, L241)",
+        "thm_43_picard_lindelof_slab_stitching_window (Theorem 43, L254)",
+        "thm_44_homogeneous_datum_degree_minus_one_scaling (Theorem 44, L266)",
+        "thm_45_finite_rank_moment_matrix_coercivity (Theorem 45, L281)",
+        "thm_46_stationary_contraction_lipschitz_exact_margin (Theorem 46, L334)",
+        "thm_47_stationary_contraction_target_error_exact_slack (Theorem 47, L355)",
+        "thm_48_stationary_coercivity_and_spectral_gap_margins (Theorem 48, L376)"
       ]
     }
   },
@@ -100,7 +100,7 @@
     "theorems_proved": 48,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_caught": "134/134",
+    "hypothesis_mutations_caught": "150/150",
     "theorems": [
       {
         "index": 1,
@@ -160,91 +160,91 @@
         "index": 10,
         "name": "thm_10_symmetric_cosh_green_kernel_sum",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 152
+        "line": 155
       },
       {
         "index": 11,
         "name": "thm_11_cubic_shell_cardinality_and_slack",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 164
+        "line": 190
       },
       {
         "index": 12,
         "name": "thm_12_leray_projection_linfty_rational_tightening",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 178
+        "line": 207
       },
       {
         "index": 13,
         "name": "thm_13_exact_linfty_shell_zeta_enclosure",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 190
+        "line": 224
       },
       {
         "index": 14,
         "name": "thm_14_cubic_shell_five_strata_partition",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 204
+        "line": 243
       },
       {
         "index": 15,
         "name": "thm_15_unit_shell_euclidean_vs_linfty_saving",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 216
+        "line": 258
       },
       {
         "index": 16,
         "name": "thm_16_shell_strata_euclidean_weight_reduction",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 231
+        "line": 277
       },
       {
         "index": 17,
         "name": "thm_17_epstein_zeta_z3_vs_openai_52",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 240
+        "line": 286
       },
       {
         "index": 18,
         "name": "thm_18_four_shears_reciprocal_diagonal_identity",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 252
+        "line": 298
       },
       {
         "index": 19,
         "name": "thm_19_partial_shear_determinant_one",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 264
+        "line": 310
       },
       {
         "index": 20,
         "name": "thm_20_reciprocal_correction_sharpened_sub_unit",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 275
+        "line": 324
       },
       {
         "index": 21,
         "name": "thm_21_reciprocal_correction_sharpened_super_unit",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 294
+        "line": 350
       },
       {
         "index": 22,
         "name": "thm_22_four_shears_x_excursion_sharpened",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 313
+        "line": 377
       },
       {
         "index": 23,
         "name": "thm_23_unidirectional_shear_zero_advection_solenoidal",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 326
+        "line": 398
       },
       {
         "index": 24,
         "name": "thm_24_shear_schedule_collar_margin",
         "file": "ns376_unimported_solenoidal_and_leray_bounds.lean",
-        "line": 338
+        "line": 410
       },
       {
         "index": 25,
@@ -298,97 +298,97 @@
         "index": 33,
         "name": "thm_33_balanced_three_stack_cycle_step_counts",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 116
+        "line": 119
       },
       {
         "index": 34,
         "name": "thm_34_three_stack_quadratic_cumulative_work",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 133
+        "line": 136
       },
       {
         "index": 35,
         "name": "thm_35_finite_machine_halting_undecidable_chain",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 144
+        "line": 147
       },
       {
         "index": 36,
         "name": "thm_36_rapid_lattice_torus_halting_equivalence_chain",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 154
+        "line": 157
       },
       {
         "index": 37,
         "name": "thm_37_torus_velocity_unconditional_discharge_chain",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 166
+        "line": 169
       },
       {
         "index": 38,
         "name": "thm_38_plane_velocity_unconditional_discharge_chain",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 178
+        "line": 181
       },
       {
         "index": 39,
         "name": "thm_39_rapid_forcing_scale_exponent_and_slack",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 190
+        "line": 196
       },
       {
         "index": 40,
         "name": "thm_40_rapid_forcing_small_motion_exponent_slack",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 203
+        "line": 210
       },
       {
         "index": 41,
         "name": "thm_41_cantor_encoding_single_slot_guard_gap",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 219
+        "line": 226
       },
       {
         "index": 42,
         "name": "thm_42_cantor_encoding_even_digit_b_fold_gap",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 234
+        "line": 241
       },
       {
         "index": 43,
         "name": "thm_43_picard_lindelof_slab_stitching_window",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 247
+        "line": 254
       },
       {
         "index": 44,
         "name": "thm_44_homogeneous_datum_degree_minus_one_scaling",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 259
+        "line": 266
       },
       {
         "index": 45,
         "name": "thm_45_finite_rank_moment_matrix_coercivity",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 271
+        "line": 281
       },
       {
         "index": 46,
         "name": "thm_46_stationary_contraction_lipschitz_exact_margin",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 290
+        "line": 334
       },
       {
         "index": 47,
         "name": "thm_47_stationary_contraction_target_error_exact_slack",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 307
+        "line": 355
       },
       {
         "index": 48,
         "name": "thm_48_stationary_coercivity_and_spectral_gap_margins",
         "file": "ns376_detector_margins_and_undecidability_chains.lean",
-        "line": 322
+        "line": 376
       }
     ]
   },

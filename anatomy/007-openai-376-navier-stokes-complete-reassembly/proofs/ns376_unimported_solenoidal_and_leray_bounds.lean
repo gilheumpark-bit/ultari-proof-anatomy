@@ -149,14 +149,40 @@ theorem thm_09_screened_green_operator_45million_tightening
 
 /-- Theorem 10: Self-adjoint cosh Green's kernel decomposition on [0,1]:
     exp(lam*s)*(E - 1) + exp(lam*(1 - s))*(E - 1) = (exp(lam*s) + exp(lam*(1 - s)))*(E - 1). -/
+def coshKernelSum (exp_s exp_1ms E_minus_1 : Int) : Int :=
+  (exp_s + exp_1ms) * E_minus_1
+
 theorem thm_10_symmetric_cosh_green_kernel_sum
-    (exp_s exp_1ms E_minus_1 : Int)
-    (h_pos : E_minus_1 > 0) :
-    (exp_s + exp_1ms) * E_minus_1 = exp_s * E_minus_1 + exp_1ms * E_minus_1 ∧
-    E_minus_1 ≥ 1 := by
-  constructor
-  · grind
-  · omega
+    (exp_s exp_1ms E E_minus_1 : Int)
+    (hs : 0 < exp_s)
+    (h_prod : exp_s * exp_1ms = E)
+    (hE : 1 < E)
+    (h_Em1 : E_minus_1 = E - 1) :
+    coshKernelSum exp_s exp_1ms E_minus_1 = exp_s * E_minus_1 + exp_1ms * E_minus_1 ∧
+    4 * E ≤ (exp_s + exp_1ms) ^ 2 ∧
+    2 * E_minus_1 < coshKernelSum exp_s exp_1ms E_minus_1 := by
+  unfold coshKernelSum
+  have hs_sq : 0 ≤ (exp_s - exp_1ms) * (exp_s - exp_1ms) := by
+    by_cases hd : 0 ≤ exp_s - exp_1ms
+    · exact Int.mul_nonneg hd hd
+    · have hn : 0 ≤ (exp_1ms - exp_s) * (exp_1ms - exp_s) := Int.mul_nonneg (by omega) (by omega)
+      grind
+  have h_amgm : (exp_s + exp_1ms) ^ 2 - 4 * E = (exp_s - exp_1ms) * (exp_s - exp_1ms) := by
+    rw [← h_prod]; grind
+  have h1ms_pos : 0 < exp_1ms := by
+    by_cases hle : exp_1ms ≤ 0
+    · have hnp : exp_s * exp_1ms ≤ 0 := Int.mul_nonpos_of_nonneg_of_nonpos (by omega) hle
+      omega
+    · omega
+  have hsum_ge3 : 3 ≤ exp_s + exp_1ms := by
+    by_cases hsmall : exp_s + exp_1ms ≤ 2
+    · have heq1 : exp_s = 1 := by omega
+      have heq2 : exp_1ms = 1 := by omega
+      subst heq1; subst heq2; omega
+    · omega
+  have hdiff_pos : 0 < (exp_s + exp_1ms - 2) * E_minus_1 := Int.mul_pos (by omega) (by omega)
+  have hdiff_id : (exp_s + exp_1ms) * E_minus_1 - 2 * E_minus_1 = (exp_s + exp_1ms - 2) * E_minus_1 := by grind
+  refine ⟨by grind, by omega, by omega⟩
 
 /-- Theorem 11: Exact cubic shell cardinality in Z^3 (oct06/build/analysis.tex:219):
     (2n + 1)^3 - (2n - 1)^3 = 24n^2 + 2, and OpenAI's 26n^2 relaxation has positive
@@ -175,27 +201,40 @@ theorem thm_11_cubic_shell_cardinality_and_slack
     oct06/build/analysis.tex:187,220 without changing the L^infty norm:
     using sum n^-2 <= 7/4 and sum n^-4 <= 4/3 gives 24*(7/4) + 2*(4/3) = 134/3 < 52
     (saving 22/3 = 7.333...). -/
+def lerayTight3 (z2_num4 z4_num3 : Int) : Int :=
+  18 * z2_num4 + 2 * z4_num3
+
 theorem thm_12_leray_projection_linfty_rational_tightening
-    (denom c_oai3 c_tight3 : Int)
+    (denom z2_num4 z4_num3 c_oai3 : Int)
     (hden : denom = 3)
-    (hoai : c_oai3 = 52 * denom)
-    (htight : c_tight3 = 42 * denom + 8) :
-    c_tight3 = 134 ∧
-    c_oai3 - c_tight3 = 22 ∧
-    c_tight3 < c_oai3 := by
+    (hz2 : z2_num4 = 7)
+    (hz4 : z4_num3 = 4)
+    (hoai : c_oai3 = 52 * denom) :
+    lerayTight3 z2_num4 z4_num3 = 134 ∧
+    c_oai3 - lerayTight3 z2_num4 z4_num3 = 22 ∧
+    lerayTight3 z2_num4 z4_num3 < c_oai3 := by
+  unfold lerayTight3
   omega
 
 /-- Theorem 13: Rational enclosure of the exact L^infty shell series
     24*zeta(2) + 2*zeta(4) = 4*pi^2 + pi^4/45 in (4164/100, 4165/100) < 134/3 < 52. -/
+def shellZetaNumerator (c_z2 c_z4 piSq pi4 : Int) : Int :=
+  15 * c_z2 * piSq + c_z4 * pi4
+
 theorem thm_13_exact_linfty_shell_zeta_enclosure
-    (piSq_lo piSq_hi pi4_lo pi4_hi : Int)
+    (c_z2 c_z4 piSq_lo piSq_hi pi4_lo pi4_hi c_oai3 : Int)
+    (hz2 : c_z2 = 24)
+    (hz4 : c_z4 = 2)
     (h1 : piSq_lo = 98696)
     (h2 : piSq_hi = 98697)
     (h3 : pi4_lo = 974090)
-    (h4 : pi4_hi = 974091) :
-    4 * piSq_lo * 45 + pi4_lo > 4164 * 4500 ∧
-    4 * piSq_hi * 45 + pi4_hi < 4165 * 4500 ∧
-    4165 * 3 < 134 * 100 := by
+    (h4 : pi4_hi = 974091)
+    (hc : c_oai3 = 134) :
+    4164 * 9000 < shellZetaNumerator c_z2 c_z4 piSq_lo pi4_lo ∧
+    shellZetaNumerator c_z2 c_z4 piSq_hi pi4_hi < 4165 * 9000 ∧
+    shellZetaNumerator c_z2 c_z4 piSq_hi pi4_hi < 300000 * c_oai3 := by
+  unfold shellZetaNumerator
+  subst hz2; subst hz4
   omega
 
 /-- Theorem 14: Exact 5-stratum geometric partition of the cubic shell S_n (|k|_infty = n):
@@ -213,15 +252,22 @@ theorem thm_14_cubic_shell_five_strata_partition
 /-- Theorem 15: Exact Euclidean sum on the n=1 shell ({-1,0,1}^3 \ {0}, 26 points):
     6*(1/1^2) + 12*(1/2^2) + 8*(1/3^2) = 89/9 = 9.888..., whereas OpenAI's |k|_infty
     bound assigns 26/1^4 = 26 (saving 145/9 = 16.111... on the n=1 shell alone). -/
+def unitShellEuclid36 (faces edges corners : Int) : Int :=
+  36 * faces + 9 * edges + 4 * corners
+
 theorem thm_15_unit_shell_euclidean_vs_linfty_saving
-    (denom s1_euclid9 s1_oai9 : Int)
-    (hden : denom = 9)
-    (heu : s1_euclid9 = 6 * denom + 3 * denom + 8)
-    (hoai : s1_oai9 = 26 * denom) :
+    (faces edges corners s1_euclid9 s1_oai9 : Int)
+    (hf : faces = 6)
+    (he : edges = 12)
+    (hc : corners = 8)
+    (heu : 4 * s1_euclid9 = unitShellEuclid36 faces edges corners)
+    (hoai : s1_oai9 = 9 * (faces + edges + corners)) :
+    unitShellEuclid36 faces edges corners = 4 * 89 ∧
     s1_euclid9 = 89 ∧
     s1_oai9 = 234 ∧
     s1_oai9 - s1_euclid9 = 145 ∧
     s1_euclid9 < s1_oai9 := by
+  unfold unitShellEuclid36 at *
   omega
 
 /-- Theorem 16: Stratum-wise Euclidean vs L^infty weight reduction on shell S_n (n >= 1):
@@ -272,6 +318,9 @@ theorem thm_19_partial_shear_determinant_one
 /-- Theorem 20: Sharpened reciprocal correction bound for 0 < lam <= 1
     (tightening ShearFlows/Affine.lean:40 `reciprocal_correction_bound`):
     when 0 <= s and s/lam <= h (i.e. 0 <= s <= lam*h), s/lam - s <= (1 - lam)*h < h. -/
+def subUnitDefect (lam_num lam_den h : Int) : Int :=
+  (lam_den - lam_num) * h
+
 theorem thm_20_reciprocal_correction_sharpened_sub_unit
     (s q lam_num lam_den h : Int)
     (h_lam_pos : lam_num > 0)
@@ -279,14 +328,21 @@ theorem thm_20_reciprocal_correction_sharpened_sub_unit
     (h_rel : s * lam_den = q * lam_num)
     (hq_pos : q > 0)
     (hq_le : q ≤ h) :
-    (q - s) * lam_den ≤ (lam_den - lam_num) * h ∧
-    (lam_den - lam_num) * h < lam_den * h := by
+    (q - s) * lam_den ≤ subUnitDefect lam_num lam_den h ∧
+    subUnitDefect lam_num lam_den h + lam_num * h = lam_den * h ∧
+    0 < (q - s) * lam_den ∧
+    0 < lam_num * h := by
+  unfold subUnitDefect
   have h1 : (q - s) * lam_den = q * (lam_den - lam_num) := by grind
   have h2 : (h - q) * (lam_den - lam_num) ≥ 0 := Int.mul_nonneg (by omega) (by omega)
   have h3 : (lam_den - lam_num) * h - q * (lam_den - lam_num) = (h - q) * (lam_den - lam_num) := by grind
-  have h4 : lam_num * h > 0 := Int.mul_pos h_lam_pos (by omega)
-  have h5 : lam_den * h - (lam_den - lam_num) * h = lam_num * h := by grind
-  omega
+  have h4 : 0 < q * (lam_den - lam_num) := Int.mul_pos hq_pos (by omega)
+  have h5 : 0 < lam_num * h := Int.mul_pos h_lam_pos (by omega)
+  have h6 : (lam_den - lam_num) * h + lam_num * h = lam_den * h := by grind
+  refine ⟨by omega, h6, by omega, h5⟩
+
+def superUnitDefect (lam_num lam_den h : Int) : Int :=
+  (lam_num - lam_den) * h
 
 /-- Theorem 21: Sharpened reciprocal correction bound for lam >= 1:
     when 0 < s <= h and q = s/lam (so s*lam_den = q*lam_num with lam_num > lam_den > 0),
@@ -298,26 +354,42 @@ theorem thm_21_reciprocal_correction_sharpened_super_unit
     (h_rel : s * lam_den = q * lam_num)
     (hs_pos : s > 0)
     (hs_le : s ≤ h) :
-    (s - q) * lam_num ≤ (lam_num - lam_den) * h ∧
-    (lam_num - lam_den) * h < lam_num * h := by
+    (s - q) * lam_num ≤ superUnitDefect lam_num lam_den h ∧
+    superUnitDefect lam_num lam_den h + lam_den * h = lam_num * h ∧
+    0 < (s - q) * lam_num ∧
+    0 < lam_den * h := by
+  unfold superUnitDefect
   have h1 : (s - q) * lam_num = s * (lam_num - lam_den) := by grind
   have h2 : (h - s) * (lam_num - lam_den) ≥ 0 := Int.mul_nonneg (by omega) (by omega)
   have h3 : (lam_num - lam_den) * h - s * (lam_num - lam_den) = (h - s) * (lam_num - lam_den) := by grind
-  have h4 : lam_den * h > 0 := Int.mul_pos h_den_pos (by omega)
-  have h5 : lam_num * h - (lam_num - lam_den) * h = lam_den * h := by grind
-  omega
+  have h4 : 0 < s * (lam_num - lam_den) := Int.mul_pos hs_pos (by omega)
+  have h5 : 0 < lam_den * h := Int.mul_pos h_den_pos (by omega)
+  have h6 : (lam_num - lam_den) * h + lam_den * h = lam_num * h := by grind
+  refine ⟨by omega, h6, by omega, h5⟩
+
+def fourShearStage2Sub (lam_den u0 q s : Int) : Int :=
+  u0 + (q - s) * lam_den
 
 /-- Theorem 22: Sharpened intermediate x-excursion bound at stages k=2,3 in
     ShearFlows/Affine.lean:67 (`scaling_endpoints_bound`):
-    |lam*v0 + (v1/lam - v1)| <= (2 - min(lam, lam^-1))*h < 2*h, saving min(lam, lam^-1)*h. -/
+    substituting `thm_20` directly yields `u0 + (q - s)*lam_den <= lam_den*h + subUnitDefect`,
+    saving `lam_num*h > 0` below the unsharpened `2*lam_den*h` bound. -/
 theorem thm_22_four_shears_x_excursion_sharpened
-    (lam_v0 diff_v1 h_scaled min_lam_h : Int)
-    (h_min_pos : min_lam_h > 0)
-    (h_v0 : lam_v0 ≤ h_scaled)
-    (h_diff : diff_v1 ≤ h_scaled - min_lam_h) :
-    lam_v0 + diff_v1 ≤ 2 * h_scaled - min_lam_h ∧
-    2 * h_scaled - min_lam_h < 2 * h_scaled := by
-  omega
+    (u0 s q lam_num lam_den h : Int)
+    (h_lam_pos : lam_num > 0)
+    (h_lam_sub : lam_num < lam_den)
+    (h_rel : s * lam_den = q * lam_num)
+    (hq_pos : q > 0)
+    (hq_le : q ≤ h)
+    (hu0_le : u0 ≤ lam_den * h) :
+    fourShearStage2Sub lam_den u0 q s ≤ lam_den * h + subUnitDefect lam_num lam_den h ∧
+    (lam_den * h + subUnitDefect lam_num lam_den h) + lam_num * h = 2 * lam_den * h ∧
+    0 < (q - s) * lam_den ∧
+    0 < lam_num * h := by
+  rcases thm_20_reciprocal_correction_sharpened_sub_unit s q lam_num lam_den h
+    h_lam_pos h_lam_sub h_rel hq_pos hq_le with ⟨h20a, h20b, h20c, h20d⟩
+  unfold fourShearStage2Sub
+  refine ⟨by omega, by grind, h20c, h20d⟩
 
 /-- Theorem 23: Unidirectional shear zero-advection & solenoidal force identity in
     ShearFlows/Main.lean:55,77 (`sourceTube_open`, `realizingVelocity_fluid`):

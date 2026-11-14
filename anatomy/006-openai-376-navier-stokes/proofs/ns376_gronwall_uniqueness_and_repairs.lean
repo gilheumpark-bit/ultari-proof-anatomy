@@ -54,14 +54,47 @@ bounded pointwise by `|partial_j U_i| <= C`. Combined with viscous dissipation `
 and pressure orthogonality `int grad p . w dx = - int p (div w) dx = 0`, the rate of change
 of `E(t) = ||w(t)||_{L^2}^2` satisfies `dE/dt <= 12 * C * E` (`2 * 6 * C * E`).
 -/
+def serrinEnergy (w1 w2 w3 : Int) : Int :=
+  w1 ^ 2 + w2 ^ 2 + w3 ^ 2
+
+def serrinStrainPairing (d1 d2 d3 s12 s13 s23 w1 w2 w3 : Int) : Int :=
+  2 * (d1 * w1 ^ 2 + d2 * w2 ^ 2 + d3 * w3 ^ 2 +
+    s12 * w1 * w2 + s13 * w1 * w3 + s23 * w2 * w3)
+
 theorem T23_serrin_gronwall_differential_inequality
-    (dE_dt viscous_term pressure_term stretching_bound C E : Int)
+    (dE_dt viscous_term pressure_term C d1 d2 d3 s12 s13 s23 w1 w2 w3 : Int)
     (h_visc : viscous_term <= 0)
     (h_press : pressure_term = 0)
-    (h_balance : dE_dt = viscous_term + pressure_term + stretching_bound)
-    (h_stretch : stretching_bound <= 12 * C * E) :
-    dE_dt <= 12 * C * E := by
-  omega
+    (h_balance : dE_dt = viscous_term + pressure_term + serrinStrainPairing d1 d2 d3 s12 s13 s23 w1 w2 w3)
+    (hd1 : d1 <= 2 * C)
+    (hd2 : d2 <= 2 * C)
+    (hd3 : d3 <= 2 * C)
+    (hs12_lo : -2 * C <= s12)
+    (hs12_hi : s12 <= 2 * C)
+    (hs13_lo : -2 * C <= s13)
+    (hs13_hi : s13 <= 2 * C)
+    (hs23_lo : -2 * C <= s23)
+    (hs23_hi : s23 <= 2 * C) :
+    dE_dt <= 12 * C * serrinEnergy w1 w2 w3 := by
+  unfold serrinStrainPairing serrinEnergy at *
+  have hsq (z : Int) : 0 <= z * z := by
+    by_cases hz : 0 <= z
+    · exact Int.mul_nonneg hz hz
+    · have hn : 0 <= (-z) * (-z) := Int.mul_nonneg (by omega) (by omega)
+      grind
+  have hc1 : 0 <= (2 * C - d1) * (w1 * w1) := Int.mul_nonneg (by omega) (hsq w1)
+  have hc2 : 0 <= (2 * C - d2) * (w2 * w2) := Int.mul_nonneg (by omega) (hsq w2)
+  have hc3 : 0 <= (2 * C - d3) * (w3 * w3) := Int.mul_nonneg (by omega) (hsq w3)
+  have ho12a : 0 <= (2 * C - s12) * ((w1 + w2) * (w1 + w2)) := Int.mul_nonneg (by omega) (hsq _)
+  have ho12b : 0 <= (2 * C + s12) * ((w1 - w2) * (w1 - w2)) := Int.mul_nonneg (by omega) (hsq _)
+  have ho13a : 0 <= (2 * C - s13) * ((w1 + w3) * (w1 + w3)) := Int.mul_nonneg (by omega) (hsq _)
+  have ho13b : 0 <= (2 * C + s13) * ((w1 - w3) * (w1 - w3)) := Int.mul_nonneg (by omega) (hsq _)
+  have ho23a : 0 <= (2 * C - s23) * ((w2 + w3) * (w2 + w3)) := Int.mul_nonneg (by omega) (hsq _)
+  have ho23b : 0 <= (2 * C + s23) * ((w2 - w3) * (w2 - w3)) := Int.mul_nonneg (by omega) (hsq _)
+  have he1 : 0 <= C * (w1 * w1) := Int.mul_nonneg (by omega) (hsq w1)
+  have he2 : 0 <= C * (w2 * w2) := Int.mul_nonneg (by omega) (hsq w2)
+  have he3 : 0 <= C * (w3 * w3) := Int.mul_nonneg (by omega) (hsq w3)
+  grind
 
 /--
 Theorem 24 (Discrete Gronwall Non-Negativity and Zero Initial Data Uniqueness):
@@ -366,14 +399,27 @@ In `OAI/MathematicalPhysics/NavierStokes/BalancedTransport/EnergyCurve.lean` (`l
 and `EnergySlice.lean` (`SliceH2.sub`), the `H^2` slice norm dominates the `L^2` norm when
 gradient and Hessian energies are non-negative, bounding the `L^2` energy derivative.
 -/
+def sliceH2Sq (l2_sq grad_sq hess_sq : Int) : Int :=
+  l2_sq + grad_sq + hess_sq
+
 theorem T44_balanced_transport_energy_curve_and_slice_h2_closure
-    (l2_sq grad_sq hess_sq h2_sq rate : Int)
-    (h_grad : 0 ≤ grad_sq)
-    (h_hess : 0 ≤ hess_sq)
-    (h_h2 : h2_sq = l2_sq + grad_sq + hess_sq)
-    (h_rate : rate ≤ 12 * l2_sq) :
-    rate ≤ 12 * h2_sq := by
-  omega
+    (C grad_w l2_sq grad_sq hess_sq : Int)
+    (hC : 0 < C)
+    (hl2 : 0 ≤ l2_sq)
+    (h_grad : grad_sq = grad_w * grad_w)
+    (h_hess : 0 < hess_sq) :
+    12 * C * l2_sq < 12 * C * sliceH2Sq l2_sq grad_sq hess_sq ∧
+    0 < sliceH2Sq l2_sq grad_sq hess_sq := by
+  unfold sliceH2Sq
+  have hsq (z : Int) : 0 ≤ z * z := by
+    by_cases hz : 0 ≤ z
+    · exact Int.mul_nonneg hz hz
+    · have hn : 0 ≤ (-z) * (-z) := Int.mul_nonneg (by omega) (by omega)
+      grind
+  have hg : 0 ≤ grad_sq := by rw [h_grad]; exact hsq grad_w
+  have hdiff : 0 < 12 * C * (grad_sq + hess_sq) := Int.mul_pos (by omega) (by omega)
+  have hid : 12 * C * (l2_sq + grad_sq + hess_sq) - 12 * C * l2_sq = 12 * C * (grad_sq + hess_sq) := by grind
+  refine ⟨by omega, by omega⟩
 
 /--
 Theorem 45 (Velocity-Detection Gaussian Heat-Kernel Rescaling & JSON Challenge Parity):

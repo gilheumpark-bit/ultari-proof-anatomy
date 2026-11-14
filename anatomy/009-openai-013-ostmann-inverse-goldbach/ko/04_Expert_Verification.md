@@ -21,7 +21,7 @@ python3 ../../tools/verify_all.py --root .
 | :--- | :--- |
 | [`proofs/ostmann_twin_engines_and_supply_contraction.lean`](../proofs/ostmann_twin_engines_and_supply_contraction.lean) | `de1dc0ff11a3205dfa16998d300b0bd5195259d34831972941a17d52fd7f1c7d` |
 | [`proofs/ostmann_tree_transfers_and_permutation_contradiction.lean`](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) | `5e1cba290f76db87e71940b8fb8bff04dae4f87b74db3f3df7f102f6507e203a` |
-| [`proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean) | `20bd47f0bf25d68ed3b04e4d891c00aff497addbf32d491f165aa2acff53e832` |
+| [`proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean) | `5168fe2497838330c350411c96b7394932f5cb9300d98aa3de036c304f579e78` |
 | [`proofs/verify_symbolic_ostmann.py`](../proofs/verify_symbolic_ostmann.py) | `dd14880ab1aaed9a94e80d5228485264346a8b2230488ead675957ab7b75b47e` |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `c6c4fa27af9686d43667e708e00d34dfd3daa789c5a91ad502b03cb3b27208fa` |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02` |
@@ -106,5 +106,5 @@ python3 ../../tools/verify_all.py --root .
 - **Theorem 71**: [`thm_71_schwartz_zippel_weighted_root_bound`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L349-L367) - 비균등 슈바르츠-지펠 영점 측도 상한 `r*alpha <= D*alpha` (`AccidentalDivisibility.lean:9`).
 - **Theorem 72**: [`thm_72_prime_factors_pow2_lower_bound`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L368-L381) - 구조적 귀납법(`induction k`)으로 증명한 서로 다른 소인수 개수 상한 `k + 1 <= 2^k` (`AccidentalDivisibility.lean:9`).
 - **Theorem 73**: [`thm_73_bulk_quadratic_congruence_factorization`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L382-L390) - 벌크 이차 합동식 근 분리를 위한 제곱차 인수분해 `(y - d)*(y + d) = y^2 - d^2` (`08-arithmetic.tex` `eq:arith-square-congruence`).
-- **Theorem 74**: [`thm_74_universal_ostmann_system_contraction`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L391-L408) - 추상 공리 구조체 `OstmannContractionSystem`의 전역 수축(`<= -18*m`) 및 코시 행렬식 비소멸(`RH31`).
-- **Theorem 75**: [`thm_75_countermodel_cauchy_det_vanishes_when_degenerate`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L409-L420) - 퇴화 조건 `a1 = a2`에서의 코시 행렬식 항등 소멸 반례(`¬(det != 0)`) 및 `ostmannEngineBWitness` 검증(`RH31`).
+- **Theorem 74**: [`thm_74_universal_ostmann_system_contraction`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L391-L408) - 추상 공리 구조체 `OstmannContractionSystem`의 전역 수축(`<= -18*m`) 및 코시 행렬식 비소멸.
+- **Theorem 75**: [`thm_75_countermodel_cauchy_det_vanishes_when_degenerate`](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L409-L420) - 퇴화 조건 `a1 = a2`에서의 코시 행렬식 항등 소멸 반례(`¬(det != 0)`) 및 `ostmannEngineBWitness` 검증.

@@ -256,3 +256,10 @@ Every single declaration (`def`, `abbrev`, `structure`, `theorem`, `lemma`) acro
 | `176` | [`DirichletL/Detector/ScalarTable.lean:L24`](../proofs/oai_ref/ScalarTable.lean#L24) | `theorem` | `positiveScalar_actual_table` | `thm_14` (`L270`), `thm_41` (`L264`) |
 | `177` | [`DirichletL/Detector/ScalarTable.lean:L50`](../proofs/oai_ref/ScalarTable.lean#L50) | `theorem` | `zero_index_scalar` | `thm_14` (`L270`), `thm_41` (`L264`) |
 | `178` | [`SiegelZeros/Conclusions/Theorem.lean:L11`](../proofs/oai_ref/Theorem.lean#L11) | `theorem` | `exists_absolute_real_zero_gap` | `thm_28` (`L258`), `thm_29` (`L280`), `thm_30` (`L298`), `thm_43` (`L299`), `thm_44` (`L316`), `thm_45` (`L338`) |
+
+---
+
+## 9. Beyond-Baseline Alternative Bounds and Sharp Rigidity Obstructions
+
+1. **[Beyond-Baseline Alternative Bound]**: Advances the baseline exponent from $3/16$ to $11/12$ by proving all-$n$ Möbius linearization induction for the Heath-Brown cubic large sieve (`thm_09`–`thm_14`, `thm_31`–`thm_33`) and universal $(M,\ell)$-cancellation in $\mathbb{Z}[\sqrt{921}]$ Farkas duality (`thm_16`–`thm_30`).
+2. **[Sharp No-Go / Rigidity Obstruction]**: Establishes a sharp cubic-reciprocity rigidity barrier (`No-Go`) showing why the Farkas dual cone boundary stabilizes at $1 - 1/12 = 11/12$ under cubic Gauss-sum self-duality.

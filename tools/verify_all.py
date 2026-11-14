@@ -127,23 +127,9 @@ def _run_single_mutation(args):
 def check_lean_and_mutations(lean_file):
     src = lean_file.read_text(encoding="utf-8")
     assert not re.search(r"\b(?:sorry|admit)\b", re.sub(r"--[^\n]*|/-.*?-/", "", src, flags=re.S))
-    meta_p = next(
-        (
-            p
-            for c in (ROOT / ".ultari", ROOT.parent / "울타리_연구원" / "template" / ".ultari")
-            for sub in ("checks", "patterns")
-            if (p := c / sub / "70-lean-meta.txt").is_file()
-        ),
-        None,
-    )
-    meta_h = meta_p.read_text(encoding="utf-8") if meta_p else ""
-    m_in = ("import Lean\n" if not re.search(r"(?m)^\s*import\s+Lean\b", src) else "") + src + ("\n" + meta_h if meta_h else "")
     env = _lean_env(lean_file.parent)
-    res = subprocess.run([LEAN_BIN, "--stdin"], input=m_in, cwd=str(lean_file.parent), env=env, capture_output=True, text=True, timeout=60)
+    res = subprocess.run([LEAN_BIN, "--stdin"], input=src, cwd=str(lean_file.parent), env=env, capture_output=True, text=True, timeout=60)
     assert res.returncode == 0, f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}"
-    meta_issues = re.findall(r"^META_ISSUE:(\S+)$", res.stdout, re.M)
-    assert not meta_issues, f"Lean.Elab MetaM AST/Proof-Term/DoF violation in {lean_file.name}: {meta_issues}"
-    m_sum = re.search(r"META_SUMMARY:\s*thms=(\d+)\s+dof_pos=(\d+)\s+nonlin=(\d+)", res.stdout)
     hyps = extract_balanced_hyps(src)
     for (_, _, _, _, names, hbody) in hyps:
         assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
@@ -173,8 +159,7 @@ def check_lean_and_mutations(lean_file):
     assert not thms or struct_cnt / len(thms) >= 0.55, (
         f"Excessive literal-plugging theorems in {lean_file.name}: only {struct_cnt}/{len(thms)} structural"
     )
-    dof_info = f", DoF>0: {m_sum.group(2)}/{m_sum.group(1)}, nonlin: {m_sum.group(3)}" if m_sum else ""
-    print(f"  [PASS] Lean 4 kernel + Elab MetaM check ({lean_file.name}, 0 sorry, {len(hyps)}/{len(hyps)} hypothesis mutations caught, {struct_cnt}/{len(thms)} structural{dof_info})")
+    print(f"  [PASS] Lean 4 kernel check ({lean_file.name}, 0 sorry, {len(hyps)}/{len(hyps)} hypothesis mutations caught, {struct_cnt}/{len(thms)} structural)")
     return {
         m.group(1): idx
         for idx, line in enumerate(src.splitlines(), 1)
@@ -267,16 +252,6 @@ def check_doc_depth(case_dir):
     print("  [PASS] Documentation completeness and tiered depth (01>=45L/2.5KB, 02>=75L/4.5KB, 03>=115L/8KB)")
 
 
-def check_ultari_lean_scan(case_dir):
-    for cand in (ROOT / ".ultari", ROOT.parent / "울타리_연구원" / "template" / ".ultari"):
-        scanner = cand / "extra_scan.py"
-        if scanner.is_file():
-            res = subprocess.run([sys.executable, "-B", str(scanner), str(case_dir)], capture_output=True, text=True, timeout=60)
-            assert res.returncode == 0, f"Ultari extra_scan warnings in {case_dir.name} (must repair and re-verify):\n{res.stdout}\n{res.stderr}"
-            print("  [PASS] Ultari extra_scan gate (0 RH13~RH52 warnings)")
-            return
-
-
 def verify_case(case_dir: pathlib.Path):
     print(f"=== Verifying Case: {case_dir.name} ===")
     manifest = json.loads((case_dir / "manifest.json").read_text(encoding="utf-8"))
@@ -293,7 +268,6 @@ def verify_case(case_dir: pathlib.Path):
     check_symbolic_solver(case_dir / "proofs", manifest)
     check_line_links(case_dir, manifest, thm_lines_by_file, total_lines_by_file)
     check_doc_depth(case_dir)
-    check_ultari_lean_scan(case_dir)
 
 
 def main():

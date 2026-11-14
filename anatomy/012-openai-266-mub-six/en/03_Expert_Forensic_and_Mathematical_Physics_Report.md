@@ -97,15 +97,15 @@ Cross-checking every `\cite` command against both `.bib` files ([`thm_68_citatio
 
 ---
 
-## 6. Structural Synthesis: Discovery A (`>2.01M`-Line Reflected Canonicalizer) & Discovery B (Weiner Rigidity)
+## 6. Structural Synthesis: Beyond-Baseline Reflected Canonicalizer (`>2.01M` Lines) & Weiner Rigidity Obstruction
 
-1. **Discovery A (Alternative Solution): Eliminating `2,073,150` Unrolled Fubini Lines via Kernel Reflection (`2,015,523` Lines Saved)**:
+1. **Beyond-Baseline Alternative Solution: Eliminating `2,073,150` Unrolled Fubini Lines via Kernel Reflection (`2,015,523` Lines Saved)**:
    - **Structural Bottleneck**: Upstream unrolled bespoke Fubini sum-swap proofs for `48,742` keys in `MixedSemantics` (`911` files, `1,729,610` lines) and `7,685` keys in `PairSemantics` (`519` files, `343,540` lines), generating `2,073,150` lines and `56,534` vacuous `_hB`/`_hH` binders.
    - **Kernel Reflection Transform**: Represent exponent matrices syntactically as `Array (Array Int)` and prove **one** polymorphic theorem (`eval_perm_invariant`, `~1,200` lines of reusable infrastructure) stating that row/column permutations $(\sigma, \tau)$ and sign flips $s \in \{\pm 1\}$ preserve finite sums, discharging each key in `1` `by decide` line.
    - **Derived Savings Formula**: Across $K = 48,742 + 7,685 = 56,427$ keys, replacing $L_{\text{unroll}} = 2,073,150$ with $L_{\text{refl}} = 1,200 + K = 57,627$ saves
      $$L_{\text{unroll}} - L_{\text{refl}} = 2,073,150 - 57,627 = 2,015,523\text{ lines (eliminating }71.1\%\text{ of the entire 2.835M-line tree),}$$
      verified in [`thm_58_reflected_canonicalizer_compression_discovery`](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L122-L133) and by `∀ k : Nat` induction in [`thm_59_inductive_unrolled_vs_reflected_savings`](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L145-L156).
-2. **Discovery B (No-Go Rigidity Barrier): Sharp Abelian Saturation $d^2 - k(d-1) = d \iff k = d$**:
+2. **Sharp No-Go Rigidity Barrier: Sharp Abelian Saturation $d^2 - k(d-1) = d \iff k = d$**:
    - **Dimension-Rigidity Barrier**: Why does Weiner's realigned Kraus completion promote $6 \to 7$ MUBs automatically yet fail to promote $5 \to 6$ or $4 \to 5$? Because $k$ MUBs span $1 + k(d-1)$ orthogonal operators in $M_d(\mathbb{C})$, leaving an orthogonal complement of dimension $C(d, k) = d^2 - k(d-1)$ that equals the maximal commuting diagonalizable dimension $d$ if and only if
      $$d^2 - k(d-1) - d = (d - k)(d - 1) = 0 \iff k = d \quad (d \ge 2),$$
      giving $C(6,6) = 6 = d$ at $k = 6$ versus $C(6,5) = 11 > 6$ at $k = 5$ and $C(6,4) = 16 > 6$ at $k = 4$.

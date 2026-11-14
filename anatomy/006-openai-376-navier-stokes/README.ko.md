@@ -2,7 +2,7 @@
 
 # 사례 006: OpenAI `#376` 강제 나비에-스토크스 유동의 보편 계산 감사
 
-이 패키지는 OpenAI `#376`(`1,010`개 `.lean` 파일 `142,131`줄 및 `75`개 `.tex` 파일)을 수리물리학 및 형식증명 관점에서 감사한 결과물입니다. 모든 결론은 `45`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `176/176`건 포착)로 검증했습니다.
+이 패키지는 OpenAI `#376`(`1,010`개 `.lean` 파일 `142,131`줄 및 `75`개 `.tex` 파일)을 수리물리학 및 형식증명 관점에서 감사한 결과물입니다. 모든 결론은 `45`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `184/184`건 포착)로 검증했습니다.
 
 ## 핵심 해부 결과
 
@@ -23,7 +23,7 @@
 ## 형식증명 코드 및 1줄 검증 명령어
 
 - [`proofs/ns376_kinematic_routing_and_forensics.lean`](proofs/ns376_kinematic_routing_and_forensics.lean): 정리 1~20 (`106/106` 변이 포착).
-- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): 정리 21~45 (`70/70` 변이 포착).
+- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): 정리 21~45 (`78/78` 변이 포착).
 - [`proofs/verify_symbolic_ns376.py`](proofs/verify_symbolic_ns376.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), [`proofs/problem_spec.md`](proofs/problem_spec.md).
 
 ```bash

@@ -4,7 +4,7 @@
 
 ---
 
-## 1. `CubicGauss` 비선형 점화식의 뫼비우스 공액 선형화 및 모든 $n \in \mathbb{N}$에 대한 수학적 귀납법 증명 (`정리 9–14, 31–33`)
+## 1. `CubicGauss` 비선형 점화식의 뫼비우스 공액 변환 선형화 및 모든 $n \in \mathbb{N}$에 대한 수학적 귀납법 증명 (`정리 9–14, 31–33`)
 
 `lean/OAI/NumberTheory/CubicGauss/Recurrence.lean:350–370`에서 정의된 3차 큰 체 지수 점화식은 다음과 같습니다:
 $$\text{sieveThreshold}(\alpha) = \frac{6\alpha - 5}{3\alpha - 1}, \qquad \text{sieveStep}(\alpha) = \frac{6\alpha - 4}{3\alpha - 1}.$$
@@ -253,3 +253,10 @@ $$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w
 | `176` | [`DirichletL/Detector/ScalarTable.lean:L24`](../proofs/oai_ref/ScalarTable.lean#L24) | `theorem` | `positiveScalar_actual_table` | `thm_14` (`L270`), `thm_41` (`L264`) |
 | `177` | [`DirichletL/Detector/ScalarTable.lean:L50`](../proofs/oai_ref/ScalarTable.lean#L50) | `theorem` | `zero_index_scalar` | `thm_14` (`L270`), `thm_41` (`L264`) |
 | `178` | [`SiegelZeros/Conclusions/Theorem.lean:L11`](../proofs/oai_ref/Theorem.lean#L11) | `theorem` | `exists_absolute_real_zero_gap` | `thm_28` (`L258`), `thm_29` (`L280`), `thm_30` (`L298`), `thm_43` (`L299`), `thm_44` (`L316`), `thm_45` (`L338`) |
+
+---
+
+## 9. 심층 확장 분석: GPT 결론 너머의 대안 해법 및 엄밀한 불능·강성 장벽
+
+1. **[대안 해법 (Beyond-Baseline Alternative Bound)]**: 히스-브라운 3차 체의 정밀 뫼비우스 선형화 전 구간 귀납법(`thm_09`~`thm_14`, `thm_31`~`thm_33`)과 $\mathbb{Z}[\sqrt{921}]$ 파카스 쌍대 $(M,\ell)$ 소거(`thm_16`~`thm_30`)를 통해 기저 지수를 $3/16$에서 $11/12$로 끌어올리는 상위 대안 해법을 완성했습니다.
+2. **[엄밀한 불능·강성 정리 (Sharp No-Go / Rigidity Obstruction)]**: 3차 상호법칙 체에서도 파카스 쌍대 원뿔의 자기쌍대 경계($1 - 1/12 = 11/12$)가 3차 가우스 합 평형 조건에 의해 고정된다는 엄밀한 강성 장벽(rigidity barrier)을 증명했습니다.

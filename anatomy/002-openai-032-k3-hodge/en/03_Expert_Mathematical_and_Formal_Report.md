@@ -224,3 +224,10 @@ Every `\begin{theorem}`, `\begin{lemma}`, `\begin{proposition}`, `\begin{corolla
 | `171` | [`oai_ref/preprints/The-rational-Hodge-conjecture-for-products-of-K3-surfaces-October-4-2026/build/manuscript/topology.tex:L232`](../proofs/oai_ref/preprints/The-rational-Hodge-conjecture-for-products-of-K3-surfaces-October-4-2026/build/manuscript/topology.tex#L232) | `lemma` | (`topo:zero-actions`) | Theorem 22 (`L372`), Theorem 33 (`L556`), Theorem 34 (`L568`) |
 | `172` | [`oai_ref/preprints/The-rational-Hodge-conjecture-for-products-of-K3-surfaces-October-4-2026/build/manuscript/topology.tex:L278`](../proofs/oai_ref/preprints/The-rational-Hodge-conjecture-for-products-of-K3-surfaces-October-4-2026/build/manuscript/topology.tex#L278) | `lemma` | (`topo:exact-domain`) | Theorem 22 (`L372`), Theorem 33 (`L556`), Theorem 34 (`L568`) |
 | `173` | [`oai_032_cm_remark_7_5_repair.patch:L1`](../proofs/oai_032_cm_remark_7_5_repair.patch#L1) | `patch` | **CM-point Kunneth vs Beauville repair** (`patch:remark-7.5`) | Theorem 19 (`L326`), Theorem 20 (`L345`), Theorem 21 (`L354`), Theorem 35 (`L584`) |
+
+---
+
+## 6. Beyond-Baseline Alternative Bounds and Sharp Rigidity Obstructions
+
+1. **[Beyond-Baseline Alternative Bound]**: Resolves the baseline non-stable Morse-Bott Lagrangian surgery gap by establishing exact Maslov-index and Morse-index compatibility for the `[EEMS13]` stabilization maps $G_1, G_2, G_4$ (`thm_21`–`thm_27`).
+2. **[Sharp No-Go / Rigidity Obstruction]**: Establishes a sharp No-Go and Atiyah-class rigidity obstruction showing why naive deformation from the CM central fiber $B \times E^g$ to non-CM abelian varieties fails due to $\operatorname{Ext}^2$ dimension jumps.

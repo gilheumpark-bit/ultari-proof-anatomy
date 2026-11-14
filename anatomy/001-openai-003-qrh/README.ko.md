@@ -2,7 +2,7 @@
 
 # 사례 001: OpenAI `#003` 준리만 가설 ($\text{Re}(s) > 7/8$) 해부 및 형식증명
 
-이 패키지는 OpenAI `#003`(`lean/OAI/NumberTheory/DirichletL/` 및 `SiegelZeros/` `3,414`개 `.lean` 파일, 핵심 레퍼런스 `26/26`개 파일 및 `178/178`개 선언문 1:1 전수 대조 포함)을 감사한 결과물입니다. 유리수 근사 상수 뒤의 정확한 대수 방정식을 복원하고 `48`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `28/28`건 포착)로 검증했습니다. 본 분석은 Lean 형식증명 내부의 유리수 상수·대수적 근·부등식 여유분을 규명하며 원 논문의 주정리 결론을 변경하거나 부정하지 않습니다.
+이 패키지는 OpenAI `#003`(`lean/OAI/NumberTheory/DirichletL/` 및 `SiegelZeros/` `3,414`개 `.lean` 파일, 핵심 레퍼런스 `26/26`개 파일 및 `178/178`개 선언문 1:1 전수 대조 포함)을 감사한 결과물입니다. 유리수 근사 상수 뒤의 정확한 대수 방정식을 복원하고 `48`개 독립 Lean 4 정리(`v4.29.0-rc8`, `0 sorry`, 가설 변이 `47/47`건 포착)로 검증했습니다. 본 분석은 Lean 형식증명 내부의 유리수 상수·대수적 근·부등식 여유분을 규명하며 원 논문의 주정리 결론을 변경하거나 부정하지 않습니다.
 
 ## 핵심 해부 결과
 
@@ -21,7 +21,7 @@
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
-- [`proofs/qrh_exponent_and_parameter_bounds.lean`](./proofs/qrh_exponent_and_parameter_bounds.lean): 정리 1~27 (`0 sorry`, 변이 `17/17`건 포착).
+- [`proofs/qrh_exponent_and_parameter_bounds.lean`](./proofs/qrh_exponent_and_parameter_bounds.lean): 정리 1~27 (`0 sorry`, 변이 `36/36`건 포착).
 - [`proofs/qrh_continuation_and_rescaling.lean`](./proofs/qrh_continuation_and_rescaling.lean): 정리 28~48 (`0 sorry`, 변이 `11/11`건 포착).
 - [`proofs/verify_symbolic_qrh.py`](./proofs/verify_symbolic_qrh.py): [`proofs/symbolic_verification_result.json`](./proofs/symbolic_verification_result.json)을 재현하는 결정론적 `SymPy` 스크립트.
 

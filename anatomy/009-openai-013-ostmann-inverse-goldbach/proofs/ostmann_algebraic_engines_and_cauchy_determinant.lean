@@ -21,7 +21,7 @@ private def int_sq_nonneg (x : Int) : 0 ≤ x * x := by
     exact h_pos
 
 -- ============================================================================
--- Dual-Witness Abstract Structure (`RH31` `AXIOMATIC_DUAL_WITNESS_V2`)
+-- Dual-Witness Abstract Structure (Positive Model & Counter-Model Verification)
 -- ============================================================================
 
 /-- Abstract algebraic specification of the Ostmann 4-pillar contradiction engine. -/
@@ -385,7 +385,7 @@ theorem thm_73_bulk_quadratic_congruence_factorization
   rw [Int.sub_mul, Int.mul_add, Int.mul_add, Int.mul_comm d y]
   omega
 
-/-- Theorem 74 (`RH31` Universal theorem consuming all axioms of `OstmannContractionSystem`):
+/-- Theorem 74 (Universal theorem consuming all axioms of `OstmannContractionSystem`):
     In any valid `OstmannContractionSystem`, the combined supply-plus-tree exponent is at most `-18`,
     scales strictly below `-18 * m` for any sample count `m >= 1`, and the Cauchy determinant is non-zero. -/
 theorem thm_74_universal_ostmann_system_contraction
@@ -402,7 +402,7 @@ theorem thm_74_universal_ostmann_system_contraction
   have h_m18 : (-18) * m ≤ -18 := by omega
   exact ⟨h_sum, by omega, hc⟩
 
-/-- Theorem 75 (`RH31` Counter-model witness when `a1 = a2`):
+/-- Theorem 75 (Counter-model witness when `a1 = a2`):
     If a degenerate summand pair has `a1 = a2`, then the cleared 2x2 Cauchy determinant
     `(b1 - a2)*(b2 - a1) - (b1 - a1)*(b2 - a2)` vanishes identically (`¬ (... != 0)`),
     showing that distinctness `a1 != a2` is strictly necessary for Section 8 internal separation. -/

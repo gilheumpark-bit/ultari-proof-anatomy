@@ -11,13 +11,13 @@
 namespace PiLaurentDeterminantAndFlintHills
 
 /-- Nonnegativity of integer squares `0 <= x * x` without Mathlib. -/
-private def int_sq_nonneg (x : Int) : 0 ≤ x * x := by
-  by_cases h : 0 ≤ x
-  · exact Int.mul_nonneg h h
-  · have hn : 0 ≤ -x := by omega
-    have h_pos : 0 ≤ (-x) * (-x) := Int.mul_nonneg hn hn
-    rw [Int.neg_mul_neg] at h_pos
-    exact h_pos
+private def pi_sq_nonneg (z : Int) : 0 ≤ z * z := by
+  by_cases hz : 0 ≤ z
+  · exact Int.mul_nonneg hz hz
+  · have h_neg : 0 ≤ -z := by omega
+    have h_mul : 0 ≤ (-z) * (-z) := Int.mul_nonneg h_neg h_neg
+    rw [Int.neg_mul_neg] at h_mul
+    exact h_mul
 
 /-- Recursive dyadic sum `∑_{j=0}^{k-1} 2 * 2^j` for universal LCM induction (`thm_63`). -/
 def dyadicLcmSum (k : Nat) : Nat :=
@@ -32,7 +32,7 @@ def distinctDegreeSum (n : Nat) : Nat :=
   | n' + 1 => distinctDegreeSum n' + n'
 
 -- ============================================================================
--- Dual-Witness Abstract Structure (`RH31` `AXIOMATIC_DUAL_WITNESS_V2`)
+-- Dual-Witness Abstract Structure (Positive Model & Counter-Model Verification)
 -- ============================================================================
 
 /-- Abstract algebraic specification of the Section 3–4 Laurent determinant contradiction engine. -/
@@ -69,8 +69,8 @@ theorem thm_51_gaussian_integer_clearing_and_liouville_obstruction
     (h_nonzero : 1 ≤ re_part ∨ 1 ≤ -re_part ∨ 1 ≤ im_part ∨ 1 ≤ -im_part)
     (h_norm : norm_sq = re_part * re_part + im_part * im_part) :
     1 ≤ norm_sq ∧ deg_gaussian - period_residual = 2 := by
-  have hr : 0 ≤ re_part * re_part := int_sq_nonneg re_part
-  have hi : 0 ≤ im_part * im_part := int_sq_nonneg im_part
+  have hr : 0 ≤ re_part * re_part := pi_sq_nonneg re_part
+  have hi : 0 ≤ im_part * im_part := pi_sq_nonneg im_part
   rcases h_nonzero with h1 | h2 | h3 | h4
   · have hpos : 0 ≤ (re_part - 1) * (re_part - 1) := Int.mul_nonneg (by omega) (by omega)
     have hexp : (re_part - 1) * (re_part - 1) = re_part * re_part - 2 * re_part + 1 := by
@@ -143,7 +143,7 @@ theorem thm_54_cauchy_schwarz_taylor_collision_degree_lower_bound
     rw [Int.sub_mul, Int.mul_sub, Int.mul_sub]; omega
   have h_d : diff = 2 * (m_1 * m_1 + m_2 * m_2) - (m_1 + m_2) * (m_1 + m_2) := by
     rw [← h_sum]; exact h_diff
-  exact ⟨by omega, (show diff = (m_1 - m_2) * (m_1 - m_2) by omega) ▸ int_sq_nonneg (m_1 - m_2)⟩
+  exact ⟨by omega, (show diff = (m_1 - m_2) * (m_1 - m_2) by omega) ▸ pi_sq_nonneg (m_1 - m_2)⟩
 
 /-- [Theorem 55] Two-alternative determinant upper bound and contradiction (`Proposition 3.4`, `determinant.tex:353-432`,
 `Eq. (3.18)-(3.20)`, `Approximation/DeterminantContradiction.lean:1-120`, `Analysis/DeterminantAnalyticBound.lean:1-90`):
@@ -345,7 +345,7 @@ theorem thm_64_row_translation_binomial_error_decomposition
     shifted_sq - u_i * u_i = error_tail ∧ u_i * u_i ≤ shifted_sq - 2 * (u_i * j_eps) := by
   have h_exp : (u_i + j_eps) * (u_i + j_eps) = u_i * u_i + 2 * (u_i * j_eps) + j_eps * j_eps := by
     rw [Int.add_mul, Int.mul_add, Int.mul_add, Int.mul_comm j_eps u_i]; omega
-  have h_nn : 0 ≤ j_eps * j_eps := int_sq_nonneg j_eps
+  have h_nn : 0 ≤ j_eps * j_eps := pi_sq_nonneg j_eps
   omega
 
 /-- [Theorem 65] Universal structural induction (`∀ n : Nat`) on distinct Taylor degree collision sum
@@ -409,9 +409,9 @@ theorem thm_67_three_group_cauchy_schwarz_occupancy_variance
     have hc2 : n3 * n2 = n2 * n3 := Int.mul_comm n3 n2
     have hc3 : n1 * n3 = n3 * n1 := Int.mul_comm n1 n3
     omega
-  have hp1 : 0 ≤ (n1 - n2) * (n1 - n2) := int_sq_nonneg (n1 - n2)
-  have hp2 : 0 ≤ (n2 - n3) * (n2 - n3) := int_sq_nonneg (n2 - n3)
-  have hp3 : 0 ≤ (n3 - n1) * (n3 - n1) := int_sq_nonneg (n3 - n1)
+  have hp1 : 0 ≤ (n1 - n2) * (n1 - n2) := pi_sq_nonneg (n1 - n2)
+  have hp2 : 0 ≤ (n2 - n3) * (n2 - n3) := pi_sq_nonneg (n2 - n3)
+  have hp3 : 0 ≤ (n3 - n1) * (n3 - n1) := pi_sq_nonneg (n3 - n1)
   rw [hM]
   omega
 
@@ -531,7 +531,7 @@ theorem thm_73_continued_fraction_convergent_divergence_term_bound
   have hm := Int.mul_le_mul_of_nonneg_left h_sin (show (0 : Int) ≤ 4 by decide)
   omega
 
-/-- [Theorem 74] (`RH31` Universal theorem consuming all axioms of `PiExponentContradictionSystem`):
+/-- [Theorem 74] (Universal theorem consuming all axioms of `PiExponentContradictionSystem`):
 in any valid `PiExponentContradictionSystem`, the analytic upper exponent is strictly below the
 arithmetic lower floor (`analyticUpper - arithLower <= -2`), scales to `<= -2 * m` for any
 multiplicity `m >= 1`, and the interpolation Vandermonde determinant is nonzero. -/
@@ -548,7 +548,7 @@ theorem thm_74_universal_pi_exponent_contradiction_system
     Int.mul_le_mul_of_nonneg_right h_gap (by omega)
   exact ⟨h_gap, by omega, hv⟩
 
-/-- [Theorem 75] (`RH31` Counter-model witness when two interpolation centers collide `x1 = x2`):
+/-- [Theorem 75] (Counter-model witness when two interpolation centers collide `x1 = x2`):
 if two interpolation centers coincide (`x1 = x2`), then the `3x3` Vandermonde determinant
 `(x2 - x1) * (x3 - x1) * (x3 - x2)` vanishes identically (`¬ (... != 0)`), demonstrating that
 coordinatewise center distinctness (`ApproximationCenters.lean:17`) is strictly required. -/

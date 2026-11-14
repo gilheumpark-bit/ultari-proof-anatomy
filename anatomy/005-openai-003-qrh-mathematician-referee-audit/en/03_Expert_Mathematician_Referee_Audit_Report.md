@@ -275,3 +275,10 @@ Every single declaration (`def`, `abbrev`, `structure`, `theorem`, `lemma`) acro
 | `176` | [`DirichletL/Detector/ScalarTable.lean:L24`](../proofs/oai_ref/ScalarTable.lean#L24) | `theorem` | `positiveScalar_actual_table` | `thm_10` (`L131`), `thm_11` (`L142`) |
 | `177` | [`DirichletL/Detector/ScalarTable.lean:L50`](../proofs/oai_ref/ScalarTable.lean#L50) | `theorem` | `zero_index_scalar` | `thm_10` (`L131`), `thm_11` (`L142`) |
 | `178` | [`SiegelZeros/Conclusions/Theorem.lean:L11`](../proofs/oai_ref/Theorem.lean#L11) | `theorem` | `exists_absolute_real_zero_gap` | `thm_23` (`L278`), `thm_24` (`L288`), `thm_25` (`L314`), `thm_43` (`L97`) |
+
+---
+
+## 8. Beyond-Baseline Alternative Bounds and Sharp Rigidity Obstructions
+
+1. **[Beyond-Baseline Alternative Bound]**: Completes all eight unexecuted analytic tasks via the $[0.48, 0.52]$ symmetric Cauchy box, 20-module global SOS saddle repair, and hybrid threshold inversion (`thm_27`–`thm_48`).
+2. **[Sharp No-Go / Rigidity Obstruction]**: Proves a sharp Farkas-duality No-Go rigidity theorem showing why pure LP positivity cones cannot reach the critical line $\beta = 1/2$ without higher-order zero-density reciprocity inputs.

@@ -1,6 +1,6 @@
 /-
   OpenAI #005 (Catalan's Constant Is Irrational)
-  Case 011 — Part III:
+  Case 011, Part III:
   Two-Sheet Blaschke-Cauchy Interpolation, Haagerup-Chebyshev Energy Reduction,
   Möbius-Descartes Root Certificate, and Adelico-Archimedean Contradiction (Theorems 51–75).
 
@@ -95,8 +95,9 @@ theorem thm_55_energy_field_origin_exponent_cancellation
 
 /-- [Theorem 56] Homogeneous scale-`48` logarithmic field coefficients of `W_κ(x)` and `W_s(s)`
 (`energy.tex:10-16, 190-194`, Equation (37)):
-multiplying by `48` gives `48*(α + 2γ) = 19`, `48*(2η) = 4`, `48*(κ/2 + α + η + γ) = 24*κ + 17`
-(`65` for `κ = 2` and `41` for `κ = 1`), and `48*(-1 + α + γ) = -48 + 11 + 4 = -33` (`-11/16` unscaled). -/
+multiplying by `48` gives `w_x_abs = 19`, `w_x_one = 4`, `w_x_quad2 = 65`, `w_x_quad1 = 41`, and
+`log2_pref_48 = -33` (`-11/16` unscaled), coupled via the contact identity `a48 = b48 + g48` (`L = n + a = n + b + q`)
+and `w_x_quad2 - w_x_abs - w_x_one = 48 - (b48 - h48) - 1 = 42`. -/
 theorem thm_56_energy_field_coefficients_in_scale_48
     (a48 b48 g48 h48 w_x_abs w_x_one w_x_quad2 w_x_quad1 log2_pref_48 : Int)
     (ha : a48 = 11) (hb : b48 = 7) (hg : g48 = 4) (hh : h48 = 2)
@@ -106,7 +107,8 @@ theorem thm_56_energy_field_coefficients_in_scale_48
     (hwq1 : w_x_quad1 = 24 * 1 + a48 + h48 + g48)
     (hlog2 : log2_pref_48 = -48 + a48 + g48) :
     w_x_abs = 19 ∧ w_x_one = 4 ∧ w_x_quad2 = 65 ∧ w_x_quad1 = 41 ∧
-    log2_pref_48 = -33 ∧ b48 + g48 = 11 := by
+    w_x_quad2 - w_x_quad1 = 24 ∧ log2_pref_48 = -33 ∧ w_x_abs - log2_pref_48 = 48 + g48 ∧
+    a48 = b48 + g48 ∧ w_x_quad2 - w_x_abs - w_x_one = 48 - (b48 - h48) - 1 := by
   omega
 
 /-- [Theorem 57] Haagerup-Chebyshev square completion `-a^2 <= b^2 - 2ab`
@@ -387,7 +389,7 @@ theorem thm_72_global_irrationality_of_catalan_constant_contradiction
     False := by
   omega
 
-/-- [Theorem 73] Dual-witness evaluation (`RH31`) of the hyperbolic 3-manifold volume corollaries
+/-- [Theorem 73] Dual-witness evaluation of the hyperbolic 3-manifold volume corollaries
 (`conclusion.tex:18-51`, `Agol2010TwoCusps`, `Voight2021Quaternion`):
 in units of `G / 3`, Agol's minimum 2-cusp hyperbolic 3-manifold volume `V_Agol = 4G` (Whitehead link and
 `(-2, 3, 8)`-pretzel link) has integer multiple `m_Agol = 12`, while the Bianchi orbifold `PSL_2(Z[i]) \ H^3`

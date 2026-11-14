@@ -23,4 +23,4 @@ This case (`012-openai-266-mub-six`) dissects OpenAI's flagship quantum-informat
 - [`proofs/mub6_weiner_completion_and_gram_sos.lean`](proofs/mub6_weiner_completion_and_gram_sos.lean#L1-L416) (`Theorems 26-50`, `416` lines, `113/113` mutations caught, `nonlin: 4`)
 - [`proofs/mub6_stratigraphy_and_binary64_audit.lean`](proofs/mub6_stratigraphy_and_binary64_audit.lean#L1-L404) (`Theorems 51-75`, `404` lines, `142/142` mutations caught, `nonlin: 3`)
 - [`proofs/verify_symbolic_mub266.py`](proofs/verify_symbolic_mub266.py#L1-L439) $\to$ [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json#L1-L180)
-- [`proofs/problem_spec.md`](proofs/problem_spec.md#L1-L20) & [`manifest.json`](manifest.json#L1-L530)
+- [`proofs/problem_spec.md`](proofs/problem_spec.md#L1-L24) & [`manifest.json`](manifest.json#L1-L560)

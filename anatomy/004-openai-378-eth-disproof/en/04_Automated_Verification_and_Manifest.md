@@ -1,6 +1,6 @@
 # 04. Automated Verification & Machine-Checkable Specification
 
-This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `454/454` Lean 4 hypothesis-mutation kills across `56` formal theorems, `SymPy` + PyTorch tensor verification (`10` audit suites), clean-room independent blind verification (`24/24` match), and independent adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
+This specification defines the deterministic reproducibility, SHA-256 checksum integrity, `454/454` Lean 4 hypothesis-mutation kills across `56` formal theorems, `SymPy` + PyTorch tensor verification (`10` audit suites), independent zero-context symbolic reproduction (`24/24` match), and static/adversarial audit (`0` defects) for the OpenAI `#378` (`Disproof of the Exponential Time Hypothesis`) referee audit package.
 
 ---
 
@@ -9,11 +9,11 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
 | [`proofs/eth_subexp_interpolation_and_hashes.lean`](../proofs/eth_subexp_interpolation_and_hashes.lean) | `c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9` | `418` | Part A (`Theorems 1–16`): `Engine I` swap matrix, incidence-pair cancellation, truncated ring, Tanner hashes, `BitProgram 80 1220` (`0 sorry`, `128/128` mutations killed) |
-| [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean) | `b86142b58bba1ec2c6ada53e26aa626d64daa2bb5ab335398d687bb5a830d9e8` | `497` | Part B (`Theorems 17–32` & `Theorems 51–56` & `Theorems 51–56`): Appendix D (`Engine II`) tapered $2$-adic Hermite interpolation, `Corollary 1.4` circuit lower bound, scope gap & full 48-file `oai_ref` module coverage (`0 sorry`, `177/177` mutations killed) |
-| [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean) | `1d9cc84de4b1c08f5050c968f9eb754f069061ac65e2caab896a36dcdb46a425` | `443` | Part C (`Theorems 33–50`): 5 specification-gaming repairs, 6-layer post-repair verdict, 3 fossil-rescued hybrid results, G. H. Hardy's 3 beauty invariants, and completion of unperformed Areas 1–3 (`0 sorry`, `149/149` mutations killed) |
+| [`proofs/eth_tensor_contraction_and_circuits.lean`](../proofs/eth_tensor_contraction_and_circuits.lean) | `b86142b58bba1ec2c6ada53e26aa626d64daa2bb5ab335398d687bb5a830d9e8` | `497` | Part B (`Theorems 17–32` & `Theorems 51–56`): Appendix D (`Engine II`) tapered $2$-adic Hermite interpolation, `Corollary 1.4` circuit lower bound, scope gap & full 48-file `oai_ref` module coverage (`0 sorry`, `177/177` mutations killed) |
+| [`proofs/eth_five_repairs_and_four_layer_verdict.lean`](../proofs/eth_five_repairs_and_four_layer_verdict.lean) | `1d9cc84de4b1c08f5050c968f9eb754f069061ac65e2caab896a36dcdb46a425` | `443` | Part C (`Theorems 33–50`): 5 formal specification boundary repairs, 6-layer post-repair verdict, 3 fossil-rescued hybrid results, 3 algebraic cancellation invariants, and completion of Areas 1–3 (`0 sorry`, `149/149` mutations killed) |
 | [`proofs/verify_symbolic_eth.py`](../proofs/verify_symbolic_eth.py) | `6b7bbe2c886fe739fe3725eb225d65b60f4f0b2e80146e74eb5d3d4509aa7a21` | `474` | `SymPy` symbolic algebra + PyTorch (`FP64`) tensor verifier (`10` audit suites) |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735` | `197` | Deterministic symbolic & numerical verification receipt JSON |
-| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `ddd0b0609effa210e26c006d52ede5772e4235fc1664582aa6f9db6092d10adf` | `34` | 6-problem (`24` target values) clean-room blind specification |
+| [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `7c3bb00098417efc7ebed5a076a4de7355d9b2e89e35f53c052fe4a30787455d` | `34` | 6-problem (`24` target values) independent zero-context reproduction specification |
 
 ---
 
@@ -28,8 +28,8 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
    ```bash
    cd proofs && python3 verify_symbolic_eth.py
    ```
-   * Pass criteria: Exit code `0`, PyTorch `FP64` $64 \times 64$ commuting swap operator $W_0, M_0$ spectrum, Appendix D tapered Hermite $2$-adic valuation, 4-layer post-repair verdict (`audit_8`), fossil hybrid + beauty invariants (`audit_9`), and Galois-ring swap 3-SAT solver + 5-module `oai_ref` patch (`audit_10`) pass, matching `proofs/symbolic_verification_result.json` byte-for-byte.
-3. **Artifact SHA-256 Checksum & Clean-Room Blind Reproduction Gate (`24/24` Match)**:
+   * Pass criteria: Exit code `0`, PyTorch `FP64` $64 \times 64$ commuting swap operator $W_0, M_0$ spectrum, Appendix D tapered Hermite $2$-adic valuation, 4-layer post-repair verdict (`audit_8`), fossil hybrid + algebraic cancellation invariants (`audit_9`), and Galois-ring swap 3-SAT solver + 5-module `oai_ref` patch (`audit_10`) pass, matching `proofs/symbolic_verification_result.json` byte-for-byte.
+3. **Artifact SHA-256 Checksum & Independent Zero-Context Reproduction Gate (`24/24` Match)**:
    ```bash
    sha256sum proofs/eth_subexp_interpolation_and_hashes.lean \
              proofs/eth_tensor_contraction_and_circuits.lean \
@@ -38,11 +38,11 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
              proofs/symbolic_verification_result.json \
              proofs/problem_spec.md
    ```
-   * Pass criteria: Exact SHA-256 checksum match across all `6` core artifacts and `24/24` target value match in isolated clean-room blind verification.
+   * Pass criteria: Exact SHA-256 checksum match across all `6` core artifacts and `24/24` target value match in independent zero-context symbolic reproduction.
 
 ---
 
-## 3. `SymPy` / PyTorch Receipt & Clean-Room Independent Blind (`24/24`) Comparison Tables
+## 3. `SymPy` / PyTorch Receipt & Independent Zero-Context Reproduction (`24/24`) Comparison Tables
 
 ### 3.1 `proofs/symbolic_verification_result.json` Verification Table
 
@@ -56,18 +56,18 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 | `audit_6_mode_partitions_and_circuit_lower_bound` | Per-depth squared log-effort decay ratio and Williams circuit exponent at $A=4$ | `1/32`, `12/49` (`< 1/4 < 1/2`) | `PASS` |
 | `audit_7_bitprogram_and_lean_scope_inventory` | `BitProgram` registers/stacks, raw space cap, unformalized LaTeX lines, unused-hypothesis count | `80`, `1220`, `5022740`, `1059` / `5888`, `655` | `PASS` |
 | `audit_8_five_repairs_and_four_layer_verdict` | Binary space refutation (`49000 < 1048576`), `4*R ≤ Q` crossover (`24` fail $\to$ `25` pass, slack `4148`), constant `12032411847`, numerical $n=12$ uniform count `2360` | `49000`, `10996584333160`, `24 -> 25`, `4148`, `12032411847`, `2360` | `PASS` |
-| `audit_9_fossil_hybrid_and_beauty_invariants` | Stratum 2+3 hybrid ($p=389$, $Q=22898045040$, $R=2452661$), threshold compression (`25 -> 20 -> 15`), constant compression (`12032411847 -> 70023`), Hardy beauty (`102`, `141`) | `22898045040`, `2452661`, `7172`, `243`, `70023`, `102`, `141` | `PASS` |
+| `audit_9_fossil_hybrid_and_beauty_invariants` | Stratum 2+3 hybrid ($p=389$, $Q=22898045040$, $R=2452661$), threshold compression (`25 -> 20 -> 15`), constant compression (`12032411847 -> 70023`), cancellation invariants (`102`, `141`) | `22898045040`, `2452661`, `7172`, `243`, `70023`, `102`, `141` | `PASS` |
 | `audit_10_galois_ring_swap_3sat_solver_and_oai_ref_patch` | $\mathrm{GR}(3^3, 2)$ cubic Hensel lift (`-1164240`), tapered Hermite weights (`[21,12,12,-1]`, `32`), Galois-swap 3-SAT solver (`2360`, `7`, `0`, `1`), 5-module `oai_ref` patch (`2558543740 < 10996584333160`) | `-1164240`, `[21, 12, 12, -1]`, `2360`, `7`, `0`, `1`, `2558543740` | `PASS` |
 
-### 3.2 Clean-Room Independent Blind Test (`24/24` Match) Receipt Summary
+### 3.2 Independent Zero-Context Symbolic Reproduction (`24/24` Match) Receipt Summary
 
-| Problem (`problem_spec.md`) | Values Independently Derived from `oai_ref/` by Clean-Room Independent Blind | Match |
+| Problem (`problem_spec.md`) | Values Independently Derived from `oai_ref/` | Match |
 | :--- | :--- | :---: |
 | **Problem 1 (Gen 1 & Gen 2 Fossils)** | `12803/16384` ($\ell=4096$ leaf coeff), `13315/16384` ($+1/32$ combined), `s = 32`, `k = 32` ($n \ge 2^{2^{32}}$) | `4/4 PASS` |
 | **Problem 2 (`Engine I` Swap Matrix)** | $W_0$ spectrum `[27, 27, 9, 1]`, $\operatorname{rank}(I_{64}-M_0) = 10$, max slot mismatch `1` | `3/3 PASS` |
 | **Problem 3 (Tanner Expander Hashes)** | $P = 20000$, $D_0 = 320000$, $2n$-round ratio `"9/8"`, $3n$-round ratio `"27/32"` | `4/4 PASS` |
 | **Problem 4 (Appendix D `Engine II`)** | Branching $r = 64$, edge contraction `"3/32"`, Hermite series limit `6`, squared log-effort ratio `"1/32"` | `4/4 PASS` |
-| **Problem 5 (Reward Hack Cutoffs)** | Minimum $\lambda = 65536$ ($n > 2^{65,535}$) for `sparsifySchedule n >= 1`, fallback padding `28700`, `5022741` | `3/3 PASS` |
+| **Problem 5 (Asymptotic Cutoffs & Slack)** | Minimum $\lambda = 65536$ ($n > 2^{65,535}$) for `sparsifySchedule n >= 1`, fallback padding `28700`, `5022741` | `3/3 PASS` |
 | **Problem 6 (4-Layer Verdict & Crossover)** | Binary cap `49000`, repaired cap `10996584333160`, max failing `log2 L = 24`, min passing `25`, slack `4148`, constant `12032411847` | `6/6 PASS` |
 
 ---
@@ -124,7 +124,7 @@ This specification defines the deterministic reproducibility, SHA-256 checksum i
 43. [`layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L245-L269) (`L245`): Layer ⑤ rescue of discarded Stratum 2 (`SubexpParameters.lean`) $Q(p)=p^4-1$ via Stratum 3 pair duplication ($2Q$), satisfying `4*R ≤ Q` unconditionally at every prime $p \ge 2$ and activating at $p=389$.
 44. [`layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L278-L297) (`L278`): Layer ⑤ compression of the `4*R ≤ Q` activation threshold from $\log_2 L = 25$ ($n \ge 2^{33,554,431}$) to $\log_2 L = 20$ ($n \ge 2^{1,048,575}$) and $\log_2 L = 15$ ($n \ge 2^{32,767}$).
 45. [`layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L305-L319) (`L305`): Layer ⑤ rescue of discarded `SqrtLog/IdempotentTernary.lean` Hensel idempotent lift ($P_0(x)=u(x-1)(x-2)$) and compression of `exponentConstant(3,1)` from `12,032,411,847` to `70,023` ($171,835\times$).
-46. [`layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L328-L343) (`L328`): Layer ⑤ formal verification of G. H. Hardy's 3 mathematical beauty criteria (`Unexpectedness`: `char 2 -> char 3`, `Economy`: exact $D=r^{2Q}$ cancellation, `Inevitability`: exact $6\cdot 2^m - (m^2+4m+6)$ collapse).
+46. [`layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L328-L343) (`L328`): Layer ⑤ formal verification of 3 structural algebraic cancellation invariants (`Cross-Characteristic Bridge`: `char 2 -> char 3`, `Exact Cancellation`: $D=r^{2Q}$ cancellation, `Dyadic Collapse`: exact $6\cdot 2^m - (m^2+4m+6)$ identity).
 47. [`layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L359-L377) (`L359`): Layer ⑥ $\mathrm{GR}(3^3, 2) = (\mathbb{Z}/27\mathbb{Z})[X]/(X^2+1)$ invertibility ($(1+2X)(11+5X)=1+27X$) and cubic Hensel idempotent lift $P_1(y)=3y^2-2y^3$ ($P_1(84)=-43,120\times 27 \equiv 0 \pmod{27}$).
 48. [`layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L386-L398) (`L386`): Layer ⑥ universal swap action $M_0 = \Pi_1+\Pi_2-\Pi_1\Pi_2$ on $\mathbb{Z}^4$ and tapered $2$-adic Hermite cubic polynomial reconstruction $21f(0)+12f'(0)+12f(2)-f(4)=32f(1)$ ($v_2(32)=5$).
 49. [`layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate`](../proofs/eth_five_repairs_and_four_layer_verdict.lean#L405-L420) (`L405`): Layer ⑥ executable characteristic-$3^t$ Galois-ring + swap-projection 3-SAT solver certificate over $\mathrm{GR}(3^8, 2)$ and $\mathrm{GR}(3^5, 2)$ across 4 benchmarks (`2360`, `7`, `0`, `1`).

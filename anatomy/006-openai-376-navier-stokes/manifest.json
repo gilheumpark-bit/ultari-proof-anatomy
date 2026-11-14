@@ -9,28 +9,28 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "d9cf61c3eba8d06e56321ee80c19798ae042bd0a2ba13111319a389c32887789",
-    "README.ko.md": "69e5640d1a62f8b7bc29dd19d34237adc419c90dadb99c607b5a9f02d96be594",
-    "proofs/ns376_kinematic_routing_and_forensics.lean": "7a04cc360fed5e1772718a92540734c9bb549d26804009378685678a8b23a391",
-    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "d88d831ce6ef231b22501ddb090b8efdabb988dbbc1e900c5ffd7777296ebf0a",
+    "README.md": "0ffd12bd27fe129b79097dd673b4028ef84748004cbe2f6b5cbd80a4a0539e15",
+    "README.ko.md": "bae2a51e5ccb4feade293dfc19eba9b81c5a7ec799de7f900c1c7094392a089b",
+    "proofs/ns376_kinematic_routing_and_forensics.lean": "854de2d59a077144a2383ccf97e7308e4d9b519fa6075d2b7d4f230640a3c973",
+    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "50969940f2e5733094dc54d5967119ab951846f741b935601faee2532cc64259",
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
-    "ko/01_초보자용_쉬운해설.md": "952bebc8cba2f19da1abdcd22a8691d71bdb9c88c06540d17f572a51e7db4ee7",
-    "ko/02_중급자용_구조및수식가이드.md": "87cc156730e2729b8292def2a1d9d0c97d8fc8f5a57aa8ec99b630682aa874cb",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "50e27626808c90b4e1f979401e39382f83820ddd8b774cdc64edeed2465cc855",
-    "ko/04_자동검증및파서용_명세서.md": "330b52091c1530037638f6603384917b72e7512557e469a6167618c8c71a9041",
-    "en/01_Beginner_Guide.md": "f069f932654535220ecb304580553b4fefebea700115cf600b0822dec164bf7b",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "181c3944475215eece5a2744dc6170997ffc1ab0f83312bfb2834ee875eebb64",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "46921b0b972d663eb59a65c766071f33a0c2be8a1acc6e5632ef64b8ad36e3d1",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "5bd09dcc362a3754a37d9b611caedf10635d6106dc5002b2c57181ddbf46940d"
+    "ko/01_초보자용_쉬운해설.md": "0c0063f8b6f8011dde9b2b3697d69f164f19b64bcfe7891232641852f62c4fdd",
+    "ko/02_중급자용_구조및수식가이드.md": "00e208a3b14dd7b2dfe361767d420c78ae77512470b5b1d7eb3adce5d74a195a",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "6898ffc65cfd08cd4a0d5f6a951581ec7d32b0a041f94e5a367bc0098677fa48",
+    "ko/04_자동검증및파서용_명세서.md": "da4a1c6ca3370d8bf34684323a369b3ea4998186a75da2599ecbb3606fbadb27",
+    "en/01_Beginner_Guide.md": "c625c2af6759c8fc8ea98ec8243434b7a525890c94c85ec7c9b9795b9e080305",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "f9c764d62e4eae1defc2bafec8573fc49c434a10e9a1966436c972ced91c1ec5",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "09d8c682d969213004a6cd032ec504f794b8e638424dbb9c7cc753a15e073b19",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "19db2c6e1c78b20c7298394a389704f611fbc684bc859eed50323877db34a65a"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
     "layer_1b_autonomous_pde_vs_inverse_forcing": "CONDITIONAL / INVERSE-FORCING (5 box/sheet challenges satisfy the momentum equation via point-by-point residual substitution f := dt_U + (U.grad)U - nu*Delta U discharged by abel or unidirectional shear sheets with (u.grad)u = 0; Challenge 3 decouples vertical velocity into a 2+1D linear passive-scalar heat equation; SolenoidalSheetPrograms omits the paper fixed-particle halting detector and solid-box reciprocal maps)",
     "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean clones all 38 definitions and the main theorem of BalancedThreeStack.lean; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused; in the main manuscript build/, 9 of 22 references.bib entries [40.9%] are never cited via \\cite and 11 of 15 section files [4,630/5,808 lines, 79.7%] have zero human citations)",
     "layer_3_genuine_mathematical_mechanisms": "PASS (3 core mechanisms verified: curl(chi * Psi) volume-preserving affine box routing, 12*C Serrin-Gronwall L^2 energy uniqueness, and 2+1D Gaussian heat-kernel Duhamel positivity)",
-    "layer_4_ultari_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 176/176 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
+    "layer_4_ultari_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 184/184 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
   },
   "verified_key_results": {
     "part1_kinematic_routing_and_forensics": {
@@ -50,40 +50,40 @@
         "ns376_observer_box_halting_separation (Theorem 13, L232)",
         "ns376_ecosystem_1010_file_stratigraphy (Theorem 14, L251)",
         "ns376_navier_stokes_dir_631_orphan_partition (Theorem 15, L270)",
-        "ns376_challenge_clone_module_identity (Theorem 16, L292)",
-        "ns376_velocity_challenge_spec_stuffing_ratio (Theorem 17, L311)",
-        "ns376_vacuous_computable_viscosity_premise (Theorem 18, L330)",
-        "ns376_sobolev_three_derivative_loss (Theorem 19, L345)",
-        "ns376_rational_box_grid_combinatorial_explosion (Theorem 20, L358)"
+        "ns376_challenge_clone_module_identity (Theorem 16, L295)",
+        "ns376_velocity_challenge_spec_stuffing_ratio (Theorem 17, L319)",
+        "ns376_vacuous_computable_viscosity_premise (Theorem 18, L338)",
+        "ns376_sobolev_three_derivative_loss (Theorem 19, L355)",
+        "ns376_rational_box_grid_combinatorial_explosion (Theorem 20, L368)"
       ]
     },
     "part2_gronwall_uniqueness_and_repairs": {
       "lean_theorems": [
         "T21_competitor_difference_cancels_forcing (Theorem 21, L27)",
         "T22_advection_difference_energy_cancellation (Theorem 22, L43)",
-        "T23_serrin_gronwall_differential_inequality (Theorem 23, L57)",
-        "T24_gronwall_zero_initial_uniqueness (Theorem 24, L72)",
-        "T25_pressure_gradient_uniqueness_from_velocity (Theorem 25, L89)",
-        "T26_mean_zero_pressure_vanishes (Theorem 26, L103)",
-        "T27_triangular_2plus1d_divergence_decoupling (Theorem 27, L125)",
-        "T28_vertical_momentum_passive_scalar_reduction (Theorem 28, L139)",
-        "T29_horizontal_momentum_zero_backreaction (Theorem 29, L151)",
-        "T30_duhamel_heat_kernel_positivity_detection (Theorem 30, L164)",
-        "T31_duhamel_nonhalting_zero_signal (Theorem 31, L177)",
-        "T32_five_dimensional_oracle_absorbs_viscosity (Theorem 32, L192)",
-        "T33_repair1_finite_dimensional_forcing_forbids_manufactured_residual (Theorem 33, L211)",
-        "T34_repair2_autonomous_unforced_rejects_nonzero_residual (Theorem 34, L225)",
-        "T35_repair3_distinct_challenge_specification (Theorem 35, L238)",
-        "T36_repair4_active_viscosity_oracle_eliminates_vacuous_premise (Theorem 36, L251)",
-        "T37_repair5_pruned_repository_hundred_percent_reachability (Theorem 37, L266)",
-        "T38_layers_1_and_2_verdict_partition (Theorem 38, L282)",
-        "T39_layers_3_and_4_genuine_mechanisms_count (Theorem 39, L300)",
-        "T40_complete_suite_forty_five_theorems_verified (Theorem 40, L315)",
-        "T41_periodic_lattice_solenoidal_vertical_energy_identity (Theorem 41, L330)",
-        "T42_box_transport_motion_lexicographic_rank_bound (Theorem 42, L343)",
-        "T43_shear_flow_energy_comparison_advection_difference (Theorem 43, L357)",
-        "T44_balanced_transport_energy_curve_and_slice_h2_closure (Theorem 44, L369)",
-        "T45_velocity_detection_heat_kernel_and_json_challenge_parity (Theorem 45, L384)"
+        "T23_serrin_gronwall_differential_inequality (Theorem 23, L64)",
+        "T24_gronwall_zero_initial_uniqueness (Theorem 24, L105)",
+        "T25_pressure_gradient_uniqueness_from_velocity (Theorem 25, L122)",
+        "T26_mean_zero_pressure_vanishes (Theorem 26, L136)",
+        "T27_triangular_2plus1d_divergence_decoupling (Theorem 27, L158)",
+        "T28_vertical_momentum_passive_scalar_reduction (Theorem 28, L172)",
+        "T29_horizontal_momentum_zero_backreaction (Theorem 29, L184)",
+        "T30_duhamel_heat_kernel_positivity_detection (Theorem 30, L197)",
+        "T31_duhamel_nonhalting_zero_signal (Theorem 31, L210)",
+        "T32_five_dimensional_oracle_absorbs_viscosity (Theorem 32, L225)",
+        "T33_repair1_finite_dimensional_forcing_forbids_manufactured_residual (Theorem 33, L244)",
+        "T34_repair2_autonomous_unforced_rejects_nonzero_residual (Theorem 34, L258)",
+        "T35_repair3_distinct_challenge_specification (Theorem 35, L271)",
+        "T36_repair4_active_viscosity_oracle_eliminates_vacuous_premise (Theorem 36, L284)",
+        "T37_repair5_pruned_repository_hundred_percent_reachability (Theorem 37, L299)",
+        "T38_layers_1_and_2_verdict_partition (Theorem 38, L315)",
+        "T39_layers_3_and_4_genuine_mechanisms_count (Theorem 39, L333)",
+        "T40_complete_suite_forty_five_theorems_verified (Theorem 40, L348)",
+        "T41_periodic_lattice_solenoidal_vertical_energy_identity (Theorem 41, L363)",
+        "T42_box_transport_motion_lexicographic_rank_bound (Theorem 42, L376)",
+        "T43_shear_flow_energy_comparison_advection_difference (Theorem 43, L390)",
+        "T44_balanced_transport_energy_curve_and_slice_h2_closure (Theorem 44, L405)",
+        "T45_velocity_detection_heat_kernel_and_json_challenge_parity (Theorem 45, L430)"
       ]
     }
   },
@@ -96,7 +96,7 @@
     "theorems_proved": 45,
     "sorry_count": 0,
     "axiom_count": 0,
-    "hypothesis_mutations_caught": "176/176",
+    "hypothesis_mutations_caught": "184/184",
     "theorems": [
       {
         "index": 1,
@@ -192,31 +192,31 @@
         "index": 16,
         "name": "ns376_challenge_clone_module_identity",
         "file": "ns376_kinematic_routing_and_forensics.lean",
-        "line": 292
+        "line": 295
       },
       {
         "index": 17,
         "name": "ns376_velocity_challenge_spec_stuffing_ratio",
         "file": "ns376_kinematic_routing_and_forensics.lean",
-        "line": 311
+        "line": 319
       },
       {
         "index": 18,
         "name": "ns376_vacuous_computable_viscosity_premise",
         "file": "ns376_kinematic_routing_and_forensics.lean",
-        "line": 330
+        "line": 338
       },
       {
         "index": 19,
         "name": "ns376_sobolev_three_derivative_loss",
         "file": "ns376_kinematic_routing_and_forensics.lean",
-        "line": 345
+        "line": 355
       },
       {
         "index": 20,
         "name": "ns376_rational_box_grid_combinatorial_explosion",
         "file": "ns376_kinematic_routing_and_forensics.lean",
-        "line": 358
+        "line": 368
       },
       {
         "index": 21,
@@ -234,139 +234,139 @@
         "index": 23,
         "name": "T23_serrin_gronwall_differential_inequality",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 57
+        "line": 64
       },
       {
         "index": 24,
         "name": "T24_gronwall_zero_initial_uniqueness",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 72
+        "line": 105
       },
       {
         "index": 25,
         "name": "T25_pressure_gradient_uniqueness_from_velocity",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 89
+        "line": 122
       },
       {
         "index": 26,
         "name": "T26_mean_zero_pressure_vanishes",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 103
+        "line": 136
       },
       {
         "index": 27,
         "name": "T27_triangular_2plus1d_divergence_decoupling",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 125
+        "line": 158
       },
       {
         "index": 28,
         "name": "T28_vertical_momentum_passive_scalar_reduction",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 139
+        "line": 172
       },
       {
         "index": 29,
         "name": "T29_horizontal_momentum_zero_backreaction",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 151
+        "line": 184
       },
       {
         "index": 30,
         "name": "T30_duhamel_heat_kernel_positivity_detection",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 164
+        "line": 197
       },
       {
         "index": 31,
         "name": "T31_duhamel_nonhalting_zero_signal",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 177
+        "line": 210
       },
       {
         "index": 32,
         "name": "T32_five_dimensional_oracle_absorbs_viscosity",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 192
+        "line": 225
       },
       {
         "index": 33,
         "name": "T33_repair1_finite_dimensional_forcing_forbids_manufactured_residual",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 211
+        "line": 244
       },
       {
         "index": 34,
         "name": "T34_repair2_autonomous_unforced_rejects_nonzero_residual",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 225
+        "line": 258
       },
       {
         "index": 35,
         "name": "T35_repair3_distinct_challenge_specification",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 238
+        "line": 271
       },
       {
         "index": 36,
         "name": "T36_repair4_active_viscosity_oracle_eliminates_vacuous_premise",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 251
+        "line": 284
       },
       {
         "index": 37,
         "name": "T37_repair5_pruned_repository_hundred_percent_reachability",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 266
+        "line": 299
       },
       {
         "index": 38,
         "name": "T38_layers_1_and_2_verdict_partition",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 282
+        "line": 315
       },
       {
         "index": 39,
         "name": "T39_layers_3_and_4_genuine_mechanisms_count",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 300
+        "line": 333
       },
       {
         "index": 40,
         "name": "T40_complete_suite_forty_five_theorems_verified",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 315
+        "line": 348
       },
       {
         "index": 41,
         "name": "T41_periodic_lattice_solenoidal_vertical_energy_identity",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 330
+        "line": 363
       },
       {
         "index": 42,
         "name": "T42_box_transport_motion_lexicographic_rank_bound",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 343
+        "line": 376
       },
       {
         "index": 43,
         "name": "T43_shear_flow_energy_comparison_advection_difference",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 357
+        "line": 390
       },
       {
         "index": 44,
         "name": "T44_balanced_transport_energy_curve_and_slice_h2_closure",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 369
+        "line": 405
       },
       {
         "index": 45,
         "name": "T45_velocity_detection_heat_kernel_and_json_challenge_parity",
         "file": "ns376_gronwall_uniqueness_and_repairs.lean",
-        "line": 384
+        "line": 430
       }
     ]
   },

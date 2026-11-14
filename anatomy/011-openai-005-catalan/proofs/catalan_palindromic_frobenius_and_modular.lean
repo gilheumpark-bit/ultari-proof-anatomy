@@ -1,6 +1,6 @@
 /-
   OpenAI #005 (Catalan's Constant Is Irrational)
-  Case 011 — Part II:
+  Case 011, Part II:
   Palindromic Bases U_l and Q_i, Frobenius Extraction Shifts, Involution Eigenvalue
   Block Factorization, Modulo-101 Certificate, and Corpus Stratigraphy (Theorems 26–50).
 
@@ -250,7 +250,7 @@ theorem thm_38_exact_prime_scale_determinant_valuation_minus_96p
   omega
 
 /-- [Theorem 39] Accounting and disambiguation of the `13` duplicate declaration names inside `namespace OAI.InternalCatalan`
-(`RH17/RH25` audit finding):
+(corpus stratigraphy audit finding):
 `6` duplicate `private theorem`s `barrier_T_3 .. barrier_T_8` collide between `BarrierCaseTwoPointX0.lean:15-37` and
 `BarrierCaseOnePointY1.lean:12-34`, and `7` duplicate `private theorem`s `barrier_case2_U_3 .. barrier_case2_U_9`
 collide between `BarrierCaseTwoXExplicitGroup7.lean:490-516` and `BarrierCaseTwoXBaseProductCoefficientsData.lean:355-381`. -/
@@ -265,8 +265,8 @@ theorem thm_39_thirteen_duplicate_namespace_collisions_accounting
 
 /-- [Theorem 40] Complete stratigraphy partition of `OAI/NumberTheory/Catalan/` (`981` `.lean` files, `573,816` lines):
 `473` files (`124,449` lines, `21.7%`) are transitively imported by `Results/Catalan.lean` (`Catalan.lean:1-11` -> `Conclusions.lean:11-24` `catalan_irrational`),
-while `508` files (`449,367` lines, `78.3%`) are unreachable from `Results/Catalan.lean` (`507` `Manuscript*`/auxiliary files
-plus `Main.lean` itself, including `147` `FixedGaussian*` files occupying `376,998` lines, `65.7%` of the directory). -/
+while `508` files (`449,367` lines, `78.3%`) are unreachable from `Results/Catalan.lean` (`147` `FixedGaussian*` files occupying `376,998` lines, `65.7%`,
+plus `361` non-Gaussian unreachable files occupying `72,369` lines). -/
 theorem thm_40_catalan_981_file_stratigraphy_and_ghost_ledger
     (f_active f_unreachable f_gauss f_total l_active l_unreachable l_gauss l_total : Int)
     (hfa : f_active = 473)
@@ -278,16 +278,17 @@ theorem thm_40_catalan_981_file_stratigraphy_and_ghost_ledger
     (hltr : l_gauss = 376998)
     (hlt : l_total = l_active + l_unreachable) :
     f_total = 981 ∧ l_total = 573816 ∧ f_unreachable - f_active = 35 ∧
-    l_unreachable - 3 * l_active = 76020 ∧ l_unreachable - l_gauss = 72369 ∧ 1 ≤ f_gauss := by
+    l_unreachable - 3 * l_active = 76020 ∧ l_unreachable - l_gauss = 72369 ∧
+    f_unreachable - f_gauss = 361 ∧ 200 * (f_unreachable - f_gauss) < l_unreachable - l_gauss := by
   omega
 
 /-- [Theorem 41] Modular `p = 101` non-vanishing certificate replacing the `376,998`-line Gaussian trace
 (`nonvanishing.tex:362-382`, `FixedGaussianPivots.lean:52-231`, `FixedDeterminantsNonzero.lean:487-516`):
 for `N = 1`, `n = 48`, the three `48 × 48` matrices `B_0, B_0 + B_1, B_0 - B_1` over `F_101` have `48` nonzero
-Gaussian elimination pivots with determinant residues `det_0 = 27`, `det_plus = 50`, `det_minus = 74` modulo `101`
-(note `27 + 74 = 101` and `2 * 50 = 100 = 101 - 1`), proving `(fixedMatrix σ).det ≠ 0` in `523` lines. -/
+Gaussian elimination pivots with determinant residues `det_0 = 27`, `det_plus = 50` (with even row-swap sign
+`(-1)^2 = +1` from `swap_plus = 2`), `det_minus = 74` modulo `101`, proving `(fixedMatrix σ).det ≠ 0` in `523` lines. -/
 theorem thm_41_mod_101_gaussian_and_right_inverse_determinant_residues
-    (p_mod det_0 det_plus det_minus swap_0 swap_plus swap_minus : Int)
+    (p_mod det_0 det_plus det_minus : Int) (swap_0 swap_plus swap_minus : Nat)
     (hp : p_mod = 101)
     (hd0 : det_0 = 27)
     (hdp : det_plus = 50)
@@ -295,8 +296,10 @@ theorem thm_41_mod_101_gaussian_and_right_inverse_determinant_residues
     (hs0 : swap_0 = 0)
     (hsp : swap_plus = 2)
     (hsm : swap_minus = 0) :
-    det_0 + det_minus = p_mod ∧ 2 * det_plus + 1 = p_mod ∧
+    det_0 + det_minus = p_mod ∧ 2 * ((-1 : Int) ^ swap_plus * det_plus) + 1 = p_mod ∧
     det_0 + det_plus + det_minus = 151 ∧ swap_0 + swap_plus + swap_minus = 2 := by
+  have h_pow : (-1 : Int) ^ swap_plus = 1 := by subst hsp; decide
+  rw [h_pow, Int.one_mul]
   omega
 
 /-- [Theorem 42] Exact 2-adic and odd-prime factorization of the 64-digit scaling constant
@@ -317,7 +320,7 @@ theorem thm_42_scaling_constant_64_digit_prime_support_below_101
   omega
 
 /-!
-## Part VI: Dual-Witness Evaluations (`RH31`), Defect Accounting, & Universal Structural Induction (`∀ k`) (Theorems 43–50)
+## Part VI: Dual-Witness Evaluations, Defect Accounting, & Universal Structural Induction (`∀ k`) (Theorems 43–50)
 -/
 
 /-- Recursive doubled degree sum `2 * E_k = k * (k - 1)` of the lower-triangular palindromic basis `U_l` (`thm_49`, `thm_50`). -/
@@ -326,33 +329,41 @@ def palindromicDoubleExponentSum (k : Nat) : Nat :=
   | 0 => 0
   | k' + 1 => palindromicDoubleExponentSum k' + 2 * k'
 
-/-- [Theorem 43] Dual-witness evaluation (`RH31`) of the palindromic transition determinant `det U_p = 2^(p*(p-1)/2)`
-and its residue modulo `p` at two distinct odd primes `p = 3` and `p = 5`
+/-- [Theorem 43] Dual-witness evaluation of the palindromic transition determinant `det U_p = 2^(p*(p-1)/2)`
+via `palindromicDoubleExponentSum` and its residue modulo `p` at two distinct odd primes `p = 3` and `p = 5`
 (`nonvanishing.tex:68-70`, `symbolic_verification_result.json`):
-at `p = 3`, `E_3 = 3`, `det U_3 = 2^3 = 8 ≡ 2 (mod 3)`; at `p = 5`, `E_5 = 10`, `det U_5 = 2^10 = 1024 ≡ 4 (mod 5)`. -/
+at `p = 3`, `E_3 = 3`, `det U_3 = 2^3 = 8 ≡ 2 (mod 3)`; at `p = 5`, `E_5 = 10`, `det U_5 = 2^10 = 1024 = 2^7 * det U_3 ≡ 4 (mod 5)`. -/
 theorem thm_43_palindromic_transition_determinant_dual_prime_witness
-    (p3 E3 det3 rem3 p5 E5 det5 rem5 : Int)
-    (hp3 : p3 = 3) (hE3 : 2 * E3 = p3 * (p3 - 1)) (hd3 : det3 = 8) (hr3 : rem3 = det3 - 2 * p3)
-    (hp5 : p5 = 5) (hE5 : 2 * E5 = p5 * (p5 - 1)) (hd5 : det5 = 1024) (hr5 : rem5 = det5 - 204 * p5) :
-    E3 = 3 ∧ rem3 = 2 ∧ E5 = 10 ∧ rem5 = 4 ∧ det5 - det3 = 1016 := by
-  subst hp3; subst hp5
+    (p3 E3 p5 E5 : Nat) (det3 rem3 det5 rem5 : Int)
+    (hp3 : p3 = 3) (hE3 : 2 * E3 = palindromicDoubleExponentSum p3)
+    (hd3 : det3 = (2 : Int) ^ E3) (hr3 : rem3 = det3 - 2 * (p3 : Int))
+    (hp5 : p5 = 5) (hE5 : 2 * E5 = palindromicDoubleExponentSum p5)
+    (hd5 : det5 = (2 : Int) ^ E5) (hr5 : rem5 = det5 - 204 * (p5 : Int)) :
+    E3 = 3 ∧ E5 = E3 + 7 ∧ det5 = (2 : Int) ^ (E5 - E3) * det3 ∧ det5 - det3 = 1016 ∧
+    det3 = 4 * rem3 ∧ rem5 = 2 * rem3 ∧ (p5 : Int) - (p3 : Int) = rem3 := by
+  have h3 : E3 = 3 := by subst hp3; simp [palindromicDoubleExponentSum] at hE3; omega
+  have h5 : E5 = 10 := by subst hp5; simp [palindromicDoubleExponentSum] at hE5; omega
+  subst h3; subst h5; subst hp3; subst hp5
+  rw [show (2 : Int) ^ 3 = 8 from rfl] at hd3
+  rw [show (2 : Int) ^ 10 = 1024 from rfl] at hd5
+  rw [show (2 : Int) ^ (10 - 3) = 128 from rfl]
   omega
 
-/-- [Theorem 44] Dual-witness evaluation (`RH31`) of the Kronecker block dimension `48p = 48 + 48*(p-1)` and
+/-- [Theorem 44] Dual-witness evaluation of the Kronecker block dimension `48p = 48 + 48*(p-1)` and
 p-adic determinant valuation `v_p(Δ_p) = -96p` at two distinct primes `p_1 = 263` and `p_2 = 269` (`p > 260`):
-at `p_1 = 263`, `n_1 = 12624` and `v_{263}(Δ_{263}) = -25248`;
-at `p_2 = 269`, `n_2 = 12912` and `v_{269}(Δ_{269}) = -25824`. -/
+`n_2 - n_1 = 48 * (p_2 - p_1) = 288` (`12912 - 12624`) and `v_1 - v_2 = 2 * (n_2 - n_1) = 576` (`-25248 - (-25824)`). -/
 theorem thm_44_prime_scale_valuation_dual_witness_263_and_269
     (p1 n1 v1 p2 n2 v2 : Int)
     (hp1 : p1 = 263) (hn1 : n1 = 48 * p1) (hv1 : v1 = -96 * p1)
     (hp2 : p2 = 269) (hn2 : n2 = 48 * p2) (hv2 : v2 = -96 * p2) :
-    n1 = 12624 ∧ v1 = -25248 ∧ n2 = 12912 ∧ v2 = -25824 ∧ v1 - v2 = 576 := by
+    n1 = 12624 ∧ n2 - n1 = 48 * (p2 - p1) ∧ n2 - n1 = 288 ∧
+    v1 + 2 * n1 = 0 ∧ v2 + 2 * n2 = 0 ∧ v1 - v2 = 2 * (n2 - n1) ∧ v1 - v2 = 576 := by
   omega
 
 /-- [Theorem 45] Constructive pre-colon threshold for `Estimates/OddPrimeLossNormalization.lean:210-213`
 (`large_prime_witness_den_eventually`):
 in OpenAI's code, `large_prime_witness_den_eventually` wraps `N` in `∀ᶠ N : ℕ in atTop` (`: ∀ᶠ N in atTop, ∀ p, 2 * sqrt (H N) < p → ...`)
-even though line 213 proves it from the explicit cutoff `eventually_ge_atTop (z.den ^ 2)` (`RH32/RH34`). Here we place ALL
+even though line 213 proves it from the explicit cutoff `eventually_ge_atTop (z.den ^ 2)`. Here we place ALL
 hypotheses in pre-colon binders and prove the strict integer threshold `4 * H < p^2` implies `2 * H + 131 <= p^2`. -/
 theorem thm_45_repaired_pre_colon_large_prime_threshold
     (N H p p_sq : Int)

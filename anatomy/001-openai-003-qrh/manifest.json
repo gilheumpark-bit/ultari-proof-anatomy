@@ -7,23 +7,23 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "819a86e1caef758ceaf8b93fb55db8ce0984338abd51956e717598ce0141f09d",
-    "README.ko.md": "d395ede3c700bba217614c1971924f1800afbb7a4b352a5af45e7615673c6e74",
-    "proofs/qrh_exponent_and_parameter_bounds.lean": "b04012886b320c1f6e32012638f81d2be0f7ea7c75001f44ce72ab5f8e7cc92c",
+    "README.md": "55ee43262a6f655d0420915ae32447de4b3385a47ed5b9950dd6fd609c538501",
+    "README.ko.md": "112a01cbfd8e38a0e17bb7b39187a75955b32cbb7859bc2e7ec590f57384c65f",
+    "proofs/qrh_exponent_and_parameter_bounds.lean": "2342f19e01fb591321616aefdd1770faf25d4253d6a47f52a1cf188c767c4a8e",
     "proofs/qrh_continuation_and_rescaling.lean": "264ce426ee8cdd45eba29fecc35ece3eb71801a9d11e36560506b9357ae0faf9",
     "proofs/verify_symbolic_qrh.py": "cf71d7ddd3f56a8846dc6f6d58c179d2a1de1db8c5c5d0ab53ef168752942812",
     "proofs/symbolic_verification_result.json": "072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55",
     "proofs/problem_spec.md": "1a57a59bb4bfec2cbd4bfd62316c31a21e6a756155f4b64016ecad09aa78bc58",
     "ko/01_초보자용_쉬운해설.md": "bbe4c8babd21924bfbc2ff4ad9495b3200e98df84debe5b983a8164df509281c",
     "ko/02_중급자용_구조및수식가이드.md": "514fa8e8bef7ade1816174a66f20e1892de6e50414056fb5848c2f75dee8bc08",
-    "ko/03_전문가용_수론및형식증명보고서.md": "eea72a5edde670e98c206682aaec4787ed9cccfbc4237270dd5713f3bf188da8",
-    "ko/04_자동검증및파서용_명세서.md": "8f58d6ca0153612ab5c135465795735c15d24876abc6f7c60188e6a107239edd",
-    "ko/README.md": "20122de156d628ddd02af8b7ad4363af37d0a06383035e0481405ab4514756bd",
+    "ko/03_전문가용_수론및형식증명보고서.md": "6ad28295fbce2ad4763482096e89b4288daf178813407eea7b241e63229d421e",
+    "ko/04_자동검증및파서용_명세서.md": "1ad2f86ab34a6802745c8da6456b74876ff899bb6cf83bfa74dfe48fe47373c0",
+    "ko/README.md": "4c230a37798210885b4adba31ec8c25d15b93a95ebd19816ce8c32d6334f397c",
     "en/01_Beginner_Guide.md": "9c8b8f2f9f6ccd5a55e383c71a5c36eb15d82f8269b1c01bfffa0f3b16c94c09",
     "en/02_Intermediate_Math_and_Code_Guide.md": "b8ad8a3771ba8d4aec4471d8865b11b30a93033636a9bafe0e61d8b98c1c6e4d",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "2ccf51b7671a2c6ee77371b6e7861a9255ea168efed72c6f5ca6c37e2b587564",
-    "en/04_Automated_Verification_and_Manifest.md": "a832b5136eec455beffaeb06501149d298a27c349c9d0e5754307aef0cbc10ae",
-    "en/README.md": "7b73adf5390ff71f9d00d67cd2a1f596b84ef871fac54db56ec636777793bace"
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "0895141243ae597db8feb51e0737aa7ddf3b48c7788bc663fae58e8f7a56669d",
+    "en/04_Automated_Verification_and_Manifest.md": "5aca6e4e7ed46145cebd7144f2375255aa1ea0fc275ad1ee1121b9f6c2c507a0",
+    "en/README.md": "8dc297289941b157cf9473c67e8a74773fa7bbcee14cc474b5c1500d891b7374"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "48 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-48) + 100% 1-to-1 audit of all 26 OpenAI #003 reference files (178 declarations).",

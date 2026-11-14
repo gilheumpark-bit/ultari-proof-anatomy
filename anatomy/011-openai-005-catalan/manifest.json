@@ -9,9 +9,9 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_catalan005.py"
   },
   "artifacts_sha256": {
-    "proofs/catalan_rows_two_adic_and_odd_primes.lean": "fb088455c9ac422485c62f96e40351be40d57156651d360a53902b784a0f49b7",
-    "proofs/catalan_palindromic_frobenius_and_modular.lean": "82b57ec2cd3360fea4dbdf6a372c4fee4fff7cca375b9e6096b741c5ef3c7a41",
-    "proofs/catalan_real_place_energy_and_contradiction.lean": "4bf9a97bd02be92904aaf99528d1bb98bf2f80294cdcd64ff05a3e6b0980cc67",
+    "proofs/catalan_rows_two_adic_and_odd_primes.lean": "0827a102b58a53f86d9d90b981acb63a415aa29f28e02c8136b8d2118fe13c83",
+    "proofs/catalan_palindromic_frobenius_and_modular.lean": "6ef02840b38e89f1064df01daed367c5e0091a1b65c058ebe6d5f32c0404c575",
+    "proofs/catalan_real_place_energy_and_contradiction.lean": "1f6575590083a3c55e00d3c39156baae77570664cafcaf7a8aa50ae2c60700b8",
     "proofs/verify_symbolic_catalan005.py": "b12dce5f3b4b3cf2437a24f5bbb457df654637acfbd457d89aa3ece63053ba76",
     "proofs/symbolic_verification_result.json": "fb873e26faf086f35f9af70fd07190fed9b68d0e71551c289cb3542a4b559935",
     "proofs/problem_spec.md": "c8a6d68226f844b4581809354bdc4402d912d2c60d708d4b8ceb93499ec72289"
@@ -31,26 +31,26 @@
         "thm_03_taylor_contact_order_cancels_zeta_two (Theorem 3, L57)",
         "thm_04_integer_column_filter_support_in_contact_window (Theorem 4, L74)",
         "thm_05_moment_recurrence_telescoping_step (Theorem 5, L91)",
-        "thm_06_two_adic_quadratic_completion_of_square (Theorem 6, L106)",
-        "thm_07_two_adic_l_variable_boundary_monotonicity (Theorem 7, L124)",
-        "thm_08_two_adic_smoothing_tail_valuation_bound (Theorem 8, L138)",
-        "thm_09_kummer_odd_digit_single_carry_identity (Theorem 9, L154)",
-        "thm_10_odd_prime_reduced_index_strictly_below_p (Theorem 10, L169)",
-        "thm_11_lower_pair_range_loss_profile (Theorem 11, L192)",
-        "thm_12_local_elimination_retained_columns_40_to_52 (Theorem 12, L208)",
-        "thm_13_repaired_oddUpperProfiles_without_vacuous_hlo (Theorem 13, L230)",
-        "thm_14_odd_loss_breakpoint_switch_at_69_halves (Theorem 14, L248)",
-        "thm_15_eight_piece_odd_loss_integral_8609_halves (Theorem 15, L262)",
-        "thm_16_finite_place_rational_lower_bound_certificate (Theorem 16, L282)",
-        "thm_17_repaired_zero_tail_without_vacuous_cutoff (Theorem 17, L300)",
-        "thm_18_active_tree_ten_hypothesis_defects_accounting (Theorem 18, L312)",
-        "thm_19_two_layer_minor_valuation_three_bounds (Theorem 19, L339)",
-        "thm_20_central_layer_rank_nullity_elimination (Theorem 20, L354)",
-        "thm_21_weighted_pnt_riemann_step_sandwich (Theorem 21, L366)",
-        "thm_22_small_prime_error_quadratic_negligibility (Theorem 22, L383)",
-        "thm_23_two_adic_quadratic_dual_witness_evaluation (Theorem 23, L401)",
-        "thm_24_column_degree_triangular_sum_induction (Theorem 24, L414)",
-        "thm_25_column_degree_sum_linear_lower_bound (Theorem 25, L429)"
+        "thm_06_two_adic_quadratic_completion_of_square (Theorem 6, L108)",
+        "thm_07_two_adic_l_variable_boundary_monotonicity (Theorem 7, L126)",
+        "thm_08_two_adic_smoothing_tail_valuation_bound (Theorem 8, L140)",
+        "thm_09_kummer_odd_digit_single_carry_identity (Theorem 9, L156)",
+        "thm_10_odd_prime_reduced_index_strictly_below_p (Theorem 10, L176)",
+        "thm_11_lower_pair_range_loss_profile (Theorem 11, L199)",
+        "thm_12_local_elimination_retained_columns_40_to_52 (Theorem 12, L215)",
+        "thm_13_repaired_oddUpperProfiles_without_vacuous_hlo (Theorem 13, L237)",
+        "thm_14_odd_loss_breakpoint_switch_at_69_halves (Theorem 14, L255)",
+        "thm_15_eight_piece_odd_loss_integral_8609_halves (Theorem 15, L269)",
+        "thm_16_finite_place_rational_lower_bound_certificate (Theorem 16, L289)",
+        "thm_17_repaired_zero_tail_without_vacuous_cutoff (Theorem 17, L307)",
+        "thm_18_active_tree_ten_hypothesis_defects_accounting (Theorem 18, L319)",
+        "thm_19_two_layer_minor_valuation_three_bounds (Theorem 19, L346)",
+        "thm_20_central_layer_rank_nullity_elimination (Theorem 20, L361)",
+        "thm_21_weighted_pnt_riemann_step_sandwich (Theorem 21, L373)",
+        "thm_22_small_prime_error_quadratic_negligibility (Theorem 22, L390)",
+        "thm_23_two_adic_quadratic_dual_witness_evaluation (Theorem 23, L408)",
+        "thm_24_column_degree_triangular_sum_induction (Theorem 24, L421)",
+        "thm_25_column_degree_sum_linear_lower_bound (Theorem 25, L436)"
       ]
     },
     "pillar2_palindromic_frobenius_and_modular": {
@@ -86,16 +86,16 @@
         "thm_38_exact_prime_scale_determinant_valuation_minus_96p (Theorem 38, L243)",
         "thm_39_thirteen_duplicate_namespace_collisions_accounting (Theorem 39, L257)",
         "thm_40_catalan_981_file_stratigraphy_and_ghost_ledger (Theorem 40, L270)",
-        "thm_41_mod_101_gaussian_and_right_inverse_determinant_residues (Theorem 41, L289)",
-        "thm_42_scaling_constant_64_digit_prime_support_below_101 (Theorem 42, L307)",
-        "thm_43_palindromic_transition_determinant_dual_prime_witness (Theorem 43, L333)",
-        "thm_44_prime_scale_valuation_dual_witness_263_and_269 (Theorem 44, L345)",
-        "thm_45_repaired_pre_colon_large_prime_threshold (Theorem 45, L357)",
-        "thm_46_rational_base_matrix_construction_dimension_chain (Theorem 46, L370)",
-        "thm_47_gaussian_plus_even_swap_parity_sign_preservation (Theorem 47, L386)",
-        "thm_48_six_active_files_nine_unused_binder_and_dummy_defects (Theorem 48, L402)",
-        "thm_49_palindromic_exponent_sum_triangular_identity (Theorem 49, L418)",
-        "thm_50_palindromic_exponent_sum_monotonicity (Theorem 50, L433)"
+        "thm_41_mod_101_gaussian_and_right_inverse_determinant_residues (Theorem 41, L290)",
+        "thm_42_scaling_constant_64_digit_prime_support_below_101 (Theorem 42, L310)",
+        "thm_43_palindromic_transition_determinant_dual_prime_witness (Theorem 43, L336)",
+        "thm_44_prime_scale_valuation_dual_witness_263_and_269 (Theorem 44, L355)",
+        "thm_45_repaired_pre_colon_large_prime_threshold (Theorem 45, L368)",
+        "thm_46_rational_base_matrix_construction_dimension_chain (Theorem 46, L381)",
+        "thm_47_gaussian_plus_even_swap_parity_sign_preservation (Theorem 47, L397)",
+        "thm_48_six_active_files_nine_unused_binder_and_dummy_defects (Theorem 48, L413)",
+        "thm_49_palindromic_exponent_sum_triangular_identity (Theorem 49, L429)",
+        "thm_50_palindromic_exponent_sum_monotonicity (Theorem 50, L444)"
       ]
     },
     "pillar3_real_place_energy_and_contradiction": {
@@ -113,26 +113,26 @@
         "thm_53_blaschke_cauchy_contour_gluing_cancellation (Theorem 53, L55)",
         "thm_54_hilbert_space_compression_determinant_exponent (Theorem 54, L70)",
         "thm_55_energy_field_origin_exponent_cancellation (Theorem 55, L84)",
-        "thm_56_energy_field_coefficients_in_scale_48 (Theorem 56, L100)",
-        "thm_57_haagerup_chebyshev_square_completion_bound (Theorem 57, L116)",
-        "thm_58_damping_perturbation_uniform_error_bound (Theorem 58, L137)",
-        "thm_59_weakened_finite_size_endpoint_positivity (Theorem 59, L150)",
-        "thm_60_andreief_vandermonde_pair_count_plus_diagonal (Theorem 60, L165)",
-        "thm_61_derivative_numerator_polynomial_degrees (Theorem 61, L186)",
-        "thm_62_mobius_descartes_root_bracket_exhaustion_43_plus_7 (Theorem 62, L204)",
-        "thm_63_global_derivative_bound_and_mvt_allowance (Theorem 63, L225)",
-        "thm_64_case_2_certified_upper_bound_minus_2_290939875 (Theorem 64, L243)",
-        "thm_65_case_1_certified_upper_bound_minus_2_296789875 (Theorem 65, L261)",
-        "thm_66_gaussian_trace_vs_modular_101_line_reduction (Theorem 66, L278)",
-        "thm_67_main_lean_unused_manuscript_imports_ratio (Theorem 67, L297)",
-        "thm_68_manuscript_citation_concentration_and_missing_primaries (Theorem 68, L315)",
-        "thm_69_product_formula_nonzero_rational_determinant_identity (Theorem 69, L342)",
-        "thm_70_coarse_contradiction_gap_between_229084_and_229090 (Theorem 70, L353)",
-        "thm_71_sharp_rational_contradiction_gap_in_common_denominator (Theorem 71, L366)",
-        "thm_72_global_irrationality_of_catalan_constant_contradiction (Theorem 72, L381)",
-        "thm_73_hyperbolic_three_manifold_volume_rational_multiples (Theorem 73, L396)",
-        "thm_74_descartes_sign_variation_step_lower_bound (Theorem 74, L408)",
-        "thm_75_descartes_variation_strict_positivity (Theorem 75, L421)"
+        "thm_56_energy_field_coefficients_in_scale_48 (Theorem 56, L101)",
+        "thm_57_haagerup_chebyshev_square_completion_bound (Theorem 57, L118)",
+        "thm_58_damping_perturbation_uniform_error_bound (Theorem 58, L139)",
+        "thm_59_weakened_finite_size_endpoint_positivity (Theorem 59, L152)",
+        "thm_60_andreief_vandermonde_pair_count_plus_diagonal (Theorem 60, L167)",
+        "thm_61_derivative_numerator_polynomial_degrees (Theorem 61, L188)",
+        "thm_62_mobius_descartes_root_bracket_exhaustion_43_plus_7 (Theorem 62, L206)",
+        "thm_63_global_derivative_bound_and_mvt_allowance (Theorem 63, L227)",
+        "thm_64_case_2_certified_upper_bound_minus_2_290939875 (Theorem 64, L245)",
+        "thm_65_case_1_certified_upper_bound_minus_2_296789875 (Theorem 65, L263)",
+        "thm_66_gaussian_trace_vs_modular_101_line_reduction (Theorem 66, L280)",
+        "thm_67_main_lean_unused_manuscript_imports_ratio (Theorem 67, L299)",
+        "thm_68_manuscript_citation_concentration_and_missing_primaries (Theorem 68, L317)",
+        "thm_69_product_formula_nonzero_rational_determinant_identity (Theorem 69, L344)",
+        "thm_70_coarse_contradiction_gap_between_229084_and_229090 (Theorem 70, L355)",
+        "thm_71_sharp_rational_contradiction_gap_in_common_denominator (Theorem 71, L368)",
+        "thm_72_global_irrationality_of_catalan_constant_contradiction (Theorem 72, L383)",
+        "thm_73_hyperbolic_three_manifold_volume_rational_multiples (Theorem 73, L398)",
+        "thm_74_descartes_sign_variation_step_lower_bound (Theorem 74, L410)",
+        "thm_75_descartes_variation_strict_positivity (Theorem 75, L423)"
       ]
     }
   },
@@ -172,102 +172,102 @@
       {
         "name": "thm_06_two_adic_quadratic_completion_of_square",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 106
+        "line": 108
       },
       {
         "name": "thm_07_two_adic_l_variable_boundary_monotonicity",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 124
+        "line": 126
       },
       {
         "name": "thm_08_two_adic_smoothing_tail_valuation_bound",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 138
+        "line": 140
       },
       {
         "name": "thm_09_kummer_odd_digit_single_carry_identity",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 154
+        "line": 156
       },
       {
         "name": "thm_10_odd_prime_reduced_index_strictly_below_p",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 169
+        "line": 176
       },
       {
         "name": "thm_11_lower_pair_range_loss_profile",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 192
+        "line": 199
       },
       {
         "name": "thm_12_local_elimination_retained_columns_40_to_52",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 208
+        "line": 215
       },
       {
         "name": "thm_13_repaired_oddUpperProfiles_without_vacuous_hlo",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 230
+        "line": 237
       },
       {
         "name": "thm_14_odd_loss_breakpoint_switch_at_69_halves",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 248
+        "line": 255
       },
       {
         "name": "thm_15_eight_piece_odd_loss_integral_8609_halves",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 262
+        "line": 269
       },
       {
         "name": "thm_16_finite_place_rational_lower_bound_certificate",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 282
+        "line": 289
       },
       {
         "name": "thm_17_repaired_zero_tail_without_vacuous_cutoff",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 300
+        "line": 307
       },
       {
         "name": "thm_18_active_tree_ten_hypothesis_defects_accounting",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 312
+        "line": 319
       },
       {
         "name": "thm_19_two_layer_minor_valuation_three_bounds",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 339
+        "line": 346
       },
       {
         "name": "thm_20_central_layer_rank_nullity_elimination",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 354
+        "line": 361
       },
       {
         "name": "thm_21_weighted_pnt_riemann_step_sandwich",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 366
+        "line": 373
       },
       {
         "name": "thm_22_small_prime_error_quadratic_negligibility",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 383
+        "line": 390
       },
       {
         "name": "thm_23_two_adic_quadratic_dual_witness_evaluation",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 401
+        "line": 408
       },
       {
         "name": "thm_24_column_degree_triangular_sum_induction",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 414
+        "line": 421
       },
       {
         "name": "thm_25_column_degree_sum_linear_lower_bound",
         "file": "proofs/catalan_rows_two_adic_and_odd_primes.lean",
-        "line": 429
+        "line": 436
       },
       {
         "name": "thm_26_palindromic_space_dimension_p",
@@ -347,52 +347,52 @@
       {
         "name": "thm_41_mod_101_gaussian_and_right_inverse_determinant_residues",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 289
+        "line": 290
       },
       {
         "name": "thm_42_scaling_constant_64_digit_prime_support_below_101",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 307
+        "line": 310
       },
       {
         "name": "thm_43_palindromic_transition_determinant_dual_prime_witness",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 333
+        "line": 336
       },
       {
         "name": "thm_44_prime_scale_valuation_dual_witness_263_and_269",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 345
+        "line": 355
       },
       {
         "name": "thm_45_repaired_pre_colon_large_prime_threshold",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 357
+        "line": 368
       },
       {
         "name": "thm_46_rational_base_matrix_construction_dimension_chain",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 370
+        "line": 381
       },
       {
         "name": "thm_47_gaussian_plus_even_swap_parity_sign_preservation",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 386
+        "line": 397
       },
       {
         "name": "thm_48_six_active_files_nine_unused_binder_and_dummy_defects",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 402
+        "line": 413
       },
       {
         "name": "thm_49_palindromic_exponent_sum_triangular_identity",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 418
+        "line": 429
       },
       {
         "name": "thm_50_palindromic_exponent_sum_monotonicity",
         "file": "proofs/catalan_palindromic_frobenius_and_modular.lean",
-        "line": 433
+        "line": 444
       },
       {
         "name": "thm_51_real_place_normalized_parameters_and_D_star",
@@ -422,102 +422,102 @@
       {
         "name": "thm_56_energy_field_coefficients_in_scale_48",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 100
+        "line": 101
       },
       {
         "name": "thm_57_haagerup_chebyshev_square_completion_bound",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 116
+        "line": 118
       },
       {
         "name": "thm_58_damping_perturbation_uniform_error_bound",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 137
+        "line": 139
       },
       {
         "name": "thm_59_weakened_finite_size_endpoint_positivity",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 150
+        "line": 152
       },
       {
         "name": "thm_60_andreief_vandermonde_pair_count_plus_diagonal",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 165
+        "line": 167
       },
       {
         "name": "thm_61_derivative_numerator_polynomial_degrees",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 186
+        "line": 188
       },
       {
         "name": "thm_62_mobius_descartes_root_bracket_exhaustion_43_plus_7",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 204
+        "line": 206
       },
       {
         "name": "thm_63_global_derivative_bound_and_mvt_allowance",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 225
+        "line": 227
       },
       {
         "name": "thm_64_case_2_certified_upper_bound_minus_2_290939875",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 243
+        "line": 245
       },
       {
         "name": "thm_65_case_1_certified_upper_bound_minus_2_296789875",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 261
+        "line": 263
       },
       {
         "name": "thm_66_gaussian_trace_vs_modular_101_line_reduction",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 278
+        "line": 280
       },
       {
         "name": "thm_67_main_lean_unused_manuscript_imports_ratio",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 297
+        "line": 299
       },
       {
         "name": "thm_68_manuscript_citation_concentration_and_missing_primaries",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 315
+        "line": 317
       },
       {
         "name": "thm_69_product_formula_nonzero_rational_determinant_identity",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 342
+        "line": 344
       },
       {
         "name": "thm_70_coarse_contradiction_gap_between_229084_and_229090",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 353
+        "line": 355
       },
       {
         "name": "thm_71_sharp_rational_contradiction_gap_in_common_denominator",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 366
+        "line": 368
       },
       {
         "name": "thm_72_global_irrationality_of_catalan_constant_contradiction",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 381
+        "line": 383
       },
       {
         "name": "thm_73_hyperbolic_three_manifold_volume_rational_multiples",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 396
+        "line": 398
       },
       {
         "name": "thm_74_descartes_sign_variation_step_lower_bound",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 408
+        "line": 410
       },
       {
         "name": "thm_75_descartes_variation_strict_positivity",
         "file": "proofs/catalan_real_place_energy_and_contradiction.lean",
-        "line": 421
+        "line": 423
       }
     ]
   }

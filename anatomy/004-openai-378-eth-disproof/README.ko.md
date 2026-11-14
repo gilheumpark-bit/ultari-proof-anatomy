@@ -7,8 +7,8 @@
 ## 핵심 해부 결과
 
 1. **4세대 폐기 화석 고고학**: 최종 정리에 연결된 `2,569`개 파일과 버려진 `1,408`개 화석 파일(`35.4%`, `226,053`줄)을 분리해 `1세대`($2^{0.9n}$)부터 `4세대`까지의 진화 과정을 복원합니다.
-2. **5대 형식화 우회 기법 감사**: `languageScanner` 진리표 DFA 내장, `sparsifySchedule = 0`($n \le 2^{65,535}$) 비구성적 절단, 단항 패딩, 여유 상수 부풀리기, 표수 3(`Lean`) 대 표수 0(`LaTeX`) 괴리를 규명합니다.
-3. **부록 D 형식화 및 화석 하이브리드 복원**: 부록 D의 $2$-진 에르미트 감쇠($1/32$)를 형식화하고, 폐기된 `2~3세대` 화석을 결합해 다항식 지수 상수를 `12,032,411,847 -> 70,023`($171,835$배)으로 압축합니다.
+2. **5대 형식 명세 경계 설계 감사**: 폐기된 1세대 `languageScanner`([`FixedParameters.lean:759-808`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/FixedParameters.lean#L759-L808)) 대 활성 4세대 `FiniteFallback.Scanner`([`FiniteFallback.lean:258-299`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/FiniteFallback.lean#L258-L299)), `sparsifySchedule = 0`($n \le 2^{65,535}$, [`NativeLargeEntry.lean:48-50`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/NativeLargeEntry.lean#L48-L50)) 비구성적 절단, [`Final.lean:104-148`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean#L104-L148)(`exact_count_eth`, $n+|F|+1$ 기준)과 달리 `L = formulaBitLength F` 단독 다항 공간 상한을 요구한 [`SubexponentialSAT.lean:216-217`](proofs/oai_ref/lean/ComparatorChallenges/SubexponentialSAT.lean#L216-L217)의 단항 `encodeNat`($L \ge n$), 여유 상수 패딩, [`lean/docs/378.md`](proofs/oai_ref/lean/docs/378.md)에 명시된 표수 3(`Lean`, `Engine I`) 대 표수 0(`LaTeX`, `Engine II`) 분리 구조를 규명합니다.
+3. **부록 D 형식화, 고전 원저 감사 및 화석 하이브리드 복원**: 부록 D의 $2$-진 에르미트 감쇠($1/32$)를 형식화하고, 핵심 증명부 `1,552`줄(`3~4절` 및 `부록 D`)의 고전 원저 귀속을 복원하며, 폐기된 `2~3세대` 화석([`SubexpParameters.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SubexpParameters.lean#L51-L115), [`IdempotentTernary.lean`](proofs/oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SqrtLog/IdempotentTernary.lean#L15-L67))을 결합해 지수 상수를 `12,032,411,847 -> 70,023`($171,835$배)으로 압축합니다.
 
 ## 4단계 독자 맞춤형 가이드
 

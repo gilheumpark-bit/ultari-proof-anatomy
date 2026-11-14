@@ -46,7 +46,7 @@ flowchart TD
 
 ---
 
-## 3. Why Classical Prime Sieves Failed for 76 Years (`Why 1: The Parity Barrier and Phase Cancellation`)
+## 3. Why Classical Prime Sieves Failed for 76 Years (The Parity Barrier and Phase Cancellation)
 
 Classical sieves (Eratosthenes, Selberg) only use the local zero-avoidance condition $a + b \not\equiv 0 \pmod p$ at each prime $p$. By themselves, such congruences hit the **Cauchy-Davenport barrier**:
 - For example, at $p = 7$, choosing $A_7 = \{1, 2, 3\}$ and $B_7 = \{1, 2, 3\}$ gives two sets that each occupy nearly half of all residues ($3/7 \approx 1/2$), yet their sumset $A_7 + B_7 = \{2, 3, 4, 5, 6\} \pmod 7$ completely misses $0 \pmod 7$.
@@ -55,7 +55,7 @@ Classical sieves (Eratosthenes, Selberg) only use the local zero-avoidance condi
 
 ---
 
-## 4. How the Proof Works in Three Steps + Toy Numerical Hand-Calculations (`Why 2–4`)
+## 4. How the Proof Works in Three Steps + Toy Numerical Hand-Calculations
 
 OpenAI `#013` breaks through this barrier in three stages (**Finite Summand Elimination $\to$ Fourier Supply Contraction $\to$ Binary Tree Permutation Contradiction**):
 

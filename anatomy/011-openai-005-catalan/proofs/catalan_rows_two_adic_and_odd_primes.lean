@@ -1,6 +1,6 @@
 /-
   OpenAI #005 (Catalan's Constant Is Irrational)
-  Case 011 — Part I:
+  Case 011, Part I:
   Chebyshev-Laurent Row Contact, ζ(2) Cancellation, 2-Adic Quadratic Minimization,
   Odd-Prime Carry Filtration, and Repaired Profile Bounds (Theorems 1–25).
 
@@ -85,17 +85,19 @@ theorem thm_04_integer_column_filter_support_in_contact_window
   omega
 
 /-- [Theorem 5] Boundary moment recurrence identity (`foundations.tex:113-133`):
-for `d >= 2` and `u >= 0`, the beta-integral recurrence `(d + u + 1) * I_next = (u + 1) * I_curr`
-(expanded into `d_I_next + u1_I_next = u1_I_curr`) transforms `lhs = d_I_next` into the telescoping
-difference `rhs = u1_I_curr - u1_I_next = (u + 1) * (I_curr - I_next)`. -/
+for `d >= 2` and `u >= 0`, the beta-integral recurrence `d_I_next + u1_I_next = (d + u + 1) * I_next = (u + 1) * I_curr`
+couples `(d + u + 1) * I_next` directly to `lhs = d_I_next` and `rhs = (d + u + 1) * I_next - u1_I_next`,
+yielding `lhs = rhs`, `lhs + u1_I_next = (d + u + 1) * I_next`, and `3 <= d + u + 1`. -/
 theorem thm_05_moment_recurrence_telescoping_step
-    (d u d_I_next u1_I_curr u1_I_next lhs rhs : Int)
+    (d u I_next d_I_next u1_I_next lhs rhs : Int)
     (hd : 2 ≤ d)
     (hu : 0 ≤ u)
-    (h_rec : d_I_next + u1_I_next = u1_I_curr)
+    (h_mul : d_I_next + u1_I_next = (d + u + 1) * I_next)
     (h_lhs : lhs = d_I_next)
-    (h_rhs : rhs = u1_I_curr - u1_I_next) :
-    lhs = rhs ∧ 3 ≤ d + u + 1 := by
+    (h_rhs : rhs = (d + u + 1) * I_next - u1_I_next) :
+    lhs = rhs ∧ lhs + u1_I_next = (d + u + 1) * I_next ∧ 3 ≤ d + u + 1 := by
+  rw [← h_mul] at h_rhs
+  rw [← h_mul]
   omega
 
 /-- [Theorem 6] Exact polynomial completion of the square for the 2-adic valuation quadratic form
@@ -149,18 +151,23 @@ theorem thm_08_two_adic_smoothing_tail_valuation_bound
 
 /-- [Theorem 9] Base-`p` single carry identity for central binomial valuation (`odd-primes.tex:80-86`):
 when `z = P * p + r` is even with `P` odd (`P = 2 * Q + 1`) and `r` odd (`1 <= r <= p - 2`),
-we have `z / 2 = Q * p + (p + r) / 2` with `(p + r) / 2 < p`, so the floor difference
-`floor(z / p) - 2 * floor((z / 2) / p) = P - 2 * Q = 1` produces exactly one `p`-adic carry. -/
+we have `z - 2 * Q * p = carry * p + r` with `carry = P - 2 * Q = 1` and `2 * low_digit = carry * p + r`,
+so `z / 2 = Q * p + low_digit` (`2 <= low_digit < p`) produces exactly one `p`-adic carry. -/
 theorem thm_09_kummer_odd_digit_single_carry_identity
-    (p P Q Qp r z half_z low_digit carry : Int)
+    (p P Q r z half_z low_digit carry : Int)
     (hr_lo : 1 ≤ r)
     (hr_hi : r ≤ p - 2)
     (hP : P = 2 * Q + 1)
-    (h_low : 2 * low_digit = p + r)
-    (hz : z = 2 * Qp + p + r)
-    (hhalf : half_z = Qp + low_digit)
+    (h_low : 2 * low_digit = carry * p + r)
+    (hz : z = P * p + r)
+    (hhalf : half_z = Q * p + low_digit)
     (hcarry : carry = P - 2 * Q) :
-    carry = 1 ∧ 2 ≤ low_digit ∧ low_digit < p ∧ 2 * half_z = z ∧ 3 ≤ p := by
+    carry = 1 ∧ z - 2 * (Q * p) = carry * p + r ∧ 2 ≤ low_digit ∧ low_digit < p ∧ 2 * half_z = z ∧ 3 ≤ p := by
+  have hc : carry = 1 := by omega
+  subst hc
+  subst hP
+  rw [Int.add_mul, Int.mul_assoc, Int.one_mul] at hz
+  rw [Int.one_mul] at h_low
   omega
 
 /-- [Theorem 10] Reduced index range bound `j' + 1 < p` (`odd-primes.tex:48-52, 218-225`):
@@ -224,7 +231,7 @@ theorem thm_12_local_elimination_retained_columns_40_to_52
 
 /-- [Theorem 13] Repaired theorem for `Estimates/OddLowerPairPool.lean:230-232` (`oddUpperProfiles_65div2_40`):
 in OpenAI's code, `oddUpperProfiles_65div2_40` declares `(hlo : 65 / 2 ≤ x)` and silences the unused-variable
-linter with `have _ := hlo` (`RH25/RH29`). Here we prove that for `x <= 40 * N` alone (with NO lower bound `hlo`),
+linter with `have _ := hlo`. Here we prove that for `x <= 40 * N` alone (with NO lower bound `hlo`),
 `R = 105N - 2x` and `S = 12N` give the profile expressions `p3 = 48N + R = 153N - 2x >= 73N` and
 `p4 = 2R + S = 222N - 4x >= 62N`. -/
 theorem thm_13_repaired_oddUpperProfiles_without_vacuous_hlo
@@ -295,7 +302,7 @@ theorem thm_16_finite_place_rational_lower_bound_certificate
 /-- [Theorem 17] Repaired theorem for `Determinants/FixedCompactRowsAll.lean:122` (`fixed_rowD_typed_tail_4`)
 and `SecondBarrier/BarrierCaseTwoBracketYGroup0.lean:138` (`barrierCase2AX_coeff_small`):
 in OpenAI's code, `fixed_rowD_typed_tail_4` carries an unused hypothesis `(_hn : 65 ≤ n)` and
-`barrierCase2AX_coeff_small` carries an unused hypothesis `(_hk : k < 37)` (`RH13`).
+`barrierCase2AX_coeff_small` carries an unused hypothesis `(_hk : k < 37)`.
 Whenever a tail sequence vanishes identically (`c = 0`), any weighted combination `w * c` vanishes without degree cutoffs. -/
 theorem thm_17_repaired_zero_tail_without_vacuous_cutoff
     (w c prod_val : Int)
@@ -306,9 +313,9 @@ theorem thm_17_repaired_zero_tail_without_vacuous_cutoff
   exact ⟨hprod, rfl⟩
 
 /-- [Theorem 18] Accounting of all `10` confirmed hypothesis/parameter/filter defects in the active Catalan proof tree:
-`8` unused `_` binders (`RH13`: `6` in `theorem`s + `2` in `def`s across `5` files), `1` linter-suppression dummy binding
-`have _ := hlo` in `OddLowerPairPool.lean:232` (`RH25/RH29`), and `1` `∀ᶠ N in atTop` post-colon filter wrapper in
-`OddPrimeLossNormalization.lean:210-213` (`large_prime_witness_den_eventually`, `RH32/RH34`). -/
+`8` unused `_` binders (`6` in `theorem`s + `2` in `def`s across `5` files), `1` linter-suppression dummy binding
+`have _ := hlo` in `OddLowerPairPool.lean:232`, and `1` `∀ᶠ N in atTop` post-colon filter wrapper in
+`OddPrimeLossNormalization.lean:210-213` (`large_prime_witness_den_eventually`). -/
 theorem thm_18_active_tree_ten_hypothesis_defects_accounting
     (u_finite u_central u_extract u_compact u_barrier dummy_bind post_colon total_defects : Int)
     (h1 : u_finite = 2)
@@ -395,7 +402,7 @@ theorem thm_22_small_prime_error_quadratic_negligibility
   have h_pos_prod : 1 ≤ n * margin := Int.mul_le_mul hn_pos h_margin_pos (by omega) (by omega)
   exact ⟨h0, hm, by omega⟩
 
-/-- [Theorem 23] Dual-witness verification (`RH31`) for the 2-adic quadratic form `Q(m, n) = 2*(96m - 53n)^2 - 505*n^2`:
+/-- [Theorem 23] Dual-witness verification for the 2-adic quadratic form `Q(m, n) = 2*(96m - 53n)^2 - 505*n^2`:
 evaluating at two distinct non-trivial scales `(n = 96, m = 53)` (stationary minimum) and `(n = 96, m = 48)` (shifted point)
 yields `Q(53, 96) = -4654080` and `Q(48, 96) = -4193280 > Q(53, 96)`. -/
 theorem thm_23_two_adic_quadratic_dual_witness_evaluation
