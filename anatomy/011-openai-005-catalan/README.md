@@ -14,6 +14,7 @@ This case (`011-openai-005-catalan`) provides a complete mathematical and formal
 | **Tier 2** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | [`ko/02_중급자용_수학및코드가이드.md`](ko/02_중급자용_수학및코드가이드.md) | `Sections 2–8` mathematical pipeline, `75`-theorem mapping (`thm_01`–`thm_75`), and symbolic solver verification |
 | **Tier 3** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | [`ko/03_전문가용_학술및수리물리보고서.md`](ko/03_전문가용_학술및수리물리보고서.md) | `981`-file stratigraphy (`473` active vs `508` unreachable + `7` `ZetaFive` + `14` Terence Tao `PrimeNumberTheoremAnd` `.patch`), `58/58` `oai_ref/` `.tex`/`.lean`/`.patch` `#L` links (`59` total files with `references.bib`), `13` duplicate namespace collisions, `10` active-tree hypothesis/filter defects + `((n N)!)^2 >= 1` prefactor discard, and `28/28` `.bib` citation stratigraphy |
 | **Tier 4** | [`en/04_Automated_Verification_and_Parser_Spec.md`](en/04_Automated_Verification_and_Parser_Spec.md) | [`ko/04_자동검증및파서용_명세서.md`](ko/04_자동검증및파서용_명세서.md) | Cryptographic SHA-256 table and one-click reproduction commands |
+| **Tier 5** | [`en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md`](en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md) | [`ko/05_OPFF_상세형_포렌식심사보고서_PR80.md`](ko/05_OPFF_상세형_포렌식심사보고서_PR80.md) | Standalone OPFF 5-Gate (`Part 0–Part 7`) forensic referee report (`PR #80`) & `OPFF TIER F` verdict |
 
 ---
 

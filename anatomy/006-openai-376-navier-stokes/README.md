@@ -19,6 +19,7 @@ This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX fi
 | **Tier 2** | **Intermediates** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | Mapping of the 10 preprint folders, 6 challenges, and 45 Lean 4 theorems. |
 | **Tier 3** | **Experts** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | Mathematical-physics referee report, Leray projection leakage analysis, and 5 structural repairs. |
 | **Tier 4** | **Automated Verifiers** | [`en/04_Automated_Verification_and_Parser_Spec.md`](en/04_Automated_Verification_and_Parser_Spec.md)<br>[`manifest.json`](manifest.json) | SHA-256 checksum table and 1-to-1 theorem line mapping. |
+| **Tier 5** | **OPFF 7-Part Referee Audit Report (`PR #76`)** | [`en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md`](en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md) | Standalone OPFF 5-Gate (`Part 0–Part 7`) forensic referee report & `OPFF TIER F` verdict. |
 
 ## Formal Proofs & One-Command Verification
 
