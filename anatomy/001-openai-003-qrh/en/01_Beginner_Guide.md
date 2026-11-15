@@ -45,11 +45,11 @@ Solving the exact algebraic equations behind `#003` reveals three structural thr
 
 ---
 
-## 5. Verified Scope vs. Open Complex-Analytic Problems (`Category A`)
+## 5. Verified Scope vs. Open Complex-Analytic Problems
 
 - **Verified Rational & Integer Theorems**:
   - All 48 theorems in [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) compile in Lean 4 with zero `sorry` or custom axioms.
   - They verify the floor root $\frac{37}{72}$, the irrational root formula, the Gram exponent gaps ($\frac{215}{3264}$ and $\frac{487}{3264}$), the vanishing of 6 of 8 branches for $m \ge 2$, the prime-norm reduction $Q \ge 480 \to 112$, and the Siegel zero local isolated Bézout and arithmetic cutoff transport chain (`96 H^{2/3} N^{4/3}`).
 - **Open Analytic Requirements**:
-  - Proving these exact parameter and exponent identities (`Category A`) does not by itself complete a complex-analytic proof of the Riemann Hypothesis.
+  - Proving these exact parameter and exponent identities does not by itself complete a complex-analytic proof of the Riemann Hypothesis.
   - Pushing the full 3,414-file formalization below $\beta = 7/8$ requires formalizing complex Mellin residue continuation for the $m=1$ terms and interval bounds for small prime norms $4 \le Q < 480$.

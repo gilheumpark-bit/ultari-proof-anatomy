@@ -6,8 +6,8 @@
   Concrete Linux / POSIX / musl Syscall Divergences, Rust CLI Zero-Tail RNG & Frozen `UNIX_EPOCH`
   Expiry Bypass, and Sail/Unicorn Fault Skip & Hooked `Drop::drop` Zeroize Gap (Theorems 26–50, 78–79).
 
-  Scope Classification: Category A (Exact ISA, BitVec ABI, & OS Syscall Semantics
-  Formalization).
+  Scope Classification: Exact ISA, BitVec ABI, & OS Syscall Semantics
+  Formalization.
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
 

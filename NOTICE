@@ -1,25 +1,49 @@
-ultari-proof-anatomy — Dissecting Human & AI Mathematical Proofs
-Copyright 2026 Gilheum Park (parkgilheum) <gilheum.park@gmail.com>
+Open Proof Forensics Foundation (OPFF) / 오픈 수리·형식증명 포렌식 재단
+ultari-proof-anatomy: Dissecting Human & AI Mathematical Proofs
+Copyright 2026 Open Proof Forensics Foundation (OPFF) & Gilheum Park (parkgilheum) <gilheum.park@gmail.com>
 Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
+Audit Charter: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
 
-1. Original Code and Formal Proofs (Apache-2.0)
+1. Original Code, Formal Proofs, and Verification Harnesses (Apache-2.0)
    All original Lean 4 formal proof files (`proofs/*.lean`, excluding `oai_ref/`),
    symbolic and numerical verification scripts (`proofs/verify_*.py`, `tools/*.py`),
    and machine-readable verification ledgers (`manifest.json`,
    `symbolic_verification_result.json`) are licensed under the Apache License,
    Version 2.0 (see `LICENSE`).
+   Pursuant to Section 4(d) of the Apache License, Version 2.0, any redistribution
+   or derivative work must retain a readable copy of the attribution notices
+   contained within this `NOTICE` file, including the name of the Open Proof
+   Forensics Foundation (OPFF), the repository URL, and any associated Zenodo DOI.
 
-2. Original Mathematical Reports and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
-   All original mathematical referee reports, forensic analyses, and 4-tier
-   reader guides (`*.md`) are licensed under both the Apache License, Version 2.0
-   and the Creative Commons Attribution 4.0 International License (CC BY 4.0,
-   https://creativecommons.org/licenses/by/4.0/). Any reproduction, redistribution,
-   translation, or derivative work must retain attribution to the original author
-   and repository (`https://github.com/gilheumpark-bit/ultari-proof-anatomy`) and
-   indicate if changes were made, pursuant to Section 4 of Apache-2.0 and Section 3
-   of CC BY 4.0.
+2. Audit Charter, Referee Reports, Verdict Ledgers, and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
+   The Joint International Audit Charter (`AUDIT_CHARTER.md`, `AUDIT_CHARTER.ko.md`),
+   all mathematical referee reports, forensic analyses, and 4-tier reader guides
+   (`*.md`) are licensed under both the Apache License, Version 2.0 and the
+   Creative Commons Attribution 4.0 International License (CC BY 4.0,
+   https://creativecommons.org/licenses/by/4.0/).
+   Pursuant to Section 3(a) of CC BY 4.0 and Section 4 of Apache-2.0, any
+   reproduction, redistribution, translation, adaptation, or academic citation
+   of the 5-Gate Joint International Audit Rubric, the 14 Forensic Checkpoints
+   (`CP-01`–`CP-14`), or the Case Verdict Ledgers (`Case 001`–`Case 015`) must
+   provide explicit attribution to the "Open Proof Forensics Foundation (OPFF)",
+   cite the official repository / Zenodo DOI, and indicate if changes were made.
+   Omission of attribution when reusing these forensic findings or frameworks
+   constitutes a license violation and grounds for editorial retraction under
+   COPE Core Practices.
 
-3. Third-Party Reference Snapshots (`oai_ref/`)
+3. Trademark and Official Certification Stamp Reservation (Apache-2.0 Section 6)
+   Pursuant to Section 6 (Trademarks) of the Apache License, Version 2.0 and
+   Section 2(b)(1) of CC BY 4.0, neither license grants permission to use the
+   trade names, trademarks, service marks, or official certification stamps of
+   the Licensor (including "Open Proof Forensics Foundation", "OPFF",
+   "오픈 수리·형식증명 포렌식 재단", or the official audit verdict stamps
+   "OPFF TIER S", "OPFF TIER A", "OPFF TIER C", "OPFF TIER F") to endorse or
+   certify any external repository, paper, or artifact not officially audited and
+   recorded in the OPFF Verdict Ledger, except as required for reasonable and
+   customary use in describing the origin of the Work and reproducing the content
+   of this `NOTICE` file.
+
+4. Third-Party Reference Snapshots (`oai_ref/`)
    Files located under `proofs/oai_ref/` (and `anatomy/*/proofs/oai_ref/`) are
    upstream reference snapshots from OpenAI (`openai/math` / First Proof 2026)
    and Google DeepMind (`google-deepmind/code-verification`) included for

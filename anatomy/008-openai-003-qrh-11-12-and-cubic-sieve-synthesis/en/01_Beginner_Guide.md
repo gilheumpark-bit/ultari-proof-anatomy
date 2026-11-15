@@ -26,7 +26,7 @@ In [`Case 001`](../../001-openai-003-qrh/README.md) and [`Case 005`](../../005-o
 
 ---
 
-## 2. Scope Boundary (`Ultari`): Proved Components vs. Open Gap to $\beta = 1/2$ (`Category A`)
+## 2. Scope Boundary: Proved Components vs. Open Gap to $\beta = 1/2$
 
 - **Proved & Ready for Assembly ($\frac{23}{24} \to \frac{71}{108} \approx 0.6574$)**:
   - Combining existing `0 sorry` modules (`CanonicalDescentScale`, unbundled `CubicGram`, Stickelberger $k_\infty = -6$, and `CubicGauss`) lowers the boundary from $\frac{23}{24}$ to $\frac{71}{108} \approx 0.6574$ and removes the `coordR` pole at $\frac{2}{3}$ ([`thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L249-L257), [`thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift`](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L264-L277)).

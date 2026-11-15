@@ -1,11 +1,13 @@
 # `ultari-proof-anatomy`: Dissecting Frontier AI Mathematical, Cryptographic & Code Verification Proofs
 
 > **Language**: **English** | [**한국어 (`README.ko.md`)**](./README.ko.md)
+> **Joint International Audit Charter & Master Verdict Ledger (`OPFF`)**: [**`AUDIT_CHARTER.md` (English)**](./AUDIT_CHARTER.md) | [**`AUDIT_CHARTER.ko.md` (한국어)**](./AUDIT_CHARTER.ko.md)
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.29.0--rc8_Verified-blue)](#one-command-repository-verification)
 [![Theorems & Mutants](https://img.shields.io/badge/Verified_Archive-892_Theorems_%7C_4%2C191%2F4%2C191_Mutants_Killed-purple)](#dissected-papers--formal-proof-archive)
 [![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#one-command-repository-verification)
 [![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#one-command-repository-verification)
+[![OPFF Charter](https://img.shields.io/badge/OPFF_Charter-5_Gates_%7C_14_Checkpoints-darkred)](./AUDIT_CHARTER.md)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
 
 In Korean, **울타리 (*Ultari*)** means a **protective boundary or enclosure**.
@@ -63,8 +65,13 @@ Each case under [`anatomy/`](./anatomy/) shares a **single `proofs/` directory**
 
 ```text
 ultari-proof-anatomy/
+├── AUDIT_CHARTER.md           # OPFF Joint International Audit Charter & Verdict Ledger (EN)
+├── AUDIT_CHARTER.ko.md        # OPFF Joint International Audit Charter & Verdict Ledger (KO)
+├── CITATION.cff               # Official CFF v1.2.0 citation metadata (GitHub Cite button)
+├── .zenodo.json               # CERN Zenodo persistent DOI metadata
+├── MANIFEST.sha256            # Root cryptographic SHA-256 ledger (281 core artifacts)
 ├── LICENSE                    # Apache License 2.0
-├── NOTICE                     # Dual-license (Apache-2.0 / CC BY 4.0) & third-party attribution
+├── NOTICE                     # Dual-license (Apache-2.0 / CC BY 4.0) & OPFF trademark notice
 ├── README.md                  # Global English index
 ├── README.ko.md               # Global Korean index
 ├── tools/
@@ -110,6 +117,7 @@ Run [`tools/verify_all.py`](./tools/verify_all.py) from the repo root to run all
 5. **Hypothesis Mutation Check**: Replaces each theorem premise with `True` one by one and confirms the Lean compiler rejects every mutant.
 
 ```bash
+sha256sum -c MANIFEST.sha256
 python3 tools/verify_all.py
 ```
 

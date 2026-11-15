@@ -8,8 +8,8 @@
   Vacuity & Classical-Only Scope, and Uncommitted `AGPL-3.0-only` ELF / `Heap/` Mirror Audit
   (Theorems 51–75, 80–81).
 
-  Scope Classification: Category A (Exact Dependency-Closure, Comparator-Isolation, &
-  Cryptographic Bound Formalization).
+  Scope Classification: Exact Dependency-Closure, Comparator-Isolation, &
+  Cryptographic Bound Formalization.
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
 

@@ -37,7 +37,7 @@ Tracing imports from [`SqrtLogSpace/Final.lean`](../proofs/oai_ref/lean/OAI/Algo
 
 ---
 
-## 3. Six-Layer Verdict After Repairing All Five Shortcuts (`Category A`)
+## 3. Six-Layer Verdict After Repairing All Five Shortcuts
 
 | Evaluation Layer | Before Repair | After Repair | Verdict |
 | :--- | :--- | :--- | :--- |

@@ -7,8 +7,8 @@
   Reflected Block-Decoder Compression, Refinement-Hygiene Self-Test Debt, and Binary
   `ValidCall` / SPQR Classical Non-Regression Scope (Theorems 1–25, 76–77).
 
-  Scope Classification: Category A (Exact Algebraic, Linker-Layout, & State-Machine
-  Formalization).
+  Scope Classification: Exact Algebraic, Linker-Layout, & State-Machine
+  Formalization.
   Every theorem is machine-checked in Lean 4 with 0 sorry and 0 custom axioms.
 -/
 

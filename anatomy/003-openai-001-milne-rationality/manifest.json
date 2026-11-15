@@ -13,16 +13,16 @@
     "proofs/milne_weil_reduction_and_repairs.lean": "9f6587fc771eb8874609946e01cb2d453a9132091fe2f2f9ad560b3b0f92eaa0",
     "proofs/verify_symbolic_milne.py": "13cd8628577c1aa90df21b7ea4c8530605f5eaf57fd17ddb2a2d08171e71e620",
     "proofs/symbolic_verification_result.json": "068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100",
-    "proofs/problem_spec.md": "5f0103a74a368aedf985607924f06bc3c24cbd6898e0dd54308112340a649268",
+    "proofs/problem_spec.md": "2e2940a96167ef0c9d2ee4b201bf835decd6366c6d00cef80c828964ccfb9fc1",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
     "ko/01_초보자용_쉬운해설.md": "06d3f89f76d2a065281fe9261a5ca46a480033a4cc1890b945c6a41c24a2bd5d",
     "ko/02_중급자용_구조및수식가이드.md": "fd43770006d7237dceb2917b592a61aab9a696f84f8a53f3bd36140b71039a93",
     "ko/03_전문가용_산술기하및형식증명보고서.md": "9573ba5aecb352914755b920d2e9eb25d1efab9b5045b03a9af1c2b51e67eaa7",
-    "ko/04_자동검증및파서용_명세서.md": "a024101cb9012fd7954e5624705953c6d24245acdb6064fb0b96007c39118827",
-    "en/01_Beginner_Guide.md": "161521de93ce33e6a290c3c841fd2390652c6b1ac231daced85e6ac5fbbc480e",
+    "ko/04_자동검증및파서용_명세서.md": "9c26c56edfe29d9e51a6f0d79052962b417cbfe5d10e74b4117248c016fb64d8",
+    "en/01_Beginner_Guide.md": "354b4835550f3b419400e80daf2ba2209fd5c59d6d1302f5dd7af177ffa08292",
     "en/02_Intermediate_Math_and_Code_Guide.md": "8394be2477db8935f996685d6363ba1f4272baf7d0b94eaba1d18ff6bac8b387",
     "en/03_Expert_Mathematical_and_Formal_Report.md": "44ac7cdf706431ecfd7800218d543de1f15700343a1867491d1af2da284880e0",
-    "en/04_Automated_Verification_and_Manifest.md": "aff1808f67265aaa4565a297d7cfd4e7c3dc446322f6ba8b5ba9c96ead10935e"
+    "en/04_Automated_Verification_and_Manifest.md": "1d35c704e2ad03d2eb7fce1492219fb6d59079e28456067bfc2e6a2cf1b0e981"
   },
   "scope_and_limitations": {
     "formalized_arithmetic_and_linear_algebra": "36 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 232/232 hypothesis mutations caught = 101/101 + 131/110) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and PyTorch tensor verification."

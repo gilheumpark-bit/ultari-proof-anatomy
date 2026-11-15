@@ -12,18 +12,18 @@
     "README.md": "0ffd12bd27fe129b79097dd673b4028ef84748004cbe2f6b5cbd80a4a0539e15",
     "README.ko.md": "bae2a51e5ccb4feade293dfc19eba9b81c5a7ec799de7f900c1c7094392a089b",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "854de2d59a077144a2383ccf97e7308e4d9b519fa6075d2b7d4f230640a3c973",
-    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "50969940f2e5733094dc54d5967119ab951846f741b935601faee2532cc64259",
+    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "5f033b13080ce8f75999daf0a2e9bc89f44ca8fcf6938b74d17ba3c1e4a54450",
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
     "ko/01_초보자용_쉬운해설.md": "0c0063f8b6f8011dde9b2b3697d69f164f19b64bcfe7891232641852f62c4fdd",
     "ko/02_중급자용_구조및수식가이드.md": "00e208a3b14dd7b2dfe361767d420c78ae77512470b5b1d7eb3adce5d74a195a",
     "ko/03_전문가용_수리물리및형식증명심사보고서.md": "6898ffc65cfd08cd4a0d5f6a951581ec7d32b0a041f94e5a367bc0098677fa48",
-    "ko/04_자동검증및파서용_명세서.md": "da4a1c6ca3370d8bf34684323a369b3ea4998186a75da2599ecbb3606fbadb27",
-    "en/01_Beginner_Guide.md": "c625c2af6759c8fc8ea98ec8243434b7a525890c94c85ec7c9b9795b9e080305",
+    "ko/04_자동검증및파서용_명세서.md": "637626d5c844804399c3c2726dd921499e672e672e92bf9846512ad4d06efc58",
+    "en/01_Beginner_Guide.md": "88859918edced0784d36c76daf67f496765e4971bb78db03b3e0c06c5f214069",
     "en/02_Intermediate_Math_and_Code_Guide.md": "f9c764d62e4eae1defc2bafec8573fc49c434a10e9a1966436c972ced91c1ec5",
     "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "09d8c682d969213004a6cd032ec504f794b8e638424dbb9c7cc753a15e073b19",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "19db2c6e1c78b20c7298394a389704f611fbc684bc859eed50323877db34a65a"
+    "en/04_Automated_Verification_and_Parser_Spec.md": "9a6f6cfeeef132891d51a28c14b41ecb129fc248b59bd9fc5d747b54fb3bd200"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",

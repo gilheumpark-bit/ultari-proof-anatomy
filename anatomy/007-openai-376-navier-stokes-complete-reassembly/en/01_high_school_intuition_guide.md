@@ -40,7 +40,7 @@ flowchart TD
 
 ---
 
-## 4. Five Tightened Bounds Obtained by Recalculating Discarded Slack (`Category A`)
+## 4. Five Tightened Bounds Obtained by Recalculating Discarded Slack
 
 | # | Target Module | Original Bound | Tightened Bound | Improvement |
 | :---: | :--- | :--- | :--- | :--- |

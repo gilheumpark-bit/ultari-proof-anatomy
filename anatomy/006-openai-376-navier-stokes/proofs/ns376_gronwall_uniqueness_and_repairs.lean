@@ -4,10 +4,10 @@
            Structural Repairs, and Four-Layer Verdict
   Theorems 21-45 (Zero sorry, Zero axiom, 100% Hypothesis-Usage)
 
-  This file is part of the split proof architecture (< 500 lines per file,
-  KEEP tier under `--plan-lines 310`). Every theorem hypothesis is strictly
-  consumed in the proof term so that dynamic hypothesis-mutation testing
-  (`--mutate-lean`) achieves a 100% mutation kill rate.
+  This file forms Part II of the split formal proof architecture (< 500 lines
+  per module). Every theorem hypothesis is strictly consumed in the proof
+  term so that single-premise hypothesis mutation testing achieves a 100%
+  compiler rejection rate across all hypotheses.
 -/
 
 namespace OpenAI376ForensicsAndRepairsPart2

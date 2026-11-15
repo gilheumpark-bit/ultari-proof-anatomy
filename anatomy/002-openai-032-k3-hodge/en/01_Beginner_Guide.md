@@ -42,7 +42,7 @@ Why not simply use the forward stabilization move ($G_1$, which has sign $+1$) s
 
 ---
 
-## 5. Boundary Between Rescued Assets and No-Go Barriers (`Category A`)
+## 5. Boundary Between Rescued Assets and No-Go Barriers
 
 - **Rescued Valid Assets (`Part I` Reduction Engine)**:
   - `Part I` (`cohomology.tex`, `exactks.tex`, `auxiliary.tex`) is mathematically sound.

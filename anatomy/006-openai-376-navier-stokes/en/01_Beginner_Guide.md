@@ -36,7 +36,7 @@ OpenAI `#376` addresses the **second setting**: forced flows starting from rest 
 
 ---
 
-## 3. Four Structural Findings in the Codebase (`Category A`)
+## 3. Four Structural Findings in the Codebase
 
 1. **Zero-Pressure Manufactured Forcing ([`BalancedTransport/Model.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Model.lean#L139-L146), [`BoxCoding.lean`](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/BoxCoding.lean#L53-L66))**:
    - In [`BalancedThreeStack.lean:124-132`](../proofs/oai_ref/lean/ComparatorChallenges/BalancedThreeStack.lean#L124-L132) and `BoxCoding.lean`, pressure is set to $p = 0$ and the force is defined as $f = (\partial_t U + (U\cdot\nabla)U) - \nu\Delta U$.

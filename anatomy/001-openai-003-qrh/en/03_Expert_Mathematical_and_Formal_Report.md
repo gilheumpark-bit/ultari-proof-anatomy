@@ -3,7 +3,7 @@
 - **Date**: 2026-10-31
 - **Target Repository**: `openai/math` (Family `003`: Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis, `lean/OAI/NumberTheory/DirichletL/` & `SiegelZeros/`)
 - **Verification Toolchain**: `Lean 4 (v4.29.0-rc8)` and `Python 3 (SymPy / Fractions)` (`verify_symbolic_qrh.py`)
-- **Primary Formal Proof Artifacts**: [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (`SHA-256: 2342f19e01fb591321616aefdd1770faf25d4253d6a47f52a1cf188c767c4a8e`, 404 lines, 27 `theorem` declarations) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (`SHA-256: 264ce426ee8cdd45eba29fecc35ece3eb71801a9d11e36560506b9357ae0faf9`, 466 lines, 21 `theorem` declarations; total **48 theorems**, `0` `sorry`, `0` custom `axiom`, `lean` `exit 0`)
+- **Primary Formal Proof Artifacts**: [`proofs/qrh_exponent_and_parameter_bounds.lean`](../proofs/qrh_exponent_and_parameter_bounds.lean) (`SHA-256: 2342f19e01fb591321616aefdd1770faf25d4253d6a47f52a1cf188c767c4a8e`, 404 lines, 27 `theorem` declarations) and [`proofs/qrh_continuation_and_rescaling.lean`](../proofs/qrh_continuation_and_rescaling.lean) (`SHA-256: 55a5ed5f3c20d0efdb1f9a98894c3db87d9e17c141d5c2223f60f53d33ceca73`, 466 lines, 21 `theorem` declarations; total **48 theorems**, `0` `sorry`, `0` custom `axiom`, `lean` `exit 0`)
 - **Symbolic Verification Artifact**: [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) (`SHA-256: 072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55`)
 
 ---

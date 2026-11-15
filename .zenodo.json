@@ -1,0 +1,32 @@
+{
+  "upload_type": "publication",
+  "publication_type": "report",
+  "title": "OPFF Audit Charter & Forensic Verdict Ledger: Byte-Level Zero-Truncation Audit of Frontier Mathematical Corpora (v1.0.0)",
+  "creators": [
+    {
+      "name": "Open Proof Forensics Foundation (OPFF)"
+    },
+    {
+      "name": "Park, Gilheum",
+      "affiliation": "Open Proof Forensics Foundation (OPFF)"
+    }
+  ],
+  "description": "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,191/4,191 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Joint International Audit Rubric unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards.",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "formal-verification",
+    "lean4",
+    "mathlib4",
+    "proof-forensics",
+    "academic-integrity",
+    "ai-audit",
+    "open-proof-forensics-foundation",
+    "opff"
+  ],
+  "communities": [
+    {
+      "identifier": "open-proof-forensics"
+    }
+  ]
+}

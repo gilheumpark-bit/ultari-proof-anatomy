@@ -2,7 +2,7 @@
 
 # Case 005: OpenAI `#003` Referee Audit & Conditional $\beta \to 1/2$ Blueprint
 
-This package performs a number-theoretic referee audit of OpenAI `#003` (`3,233` upstream `.lean` files and `26` reference modules in [`proofs/oai_ref/`](proofs/oai_ref/Endpoint.lean)). All results are verified across `48` standalone Lean 4 theorems and `3` `def`s (`v4.29.0-rc8`, `0 sorry`, `441/441` hypothesis mutations caught, `Category A` cleared-denominator arithmetic).
+This package performs a number-theoretic referee audit of OpenAI `#003` (`3,233` upstream `.lean` files and `26` reference modules in [`proofs/oai_ref/`](proofs/oai_ref/Endpoint.lean)). All results are verified across `48` standalone Lean 4 theorems and `3` `def`s (`v4.29.0-rc8`, `0 sorry`, `441/441` hypothesis mutations caught, exact cleared-denominator arithmetic).
 
 ## Key Findings
 

@@ -8,8 +8,8 @@ This specification defines the deterministic SHA-256 artifact checksums, the Lea
 
 | Artifact Path | SHA-256 Checksum | Lines | Role |
 | :--- | :--- | :---: | :--- |
-| [`proofs/qrh_mathematician_referee_audit.lean`](../proofs/qrh_mathematician_referee_audit.lean) | `9a01a4b8ce5a786853a0c2e861240e03846ac5e30362adf086beed6e9b2906dc` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `286/286` mutations caught) |
-| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](../proofs/qrh_eight_tasks_critical_upgrade.lean) | `25539881bea6c097828a70fba4dc67c3dc1bbe85869131548a2a30c123f40941` | `242` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `155/155` mutations caught) |
+| [`proofs/qrh_mathematician_referee_audit.lean`](../proofs/qrh_mathematician_referee_audit.lean) | `e9f0d2f5f4b3e1a3bcd556901105739cad73ad277bc7cfd5c446f6f4ef96445d` | `499` | `38` cleared-denominator rational shadow, referee & transfer Lean 4 theorems (`0 sorry`, `286/286` mutations caught) |
+| [`proofs/qrh_eight_tasks_critical_upgrade.lean`](../proofs/qrh_eight_tasks_critical_upgrade.lean) | `32bc3c4b9c2eb32ac774559cc2019fa087c2223ed62c228d3b8c3444029fb601` | `242` | `8` remaining-task (`thm_39`–`thm_46`) + `3` executable `def`s Lean 4 theorems (`0 sorry`, `155/155` mutations caught) |
 | [`proofs/verify_qrh_mathematician_audit.py`](../proofs/verify_qrh_mathematician_audit.py) | `cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713` | `548` | SymPy symbolic derivation (`sp.solve`/`sp.diff`/`sp.Poly`) + `3,233`-file DAG + PyTorch tensor verifier (`Stage 1`–`Stage 6`) |
 | [`proofs/symbolic_verification_result.json`](../proofs/symbolic_verification_result.json) | `a5006ff42a2b12171c98b20facf6d23c86ed5186e1f43da524f6e42c80727b0e` | `214` | Deterministic symbolic derivation, upstream DAG & numerical verification output JSON |
 | [`proofs/problem_spec.md`](../proofs/problem_spec.md) | `5202dd7bec54af1473025dc065684ba5a86ce929acf328cc93aa6f377047813e` | `23` | 6-stage Mathematician Deep Audit, Master Transfer & 8-Task Upgrade problem specification |

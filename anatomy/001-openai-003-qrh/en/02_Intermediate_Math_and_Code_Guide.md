@@ -120,7 +120,7 @@ Evaluating at $\Delta_{\text{Gram}} \in \left\{0, \frac{1}{8}, \frac{37}{200}, \
 
 Every single file in OpenAI's 26-file `#003` reference bundle (`proofs/oai_ref/*.lean`, `3,319` lines, `178` declarations) is mapped 1-to-1 to our 48 formal Lean 4 theorems below:
 
-| # | OpenAI `#003` File (`oai_ref/`) | Lines | Decls | Mathematical Role & Scope (`Category A` vs. `Category B`) | Formal Verification (`Theorems 1–48`) |
+| # | OpenAI `#003` File (`oai_ref/`) | Lines | Decls | Mathematical Role & Formalization Scope | Formal Verification (`Theorems 1–48`) |
 | :---: | :--- | :---: | :---: | :--- | :--- |
 | 1 | [`SiegelZeros/Structure/ArithmeticCutoffTransport.lean`](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L1-L524) | `524` | `33` | 4-variable monomial box degree bound `≤ 4N`, 4-step derivative ideal pigeonhole `b < 4`, cutoff `⌊96 H^(2/3) N^(4/3)⌋₊`, and biquadratic field row-span descent | [`Theorem 41`](../proofs/qrh_continuation_and_rescaling.lean#L311-L320), [`Theorem 42`](../proofs/qrh_continuation_and_rescaling.lean#L329-L343) |
 | 2 | [`SiegelZeros/Intersection/BezoutBoundary.lean`](../proofs/oai_ref/BezoutBoundary.lean#L1-L27) | `27` | `1` | Bridges `LocalIsolatedBezoutStatement ℂ` to `UniformSiegelZeroExclusion` via `actualCutoffSpanning_of_localBezout` | [`Theorem 43`](../proofs/qrh_continuation_and_rescaling.lean#L351-L361) |

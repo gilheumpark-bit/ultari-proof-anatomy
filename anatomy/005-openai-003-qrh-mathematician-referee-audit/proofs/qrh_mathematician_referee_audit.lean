@@ -1,7 +1,7 @@
 import Init
 /- OpenAI #003 (Quasi-Riemann Hypothesis & Siegel Zero Exclusion)
    Mathematician's Deep Referee & Structural Verification Suite (38 Theorems)
-   Scope: Category A (Exact Algebraic, Valuation, Exponent-System, Call-Graph & Sub-0.69 Transfer Invariants)
+   Scope: Exact Algebraic, Valuation, Exponent-System, Call-Graph & Sub-0.69 Transfer Invariants
 -/
 
 namespace QRHMathematicianRefereeAudit

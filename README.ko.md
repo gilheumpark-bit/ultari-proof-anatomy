@@ -1,11 +1,13 @@
 # `ultari-proof-anatomy`: 프론티어 AI 수학·암호·코드 형식증명 해부 아카이브
 
 > **언어 선택 (Language)**: [**English (`README.md`)**](./README.md) | **한국어**
+> **국제 학술 표준 합동 심사 헌장 및 전 케이스 판정 원장 (`OPFF`)**: [**`AUDIT_CHARTER.ko.md` (한국어)**](./AUDIT_CHARTER.ko.md) | [**`AUDIT_CHARTER.md` (English)**](./AUDIT_CHARTER.md)
 
 [![Lean 4](https://img.shields.io/badge/Lean_4-v4.29.0--rc8_Verified-blue)](#1줄-전체-저장소-검증-명령어)
 [![Theorems & Mutants](https://img.shields.io/badge/Verified_Archive-892_Theorems_%7C_4%2C191%2F4%2C191_Mutants_Killed-purple)](#논문-및-형식증명-해부-아카이브-목록)
 [![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#1줄-전체-저장소-검증-명령어)
 [![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#1줄-전체-저장소-검증-명령어)
+[![OPFF Charter](https://img.shields.io/badge/OPFF_Charter-5_Gates_%7C_14_Checkpoints-darkred)](./AUDIT_CHARTER.ko.md)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
 
 **'울타리(`Ultari`)'**는 검증된 사실과 미증명 추측을 가르는 **엄밀한 경계(Protective Boundary)**를 뜻합니다.
@@ -63,8 +65,13 @@
 
 ```text
 ultari-proof-anatomy/
+├── AUDIT_CHARTER.ko.md        # OPFF 국제 학술 표준 합동 심사 헌장 및 전 케이스 판정 원장 (한국어)
+├── AUDIT_CHARTER.md           # OPFF Joint International Audit Charter & Verdict Ledger (영문)
+├── CITATION.cff               # GitHub 공식 학술 인용 메타데이터 (CFF v1.2.0)
+├── .zenodo.json               # CERN Zenodo 영구 DOI 발급 메타데이터
+├── MANIFEST.sha256            # 전 케이스 통합 마스터 SHA-256 봉인 원장 (281개 파일)
 ├── LICENSE                    # Apache License 2.0
-├── NOTICE                     # 결합 라이선스(Apache-2.0 / CC BY 4.0) 및 제3자 참조 코드 고지
+├── NOTICE                     # 결합 라이선스(Apache-2.0 / CC BY 4.0) 및 OPFF 상표권·인증 배지 고지
 ├── README.md                  # 영문 마스터 목차
 ├── README.ko.md               # 한국어 마스터 목차
 ├── tools/
@@ -110,6 +117,7 @@ ultari-proof-anatomy/
 5. **전칭 가설 돌연변이 시험**: 모든 가설을 하나씩 `(h : True)`로 바꿨을 때 컴파일러가 100% 거부하는지 확인합니다.
 
 ```bash
+sha256sum -c MANIFEST.sha256
 python3 tools/verify_all.py
 ```
 

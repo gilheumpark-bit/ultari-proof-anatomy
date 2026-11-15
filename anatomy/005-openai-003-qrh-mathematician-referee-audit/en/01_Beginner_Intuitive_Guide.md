@@ -39,7 +39,7 @@ Similarly, in [`SiegelZeros/Estimates/GeometricBoundary.lean:26`](../proofs/oai_
 
 ---
 
-## 4. Conditional Transfer Blueprint Toward $\beta = 1/2$ (`Category A`)
+## 4. Conditional Transfer Blueprint Toward $\beta = 1/2$
 
 We separate the unconditional structural advances from the conditional analytic inputs needed to reach the critical line $\beta = 1/2$:
 
