@@ -23,10 +23,5 @@
     "ai-audit",
     "open-proof-forensics-foundation",
     "opff"
-  ],
-  "communities": [
-    {
-      "identifier": "open-proof-forensics"
-    }
   ]
 }
