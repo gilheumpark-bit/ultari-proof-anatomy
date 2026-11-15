@@ -8,6 +8,7 @@
 [![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#1줄-전체-저장소-검증-명령어)
 [![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#1줄-전체-저장소-검증-명령어)
 [![OPFF Charter](https://img.shields.io/badge/OPFF_Charter-5_Gates_%7C_14_Checkpoints-darkred)](./AUDIT_CHARTER.ko.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24241228.svg)](https://doi.org/10.5281/zenodo.24241228)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
 
 **'울타리(`Ultari`)'**는 검증된 사실과 미증명 추측을 가르는 **엄밀한 경계(Protective Boundary)**를 뜻합니다.

@@ -2,6 +2,7 @@
 
 > **언어 선택 (Language)**: [**English (`AUDIT_CHARTER.md`)**](./AUDIT_CHARTER.md) | **한국어**
 > **상위 색인**: [**한국어 메인 README (`README.ko.md`)**](./README.ko.md) | [**English Main README (`README.md`)**](./README.md)
+> **공식 영구 식별자 (CERN Zenodo DOI)**: [**Concept DOI: `10.5281/zenodo.24241228`**](https://doi.org/10.5281/zenodo.24241228) | [**v1.0.0 Version DOI: `10.5281/zenodo.24241229`**](https://doi.org/10.5281/zenodo.24241229)
 
 ---
 
@@ -140,8 +141,8 @@
 
 피감 기관의 사후 잠수함 패치(증거 인멸)와 제3자의 분석 프레임워크 무단 차용(출처 세탁)을 동시에 차단하기 위해 **GitHub Organization + CERN Zenodo + Software Heritage** 3중 영구 보존 파이프라인([`.zenodo.json`](./.zenodo.json))을 운용하며, 모든 감사 건마다 두 종류의 영구 식별자(DOI)를 이원화하여 관리합니다.
 
-1. **헌장 DOI (`Charter Concept DOI`)**: 본 `AUDIT_CHARTER`(`5대 관문 · 14대 체크포인트`) 자체에 부여하는 최상위 영구 식별자로, 향후 전 세계 연구자·학술지·검증 기구가 본 포렌식 감사 방법론을 사용할 때 의무 인용해야 하는 기준점입니다.
-2. **사건별 판결 원장 DOI (`Case Ledger DOI`)**: 개별 감사 보고서(`Case 001`~`015`)와 채증 스냅샷(`manifest.json` 및 `SHA-256` 해시 원장)에 부여하는 버전별 고정 식별자로, 피감 저장소가 사후에 문제 파일을 삭제하거나 수정하더라도 감사 시점의 1차 물증을 영구 보존합니다.
+1. **헌장 DOI (`Charter Concept DOI`: [`10.5281/zenodo.24241228`](https://doi.org/10.5281/zenodo.24241228))**: 본 `AUDIT_CHARTER`(`5대 관문 · 14대 체크포인트`) 자체에 부여하는 최상위 영구 식별자로, 향후 전 세계 연구자·학술지·검증 기구가 본 포렌식 감사 방법론을 사용할 때 의무 인용해야 하는 기준점입니다.
+2. **사건별 판결 원장 DOI (`Case Ledger DOI`: [`10.5281/zenodo.24241229`](https://doi.org/10.5281/zenodo.24241229), `v1.0.0`)**: 개별 감사 보고서(`Case 001`~`015`)와 채증 스냅샷(`manifest.json` 및 `SHA-256` 해시 원장)에 부여하는 버전별 고정 식별자로, 피감 저장소가 사후에 문제 파일을 삭제하거나 수정하더라도 감사 시점의 1차 물증을 영구 보존합니다.
 
 ### 6.2 이중 라이선스(`Apache-2.0` + `CC BY 4.0`) 및 상표권·인증 스탬프 배타적 방어 ([`NOTICE`](./NOTICE))
 

@@ -4,6 +4,14 @@ title: "OPFF Audit Charter & Forensic Verdict Ledger: Byte-Level Zero-Truncation
 abstract: "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,191/4,191 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Joint International Audit Rubric unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards."
 type: software
 version: "1.0.0"
+doi: "10.5281/zenodo.24241228"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24241228"
+    description: "CERN Zenodo Concept DOI (all versions)"
+  - type: doi
+    value: "10.5281/zenodo.24241229"
+    description: "CERN Zenodo Version DOI (v1.0.0)"
 date-released: "2026-11-15"
 license:
   - Apache-2.0

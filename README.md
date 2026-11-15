@@ -8,6 +8,7 @@
 [![Symbolic Solver](https://img.shields.io/badge/SymPy-Exact_Rational_%26_Radical-success)](#one-command-repository-verification)
 [![Zero Sorry](https://img.shields.io/badge/Proof_Integrity-0_sorry_%7C_0_axiom-brightgreen)](#one-command-repository-verification)
 [![OPFF Charter](https://img.shields.io/badge/OPFF_Charter-5_Gates_%7C_14_Checkpoints-darkred)](./AUDIT_CHARTER.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24241228.svg)](https://doi.org/10.5281/zenodo.24241228)
 [![License](https://img.shields.io/badge/License-Apache_2.0_%7C_CC_BY_4.0-orange.svg)](./LICENSE)
 
 In Korean, **울타리 (*Ultari*)** means a **protective boundary or enclosure**.

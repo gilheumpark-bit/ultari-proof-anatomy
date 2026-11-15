@@ -2,6 +2,7 @@ Open Proof Forensics Foundation (OPFF) / 오픈 수리·형식증명 포렌식 �
 ultari-proof-anatomy: Dissecting Human & AI Mathematical Proofs
 Copyright 2026 Open Proof Forensics Foundation (OPFF) & Gilheum Park (parkgilheum) <gilheum.park@gmail.com>
 Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
+Official CERN Zenodo Concept DOI: https://doi.org/10.5281/zenodo.24241228 (v1.0.0 DOI: https://doi.org/10.5281/zenodo.24241229)
 Audit Charter: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
 
 1. Original Code, Formal Proofs, and Verification Harnesses (Apache-2.0)

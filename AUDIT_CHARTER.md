@@ -2,6 +2,7 @@
 
 > **Language**: **English** | [**한국어 (`AUDIT_CHARTER.ko.md`)**](./AUDIT_CHARTER.ko.md)
 > **Master Index**: [**English Main README (`README.md`)**](./README.md) | [**한국어 메인 README (`README.ko.md`)**](./README.ko.md)
+> **Official Persistent Identifiers (CERN Zenodo DOI)**: [**Concept DOI: `10.5281/zenodo.24241228`**](https://doi.org/10.5281/zenodo.24241228) | [**v1.0.0 Version DOI: `10.5281/zenodo.24241229`**](https://doi.org/10.5281/zenodo.24241229)
 
 ---
 
@@ -146,8 +147,8 @@ To provide an institutional standard directly citable by journal editorial board
 
 To prevent both post-hoc silent upstream patching (evidence erasure) and unattributed third-party appropriation of our forensic methodology (citation laundering), the Foundation operates a triple-archiving pipeline across **GitHub Organization + CERN Zenodo + Software Heritage** ([`.zenodo.json`](./.zenodo.json)), issuing two distinct persistent identifiers (DOIs):
 
-1. **Charter Concept DOI (`헌장 DOI`)**: The top-level persistent identifier assigned to this `AUDIT_CHARTER` (`5 Gates · 14 Checkpoints`), serving as the mandatory citation anchor for any researcher, journal, or auditing body adopting this forensic framework.
-2. **Case Ledger Version DOI (`사건별 판결 원장 DOI`)**: The version-pinned identifier assigned to each audit release (`Case 001`~`015`) and its cryptographic evidence snapshot (`manifest.json` and `SHA-256` digests), permanently preserving primary forensic evidence even if an audited repository subsequently alters or deletes upstream files.
+1. **Charter Concept DOI (`헌장 DOI`: [`10.5281/zenodo.24241228`](https://doi.org/10.5281/zenodo.24241228))**: The top-level persistent identifier assigned to this `AUDIT_CHARTER` (`5 Gates · 14 Checkpoints`), serving as the mandatory citation anchor for any researcher, journal, or auditing body adopting this forensic framework.
+2. **Case Ledger Version DOI (`사건별 판결 원장 DOI`: [`10.5281/zenodo.24241229`](https://doi.org/10.5281/zenodo.24241229), `v1.0.0`)**: The version-pinned identifier assigned to each audit release (`Case 001`~`015`) and its cryptographic evidence snapshot (`manifest.json` and `SHA-256` digests), permanently preserving primary forensic evidence even if an audited repository subsequently alters or deletes upstream files.
 
 ### 6.2 Dual-License (`Apache-2.0` + `CC BY 4.0`) & Trademark / Certification Stamp Defense ([`NOTICE`](./NOTICE))
 
