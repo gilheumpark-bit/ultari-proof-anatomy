@@ -254,7 +254,7 @@
       "lines": 499,
       "theorems": 38,
       "sorry_count": 0,
-      "sha256": "e9f0d2f5f4b3e1a3bcd556901105739cad73ad277bc7cfd5c446f6f4ef96445d",
+      "sha256": "769eaea9170ec6ac93a5f5a3b606fba02fd20675312530cfaa23fda42dac155b",
       "bytes": 39075
     },
     {
@@ -263,14 +263,14 @@
       "lines": 242,
       "theorems": 10,
       "sorry_count": 0,
-      "sha256": "32bc3c4b9c2eb32ac774559cc2019fa087c2223ed62c228d3b8c3444029fb601",
+      "sha256": "f2caae119bc95f0e22945a740dc2af60a8ccf3e0482e4c4d7474af6c1043ab2c",
       "bytes": 23073
     },
     {
       "path": "proofs/verify_qrh_mathematician_audit.py",
       "role": "sympy_and_numerical_verifier",
       "lines": 548,
-      "sha256": "cb20b86a38c2305e99f2ffce80897c7bb38e7550fcecea5775ce9be7bb374713",
+      "sha256": "01efb3d1a708397632d1daac7e5618e399ed89921e8556464b28b305df15c593",
       "bytes": 34970
     },
     {

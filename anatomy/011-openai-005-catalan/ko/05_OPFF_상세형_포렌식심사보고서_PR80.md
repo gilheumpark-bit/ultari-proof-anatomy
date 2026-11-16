@@ -140,6 +140,17 @@
    - ② 진입점 미도달 모듈 `508`개(`449,367`줄, `78.3%`) 및 `Main.lean` 미전파 루트 임포트 `28`개 정리,
    - ③ 원고 `Section 4`(`Table 1` 가우스 소거)와 `Section 5`(`(n!)^2` 분모 서술)를 실제 활성 코드(`ZMod 101` 우역행렬 및 `(2An)^n` 상한)와 일치하도록 개정.
 
+### 6.3 `PrimeNumberTheoremAnd` 패치 사슬의 `sorryAx` 비전파(`0`건) 검증 및 `109`줄 공백(`0x20`) 치환 실측
+
+1. **활성 패치 사슬(`10`개 파일, `2,937`줄)의 `sorryAx` 전파 `0`건 및 `WeakPNT''` 4단계 정석 유도 확인**:
+   - [`Conclusions.lean:10-23`](../proofs/oai_ref/lean/Conclusions.lean#L10-L23)(`catalan_irrational`) $\to$ [`ImportedPNTCoreBridge.lean:1-36`](../proofs/oai_ref/lean/ImportedPNTCoreBridge.lean#L1-L36)(`PrimeNumberTheoremAnd.Catalan.Consequences`)의 외부 임포트 사슬은 패치가 신설한 **`10`개 파일(`2,937`줄: `Catalan/*` `7`개 + `ZetaFive/Fourier`·`Sobolev`·`SmoothExistence` `3`개)**만 거친 뒤 순수 `Mathlib.*`에서 닫히며, 미완성 `sorry`(`34`개)가 남아 있는 업스트림 `PrimeNumberTheoremAnd` 원본 파일은 단 1개도 임포트하지 않아 `sorryAx = 0`임:
+     - **① 최상위 `tsum` (`∑'`) 정의** ([`Challenge_Catalan.lean:7-9`](../proofs/oai_ref/lean/Challenge_Catalan.lean#L7-L9)): `Irrational (∑' j : ℕ, (-1 : ℝ) ^ j / ((2 * j + 1 : ℕ) : ℝ) ^ 2)`에서 급수가 수렴하지 않으면 `∑'`가 유리수 `0`을 반환해 `Irrational 0`이 거짓이 되므로, 급수 수렴과 표준 카탈랑 상수 $G$ 일치가 자동 강제됨.
+     - **② $\operatorname{Re}(s) \ge 1$ 제타 무영점** (`OrdinaryZetaZeroFree`, `175`줄): 표준 `Complex.riemannZeta`와 삼각 부등식 $3 + 4\cos\theta + \cos 2\theta = 2(1+\cos\theta)^2 \ge 0$만으로 $s \neq 1, \operatorname{Re}(s) \ge 1$ 무영점을 유도함.
+     - **③ 정칙화 및 위너-이케하라 타우버 정리** (`OrdinaryZetaContinuation` · `Catalan/Wiener`): `Function.update (fun s ↦ (s-1)*riemannZeta s) 1 1` 제거 가능 특이점과 `WienerIkeharaTheorem'`으로 `Tendsto (fun N ↦ cumsum Λ N / N) atTop (𝓝 1)` (`WeakPNT`)을 도출함.
+     - **④ `WeakPNT''` 및 `chebyshev_asymptotic`** (`Catalan/Consequences`, `68`줄): $\psi(R)/R \to 1$ 및 `Chebyshev.abs_psi_sub_theta_le_sqrt_mul_log`를 결합해 $\theta(R)/R \to 1$을 유도하며, [`ImportedPNTCoreBridge.lean:12-18`](../proofs/oai_ref/lean/ImportedPNTCoreBridge.lean#L12-L18)에서 표준 `Mathlib` `Chebyshev.psi`·`theta`와 `rfl`로 일치함을 확인함.
+2. **업스트림 `Wiener` 모듈 `-2,716`줄 절삭, 복제본 원저자 주석 `109`줄 바이트 보존 공백(`0x20`) 치환 및 `formalization.yaml` 누락**:
+   - [`PrimeNumberTheoremAnd-lean4341.patch`](../proofs/oai_ref/patches/PrimeNumberTheoremAnd-lean4341.patch)는 `Mertens.lean:36-52`의 `17`행 개행(`0x0A`) 치환 외에도, 업스트림 `Wiener` 모듈에서 `-2,716`줄을 절삭하고 복제된 4개 파일(`Catalan/Wiener` `6`줄, `WienerBounds` `6`줄, `ZetaFive/Sobolev` `29`줄, `ZetaFive/Wiener` `68`줄) 내부의 원저자 `blueprint_comment` **`109`줄을 원래 바이트 길이 그대로의 아스키 공백(`0x20`)으로 치환**했으며, 루트 `formalization.yaml`(`176`편 목록)에 `#005`가 등재 누락되어 있음.
+
 ---
 
 ## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (`OPFF Standard-Bound Verdict`)

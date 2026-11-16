@@ -17,11 +17,11 @@
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
     "ko/01_초보자용_쉬운해설.md": "980ff2ee8b3f67f95ead648e0f1be6d8af13c3bb81aa6df7a58b88952332d55f",
     "ko/02_중급자용_구조및수식가이드.md": "abe26548dd420459b5cd2b498b43af92d94135f86b779aef7a1ae25e7db4e0e1",
-    "ko/03_전문가용_산술기하및형식증명보고서.md": "9159710f725c5a1aefc353c47fd96c0681aa803e256969e0c77e1dc1767e02d2",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "a959d106361fe89a7a59342e31b5af3eff81d8df55af4bcee4d1465dbe2813cf",
     "ko/04_자동검증및파서용_명세서.md": "db555f850c6a132fd1ee9345a9fc524756ea191ee3f1746d11d54b1366b5bd28",
     "en/01_Beginner_Guide.md": "1a9afa6f26e2c6dbc63aa10e54d8bfab46d05b6a395d17787c0d00f2db694255",
     "en/02_Intermediate_Math_and_Code_Guide.md": "dc99aa18cc939c995d588060b32e5d1c265e50ccce966a69f6c81d3264ac71ff",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "d077fccb254865ef9e265072842075c70c6afb6ab1dd82cc1a4e1213dd28211e",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "79d46aa6c4cc122d0a57101e7ad1f24bd7d03daa1c990002d745ca04d452a3a7",
     "en/04_Automated_Verification_and_Manifest.md": "c826436c088b601fbe015bd8579c35daf9ff86077efafb16bf8d99514f690de2"
   },
   "scope_and_limitations": {

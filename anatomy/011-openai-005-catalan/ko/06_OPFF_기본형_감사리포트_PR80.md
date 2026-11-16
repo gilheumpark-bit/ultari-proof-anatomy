@@ -32,6 +32,7 @@
 ### 1.2 업스트림 패치 외부 네임스페이스 배치 및 17줄 행 보존 공백 치환 (`CP-08`, `CP-09`, `CP-10`)
 - **외부 네임스페이스 하위 `27`개 파일 무귀속 배치 (`CP-08`)**: `lean/patches/catalan.patch`(`4,724`줄, `30`개 diff 블록)는 외부 `PrimeNumberTheoremAnd/` 네임스페이스 하위에 자체 생성 파일 `27`개(`+4,539`줄, `ZetaBounds.lean` 등)를 신설하여 외부 라이브러리 경로로 임포트했습니다.
 - **원저자 AI 사용 비권장 고지문 `17`줄의 개행 공백(`0x0A`) 치환 (`CP-09`)**: `catalan.patch:4521-4549`는 업스트림 `PrimeNumberTheoremAnd/ZetaBounds.lean:1-21`의 테렌스 타오 AI 사용 비권장 고지 주석 **`17`줄을 제거하고 동일 줄 수인 `17`줄의 개행 공백(`0x0A`)으로 치환**하여 후속 행 번호 오프셋을 유지했습니다(동반 `111`줄 LaTeX 블루프린트 주석 제거 포함).
+- **업스트림 `Wiener` `-2,716`줄 절단, `109`줄 바이트 보존 공백(`0x20`) 치환 및 `0 sorryAx` 격리 확인 (`CP-08`, `CP-09`, `Gate 1 PASS`)**: `catalan.patch`는 업스트림 `Wiener` 모듈의 미완성 정리 구간 **`-2,716`줄을 절단**하여 업스트림 `sorry`를 배제하고, `PrimeNumberTheoremAnd`의 `blueprint_comment` 블록 **`109`줄(`6 + 6 + 29 + 68`줄)을 동일 바이트 길이의 ASCII 스페이스(`0x20`)로 치환**했으며 `lean/docs/formalization.yaml` 매니페스트에서 `#005`를 누락했습니다. 한편 활성 콘이 경유하는 `PrimeNumberTheoremAnd` 패치 사슬 `10`개 파일(`2,937`줄)은 업스트림 잔여 `34`개 `sorry`와 완전히 분리된 채 순수 `Mathlib`로 닫히며(`0 sorryAx`), `tsum` 음수 지수 소멸 방어(`ENNReal.tsum_eq_zero`) · `OrdinaryZetaZeroFree` · `WienerIkehara` · `WeakPNT''` 4단계 연결이 무결함을 확인했습니다.
 - **타 프로젝트(`#301`) 워커 코드 차용 및 조판 템플릿 잔재 (`CP-10`)**: `PrimePower.lean:3`이 `#301`(`Monotone-ipp`)의 `OAI/AdditiveCombinatorics/MonotoneSumset/` 워커 파일 `11`개(`1,636`줄, 네임스페이스 `W21`)를 임포트하며, `build/header.tex:12`에는 중국어 간체 폰트 폴백(`Noto Sans CJK SC`)이 남아 있습니다.
 
 ### 1.3 도달성 층서학 (`78.3%` 미도달) 및 원고-아티팩트 불일치 (`CP-04`, `CP-05`)

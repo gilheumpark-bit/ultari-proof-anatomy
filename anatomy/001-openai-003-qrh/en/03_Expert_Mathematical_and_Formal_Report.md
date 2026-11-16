@@ -288,3 +288,28 @@ This section provides the exhaustive declaration-by-declaration 1-to-1 cross-ref
 
 1. **[Beyond-Baseline Alternative Bound]**: Eliminates the baseline finite cutoff compromise $Q \ge 480$ across the full finite range $4 \le Q < 480$ via finite bad-prime mask absorption (`thm_28`–`thm_30`) and restores the $m=1$ residue structure with 2nd/3rd-order Euler product continuation (`thm_31`–`thm_40`).
 2. **[Sharp No-Go / Rigidity Obstruction]**: Proves that quadratic Cauchy-Schwarz amplification alone hits a strict parity rigidity floor at the baseline exponent $3/16$ (signal exponent $-11/16$), preventing any further reduction without higher-order cubic reciprocity.
+
+---
+
+## 10. Extended Audit of the Full `#003` Codebase (`3,232` Files · `556,376` Lines) and Companion Manuscripts (`21,438` Lines)
+
+### 10.1 Kernel Verification of All 4 `ComparatorChallenges` and `W22` / `W63` (`Gate 1 & Gate 5: PASS`)
+- **Full Corpus Scale & Kernel Soundness**: Across all **`3,232` Lean 4 files (`556,376` lines: `2,926` files / `486,558` lines in `DirichletL/` + `306` files / `69,818` lines in `SiegelZeros/`)**, there are **`0` occurrences** of `sorry`, `axiom`, `unsafe`, or `implemented_by`.
+- **Verification of the 4 Comparator Challenges & Core Algebraic/Analytic Engines**:
+  1. All 4 comparator challenges — `QuasiRiemannHypothesis` ($47/48$ zero-free region), `DirichletSevenEighths` ($7/8$ zero-free region for Dirichlet $L$-functions), `HeckeSevenEighths` ($7/8$ zero-free region over $K=\mathbb{Q}(\sqrt{-3})$), and `SiegelZeros` ([`Theorem.lean:11-27`](../proofs/oai_ref/Theorem.lean#L11-L27) `exists_absolute_real_zero_gap`, excluding Landau–Siegel zeros) — match standard `Mathlib` definitions and compile unconditionally.
+  2. Both `W22` ([`IsolatedBezoutFromRegularSelection.lean:25-373`](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L25-L373), local isolated Bézout bound on polynomial-torus rings) and `W63` (`UnconditionalPrimeBias` for $X \ge 2$) are fully verified within the active proof cone.
+
+### 10.2 Five Structural, Patch, and Bibliographic Findings Across `#003`
+1. **`19 / 21` (`90.48%`) Non-Propagating Root Imports in `SiegelZeros/Main.lean` & `104`-File Cross-Family Clone into `#021` (`CP-05`, `CP-10`)**:
+   - Of the `21` modules directly imported by `SiegelZeros/Main.lean`, only **`2 / 21` (`9.52%`: `Conclusions.Theorem` and `Conclusions.PrimeBias`)** propagate to the main theorem [`exists_absolute_real_zero_gap`](../proofs/oai_ref/Theorem.lean#L11-L27), leaving **`19 / 21` (`90.48%`) as non-propagating root imports**.
+   - Across `SiegelZeros/` (`306` files, `69,818` lines), the active cone reaches `268` files (`87.58%`, `63,264` lines), while **`38` files (`12.42%`, `6,554` lines, including [`PivotBounds.lean`](../proofs/oai_ref/PivotBounds.lean#L1-L96)) are unreachable**. Furthermore, `104` files from `SiegelZeros/` are cloned into `#021` (`OAI/NumberTheory/Jacobsthal/Siegel/`).
+2. **Upstream `PrimeNumberTheoremAnd.Wiener` `-2,716`-Line Truncation & Omitted Library Attribution (`CP-03`, `CP-08`)**:
+   - Direct imports of `PrimeNumberTheoremAnd.Wiener` by `DirichletL` (`IdealMangoldt` and `Progressions`) triggered the **`-2,716`-line truncation** of upstream `Wiener` in the repository patch to eliminate `2` upstream `sorry`s from the build graph.
+   - Across all `21,438` `.tex` lines (`90` `.bib` entries) of the `#003` manuscripts, there are **`0` citations (omitted/absent)** to **Kontorovich–Tao's `PrimeNumberTheoremAnd`**, **Kebekus (2025)**, **Cipollina (2026)**, or **Benenson (`rellich-kondrachov`)**.
+3. **`[Lean]` Badge in `CONTENTS.md` vs. `0%` (`0`-Line) Formalization of the `October-5-2026` Companion Paper (`CP-04`)**:
+   - While `CONTENTS.md:66-92` attaches a `[Lean]` badge to 3 papers in `#003`, the 2nd companion manuscript (`October-5-2026`, *An alternate proof of the 11/12 zero-free region*, `3,988` lines) has **`0%` (`0` lines) of Lean 4 formalization**.
+   - In addition, the `11/12` section in the primary manuscript (`paper.tex:6536`) is conditional on the unproved hypothesis `eq:late-height-hypothesis`.
+4. **`11,499` Consecutive Uncited Lines (`68.95%`) in Primary Manuscript `paper.tex` (`CP-03`)**:
+   - In `paper.tex` (`16,677` lines), `\cite` appears on only `12` lines (`0.072` per `100` lines), with **`0` citations across `11,499` consecutive lines from `L5179` to `L16677` (`68.95%`)**.
+5. **`2,238` Unused Hypothesis Binders Across Internal Helper Lemmas (`CP-06`)**:
+   - Static AST analysis across all `3,232` `.lean` files detects **`2,238` unused hypothesis binders** (`1,077` inside the active `DirichletL` proof cone).

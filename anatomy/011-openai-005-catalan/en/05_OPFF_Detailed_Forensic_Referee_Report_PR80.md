@@ -139,6 +139,17 @@
    - ② Remove all `508` unreachable files (`449,367` lines, `78.3%`) and the `28` non-propagating imports in `Main.lean`,
    - ③ Align Manuscript `Section 4` (`Table 1`) and `Section 5` (`Eq. 5.15`) with the active `ZMod 101` right-inverse certificate and `(2An)^n` upper bound.
 
+### 6.3 Verification of Zero `sorryAx` Propagation Across the `PrimeNumberTheoremAnd` Patch Chain and `109`-Line Space (`0x20`) Replacement Audit
+
+1. **Zero `sorryAx` Propagation Across the `10`-File (`2,937`-Line) Active Patch Chain and 4-Step `WeakPNT''` Derivation**:
+   - Tracing the external import cone from [`Conclusions.lean:10-23`](../proofs/oai_ref/lean/Conclusions.lean#L10-L23) (`catalan_irrational`) through [`ImportedPNTCoreBridge.lean:1-36`](../proofs/oai_ref/lean/ImportedPNTCoreBridge.lean#L1-L36) (`PrimeNumberTheoremAnd.Catalan.Consequences`) confirms that it traverses only **`10` newly patched files (`2,937` lines: `7` under `Catalan/*` and `3` under `ZetaFive/Fourier`, `Sobolev`, `SmoothExistence`)** before closing in pure `Mathlib.*`, importing `0` of the upstream `PrimeNumberTheoremAnd` files containing the `34` unfinished `sorry`s (`sorryAx = 0`):
+     - **① Top-level `tsum` (`∑'`) definition** ([`Challenge_Catalan.lean:7-9`](../proofs/oai_ref/lean/Challenge_Catalan.lean#L7-L9)): Because a non-summable `∑'` in Mathlib evaluates to `0 : ℝ` (`¬ Irrational 0`), proving `Irrational (∑' j : ℕ, (-1 : ℝ) ^ j / ((2 * j + 1 : ℕ) : ℝ) ^ 2)` automatically forces series convergence to Catalan's constant $G$.
+     - **② Zero-free region on $\operatorname{Re}(s) \ge 1$** (`OrdinaryZetaZeroFree`, `175` lines): Derives $\zeta(s) \neq 0$ for $s \neq 1, \operatorname{Re}(s) \ge 1$ directly from `Complex.riemannZeta` via $3 + 4\cos\theta + \cos 2\theta = 2(1+\cos\theta)^2 \ge 0$.
+     - **③ Regularization & Wiener–Ikehara Tauberian theorem** (`OrdinaryZetaContinuation` & `Catalan/Wiener`): Uses `Function.update (fun s ↦ (s-1)*riemannZeta s) 1 1` and `WienerIkeharaTheorem'` to derive `Tendsto (fun N ↦ cumsum Λ N / N) atTop (𝓝 1)` (`WeakPNT`).
+     - **④ `WeakPNT''` and `chebyshev_asymptotic`** (`Catalan/Consequences`, `68` lines): Combines $\psi(R)/R \to 1$ with `Chebyshev.abs_psi_sub_theta_le_sqrt_mul_log` to obtain $\theta(R)/R \to 1$, matching Mathlib's `Chebyshev.psi` and `Chebyshev.theta` by `rfl` in [`ImportedPNTCoreBridge.lean:12-18`](../proofs/oai_ref/lean/ImportedPNTCoreBridge.lean#L12-L18).
+2. **Upstream `Wiener` `-2,716`-Line Truncation, `109` Lines of Byte-Preserving Space (`0x20`) Replacement in Cloned Blueprint Comments, and Omission from `formalization.yaml`**:
+   - Beyond the `17`-line newline (`0x0A`) replacement in `Mertens.lean:36-52`, [`PrimeNumberTheoremAnd-lean4341.patch`](../proofs/oai_ref/patches/PrimeNumberTheoremAnd-lean4341.patch) truncates `-2,716` lines from the upstream `Wiener` module and **replaces `109` lines of upstream `blueprint_comment` blocks across 4 cloned files (`6` lines in `Catalan/Wiener`, `6` in `WienerBounds`, `29` in `ZetaFive/Sobolev`, and `68` in `ZetaFive/Wiener`) with exact byte-length ASCII spaces (`0x20`)**, while `#005` is also omitted from the root `formalization.yaml` (`176`-paper index).
+
 ---
 
 ## Part 7. Standard-Bound Verdict & Formal Conclusion (`OPFF Verdict`)

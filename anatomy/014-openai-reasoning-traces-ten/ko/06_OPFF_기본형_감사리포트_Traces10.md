@@ -29,12 +29,13 @@
 - **양방향 서지 교체 실측 (`53 / 302 = 17.5%` 자카드 일치)**: `10`편 추론 로그가 인용한 `168`개 문헌 중 **`115`건(`68.5%`)이 최종 원고에서 탈락**했고, 반대로 최종 원고의 `187`개 문헌 중 **`134`건(`71.7%`)은 추론 로그에 한 번도 등장하지 않았다가 사후 삽입**되었습니다(합집합 `302`건 중 교집합 `53`건 = **`17.5%`**). 특히 `#197`(Kaplansky 단위 추측)은 추론 로그 문헌 `14`건이 `100%` 탈락하고 `12`건이 신규 삽입되어 자카드 일치율이 **`0.0%`(`0 / 26`)**입니다.
 - **자사 동반 프리프린트 `5`종(`58`회 인용) `100%` 삭제**: 추론 로그 본문에서 핵심 기법의 출처로 반복 인용된 자사 동반 원고 `5`종 — `#005` Catalan(`#017`에서 `35`회), `#003` QRH(`#159`에서 `15`회), `#301` Monotone-ipp(`#007`에서 `6`회), `#107` Dickman(`#017`에서 `1`회), `#192` Sidon(`#102`에서 `1`회) — 이 최종 원고 `.bib`에서는 **`5 / 5`종(`100%`) 전량 삭제**되었습니다.
 
-### 1.2 범위 축소 깔때기(`20 -> 10 -> 7`) 및 비교 챌린지 대리 명제 축소 (`CP-04`, `CP-07`)
-- **`50.0%` 추론 로그 미공개 (`CP-07`)**: 전체 `20`편 코퍼스 중 `#005`(Catalan), `#013`(Ostmann), `#266`(MUB-6), `#376`(Navier-Stokes) 등 `10`편(`50.0%`)은 추론 로그 PDF가 공개되지 않았습니다.
-- **수리물리·작용소대수 `3`편(`#271`, `#287`, `#362`)의 비교 챌린지 대리 명제 축소 (`CP-04`)**:
-  1. **`#271` (`3D Heisenberg Spin Waves`)**: 원고는 3차원 격자 스핀파 자유에너지 점근 전개를 다루나, `ComparatorChallenges/SpinWaves.lean`은 유한 체적 자유에너지가 상수 $E_0$라는 자명한 존재 명제(`∃ E0, ∀ Λ, freeEnergy Λ = E0`)로 축소되었습니다.
-  2. **`#287` (`Free Group Factors L(F_n)`)**: 원고는 보어-폰 노이만 자유군 인자 동형 문제를 다루나, 챌린지 파일은 유한차원 행렬 대각합 부등식 보조정리로 축소되었습니다.
-  3. **`#362` (`3D Relativistic Vlasov-Maxwell`)**: 원고는 3차원 상대론적 블라소프-맥스웰 전역 정칙성을 다루나, 챌린지 파일은 1차원 감쇠 적분 부등식 보조정리로 축소되었습니다.
+### 1.2 범위 축소 깔때기(`22 -> 18 -> 11 -> 10 -> 7`) 및 표제 원고 미형식화·비교 챌린지 대리 명제 축소 (`CP-04`, `CP-07`)
+- **자매 원고 `11 / 22`편(`50.0%`) 추론 로그 미공개 및 `#197`·`#271` 표제 주원고 `4`편(`11,895`줄) Lean 4 형식화 `0%` (`CP-04`, `CP-07`)**:
+  1. **`#197` (`lean/docs/197.md:1-8`) 표제-내용 역전**: 문서 제목을 `# A torsion-free group algebra that is not directly finite`로 내걸었으나 정작 `October-4-2026` 무비틀림 대표 원고(`2,346`줄)는 **Lean 4 형식화 `0`줄 · 추론 로그 `0`편**으로 제외하고 비틀림(torsion) 군 원고 `3`편만 형식화했습니다(제외된 무비틀림 원고는 `Gardam 2021, Annals of Math.` 인용이 `0`건으로 누락되어 있고 `.bib` 내 `DykemaJuschenko2015` `1`건이 본문 미인용 `0`건임).
+  2. **`#271` (`lean/docs/271.md:1-6`) 표제 3대 원고(`9,549`줄) 형식화 `0%`**: 문서 제목을 `# Bloch's law, its lattice correction, and the spherical magnetization law`로 내걸었으나 `September-24` 최근접 이웃 원고 `1`편(`128`개 파일)만 형식화하고, 정작 표제에 적힌 `October-5-2026` 3대 주원고(*Bloch's Law* `3,023`줄, *First lattice correction* `2,976`줄, *Spherical magnetization law* `3,550`줄; 합계 **`9,549`줄**)는 **Lean 4 형식화 `0`줄 · 추론 로그 `0`편**입니다(또한 `spherical-magnetization-law`는 짝수 격자 변 길이 `L even`으로 제한되며 `DiaconisSaloffCoste1993`, `DoyleSnell1984`, `Nash1958`, `SuzukiFisher1971`, `Timar2013` 등 `.bib` `5`건이 본문 미인용 `0`건으로 남아 4순위 코퍼스 전체 미인용 `.bib`의 `12 / 13 = 92.3%`가 `#271`에 집중됨).
+- **비교 챌린지 표제·정량 파트 제외(`3`편) 및 암묵적 가설의 명시적 추가 (`CP-04`)**:
+  1. **`#017` · `#102` · `#159` 정량 파트 제외**: [`PiExponent.lean`](../proofs/oai_ref/challenges/PiExponent.lean#L7-L18)은 `Corollary 1.2`(Flint-Hills 급수)를, [`UniqueGamesTheorem.lean`](../proofs/oai_ref/challenges/UniqueGamesTheorem.lean#L231-L238)은 추론 로그 표제인 `BasicSDP` 최적성(`Corollary 7.1`)을, [`ErdosReciprocal.lean`](../proofs/oai_ref/challenges/ErdosReciprocal.lean#L31-L35)은 2부 준다항식 상한을 비교 챌린지에서 제외했습니다.
+  2. **비교 챌린지 명시적 정칙성 가설 추가**: [`GeneralMahler.lean:24-27`](../proofs/oai_ref/challenges/GeneralMahler.lean#L24-L27)은 `IsCompact K`, `Convex ℝ K`, `(interior K).Nonempty` 3종을, [`VlasovMaxwell.lean:47-53`](../proofs/oai_ref/challenges/VlasovMaxwell.lean#L47-L53)은 `BoundedSmooth`, `MemLp 2` 및 가우스 발산 구속조건 2종을 명시적 가설로 추가했습니다.
 
 ### 1.3 장절별 인용 편중 및 스텁 도달성 감사 (`CP-03`, `CP-05`)
 - **원고 본문(`30,782`줄)의 서두 인용 편중**: `10`편 원고 전체 `30,782`줄 중 서론에 인용이 집중되고 핵심 기술 증명 장절의 다수가 무인용 상태로 남아 있습니다.
