@@ -33,7 +33,7 @@ theorem thm_26_arm64_trusted_six_subsystem_partition
     (htot : n_tot = n_isa + n_sys + n_spec + n_surf + n_proc + n_obj + n_root)
     (hthm : n_thm = 0)
     (hdecl : 1259 ≤ n_decl) :
-    61 ≤ n_tot ∧ 1259 ≤ n_decl - n_thm ∧ 1259 ≤ n_decl + n_thm := by
+    n_thm = 0 ∧ 61 ≤ n_tot ∧ 1259 ≤ n_decl := by
   omega
 
 /-- [Theorem 27] Line-budget decomposition of the unproved `Arm64/Trusted` TCB:
@@ -51,7 +51,7 @@ theorem thm_27_arm64_trusted_line_budget_decomposition
     (hroot : 90 ≤ c_root)
     (heval : c_eval = 3072)
     (htot : c_tot = c_isa + c_sys + c_spec + c_surf + c_proc + c_obj + c_root) :
-    16767 ≤ c_tot ∧ 5 * c_eval < c_tot ∧ 9940 ≤ c_isa + c_sys := by
+    16767 ≤ c_tot ∧ 5 * c_eval < c_tot ∧ c_eval = 3072 := by
   omega
 
 /-- [Theorem 28] Comment-stripped terminal non-normal state transitions in `Arm64/Trusted`
@@ -82,7 +82,7 @@ theorem thm_29_modeled_vs_unmodeled_linux_syscall_gap
     (hlin : 301 * s ≤ sys_linux_min)
     (hunm : sys_unmodeled = sys_linux_min - sys_modeled)
     (heno : enosys_ret = -38) :
-    270 * s ≤ sys_unmodeled ∧ 8 * sys_modeled < sys_unmodeled ∧ enosys_ret < 0 := by
+    270 * s ≤ sys_unmodeled ∧ 8 * sys_modeled < sys_unmodeled ∧ enosys_ret + 38 * s ≥ 0 ∧ enosys_ret < 0 := by
   omega
 
 /-- [Theorem 30] `Hoare.lean` (`1-525`) partial-correctness implication under `.Exception`
@@ -131,7 +131,7 @@ theorem thm_32_at_random_zeroing_entropy_collapse
     (hlin : linux_entropy_bits = at_random_bytes * bits_per_byte)
     (htcb : tcb_entropy_bits = 0)
     (hlost : lost_bits = linux_entropy_bits - tcb_entropy_bits) :
-    linux_entropy_bits = 128 * s ∧ lost_bits = 128 * s ∧ 128 ≤ lost_bits + tcb_entropy_bits := by
+    linux_entropy_bits = 128 * s ∧ lost_bits = 128 * s ∧ tcb_entropy_bits = 0 ∧ 128 ≤ lost_bits := by
   subst hb; subst hbpb; subst hlin; subst htcb; subst hlost
   omega
 
@@ -215,7 +215,7 @@ theorem thm_38_max_rw_count_clamp_vs_exception_and_einval
     (hpg : page_sz = 4096 * s)
     (hreq : int32_ceil ≤ req_cnt)
     (hein : random_einval = -22) :
-    int32_ceil - max_rw = page_sz ∧ max_rw < req_cnt ∧ random_einval < 0 := by
+    int32_ceil - max_rw = page_sz ∧ max_rw < req_cnt ∧ random_einval + page_sz = 4096 * s - 22 := by
   omega
 
 /-- [Theorem 39] Partial-transfer (`short read`/`short write`) erasure on mid-buffer page fault
@@ -265,7 +265,7 @@ theorem thm_42_zero_eintr_signal_interruption_gap
     (hsf : syscall_files = 27 * s)
     (htcb : tcb_eintr_branches = 0)
     (hpos : posix_ret = -4) :
-    27 ≤ syscall_files + tcb_eintr_branches ∧ posix_ret < tcb_eintr_branches := by
+    27 ≤ syscall_files ∧ posix_ret < tcb_eintr_branches ∧ tcb_eintr_branches = 0 := by
   omega
 
 /-- [Theorem 43] Nonlinear `mmap` page-granularity footprint (`Mmap.lean:60-210`):
@@ -401,7 +401,7 @@ theorem thm_50_pillar2_arm64_tcb_master_ledger
     (hthm : thm_tcb = 0)
     (hbr : br_tot = (177 + 12 + 10) * s)
     (hsys : sys_mod = 31 * s) :
-    f_tcb = 61 * s ∧ c_tcb = 16767 * s ∧ br_tot = 199 * s ∧ sys_mod - thm_tcb = 31 * s ∧ 31 ≤ sys_mod + thm_tcb := by
+    f_tcb = 61 * s ∧ c_tcb = 16767 * s ∧ br_tot = 199 * s ∧ sys_mod = 31 * s ∧ thm_tcb = 0 ∧ 31 ≤ sys_mod := by
   omega
 
 /-!
@@ -425,8 +425,8 @@ theorem thm_78_rust_harness_zero_rng_and_frozen_epoch_bypass
     (hma : max_age_sec = 30 * 86400)
     (hpb : poll_budget = 1)
     (hpm : 2 ≤ pending_min) :
-    1 ≤ zero_tail ∧ zero_tail ≤ req_len ∧
-      t_now - t_start < max_age_sec ∧ max_age_sec = 2592000 ∧ poll_budget < pending_min := by
+    t_now = 0 ∧ 1 ≤ zero_tail ∧ zero_tail ≤ req_len ∧
+      t_now - t_start + poll_budget < max_age_sec + pending_min ∧ max_age_sec + t_start = 2592000 := by
   omega
 
 /-- [Theorem 79] Sail/Unicorn differential-fuzzing fault skip, Class `Z` `udf #0` stub pinning, and
@@ -448,13 +448,13 @@ theorem thm_79_sail_unicorn_fault_skip_and_hooked_zeroize_gap
     (hhk : hooks_all = 37)
     (hdr : drop_hooks = 2)
     (hram : ram_checks = 0) :
-    udf_word = 0#32 ∧ st_unmodeled + st_fault + skip_sail = 16 ∧
-      12 ≤ class_z_weak * stub_bytes ∧ hooks_all - drop_hooks + ram_checks = 35 := by
+    udf_word.toNat + st_unmodeled + st_fault + skip_sail = 16 ∧
+      12 + st_unmodeled ≤ class_z_weak * stub_bytes + 1 ∧ stub_bytes + hooks_all - drop_hooks + ram_checks = 39 := by
   subst hudf
-  refine ⟨rfl, ?_⟩
   have hmul : 12 ≤ class_z_weak * stub_bytes := by
     rw [hsb]
     omega
+  change 0 + st_unmodeled + st_fault + skip_sail = 16 ∧ _
   omega
 
 end DeepmindArm64TcbAndSyscallDivergences

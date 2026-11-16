@@ -348,7 +348,7 @@ theorem thm_69_stub_only_scanner_blindness_no_go_counter_model
     (hov : obs_vac = 0)
     (hpu : proof_used = 1)
     (hpv : proof_vac = 0) :
-    F obs_used = F obs_vac ∧ proof_used ≠ proof_vac ∧ ¬ (F obs_used = 0 ∧ F obs_vac = 1) := by
+    F obs_used = F obs_vac ∧ proof_used + obs_used ≠ proof_vac + obs_vac ∧ ¬ (F obs_used = 0 ∧ F obs_vac = 1) := by
   have heq : obs_used = obs_vac := by omega
   rw [heq]
   exact ⟨rfl, by omega, by omega⟩

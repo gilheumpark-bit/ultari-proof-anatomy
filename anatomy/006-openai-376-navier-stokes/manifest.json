@@ -16,13 +16,13 @@
     "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
-    "ko/01_초보자용_쉬운해설.md": "3986478d8bcca56d9a6d85712f0d4b4fe03054a71c27a79a90a64ba346d414eb",
-    "ko/02_중급자용_구조및수식가이드.md": "defc3aac2c1116badd0c0fa7b8d5e24cf92e6fc65eecdd729d66795337f5c02a",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "de79bbf49a0be37cea01860bbc4a4b36240960aeac3052e72c3e59ed12372968",
+    "ko/01_초보자용_쉬운해설.md": "96551633fe9977fbe70ca01da431cc46ae38028e0ef7f68e08b5ad3a00724c6e",
+    "ko/02_중급자용_구조및수식가이드.md": "6045c9fec6028612b4874cba2de40d90e52422c197582996c1e7ba274cc1816a",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "3492ba691df8c6e0a0de3cd3953fbac6b57884ec001b8400e3239f0c8bb1a6ba",
     "ko/04_자동검증및파서용_명세서.md": "1c7ffaea1e512e4591b9dc9e3c13309911bd8fb53a1b28163468ee3b2e62d3a8",
     "en/01_Beginner_Guide.md": "88859918edced0784d36c76daf67f496765e4971bb78db03b3e0c06c5f214069",
     "en/02_Intermediate_Math_and_Code_Guide.md": "f9c764d62e4eae1defc2bafec8573fc49c434a10e9a1966436c972ced91c1ec5",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "028061ff212495d03fafcd1b9715f0420d8f8c2d9ffecc6b0d5889dd38828814",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "a71dc298f119d68c63fc7e46c88733270598129777dd8fc665084d817b2a846e",
     "en/04_Automated_Verification_and_Parser_Spec.md": "101851a5eba4f0bf57fc18c70cc00f8cb18bdd23d52a9847d857b2a560c6ae2f"
   },
   "verdict": {

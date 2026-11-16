@@ -9,20 +9,20 @@
   "artifacts_sha256": {
     "README.md": "2306bf9b30b85594fea4416ae15ab4f0fe6055acdd8e8c68da993e8949deafc9",
     "README.ko.md": "95f15c1d13d9b4ac07c3fa593bbce5db1ad5d737e0e72caff17b6cb81a1ffeba",
-    "proofs/eth_subexp_interpolation_and_hashes.lean": "c222d771e83d6ad4f377fe59d7391b4400cebacf44ce618d0a166d78fd1c83f9",
-    "proofs/eth_tensor_contraction_and_circuits.lean": "b86142b58bba1ec2c6ada53e26aa626d64daa2bb5ab335398d687bb5a830d9e8",
-    "proofs/eth_five_repairs_and_four_layer_verdict.lean": "1d9cc84de4b1c08f5050c968f9eb754f069061ac65e2caab896a36dcdb46a425",
-    "proofs/verify_symbolic_eth.py": "6b7bbe2c886fe739fe3725eb225d65b60f4f0b2e80146e74eb5d3d4509aa7a21",
+    "proofs/eth_subexp_interpolation_and_hashes.lean": "d63050b9801789da195d32a55c31116d06f35167d443f261fdd9c3e2bb8373be",
+    "proofs/eth_tensor_contraction_and_circuits.lean": "abb95284b7e2dda2418ed93b7f26a20d3ab093210b567acbd580a0da49f6e70a",
+    "proofs/eth_five_repairs_and_four_layer_verdict.lean": "6dd09ee52aa248d8b14e3750a2393a883e9328937a2d336a8ef860aa10ec9e32",
+    "proofs/verify_symbolic_eth.py": "4677e619dd347624651e6d0c0b95a23e875c5ff2c4d1ddc529d10fd8d2baf4b5",
     "proofs/symbolic_verification_result.json": "2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735",
     "proofs/problem_spec.md": "7c3bb00098417efc7ebed5a076a4de7355d9b2e89e35f53c052fe4a30787455d",
-    "ko/01_초보자용_쉬운해설.md": "994689d23eb2ab83cb322d77a643d8b7298ceaff46f83824e463c3bb16fe98b8",
-    "ko/02_중급자용_구조및수식가이드.md": "4964a49b96f0755a59a0a44afed46ba22b48cbcd4476aa177345efed09b431d9",
-    "ko/03_전문가용_전산학및형식증명심사보고서.md": "6d3558dd3f2744a2dca7541409de99f4d1840ee3dd8f5e34f79a315308c66b85",
-    "ko/04_자동검증및파서용_명세서.md": "d7d1116ce2612fbcccebec29481333906dfe0003fb9adedf7fee68ac8fecb0d7",
-    "en/01_Beginner_Guide.md": "970279a8d96acdb1c099958caee96464d857439c67c6190cbda2134bc7fb0cc3",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "6065dd37140fa17add694b278a690dc4b4fc52ec7ffa003d57dcf93e2a072024",
-    "en/03_Expert_Complexity_and_Formal_Report.md": "18ee214703a1b7c0e08ea47b7cbad5ccdf4d4bf6a5c38ec3ecd34aa2e6047d7f",
-    "en/04_Automated_Verification_and_Manifest.md": "02ed2eda73b29de5f3b182c1adeda026e18faf5f7620e93f8b73f01bd9f088ed"
+    "ko/01_초보자용_쉬운해설.md": "7e7bf3de70a6a24cb34204f198f962b2ca9e72a6f4e81c7e35f2465034ebf006",
+    "ko/02_중급자용_구조및수식가이드.md": "d0d55e39eeb1995e4927c625b2b9c9a6e3323f6d96b7ed60a4842fd0c437b5dd",
+    "ko/03_전문가용_전산학및형식증명심사보고서.md": "6912d3fdb713e3cc4d85c82883470eba2b8a075524e4df7677ded94145ea8064",
+    "ko/04_자동검증및파서용_명세서.md": "5ce8da4233cd4a62cd2da35381dfd6d749510e1e603ba399c7841e6c1840fc27",
+    "en/01_Beginner_Guide.md": "66db3c1dcc49a4d84efd5d54bd6bf67409879f752b8587b36039e3bcac2bb471",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "81d4c7628bd65b778a29f84b04e3403492627e97d5ab6a829a4889aef22405a0",
+    "en/03_Expert_Complexity_and_Formal_Report.md": "972d116f870ac1b59685d246bcae296d930a29c2c14b7dae3420e1ac908d2fae",
+    "en/04_Automated_Verification_and_Manifest.md": "9c3175cff01690a736483a46157d2aef46c39c829664b51e44c83dd4f3b42494"
   },
   "scope_and_limitations": {
     "formalized_arithmetic_and_linear_algebra": "56 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 454/454 hypothesis mutations caught = 128/128 + 177/177 + 149/149) across proofs/eth_subexp_interpolation_and_hashes.lean, proofs/eth_tensor_contraction_and_circuits.lean, and proofs/eth_five_repairs_and_four_layer_verdict.lean + SymPy and PyTorch tensor verification covering 100% (48/48 files, 629/629 formal statements, 940/940 total declarations & environments) of #378."
@@ -30,70 +30,70 @@
   "verified_key_results": {
     "engine_i_interpolation_and_hashes_theorems": {
       "lean_theorems": [
-        "swap_eigenbasis_symmetric_antisymmetric_split (Theorem 1, L22)",
-        "newton_forward_difference_parity_interpolation (Theorem 2, L58)",
-        "remark_4_4_four_by_four_swap_matrix_kernel_and_path (Theorem 3, L77)",
-        "swap_support_mismatch_and_annihilator_degree_bound (Theorem 4, L95)",
-        "shared_summary_measurement_row_budget (Theorem 5, L111)",
-        "taylor_jet_truncation_and_subset_pair_exponent (Theorem 6, L130)",
-        "asymptotic_three_way_exponent_balance_schedule (Theorem 7, L149)",
-        "beigel_tarui_modulus_amplifying_polynomial_l2 (Theorem 8, L171)",
-        "total_order_truncated_ring_linear_vs_quadratic_degree (Theorem 9, L205)",
-        "tanner_expander_hash_parameters_and_mixing_distance (Theorem 10, L238)",
-        "tanner_code_check_row_budget_and_locality (Theorem 11, L272)",
-        "greedy_hash_selection_three_quarter_contraction (Theorem 12, L317)",
-        "cip_sparsification_insertion_recurrence_step (Theorem 13, L346)",
-        "cip_sparsification_b_branch_constant_and_tree_exponent (Theorem 14, L369)",
-        "coset_separation_iteration_identity_and_bound (Theorem 15, L385)",
-        "bitprogram_1220_stack_compiler_space_and_time_envelope (Theorem 16, L403)"
+        "swap_eigenbasis_symmetric_antisymmetric_split (Theorem 1, L40)",
+        "newton_forward_difference_parity_interpolation (Theorem 2, L76)",
+        "remark_4_4_four_by_four_swap_matrix_kernel_and_path (Theorem 3, L95)",
+        "swap_support_mismatch_and_annihilator_degree_bound (Theorem 4, L116)",
+        "shared_summary_measurement_row_budget (Theorem 5, L132)",
+        "taylor_jet_truncation_and_subset_pair_exponent (Theorem 6, L151)",
+        "asymptotic_three_way_exponent_balance_schedule (Theorem 7, L170)",
+        "beigel_tarui_modulus_amplifying_polynomial_l2 (Theorem 8, L192)",
+        "total_order_truncated_ring_linear_vs_quadratic_degree (Theorem 9, L248)",
+        "tanner_expander_hash_parameters_and_mixing_distance (Theorem 10, L285)",
+        "tanner_code_check_row_budget_and_locality (Theorem 11, L319)",
+        "greedy_hash_selection_three_quarter_contraction (Theorem 12, L364)",
+        "cip_sparsification_insertion_recurrence_step (Theorem 13, L393)",
+        "cip_sparsification_b_branch_constant_and_tree_exponent (Theorem 14, L416)",
+        "coset_separation_iteration_identity_and_bound (Theorem 15, L432)",
+        "bitprogram_1220_stack_compiler_space_and_time_envelope (Theorem 16, L450)"
       ]
     },
     "engine_ii_tensor_contraction_and_circuit_theorems": {
       "lean_theorems": [
-        "appendix_d_collision_packet_packing_and_edge_contraction (Theorem 17, L22)",
-        "appendix_d_dyadic_depth_precision_schedule_and_total_wires (Theorem 18, L43)",
-        "appendix_d_cauchy_2adic_deformation_valuation_invariance (Theorem 19, L62)",
-        "appendix_d_vandermonde_sylvester_2adic_exponent_bound (Theorem 20, L79)",
-        "appendix_d_tapered_hermite_exact_agm_series_sum_six (Theorem 21, L96)",
-        "appendix_d_tapered_vs_untapered_hermite_valuation_gain (Theorem 22, L118)",
-        "appendix_d_hermite_jet_precision_budget_pt (Theorem 23, L142)",
-        "appendix_d_hardy_ramanujan_mode_partition_exponent (Theorem 24, L162)",
-        "appendix_d_recursive_depth_geometric_decay_ratio (Theorem 25, L195)",
-        "appendix_d_dense_incidence_group_wire_compression (Theorem 26, L226)",
-        "appendix_d_fixed_density_vs_arbitrary_density_exponent_gap (Theorem 27, L253)",
-        "williams_enp_witness_circuit_3sat_gate_reduction (Theorem 28, L284)",
-        "williams_enp_circuit_lower_bound_threshold_contradiction (Theorem 29, L304)",
-        "engine_i_cannot_prove_corollary_1_4_without_engine_ii (Theorem 30, L329)",
-        "lean_formalization_scope_gap_and_cutoff_inventory (Theorem 31, L354)",
-        "oai_subexponential_sat_unused_hypothesis_audit (Theorem 32, L380)",
-        "actual_lift_ring_degree_and_nat_cast_injectivity_range (Theorem 51, L399)",
-        "binomial_matrix_vandermonde_chu_lu_determinant_one (Theorem 52, L416)",
-        "bitprogram_compile_tm_and_primitive_machine_overhead_bounds (Theorem 53, L433)",
-        "sparse_budget_occurrence_cap_and_inverse_index_envelope (Theorem 54, L447)",
-        "asymptotic_layout_rate_and_cost_assembly_trial_guards (Theorem 55, L464)",
-        "comparator_challenge_json_and_main_entry_point_audit (Theorem 56, L483)"
+        "appendix_d_collision_packet_packing_and_edge_contraction (Theorem 17, L46)",
+        "appendix_d_dyadic_depth_precision_schedule_and_total_wires (Theorem 18, L67)",
+        "appendix_d_cauchy_2adic_deformation_valuation_invariance (Theorem 19, L86)",
+        "appendix_d_vandermonde_sylvester_2adic_exponent_bound (Theorem 20, L103)",
+        "appendix_d_tapered_hermite_exact_agm_series_sum_six (Theorem 21, L120)",
+        "appendix_d_tapered_vs_untapered_hermite_valuation_gain (Theorem 22, L157)",
+        "appendix_d_hermite_jet_precision_budget_pt (Theorem 23, L181)",
+        "appendix_d_hardy_ramanujan_mode_partition_exponent (Theorem 24, L201)",
+        "appendix_d_recursive_depth_geometric_decay_ratio (Theorem 25, L234)",
+        "appendix_d_dense_incidence_group_wire_compression (Theorem 26, L265)",
+        "appendix_d_fixed_density_vs_arbitrary_density_exponent_gap (Theorem 27, L293)",
+        "williams_enp_witness_circuit_3sat_gate_reduction (Theorem 28, L324)",
+        "williams_enp_circuit_lower_bound_threshold_contradiction (Theorem 29, L344)",
+        "engine_i_cannot_prove_corollary_1_4_without_engine_ii (Theorem 30, L369)",
+        "lean_formalization_scope_gap_and_cutoff_inventory (Theorem 31, L394)",
+        "oai_subexponential_sat_unused_hypothesis_audit (Theorem 32, L420)",
+        "actual_lift_ring_degree_and_nat_cast_injectivity_range (Theorem 51, L443)",
+        "binomial_matrix_vandermonde_chu_lu_determinant_one (Theorem 52, L460)",
+        "bitprogram_compile_tm_and_primitive_machine_overhead_bounds (Theorem 53, L478)",
+        "sparse_budget_occurrence_cap_and_inverse_index_envelope (Theorem 54, L494)",
+        "asymptotic_layout_rate_and_cost_assembly_trial_guards (Theorem 55, L511)",
+        "comparator_challenge_json_and_main_entry_point_audit (Theorem 56, L530)"
       ]
     },
     "five_repairs_and_four_layer_verdict_theorems": {
       "lean_theorems": [
-        "layer1_unary_vs_binary_encoding_bitlength_gap (Theorem 33, L20)",
-        "layer1_visited_space_L_only_refuted_and_poly_n_plus_L_repaired (Theorem 34, L38)",
-        "layer2_engine_i_circuit_lower_bound_loglog_degradation (Theorem 35, L61)",
-        "layer2_engine_ii_galois_ring_and_tapered_hermite_repair_certificate (Theorem 36, L79)",
-        "layer3_asymptotic_layout_guard_fails_at_log2_L_24 (Theorem 37, L101)",
-        "layer3_asymptotic_layout_guard_passes_at_log2_L_25 (Theorem 38, L125)",
-        "layer3_cost_assembly_explicit_exponent_constant_12032411847 (Theorem 39, L148)",
-        "layer3_uniform_exhaustive_loop_replaces_noncomputable_dfa_and_reject (Theorem 40, L166)",
-        "layer4_walsh_and_irreducible_search_constructive_termination_bounds (Theorem 41, L191)",
-        "layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof (Theorem 42, L210)",
-        "layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication (Theorem 43, L245)",
-        "layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression (Theorem 44, L278)",
-        "layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression (Theorem 45, L305)",
-        "layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast (Theorem 46, L328)",
-        "layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator (Theorem 47, L359)",
-        "layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction (Theorem 48, L386)",
-        "layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate (Theorem 49, L405)",
-        "layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness (Theorem 50, L428)"
+        "layer1_unary_vs_binary_encoding_bitlength_gap (Theorem 33, L32)",
+        "layer1_visited_space_L_only_refuted_and_poly_n_plus_L_repaired (Theorem 34, L52)",
+        "layer2_engine_i_circuit_lower_bound_loglog_degradation (Theorem 35, L76)",
+        "layer2_engine_ii_galois_ring_and_tapered_hermite_repair_certificate (Theorem 36, L94)",
+        "layer3_asymptotic_layout_guard_fails_at_log2_L_24 (Theorem 37, L116)",
+        "layer3_asymptotic_layout_guard_passes_at_log2_L_25 (Theorem 38, L140)",
+        "layer3_cost_assembly_explicit_exponent_constant_12032411847 (Theorem 39, L163)",
+        "layer3_uniform_exhaustive_loop_replaces_noncomputable_dfa_and_reject (Theorem 40, L181)",
+        "layer4_walsh_and_irreducible_search_constructive_termination_bounds (Theorem 41, L207)",
+        "layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof (Theorem 42, L226)",
+        "layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication (Theorem 43, L261)",
+        "layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression (Theorem 44, L294)",
+        "layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression (Theorem 45, L321)",
+        "layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast (Theorem 46, L344)",
+        "layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator (Theorem 47, L375)",
+        "layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction (Theorem 48, L404)",
+        "layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate (Theorem 49, L424)",
+        "layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness (Theorem 50, L447)"
       ]
     }
   },
@@ -112,337 +112,337 @@
         "index": 1,
         "name": "swap_eigenbasis_symmetric_antisymmetric_split",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 22
+        "line": 40
       },
       {
         "index": 2,
         "name": "newton_forward_difference_parity_interpolation",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 58
+        "line": 76
       },
       {
         "index": 3,
         "name": "remark_4_4_four_by_four_swap_matrix_kernel_and_path",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 77
+        "line": 95
       },
       {
         "index": 4,
         "name": "swap_support_mismatch_and_annihilator_degree_bound",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 95
+        "line": 116
       },
       {
         "index": 5,
         "name": "shared_summary_measurement_row_budget",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 111
+        "line": 132
       },
       {
         "index": 6,
         "name": "taylor_jet_truncation_and_subset_pair_exponent",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 130
+        "line": 151
       },
       {
         "index": 7,
         "name": "asymptotic_three_way_exponent_balance_schedule",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 149
+        "line": 170
       },
       {
         "index": 8,
         "name": "beigel_tarui_modulus_amplifying_polynomial_l2",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 171
+        "line": 192
       },
       {
         "index": 9,
         "name": "total_order_truncated_ring_linear_vs_quadratic_degree",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 205
+        "line": 248
       },
       {
         "index": 10,
         "name": "tanner_expander_hash_parameters_and_mixing_distance",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 238
+        "line": 285
       },
       {
         "index": 11,
         "name": "tanner_code_check_row_budget_and_locality",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 272
+        "line": 319
       },
       {
         "index": 12,
         "name": "greedy_hash_selection_three_quarter_contraction",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 317
+        "line": 364
       },
       {
         "index": 13,
         "name": "cip_sparsification_insertion_recurrence_step",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 346
+        "line": 393
       },
       {
         "index": 14,
         "name": "cip_sparsification_b_branch_constant_and_tree_exponent",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 369
+        "line": 416
       },
       {
         "index": 15,
         "name": "coset_separation_iteration_identity_and_bound",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 385
+        "line": 432
       },
       {
         "index": 16,
         "name": "bitprogram_1220_stack_compiler_space_and_time_envelope",
         "file": "eth_subexp_interpolation_and_hashes.lean",
-        "line": 403
+        "line": 450
       },
       {
         "index": 17,
         "name": "appendix_d_collision_packet_packing_and_edge_contraction",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 22
+        "line": 46
       },
       {
         "index": 18,
         "name": "appendix_d_dyadic_depth_precision_schedule_and_total_wires",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 43
+        "line": 67
       },
       {
         "index": 19,
         "name": "appendix_d_cauchy_2adic_deformation_valuation_invariance",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 62
+        "line": 86
       },
       {
         "index": 20,
         "name": "appendix_d_vandermonde_sylvester_2adic_exponent_bound",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 79
+        "line": 103
       },
       {
         "index": 21,
         "name": "appendix_d_tapered_hermite_exact_agm_series_sum_six",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 96
+        "line": 120
       },
       {
         "index": 22,
         "name": "appendix_d_tapered_vs_untapered_hermite_valuation_gain",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 118
+        "line": 157
       },
       {
         "index": 23,
         "name": "appendix_d_hermite_jet_precision_budget_pt",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 142
+        "line": 181
       },
       {
         "index": 24,
         "name": "appendix_d_hardy_ramanujan_mode_partition_exponent",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 162
+        "line": 201
       },
       {
         "index": 25,
         "name": "appendix_d_recursive_depth_geometric_decay_ratio",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 195
+        "line": 234
       },
       {
         "index": 26,
         "name": "appendix_d_dense_incidence_group_wire_compression",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 226
+        "line": 265
       },
       {
         "index": 27,
         "name": "appendix_d_fixed_density_vs_arbitrary_density_exponent_gap",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 253
+        "line": 293
       },
       {
         "index": 28,
         "name": "williams_enp_witness_circuit_3sat_gate_reduction",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 284
+        "line": 324
       },
       {
         "index": 29,
         "name": "williams_enp_circuit_lower_bound_threshold_contradiction",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 304
+        "line": 344
       },
       {
         "index": 30,
         "name": "engine_i_cannot_prove_corollary_1_4_without_engine_ii",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 329
+        "line": 369
       },
       {
         "index": 31,
         "name": "lean_formalization_scope_gap_and_cutoff_inventory",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 354
+        "line": 394
       },
       {
         "index": 32,
         "name": "oai_subexponential_sat_unused_hypothesis_audit",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 380
+        "line": 420
       },
       {
         "index": 33,
         "name": "layer1_unary_vs_binary_encoding_bitlength_gap",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 20
+        "line": 32
       },
       {
         "index": 34,
         "name": "layer1_visited_space_L_only_refuted_and_poly_n_plus_L_repaired",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 38
+        "line": 52
       },
       {
         "index": 35,
         "name": "layer2_engine_i_circuit_lower_bound_loglog_degradation",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 61
+        "line": 76
       },
       {
         "index": 36,
         "name": "layer2_engine_ii_galois_ring_and_tapered_hermite_repair_certificate",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 79
+        "line": 94
       },
       {
         "index": 37,
         "name": "layer3_asymptotic_layout_guard_fails_at_log2_L_24",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 101
+        "line": 116
       },
       {
         "index": 38,
         "name": "layer3_asymptotic_layout_guard_passes_at_log2_L_25",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 125
+        "line": 140
       },
       {
         "index": 39,
         "name": "layer3_cost_assembly_explicit_exponent_constant_12032411847",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 148
+        "line": 163
       },
       {
         "index": 40,
         "name": "layer3_uniform_exhaustive_loop_replaces_noncomputable_dfa_and_reject",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 166
+        "line": 181
       },
       {
         "index": 41,
         "name": "layer4_walsh_and_irreducible_search_constructive_termination_bounds",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 191
+        "line": 207
       },
       {
         "index": 42,
         "name": "layer4_repaired_pipeline_preserves_asymptotic_subexponential_eth_disproof",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 210
+        "line": 226
       },
       {
         "index": 43,
         "name": "layer5_stratum2_quartic_schedule_rescued_by_stratum3_pair_duplication",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 245
+        "line": 261
       },
       {
         "index": 44,
         "name": "layer5_spectral_cutoff_debloat_and_hoeffding_threshold_compression",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 278
+        "line": 294
       },
       {
         "index": 45,
         "name": "layer5_discarded_ternary_idempotent_lift_and_exponent_constant_compression",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 305
+        "line": 321
       },
       {
         "index": 46,
         "name": "layer5_hardy_mathematical_beauty_three_invariants_and_slop_contrast",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 328
+        "line": 344
       },
       {
         "index": 47,
         "name": "layer6_galois_ring_extension_and_hensel_cubic_idempotent_operator",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 359
+        "line": 375
       },
       {
         "index": 48,
         "name": "layer6_swap_matrix_action_and_2adic_hermite_polynomial_reconstruction",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 386
+        "line": 404
       },
       {
         "index": 49,
         "name": "layer6_executable_galois_ring_swap_interpolation_3sat_solver_certificate",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 405
+        "line": 424
       },
       {
         "index": 50,
         "name": "layer6_oai_ref_five_module_direct_patch_and_bitprogram_trace_soundness",
         "file": "eth_five_repairs_and_four_layer_verdict.lean",
-        "line": 428
+        "line": 447
       },
       {
         "index": 51,
         "name": "actual_lift_ring_degree_and_nat_cast_injectivity_range",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 399
+        "line": 443
       },
       {
         "index": 52,
         "name": "binomial_matrix_vandermonde_chu_lu_determinant_one",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 416
+        "line": 460
       },
       {
         "index": 53,
         "name": "bitprogram_compile_tm_and_primitive_machine_overhead_bounds",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 433
+        "line": 478
       },
       {
         "index": 54,
         "name": "sparse_budget_occurrence_cap_and_inverse_index_envelope",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 447
+        "line": 494
       },
       {
         "index": 55,
         "name": "asymptotic_layout_rate_and_cost_assembly_trial_guards",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 464
+        "line": 511
       },
       {
         "index": 56,
         "name": "comparator_challenge_json_and_main_entry_point_audit",
         "file": "eth_tensor_contraction_and_circuits.lean",
-        "line": 483
+        "line": 530
       }
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"

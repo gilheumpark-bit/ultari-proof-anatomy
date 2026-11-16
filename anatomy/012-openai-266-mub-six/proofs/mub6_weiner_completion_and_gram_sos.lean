@@ -289,7 +289,7 @@ theorem thm_43_exact_rational_mixed_certificate_margin
     (hnet : net_num = head_num + tail_num)
     (hred : reduced_num = -2007321335237 * N)
     (hden : denom = 6480) :
-    net_num = 216 * reduced_num ∧ denom = 216 * 30 ∧ net_num < 0 ∧ 3 * tail_num < -head_num := by
+    net_num = 216 * reduced_num ∧ denom * N = 216 * 30 * N ∧ net_num < 0 ∧ 3 * tail_num < -head_num := by
   subst hden
   omega
 

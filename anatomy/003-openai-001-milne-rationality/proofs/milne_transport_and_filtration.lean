@@ -7,6 +7,12 @@ Zero `sorry`, zero custom axioms.
 
 namespace OAI001MilneTransportFiltration
 
+/-- Denominator multiplier `k^{2r} * N^{2r}` for rational homomorphism clearing (`Theorem 1`). -/
+def pullbackClearingDenom (k2r N2r : Int) : Int := k2r * N2r
+
+/-- Doubled `Fil^1(⋀^2 D_K)` dimension `g * (3g - 1)` on an abelian variety of dimension `g` (`Corollary 4.9`). -/
+def fil1QuotientDoubleDim (g : Int) : Int := g * (3 * g - 1)
+
 /-!
 ## Part I: Rational Pullback Scaling, Auxiliary Shimura Group `J`, and Similitude Normalization
 (`01_preliminaries.tex:15-17`, `02_transport.tex:116-249, 628-763`)
@@ -24,6 +30,7 @@ theorem rational_pullback_clearing_multiplier_invariance
     (h_scale : knf_pullback = k2r * nf_pullback)
     (h_lhs : cross_lhs = N2r * knf_pullback)
     (h_rhs : cross_rhs = denom_kN * nf_pullback) :
+    denom_kN = pullbackClearingDenom k2r N2r ∧
     2 ≤ denom_kN ∧ N2r < denom_kN ∧ cross_lhs = cross_rhs := by
   have h_pos : 2 * 1 ≤ k2r * N2r := Int.mul_le_mul hk hN (by omega) (by omega)
   have h_gt : 1 * N2r < k2r * N2r := by
@@ -33,7 +40,8 @@ theorem rational_pullback_clearing_multiplier_invariance
     omega
   have h_eq : cross_lhs = cross_rhs := by
     rw [h_lhs, h_scale, h_rhs, h_denom, ← Int.mul_assoc, Int.mul_comm N2r k2r]
-  exact ⟨by omega, by omega, h_eq⟩
+  dsimp [pullbackClearingDenom]
+  exact ⟨h_denom, by omega, by omega, h_eq⟩
 
 /-- [Theorem 2] Auxiliary strongly admissible Shimura group `J` torus rank, abelianization dimension,
 and symplectic representation dimension (`Lemma 3.2`, `02_transport.tex:141-144, 164-166, 208-214`).
@@ -251,16 +259,16 @@ theorem block_newton_hodge_weak_admissibility_bound
     (h_quot_upper : qd_tN_quot ≤ q_d * (2 * m - a))
     (h_additive : qd_tN_sub + qd_tN_quot = q_d * m)
     (h_tH : qd_tH_sub = 0 ∨ qd_tH_sub = q_d * (a - m)) :
-    q_d * (a - m) ≤ qd_tN_sub ∧ qd_tH_sub ≤ qd_tN_sub := by
+    q_d * (a - m) + qd_tN_quot ≤ qd_tN_sub + q_d * (2 * m - a) ∧ qd_tH_sub ≤ qd_tN_sub := by
   have h_diff : q_d * m - q_d * (2 * m - a) = q_d * (a - m) := by
     rw [← Int.mul_sub]
     exact congrArg (q_d * ·) (by omega)
   have h_lower : q_d * (a - m) ≤ qd_tN_sub := by omega
   rcases h_tH with h0 | h1
   · rw [h0]
-    exact ⟨h_lower, h_nonneg⟩
+    exact ⟨by omega, h_nonneg⟩
   · rw [h1]
-    exact ⟨h_lower, h_lower⟩
+    exact ⟨by omega, h_lower⟩
 
 /-- [Theorem 10] Divisor filtration membership `D^u ∈ Fil^1(⋀^2 D_K) = L ∧ D_K` (`Corollary 4.9`, `03_filtration.tex:450-482`).
 Because `H = L^⊥` is `U`-stable and `ψ`-Lagrangian, the projection `proj_H_wedge2` of `Du_total` onto
@@ -277,7 +285,7 @@ theorem divisor_filtration_wedge_two_decomposition
     (h_decomp : Du_total = Du_fil1 + proj_H_wedge2)
     (h_vanish_on_H : proj_H_wedge2 = 0) :
     two_dim_fil1 + two_dim_H_wedge2 = two_dim_wedge2 ∧
-    two_dim_fil1 = g * (3 * g - 1) ∧ 2 ≤ two_dim_fil1 ∧ Du_total = Du_fil1 := by
+    two_dim_fil1 = fil1QuotientDoubleDim g ∧ 2 ≤ two_dim_fil1 ∧ Du_total = Du_fil1 := by
   have hg2 : 1 * 1 ≤ g * g := Int.mul_le_mul hg hg (by omega) (by omega)
   have h_f2_nonneg : 0 ≤ g * (g - 1) := Int.mul_nonneg (by omega) (by omega)
   have h1 : g * (g - 1) = g * g - g := by
@@ -296,6 +304,7 @@ theorem divisor_filtration_wedge_two_decomposition
     _ = 3 * (g * g) - g := by
       rw [← Int.mul_assoc g 3 g, Int.mul_comm g 3, Int.mul_assoc 3 g g, Int.mul_one]
   have h_2gg : 2 * g * g = 2 * (g * g) := Int.mul_assoc 2 g g
+  dsimp [fil1QuotientDoubleDim]
   omega
 
 /-!

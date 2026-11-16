@@ -2,7 +2,7 @@
 
 > **English Version**: [README.md](README.md) | **상위 저장소**: [`ultari-proof-anatomy`](../../README.ko.md)
 
-본 사례(`010-openai-017-pi-irrationality-exponent`)는 OpenAI의 `openai/math` 코퍼스 중 초월수론 간판 문제인 **Family `#017` (`The irrationality exponent of π is 2`, 2026년 9월 24일)**의 LaTeX 원고(`5`개 파일 `1,591`줄 + `references.bib` `269`줄), Lean 4 형식화(`869`개 파일 `94,948`줄), 그리고 `42`쪽(`45`개 절) 분량의 추론 로그(`irrationality-exponent-of-pi.pdf`)를 전수 해부하고 `75`개의 `Mathlib 4` 실물 대수·해석 Lean 4 정리(`1,646`줄, `0 sorry`, `0` 커스텀 공리, `120/120` 가설 변이 포착, `44`개 비선형·귀납 증명, 이중 증인 검증)로 기계 검증한 종합 감사 패키지입니다.
+본 사례(`010-openai-017-pi-irrationality-exponent`)는 OpenAI의 `openai/math` 코퍼스 중 초월수론 대표 문제인 **Family `#017` (`The irrationality exponent of π is 2`, 2026년 9월 24일)**의 LaTeX 원고(`5`개 파일 `1,591`줄 + `references.bib` `269`줄), Lean 4 형식화(`869`개 파일 `94,948`줄), 그리고 `42`쪽(`45`개 절) 분량의 추론 로그(`irrationality-exponent-of-pi.pdf`)를 전수 해부하고 `75`개의 `Mathlib 4` 실물 대수·해석 Lean 4 정리(`1,646`줄, `0 sorry`, `0` 커스텀 공리, `120/120` 가설 변이 포착, `44`개 비선형·귀납 증명, 이중 증인 검증)로 기계 검증한 종합 감사 패키지입니다.
 
 ---
 

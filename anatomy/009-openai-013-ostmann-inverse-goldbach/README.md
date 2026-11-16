@@ -18,12 +18,13 @@ This package dissects OpenAI `#013` (*The additive indecomposability of the prim
 | **Tier 2** | **Intermediates** | [`en/02_Intermediate_Guide.md`](en/02_Intermediate_Guide.md) | 1-to-1 declaration tables for `proofs/oai_ref/` (`60` files) and all 75 Lean 4 theorems. |
 | **Tier 3** | **Experts** | [`en/03_Advanced_Guide.md`](en/03_Advanced_Guide.md) | Full forensic report covering the 3-generation fossil tree, step-by-step derivations of the 4 algebraic engines, effective thresholds, and 9-section 1:1 audit. |
 | **Tier 4** | **Automated Verifiers** | [`en/04_Expert_Verification.md`](en/04_Expert_Verification.md)<br>[`manifest.json`](manifest.json) | SHA-256 checksum table, mutation testing summary (`393/393`), and verification commands. |
+| **OPFF Audit** | **Forensic Referees & Peers** | [`en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md`](en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md)<br>[`ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md`](ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md) | 7-part OPFF Detailed Forensic Referee Report (8-metric scorecard, 3-tier attribution analysis, 6-question FAQ, and formal verdict box). |
 
 ## Formal Proofs & One-Command Verification
 
-- [`ostmann_twin_engines_and_supply_contraction.lean`](proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L517): Theorems 1–20 and 51–55 (`188/188` mutations caught).
+- [`ostmann_twin_engines_and_supply_contraction.lean`](proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L533): Theorems 1–20 and 51–55 (`188/188` mutations caught).
 - [`ostmann_tree_transfers_and_permutation_contradiction.lean`](proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L564): Theorems 21–50 + 2 `def`s (`181/181` mutations caught).
-- [`ostmann_algebraic_engines_and_cauchy_determinant.lean`](proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L1-L420): Theorems 56–75 + `OstmannContractionSystem` (`24/24` mutations caught).
+- [`ostmann_algebraic_engines_and_cauchy_determinant.lean`](proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L1-L420): Theorems 56–75 + [`OstmannContractionSystem`](proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L28-L34) (`24/24` mutations caught).
 - [`verify_symbolic_ostmann.py`](proofs/verify_symbolic_ostmann.py) & [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json).
 
 ```bash

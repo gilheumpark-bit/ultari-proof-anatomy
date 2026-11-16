@@ -100,7 +100,7 @@
 | `78` | [`thm_78_rust_harness_zero_rng_and_frozen_epoch_bypass`](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L418) | `coins.rs` zero-filled RNG tail (`avail < req`), frozen `UNIX_EPOCH = 0` bypassing `30`-day (`2,592,000` s) SPK expiry, and `1 MiB`/`2 MiB`/`37` B harness caps |
 | `79` | [`thm_79_sail_unicorn_fault_skip_and_hooked_zeroize_gap`](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L439) | Sail/Unicorn skipped fault statuses (`1`, `13`) and `2` skipped instructions, `alink_check.py` `3 * 4 = 12` B `udf #0` weak-atomic stubs, and `2` hooked `Drop::drop` zeroize symbols |
 
-### Pillar 3: `ComparatorChallenge` Laundering, `PQXDH.md` `2^40` Vacuity, MAC Cliffs, & `AGPL-3.0-only` Debt (`deepmind_comparator_laundering_and_crypto_bounds.lean`, `27` Theorems)
+### Pillar 3: `ComparatorChallenge` TCB Inclusion, `PQXDH.md` `2^40` Vacuity, MAC Cliffs, & `AGPL-3.0-only` Debt (`deepmind_comparator_laundering_and_crypto_bounds.lean`, `27` Theorems)
 
 | # | Lean 4 Theorem & Exact Line Link | Mathematical / Forensic Content |
 | :---: | :--- | :--- |

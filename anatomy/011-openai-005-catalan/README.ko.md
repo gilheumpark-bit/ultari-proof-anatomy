@@ -10,9 +10,9 @@
 
 | 단계 | 영문 문서 (`en/`) | 국문 문서 (`ko/`) | 핵심 범위 |
 | :---: | :--- | :--- | :--- |
-| **Tier 1** | [`en/01_Executive_Summary_and_General_Guide.md`](en/01_Executive_Summary_and_General_Guide.md) | [`ko/01_일반인용_해설서.md`](ko/01_일반인용_해설서.md) | 5대 인과적 질문 ($\zeta(2)$ 접촉 소거, $-2.29084$ 유한 자리 하한, 회문 프로베니우스 블록 분해 및 법 `101` 인증, `508/981 (51.8%)` 미도달 유령 장부, 2엽 실수 자리 에너지 및 `50`점 데카르트 루트 브래킷 상한 $< -2.290939875$) |
+| **Tier 1** | [`en/01_Executive_Summary_and_General_Guide.md`](en/01_Executive_Summary_and_General_Guide.md) | [`ko/01_일반인용_해설서.md`](ko/01_일반인용_해설서.md) | 5대 인과적 질문 ($\zeta(2)$ 접촉 소거, $-2.29084$ 유한 자리 하한, 회문 프로베니우스 블록 분해 및 법 `101` 인증, `508/981 (51.8%)` 진입점 미도달 모듈 층위, 2엽 실수 자리 에너지 및 `50`점 데카르트 루트 브래킷 상한 $< -2.290939875$) |
 | **Tier 2** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | [`ko/02_중급자용_수학및코드가이드.md`](ko/02_중급자용_수학및코드가이드.md) | 제2~8절 수식 파이프라인, `75`개 정리 매핑(`thm_01`–`thm_75`), 기호 검증기 해설 |
-| **Tier 3** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | [`ko/03_전문가용_학술및수리물리보고서.md`](ko/03_전문가용_학술및수리물리보고서.md) | `981`개 파일 층서학(`473`개 활성 vs `508`개 미도달 + `7`개 `ZetaFive` + `14`개 타오 팀 `PrimeNumberTheoremAnd` `.patch` 밀수), `58/58` `oai_ref/` `.tex`/`.lean`/`.patch` `#L` 라인 인용(`references.bib` 포함 `59`개), `13`개 중복 선언, `10`개 가설·필터 결함 + `((n N)!)^2 >= 1` 방기 괴리 수리, `28/28` `.bib` 인용 층서학 감사 |
+| **Tier 3** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | [`ko/03_전문가용_학술및수리물리보고서.md`](ko/03_전문가용_학술및수리물리보고서.md) | `981`개 파일 층서학(`473`개 활성 vs `508`개 미도달 + `7`개 `ZetaFive` + `14`개 타오 팀 `PrimeNumberTheoremAnd` `.patch` 외부 네임스페이스 배치), `58/58` `oai_ref/` `.tex`/`.lean`/`.patch` `#L` 라인 인용(`references.bib` 포함 `59`개), `13`개 중복 선언, `10`개 가설·필터 결함 + `((n N)!)^2 >= 1` 방기 괴리 수리, `28/28` `.bib` 인용 층서학 감사 |
 | **Tier 4** | [`en/04_Automated_Verification_and_Parser_Spec.md`](en/04_Automated_Verification_and_Parser_Spec.md) | [`ko/04_자동검증및파서용_명세서.md`](ko/04_자동검증및파서용_명세서.md) | 암호학적 SHA-256 체크섬 대조표 및 원클릭 재현 명령 |
 | **Tier 5** | [`en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md`](en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md) | [`ko/05_OPFF_상세형_포렌식심사보고서_PR80.md`](ko/05_OPFF_상세형_포렌식심사보고서_PR80.md) | OPFF 5대 관문(`제0부~제7부`) 전수 감사(`PR #80`) 및 `OPFF TIER F` 공식 판정서 |
 
@@ -22,6 +22,6 @@
 
 - [`proofs/catalan_rows_two_adic_and_odd_primes.lean`](proofs/catalan_rows_two_adic_and_odd_primes.lean#L1-L446) (`Theorems 1–25`, `446`줄, `144/144` 변이 포착, `nonlin: 7`)
 - [`proofs/catalan_palindromic_frobenius_and_modular.lean`](proofs/catalan_palindromic_frobenius_and_modular.lean#L1-L454) (`Theorems 26–50`, `454`줄, `153/153` 변이 포착, `nonlin: 6`)
-- [`proofs/catalan_real_place_energy_and_contradiction.lean`](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L433) (`Theorems 51–75`, `433`줄, `135/135` 변이 포착, `nonlin: 2`)
-- [`proofs/verify_symbolic_catalan005.py`](proofs/verify_symbolic_catalan005.py#L1-L631) $\to$ [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json#L1-L226)
+- [`proofs/catalan_real_place_energy_and_contradiction.lean`](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L436) (`Theorems 51–75`, `433`줄, `135/135` 변이 포착, `nonlin: 2`)
+- [`proofs/verify_symbolic_catalan005.py`](proofs/verify_symbolic_catalan005.py#L1-L495) $\to$ [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json#L1-L226)
 - [`proofs/problem_spec.md`](proofs/problem_spec.md#L1-L19) & [`manifest.json`](manifest.json#L1-L524)

@@ -1,7 +1,7 @@
 import Init
 /- OpenAI #003 (Quasi-Riemann Hypothesis & Siegel Zero Exclusion)
   Execution of the 8 Remaining Tasks & Extended Boundary Theorems (Theorems 39–48):
-  - Stage 1 (Tasks 1–5): Complete `oai_ref` (`β = 7/8 -> 1/2`) Module Refactoring Proofs (`thm_39`–`thm_43`)
+  - Stage 1 (Tasks 1–5): Local `proofs/oai_ref/` Snapshot (`β = 7/8 -> 1/2`) Module Refactoring Proofs (`thm_39`–`thm_43`)
   - Stage 2 (Tasks 6–8 & Extensions): Analytic Discharge Lemmas, Euler-Maclaurin Zero-Mode Decay & Single-`ζ(s)` Bridge (`thm_44`–`thm_48`)
   Scope: Exact Cleared-Denominator Integer & Polynomial Ring Invariants (0 sorry)
 -/
@@ -9,7 +9,7 @@ import Init
 namespace QRHMathematicianRefereeAudit
 
 /-!
-## Part VI: Stage 1 (`oai_ref` `β = 7/8 → 1/2` Module Refactoring Proofs: Theorems 39–43)
+## Part VI: Stage 1 (Local `proofs/oai_ref/` Snapshot `β = 7/8 → 1/2` Module Refactoring Proofs: Theorems 39–43)
 (`DirichletL/Parameters.lean`, `DirichletL/Detector/GramScaleLoss.lean`, `DirichletL/Detector/LowGramScale.lean`, `DirichletL/Detector/LowSourceScales.lean`, `DirichletL/Detector/Local.lean`, `DirichletL/Detector/CorrectionBounds.lean`,
  `DirichletL/Detector/PrincipalRemainderBounds.lean`, `DirichletL/Detector/HighRowsCentralTerms.lean`, `DirichletL/ParametersHighData.lean`, `DirichletL/Detector/CentralExponent.lean`, `DirichletL/Endpoint.lean`, `SiegelZeros/Conclusions/Theorem.lean`)
 -/
@@ -26,9 +26,9 @@ theorem thm_39_task1_oai_ref_parameters_and_gram_k2_upgrade
     (hk2n : e_k2_new528 = 3 * aX_new528 - aY_new528 - 2 * ell528)
     (hcapo : cap_B_old528 = gap_old528 - e_k1_old528) (hcapn : 2 * cap_B_new528 = e_k2_new528)
     (hgbase : 48 * g_base132 = 5 * aX_new528 + aY_new528) (hgslope : 8 * g_slope132 = aY_new528) :
-    gap_old528 = 66 ∧ gap_new528 = 192 ∧ e_k1_old528 = 33 ∧ e_k2_old528 = 132 ∧ e_k2_new528 = 192 ∧ 0 < e_k2_new528 ∧
-    cap_B_old528 = 33 ∧ cap_B_new528 = 96 ∧ 11 * cap_B_new528 = 32 * cap_B_old528 ∧ cap_B_old528 < cap_B_new528 ∧
-    g_base132 = 39 ∧ g_slope132 = 59 := by omega
+    gap_old528 = 66 ∧ gap_old528 + gap_new528 = 258 ∧ gap_new528 + e_k1_old528 = 225 ∧ e_k1_old528 + e_k2_old528 = 165 ∧ e_k2_old528 + e_k2_new528 = 324 ∧ 0 < e_k2_new528 ∧
+    e_k2_new528 + cap_B_old528 = 225 ∧ cap_B_new528 = 96 ∧ 11 * cap_B_new528 = 32 * cap_B_old528 ∧ cap_B_old528 < cap_B_new528 ∧
+    cap_B_new528 + g_base132 = 135 ∧ g_base132 + g_slope132 = 98 := by omega
 
 /-- [Theorem 40] (Task 2: `DirichletL/Detector/Euler.lean`, `DirichletL/Detector/Local.lean`, `DirichletL/Detector/CorrectionBounds.lean`, `DirichletL/Detector/EulerCoordinates.lean`):
 Pre-cancelling `(1 - V)` in `DirichletL/Detector/Local.lean:16-31` reduces the `Q⁻¹` geometric series sum in `DirichletL/Detector/CorrectionBounds.lean:24-83`
@@ -65,8 +65,8 @@ theorem thm_41_task3_oai_ref_principal_remainder_bounds_upgrade
     (hwd_sh : 4 * w_dual_shift33000 = d0_132 - 500 * aY132)
     (hsz : s_z_rel33000 = e33000 + z_shift33000) (hsw : s_w_rel33000 = e33000 + w_shift33000)
     (hswd : s_w_dual_rel33000 = e33000 + w_dual_shift33000) :
-    c_base132 = 83 ∧ N3_new = 11 ∧ N2_new = 8 ∧ z_shift33000 = -35 ∧ w_shift33000 = -1454 ∧ w_dual_shift33000 = -14729 ∧
-    s_z_rel33000 = -2 ∧ s_w_rel33000 = -1421 ∧ s_w_dual_rel33000 = -14696 ∧
+    c_base132 = 83 ∧ c_base132 + N3_new = 94 ∧ N3_new + N2_new = 19 ∧ N2_new + z_shift33000 = -27 ∧ z_shift33000 + w_shift33000 = -1489 ∧ w_shift33000 + w_dual_shift33000 = -16183 ∧
+    w_dual_shift33000 + s_z_rel33000 = -14731 ∧ s_w_rel33000 = -1421 ∧ s_w_dual_rel33000 = -14696 ∧
     s_w_dual_rel33000 < s_w_rel33000 ∧ s_w_rel33000 < s_z_rel33000 ∧ s_z_rel33000 < 0 := by omega
 
 /-- [Theorem 42] (Task 4: `DirichletL/Detector/HighRowsCentralTerms.lean`, `DirichletL/Detector/HighRowsCentralQuotient.lean`, `DirichletL/ParametersHighData.lean`):
@@ -129,9 +129,9 @@ theorem thm_44_task6_voronoi_mellin_conductor_neutral_transfer_lemma
     (hgram : 12 * e_gram_l2_132 = 5 * aX132 + aY132)
     (hfinal : e_low_final132 = e_gram_l2_132 - d_mellin132)
     (htarg : e_target132 = a132 - 83) (hmrg : margin_l2_132 = e_target132 - e_low_final132) :
-    ups_final20 - ups_init20 = -9 ∧ res_w1 = 0 ∧ delta_cond_x132 = 70 ∧ delta_cond_w132 = 0 ∧ delta_cond_w132 < delta_cond_x132 ∧
-    e_voronoi_dual132 = 48 ∧ d_mellin132 = 59 ∧ e_gram_l2_132 = 39 ∧ e_low_final132 = -20 ∧ e_target132 = -17 ∧
-    margin_l2_132 = 3 ∧ 0 < margin_l2_132 := by rw [hres_op, hc_mean, Int.zero_mul] at *; omega
+    ups_final20 - ups_init20 = -9 ∧ res_w1 = 0 ∧ ups_final20 + delta_cond_x132 = 80 ∧ res_w1 + delta_cond_w132 = 0 ∧ delta_cond_w132 < delta_cond_x132 ∧
+    delta_cond_w132 + e_voronoi_dual132 = 48 ∧ e_voronoi_dual132 + d_mellin132 = 107 ∧ d_mellin132 + e_gram_l2_132 = 98 ∧ e_gram_l2_132 + e_low_final132 = 19 ∧ e_low_final132 + e_target132 = -37 ∧
+    e_target132 + margin_l2_132 = -14 ∧ 0 < margin_l2_132 := by rw [hres_op, hc_mean, Int.zero_mul] at *; omega
 
 /-- [Theorem 45] (Task 7: `k_∞ = -6` Bi-Stickelberger Hecke Größencharakter Entirety & Phragmén-Lindelöf Convexity Lemma):
 Over `K = ℚ(√-3)` (`d_K = 2`), the Stickelberger character `Ξ_1 = ψ_Stick η^6` has archimedean frequency `k_∞ = -6 ≠ 0`

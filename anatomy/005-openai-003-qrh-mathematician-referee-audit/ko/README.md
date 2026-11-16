@@ -8,7 +8,7 @@
 
 1. **혼재된 3종 $\beta$ 지표 분리**: 20개 모듈 전역 SOS 안장점($\beta_{\mathrm{SOS}}(0) = \frac{6843 - 7\sqrt{921}}{7578} \approx 0.874975 < \frac{7}{8}$, 유리수 증인 $\frac{41999}{48000}$), 국소 $\delta=0$ 단면 균형점($\frac{131}{150}$, $\frac{209}{240}$), 비예외 꼬리 바닥($\frac{4103}{4896} \approx 0.8380$)을 엄밀히 구분합니다.
 2. **$\beta = 2/3$ 극점 장벽 돌파**: 슈티켈베르거-아이젠슈타인 소멸($k_\infty = -6 \neq 0$)과 $(1 - R_p)$ 약분을 결합해 `coordR` 수렴 경계를 $\frac{401}{600}(\to \frac{2}{3})$에서 $\frac{117}{200}(\to \frac{7}{12})$ 및 $\frac{301}{600}(\to \frac{1}{2})$로 낮춥니다.
-3. **임계선($\beta = 1/2$) 조건부 전달 법칙**: 그람 이득에 따른 선형 전달 법칙 $\beta(\Delta_{\mathrm{gram}})$을 유도하고, `[Path A + Path B]` 결합 경로에서 $\beta = \frac{1}{2}$에 도달하기 위한 조건부 하이브리드 임계치 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$을 역산합니다([`thm_35`](../proofs/qrh_mathematician_referee_audit.lean#L454-L461), [`thm_46`](../proofs/qrh_eight_tasks_critical_upgrade.lean#L156-L171)).
+3. **임계선($\beta = 1/2$) 조건부 전달 법칙**: 그람 이득에 따른 선형 전달 법칙 $\beta(\Delta_{\mathrm{gram}})$을 유도하고, `[Path A + Path B]` 결합 경로에서 $\beta = \frac{1}{2}$에 도달하기 위한 조건부 하이브리드 임계치 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$을 역산합니다([`thm_35`](../proofs/qrh_mathematician_referee_audit.lean#L454-L461), [`thm_46`](../proofs/qrh_eight_tasks_critical_upgrade.lean#L156-L177)).
 
 ## 4단계 독자 맞춤형 가이드
 

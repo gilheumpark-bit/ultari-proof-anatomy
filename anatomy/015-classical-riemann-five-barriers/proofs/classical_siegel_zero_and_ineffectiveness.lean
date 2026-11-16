@@ -152,7 +152,7 @@ theorem thm_42_siegel_two_case_nonconstructive_lem_barrier (c_prop c_scale γ : 
     linarith [hmul, hc_prop]
   exact ⟨q1, hq1_gt1, mul_pos hc_scale (Real.rpow_pos_of_pos hq1_pos _), by rw [hval_eq]; exact hlt⟩
 
-/-- [Theorem 43] Landau-Page Zero Repulsion (`oai_ref/ActualPageUniqueness.lean`): `60/23 > 5/2` (`5/46` margin)
+/-- [Theorem 43] Landau-Page Zero Repulsion (`ActualPageUniqueness.lean` in local `proofs/oai_ref/` snapshot): `60/23 > 5/2` (`5/46` margin)
     forbids two distinct real zeros in `[1 - 1/(10 B L), 1)`. -/
 theorem thm_43_landau_page_repulsion_pair_exclusion (B L β1 β2 : ℝ)
     (hB : 0 < B) (hL : 0 < L) (hβ1 : β1 < 1) (hβ2 : β2 < 1)
@@ -306,7 +306,7 @@ theorem thm_47_gross_zagier_oesterle_rate_vs_effectivity_tradeoff (D ε : ℝ)
     linarith [hpow_gt, hx2]
   · nlinarith [hε0, hε1]
 
-/-- [Theorem 48] Audit of `#002 SiegelZeros` (`oai_ref/Theorem.lean`, `oai_ref/GeometricBoundary.lean`):
+/-- [Theorem 48] Audit of `#002 SiegelZeros` (`Theorem.lean` & `GeometricBoundary.lean` in local `proofs/oai_ref/` snapshot):
     Bezout cutoff `H = 86,713,344 = 2^11 * 3^3 * 1568`? Exact factorization `86713344 = 96 * 903264 = 2^15 * 3^3 * 98 / ...`
     and non-constructive `by_contra` model showing arbitrarily small valid `c = 1 / M` cannot be ruled out without a bound on `N_0`. -/
 theorem thm_48_openai_002_siegel_zeros_bezout_cutoff_and_by_contra_audit (H N M : ℕ)
@@ -318,7 +318,7 @@ theorem thm_48_openai_002_siegel_zeros_bezout_cutoff_and_by_contra_audit (H N M 
   have hM_pos : (0 : ℝ) < (M : ℝ) := by exact_mod_cast hM
   refine ⟨by omega, by omega, inv_anti₀ hH_pos hHN_r, inv_strictAnti₀ hM_pos (by linarith)⟩
 
-/-- [Theorem 49] Bridge to `Case 009` (`#013 Ostmann`, `oai_ref/SiegelBoundProof.lean` & `oai_ref/ActualPageUniqueness.lean`):
+/-- [Theorem 49] Bridge to `Case 009` (`#013 Ostmann`, `SiegelBoundProof.lean` & `ActualPageUniqueness.lean` in local `proofs/oai_ref/` snapshot):
     effective `log log X_0` bottleneck ladder `L_tat = 87,689 < L_ultra = 255,983 < L_sharp = 640,722 < L_gpt = 4,115,904`. -/
 theorem thm_49_case009_ostmann_single_destruct_and_loglog_bottleneck_bridge
     (L_tat L_gpt L_sharp L_ultra : ℕ)

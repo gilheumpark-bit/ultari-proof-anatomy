@@ -342,7 +342,7 @@ theorem thm_21_provenance_scrubbing_counter_model
     (htr : tr_refs = 54 * s)
     (hret : ret_refs = 5 * s)
     (hpr : prompts = 0) :
-    tr_refs - ret_refs = 49 * s ∧ ret_refs ≠ tr_refs ∧ prompts < 1 := by
+    tr_refs - ret_refs = 49 * s ∧ ret_refs ≠ tr_refs ∧ prompts < s := by
   omega
 
 /-- [Theorem 22] `#102` headline inversion (`00-introduction.tex:1-60`, `07-consequences.tex:64-74`,

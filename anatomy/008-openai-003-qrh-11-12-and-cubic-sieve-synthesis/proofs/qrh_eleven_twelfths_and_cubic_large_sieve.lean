@@ -6,6 +6,12 @@ import Init
 
 namespace QRHElevenTwelfthsAndCubicSieve
 
+/-- Canonical descent reserve scale `50 * (2 * M)` unlocking arbitrary rational margin `θ = 1 / (2M)`. -/
+def canonicalReserveScale (M : Int) : Int := 50 * (2 * M)
+
+/-- Cumulative 25-step short-cube loss scale `25 * (4 * M) = 100 * M`. -/
+def shortCubeLossScale (M : Int) : Int := 25 * (4 * M)
+
 /-!
 ## Part I: The `Re(s) > 23/24` (`ShortDraft`) vs. `Re(s) > 11/12` (`paper2.tex` & `AlexKontorovich/quasi-rh`) Formalization Gap (Theorems 1–8)
 (`MeanSquare/ThetaDensity.lean:93`, `Mellin/SixthPowerAverage.lean:330-407`, `PrimeRows/NormFiberExtraction.lean:342-355`,
@@ -78,9 +84,11 @@ theorem thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta
     (h_rhs : rhs_budget = denom_sym)
     (h_s_lhs : short25_lhs = 25 * (4 * M))
     (h_s_rhs : short25_rhs = denom_sym) :
+    lhs_budget = canonicalReserveScale M ∧ short25_lhs = shortCubeLossScale M ∧
     budget_up = 50 ∧ lhs_budget = 100 * M ∧ lhs_budget < rhs_budget ∧
     short25_lhs < short25_rhs ∧ 100 < denom_sym := by
   subst h_dup; subst h_rup
+  dsimp [canonicalReserveScale, shortCubeLossScale]
   omega
 
 /-- [Theorem 5] Subdominance of the Poisson/divisibility remainder (`Mellin/SixthPowerAverage.lean:381-406`, `paper2.tex:715`):

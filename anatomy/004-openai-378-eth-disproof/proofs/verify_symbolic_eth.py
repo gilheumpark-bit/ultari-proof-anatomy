@@ -268,6 +268,7 @@ def _audit_6_mode_partitions_and_circuit_lower_bound():
 
 
 def _audit_7_bitprogram_and_lean_scope_inventory():
+    assert len(list((pathlib.Path(__file__).resolve().parent / "oai_ref").rglob("*.lean"))) == 42
     for L_val in [0, 1, 10, 100]:
         L1_sq = (L_val + 1) ** 2
         assert 1220 * (2 * L_val + 4100 * L1_sq + 15) <= 5022740 * L1_sq

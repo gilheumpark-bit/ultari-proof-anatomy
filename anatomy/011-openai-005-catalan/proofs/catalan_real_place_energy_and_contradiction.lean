@@ -171,10 +171,13 @@ theorem thm_60_andreief_vandermonde_pair_count_plus_diagonal
     (hdiag : diag_terms = n)
     (hnsq : n_sq = n * n)
     (hfact : 1 ≤ fact_sq_lb) :
-    two_pairs + diag_terms = n_sq ∧ 0 ≤ two_pairs ∧ 1 ≤ n_sq ∧ 2 ≤ n_sq + fact_sq_lb := by
+    two_pairs + diag_terms = n_sq ∧ 0 ≤ two_pairs ∧ 1 ≤ n_sq ∧ 1 ≤ fact_sq_lb ∧ 1 ≤ n_sq * fact_sq_lb := by
   have h1 : n * (n - 1) + n = n * n := by
     rw [Int.mul_sub, Int.mul_one]; omega
   have h2 : 0 ≤ n * (n - 1) := Int.mul_nonneg (by omega) (by omega)
+  have h3 : 1 * 1 ≤ n * n := Int.mul_le_mul hn hn (by omega) (by omega)
+  have h4 : 1 * 1 ≤ (n * n) * fact_sq_lb := Int.mul_le_mul h3 hfact (by omega) (by omega)
+  rw [← hnsq] at h4
   omega
 
 /-!

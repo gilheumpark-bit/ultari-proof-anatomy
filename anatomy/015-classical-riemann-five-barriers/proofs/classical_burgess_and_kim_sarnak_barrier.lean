@@ -153,7 +153,7 @@ theorem thm_69_conrey_iwaniec_petrow_young_cubic_collision_removal (r : ℝ) (hr
   unfold burgessSubconvExp burgessShortExp cubicCollisionFreeExp
   refine ⟨?_, ?_, ?_, ?_, ?_⟩ <;> norm_num
 
-/-- [Theorem 70] Audit of `oai_ref/Parameters.lean` & `oai_ref/CubeFloorSaving.lean`:
+/-- [Theorem 70] Audit of the local `proofs/oai_ref/` snapshot (`Parameters.lean` & `CubeFloorSaving.lean`):
     compensated `3/16` Burgess floor `3/16 ≤ 17/48 - d` and `(17/48)/2 + (1/8)/12 = 3/16` for `d ∈ [0, 1/6]`. -/
 theorem thm_70_qrh_parameters_burgess_three_sixteenths_identity (d : ℝ)
     (hd0 : 0 ≤ d) (hd1 : 6 * d ≤ 1) :

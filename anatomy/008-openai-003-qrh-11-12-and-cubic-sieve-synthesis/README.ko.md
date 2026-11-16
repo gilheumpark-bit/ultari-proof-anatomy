@@ -21,8 +21,8 @@
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
-- [`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L305): 정리 1~15 (`115/115` 변이 포착).
-- [`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L313): 정리 16~30 (`125/125` 변이 포착).
+- [`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L313): 정리 1~15 (`115/115` 변이 포착).
+- [`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L323): 정리 16~30 (`125/125` 변이 포착).
 - [`qrh_trilogy_induction_and_algebraic_bridge.lean`](proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L1-L356): 정리 31~45 + `def` 7개 (`104/104` 변이 포착).
 - [`verify_symbolic_qrh_synthesis.py`](proofs/verify_symbolic_qrh_synthesis.py) 및 [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json).
 

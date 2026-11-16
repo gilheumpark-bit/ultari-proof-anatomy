@@ -13,10 +13,10 @@ We audited the Lean 4 source code of OpenAI `#003` (*Quasi-Riemann Hypothesis fo
 ## 2. Background: The Riemann Hypothesis vs. the Quasi-Riemann Hypothesis
 
 1. **The Riemann Hypothesis**:
-   - This famous unsolved problem predicts that all non-trivial zeros of the Riemann zeta function lie on the central vertical line $\text{Re}(s) = 0.50$.
+   - This famous unsolved problem predicts that all non-trivial zeros of the Riemann zeta function reside on the central vertical line $\text{Re}(s) = 0.50$.
    - The location of these zeros controls how evenly prime numbers are distributed.
 2. **The Quasi-Riemann Hypothesis (Zero-Free Strip)**:
-   - Proving that every zero lies exactly on $0.50$ remains out of reach.
+   - Proving that every zero is located exactly on $0.50$ remains out of reach.
    - Instead, a Quasi-Riemann Hypothesis proves that no zeros exist to the right of a boundary $\beta < 1$, such as $\beta = 0.875 = 7/8$.
    - Pushing $\beta$ closer to $0.50$ produces a stronger theorem.
 

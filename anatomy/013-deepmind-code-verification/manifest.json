@@ -9,13 +9,13 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_deepmind_signal.py"
   },
   "artifacts_sha256": {
-    "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean": "9d4f39861195048ec60c18ebf1cbecc4741c7848d3465d4f9b35b3f0deed0e2e",
-    "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean": "423ee8299f2f6e5aba5d35acb8674d31760e1239d4e902cdd9ff1f8e606c5fbb",
-    "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean": "74a83d86eada5c437a16fb684b65b53ebb35b97ac86d258aba9cc97975159ffd",
+    "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean": "9c3e9e433426ab127f30a245c890fcf09d7681264f073b7b41c44a052e289b08",
+    "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean": "92c7d148a80d7438da6e70d7f947d6399eb6f7cbf557e65dce8406bc0216e790",
+    "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean": "ed2ae01ec942c442883a1fa9ff14f8c4dbbf9c63f3a7b56053518b031a3fac08",
     "proofs/deepmind_signal_forensic_parsers.py": "edfca45ae4417f1c1f46e14d3b9b733ddb1a40a5aec78be159e80ecb2416416b",
     "proofs/verify_symbolic_deepmind_signal.py": "cfc6cac5be61baab7d8e5c8335a50b266894bb132ac4e967f475975df6c273f9",
     "proofs/symbolic_verification_result.json": "9f3da5893afca7f3b8c14461c773cc315fcaf5dfc4420f40a7223873d8d744b5",
-    "proofs/problem_spec.md": "a7e87de50ea3d2534e634abff62cc5f26e96944f8988c5b212857e770cd1df11"
+    "proofs/problem_spec.md": "0b33ecaaabe4e92d484912923cc4123eee1166ddc26f43c89541b34ed1d5e672"
   },
   "verified_key_results": {
     "pillar1_stratigraphy_and_hook_boundary": {
@@ -580,5 +580,17 @@
         "line": 507
       }
     ]
+  },
+  "files": {
+    "ko/01_일반인용_해설서.md": "601f68c4f84ed9f5f0bad5a5244ffa726c57b5a1fa7b87546f675deaa8b36022",
+    "ko/02_중급자용_수학및코드가이드.md": "019153dbcfbe9361eb9fcdc7f9b7610e03202ad3a92d2d2db8c8076af94d7ede",
+    "ko/03_전문가용_학술및수리물리보고서.md": "1c98fc31ff5355c32b8f25b4f7b624202d8a7751af59b72bb9570ef22b27983f",
+    "ko/04_자동검증및파서용_명세서.md": "c0fe14c51a4d8c9b31f2091c54a36981fc2290b26f294c190e854bb510fb5924",
+    "ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md": "cf96320ef8750763de7646face61ed7ca93192dd2bafb87cdaf5023582f97e0a",
+    "en/01_Executive_Summary_and_General_Guide.md": "0e1a84549a66d1e337e0604b816f4fbc84eae225461218d4cc4cebe27c5db0e6",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "c2a92dace3a868084bfd402bb8712c48e3b58f0dcd89b6f2f4225df4f725f156",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "21cb5240e3173ec6751778cf924d756f636d33afb1fd84cb595c9e4b1007ab9e",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "2e840ae8809ee570b0a02eaa0154ce552debf3a03192ecad40306e8734e26836",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "8544bd1a8dfec8606f893213705d99e7441108924d0cb46200dc05175abba3ef"
   }
 }

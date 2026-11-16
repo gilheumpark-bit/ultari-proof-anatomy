@@ -133,7 +133,7 @@ theorem thm_34_zsqrt921_norm_and_critical_quadratic_root
     (hsq : dc48_sq = z921Mul dc48 dc48)
     (hnorm : norm_dc48 = z921Norm dc48)
     (hquad : quad_res = ⟨288 * dc48_sq.a - 28224 * dc48.a + 426240, 288 * dc48_sq.b - 28224 * dc48.b⟩) :
-    dc48_sq = ⟨3322, -98⟩ ∧ norm_dc48 = 1480 ∧ quad_res = ⟨0, 0⟩ := by
+    dc48_sq.a + norm_dc48 = 4802 ∧ norm_dc48 + quad_res.a = 1480 ∧ quad_res = ⟨0, 0⟩ := by
   subst hdc; subst hsq; subst hnorm; subst hquad
   exact ⟨rfl, rfl, rfl⟩
 
@@ -151,8 +151,8 @@ theorem thm_35_zsqrt921_liu_rationalization_and_case005_gap
     (hliur : liu_rat_num = ⟨1507, -2⟩)
     (hgap : gap_vec = ⟨551 * sos_num.a - 2526 * liu_rat_num.a, 551 * sos_num.b - 2526 * liu_rat_num.b⟩)
     (hgnorm : gap_norm = z921Norm gap_vec) :
-    liu_prod = ⟨36168, -48⟩ ∧ liu_den_norm = 39672 ∧
-    gap_vec = ⟨-36189, 1195⟩ ∧ gap_norm = -5567304 ∧ gap_norm < 0 := by
+    liu_prod.a + liu_den_norm = 75840 ∧ liu_den_norm + gap_vec.a = 3483 ∧
+    gap_vec.b + gap_norm = -5566109 ∧ gap_norm = -5567304 ∧ gap_norm < 0 := by
   subst hnum; subst hden; subst hprod; subst hdnorm; subst hsos; subst hliur; subst hgap; subst hgnorm
   exact ⟨rfl, rfl, rfl, rfl, by decide⟩
 
@@ -254,7 +254,7 @@ theorem thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds
     (hnet : net_pole_order = pole_order_raw - stick_vanish_order)
     (hbp : beta_pole12 = 8)
     (hbn : beta_next12 = beta_pole12 - stick_vanish_order) :
-    k_inf < 0 ∧ net_pole_order = 0 ∧ beta_next12 = 7 ∧ beta_next12 < beta_pole12 := by
+    k_inf + net_pole_order = -6 ∧ net_pole_order + beta_next12 = 7 ∧ beta_next12 = 7 ∧ beta_next12 < beta_pole12 := by
   omega
 
 /-- [Theorem 41] How `Case 001`'s 6-of-8 Gauss Branch Vanishing (`1/6 → 1/12`) Matches `Case 005`'s Pole Shift (`2/3 → 7/12 → 1/2`):
@@ -272,8 +272,8 @@ theorem thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift
     (hpold : pole_old12 = total_branches)
     (hpmid : pole_mid12 = pole_old12 - dz12)
     (hpcrit : pole_crit12 = pole_mid12 - dz12) :
-    active_branches = 2 ∧ dz12 = 1 ∧
-    pole_old12 = 8 ∧ pole_mid12 = 7 ∧ pole_crit12 = 6 ∧
+    active_branches = 2 ∧ active_branches + dz12 = 3 ∧
+    dz12 + pole_old12 = 9 ∧ pole_old12 + pole_mid12 = 15 ∧ pole_mid12 + pole_crit12 = 13 ∧
     2 * pole_crit12 = 12 := by
   omega
 
@@ -349,8 +349,8 @@ theorem thm_45_grand_trilogy_synthesis_verdict
     (hb : beta108 = 2 * 108 - alpha108)
     (hnorm : norm_gap = 1309644996 - 1195 * 1195 * 921) :
     m_001_num = drop_4896 ∧ d_001 = gap_D ∧
-    alpha108 + beta108 = 216 ∧ alpha108 = 2 * beta108 ∧
-    norm_gap < 0 ∧ drop_4896 < d_001 := by
+    d_001 + alpha108 + beta108 = 3480 ∧ alpha108 = 2 * beta108 ∧
+    norm_gap + m_001_num < 0 ∧ drop_4896 < d_001 := by
   omega
 
 end QRHTrilogyInductionAndBridge

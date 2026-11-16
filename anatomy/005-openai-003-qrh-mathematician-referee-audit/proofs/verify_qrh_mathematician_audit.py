@@ -310,10 +310,18 @@ def verify_stage3_and_4_bottlenecks_and_numerics():
 
 def _verify_global_sos_and_critical_triple():
     """Verify Theorems 33-36: Global SOS saddle, Path A/B dead ends, Hybrid A+B & Analytic Moments."""
+    assert len(list((Path(__file__).resolve().parent / "oai_ref").rglob("*.lean"))) == 26
     aX_sym, s_sym, u_sym, dgram_sym, dl_s = sp.symbols("aX_sym s_sym u_sym dgram_sym dl_s")
-    aY_sym, d0_s, b_d0 = s_sym - aX_sym, sp.Rational(7, 6) - aX_sym, (sp.Rational(5, 6) - dl_s) * sp.Rational(37, 18) + dl_s * sp.Rational(7, 9)
-    p_dl = sp.Poly(sp.cancel(3888 * b_d0 * ((5 * aX_sym + aY_sym) / 12 - (aX_sym * sp.Rational(4, 25) + (1 + dl_s) / 2 - sp.Rational(33, 50) - (1 + dl_s) * aY_sym / 2 + d0_s * (dl_s / 2 - sp.Rational(13, 75) + (sp.Rational(5, 6) - dl_s) * (1 + dl_s * sp.Rational(7, 9) / (2 * b_d0))) + (dl_s / 2 - sp.Rational(4, 25)) / 6))), dl_s)
-    A_s, B_s, C_s, det_sym = p_dl.coeff_monomial(dl_s**2), p_dl.coeff_monomial(dl_s**1), p_dl.coeff_monomial(dl_s**0), sp.expand(4 * p_dl.coeff_monomial(dl_s**2) * p_dl.coeff_monomial(dl_s**0) - p_dl.coeff_monomial(dl_s**1)**2)
+    aY_sym, d0_s = s_sym - aX_sym, sp.Rational(7, 6) - aX_sym
+    b_d0 = (sp.Rational(5, 6) - dl_s) * sp.Rational(37, 18) + dl_s * sp.Rational(7, 9)
+    inner_dl = (
+        aX_sym * sp.Rational(4, 25) + (1 + dl_s) / 2 - sp.Rational(33, 50) - (1 + dl_s) * aY_sym / 2
+        + d0_s * (dl_s / 2 - sp.Rational(13, 75) + (sp.Rational(5, 6) - dl_s) * (1 + dl_s * sp.Rational(7, 9) / (2 * b_d0)))
+        + (dl_s / 2 - sp.Rational(4, 25)) / 6
+    )
+    p_dl = sp.Poly(sp.cancel(3888 * b_d0 * ((5 * aX_sym + aY_sym) / 12 - inner_dl)), dl_s)
+    A_s, B_s, C_s = p_dl.coeff_monomial(dl_s**2), p_dl.coeff_monomial(dl_s**1), p_dl.coeff_monomial(dl_s**0)
+    det_sym = sp.expand(4 * A_s * C_s - B_s**2)
     quad_s = sp.simplify(det_sym.subs(aX_sym, sp.solve(sp.Eq(sp.diff(det_sym, aX_sym), 0), aX_sym)[0]) * sp.Rational(-307, 1631700))
     beta_sos_exact = sp.simplify(sp.Rational(29, 36) + sp.solve(sp.Eq(quad_s, 0), s_sym)[0] / 12)
     slope_ray = -sp.diff(sp.Rational(7, 8) + sp.solve(sp.Eq(sp.Rational(7, 8) + u_sym / 4 - dgram_sym, sp.Rational(7, 8) - sp.Rational(11, 6) * u_sym), u_sym)[0] / 4 - dgram_sym, dgram_sym)

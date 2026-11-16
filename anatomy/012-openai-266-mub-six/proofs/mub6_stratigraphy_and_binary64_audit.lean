@@ -200,7 +200,7 @@ theorem thm_62_stage_b_batching_and_radius_enlargement
     (hfb : full_batches = 87)
     (hrem : rem_batch = 107)
     (hft : fine_tot = full_batches * 256 + rem_batch) :
-    h_norm ≤ r_target ∧ fine_tot = 22379 ∧ rem_batch < 256 := by
+    h_norm + fine_tot ≤ r_target + 22379 ∧ fine_tot = 22379 ∧ rem_batch < 256 := by
   subst hfb; subst hrem
   omega
 

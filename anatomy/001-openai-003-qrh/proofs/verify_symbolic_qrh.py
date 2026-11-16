@@ -5,7 +5,10 @@ Independent symbolic verification solver for Problems 1-5 based on Lean 4 refere
 
 import json
 import math
+from pathlib import Path
 import sympy as sp
+
+assert len(list((Path(__file__).resolve().parent / "oai_ref").rglob("*.lean"))) == 26
 
 
 def frac_irreducible_str(val):

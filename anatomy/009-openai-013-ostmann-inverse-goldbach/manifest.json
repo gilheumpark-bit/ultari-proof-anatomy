@@ -8,9 +8,9 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ostmann.py"
   },
   "artifacts_sha256": {
-    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "de1dc0ff11a3205dfa16998d300b0bd5195259d34831972941a17d52fd7f1c7d",
-    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "5e1cba290f76db87e71940b8fb8bff04dae4f87b74db3f3df7f102f6507e203a",
-    "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean": "5168fe2497838330c350411c96b7394932f5cb9300d98aa3de036c304f579e78",
+    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "0afde1e765bb1c12480105c24bfb3ac54321dd92c002ef3725d0b00145593adc",
+    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "3be4626bfca53841785db39bf8e56d80efb972054cb41dcef02ddf982f66f25a",
+    "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean": "f3a17f4d01c27996835f327523c708a98eb7f769ca61a6a9bc4afe9a9c61b4aa",
     "proofs/verify_symbolic_ostmann.py": "dd14880ab1aaed9a94e80d5228485264346a8b2230488ead675957ab7b75b47e",
     "proofs/symbolic_verification_result.json": "c6c4fa27af9686d43667e708e00d34dfd3daa789c5a91ad502b03cb3b27208fa",
     "proofs/problem_spec.md": "e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02"
@@ -32,12 +32,12 @@
       "ext_imports_engine_a": 1,
       "ext_imports_engine_b": 18,
       "lean_theorems": [
-        "thm_01_ostmann_directory_inclusion_exclusion_partition (Theorem 1, L20)",
-        "thm_02_shared_intersection_five_files_accounting (Theorem 2, L44)",
-        "thm_03_unreachable_orphan_381_files_accounting (Theorem 3, L61)",
-        "thm_04_external_dependency_asymmetry_1_vs_18 (Theorem 4, L85)",
-        "thm_05_complete_vs_main_logical_bridge_equivalence (Theorem 5, L106)",
-        "thm_06_finite_summand_crt_dirichlet_composite_witness (Theorem 6, L136)"
+        "thm_01_ostmann_directory_inclusion_exclusion_partition (Theorem 1, L30)",
+        "thm_02_shared_intersection_five_files_accounting (Theorem 2, L54)",
+        "thm_03_unreachable_orphan_381_files_accounting (Theorem 3, L71)",
+        "thm_04_external_dependency_asymmetry_1_vs_18 (Theorem 4, L97)",
+        "thm_05_complete_vs_main_logical_bridge_equivalence (Theorem 5, L118)",
+        "thm_06_finite_summand_crt_dirichlet_composite_witness (Theorem 6, L148)"
       ]
     },
     "pillar2_sieve_and_supply_contraction": {
@@ -55,25 +55,25 @@
       "perron_tail_Q_power": -8,
       "qrh_003_imports": 0,
       "lean_theorems": [
-        "thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window (Theorem 7, L160)",
-        "thm_08_collision_stability_reciprocal_penalty_identity (Theorem 8, L177)",
-        "thm_09_unbalanced_density_penalty_lower_bound_one_half (Theorem 9, L189)",
-        "thm_10_quadratic_character_parameter_budget (Theorem 10, L204)",
-        "thm_11_cauchy_schwarz_anchor_code_doubling (Theorem 11, L225)",
-        "thm_12_harmonic_band_mertens_budget_and_sparse_complement (Theorem 12, L240)",
-        "thm_13_local_transfer_polydisc_contraction_margin (Theorem 13, L262)",
-        "thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction (Theorem 14, L282)",
-        "thm_15_supply_contradiction_exponent_11_125 (Theorem 15, L303)",
-        "thm_16_montgomery_zero_density_Q7_and_tail_Q_minus_8 (Theorem 16, L324)",
-        "thm_17_zero_density_critical_exponent_crossover_at_sigma_half (Theorem 17, L340)",
-        "thm_18_page_exceptional_zero_single_prime_deletion_budget (Theorem 18, L355)",
-        "thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional (Theorem 19, L372)",
-        "thm_20_engine_a_vs_engine_b_supply_constants_bridge (Theorem 20, L387)",
-        "thm_51_section3_bonami_high_weight_exponent_and_divisor_cap (Theorem 51, L413)",
-        "thm_52_section4_anchor_code_one_sided_dichotomy_and_margin (Theorem 52, L434)",
-        "thm_53_section6_bipartite_quartet_cycle_and_affine_hs_bound (Theorem 53, L458)",
-        "thm_54_section7_five_disjoint_prime_scale_hierarchy (Theorem 54, L479)",
-        "thm_55_section8_progression_table_zero_free_margins (Theorem 55, L498)"
+        "thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window (Theorem 7, L172)",
+        "thm_08_collision_stability_reciprocal_penalty_identity (Theorem 8, L191)",
+        "thm_09_unbalanced_density_penalty_lower_bound_one_half (Theorem 9, L203)",
+        "thm_10_quadratic_character_parameter_budget (Theorem 10, L218)",
+        "thm_11_cauchy_schwarz_anchor_code_doubling (Theorem 11, L239)",
+        "thm_12_harmonic_band_mertens_budget_and_sparse_complement (Theorem 12, L254)",
+        "thm_13_local_transfer_polydisc_contraction_margin (Theorem 13, L276)",
+        "thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction (Theorem 14, L296)",
+        "thm_15_supply_contradiction_exponent_11_125 (Theorem 15, L317)",
+        "thm_16_montgomery_zero_density_Q7_and_tail_Q_minus_8 (Theorem 16, L338)",
+        "thm_17_zero_density_critical_exponent_crossover_at_sigma_half (Theorem 17, L354)",
+        "thm_18_page_exceptional_zero_single_prime_deletion_budget (Theorem 18, L369)",
+        "thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional (Theorem 19, L386)",
+        "thm_20_engine_a_vs_engine_b_supply_constants_bridge (Theorem 20, L401)",
+        "thm_51_section3_bonami_high_weight_exponent_and_divisor_cap (Theorem 51, L427)",
+        "thm_52_section4_anchor_code_one_sided_dichotomy_and_margin (Theorem 52, L448)",
+        "thm_53_section6_bipartite_quartet_cycle_and_affine_hs_bound (Theorem 53, L474)",
+        "thm_54_section7_five_disjoint_prime_scale_hierarchy (Theorem 54, L495)",
+        "thm_55_section8_progression_table_zero_free_margins (Theorem 55, L514)"
       ]
     },
     "pillar3_tree_and_permutation_contradiction": {
@@ -161,102 +161,102 @@
       {
         "name": "thm_01_ostmann_directory_inclusion_exclusion_partition",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 20
+        "line": 30
       },
       {
         "name": "thm_02_shared_intersection_five_files_accounting",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 44
+        "line": 54
       },
       {
         "name": "thm_03_unreachable_orphan_381_files_accounting",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 61
+        "line": 71
       },
       {
         "name": "thm_04_external_dependency_asymmetry_1_vs_18",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 85
+        "line": 97
       },
       {
         "name": "thm_05_complete_vs_main_logical_bridge_equivalence",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 106
+        "line": 118
       },
       {
         "name": "thm_06_finite_summand_crt_dirichlet_composite_witness",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 136
+        "line": 148
       },
       {
         "name": "thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 160
+        "line": 172
       },
       {
         "name": "thm_08_collision_stability_reciprocal_penalty_identity",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 177
+        "line": 191
       },
       {
         "name": "thm_09_unbalanced_density_penalty_lower_bound_one_half",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 189
+        "line": 203
       },
       {
         "name": "thm_10_quadratic_character_parameter_budget",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 204
+        "line": 218
       },
       {
         "name": "thm_11_cauchy_schwarz_anchor_code_doubling",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 225
+        "line": 239
       },
       {
         "name": "thm_12_harmonic_band_mertens_budget_and_sparse_complement",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 240
+        "line": 254
       },
       {
         "name": "thm_13_local_transfer_polydisc_contraction_margin",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 262
+        "line": 276
       },
       {
         "name": "thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 282
+        "line": 296
       },
       {
         "name": "thm_15_supply_contradiction_exponent_11_125",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 303
+        "line": 317
       },
       {
         "name": "thm_16_montgomery_zero_density_Q7_and_tail_Q_minus_8",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 324
+        "line": 338
       },
       {
         "name": "thm_17_zero_density_critical_exponent_crossover_at_sigma_half",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 340
+        "line": 354
       },
       {
         "name": "thm_18_page_exceptional_zero_single_prime_deletion_budget",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 355
+        "line": 369
       },
       {
         "name": "thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 372
+        "line": 386
       },
       {
         "name": "thm_20_engine_a_vs_engine_b_supply_constants_bridge",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 387
+        "line": 401
       },
       {
         "name": "thm_21_dyadic_tree_leaf_sum_by_induction",
@@ -411,27 +411,27 @@
       {
         "name": "thm_51_section3_bonami_high_weight_exponent_and_divisor_cap",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 413
+        "line": 427
       },
       {
         "name": "thm_52_section4_anchor_code_one_sided_dichotomy_and_margin",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 434
+        "line": 448
       },
       {
         "name": "thm_53_section6_bipartite_quartet_cycle_and_affine_hs_bound",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 458
+        "line": 474
       },
       {
         "name": "thm_54_section7_five_disjoint_prime_scale_hierarchy",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 479
+        "line": 495
       },
       {
         "name": "thm_55_section8_progression_table_zero_free_margins",
         "file": "proofs/ostmann_twin_engines_and_supply_contraction.lean",
-        "line": 498
+        "line": 514
       },
       {
         "name": "thm_56_common_center_lift_difference_cancellation",
@@ -536,5 +536,17 @@
     ],
     "compiler": "leanprover/lean4:v4.29.0-rc8"
   },
-  "lean_version": "v4.29.0-rc8"
+  "lean_version": "v4.29.0-rc8",
+  "files": {
+    "ko/01_Beginner_Guide.md": "0410a1926ffc9305922f553dce51a009dfd56ebe13686dec7651d488fbc80567",
+    "ko/02_Intermediate_Guide.md": "8d666f3ed985f319cb3d20fbe8265517d5412f4c1eb7f6b8390253e87117b2d8",
+    "ko/03_Advanced_Guide.md": "e55d2542154d27f1715b024092223cd3ce3013e400993b391c8db49e17e16b52",
+    "ko/04_Expert_Verification.md": "a967d88a63aef49394c59411e7e41ad816b43d3b6e2283675244581d6d2295d5",
+    "ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md": "27cd6ff281eb424c336851cb3f14d5ee0bd502eb3c989ed605292bf683cad5c8",
+    "en/01_Beginner_Guide.md": "b8ca8cfe2cb12e92ad44a19b2a96075549b299be8600b27c5b050aeb220cb6ce",
+    "en/02_Intermediate_Guide.md": "fe13ced43ed81055d1de82abed7f3ed0af95f2e3cadd09bfbaeb07a7071efb5e",
+    "en/03_Advanced_Guide.md": "c19006a7f138b0bcd76bbff7805599d7977367c3b2c572e251caf251e833d783",
+    "en/04_Expert_Verification.md": "dbf4854d6e6fbaa75c694db9c8dbe482cbef55d1352ae7f0b5b6e186cc12441e",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md": "b6a8e67afb2dc5e5a467c647613bed637949902366464e317e5cc4766bb5abb7"
+  }
 }

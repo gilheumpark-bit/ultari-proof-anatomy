@@ -5,7 +5,7 @@
 
 ## 1. Formalization Discipline: Zero Hardcoded Exponents and `188 / 188` Mutation Hygiene
 
-Formalizing classical analytic number theory bounds is prone to subtle circularity: encoding final literature fractions (`1/100`, `12/5`, `30/13`, `4/7`, `3/16`, `7/64`) as constants or smuggling stationary-point / Cauchy-Schwarz equations as theorem hypotheses. Across all `6` Lean 4 modules (`75` theorems over `ℝ`), `Case 015` enforces three strict invariants:
+Formalizing classical analytic number theory bounds is prone to subtle circularity: encoding final literature fractions (`1/100`, `12/5`, `30/13`, `4/7`, `3/16`, `7/64`) as constants or injecting stationary-point / Cauchy-Schwarz equations as unproved theorem hypotheses. Across all `6` Lean 4 modules (`75` theorems over `ℝ`), `Case 015` enforces three strict invariants:
 
 1. **First-Principles Equilibrium Derivations**: Every exponent is derived from its underlying pole-zero inequality, Class I/II reflection crossover, Perron contour truncation, `HasDerivAt` integration-by-parts identity, or Weil-sum moment balance.
 2. **Kernel-Proved Inequalities**: AM-GM stationarity (`u* = √(c_0 c_1)`), Cauchy-Schwarz discriminants (`1 <= 4 I_{AA} J_{BB}`), hyperbolic bounds (`coth ω > 1`), and the `oai_ref/Endpoint.lean` SOS vertex (`δ = 79/204`) are proved inside the Lean kernel rather than assumed as hypotheses.

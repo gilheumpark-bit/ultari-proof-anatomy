@@ -9,6 +9,16 @@
 
 namespace OstmannTwinEnginesAndSupply
 
+/-- Total unreachable orphaned fossil file partition across all `9` sub-directories (`Theorem 3`). -/
+def ostmannOrphanTotal (o_arith o_const o_quad o_char o_zd o_tree o_prelim o_qcenter o_root : Int) : Int :=
+  o_arith + o_const + o_quad + o_char + o_zd + o_tree + o_prelim + o_qcenter + o_root
+
+/-- Elsholtz shifted-sieve polylog exponent span `exp_hi - exp_lo` (`Theorem 7`). -/
+def elsholtzPolylogSpan (exp_hi exp_lo : Int) : Int := exp_hi - exp_lo
+
+/-- Section 4 one-sided anchor-code dichotomy exponent `ε * c - ε' * c'` (`Theorem 52`). -/
+def anchorOneSidedDichotomy (eps eps_prime c c_prime : Int) : Int := eps * c - eps_prime * c_prime
+
 /-!
 ## Part I: The Twin-Engine 7,716-File (609,199-Line) Stratigraphy & 3-Line Bridge Equivalence (Theorems 1–6)
 -/
@@ -74,7 +84,9 @@ theorem thm_03_unreachable_orphan_381_files_accounting
     (h_lall : 152 ≤ l_all)
     (h_lpm : l_papermain = 25)
     (h_lroot : l_root = l_all + l_papermain) :
-    o_total = 381 ∧ o_arith + o_const = 350 ∧ 177 ≤ l_root := by
+    o_total = ostmannOrphanTotal o_arith o_const o_quad o_char o_zd o_tree o_prelim o_qcenter o_root ∧
+    o_total = 381 ∧ o_total - o_arith - o_const = 31 ∧ 177 ≤ l_root := by
+  dsimp [ostmannOrphanTotal]
   omega
 
 /-- [Theorem 4] External dependency asymmetry between Engine A (`Complete.lean`) and Engine B (`Main.lean`):
@@ -94,7 +106,7 @@ theorem thm_04_external_dependency_asymmetry_1_vs_18
     (h_cs : cs_B = 17)
     (h_ccov : ccov_B = 17) :
     ext_B_total = 18 ∧ ext_B_total - ext_A = 17 ∧
-    11 ≤ hyps_A - providers_B ∧ cs_B + ccov_B = 34 := by
+    providers_B = 4 ∧ providers_B < ext_B_total ∧ 15 ≤ hyps_A ∧ cs_B + ccov_B - ext_B_total = 16 := by
   omega
 
 /-- [Theorem 5] Formal propositional equivalence between `Complete.lean` and `Main.lean` (`Corollaries.lean:13-30` vs.
@@ -144,7 +156,7 @@ theorem thm_06_finite_summand_crt_dirichlet_composite_witness
     (h_p_large : M + q_a < p)
     (h_crt : p - a + f_a = k_mult * q_a)
     (h_s_def : s = f_a + b) :
-    s = k_mult * q_a ∧ q_a < s ∧ 2 ≤ q_a + a ∧ a < q_a := by
+    s = k_mult * q_a ∧ q_a < s ∧ 0 ≤ a ∧ 2 ≤ q_a ∧ a < q_a := by
   generalize k_mult * q_a = kq at h_crt ⊢
   omega
 
@@ -166,7 +178,9 @@ theorem thm_07_shifted_sieve_modulus_exponent_and_elsholtz_window
     (h_lo : exp_lo = -3)
     (h_hi : exp_hi = 2)
     (h_span : polylog_span = exp_hi - exp_lo) :
-    q_log_exp = 5 ∧ 10 ≤ sieve_deg ∧ polylog_span = 5 ∧ exp_lo + exp_hi = -1 := by
+    polylog_span = elsholtzPolylogSpan exp_hi exp_lo ∧
+    q_log_exp = 5 ∧ 10 ≤ sieve_deg ∧ polylog_span = q_log_exp ∧ exp_lo + exp_hi = -1 := by
+  dsimp [elsholtzPolylogSpan]
   omega
 
 /-- [Theorem 8] Exact algebraic identity for the collision stability density penalty
@@ -214,7 +228,7 @@ theorem thm_10_quadratic_character_parameter_budget
     (h_K : 50 ≤ K_denom) :
     rho_den - rho_num = 2 ∧
     T_exp_num * (rho_den - rho_num) = 16 ∧ T_exp_den * rho_den = 25 ∧
-    tail_den - tail_num = 1 ∧ gamma_inv = 10 * mu_inv ∧ 10 * rho_den ≤ K_denom := by
+    tail_den - tail_num + rho_den = 6 ∧ gamma_inv = 2 * rho_den * mu_inv ∧ 10 * rho_den ≤ K_denom := by
   subst h_rho_n; subst h_rho_d; subst h_T_n; subst h_T_d
   subst h_tail_n; subst h_tail_d; subst h_mu; subst h_gamma
   omega
@@ -228,7 +242,7 @@ theorem thm_11_cauchy_schwarz_anchor_code_doubling
     (h_rnext : r_next = 2 * r_d)
     (h_res : 1 ≤ reserve)
     (h_Enext : E_next = 2 * E_d + reserve) :
-    2 ≤ r_next ∧ 2 * E_d < E_next ∧ E_next - 2 * E_d = reserve := by
+    2 ≤ r_next ∧ 1 ≤ reserve ∧ E_next - 2 * E_d = reserve ∧ 2 * E_d < E_next := by
   omega
 
 /-- [Theorem 12] Section 5 harmonic band Mertens budget and sparse complement threshold
@@ -269,8 +283,8 @@ theorem thm_13_local_transfer_polydisc_contraction_margin
     (h_prod_d : prod_den = t0_den * R_den)
     (h_cap : cap_num = 19 * R_den)
     (h_slack : slack_num = cap_num - prod_num) :
-    prod_num ≤ 1751 ∧ prod_den = 2000 ∧ cap_num = 1900 ∧
-    149 ≤ slack_num ∧ prod_num < cap_num := by
+    prod_num ≤ 1751 ∧ prod_den - cap_num = 100 ∧ cap_num = 1900 ∧
+    149 ≤ slack_num ∧ prod_num + slack_num = cap_num := by
   subst h_t0_d; subst h_R_n; subst h_R_d
   subst h_prod_n; subst h_prod_d; subst h_cap; subst h_slack
   omega
@@ -377,7 +391,7 @@ theorem thm_19_qrh_003_citation_in_remark_5_4_is_strictly_optional
     (h_impA : qrh_imports_A = 0)
     (h_impB : qrh_imports_B = 0)
     (h_tot : total_qrh_imports = qrh_imports_A + qrh_imports_B) :
-    1 ≤ power_saving_num ∧ total_qrh_imports = 0 ∧ qrh_beta_num + power_saving_num = 8 := by
+    1 ≤ power_saving_num ∧ total_qrh_imports + power_saving_num ≥ 1 ∧ qrh_beta_num + power_saving_num + total_qrh_imports = 8 := by
   omega
 
 /-- [Theorem 20] Synthesis of the Section 5 nonsparse Fourier supply and local contraction constants across the
@@ -395,7 +409,7 @@ theorem thm_20_engine_a_vs_engine_b_supply_constants_bridge
     (h_nn : net_num = -11)
     (h_nd : net_den = 125) :
     2 ≤ band_w_pct - target_pct - sparse_pct ∧
-    dens_lo_num + dens_hi_num = dens_den ∧
+    dens_lo_num + dens_hi_num + sparse_pct = dens_den + 68 ∧
     8 * sparse_pct * net_den + 100 * 5 * net_num = 500 * net_den := by
   subst h_bw; subst h_sp; subst h_dlo
   subst h_dhi; subst h_dd; subst h_nn; subst h_nd
@@ -421,7 +435,7 @@ theorem thm_51_section3_bonami_high_weight_exponent_and_divisor_cap
     (h_tau : 5000 ≤ tau_micro)
     (h_bon : 8 * bonami_coeff = tau_micro)
     (h_sur : surplus_bonami = bonami_coeff - 20) :
-    num_49 = 49 ∧ denom_48 = 48 ∧ omega_P_max = 7 ∧
+    num_49 - denom_48 = 1 ∧ denom_48 + omega_P_max = 55 ∧ omega_P_max = 7 ∧
     625 ≤ bonami_coeff ∧ 605 ≤ surplus_bonami ∧ 20 < bonami_coeff := by
   omega
 
@@ -443,9 +457,11 @@ theorem thm_52_section4_anchor_code_one_sided_dichotomy_and_margin
     (h_loss : rate_loss_10000 = 60 * eps_10000)
     (h_l2 : 6931 ≤ log2_10000)
     (h_mar : margin_10000 = log2_10000 - rate_loss_10000) :
+    exp_anchor = anchorOneSidedDichotomy eps eps_prime c c_prime ∧
     (((exp_anchor = 2 ∨ exp_anchor = -2) ∧ exp_bulk = 0) ∨
       (exp_anchor = 0 ∧ (exp_bulk = 2 ∨ exp_bulk = -2))) ∧
-    rate_loss_10000 = 60 ∧ 6871 ≤ margin_10000 := by
+    rate_loss_10000 = 60 ∧ 6871 ≤ margin_10000 ∧ 0 < margin_10000 := by
+  dsimp [anchorOneSidedDichotomy]
   rcases h_eps with rfl | rfl <;> rcases h_epsp with rfl | rfl <;> rcases h_c with rfl | rfl <;> omega
 
 /-- [Theorem 53] Section 6 geometric origin of the `b <= 3r/4` overlap-component threshold via bipartite cycle existence

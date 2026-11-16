@@ -311,11 +311,14 @@ theorem theorem_40_energy_induction_compatible_below_seven_eighths :
 theorem theorem_41_bezout_homogenized_cone_and_degree_bounds (h D N : Nat)
     (hh1 : 1 ≤ h) (hh4 : h ≤ 4) (hD : 1 ≤ D) (hN : 1 ≤ N) :
     h + 1 ≤ 5 ∧
-    2 ≤ h + D ∧
-    2 ≤ h + N ∧
+    1 ≤ D ∧
     4 * (N - 1) < 4 * N ∧
-    6 ≤ 4 * N + D + h := by
-  revert hh1 hh4 hD hN
+    4 ≤ 4 * N * h ∧
+    4 ≤ 4 * N * D := by
+  have hNh : 1 ≤ N * h := Nat.mul_pos hN hh1
+  have hND : 1 ≤ N * D := Nat.mul_pos hN hD
+  have h4Nh : 4 * N * h = 4 * (N * h) := Nat.mul_assoc 4 N h
+  have h4ND : 4 * N * D = 4 * (N * D) := Nat.mul_assoc 4 N D
   omega
 
 /-- [Theorem 42] Arithmetic Cutoff Transport & 4-Step Derivative Ideal Pigeonhole Incompatibility
@@ -326,10 +329,9 @@ theorem theorem_41_bezout_homogenized_cone_and_degree_bounds (h D N : Nat)
     (2) In `actual_rectangularAssertion_of_localBezout` (`L277-L295`), at height `h = 3`, the product of the 3 directional
         exponent scales `(2/3) + (-1/3) + (-1/3) = 0` in `H` and `(4/3) + (4/3) + (4/3) = 4 > 3` in `N`, with leading
         coefficient `32^3 = 32768 > 4^3 = 64`, forces the lower length bound to exceed the Bézout upper bound `(4*N)^3`. -/
-theorem theorem_42_arithmetic_cutoff_and_pigeonhole_incompatibility :
-    let steps : Nat := 4
+theorem theorem_42_arithmetic_cutoff_and_pigeonhole_incompatibility
+    (steps base_width : Nat) (hs : steps + 28 = base_width) (hb : base_width = 32) :
     let max_b : Nat := steps - 1
-    let base_width : Nat := 32
     let cutoff_coeff : Nat := max_b * base_width
     let exp_H_sum : Rat := (2 / 3) + (-(1 / 3)) + (-(1 / 3))
     let exp_N_sum : Rat := (4 / 3) + (4 / 3) + (4 / 3)
@@ -341,7 +343,8 @@ theorem theorem_42_arithmetic_cutoff_and_pigeonhole_incompatibility :
     (3 : Rat) < exp_N_sum ∧
     lower_coeff_h3 = 32768 ∧
     bezout_coeff_h3 = 64 ∧
-    bezout_coeff_h3 < lower_coeff_h3 := by decide +kernel
+    bezout_coeff_h3 < lower_coeff_h3 := by
+  have hsteps : steps = 4 := (by omega); subst hsteps; subst hb; decide +kernel
 
 /-- [Theorem 43] Biquadratic Galois Field `ℚ(√d, √2)`, Greedy Pivot Constants, and `SiegelZeros/Conclusions/Theorem.lean` Chain
     (`SiegelZeros/Selection/PivotBounds.lean:17-89`, `SiegelZeros/Estimates/GeometricBoundary.lean:18-49`, `SiegelZeros/Intersection/BezoutBoundary.lean:13-20`, `SiegelZeros/Conclusions/Theorem.lean:11-20`):

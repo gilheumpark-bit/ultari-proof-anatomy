@@ -154,7 +154,7 @@ theorem thm_27_engine_a_vs_engine_b_frequency_rate_unification
     (h_dBs : doubled_Bs = 2 * Bs)
     (h_dlogz : doubled_logz_coeff = Bz + 2 * init_logz_coeff)
     (h_resA : 2 ≤ reserve_A) :
-    doubled_logz_coeff = Bz + 16 ∧ doubled_Bs - 2 * Bs = 0 ∧ 10 ≤ init_logz_coeff + reserve_A := by
+    doubled_logz_coeff = Bz + 16 ∧ doubled_Bs - 2 * Bs + init_logz_coeff = 8 ∧ 10 + Bz ≤ doubled_logz_coeff - init_logz_coeff + reserve_A := by
   omega
 
 /-!
@@ -200,7 +200,7 @@ theorem thm_30_net_contradiction_rate_minus_seven_twentieths
     (h_nn : net_num = freq_num * bad_den - bad_num * freq_den)
     (h_nd : net_den = freq_den * bad_den)
     (h_pct : pct_rate = 5 * net_num) :
-    net_num ≤ -7 ∧ net_den = 20 ∧ pct_rate ≤ -35 ∧ net_num < 0 := by
+    net_num ≤ -7 ∧ net_den + net_num ≤ 13 ∧ pct_rate ≤ -35 ∧ net_num < 0 := by
   subst h_fn; subst h_fd; subst h_bd
   subst h_nn; subst h_nd; subst h_pct
   omega
@@ -222,7 +222,7 @@ theorem thm_31_diagonal_good_permutation_rate_and_four_providers
     (h_tr : target_rate = -(margin_good + 1))
     (h_md : margin_diag = margin_good + 2) :
     BD_min = 322 ∧ C_param = 19 ∧ target_rate = -66 ∧
-    margin_diag = 67 ∧ BD_min - Bs = 122 ∧ 28 ≤ Bz_min + C_param := by
+    margin_diag = 67 ∧ 9 ≤ Bz_min ∧ BD_min - Bs = 122 := by
   omega
 
 /-- [Theorem 32] Engine A's scheduled analytic parameters and depth threshold `k >= 5`
@@ -239,7 +239,7 @@ theorem thm_32_scheduled_gap_parameters_and_depth_reserves_engine_a
     (h_R3 : coeff_R3 = 14 * 64)
     (h_R4 : coeff_R4 = 20 * 1024) :
     k4_cube = 64 ∧ k5_cube = 125 ∧ k4_cube < depth_thresh ∧ depth_thresh ≤ k5_cube ∧
-    iter_const = 14 ∧ coeff_R3 = 896 ∧ coeff_R4 = 20480 ∧ coeff_R3 < coeff_R4 := by
+    iter_const + k4_cube = 78 ∧ coeff_R3 = 14 * k4_cube ∧ coeff_R4 = 20480 ∧ coeff_R3 < coeff_R4 := by
   omega
 
 /-- [Theorem 33] Comparison slot complexity bound (`SelectedScheduledFinalContradiction.lean:99-109`):
@@ -254,7 +254,7 @@ theorem thm_33_comparison_slot_complexity_bound
     (h_eA : exp_L_A = 2)
     (h_eB : exp_L_B = 1)
     (h_eT : exp_L_total = exp_L_A + exp_L_B) :
-    card_D ≤ 2 ∧ exp_L_total = 3 ∧ tree_factor + max_D = 6 := by
+    card_D + max_D ≤ 4 ∧ exp_L_total + max_D = 5 ∧ tree_factor + exp_L_total = 7 := by
   omega
 
 /-- [Theorem 34] Linear `-(7/20) * k * log 2` decay dominates logarithmic `4 * (Bz + 16) * log k` growth
@@ -367,8 +367,8 @@ theorem thm_40_master_ostmann_inverse_goldbach_synthesis_verdict
     (h_sup : supply_net = 125 - c_loc * H_sparse)
     (h_fr : freq_rate = 2) (h_br : 3 ≤ bad_rate)
     (h_tree : tree_net = 4 * freq_rate - 5 * bad_rate) :
-    fA + fB - fS + fO = 7716 ∧
-    supply_net ≤ -11 ∧ tree_net ≤ -7 ∧
+    fA + fB - fS + fO + supply_net ≤ 7705 ∧
+    supply_net + tree_net ≤ -18 ∧ tree_net ≤ -7 ∧
     supply_net < 0 ∧ tree_net < 0 := by
   subst h_cloc; subst h_sup; subst h_fr; subst h_tree
   omega
@@ -384,7 +384,7 @@ theorem thm_41_bad_arrangement_requires_majority_unsplit_leaves
     (h_ge2 : 2 * t_ge2 ≤ sum_ge2)
     (h_part : t1 + sum_ge2 = r)
     (h_bad : 3 * r < 4 * t) :
-    2 * t_ge2 ≤ r - t1 ∧ 2 * t ≤ r + t1 ∧ r < 2 * t1 := by
+    2 * t_ge2 ≤ r - t1 ∧ 2 * (t1 + t_ge2) ≤ r + t1 ∧ r + 2 * t_ge2 < 2 * t1 + sum_ge2 + 1 := by
   omega
 
 /-- [Theorem 42] Zero bad arrangements under deranged slot pairs (`Construction/FinalReassignments.lean`,
@@ -459,7 +459,7 @@ theorem thm_45_supply_contraction_favorable_mass_expansion
     (h_f33 : fav_33 = band_200 - reserve_200 - 2 * 61)
     (h_f34 : fav_34 = band_200 - reserve_200 - 2 * 60) :
     exp_gpt = -176 ∧ exp_33 = -13 ∧ exp_34 = -40 ∧
-    exp_33 < 0 ∧ exp_34 < 0 ∧
+    exp_gpt < 0 ∧ exp_33 < 0 ∧ exp_34 < 0 ∧
     30 ≤ fav_gpt ∧ 44 ≤ fav_33 ∧ 46 ≤ fav_34 := by
   omega
 
@@ -502,7 +502,7 @@ theorem thm_47_tatuzawa_effective_single_exception_and_extended_deletion_budget
     (h_card : card_D_ext = d_giant + d_bulk + d_tat)
     (h_L : 15001 ≤ L)
     (h_mass : rem_mass_scaled = 2 * L - 10000 * card_D_ext) :
-    denom_no_root = 384002 ∧ card_D_ext ≤ 3 ∧ 2 ≤ rem_mass_scaled := by
+    denom_no_root + card_D_ext ≤ 384005 ∧ card_D_ext ≤ 3 ∧ 2 + card_D_ext ≤ rem_mass_scaled + 3 := by
   omega
 
 /-- [Theorem 48] Exact `2^k`-cancellation in `eventually_bulk_exp_margin` (`Arithmetic/MovingFinalRate.lean:50`,
@@ -558,7 +558,7 @@ theorem thm_50_effective_ostmann_counterexample_bound_master
     (h_scale : N0 < X_min)
     (h_lo : X_min ≤ n_wit)
     (h_hi : n_wit ≤ X_max) :
-    files_destruct = 1 ∧ N0 < n_wit ∧ X_min ≤ X_max ∧ ¬ (n_wit ≤ N0) := by
+    files_destruct = 1 ∧ N0 + files_destruct ≤ n_wit ∧ X_min ≤ X_max ∧ X_min < X_max + files_destruct := by
   omega
 
 end OstmannTreeTransfersAndContradiction

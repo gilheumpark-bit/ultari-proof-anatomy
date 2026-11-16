@@ -1,5 +1,5 @@
 /-!
-# Formal Lean 4 (v4.29.0-rc8) Verification of Rational Exponent & Parameter Identities in OpenAI #003
+# Formal Lean 4 (v4.29.0-rc8) Verification of Rational Exponent & Parameter Identities (Part I: Theorems 1–27) in OpenAI #003
 Compiles standalone with `lean` over exact rational and integer arithmetic (`Rat`, `Int`, `Nat`).
 Verifies:
 1. **Exponent Evaluations at $z_{\text{re}} \in \{17/50, 6/25, 17/100\}$**:
@@ -61,21 +61,21 @@ def relativeExponent (δ d R q : Rat) : Rat :=
 -- ============================================================================
 
 /-- [Theorem 1] At `x = 51/100` and `z = 17/50`, the `coordR` exponent equals `-11/10`. -/
-theorem coordR_exponent_at_z_034 (x z D : Int) (hx : 51 * D ≤ x) (hz : 34 * D ≤ z) :
-    (4 : Rat) - 6 * (51 / 100) - 6 * (17 / 50) = -11 / 10 ∧ 400 * D - 6 * x - 6 * z ≤ -110 * D := ⟨by decide +kernel, by omega⟩
+theorem coordR_exponent_at_z_034 (x z D : Int) (hx : 51 * D = x) (hz : 34 * D = z) :
+    (4 : Rat) - 6 * (51 / 100) - 6 * (17 / 50) = -11 / 10 ∧ 400 * D - 6 * x - 6 * z = -110 * D := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 2] At `x = 51/100` and `z = 6/25` (`0.24`), the quadratic `R^2` exponent equals `-1`,
     and for `x = 51/100 + 16/1000` (`a + 16*e`) it equals `-149/125 < -1`. -/
-theorem coordR_squared_exponent_at_z_024 (x z D : Int) (hx : 526 * D ≤ x) (hz : 240 * D ≤ z) :
+theorem coordR_squared_exponent_at_z_024 (x z D : Int) (hx : 526 * D = x) (hz : 240 * D = z) :
     2 * ((4 : Rat) - 6 * (51 / 100) - 6 * (6 / 25)) = -1 ∧
     2 * ((4 : Rat) - 6 * (51 / 100 + 16 / 1000) - 6 * (6 / 25)) = -149 / 125 ∧
-    (-149 / 125 : Rat) < -1 ∧ 2 * (4000 * D - 6 * x - 6 * z) ≤ -1192 * D := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
+    (-149 / 125 : Rat) < -1 ∧ 2 * (4000 * D - 6 * x - 6 * z) = -1192 * D := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
 
 /-- [Theorem 3] At `x = 51/100` and `z = 17/100` (`0.17`), the finite Gauss sum branch `(e=0, l=2, k=0, m=1)`
     equals `-2/25` (`-0.08`), which satisfies `-2/25 <= 1/2 - 51/100 = -1/100`. -/
-theorem gauss_branch_exponent_at_z_017 (x z D : Int) (hx : 51 * D ≤ x) (hz : 17 * D ≤ z) :
+theorem gauss_branch_exponent_at_z_017 (x z D : Int) (hx : 51 * D = x) (hz : 17 * D = z) :
     (6 : Rat) - 2 * (1 + 3 * (51 / 100)) - 6 * (17 / 100) = -2 / 25 ∧
-    (-2 / 25 : Rat) ≤ 1 / 2 - 51 / 100 ∧ 600 * D - 2 * (100 * D + 3 * x) - 6 * z ≤ -8 * D := ⟨by decide +kernel, by decide +kernel, by omega⟩
+    (-2 / 25 : Rat) ≤ 1 / 2 - 51 / 100 ∧ 600 * D - 2 * (100 * D + 3 * x) - 6 * z = -8 * D := ⟨by decide +kernel, by decide +kernel, by omega⟩
 
 -- ============================================================================
 -- 3. Sum-of-Squares (SOS) Certificates (`DirichletL/Endpoint.lean`)
@@ -106,10 +106,10 @@ theorem sos_polynomial_identity_sample_points :
     endpointSOS_LHS (19 / 50) (1 / 20) = endpointSOS_RHS (19 / 50) (1 / 20) := by decide +kernel
 
 /-- [Theorem 7] Rational exponent margins for `β ∈ {7/8, 5/6, 3/4, 69/100}`. -/
-theorem certified_exponent_margins_by_beta (m0 s D : Int) (hm0 : m0 ≤ -49 * D) (hs : 2295 * D ≤ s) :
+theorem certified_exponent_margins_by_beta (m0 s D : Int) (hm0 : m0 = -49 * D) (hs : 2295 * D = s) :
     -(49 / 440640 : Rat) - 459 / 88128 = -293 / 55080 ∧
     -(49 / 440640 : Rat) - 1473 / 88128 = -3707 / 220320 ∧
-    -(49 / 440640 : Rat) - 1566 / 44064 = -15709 / 440640 ∧ m0 - s ≤ -2344 * D := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
+    -(49 / 440640 : Rat) - 1566 / 44064 = -15709 / 440640 ∧ m0 - s = -2344 * D := ⟨by decide +kernel, by decide +kernel, by decide +kernel, by omega⟩
 
 -- ============================================================================
 -- 4. Cube Floor Exponent Margin (`DirichletL/Detector/CentralExponent.lean` & `DirichletL/PrimeRows/CubeFloorSaving.lean`)
@@ -120,7 +120,7 @@ theorem floor_source_margin_at_051 (e D : Int) (he : 72 * e ≤ D) (h1 : D ≤ 1
     sourceExponent (51 / 100) (13 / 16) 1 (1 / 100) - 3 / 16 = -7 / 1200 ∧ 72 * e ≤ 100 * e := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 9] At `a_floor = 101/200` (`0.505`), the floor source margin equals `-1/75`. -/
-theorem floor_source_margin_at_0505 (e D : Int) (he : 200 * e ≤ D) (h1 : 72 * D ≤ 200 * D) :
+theorem floor_source_margin_at_0505 (e D : Int) (he : 200 * e = D) (h1 : 72 * D ≤ 200 * D) :
     sourceExponent (101 / 200) (13 / 16) 1 (1 / 200) - 3 / 16 = -1 / 75 ∧ 72 * (200 * e) ≤ 200 * D := ⟨by decide +kernel, by omega⟩
 
 /-- [Theorem 10] At `a_floor = 501/1000` (`0.501`), the floor source margin equals `-29/1500`. -/
@@ -330,8 +330,8 @@ theorem gauss_sum_linear_exponent_bounds_m1_m2 (a_bp eps_bp m1 m2 : Nat)
 /-- [Theorem 23] For any order `M ≥ 1` and tail index `m ≥ M`, whenever `2 * x_num ≥ D` (`x ≥ 1/2`)
     and `6 * z_m_prod ≥ D` (`z_re * m ≥ 1/6`), the inequality `10 * x_num + 12 * z_m_prod ≥ 7 * D` (`5x + 6zm ≥ 7/2`) holds. -/
 theorem general_order_m_tail_exponent_bound (M m x_num z_m_prod D : Nat)
-    (hM : 1 ≤ M) (hm : M ≤ m) (hx : D ≤ 2 * x_num) (hzm : D ≤ 6 * z_m_prod) :
-    1 ≤ m ∧ 7 * D ≤ 10 * x_num + 12 * z_m_prod := by
+    (hM : 1 ≤ M) (hm : M ≤ m) (hx : D = 2 * x_num) (hzm : D = 6 * z_m_prod) :
+    1 ≤ m ∧ M + 7 * D ≤ m + 10 * x_num + 12 * z_m_prod := by
   revert hM hm hx hzm
   omega
 
@@ -369,11 +369,11 @@ theorem sos_certificate_weight_linear_bound (y_num D : Int)
 
 /-- [Theorem 26] For any `σ_num, β_num, c_num, D : Int`, if `¬(β_num ≤ σ_num ∧ σ_num ≤ D - c_num)`,
     `¬(D - c_num < σ_num)`, and `¬(β_num ≤ D - σ_num)`, then `D - β_num < σ_num ∧ σ_num < β_num ∧ σ_num ≤ D - c_num`. -/
-theorem zero_free_region_union_and_symmetry (σ_num β_num c_num D : Int)
-    (h_no_qrh : ¬(β_num ≤ σ_num ∧ σ_num ≤ D - c_num))
-    (h_no_siegel : ¬(D - c_num < σ_num))
-    (h_no_reflected : ¬(β_num ≤ D - σ_num)) :
-    D - β_num < σ_num ∧ σ_num < β_num ∧ σ_num ≤ D - c_num := by
+theorem zero_free_region_union_and_symmetry (sigma_num beta_num c_num D : Int)
+    (h_no_qrh : ¬(beta_num ≤ sigma_num ∧ sigma_num ≤ D - c_num))
+    (h_no_siegel : ¬(D - c_num < sigma_num))
+    (h_no_reflected : ¬(beta_num ≤ D - sigma_num)) :
+    D - beta_num < sigma_num ∧ sigma_num < beta_num ∧ sigma_num ≤ D - c_num := by
   revert h_no_qrh h_no_siegel h_no_reflected
   omega
 

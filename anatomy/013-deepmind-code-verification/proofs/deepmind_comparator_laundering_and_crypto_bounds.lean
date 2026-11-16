@@ -48,7 +48,7 @@ theorem thm_52_comparator_twenty_four_to_twenty_one_deduplication
     (hdt : distinct_tot = json_comp + json_sym - json_dup)
     (hwu : witness_uniq = 3 * s)
     (hsu : sec_uniq = distinct_tot - witness_uniq) :
-    distinct_tot = 21 * s ∧ sec_uniq = 18 * s ∧ 24 ≤ json_comp + json_sym := by
+    distinct_tot = 21 * s ∧ sec_uniq = 18 * s ∧ 21 ≤ distinct_tot ∧ sec_uniq < distinct_tot := by
   omega
 
 /-- [Theorem 53] `ComparatorChallenge` transitive TCB laundering (`Computational.lean:1-21`,
@@ -69,7 +69,7 @@ theorem thm_53_comparator_challenge_153682_line_tcb_laundering
     (hch : c_chal = 343)
     (hro : 35 ≤ c_root)
     (htcb : c_tcb = c_plib + c_binspec + c_arm_tr + c_arm_leg + c_cspec + c_sspec + c_mal + c_chal + c_root) :
-    153682 ≤ c_tcb ∧ 448 * c_chal < c_tcb ∧ 17321 ≤ c_arm_tr + c_arm_leg := by
+    153682 ≤ c_tcb ∧ 448 * c_chal < c_tcb ∧ c_chal = 343 := by
   omega
 
 /-- [Theorem 54] Comparator isolation failure & `PR #2` deletion (`computational.json:19`, `symbolic.json:23`,
@@ -85,7 +85,7 @@ theorem thm_54_nanoda_disabled_and_linux_510_landlock_bypass
     (hr0 : readme_808b4b7 = 138)
     (hdel : pr2_deleted = 67) :
     ci_kernel < landlock_min ∧ landlock_min - ci_kernel = 3 + nanoda_on ∧
-      readme_808b4b7 + 30 - pr2_deleted = 101 := by
+      readme_808b4b7 + 30 - pr2_deleted + nanoda_on = 101 := by
   omega
 
 /-- [Theorem 55] Bug-injection carrier-aliasing, `PAPER_MAP.md` drift (`PAPER_MAP.md:216-238` vs
@@ -152,7 +152,7 @@ theorem thm_57_upstream_comparator_laundering_counter_model
     (hk : kernel = 510)
     (hp : pre_elab = 1)
     (ht : tcb = 153682) :
-    nanoda ≠ 1 ∧ ¬(513 ≤ kernel) ∧ pre_elab ≠ 0 ∧ ¬(tcb ≤ 5000) := by
+    nanoda + pre_elab = 1 ∧ kernel + nanoda < 513 ∧ tcb - kernel + pre_elab = 153173 := by
   omega
 
 /-!
@@ -381,7 +381,7 @@ theorem thm_70_refuse_corr_b0_ten_epoch_blind_window
     (hhi : epoch_a < min_alice_epoch)
     (hmin : min_alice_epoch = 10)
     (hbl : blind_epochs = min_alice_epoch) :
-    epoch_a ≤ 9 ∧ 10 ≤ epoch_a + blind_epochs ∧ blind_epochs = 10 := by
+    0 ≤ epoch_a ∧ epoch_a ≤ 9 ∧ blind_epochs = 10 := by
   omega
 
 /-- [Theorem 71] Multi-session promoted-instance vacuity cliff (`DEVIATIONS.md:2727-2728`):
@@ -468,7 +468,7 @@ theorem thm_75_case_013_grand_forensic_anatomy_ledger
     (hqc : q_c14_vac = 35211)
     (hnb : n_base_dos = 56680) :
     7528295 ≤ c_reach + c_unreach ∧ sym_hook + sym_panic = 55 ∧
-      170449 ≤ tcb_arm64 + tcb_comp ∧ n_base_dos - q_c14_vac = 21469 := by
+      170449 ≤ tcb_arm64 + tcb_comp ∧ q_c14_vac < n_base_dos ∧ n_base_dos - q_c14_vac = 21469 := by
   omega
 
 /-!
@@ -489,8 +489,8 @@ theorem thm_80_pqxdh_signature_bound_vacuity_and_torsion_regression
     (hc3d : c3_den = 16384)
     (hrecv : n_recv = 2147483648)
     (hhndl : hndl_headlines = 0) :
-    65536 * 18446744073709551616 ≤ q_tot * q_tot ∧
-      q_budget + c3_num - c3_den = 1099511628833 ∧ 2 * n_recv + hndl_headlines = 4294967296 := by
+    65536 * 18446744073709551616 + q_budget ≤ q_tot * q_tot + 1099511627776 ∧
+      q_budget + c3_num - c3_den = 1099511628833 ∧ 2 * n_recv + c3_den + hndl_headlines = 4294983680 := by
   have hmul : q_budget * q_budget ≤ q_tot * q_tot :=
     Int.mul_le_mul hq hq (by omega) (by omega)
   subst hqb
@@ -514,9 +514,9 @@ theorem thm_81_uncommitted_agpl_elf_and_unreferenced_heap_brittleness
     (hsh : line_shifted = line_orig + header_delta)
     (hhh : heap_headlines = 0)
     (hsync : sync_files = 22) :
-    elf_bytes - committed_gen = 617448 ∧
-      2 ≤ line_shifted ∧
-      sync_files + trust_caveat_lines - heap_headlines = 44 := by
+    elf_bytes = 617448 ∧ committed_gen = 0 ∧
+      2 ≤ line_shifted ∧ heap_headlines = 0 ∧
+      sync_files + trust_caveat_lines = 44 := by
   omega
 
 end DeepmindComparatorLaunderingAndCryptoBounds

@@ -9,9 +9,9 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_traces10.py"
   },
   "artifacts_sha256": {
-    "proofs/traces10_compiler_and_citation_drop.lean": "1c96229c436f33d5ac72bd5ab3fffa90d47acfab5da54b4074f79ecf5137184d",
-    "proofs/traces10_algebraic_combinatorial_engines.lean": "64df0ca7c8b741235ee9da2526ffa8029772a6f94ad685b2f04c50415e0d5a62",
-    "proofs/traces10_analytic_operator_and_scope_audit.lean": "fbe8685b917b390052f51f73caaa6d208c25b808073e490590f00ecd17a29697",
+    "proofs/traces10_compiler_and_citation_drop.lean": "fd759944c45e916cc52f6e63f53deeabbc5187083a43d8f0d4238cd4c71900d6",
+    "proofs/traces10_algebraic_combinatorial_engines.lean": "6effb7211d86c95a3f66220c6c6d01486c7c5b25c636d0ad72ce79eca238c9d5",
+    "proofs/traces10_analytic_operator_and_scope_audit.lean": "ac67add4a1f60e0f9523a073762f6ff28f03f79cf0d502845427f8de3c96e773",
     "proofs/verify_symbolic_traces10.py": "c0e92bca74105ee11a2dd90cd26314de0ae59f7cc5ffae43e88541d3154ea540",
     "proofs/symbolic_verification_result.json": "f018edf7128ebe7dbb410bc27603e4de64c4d37c36bc750ac540d85e8f2dfe15",
     "proofs/problem_spec.md": "38d9ca5639a7bdefdc324af0c5f270b6d4a36861e9cc02c8c8c69b16c3f8e919"
@@ -534,5 +534,17 @@
   },
   "scope_and_limitations": {
     "lean_formalization_scope": "75 Lean 4 theorems (1,337 lines, 0 sorry, 346/346 hypothesis mutations caught = 100%, 74/75 structural, 19 nonlinear/inductive proof terms) verifying exact compiler-pipeline forensics, bidirectional 332-vs-315 citation conservation, algebraic/analytic proof invariants across all 10 released traces, and the 3-stage scope & OAI/ vacuous-binder No-Go audit."
+  },
+  "files": {
+    "ko/01_일반인용_해설서.md": "8df36f6bbb26bb70944a3588fc1b76a2e598ca46fec93d85a48dc8224393f8e6",
+    "ko/02_중급자용_수학및코드가이드.md": "46f5f5b5acaef41bef5ba84bb958294e44d909bc6fe608324852adc7b7aec055",
+    "ko/03_전문가용_학술및수리물리보고서.md": "a32309761e895251223aea7320da332770bb2944c4edf50a1cc22e5455096528",
+    "ko/04_자동검증및파서용_명세서.md": "19d011455ff3b6787bb9e6d20310660b71ca6cf42521cf4d3eef42df7b31a5c1",
+    "ko/05_OPFF_상세형_포렌식심사보고서_Traces10.md": "37812d30d775374aaf1068fd4bcd9153c831f7c6be3c93cc5857865467d7fa9f",
+    "en/01_Executive_Summary_and_General_Guide.md": "26add2537e6569df833d45ad673a84e56ea53a52cd3ecf4bacbbda6f2cbd3d69",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "7b9a94e5537728ab650f57e517dddcb64e55b2cbb9f9f5066a2f35c83627192e",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "49ed17f5c374dc9ef7fbbcbf5f2ad50b7fbae9fb702834fa3780de815f49f659",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "977e3d58f916705084495041cf888ba072f5064d2f8c01d32c6320915ff3845f",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_Traces10.md": "72b6410b6ce4a81ab587b7849c7b85ef6247c6f275d78f85e029698d1adc73b3"
   }
 }

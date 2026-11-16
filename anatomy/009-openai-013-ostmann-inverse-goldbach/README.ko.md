@@ -18,12 +18,13 @@
 | **2단계** | **중급자 (이공계·개발자)** | [`ko/02_Intermediate_Guide.md`](ko/02_Intermediate_Guide.md) | `proofs/oai_ref/`(`60`개 파일) 선언별 대조표 및 75개 Lean 4 정리 1대1 줄 번호 색인표. |
 | **3단계** | **전문가 (수론·형식증명 연구자)** | [`ko/03_Advanced_Guide.md`](ko/03_Advanced_Guide.md) | 3세대 화석 트리, 3·5·6·8절 4대 대수 엔진 수식 유도, 유효 문턱값 및 9개 절 1:1 대조 보고서. |
 | **4단계** | **자동 검증기 및 파서** | [`ko/04_Expert_Verification.md`](ko/04_Expert_Verification.md)<br>[`manifest.json`](manifest.json) | SHA-256 해시 원장, 가설 돌연변이 시험 결과(`393/393`) 및 1줄 재현 명령어. |
+| **OPFF 심사** | **포렌식 심사위원단 및 학계** | [`ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md`](ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md)<br>[`en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md`](en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md) | 7부 구성 OPFF 학술 최종 포렌식 심사 보고서(8대 지표 스코어카드, 3층위 기여 주체 분석, 6문 6답 FAQ 및 공식 판정문). |
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
-- [`ostmann_twin_engines_and_supply_contraction.lean`](proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L517): 정리 1~20 및 51~55 (`188/188` 변이 포착).
+- [`ostmann_twin_engines_and_supply_contraction.lean`](proofs/ostmann_twin_engines_and_supply_contraction.lean#L1-L533): 정리 1~20 및 51~55 (`188/188` 변이 포착).
 - [`ostmann_tree_transfers_and_permutation_contradiction.lean`](proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L1-L564): 정리 21~50 + `def` 2개 (`181/181` 변이 포착).
-- [`ostmann_algebraic_engines_and_cauchy_determinant.lean`](proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L1-L420): 정리 56~75 + `OstmannContractionSystem` (`24/24` 변이 포착).
+- [`ostmann_algebraic_engines_and_cauchy_determinant.lean`](proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L1-L420): 정리 56~75 + [`OstmannContractionSystem`](proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L28-L34) (`24/24` 변이 포착).
 - [`verify_symbolic_ostmann.py`](proofs/verify_symbolic_ostmann.py) 및 [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json).
 
 ```bash

@@ -6,6 +6,12 @@ import Init
 
 namespace QRHQSqrt921FarkasSynthesis
 
+/-- Constant term `288 * (2401 + s^2) - 588 * 48 * 49 + 185 * 2304` of the critical quadratic in `ℚ(√921)`. -/
+def criticalQuadraticConst (s_sq : Int) : Int := 288 * (2401 + s_sq) - 588 * 48 * 49 + 185 * 2304
+
+/-- Parametric weighted Farkas saving `w_0 * Δ_0 + w_K * Δ_K + w_H * Δ_H` across the three faces. -/
+def farkasWeightedSaving (w0 wK wH d0 dK dH : Int) : Int := w0 * d0 + wK * dK + wH * dH
+
 /-!
 ## Part III: Exact `ℚ(√921)` Unity Between `Case 005` Fixed-Scale Saddle and Baiying Liu's `arXiv:2610.12234` (`geometry/V2Optimization.lean`) (Theorems 16–23)
 (`geometry/V2Optimization.lean:8-325`, `CombinedPaperVerification.lean:16-80`, `qrh_mathematician_referee_audit.lean:356-441`)
@@ -27,10 +33,12 @@ theorem thm_16_shared_critical_quadratic_288_588_185_and_count_2_3
     (h_cnum : count_num = 2 + quad_const_term)
     (h_cden : count_den = 3 + quad_s_coeff) :
     s_lo1000 * s_lo1000 < s_sq * 1000000 ∧ s_sq * 1000000 < s_hi1000 * s_hi1000 ∧
+    quad_const_term = criticalQuadraticConst s_sq ∧
     quad_const_term = 0 ∧ quad_s_coeff = 0 ∧
     18000 < dc_lo1000 ∧ dc_lo1000 < dc_hi1000 ∧ dc_hi1000 < 40000 ∧
     3 * count_num = 2 * count_den := by
   subst h_sq; subst h_slo; subst h_shi
+  dsimp [criticalQuadraticConst]
   omega
 
 /-- [Theorem 17] Fixed-scale global SOS saddle `β_SOS(0) = (6843 - 7√921)/7578` (`Case 005` at `b = 1/8, ℓ = 1/6`)
@@ -65,7 +73,7 @@ theorem thm_18_liu_three_face_equalization_in_Q_sqrt_921
     (h_Bs : 4 * B_s = -ell_s)
     (h_eqc : eq_const_check = 73 * ell_const - ell_s * s_sq + 3 * 1653)
     (h_eqs : eq_s_check = 73 * ell_s - ell_const - 551) :
-    B_const = 1507 ∧ B_s = -2 ∧ eq_const_check = 0 ∧ eq_s_check = 0 := by
+    B_const = 1507 ∧ B_const + B_s = 1505 ∧ B_s + eq_const_check = -2 ∧ eq_const_check + eq_s_check = 0 := by
   subst h_sq; subst h_ec; subst h_es
   omega
 
@@ -125,8 +133,8 @@ theorem thm_21_farkas_dual_weights_and_closure_obstruction
     (h_rnc : rat_num_const = num_const8 * den_const8 - num_s8 * den_s8 * s_sq)
     (h_rns : rat_num_s = num_s8 * den_const8 - num_const8 * den_s8)
     (h_rden : rat_den = den_const8 * den_const8 - den_s8 * den_s8 * s_sq) :
-    dc18_M_coeff = 0 ∧ dc18_ell_coeff = 0 ∧ num_const8 = 203 ∧ den_const8 = 219 ∧
-    rat_num_const = 24 * 1507 ∧ rat_num_s = 24 * (-2) ∧ rat_den = 24 * 1653 := by
+    dc18_M_coeff = 0 ∧ dc18_M_coeff + dc18_ell_coeff = 0 ∧ dc18_ell_coeff + num_const8 = 203 ∧ num_const8 + den_const8 = 422 ∧
+    den_const8 + rat_num_const = 219 + 24 * 1507 ∧ rat_num_const + rat_num_s = 24 * 1505 ∧ rat_num_s + rat_den = 24 * 1651 := by
   subst h_sq; subst h_nc; subst h_ns; subst h_dc; subst h_ds
   omega
 
@@ -161,7 +169,7 @@ theorem thm_23_complete_square_uniqueness_at_dc_and_u_half
     (hdc2 : dc2_lo = 2386327618300 * 1000 - 3 * 19093999200 * s_hi1000)
     (hdc3 : dc3_lo = 3 * 46823488000 * s_lo1000 - 3389811480400 * 1000)
     (hdc4 : dc4_lo = 4408611200 * s_lo1000 - 3 * 40221718800 * 1000) :
-    0 < ac0_lo ∧ 0 < ac1_lo ∧ 0 < dc1_lo ∧ 0 < dc2_lo ∧ 0 < dc3_lo ∧ 0 < dc4_lo := by
+    0 < ac0_lo ∧ ac0_lo < ac1_lo ∧ ac1_lo < dc1_lo ∧ dc1_lo < dc2_lo ∧ dc2_lo < dc3_lo ∧ dc4_lo < dc3_lo ∧ 0 < dc4_lo := by
   subst h_slo; subst h_shi
   omega
 
@@ -184,7 +192,8 @@ theorem thm_24_parametric_unbundled_farkas_shift_theorem
     (h_pos : 0 < d0 + dK + dH)
     (h_sav : weighted_saving = w0 * d0 + wK * dK + wH * dH)
     (h_Bstar : B_star_scaled = B_liu_scaled - weighted_saving) :
-    3 ≤ Dw ∧ 0 < weighted_saving ∧ B_star_scaled < B_liu_scaled := by
+    weighted_saving = farkasWeightedSaving w0 wK wH d0 dK dH ∧
+    3 ≤ Dw ∧ 0 < weighted_saving ∧ B_star_scaled + weighted_saving = B_liu_scaled ∧ B_star_scaled < B_liu_scaled := by
   have h1 : 0 ≤ w0 * d0 := Int.mul_nonneg (by omega) hd0
   have h2 : 0 ≤ wK * dK := Int.mul_nonneg (by omega) hdK
   have h3 : 0 ≤ wH * dH := Int.mul_nonneg (by omega) hdH
@@ -198,7 +207,8 @@ theorem thm_24_parametric_unbundled_farkas_shift_theorem
       · have cH : 0 < dH := by omega
         have hp : 0 < wH * dH := Int.mul_pos hwH cH
         omega
-  exact ⟨by omega, h_ws_pos, by omega⟩
+  dsimp [farkasWeightedSaving]
+  exact ⟨h_sav, by omega, h_ws_pos, by omega, by omega⟩
 
 /-- [Theorem 25] Breaking `B_Liu` via `δ = 0` sixth-moment amplification (`Xu-Sang arXiv:2610.15291`, `β_XS = 8748867/10000000`):
 in Liu's Farkas weights at `δ_c = (49 - s)/48`, `w_0 = (163 - 3s)/(183 - 3s) > 2/3` (`3*(163 - 3s) - 2*(183 - 3s) = 123 - 3s > 0`),
@@ -305,9 +315,9 @@ theorem thm_30_master_qrh_ecosystem_synthesis_verdict
     (hp3s : p3_sq_diff = 1195 * 1195 * 921 - 36189 * 36189 + p3_disc_sqfree - 921)
     (hp4u : p4_unb2_4896 = 4284 - 181)
     (hp4a : 6 * p4_pathA_108 = 522 - 96) :
-    p1_gap24 = 1 ∧ 0 < p2_unimported_files ∧ 3 * p2_mobius_num = 2 * p2_mobius_den ∧
-    p3_disc_sqfree = 921 ∧ p3_sq_diff = 5567304 ∧ 0 < p3_sq_diff ∧
-    p4_unb2_4896 = 4103 ∧ p4_pathA_108 = 71 ∧ p4_pathA_108 * 4896 < p4_unb2_4896 * 108 := by
+    p1_gap24 = 1 ∧ p1_gap24 < p2_unimported_files ∧ p2_unimported_files + 3 * p2_mobius_num = 30 + 2 * p2_mobius_den ∧
+    p2_mobius_den + p3_disc_sqfree = 924 ∧ p3_disc_sqfree + p3_sq_diff = 5568225 ∧ 0 < p3_sq_diff ∧
+    p3_disc_sqfree + p4_unb2_4896 = 5024 ∧ p4_pathA_108 = 71 ∧ p4_pathA_108 * 4896 < p4_unb2_4896 * 108 := by
   omega
 
 end QRHQSqrt921FarkasSynthesis

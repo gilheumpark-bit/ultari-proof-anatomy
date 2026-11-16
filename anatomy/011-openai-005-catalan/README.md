@@ -22,6 +22,6 @@ This case (`011-openai-005-catalan`) provides a complete mathematical and formal
 
 - [`proofs/catalan_rows_two_adic_and_odd_primes.lean`](proofs/catalan_rows_two_adic_and_odd_primes.lean#L1-L446) (`Theorems 1–25`, `446` lines, `144/144` mutations caught, `nonlin: 7`)
 - [`proofs/catalan_palindromic_frobenius_and_modular.lean`](proofs/catalan_palindromic_frobenius_and_modular.lean#L1-L454) (`Theorems 26–50`, `454` lines, `153/153` mutations caught, `nonlin: 6`)
-- [`proofs/catalan_real_place_energy_and_contradiction.lean`](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L433) (`Theorems 51–75`, `433` lines, `135/135` mutations caught, `nonlin: 2`)
-- [`proofs/verify_symbolic_catalan005.py`](proofs/verify_symbolic_catalan005.py#L1-L631) $\to$ [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json#L1-L226)
+- [`proofs/catalan_real_place_energy_and_contradiction.lean`](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L436) (`Theorems 51–75`, `433` lines, `135/135` mutations caught, `nonlin: 2`)
+- [`proofs/verify_symbolic_catalan005.py`](proofs/verify_symbolic_catalan005.py#L1-L495) $\to$ [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json#L1-L226)
 - [`proofs/problem_spec.md`](proofs/problem_spec.md#L1-L19) & [`manifest.json`](manifest.json#L1-L524)

@@ -7,6 +7,15 @@ Zero `sorry`, zero custom axioms.
 
 namespace OAI001MilneWeilReductionRepairs
 
+/-- Unitary similitude Lie group dimension `1 + d_0 * (4 * s2 - 1)` in the balanced Weil dichotomy (`Lemma 5.5`). -/
+def weilSimilitudeDim (d_0 s2 : Int) : Int := 1 + d_0 * (4 * s2 - 1)
+
+/-- Sharp 3-variable Kronecker substitution upper bound `b * N^2` (`[하-2]` repair). -/
+def kroneckerSharpBound (b N : Int) : Int := b * (N * N)
+
+/-- Original paper 3-variable Kronecker bound `b * (1 + N + N^2)` exceeding the sharp envelope by `b * (1 + N)`. -/
+def kroneckerPaperBound (b N : Int) : Int := b * (1 + N + N * N)
+
 /-!
 ## Part IV: The Balanced Weil Dichotomy (`Proposition 5.2`, `Lemma 5.3`, `Lemma 5.4`, `Lemma 5.5`)
 (`04_weil.tex:45-439`)
@@ -34,9 +43,9 @@ theorem non_invertible_u_kernel_radical_contradiction
     (h_char_poly : two_dim_C = d_E * m_C)
     (hm_pos : 1 ≤ m_C)
     (h_ker_inc : m_C ≤ dim_ker_tau_bar)
-    (h_rad_bound : rank_Du_tau_bar ≤ 2 * s - dim_ker_tau_bar) :
-    2 ≤ two_dim_C ∧ 1 ≤ dim_ker_tau_bar ∧
-    rank_Du_tau_bar + 1 ≤ 2 * s ∧ rank_Du_tau_bar < 2 * s ∧ 1 ≤ 2 * s := by
+    (h_rad_bound : rank_Du_tau_bar + dim_ker_tau_bar = 2 * s) :
+    2 ≤ two_dim_C ∧ 2 ≤ 2 * s ∧ m_C ≤ dim_ker_tau_bar ∧
+    rank_Du_tau_bar + dim_ker_tau_bar = 2 * s ∧ rank_Du_tau_bar + m_C ≤ 2 * s ∧ rank_Du_tau_bar + 1 ≤ 2 * s := by
   have h_2dimC : 2 * 1 ≤ d_E * m_C := Int.mul_le_mul hdE hm_pos (by omega) (by omega)
   omega
 
@@ -49,6 +58,7 @@ theorem weil_unitary_similitude_group_and_orbit_dimensions
     (h_ker : dim_ker_c = d_0 * dim_SL2s)
     (h_G : dim_G = 1 + dim_ker_c)
     (h_orb : dim_orbit = d_0 * s2) :
+    dim_G = weilSimilitudeDim d_0 s2 ∧
     3 ≤ dim_SL2s ∧ 4 ≤ dim_G ∧ 1 ≤ dim_orbit ∧
     dim_G - 4 * dim_orbit = 1 - d_0 := by
   rw [h_SL] at h_ker
@@ -59,6 +69,7 @@ theorem weil_unitary_similitude_group_and_orbit_dimensions
     _ = 4 * (d_0 * s2) - d_0 := by
       rw [← Int.mul_assoc d_0 4 s2, Int.mul_comm d_0 4, Int.mul_assoc 4 d_0 s2, Int.mul_one]
   have h_orb_pos : 1 * 1 ≤ d_0 * s2 := Int.mul_le_mul hd0 hs2 (by omega) (by omega)
+  dsimp [weilSimilitudeDim]
   omega
 
 /-- [Theorem 20] Poincaré complement splitting and idempotent retraction pullback (`04_weil.tex:373-435`).
@@ -121,7 +132,7 @@ theorem thm_6_2_cm_galois_orbit_partition
     (h_part : N_total = N_bal + N_unbal)
     (h_hodge_split : hodge_total = hodge_bal + hodge_unbal)
     (h_unbal_vanish : hodge_unbal = 0) :
-    2 ≤ d_K ∧ 2 ≤ N_total ∧ N_bal ≤ N_total ∧ hodge_total = hodge_bal := by
+    2 ≤ d_K ∧ d_K ≤ 2 * g_K + N_bal - 2 ∧ N_bal ≤ N_total ∧ hodge_total = hodge_bal := by
   omega
 
 /-- [Theorem 24] Adapted filtration Breuil-Kisin module rank and total zero-defect balance (`Proposition 4.8`,
@@ -139,7 +150,7 @@ theorem prop_4_8_breuil_kisin_rank_and_zero_defect
     (h_tH : tH_total = rk_Fil1)
     (h_tN : tN_total = g)
     (h_def : defect_total = tH_total - tN_total) :
-    1 ≤ rk_quot ∧ rk_quot = rk_Fil1 ∧
+    1 + defect_total ≤ rk_quot ∧ rk_quot = rk_Fil1 ∧
     rk_Fil1 + rk_quot = dim_DK ∧ defect_total = 0 := by
   omega
 
@@ -255,7 +266,7 @@ theorem repair_medium2_beauville_projector_canonical_cycle_invariance
     (h_cl_N : cl_z_N = z_0_comp)
     (h_cl_can : cl_z_can = z_can_N)
     (h_target : z_0_comp = gamma_0) :
-    z_MN ≠ z_N ∧ z_can_MN = z_can_N ∧ cl_z_can = cl_z_N ∧ cl_z_can = gamma_0 := by
+    z_MN ≠ z_N ∧ z_N - z_s_comp = z_can_N ∧ z_can_MN = z_can_N ∧ cl_z_can = cl_z_N ∧ cl_z_can = gamma_0 := by
   omega
 
 /-- [Theorem 31] Repair of `[하-1]` (`01_preliminaries.tex:172-200`): Unconditional ramified DVR lifting via `D_cris + Tate + Serre-Tate`.
@@ -276,7 +287,7 @@ theorem repair_low1_ramified_dvr_unconditional_lifting_range
     (h_cf00_equiv : rk_Hom_GK = rk_Hom_MF)
     (h_tate67_iso : rk_Hom_R = rk_Hom_GK)
     (h_coker : rk_coker_tate = rk_Hom_GK - rk_Hom_R) :
-    1 ≤ e_max_pd ∧ e_max_pd < e ∧ val_pi_p_div_p ≤ -1 ∧ n + 1 ≤ val_In_sq ∧
+    1 + rk_coker_tate ≤ e_max_pd ∧ e_max_pd < e ∧ val_pi_p_div_p ≤ -1 ∧ n + 1 + rk_coker_tate ≤ val_In_sq ∧
     1 ≤ rk_Hom_R ∧ rk_Hom_R = rk_Hom_MF ∧ rk_coker_tate = 0 := by
   omega
 
@@ -291,7 +302,8 @@ theorem repair_low2_sharp_kronecker_bound_attained_3var
     (h_sharp : B_sharp = b * (N * N))
     (h_paper : B_paper = b * (1 + N + N * N))
     (h_delta : Delta_B = B_paper - B_sharp) :
-    0 ≤ E ∧ E ≤ B_sharp ∧ Delta_B = b * (1 + N) ∧ 3 ≤ Delta_B ∧ B_sharp + 3 ≤ B_paper := by
+    B_sharp = kroneckerSharpBound b N ∧ B_paper = kroneckerPaperBound b N ∧
+    0 ≤ E ∧ E ≤ B_sharp ∧ Delta_B = b * (1 + N) ∧ 3 ≤ Delta_B ∧ B_sharp < B_paper := by
   have hN_ge2 : 2 ≤ N := by omega
   have hN2_ge_N : N ≤ N * N := by
     have h : N * 1 ≤ N * N := Int.mul_le_mul_of_nonneg_left (by omega) (by omega)
@@ -311,6 +323,7 @@ theorem repair_low2_sharp_kronecker_bound_attained_3var
   have h_expand : b * (1 + N + N * N) = b * (1 + N) + b * (N * N) := by
     calc b * (1 + N + N * N) = b * ((1 + N) + N * N) := by rfl
     _ = b * (1 + N) + b * (N * N) := Int.mul_add b (1 + N) (N * N)
+  dsimp [kroneckerSharpBound, kroneckerPaperBound]
   omega
 
 /-- [Theorem 33] Repair of `[하-3]` (`03_filtration.tex:251-293`): Rosati positivity forces strictly positive eigenvalues `z = μ^2 > 0` of `u^2`. -/

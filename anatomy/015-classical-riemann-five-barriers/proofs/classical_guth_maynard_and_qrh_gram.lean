@@ -184,7 +184,7 @@ noncomputable def hybridCriticalBeta (αX αY : ℝ) : ℝ := (25 / 3 - 5 * αX 
 noncomputable def hybridRequiredSaving (αX αY β : ℝ) : ℝ := (29 + 3 * (αX + αY) - 36 * β) / 36
 noncomputable def welchRankExcess (αX αY : ℝ) : ℝ := (5 * αX + αY) / 12 - αX / 2
 
-/-- [Theorem 31] Exact `oai_ref/GramScaleLoss.lean` & `oai_ref/LowGramScale.lean` Real-Power Losses over `ℝ`. -/
+/-- [Theorem 31] Exact `GramScaleLoss.lean` & `LowGramScale.lean` Real-Power Losses over `ℝ` (`proofs/oai_ref/` snapshot). -/
 theorem thm_31_qrh_gram_scale_loss_and_coarse_bundled_exponent (M P Y Z δ : ℝ)
     (hM : 1 < M) (hP : 1 < P) (hY : 0 < Y) (hZ : 1 < Z) (hδ : 0 < δ) :
     P * (Y / (M * P)) ^ (-1 + δ) = M ^ (1 - δ) * P ^ (2 - δ) * Y ^ (-1 + δ) ∧
@@ -228,7 +228,7 @@ theorem thm_31_qrh_gram_scale_loss_and_coarse_bundled_exponent (M P Y Z δ : ℝ
   exact ⟨hid, hm_lt, hp_lt, hloss_lt, hz_sqrt,
     by rw [hz_sqrt]; exact Real.rpow_lt_rpow_of_exponent_lt hZ (by linarith only [hδ])⟩
 
-/-- [Theorem 32] Universal `δ`-Parametric Three-Mode Gram Unbundling & `oai_ref/Endpoint.lean` `y = 0` SOS Vertex `79/204`. -/
+/-- [Theorem 32] Universal `δ`-Parametric Three-Mode Gram Unbundling & `Endpoint.lean` `y = 0` SOS Vertex `79/204` (`proofs/oai_ref/` snapshot). -/
 theorem thm_32_qrh_three_mode_unbundling_215_and_487_over_3264 (αX αY ℓ δ : ℝ)
     (hgauss : 4 * (5 * αX + αY) = 9) (htail : 48 * (2 * αX - αY) = 11)
     (hcond : 16 * (αX - ℓ) = 3) :
@@ -279,7 +279,7 @@ theorem thm_33_qrh_rescaled_five_sixths_and_three_quarters_bridge (αX1 αY1 ℓ
   · norm_num
   · linarith only [hd2]
 
-/-- [Theorem 34] Bivariate SOS Certificate & `49 / 440640` Uniform Margin (`oai_ref/Endpoint.lean`). -/
+/-- [Theorem 34] Bivariate SOS Certificate & `49 / 440640` Uniform Margin (`Endpoint.lean` in local `proofs/oai_ref/` snapshot). -/
 theorem thm_34_qrh_endpoint_sos_identity_and_box_margin (δ y : ℝ)
     (hδ0 : 0 ≤ δ) (hδ1 : 6 * δ ≤ 5) (hy0 : 0 ≤ y) (hy1 : 2 * y ≤ 1) :
     35 / 54 ≤ qrhBalanceDenominator δ y ∧ qrhBalanceDenominator δ y ≤ 5 / 2 ∧

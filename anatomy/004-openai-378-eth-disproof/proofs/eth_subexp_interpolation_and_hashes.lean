@@ -8,6 +8,24 @@ Zero `sorry`, zero custom axioms.
 
 namespace OAI378ETHInterpolationAndHashes
 
+/-- Evaluation of the doubled degree-1 row interpolation path `P2(t)` along the commuting `4 × 4` swap operator (`Remark 4.4`). -/
+def swapPath2 (z0 z1 z2 t : Int) : Int := 2 * z0 - t * z1 - 2 * t * z2
+
+/-- Complemented Beigel-Tarui modulus-amplifying polynomial `p_2(Y) = 1 - 3Y^2 + 2Y^3` at modulus level `ℓ = 2`. -/
+def beigelTaruiCubic (Y : Int) : Int := 1 - 3 * (Y * Y) + 2 * (Y * (Y * Y))
+
+/-- Cleared even-input shift polynomial `p_2(2m) - 1 = 4 m^2 (4m - 3)`. -/
+def beigelTaruiEvenShift (m : Int) : Int := 4 * ((m * m) * (4 * m - 3))
+
+/-- Cleared odd-input shift polynomial `p_2(2m + 1) = 4 m (m + 1) (4m + 1)`. -/
+def beigelTaruiOddShift (m : Int) : Int := 4 * ((m * (m + 1)) * (4 * m + 1))
+
+/-- Linear total-order polynomial degree in `ℚ[V]/(V^ℓ)` (`Section 5.2`). -/
+def truncatedRingDegree (k m_test ell : Int) : Int := k * (m_test + 2 * (ell - 1))
+
+/-- Naive quadratic expansion degree prior to quotient truncation modulo `V^ℓ`. -/
+def fullRingDegree (k m_test ell : Int) : Int := k * (m_test * (2 * ell - 1))
+
 /-!
 ## Part I: Commuting Swap Matrices, Binomial Parity Interpolation, and Shared Linear Summaries
 (`main_full_version.tex` Sections 3–4, `BinomialInterpolation.lean`, `MatrixSupport.lean`, `Annihilation.lean`)
@@ -82,8 +100,11 @@ theorem remark_4_4_four_by_four_swap_matrix_kernel_and_path
     (hp0 : p2_at_0 = 2 * z0 - 0 * z1 - 2 * 0 * z2)
     (hp1 : p2_at_1 = 2 * z0 - 1 * z1 - 2 * 1 * z2)
     (hp2 : p2_at_2 = 2 * z0 - 2 * z1 - 2 * 2 * z2) :
-    m0_z0 = z0 ∧ p2_at_0 = 2 * z0 ∧
-    p2_at_1 = z0 - z12 - z2 ∧ p2_at_2 = -2 * (z2 + z12) := by
+    m0_z0 = z0 ∧
+    p2_at_0 = swapPath2 z0 z1 z2 0 ∧ p2_at_0 = 2 * z0 ∧
+    p2_at_1 = swapPath2 z0 z1 z2 1 ∧ p2_at_1 = z0 - z12 - z2 ∧
+    p2_at_2 = swapPath2 z0 z1 z2 2 ∧ p2_at_2 = -2 * (z2 + z12) := by
+  dsimp [swapPath2]
   omega
 
 /-- [Theorem 4] Swap matrix mismatch support and cleared annihilator degree bound (`Lemma 4.2` & `Lemma 4.3`,
@@ -179,7 +200,11 @@ theorem beigel_tarui_modulus_amplifying_polynomial_l2
     (h_even : p2_even_rem = 4 * q_even)
     (h_odd : p2_odd_rem = 4 * q_odd) :
     p2_cubic = p2_decomp ∧
+    p2_cubic = beigelTaruiCubic Y ∧
+    p2_even_rem = beigelTaruiEvenShift m ∧
+    p2_odd_rem = beigelTaruiOddShift m ∧
     4 ≤ p2_even_rem ∧ 40 ≤ p2_odd_rem ∧
+    p2_odd_rem - p2_even_rem = 4 * m * (8 * m + 1) ∧
     p2_even_rem % 4 = 0 ∧ p2_odd_rem % 4 = 0 := by
   have h_id : (1 - Y) + (2 * Y - 1) * (Y * (Y - 1)) = 1 - 3 * (Y * Y) + 2 * (Y * (Y * Y)) := by
     calc (1 - Y) + (2 * Y - 1) * (Y * (Y - 1))
@@ -190,10 +215,28 @@ theorem beigel_tarui_modulus_amplifying_polynomial_l2
     _ = 1 - 3 * (Y * Y) + 2 * (Y * (Y * Y)) := by omega
   have h_eq_p2 : p2_cubic = p2_decomp := by
     rw [h_decomp, h_hY, h_id, ← h_cubic]
+  have h_diff_rem : 4 * ((m * (m + 1)) * (4 * m + 1)) - 4 * ((m * m) * (4 * m - 3)) = 4 * m * (8 * m + 1) := by
+    have h10 : (m + 1) * (4 * m + 1) = 4 * (m * m) + 5 * m + 1 := by
+      rw [Int.add_mul, Int.mul_add, Int.mul_one, Int.one_mul, ← Int.mul_assoc, Int.mul_comm m 4, Int.mul_assoc]
+      omega
+    have h1 : (m * (m + 1)) * (4 * m + 1) = m * (4 * (m * m) + 5 * m + 1) := by
+      rw [Int.mul_assoc, h10]
+    have h2 : (m * m) * (4 * m - 3) = m * (4 * (m * m) - 3 * m) := by
+      calc (m * m) * (4 * m - 3)
+          = m * (m * (4 * m - 3)) := Int.mul_assoc m m (4 * m - 3)
+        _ = m * (4 * (m * m) - 3 * m) := by
+              rw [Int.mul_sub, ← Int.mul_assoc, Int.mul_comm m 4, Int.mul_assoc, Int.mul_comm m 3]
+    rw [h1, h2]
+    have h3 : m * (4 * (m * m) + 5 * m + 1) - m * (4 * (m * m) - 3 * m) = m * (8 * m + 1) := by
+      rw [← Int.mul_sub]
+      congr 1
+      omega
+    rw [← Int.mul_sub, h3, Int.mul_assoc]
   have hm2 : 1 * 1 ≤ m * m := Int.mul_le_mul hm hm (by omega) (by omega)
   have hm3 : 1 * 1 ≤ (m * m) * (4 * m - 3) := Int.mul_le_mul hm2 (by omega) (by omega) (by omega)
   have hod1 : 1 * 2 ≤ m * (m + 1) := Int.mul_le_mul hm (by omega) (by omega) (by omega)
   have hod2 : 2 * 5 ≤ (m * (m + 1)) * (4 * m + 1) := Int.mul_le_mul hod1 (by omega) (by omega) (by omega)
+  dsimp [beigelTaruiCubic, beigelTaruiEvenShift, beigelTaruiOddShift]
   omega
 
 /-- [Theorem 9] Total-order truncated ring `ℚ[V]/(V^ℓ)` linear vs. quadratic degree bound (`Section 5.2`, `Lemma 5.2`,
@@ -210,9 +253,12 @@ theorem total_order_truncated_ring_linear_vs_quadratic_degree
     (h_saved : deg_saved = d_full - d_trunc)
     (h_ex_t : ex_trunc = 1 * (2 + 2 * (2 - 1)))
     (h_ex_f : ex_full = 1 * (2 * (2 * 2 - 1))) :
+    d_trunc = truncatedRingDegree k m_test ell ∧
+    d_full = fullRingDegree k m_test ell ∧
     deg_saved = 2 * (k * ((m_test - 1) * (ell - 1))) ∧
-    2 * k ≤ deg_saved ∧ d_trunc < d_full ∧
-    ex_trunc = 4 ∧ ex_full = 6 := by
+    2 * k ≤ deg_saved ∧ d_trunc + deg_saved = d_full ∧
+    ex_trunc = 4 ∧ ex_full = 6 ∧ ex_trunc < ex_full ∧
+    d_trunc < d_full ∧ ex_full - ex_trunc ≤ deg_saved := by
   have h_inner : m_test * (2 * ell - 1) - (m_test + 2 * (ell - 1)) = 2 * ((m_test - 1) * (ell - 1)) := by
     have hm1 : m_test * (2 * ell - 1) = 2 * (m_test * ell) - m_test := by
       rw [Int.mul_sub, Int.mul_one, ← Int.mul_assoc m_test 2 ell, Int.mul_comm m_test 2, Int.mul_assoc]
@@ -229,6 +275,7 @@ theorem total_order_truncated_ring_linear_vs_quadratic_degree
   have h_m1 : 1 * 1 ≤ (m_test - 1) * (ell - 1) := Int.mul_le_mul (by omega) (by omega) (by omega) (by omega)
   have h_km1 : k * 1 ≤ k * ((m_test - 1) * (ell - 1)) :=
     Int.mul_le_mul_of_nonneg_left h_m1 (by omega)
+  dsimp [truncatedRingDegree, fullRingDegree]
   omega
 
 /-- [Theorem 10] Tanner expander code parameters and mixing distance lower bound (`Section 6.1`, `Lemma 6.1`, `main_full_version.tex:2945-3085`).

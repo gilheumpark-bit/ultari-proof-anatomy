@@ -21,8 +21,8 @@ This package synthesizes the full OpenAI `#003` QRH ecosystem (`DirichletL/Short
 
 ## Formal Proofs & One-Command Verification
 
-- [`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L305): Theorems 1–15 (`115/115` mutations caught).
-- [`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L313): Theorems 16–30 (`125/125` mutations caught).
+- [`qrh_eleven_twelfths_and_cubic_large_sieve.lean`](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L1-L313): Theorems 1–15 (`115/115` mutations caught).
+- [`qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean`](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L1-L323): Theorems 16–30 (`125/125` mutations caught).
 - [`qrh_trilogy_induction_and_algebraic_bridge.lean`](proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L1-L356): Theorems 31–45 + 7 `def`s (`104/104` mutations caught).
 - [`verify_symbolic_qrh_synthesis.py`](proofs/verify_symbolic_qrh_synthesis.py) & [`symbolic_verification_result.json`](proofs/symbolic_verification_result.json).
 

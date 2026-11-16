@@ -115,7 +115,7 @@ theorem thm_06_pair_certificate_charge_conservation
     (hneg : w_neg = -5 * N)
     (hcs : c_sum = 5 * N)
     (htc : term_cnt = 26 * N) :
-    w_pos + w_neg = 0 ∧ c_sum = w_pos ∧ 31 ≤ term_cnt + c_sum := by
+    w_pos + w_neg = 0 ∧ c_sum = w_pos ∧ term_cnt = 26 * N ∧ 26 ≤ term_cnt ∧ c_sum < term_cnt := by
   omega
 
 /-- [Theorem 7] Nonnegative SOS pair average vanishing forces product zero

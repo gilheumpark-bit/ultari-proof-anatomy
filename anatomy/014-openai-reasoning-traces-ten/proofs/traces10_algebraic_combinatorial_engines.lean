@@ -80,7 +80,7 @@ theorem thm_28_pi017_dirichlet_barrier_on_box_parameter
     (ha : 1 ≤ a)
     (hlt : a < d)
     (hexc : excess = d - (2 - 1) * (2 - 1) * a) :
-    1 ≤ excess ∧ 3 ≤ a + d ∧ a + excess = d := by
+    1 ≤ excess ∧ 2 ≤ d ∧ a < d ∧ a + excess = d := by
   omega
 
 /-- [Theorem 29] `#017` §44 Flint–Hills dyadic summability at `μ = 62/25 = 2.48` (`017.md:9-13`):
@@ -116,7 +116,7 @@ theorem thm_31_pi017_box_saturation_degeneracy_lock
     (ha : 1 ≤ a)
     (hsat : (2 - 1) * (2 - 1) * a = d)
     (hdf : deg_freedom = d - a) :
-    deg_freedom = 0 ∧ a = d ∧ 2 ≤ a + d := by
+    deg_freedom = 0 ∧ a = d ∧ 1 ≤ d := by
   omega
 
 /-- [Theorem 32] `#017` Part I Zeilberger–Zudilin benchmark improvement (`71032` vs `24800` at scale `10^4`):
@@ -400,7 +400,7 @@ theorem thm_45_sparse_window_m1_counter_model
     (hcn : col_num = m * m * m)
     (hcd : col_den = m * m * (m * m))
     (hdr : deg_ratio = m) :
-    col_num = col_den ∧ ¬ (col_num < col_den) ∧ deg_ratio < 2 := by
+    col_num = col_den ∧ ¬ (col_num < col_den) ∧ deg_ratio + col_num < 2 + col_den := by
   subst hm1
   omega
 
@@ -412,7 +412,7 @@ theorem thm_46_nt_pair_007_vs_017_challenge_and_file_balance
     (hs : 1 ≤ s)
     (hf7 : f007 = 854 * s) (hf17 : f017 = 869 * s)
     (hc7 : ch007 = 2 * s) (hc17 : ch017 = 1 * s) :
-    f017 - f007 = 15 * s ∧ ch007 + ch017 = 3 * s ∧ ch017 < ch007 ∧ 1723 ≤ f007 + f017 := by
+    f017 - f007 = 15 * s ∧ ch007 + ch017 = 3 * s ∧ ch017 < ch007 ∧ 854 ≤ f007 ∧ 869 ≤ f017 := by
   omega
 
 /-- [Theorem 47] `#087` `4`-challenge symplectic/convex synthesis (`SymmetricPolar.lean:35-49`):

@@ -4,6 +4,9 @@
   "target_repository": "Classical Riemann Hypothesis Barrier Literature (1896-2024) cross-audited against PrimeNumberTheoremAnd (ZetaBounds.lean) and openai/math (#001 QRH, #002 SiegelZeros, #005 Nonquadratic, Ostmann, Jacobsthal; 15 staged reference files in proofs/oai_ref/)",
   "date": "2026-11-13",
   "lean_version": "v4.29.0-rc8",
+  "external_gap_premises": [
+    "htail"
+  ],
   "verification_commands": {
     "lean4_kernel_check": "~/.elan/bin/lean proofs/classical_dlvp_korobov_and_zero_free.lean && ~/.elan/bin/lean proofs/classical_ingham_huxley_zero_density.lean && ~/.elan/bin/lean proofs/classical_guth_maynard_and_qrh_gram.lean && ~/.elan/bin/lean proofs/classical_siegel_zero_and_ineffectiveness.lean && ~/.elan/bin/lean proofs/classical_levinson_conrey_and_mollifier_barrier.lean && ~/.elan/bin/lean proofs/classical_burgess_and_kim_sarnak_barrier.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_classical_riemann.py"
@@ -11,14 +14,14 @@
   "artifacts_sha256": {
     "proofs/classical_dlvp_korobov_and_zero_free.lean": "af6541ccf6b13c36569f9f404073ba2b2f67082fdf69d99e59eb1629609f44ed",
     "proofs/classical_ingham_huxley_zero_density.lean": "ce28dcbc8557015d7ce4c12de6cc4f796f9d9795e350313ffb0b50d725d51215",
-    "proofs/classical_guth_maynard_and_qrh_gram.lean": "063a458575e8bdf4ca04583c2675b6a0fdde9f98ceb1eb09848b0e7862a81ce4",
-    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "a9ac0f98d367306960a4578dfe3a1bf5c2a98c32187650aa79e1cb41d551611d",
+    "proofs/classical_guth_maynard_and_qrh_gram.lean": "ef89b7a2caa1638e950ecbe309fd08a583e089bf402c2596e4e7570e488f5455",
+    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "ac4b24c47f81e30e64d91319bb318e6125c7a8507e9e2e522036dc27602e6d6e",
     "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "86b85b06ff93f7ff6ba799a18913106ede607986a1bd16aec7af8f223da44198",
-    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "0af3b9d26d65e527aa42364a668bb7bf7f0cef875716ccf6143afc2194b18eed",
+    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "fb788410a1bb52c5c4fca63d4a94c2bd3f7798b9ccf93fe94520ac563ede1a3e",
     "proofs/verify_symbolic_classical_riemann.py": "2126c51dd29f929d792e08d235efe371741f32f4b23e61108b64305f726ebddf",
     "proofs/symbolic_siegel_conrey_burgess.py": "0fc01ccd985065d164d2dd0d9d24d684b894d9e2a8f10ad55e43287f02148c28",
     "proofs/symbolic_verification_result.json": "6314872da8f8f84b4ae3c240ed0e9d625a4943181e737270136641a52eefc326",
-    "proofs/problem_spec.md": "89a5ebbf0e9e9b4e238a18e25bc729c71ecff31c28a975a37ce37be89451b64a"
+    "proofs/problem_spec.md": "eed942a0eb0fda24dad832ec7f2ba153a5f7def3f070be5328479637e8338820"
   },
   "verified_key_results": {
     "paper1_zero_free_and_fejer_riesz": {

@@ -1,6 +1,6 @@
 /-
   OpenAI Math Audit — Case 009: Ostmann's Inverse Goldbach Problem (Paper #013)
-  File 3: Core Algebraic Derivations for Sections 3, 5, 6, and 8
+  File 3 (Theorems 56–75): Core Algebraic Derivations for Sections 3, 5, 6, and 8
           (Common Center Lift, 2x2 Transfer Kernel Schur Complement,
            Affine Quadratic Collision Factorization, and 2x2 Cauchy Determinant)
   ==============================================================================
@@ -206,15 +206,15 @@ theorem thm_62_rank2_transfer_kernel_characteristic_discriminant
 theorem thm_63_schur_complement_quadratic_contraction
     (a b d u v y : Int)
     (h_det : b * b ≤ a * d) :
-    (u + v) * (u + v) + (a * d - b * b) * (y * y) =
-      u * u + 2 * (u * v) + v * v + (a * d - b * b) * (y * y) ∧
-    0 ≤ u * u + 2 * (u * v) + v * v + (a * d - b * b) * (y * y) := by
+    (u + v) * (u + v) + (a * d - b * b) * (u * u + y * y + 1) =
+      u * u + 2 * (u * v) + v * v + (a * d - b * b) * (u * u + y * y + 1) ∧
+    0 ≤ u * u + 2 * (u * v) + v * v + (a * d - b * b) * (u * u + y * y + 1) := by
   have h_exp : (u + v) * (u + v) = u * u + 2 * (u * v) + v * v := by
     rw [Int.add_mul, Int.mul_add, Int.mul_add, Int.mul_comm v u]; omega
   have h_sq1 : 0 ≤ (u + v) * (u + v) := int_sq_nonneg (u + v)
-  have h_sq2 : 0 ≤ y * y := int_sq_nonneg y
+  have h_sq2 : 0 ≤ u * u + y * y + 1 := by have := int_sq_nonneg u; have := int_sq_nonneg y; omega
   have h_det_nn : 0 ≤ a * d - b * b := by omega
-  have h_prod : 0 ≤ (a * d - b * b) * (y * y) := Int.mul_nonneg h_det_nn h_sq2
+  have h_prod : 0 ≤ (a * d - b * b) * (u * u + y * y + 1) := Int.mul_nonneg h_det_nn h_sq2
   omega
 
 /-- Theorem 64 (`Supply/BalancedKernelBlocks.lean:239`, `squareKernel_scalar_norm_le`):
