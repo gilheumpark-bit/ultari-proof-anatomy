@@ -1,4 +1,4 @@
-"""Deterministic symbolic and numerical engines for Case 015 Papers 3-5 (Theorems 36-75)."""
+"""Deterministic symbolic and numerical engines for Five Classical Riemann Barriers Papers 3-5 (Theorems 36-75)."""
 import math
 import sys
 import numpy as np

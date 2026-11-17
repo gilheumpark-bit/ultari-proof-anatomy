@@ -1,6 +1,6 @@
 /-
   OpenAI #005 (Catalan's Constant Is Irrational)
-  Case 011, Part III:
+  Part III:
   Two-Sheet Blaschke-Cauchy Interpolation, Haagerup-Chebyshev Energy Reduction,
   Möbius-Descartes Root Certificate, and Adelico-Archimedean Contradiction (Theorems 51–75).
 
@@ -292,12 +292,12 @@ theorem thm_66_gaussian_trace_vs_modular_101_line_reduction
   omega
 
 /-- [Theorem 67] Unused `Manuscript*` and wrapper imports in `Main.lean` (`Main.lean:1-30`), external `ZetaFive` borrowing,
-and `PrimeNumberTheoremAnd-lean4341.patch` smuggling (`ContinuousWeightedPNT.lean:1-134`, `ImportedPNTCoreBridge.lean:1-43`):
+and `PrimeNumberTheoremAnd-lean4341.patch` external namespace placement (`ContinuousWeightedPNT.lean:1-134`, `ImportedPNTCoreBridge.lean:1-43`):
 out of `29` `import` lines in `Main.lean` (`30` lines total), only `1` (`Results.Catalan`) lies inside the `473`-file (`124,449`-line)
 active `Catalan/` cone while `28` (`24` `Manuscript*` + `4` non-`Manuscript` wrappers: `FinitePlaceLiminf`, `IrrationalityAlias`,
 `PalindromicOriginalDeterminantFactorization`, `BarrierCaseTwoStationaryRootSimplicity`) lie in the `508`-file (`449,367`-line)
 unreachable ghost ledger. Moreover, the active cone borrows `7` `OAI/NumberTheory/ZetaFive/` files (`1,086` lines) and `14` new
-`PrimeNumberTheoremAnd/{Catalan,ZetaFive}` files (`8 + 6 = 14` files, `2,452 + 2,915 = 5,367` lines) smuggled inside
+`PrimeNumberTheoremAnd/{Catalan,ZetaFive}` files (`8 + 6 = 14` files, `2,452 + 2,915 = 5,367` lines) placed inside
 `patches/PrimeNumberTheoremAnd-lean4341.patch`, totalling `473 + 7 + 14 = 494` custom active files (`130,902` lines). -/
 theorem thm_67_main_lean_unused_manuscript_imports_ratio
     (imp_active imp_ms imp_wrap imp_unreach files_live files_zeta files_patch total_custom : Int)

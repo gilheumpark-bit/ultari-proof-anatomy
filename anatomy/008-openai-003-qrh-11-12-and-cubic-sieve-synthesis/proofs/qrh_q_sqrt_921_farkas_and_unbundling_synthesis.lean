@@ -1,6 +1,6 @@
 import Init
 /- OpenAI #003 (Quasi-Riemann Hypothesis Ecosystem Deep Synthesis)
-   File 2: The Q(sqrt(921)) Unity Across Case 005 & Baiying Liu (arXiv:2610.12234), Parametric Farkas Unbundling & The 10-Tier Hierarchy (Theorems 16–30)
+   File 2: The Q(sqrt(921)) Unity Across Part II (Referee & Unbundled Gram Audit) & Baiying Liu (arXiv:2610.12234), Parametric Farkas Unbundling & The 10-Tier Hierarchy (Theorems 16–30)
    Scope: Exact Algebraic Number Field Q(sqrt(921)), Farkas Duality & Unbundled Exponent Verification
 -/
 
@@ -13,11 +13,11 @@ def criticalQuadraticConst (s_sq : Int) : Int := 288 * (2401 + s_sq) - 588 * 48 
 def farkasWeightedSaving (w0 wK wH d0 dK dH : Int) : Int := w0 * d0 + wK * dK + wH * dH
 
 /-!
-## Part III: Exact `ℚ(√921)` Unity Between `Case 005` Fixed-Scale Saddle and Baiying Liu's `arXiv:2610.12234` (`geometry/V2Optimization.lean`) (Theorems 16–23)
+## Part III: Exact `ℚ(√921)` Unity Between `Part II` Fixed-Scale Saddle and Baiying Liu's `arXiv:2610.12234` (`geometry/V2Optimization.lean`) (Theorems 16–23)
 (`geometry/V2Optimization.lean:8-325`, `CombinedPaperVerification.lean:16-80`, `qrh_mathematician_referee_audit.lean:356-441`)
 -/
 
-/-- [Theorem 16] Shared critical quadratic `288 * δ_c^2 - 588 * δ_c + 185 = 0` (`geometry/V2Optimization.lean:18, 108-127`, `Case 005`):
+/-- [Theorem 16] Shared critical quadratic `288 * δ_c^2 - 588 * δ_c + 185 = 0` (`geometry/V2Optimization.lean:18, 108-127`, `Part II`):
 in `ℚ(√921)` with `s^2 = 921` (`30347 < s_milli < 30348`), the root `δ_c = (49 - s)/48` (`48 * δ_c = 49 - s`) satisfies
 `288 * (49 - s)^2 - 588 * 48 * (49 - s) + 185 * 48^2 = 0`, lies strictly in `(3/8, 5/6)` (`18000 < 49000 - s_milli < 40000`),
 and makes the sextic count envelope hit `R(δ_c, 1/2) = 2/3` (`count_num = 2, count_den = 3`). -/
@@ -41,9 +41,9 @@ theorem thm_16_shared_critical_quadratic_288_588_185_and_count_2_3
   dsimp [criticalQuadraticConst]
   omega
 
-/-- [Theorem 17] Fixed-scale global SOS saddle `β_SOS(0) = (6843 - 7√921)/7578` (`Case 005` at `b = 1/8, ℓ = 1/6`)
+/-- [Theorem 17] Fixed-scale global SOS saddle `β_SOS(0) = (6843 - 7√921)/7578` (`Part II` at `b = 1/8, ℓ = 1/6`)
 vs. Baiying Liu's rational perturbation `B_r = 34999/40000` (`CombinedPaperVerification.lean:16-48` at `b_r = 1/8, ℓ_r = 1/6 + 1/10000`)
-and rational SOS witness `41999/48000` (`Case 005` `thm_33`):
+and rational SOS witness `41999/48000` (`Part II` `thm_33`):
 over reduced denominators (`gcd(40000, 7578) = 2` and `gcd(48000, 7578) = 6`), `(6843 * 20000 - 34999 * 3789)^2 - (140000)^2 * 921 = 607966521 > 0`
 and `(56000)^2 * 921 - (6843 * 8000 - 41999 * 1263)^2 = 761256831 > 0`, proving `B_r < β_SOS(0) < 41999/48000 < 7/8`. -/
 theorem thm_17_case005_fixed_scale_saddle_vs_liu_rational_B_r
@@ -77,7 +77,7 @@ theorem thm_18_liu_three_face_equalization_in_Q_sqrt_921
   subst h_sq; subst h_ec; subst h_es
   omega
 
-/-- [Theorem 19] Exact algebraic gap in `ℚ(√921)` between `Case 005` fixed-scale saddle `β_SOS(0) = (6843 - 7s)/7578`
+/-- [Theorem 19] Exact algebraic gap in `ℚ(√921)` between `Part II` fixed-scale saddle `β_SOS(0) = (6843 - 7s)/7578`
 and Liu's 3-face equalized optimum `B_Liu = (1507 - 2s)/1653` (`lcm(7578, 1653) = 4175478`):
 `β_SOS(0) - B_Liu = (1195√921 - 36189)/4175478 ≈ 1.8402 × 10^(-5) > 0` (`1195^2 * 921 - 36189^2 = 5567304 > 0`),
 and `B_r - B_Liu = (80000√921 - 2426653)/66120000 > 0` (`80000^2 * 921 - 2426653^2 = 5755217591 > 0`),
@@ -227,7 +227,7 @@ theorem thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction
   subst h_ss; subst h_slo; subst h_shi
   omega
 
-/-- [Theorem 26] Breaking `Face_K` and `Face_H` via componentwise Gram unbundling and the `[0.48, 0.52]` Stickelberger shift (`Case 005` `thm_27`, `thm_31`):
+/-- [Theorem 26] Breaking `Face_K` and `Face_H` via componentwise Gram unbundling and the `[0.48, 0.52]` Stickelberger shift (`Part II` `thm_27`, `thm_31`):
 unbundling the 2-term (`181/3264`) and 3-term (`215/3264`) Gram losses in `Face_K` while shifting `z_high = 1/6 → 7/20` (`d_0 = 65/80 → 57/80`,
 saving `Δd_0 = 8/80 = 1/10`) in `Face_H` drops the zero-free boundary from `7/8 = 4284/4896` to `β_unbun2 = 4103/4896 ≈ 0.838031`
 and `β_unbun3 = 4069/4896 ≈ 0.831087`. -/
@@ -245,7 +245,7 @@ theorem thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H
     beta_unbun3_4896 < beta_unbun2_4896 ∧ beta_unbun2_4896 < beta0_4896 := by
   omega
 
-/-- [Theorem 27] Connecting the unimported `CubicGauss/LargeSieve.lean` (`2/3` sharp cubic large sieve) to the Path-A floor `71/108` (`Case 005` `thm_34`):
+/-- [Theorem 27] Connecting the unimported `CubicGauss/LargeSieve.lean` (`2/3` sharp cubic large sieve) to the Path-A floor `71/108` (`Part II` `thm_34`):
 replacing the bilinear Cauchy-Schwarz count envelope `R(δ_c, 1/2) = 2/3 = 6/9` (`geometry/V2Optimization.lean:117`) with the sharp cubic-sieve
 effective count envelope `R_eff = 7/9` (`gain = 1/9`) and maximum Path-A Gram saving `Δ_gram^max = 53/216` lowers the static barrier to
 `β_min^A = 142/216 = 71/108 ≈ 0.657407`. -/

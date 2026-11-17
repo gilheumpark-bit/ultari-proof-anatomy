@@ -90,7 +90,7 @@ theorem weil_retraction_projector_cohomology_recovery
 
 /-!
 ## Part V: Balanced CM Idempotent Reduction & Universal Nonlinear Theorems
-(`05_reduction.tex:18-448`)
+(`05_reduction.tex:18-471`)
 -/
 
 /-- [Theorem 21] Balanced CM idempotent factor `B_Δ = e_Δ (A ⊗_ℚ K)` dimensions and Hodge signatures
@@ -118,7 +118,7 @@ theorem unbalanced_cm_subset_violates_hodge_bidegree
     q_sigma ≠ r ∧ p_sigma ≠ q_sigma := by
   omega
 
-/-- [Theorem 23] Galois orbit partition of CM eigenspace subsets `Δ ⊂ Hom(K, ℂ)` (`Theorem 6.2`, `05_reduction.tex:250-365`).
+/-- [Theorem 23] Galois orbit partition of CM eigenspace subsets `Δ ⊂ Hom(K, ℂ)` (`Lemma 6.1` & `Corollary 6.2`, `05_reduction.tex:63-79, 207-223`).
 In the decomposition of `⋀^{2r}(H^1(A) ⊗ K)` into `N_total` eigenspaces `W_Δ` (`|Δ| = 2r`), partitioning into
 `N_bal` balanced subsets (`p_τ = q_τ = r`) and `N_unbal` unbalanced subsets (`p_σ ≠ q_σ`) forces the `(r, r)` rational
 Hodge class projection `hodge_unbal` on all unbalanced orbits to vanish (`hodge_unbal = 0`), so the full rational Hodge
@@ -135,8 +135,8 @@ theorem thm_6_2_cm_galois_orbit_partition
     2 ≤ d_K ∧ d_K ≤ 2 * g_K + N_bal - 2 ∧ N_bal ≤ N_total ∧ hodge_total = hodge_bal := by
   omega
 
-/-- [Theorem 24] Adapted filtration Breuil-Kisin module rank and total zero-defect balance (`Proposition 4.8`,
-`03_filtration.tex:380-445`).
+/-- [Theorem 24] Breuil-Kisin module rank (`Proposition 3.1`/`Lemma 3.3`, `02_transport.tex:480, 524-534`) and zero-defect balance
+(simultaneous avoidance `03_filtration.tex:369-446`).
 Over the degree-`q` Eisenstein extension `K'/K`, the adapted Lagrangian `L ⊂ D_{K'}` (`dim D_{K'} = 2 * g`, `dim L = g`)
 defines a Breuil-Kisin module filtration `Fil^1 M` of rank `rk_Fil1 = g` with torsion-free quotient of rank
 `rk_quot = 2 * g - rk_Fil1 = g`, and total Hodge number `t_H(D_{K'}) = g` equal to total Newton number `t_N(D_{K'}) = g`,
@@ -166,7 +166,7 @@ theorem universal_weil_divisor_polynomial_pure_degree_separation
     deg_mixed ≤ 2 * (s - 1) ∧ deg_mixed + 2 ≤ deg_pure ∧ deg_mixed ≠ deg_pure := by
   omega
 
-/-- [Theorem 26] Lefschetz pairing kernel dimension vs. CM Chow algebraic span (`00_intro.tex:105-113`, `05_reduction.tex:368-448`).
+/-- [Theorem 26] Lefschetz pairing kernel dimension vs. CM Chow algebraic span (`00_intro.tex:105-113`, `05_reduction.tex:368-471`).
 On an abelian variety of Weil type with non-Lefschetz exceptional Weil classes of dimension `dim_weil ≥ 2`
 orthogonal to `Lef^{d-r}(A_0)` (`dim_lef ≥ 1`), the Hodge space `dim_hdg = dim_lef + dim_weil` has a positive
 radical `dim_ker_lef = dim_hdg - dim_lef = dim_weil ≥ 2` when paired only against `Lef^{d-r}(A_0)` (`Theorem 1.1`),
@@ -186,7 +186,7 @@ theorem milne_001_internal_dependency_and_lefschetz_vs_chow_gap
 
 /-!
 ## Part VI-B: Néron-Severi Filtration Lifting & Rational Tate Class Compatibility (Theorems 27–28)
-(`04_weil.tex:371-435`, `05_reduction.tex:399-426`)
+(`04_weil.tex:371-439`, `05_reduction.tex:281-366`)
 -/
 
 /-- [Theorem 27] Symmetric Néron-Severi homomorphism filtration obstruction vanishing (`Proposition 5.2`, `04_weil.tex:392-425`).
@@ -206,12 +206,12 @@ theorem first_factor_projector_retraction_pullback_chain
     dim_image_plus_Lperp = dim_L ∧ dim_image_plus_Lperp - dim_L_perp = 0 := by
   omega
 
-/-- [Theorem 28] Compatibility with any good theory of rational Tate classes (`Corollary 6.3`, `05_reduction.tex:399-426`,
+/-- [Theorem 28] Compatibility with any good theory of rational Tate classes (`Corollary 6.3`, `05_reduction.tex:281-366`,
 `[Mil09, Theorem 4.5]`).
-When the Frobenius-shifted pairing `⟨γ_v, δ_v⟩ = tr(γ_v ∪ π_{A_0}^* δ_v)` with every complementary Lefschetz class
-`δ ∈ Lef^{d-r}(A_0)` equals the same rational number `q_num / q_den` (`q_den ≥ 1`) in both `ℓ`-adic (`v = ℓ`) and
-crystalline (`v = p`) realizations (`q_den * trace_ell = q_num` and `q_den * trace_p = q_num`), the cross-realization
-discrepancy `trace_ell - trace_p` vanishes identically, satisfying Milne's `[Mil09, Theorem 4.5]` criterion. -/
+When the top-cohomology degree trace map `Tr_v : H^{2d}_v(A_0)(d) → k_v` against every complementary Cartier divisor
+product `δ = c_1(D_1)···c_1(D_{d-r}) ∈ Lef^{d-r}(A_0)` (`Theorem 1.1`) equals `q_num / q_den` (`q_den ≥ 1`) across `ℓ`-adic
+(`v = ℓ`) and crystalline (`v = p`) realizations (`q_den * trace_ell = q_num`, `q_den * trace_p = q_num`), the cross-realization
+discrepancy `trace_ell - trace_p` vanishes (`ρ_γ = N^{-2r} h^* ρ_κ` in `R`), satisfying `[Mil09, Theorem 4.5]`. -/
 theorem cor_6_3_frobenius_trace_rational_equality
     (q_num q_den trace_ell trace_p realization_diff : Int)
     (h_den : 1 ≤ q_den)
@@ -234,7 +234,7 @@ theorem cor_6_3_frobenius_trace_rational_equality
 (Theorems 29–33)
 -/
 
-/-- [Theorem 29] Repair of `[중-1]` (`02_transport.tex:471-505`): Pointwise Breuil-Kisin + Kisin-Zhou ADLV lift
+/-- [Theorem 29] Repair of `[중-1]` (`02_transport.tex:474-487, 520-540`): Pointwise Breuil-Kisin + Kisin-Zhou ADLV lift
 matches the admissible filtration `F^1` without `[GLX26, Corollary 6.3]`.
 At `y = i_x(g) ∈ I_x` (`[PR24, Proposition 3.5.1]`, `[KZ25b, Theorem 2.2.5]`), the local model ring `O_{S_K, y}^∧`
 has relative dimension `d_flag ≥ 1` equal to `dim F_{J, μ}`, and the pointwise lift `C_{y_tilde} / O_K`
@@ -255,7 +255,7 @@ theorem repair_medium1_pointwise_kz_adlv_bypasses_glx26
     dim_Fil1 + dim_F1 = dim_H1_dR ∧ 2 ≤ dim_H1_dR := by
   omega
 
-/-- [Theorem 30] Repair of `[중-2]` (`05_reduction.tex:428-447`): Canonical Beauville projector `P_{r, 0}` eliminates denominator `N` ambiguity. -/
+/-- [Theorem 30] Repair of `[중-2]` (`05_reduction.tex:428-464`): Canonical Beauville projector `P_{r, 0}` eliminates denominator `N` ambiguity. -/
 theorem repair_medium2_beauville_projector_canonical_cycle_invariance
     (z_0_comp z_s_comp M_neg_s_scaled_z_s z_N z_MN z_can_N z_can_MN cl_z_N cl_z_can gamma_0 : Int)
     (h_zN : z_N = z_0_comp + z_s_comp)
@@ -269,7 +269,7 @@ theorem repair_medium2_beauville_projector_canonical_cycle_invariance
     z_MN ≠ z_N ∧ z_N - z_s_comp = z_can_N ∧ z_can_MN = z_can_N ∧ cl_z_can = cl_z_N ∧ cl_z_can = gamma_0 := by
   omega
 
-/-- [Theorem 31] Repair of `[하-1]` (`01_preliminaries.tex:172-200`): Unconditional ramified DVR lifting via `D_cris + Tate + Serre-Tate`.
+/-- [Theorem 31] Repair of `[하-1]` (`Lemma 2.4`, `01_preliminaries.tex:171-208`): Unconditional ramified DVR lifting via `D_cris + Tate + Serre-Tate`.
 Over a ramified DVR `R = O_K` (`e ≥ p + 1 > p - 1 = e_max_pd`), the `p`-th divided power `π^p / p` has negative valuation
 `val_pi_p_div_p = p - e ≤ -1` (breaking classical PD Dieudonné theory), whereas:
 1. Colmez-Fontaine (`[CF00, Theorem A]`) + Tate's extension theorem (`[Tat67, Theorem 4]`) give `rk_Hom_R = rk_Hom_GK = rk_Hom_MF ≥ 1`
@@ -291,7 +291,7 @@ theorem repair_low1_ramified_dvr_unconditional_lifting_range
     1 ≤ rk_Hom_R ∧ rk_Hom_R = rk_Hom_MF ∧ rk_coker_tate = 0 := by
   omega
 
-/-- [Theorem 32] Repair of `[하-2]` (`03_filtration.tex:100-121`): Sharp 3-variable Kronecker total-degree bound
+/-- [Theorem 32] Repair of `[하-2]` (`03_filtration.tex:99-128`): Sharp 3-variable Kronecker total-degree bound
 `E = d0 + d1 * N + d2 * N^2 ≤ b * N^2 = B_sharp` vs. paper bound `B_paper = b * (1 + N + N^2)` and exact slack `ΔB = b * (1 + N) ≥ 3`. -/
 theorem repair_low2_sharp_kronecker_bound_attained_3var
     (b N d0 d1 d2 E B_sharp B_paper Delta_B : Int)
@@ -326,7 +326,7 @@ theorem repair_low2_sharp_kronecker_bound_attained_3var
   dsimp [kroneckerSharpBound, kroneckerPaperBound]
   omega
 
-/-- [Theorem 33] Repair of `[하-3]` (`03_filtration.tex:251-293`): Rosati positivity forces strictly positive eigenvalues `z = μ^2 > 0` of `u^2`. -/
+/-- [Theorem 33] Repair of `[하-3]` (Proof of `Theorem 4.1`, `03_filtration.tex:257-275`): Rosati positivity forces strictly positive eigenvalues `z = μ^2 > 0` of `u^2`. -/
 theorem repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive
     (abs_mu z : Int)
     (h_nonzero : 1 ≤ abs_mu)
@@ -351,7 +351,7 @@ theorem lemma_2_1_comparison_isomorphism_and_tate_twist_compatibility
     2 ≤ weight_h2r ∧ net_weight = 0 ∧ t_cris_etale = t_dR ∧ diff_comp = 0 := by
   omega
 
-/-- [Theorem 35] `01_preliminaries.tex:108-142` (`Definition` & `Lemma 2.2`, `lem:pairing-functorial`):
+/-- [Theorem 35] `01_preliminaries.tex:108-142` (`Definition 2.2` & `Lemma 2.3`, `lem:pairing-functorial`):
 Invertibility of the rational Lefschetz intersection matrix (`det_M ≥ 1`) and realization-independence
 of `deg(δ · f^* b_j)` (`rhs_ell = rhs_p`) force `c_ell = c_p` and functorial preservation of the
 Lefschetz pairing property under `f^*`. -/

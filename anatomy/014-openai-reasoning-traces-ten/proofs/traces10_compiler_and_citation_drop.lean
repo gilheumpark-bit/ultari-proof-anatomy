@@ -1,6 +1,6 @@
 /-
   OpenAI `reasoning_traces/` Complete 10-Log Dissection
-  Case 014 - Part I:
+  Part I:
   Leaked LuaLaTeX Compiler Pipeline (`mezard-parisi-formula.tex`), Multilingual CJK Active-Character
   Fallback, Missing Prompt Blocks (`#017`, `#287`), Multi-Run `Supplied Premise` Stitching,
   Comparator Whitespace/Import Artifacts, and Exact Bidirectional Citation Laundering Ledger
@@ -134,9 +134,9 @@ theorem thm_08_binary_corrected_elliott_duplicate_open_block
     body_lines = 29 * s ∧ body_lines < 2 * open_lines ∧ 6 * s ≤ measure_repeats - 1 * s ∧ 27 ≤ open_lines := by
   omega
 
-/-- [Theorem 9] Internal scope-documentation contradiction in `#087` (`087.md:13-17`, `GeneralMahler.lean:33-38`):
+/-- [Theorem 9] Internal scope-documentation contradiction in `#087` (`087.md:13-17`, `GeneralMahler.lean:24-32`):
 `087.md:13` states the nonsymmetric Mahler conjecture is `"not included"` (`doc_claim = 0`), while `087.md:17` and
-`GeneralMahler.lean:33` formalize `nonsymmetric_mahler` (`lean_actual = 1`), leaving functional inequalities at `0`. -/
+`GeneralMahler.lean:24-32` formalize `general_mahler` (`lean_actual = 1`), leaving functional inequalities at `0`. -/
 theorem thm_09_mahler087_scope_doc_internal_contradiction
     (doc_nonsym lean_nonsym lean_functional : Int)
     (hdoc : doc_nonsym = 0)

@@ -10,15 +10,15 @@ namespace OAI001MilneTransportFiltration
 /-- Denominator multiplier `k^{2r} * N^{2r}` for rational homomorphism clearing (`Theorem 1`). -/
 def pullbackClearingDenom (k2r N2r : Int) : Int := k2r * N2r
 
-/-- Doubled `Fil^1(⋀^2 D_K)` dimension `g * (3g - 1)` on an abelian variety of dimension `g` (`Corollary 4.9`). -/
+/-- Doubled `Fil^1(⋀^2 D_K)` dimension `g * (3g - 1)` on an abelian variety of dimension `g` (`Corollary 4.6`). -/
 def fil1QuotientDoubleDim (g : Int) : Int := g * (3 * g - 1)
 
 /-!
 ## Part I: Rational Pullback Scaling, Auxiliary Shimura Group `J`, and Similitude Normalization
-(`01_preliminaries.tex:15-17`, `02_transport.tex:116-249, 628-763`)
+(`01_preliminaries.tex:15-17`, `02_transport.tex:116-326, 645-780`)
 -/
 
-/-- [Theorem 1] Degree-`2r` homogeneous pullback scaling invariance (`01_preliminaries.tex:15-17`, `05_reduction.tex:336`).
+/-- [Theorem 1] Degree-`2r` homogeneous pullback scaling invariance (`01_preliminaries.tex:15-17`, `05_reduction.tex:331-354`).
 When a rational homomorphism `f` is cleared by `N ≥ 1` (`h = N * f`) or by `k * N` (`h' = k * N * f`, `k ≥ 1`),
 the degree-`2r` pullback satisfies `(kN f)^* α = k^{2r} * (Nf)^* α` while the clearing denominator is
 `denom_kN = k^{2r} * N^{2r}`. Cross-multiplying by `N^{2r}` and `denom_kN` yields the exact scaling identity
@@ -108,11 +108,11 @@ theorem transport_common_rational_similitude_normalization
   exact ⟨h_eq, h_nz, h_aj, by omega⟩
 
 /-!
-## Part II: Base-`N` Bounded-Degree Avoidance & Lagrangian Grassmannian Transversality
-(`03_filtration.tex:87-176`)
+## Part II: `Lemma 4.2` Base-`N` Bounded-Degree Avoidance & `Lemma 4.4` Lagrangian Grassmannian Transversality
+(`03_filtration.tex:87-217`)
 -/
 
-/-- [Theorem 4] Base-`N` monomial exponent injectivity (`Lemma 4.2`, `03_filtration.tex:114-118`).
+/-- [Theorem 4] Base-`N` monomial exponent injectivity (`Lemma 4.2`, `03_filtration.tex:114-120`).
 For any base `N ≥ b + 1` (`b ≥ 1`), if two degree pairs `(d0, d1)` and `(e0, e1)` in `{0, ..., b}^2`
 have the same substituted `T`-exponent `d0 + d1 * N = e0 + e1 * N`, then `d0 = e0` and `d1 = e1`. -/
 theorem base_N_monomial_exponent_injective_2var
@@ -149,7 +149,7 @@ theorem base_N_monomial_exponent_injective_2var
     rw [hz, Int.zero_mul]
   omega
 
-/-- [Theorem 5] Eisenstein prime `q`-adic valuation layer non-cancellation in `Lemma 4.2` (`03_filtration.tex:110-120`).
+/-- [Theorem 5] Eisenstein prime `q`-adic valuation layer non-cancellation in `Lemma 4.2` (`03_filtration.tex:105-128`).
 For an Eisenstein uniformizer `π_{K'}` of degree `q > B` (`v_{K'}(c) = q * v_K(c)` for `c ∈ K^×`), any two monomial terms
 with `K`-valuations `v1, v2` and Kronecker exponents `0 ≤ E1, E2 ≤ B < q` having equal `π_{K'}`-valuation
 `q * v1 + E1 = q * v2 + E2` must lie in the same `K`-valuation layer (`v1 = v2`) and have identical Kronecker exponent (`E1 = E2`). -/
@@ -188,8 +188,8 @@ theorem lemma_4_2_eisenstein_valuation_layer_uniqueness
     rw [hz, Int.zero_mul]
   omega
 
-/-- [Theorem 6] Lagrangian Grassmannian incidence subvariety decomposition & codimension gap (`Lemma 4.3` Case 1: `a ≤ m`,
-`03_filtration.tex:130-156`).
+/-- [Theorem 6] Lagrangian Grassmannian incidence subvariety decomposition & codimension gap (`Lemma 4.4` Case 1: `a ≤ m`,
+`03_filtration.tex:138-180`).
 For an isotropic subspace `W_0 ⊂ W` of dimension `a ∈ [1, m]`, the incidence locus `{L ∈ LGr(m, 2m) : L ∩ W_0 ≠ 0}` is fibered
 over `ℙ(W_0)` (`dim = a - 1`) with fibers isomorphic to `LGr(m - 1, 2m - 2)` (`2 * dim_fiber = m * (m - 1)`), so its codimension
 in `LGr(m, 2m)` (`2 * dim_LGr = m * (m + 1)`) is `m - a + 1 ≥ 1`. -/
@@ -214,12 +214,12 @@ theorem lagrangian_grassmannian_incidence_and_duality
   omega
 
 /-!
-## Part III: Defect Supermodularity, Block Newton-Hodge Inequality, and Divisor Filtration
-(`03_filtration.tex:208-482`)
+## Part III: Proof of `Theorem 4.1` Defect Supermodularity, Block Newton-Hodge Inequality, and `Corollary 4.6` Divisor Filtration
+(`03_filtration.tex:219-493`)
 -/
 
 /-- [Theorem 7] Supermodularity of the Hodge-Newton defect `f(P) = t_H(P) - t_N(P)` and closure of
-maximizers under `∩` and `+` (`Theorem 4.6`, `03_filtration.tex:216-245`). -/
+maximizers under `∩` and `+` (Proof of `Theorem 4.1`, `03_filtration.tex:219-248`). -/
 theorem defect_supermodularity_and_maximizer_closure
     (tH_P tH_Q tH_cap tH_sum tN_P tN_Q tN_cap tN_sum f_P f_Q f_cap f_sum a_max : Int)
     (h_tN_mod : tN_P + tN_Q = tN_cap + tN_sum)
@@ -231,7 +231,7 @@ theorem defect_supermodularity_and_maximizer_closure
     f_P + f_Q ≤ f_cap + f_sum ∧ f_cap = a_max ∧ f_sum = a_max := by
   omega
 
-/-- [Theorem 8] Block slope-1 duality `∑ λ dim M_λ = m` (`Eq. 4.6`, `03_filtration.tex:330-338`). -/
+/-- [Theorem 8] Block slope-1 duality `∑ λ dim M_λ = m` (`Eq. (4.5)`, `03_filtration.tex:341-350`). -/
 theorem block_slope_duality_newton_sum_identity
     (q_d p1 p2 d1 d2 m_half m two_m qd_newton_sum : Int)
     (hq : 1 ≤ q_d) (hd1 : 0 ≤ d1) (hd2 : 0 ≤ d2) (hmh : 0 ≤ m_half)
@@ -252,7 +252,7 @@ theorem block_slope_duality_newton_sum_identity
   have h_nonneg : 0 ≤ q_d * m := Int.mul_nonneg (by omega) (by omega)
   omega
 
-/-- [Theorem 9] Block Newton-Hodge weak admissibility inequality (`Eq. 4.7`, `03_filtration.tex:340-355`). -/
+/-- [Theorem 9] Block Newton-Hodge weak admissibility inequality (`Eq. (4.6)`, `03_filtration.tex:351-366`). -/
 theorem block_newton_hodge_weak_admissibility_bound
     (q_d m a qd_tN_sub qd_tN_quot qd_tH_sub : Int)
     (h_nonneg : 0 ≤ qd_tN_sub)
@@ -270,7 +270,7 @@ theorem block_newton_hodge_weak_admissibility_bound
   · rw [h1]
     exact ⟨by omega, h_lower⟩
 
-/-- [Theorem 10] Divisor filtration membership `D^u ∈ Fil^1(⋀^2 D_K) = L ∧ D_K` (`Corollary 4.9`, `03_filtration.tex:450-482`).
+/-- [Theorem 10] Divisor filtration membership `D^u ∈ Fil^1(⋀^2 D_K) = L ∧ D_K` (`Corollary 4.6`, `03_filtration.tex:461-493`).
 Because `H = L^⊥` is `U`-stable and `ψ`-Lagrangian, the projection `proj_H_wedge2` of `Du_total` onto
 `(⋀^2 D_K) / Fil^1 ≅ ⋀^2 H^∨` vanishes (`proj_H_wedge2 = 0`), forcing `Du_total = Du_fil1`. -/
 theorem divisor_filtration_wedge_two_decomposition
@@ -309,10 +309,10 @@ theorem divisor_filtration_wedge_two_decomposition
 
 /-!
 ## Part VI-A: Symplectic & Harder-Narasimhan Marrow Mechanisms (Theorems 11–16)
-(`03_filtration.tex:157-306`)
+(`03_filtration.tex:241-320`)
 -/
 
-/-- [Theorem 11] Modified pairing `B(x, y) := β(x, u y)` is alternating (`03_filtration.tex:268-272`). -/
+/-- [Theorem 11] Modified pairing `B(x, y) := β(x, u y)` is alternating (`03_filtration.tex:277-284`). -/
 theorem modified_pairing_alternating_from_rosati_symmetry
     (beta_x_uy beta_ux_y beta_y_ux B_x_y B_y_x : Int)
     (h_B_xy : B_x_y = beta_x_uy)
@@ -322,7 +322,7 @@ theorem modified_pairing_alternating_from_rosati_symmetry
     B_y_x = -B_x_y ∧ B_x_y + B_y_x = 0 := by
   omega
 
-/-- [Theorem 12] Double-conjugation sign cancellation makes `B(x, y) = β(x, u y)` `E`-bilinear (`03_filtration.tex:274`).
+/-- [Theorem 12] Double-conjugation sign cancellation makes `B(x, y) = β(x, u y)` `E`-bilinear (`03_filtration.tex:285`).
 For `e = re_e + im_e * √(-d_E) ∈ E` (`e_bar = re_e - im_e * √(-d_E)`), Rosati conjugate-linearity
 `β(e x, w) = β(x, e_bar w)` flips the imaginary sign (`+im_e ↦ -im_e`), and `u`-conjugate-linearity
 `e_bar (u y) = u (e y)` flips it a second time (`-im_e ↦ +im_e`), so `B(e x, y) = B(x, e y)`. -/
@@ -335,7 +335,7 @@ theorem modified_pairing_e_bilinear_from_conjugate_cancellation
   have h_neg : (-im_e) * B_ix_y = -(im_e * B_ix_y) := Int.neg_mul im_e B_ix_y
   omega
 
-/-- [Theorem 13] Non-degenerate symplectic similitude `B(u x, u y) = z B(x, y)` on `u^2 = z` eigenspaces (`03_filtration.tex:291`).
+/-- [Theorem 13] Non-degenerate symplectic similitude `B(u x, u y) = z B(x, y)` on `u^2 = z` eigenspaces (`Eq. (4.4)`, `03_filtration.tex:300-303`).
 From `β(u x, w) = β(x, u w)` and `u(u y) = z y` (`z ≥ 1`), `B(u x, u y) = β(u x, u^2 y) = β(x, z u y) = z B(x, y)`,
 preserving non-degeneracy (`B(x, y) ≠ 0 → B(u x, u y) ≠ 0`). -/
 theorem modified_pairing_u_similitude_on_eigenspace
@@ -349,7 +349,7 @@ theorem modified_pairing_u_similitude_on_eigenspace
   have h_prod : 1 * B_x_y ≤ z * B_x_y := Int.mul_le_mul_of_nonneg_right hz (by omega)
   omega
 
-/-- [Theorem 14] `u`-stable `B`-Lagrangian is automatically `β`-Lagrangian (`03_filtration.tex:300-306`). -/
+/-- [Theorem 14] `u`-stable `B`-Lagrangian is automatically `β`-Lagrangian (`03_filtration.tex:310-316`). -/
 theorem u_stable_b_lagrangian_implies_beta_lagrangian
     (dim_D dim_L B_x_uinv_y beta_x_y : Int)
     (h_half : 2 * dim_L = dim_D)
@@ -360,7 +360,7 @@ theorem u_stable_b_lagrangian_implies_beta_lagrangian
   omega
 
 /-- [Theorem 15] Symplectic orthogonal-complement invariance of the Harder-Narasimhan defect `f(P^⊥) = f(P)`
-(`Theorem 4.6`, `03_filtration.tex:241-246`).
+(cf. Proof of `Theorem 4.1`, `03_filtration.tex:241-250`, proving `P_max` uniqueness; auxiliary symplectic perp invariant).
 For a subspace `P ⊂ D_K` (`dim D_K = 2*g`, `dim P = d_P`) and a Lagrangian Hodge filtration `Fil^1 D_K = L` (`dim L = g`),
 the symplectic orthogonal complement `P^⊥` (`dim P^⊥ = 2*g - d_P`) satisfies
 `t_H(P^⊥) = dim(P^⊥ ∩ L) = g - d_P + t_H(P)` and, by slope-`1` duality (`λ + μ = 1`),
@@ -375,7 +375,7 @@ theorem hn_defect_symplectic_perp_invariance
     f_perp = f_P ∧ f_perp = a_max ∧ tH_perp - tH_P = tN_perp - tN_P := by
   omega
 
-/-- [Theorem 16] Symplectic orthogonal-complement intersection duality (`Lemma 4.3`, `03_filtration.tex:157-161`). -/
+/-- [Theorem 16] Symplectic orthogonal-complement intersection duality (`Lemma 4.4`, `03_filtration.tex:138-180`). -/
 theorem lagrangian_perp_intersection_duality
     (m a dim_M dim_L dim_LW dim_L_inter_W dim_L_inter_Wperp : Int)
     (h_M : dim_M = 2 * m)

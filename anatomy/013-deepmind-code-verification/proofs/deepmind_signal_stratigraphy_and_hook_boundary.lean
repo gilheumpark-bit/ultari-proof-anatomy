@@ -1,6 +1,6 @@
 /-
-  Google DeepMind `code-verification` (`libsignal-cli`, Commit `808b4b7ffef1`)
-  Case 013 - Part I:
+  Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, Commit `808b4b7ffef1`)
+  Part I: Stratigraphy & Hook Boundary:
   Build Target Stratigraphy, Deviation Ledger Parity, Binary `Hook` Cut-Plane (`55/64`),
   `stock.ld` `:text_a`/`:text_b` Address Quarantine, Pre-Boot `5`-Byte `.data` Patch,
   `1 GiB` Dynamic Peak Slack, `FdsHiFrame` Satisfiability & Counter-Model Witnesses,
@@ -63,7 +63,7 @@ theorem thm_03_non_default_eight_bucket_decomposition
     267194 ≤ b_sum ∧ b_comp < b_sum := by
   omega
 
-/-- [Theorem 4] `CliElfLib` exclusive binary-headline stratum (`lakefile.lean:773-845`,
+/-- [Theorem 4] `CliElfLib` exclusive binary-headline stratum (`lakefile.lean:824-971`,
 `CliElf.lean:38-75`): across `>= 120` modules (`>= 85,249` lines), the four headline/binding hubs
 `Main.lean` (`103`), `Refinement.lean` (`59`), `Security.lean` (`90`), and `CliElf.lean` (`75`)
 total `327` lines, leaving at least `84,922` supporting proof/specification lines. -/

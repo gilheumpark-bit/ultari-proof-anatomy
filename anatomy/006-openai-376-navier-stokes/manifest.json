@@ -9,28 +9,28 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "136f8cc3e605cc23840a99c46fa5c4d2d4eedf39dc0cf23f10b8003e427e78ae",
-    "README.ko.md": "d30b9d95a3b0c8bb113f2371c19d2416ac311131a7cd5235cce474acf9b2e84e",
-    "proofs/ns376_kinematic_routing_and_forensics.lean": "854de2d59a077144a2383ccf97e7308e4d9b519fa6075d2b7d4f230640a3c973",
-    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "5f033b13080ce8f75999daf0a2e9bc89f44ca8fcf6938b74d17ba3c1e4a54450",
-    "proofs/verify_symbolic_ns376.py": "11fc3e83bba66269ccd818d4b7155a9739f628e8ab4bbfd5d9a847eaa5a0d96e",
+    "README.md": "67529b2db28b388dd82233c0ed3bee4b53fd3727b87e584f75f0eb176f8ab20f",
+    "README.ko.md": "0866aaf03ab29bf08bad058516c26ac42243433cf9236f5d647514e06a4601c7",
+    "proofs/ns376_kinematic_routing_and_forensics.lean": "cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd",
+    "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9",
+    "proofs/verify_symbolic_ns376.py": "2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
-    "ko/01_초보자용_쉬운해설.md": "96551633fe9977fbe70ca01da431cc46ae38028e0ef7f68e08b5ad3a00724c6e",
-    "ko/02_중급자용_구조및수식가이드.md": "6045c9fec6028612b4874cba2de40d90e52422c197582996c1e7ba274cc1816a",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "3492ba691df8c6e0a0de3cd3953fbac6b57884ec001b8400e3239f0c8bb1a6ba",
-    "ko/04_자동검증및파서용_명세서.md": "1c7ffaea1e512e4591b9dc9e3c13309911bd8fb53a1b28163468ee3b2e62d3a8",
-    "en/01_Beginner_Guide.md": "88859918edced0784d36c76daf67f496765e4971bb78db03b3e0c06c5f214069",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "f9c764d62e4eae1defc2bafec8573fc49c434a10e9a1966436c972ced91c1ec5",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "a71dc298f119d68c63fc7e46c88733270598129777dd8fc665084d817b2a846e",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "101851a5eba4f0bf57fc18c70cc00f8cb18bdd23d52a9847d857b2a560c6ae2f"
+    "ko/01_초보자용_쉬운해설.md": "21371789a4041baf31139b0dad204df9a16662c63bb4e30a8b9b3cf15973a173",
+    "ko/02_중급자용_구조및수식가이드.md": "18912bf1abeda74cbb239ffb3a220078eb6bc7bc3548e14a04d4b11ca08c3f94",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "2e77bf7f5a2d8ea7b10dd302b6c4a8c21bfc78df1cad06e1ff6abc2cf43d724a",
+    "ko/04_자동검증및파서용_명세서.md": "58f0c87e54abb487dba46ae757d6a7477b3ed584df67cb18db2215b7d5ef808a",
+    "en/01_Beginner_Guide.md": "c6cb8341d9708bfe6dad3fea16bbbe421b7fa30b935fdbb8fc69e5d21670f69b",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "640907442daac8dfe6c3a838fa737db89bd3a93010bb56b7219ff130b676a01f",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "be8137de5b2713cc204662d9bfb7628180055a9fd5bf2d49c7d79ccd0f21b21a",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "f69b550e6e6757a118c8e9fad8453c60471d1bc5a2674a4b3878c9202129a0c8"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
     "layer_1b_autonomous_pde_vs_inverse_forcing": "CONDITIONAL / INVERSE-FORCING (5 box/sheet challenges satisfy the momentum equation via point-by-point residual substitution f := dt_U + (U.grad)U - nu*Delta U discharged by abel or unidirectional shear sheets with (u.grad)u = 0; Challenge 3 decouples vertical velocity into a 2+1D linear passive-scalar heat equation; SolenoidalSheetPrograms omits the paper fixed-particle halting detector and solid-box reciprocal maps)",
-    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean clones all 38 definitions and the main theorem of BalancedThreeStack.lean; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused; in the main manuscript build/, 9 of 22 references.bib entries [40.9%] are never cited via \\cite and 11 of 15 section files [4,630/5,808 lines, 79.7%] have zero human citations)",
+    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean [232L] shares all 38 definitions [37 def + 1 inductive] among 51 declarations [50 helper decls + main theorem, differing by 7 wrapper/docstring lines] with BalancedThreeStack.lean [239L]; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused; in the main manuscript build/, 9 of 22 references.bib entries [40.9%] are never cited via \\cite and 11 of 15 section files [4,630/5,808 lines, 79.7%] have zero human citations)",
     "layer_3_genuine_mathematical_mechanisms": "PASS (3 core mechanisms verified: curl(chi * Psi) volume-preserving affine box routing, 12*C Serrin-Gronwall L^2 energy uniqueness, and 2+1D Gaussian heat-kernel Duhamel positivity)",
-    "layer_4_ultari_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 184/184 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
+    "layer_4_opff_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 184/184 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
   },
   "verified_key_results": {
     "part1_kinematic_routing_and_forensics": {

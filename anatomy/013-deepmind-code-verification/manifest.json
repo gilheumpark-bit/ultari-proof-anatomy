@@ -1,21 +1,21 @@
 {
   "case_id": "deepmind_code_verification_signal_cli",
-  "title": "Google DeepMind code-verification (libsignal-cli, Commit 808b4b7ffef1): 7,528,295-Line Build Stratigraphy, 55/64 (85.94%) Binary Hook Bypass, 16,767-Line Unproved Arm64/Trusted TCB & Syscall Divergences, 153,682-Line Comparator TCB Laundering, and SPQR V1 8-Byte MAC Vacuity (q = 35,211) & .base-keys 2 MiB Bricking (56,680 Keys) Audit",
-  "target_repository": "google-deepmind/code-verification (commit 808b4b7ffef198e6a91f71ed776d641a1c236882, accompanying the October 26, 2026 draft Formally Verifying Signal's Security Using AI)",
+  "title": "Google DeepMind AlphaProof Code (code-verification, libsignal-cli, Commit 808b4b7ffef1): 7,528,295-Line Build Stratigraphy, 55/64 (85.94%) Binary Hook Bypass, 16,767-Line Unproved Arm64/Trusted TCB & Syscall Divergences, 153,682-Line Comparator TCB Laundering, and SPQR V1 8-Byte MAC Vacuity (q = 35,211) & .base-keys 2 MiB Bricking (56,680 Keys) Audit",
+  "target_repository": "google-deepmind/code-verification (AlphaProof Code; commit 808b4b7ffef198e6a91f71ed776d641a1c236882, accompanying the October 26, 2026 draft Formally Verifying Signal's Security Using AI)",
   "date": "2026-11-12",
   "lean_version": "v4.29.0-rc8",
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean && ~/.elan/bin/lean proofs/deepmind_arm64_tcb_and_syscall_divergences.lean && ~/.elan/bin/lean proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
+    "lean4_kernel_check": "lean proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean && lean proofs/deepmind_arm64_tcb_and_syscall_divergences.lean && lean proofs/deepmind_comparator_laundering_and_crypto_bounds.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_deepmind_signal.py"
   },
   "artifacts_sha256": {
-    "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean": "9c3e9e433426ab127f30a245c890fcf09d7681264f073b7b41c44a052e289b08",
-    "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean": "92c7d148a80d7438da6e70d7f947d6399eb6f7cbf557e65dce8406bc0216e790",
-    "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean": "ed2ae01ec942c442883a1fa9ff14f8c4dbbf9c63f3a7b56053518b031a3fac08",
-    "proofs/deepmind_signal_forensic_parsers.py": "edfca45ae4417f1c1f46e14d3b9b733ddb1a40a5aec78be159e80ecb2416416b",
-    "proofs/verify_symbolic_deepmind_signal.py": "cfc6cac5be61baab7d8e5c8335a50b266894bb132ac4e967f475975df6c273f9",
+    "proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean": "e58829f52915609cee169645f20d5501627bd0979309d4fdbc6f372099fc3dc1",
+    "proofs/deepmind_arm64_tcb_and_syscall_divergences.lean": "109d9e94c2165d3058828609c085ac7647c20492147880cd92440df52856b8f1",
+    "proofs/deepmind_comparator_laundering_and_crypto_bounds.lean": "5960b90f4ee0382bbc594054f4499be62f016a69089f729dc6123817b073d51c",
+    "proofs/deepmind_signal_forensic_parsers.py": "8d41db304ae88c0ccebd8119ff3e4de6824ad0e5a3384a66ff7e4cb5b2e4a05c",
+    "proofs/verify_symbolic_deepmind_signal.py": "4cc43598acf05cb2b062677e3a5bd9b55adec7eeaa32ecdf30f70954bb60cd00",
     "proofs/symbolic_verification_result.json": "9f3da5893afca7f3b8c14461c773cc315fcaf5dfc4420f40a7223873d8d744b5",
-    "proofs/problem_spec.md": "0b33ecaaabe4e92d484912923cc4123eee1166ddc26f43c89541b34ed1d5e672"
+    "proofs/problem_spec.md": "6185e2dff33a84587d368a5c5ef40b22a16eb95e1ae6f63dcb9c38e9f15b05ae"
   },
   "verified_key_results": {
     "pillar1_stratigraphy_and_hook_boundary": {
@@ -63,7 +63,7 @@
         "thm_76_refinement_hygiene_self_failure_and_exempt_debt (Theorem 76, L436)",
         "thm_77_binary_validcall_five_restrictions_and_spqr_non_regression (Theorem 77, L457)"
       ],
-      "oai_ref_preserved_files": 82,
+      "oai_ref_preserved_files": 83,
       "oai_ref_lean_files": 59,
       "hygiene_cli_allowlist_total": 38,
       "hygiene_stale_kept_theorems": 7,
@@ -582,15 +582,17 @@
     ]
   },
   "files": {
-    "ko/01_일반인용_해설서.md": "601f68c4f84ed9f5f0bad5a5244ffa726c57b5a1fa7b87546f675deaa8b36022",
-    "ko/02_중급자용_수학및코드가이드.md": "019153dbcfbe9361eb9fcdc7f9b7610e03202ad3a92d2d2db8c8076af94d7ede",
-    "ko/03_전문가용_학술및수리물리보고서.md": "1c98fc31ff5355c32b8f25b4f7b624202d8a7751af59b72bb9570ef22b27983f",
-    "ko/04_자동검증및파서용_명세서.md": "c0fe14c51a4d8c9b31f2091c54a36981fc2290b26f294c190e854bb510fb5924",
-    "ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md": "cf96320ef8750763de7646face61ed7ca93192dd2bafb87cdaf5023582f97e0a",
-    "en/01_Executive_Summary_and_General_Guide.md": "0e1a84549a66d1e337e0604b816f4fbc84eae225461218d4cc4cebe27c5db0e6",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "c2a92dace3a868084bfd402bb8712c48e3b58f0dcd89b6f2f4225df4f725f156",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "21cb5240e3173ec6751778cf924d756f636d33afb1fd84cb595c9e4b1007ab9e",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "2e840ae8809ee570b0a02eaa0154ce552debf3a03192ecad40306e8734e26836",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "8544bd1a8dfec8606f893213705d99e7441108924d0cb46200dc05175abba3ef"
+    "ko/01_일반인용_해설서.md": "c64c34be19380d076e8ac334f1358e41c55a912f7961ee45422b5d3139ea981f",
+    "ko/02_중급자용_수학및코드가이드.md": "7deb53d52e18c5208ff562c89bd1d08fa83ed226f8d78988ee25e041b734d0b2",
+    "ko/03_전문가용_학술및수리물리보고서.md": "c74d055b47ef888b3630140bae140f8a823aa0f79f4909b7857dd70658eada6a",
+    "ko/04_자동검증및파서용_명세서.md": "e3b1e288626598d96ac62310b939a9409c220754273055961b889f6611653021",
+    "ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md": "7d88c74f200b66efe886b1cae07031aa63f81dcef9c01cd67a2e5b71c8e0bb93",
+    "en/01_Executive_Summary_and_General_Guide.md": "177fce575a149b87d2193571885b1db2aee317374a74223832b8747e0da5adb8",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "56afeb059fbca34f815d23c99c50b3b700b80d6743e4d521f7ff5e7cc08d032c",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "c3484bb2fbe84208cd2a022608c3821ae7402707caf728be39bb0192f6652bb0",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "dfa004d1c360c48e708d51d829641512ca0e155544d7a83c8b37399b1a8cd56a",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "56b35b74ace38cda47fb36d2c503a0d7bc540a28b394e75b6debf012bb312fb1",
+    "ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md": "7cad8e0ac64a78540ea279f6a6890ecd1b9024f5b2ddac1c874d4e1a1a265c06",
+    "en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md": "cf1b1f15009c0581d9e350c14d5788120ff0cf89395554692517bb67ad3447b3"
   }
 }

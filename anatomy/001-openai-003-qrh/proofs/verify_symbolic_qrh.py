@@ -301,7 +301,7 @@ def solve_qrh_problem_4():
         t = b["e"] + 3 * b["l"]
         n = t - 1
         k = b["k"]
-        # From DirichletL/Detector/ScalarTable.lean (gaussValuationTable_above) and DirichletL/Detector/HighRowsScalar.lean:
+        # From DirichletL/Detector/HighRowsTail.lean (gaussValuationTable_above, L11-16), DirichletL/Detector/ScalarTable.lean (gaussValuationTable, positiveScalar_actual_table), and DirichletL/Detector/HighRowsScalar.lean:
         # For m >= 2 and 0 <= j < 6, j + 6*m >= 12 > n + 1.
         # At k = 0: gaussValuationTable (n + 1) (j + 6*m) is non-zero iff (n + 1) % 6 == 0.
         # At k = 1: gaussValuationTable n (j + 6*m - 1) is non-zero iff n % 6 == 0.

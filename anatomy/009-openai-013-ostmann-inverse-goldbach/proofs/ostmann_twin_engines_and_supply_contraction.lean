@@ -1,6 +1,6 @@
 /-
   OpenAI #013 (Ostmann's Inverse Goldbach Conjecture / The Additive Indecomposability of the Primes)
-  Case 009 — Part I:
+  Part I:
   The Twin-Engine 7,716-File Stratigraphy, Finite-Summand CRT + Collision Stability, Section 5
   Supply Contraction (-11/125), and Section 3/4/6/7/8 Core Mechanisms (Theorems 1–20 and 51–55).
 
@@ -90,7 +90,7 @@ theorem thm_03_unreachable_orphan_381_files_accounting
   omega
 
 /-- [Theorem 4] External dependency asymmetry between Engine A (`Complete.lean`) and Engine B (`Main.lean`):
-Engine A imports `1` external `OAI` file (`PrimeGaps.SiegelBounds`) and discharges `15` top-down hypotheses across
+Engine A imports `1` external `OAI` file (`PrimeGaps.SiegelBounds`) and discharges `14` analytic inputs (`15 <= h0` binder bound) across
 `9` wrapper files (`InverseGoldbach.lean` to `MainWithoutQuadraticSieve.lean`), whereas Engine B imports `18` external
 `OAI` files (`15` from `OAI.NumberTheory.Jacobsthal.*` [`#021`] + `3` from `OAI.NumberTheory.PrimeGaps.*` [`#026`])
 and discharges `4` bottom-up comparison providers with `Cs = 17, Ccov = 17` (`Result.lean:22`). -/
@@ -109,8 +109,8 @@ theorem thm_04_external_dependency_asymmetry_1_vs_18
     providers_B = 4 ∧ providers_B < ext_B_total ∧ 15 ≤ hyps_A ∧ cs_B + ccov_B - ext_B_total = 16 := by
   omega
 
-/-- [Theorem 5] Formal propositional equivalence between `Complete.lean` and `Main.lean` (`Corollaries.lean:13-30` vs.
-`MainWithoutQuadraticSieve.lean:24-40`):
+/-- [Theorem 5] Formal propositional equivalence between `Complete.lean` and `Main.lean` (`Corollaries.lean:11-24` vs.
+`MainWithoutQuadraticSieve.lean:10-17`):
 (1) Given that no nontrivial decomposition can have a finite summand (`(FinA ∨ FinB) → ¬CofiniteEq`), any nontrivial
 decomposition reduces to `InfA ∧ InfB`; and
 (2) `Complete.lean`'s universal implication (`NontrivialA → NontrivialB → ¬CofiniteEq`) is logically equivalent to
@@ -140,8 +140,8 @@ theorem thm_05_complete_vs_main_logical_bridge_equivalence
     · intro h2 hNA hNB hCof
       exact h2 ⟨hNA, hNB, hCof⟩
 
-/-- [Theorem 6] Finite-summand CRT + Dirichlet composite witness (`FiniteCRT.lean`, `FiniteFactor.lean`,
-`02-preliminaries.tex` Lemma 2.2):
+/-- [Theorem 6] Finite-summand CRT + Dirichlet composite witness (`FiniteCRT.lean`, `FiniteFactor.lean:15`,
+`02-preliminaries.tex:91-107` Lemma 2.2 elementary two-element map `if a = a0 then a1 else a0` without CRT):
 if `p = a + b` satisfies the CRT congruence `p - a + f_a = k_mult * q_a` for a prime `q_a > M >= a >= 0` with
 `f_a >= 0` and `p > M + q_a`, then the shifted sum `s = f_a + b` satisfies `s = k_mult * q_a` with `q_a < s`
 and `0 <= a < q_a`, forcing `s` to be a strictly greater multiple of `q_a` (hence composite). -/
@@ -290,8 +290,8 @@ theorem thm_13_local_transfer_polydisc_contraction_margin
   omega
 
 /-- [Theorem 14] Scalar block leading slope `2 * t_0 = 17/10 = 1.7` vs. Lemma 5.2 contraction rate `8/5 = 1.6`
-(`05-supply.tex:387`, `eq:supply-local-contraction`):
-at `u = v = 1`, `s_p(1, 1) <= 1 - (2 * t_0 - O(eps_0)) / p = 1 - (17/10 - O(eps_0)) / p`, leaving an
+(`05-supply.tex:228,327,387`, `eq:supply-local-contraction`):
+at `u = v = 1`, `s_p(1, 1) = 1 - (2*t_0/p^2)*||Pi_p F_p||^2 + O(eps_0/p) <= 1 - (17/10 - O(eps_0))/p` (`||Pi_p F_p||^2 >= (1 - eps_0^2)p`), leaving an
 error-absorption margin of `17/10 - 8/5 = 1/10 = 0.10` above the Lemma 5.2 local contraction coefficient `8/5`. -/
 theorem thm_14_scalar_block_leading_slope_and_lemma_5_2_contraction
     (t0_num t0_den slope_num slope_den c_loc_num c_loc_den margin_num : Int)
@@ -416,7 +416,7 @@ theorem thm_20_engine_a_vs_engine_b_supply_constants_bridge
   omega
 
 /-!
-## Part IV: Paper-to-Lean 1:1 Audit — Sections 3, 4, 6, 7, and 8 Core Mechanisms (Theorems 51–55)
+## Part IV: Paper-to-Lean 1:1 Audit - Sections 3, 4, 6, 7, and 8 Core Mechanisms (Theorems 51–55)
 -/
 
 /-- [Theorem 51] Section 3 amplified moment (`lambda = 1/16`), divisor cap `omega(P) <= 7`, and Bonami high-weight
@@ -485,8 +485,8 @@ theorem thm_53_section6_bipartite_quartet_cycle_and_affine_hs_bound
     4 ≤ E_bip ∧ V_bip ≤ E_bip ∧ 1 ≤ cycle_excess ∧ hs_num = 3 := by
   omega
 
-/-- [Theorem 54] Section 7–8 five pairwise disjoint log-log prime scale bands (`07-construction.tex:179-245`,
-`08-arithmetic.tex:162-168, 288`, `Construction/Parameters.lean`, scaled by `10^4` so `c |-> 10^4 * c`):
+/-- [Theorem 54] Section 7–8 five pairwise disjoint log-log prime scale sub-bands (`07-construction.tex:179-245`,
+`08-arithmetic.tex:162-168, 288`, `Construction/Parameters.lean`, scaled by `10^4`; giant `[500, 9000] ⊆ [490, 9500]`):
 1. Page deletion cutoff `T_*`: `c_del = 4` (`0.0004 * L`);
 2. Spectator primes (`d`): `5 <= c_spec <= 10` (`[0.0005 * L, 0.0010 * L]`);
 3. Bulk primes (`Q_i`): `40 <= c_bulk <= 60` (`[0.0040 * L, 0.0060 * L]`);

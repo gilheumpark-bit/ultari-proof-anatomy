@@ -14,8 +14,8 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Real
 ## Stratigraphy, `62/25 -> 2` Full-Simplex Pivot, Lemma 4.1 Parameters, and Simplex Sandwich (`Theorems 1-25`)
 
 Formalizes Pillar 1 of `OAI.NumberTheory.PiExponent` (`Main.lean:1-36`, `Statement.lean:1-27`,
-`Parameters.lean:1-150`, `Exponent.lean:1-123`, `WeightErrorMargin.lean:1-63`, `SimplexCounting.lean:1-90`,
-`AuxiliaryPolynomial.lean:1-105`, `HomogeneousSubmoduleGrading.lean:1-101`, `RectangularVolume.lean:1-83`).
+`Parameters.lean:1-150`, `Exponent.lean:1-123`, `WeightErrorMargin.lean:1-63`, `SimplexCounting.lean:1-110`,
+`AuxiliaryPolynomial.lean:1-136`, `HomogeneousSubmoduleGrading.lean:1-101`, `RectangularVolume.lean:1-83`).
 -/
 
 open scoped BigOperators
@@ -48,7 +48,7 @@ def EventualLowerBound (x : ℝ) : Prop :=
     ∀ (p : ℤ) (q : ℕ), Q ≤ q → (q : ℝ) ^ (-ν) ≤ |x - (p : ℝ) / (q : ℝ)|
 /-- Midpoint slope `b(ν) = (3ν - 2)/(4ν)` (`Parameters.lean:16`). -/
 noncomputable def paramB (ν : ℝ) : ℝ := (3 * ν - 2) / (4 * ν)
-/-- Step size `δ(ν) = (2b - 1)/(2b^2)` (`conclusion.tex:20`, `Parameters.lean:25`). -/
+/-- Step size `δ(ν) = (2b - 1)/(2b^2)` (`conclusion.tex:25`, `Parameters.lean:25`). -/
 noncomputable def paramDelta (ν : ℝ) : ℝ := (2 * paramB ν - 1) / (2 * paramB ν ^ 2)
 /-- Interpolation density parameter `θ(ν) = 1 - δ(ν)` (`Parameters.lean:33`). -/
 noncomputable def paramTheta (ν : ℝ) : ℝ := 1 - paramDelta ν
@@ -61,18 +61,18 @@ noncomputable def paramBigB (ν : ℝ) : ℝ :=
   (paramA ν + min (paramC ν)⁻¹ (paramC ν * paramTheta ν)) / 2
 /-- Determinant vs approximation slope gap `ν(A - θ) - (1 - θ)` (`conclusion.tex:12`). -/
 noncomputable def approxGap (ν θ A : ℝ) : ℝ := ν * (A - θ) - (1 - θ)
-/-- Quadratic simplex window `θ - A^2` (`conclusion.tex:25`, `Parameters.lean:45`). -/
+/-- Quadratic simplex window `θ - A^2` (`conclusion.tex:33`, `Parameters.lean:45`). -/
 noncomputable def simplexWindow (θ A : ℝ) : ℝ := θ - A ^ 2
 /-- Classical Flint-Hills dyadic shell exponent `2ν - 5` (`series.tex:40`). -/
 noncomputable def dyadicShellExp (ν : ℝ) : ℝ := 2 * ν - 5
 /-- Generalized Flint-Hills shell exponent `max(1,b) - a + b ε` (`series.tex:120-124`). -/
 noncomputable def generalizedShellExp (a b ε : ℝ) : ℝ := max 1 b - a + b * ε
-/-- Error budget margin `ε_0(g) = min(g/2, 1/2)` (`WeightErrorMargin.lean:14`). -/
+/-- Error budget margin `ε_0(g) = min(g/2, 1/2)` (`AdmissibleParameters.lean:114`). -/
 noncomputable def weightErrBudget (g : ℝ) : ℝ := min (g / 2) (1 / 2)
 /-- Weighted discrete `d`-dimensional simplex (`SimplexCounting.lean:10`). -/
 def natWeightedSimplex {d : ℕ} (w : Fin d → ℕ) (N : ℕ) : Finset (Fin d → ℕ) :=
   (Fintype.piFinset (fun _ => Finset.range (N + 1))).filter (fun a => ∑ i, w i * a i ≤ N)
-/-- Discrete residue rectangle (`SimplexCounting.lean:29`, `RectangularVolume.lean:15`). -/
+/-- Discrete residue rectangle (`SimplexCounting.lean:29`, `RectangularVolume.lean:9-10`). -/
 def residueRectangle {d : ℕ} (w : Fin d → ℕ) : Finset (Fin d → ℕ) :=
   Fintype.piFinset (fun i => Finset.range (w i))
 
@@ -135,7 +135,7 @@ theorem thm_05_parameter_interval_nonempty_iff_nu_gt_two (ν : ℝ) (hν : 0 < �
     · unfold paramB; rw [div_lt_div_iff₀ zero_lt_two (by linarith)]; linarith
     · unfold paramB; rw [one_sub_div (ne_of_gt hν), div_lt_div_iff₀ (by linarith) hν]; nlinarith
 
-/-- Theorem 6: Linear-in-`δ` factorization of `approxGap` (`conclusion.tex:24`). -/
+/-- Theorem 6: Linear-in-`δ` factorization of `approxGap` (`conclusion.tex:25-30`). -/
 theorem thm_06_approximation_gap_linear_delta_factorization (ν : ℝ) (hν : 2 < ν) :
     ∃ g : ℝ, g = approxGap ν (paramTheta ν) (paramA ν) ∧
       4 * g = (ν - 2) * paramDelta ν ∧ 0 < g := by
@@ -324,7 +324,7 @@ theorem thm_13_simplex_euclidean_sandwich_bounds {d : ℕ}
       _ = w i * (b i / w i) + b i % w i := by rw [hqi, hri]
       _ = b i := Nat.div_add_mod (b i) (w i)
 
-/-- Theorem 14: Upper `Finset` simplex sandwich with shift `∑(w_i - 1)` (`SimplexCounting.lean:71-90`). -/
+/-- Theorem 14: Upper `Finset` simplex sandwich with shift `∑(w_i - 1)` (`SimplexCounting.lean:71-110`). -/
 theorem thm_14_simplex_upper_sandwich_coordinate_shift {d : ℕ}
     (w : Fin d → ℕ) (hw : ∀ i, 0 < w i) (N : ℕ) :
     (natWeightedSimplex w N).card * (∏ i, w i) ≤
@@ -353,7 +353,7 @@ theorem thm_14_simplex_upper_sandwich_coordinate_shift {d : ℕ}
       (fun i => Finset.mem_range.mp (Fintype.mem_piFinset.mp har.2 i))
       (fun i => Finset.mem_range.mp (Fintype.mem_piFinset.mp hbs.2 i)) (fun i => congrFun hab i)
 
-/-- Theorem 15: Rank-nullity nonzero auxiliary polynomial in `ker L` (`AuxiliaryPolynomial.lean:62-95`). -/
+/-- Theorem 15: Rank-nullity nonzero auxiliary polynomial in `ker L` (`AuxiliaryPolynomial.lean:86-92`). -/
 theorem thm_15_auxiliary_polynomial_nonzero_kernel_dimension
     {K V W : Type*} [DivisionRing K] [AddCommGroup V] [Module K V]
     [AddCommGroup W] [Module K W] [FiniteDimensional K V] [FiniteDimensional K W]
@@ -363,7 +363,7 @@ theorem thm_15_auxiliary_polynomial_nonzero_kernel_dimension
     Submodule.exists_mem_ne_zero_of_ne_bot (LinearMap.ker_ne_bot_of_finrank_lt hdim)
   exact ⟨v, hv_ne, LinearMap.mem_ker.mp hv_mem⟩
 
-/-- Theorem 16: Euclidean lower sandwich forces simplex cardinality above `cL` (`AuxiliaryPolynomial.lean:40-61`). -/
+/-- Theorem 16: Euclidean lower sandwich forces simplex cardinality above `cL` (`AuxiliaryPolynomial.lean:110-136`). -/
 theorem thm_16_asymptotic_auxiliary_simplex_comparison {d : ℕ}
     (w : Fin d → ℕ) (N cL : ℕ) (hw : ∀ i, 0 < w i)
     (hgrow : (cL + 1) * (∏ i, w i) ≤ (natWeightedSimplex (fun _ : Fin d => 1) N).card) :
@@ -372,7 +372,7 @@ theorem thm_16_asymptotic_auxiliary_simplex_comparison {d : ℕ}
     (hgrow.trans (thm_13_simplex_euclidean_sandwich_bounds w hw N))
     (Finset.prod_pos fun i _ => hw i))
 
-/-- Theorem 17: Downward `η` perturbation preserves at least half of `approxGap` (`AdmissibleParameters.lean:180-235`). -/
+/-- Theorem 17: Downward `η` perturbation preserves at least half of `approxGap` (`Parameters.lean:71-91`). -/
 theorem thm_17_eta_perturbation_retains_half_gap (ν η : ℝ)
     (hν : 2 < ν) (hη : 2 * ν * η ≤ approxGap ν (paramTheta ν) (paramA ν)) :
     ∃ g' : ℝ, g' = approxGap ν (paramTheta ν) (paramA ν - η) ∧
@@ -384,12 +384,12 @@ theorem thm_17_eta_perturbation_retains_half_gap (ν η : ℝ)
   exact ⟨approxGap ν (paramTheta ν) (paramA ν - η), rfl, by rw [hshift]; linarith,
     by rw [hshift, ← hg_def]; linarith⟩
 
-/-- Theorem 18: Ceiling sandwich `x ≤ ⌈x⌉₊ < x + 1` (`ApproximationCenters.lean:15-40`). -/
+/-- Theorem 18: Ceiling sandwich `x ≤ ⌈x⌉₊ < x + 1` (`ApproximationCenters.lean:48-64`, `AdmissibleParameters.lean:36-48`). -/
 theorem thm_18_initial_scale_v0_w0_ceiling_sandwich (x : ℝ) (hx : 0 ≤ x) :
     ∃ w₀ : ℕ, w₀ = ⌈x⌉₊ ∧ x ≤ (w₀ : ℝ) ∧ (w₀ : ℝ) < x + 1 :=
   ⟨⌈x⌉₊, rfl, Nat.le_ceil x, Nat.ceil_lt_add_one hx⟩
 
-/-- Theorem 19: Ceiling rounding loss `q ≤ exp ⌈log q⌉₊ < e * q` (`ApproximationCenters.lean:42-78`). -/
+/-- Theorem 19: Ceiling rounding loss `q ≤ exp ⌈log q⌉₊ < e * q` (`ApproximationCenters.lean:48-64`, `AdmissibleParameters.lean:92`). -/
 theorem thm_19_ceil_log_denominator_rounding_loss (q : ℕ) (hq : 2 ≤ q) :
     ∃ w : ℕ, w = ⌈Real.log (q : ℝ)⌉₊ ∧ 1 ≤ w ∧
       (q : ℝ) ≤ Real.exp (w : ℝ) ∧ Real.exp (w : ℝ) < Real.exp 1 * (q : ℝ) := by
@@ -405,13 +405,13 @@ theorem thm_19_ceil_log_denominator_rounding_loss (q : ℕ) (hq : 2 ≤ q) :
       _ = Real.exp 1 * Real.exp (Real.log (q : ℝ)) := Real.exp_add 1 (Real.log (q : ℝ))
       _ = Real.exp 1 * (q : ℝ) := by rw [Real.exp_log hq0]
 
-/-- Theorem 20: Strict step growth implies global injectivity (`ApproximationCenters.lean:55-79`). -/
+/-- Theorem 20: Strict step growth implies global injectivity (`ApproximationCenters.lean:17-22`). -/
 theorem thm_20_approximation_centers_injective_in_j (w : ℕ → ℕ) (i j : ℕ)
     (hstep : ∀ k, w k < w (k + 1)) (hne : i ≠ j) :
     w i ≠ w j :=
   (strictMono_nat_of_lt_succ hstep).injective.ne hne
 
-/-- Theorem 21: Reciprocal weight sum bound `∑ w_i⁻¹ ≤ m / w_0` (`WeightSeparation.lean:80-125`). -/
+/-- Theorem 21: Reciprocal weight sum bound `∑ w_i⁻¹ ≤ m / w_0` (`WeightErrorMargin.lean:22-31`). -/
 theorem thm_21_reciprocal_weight_sum_common_bound {m : ℕ}
     (w : Fin m → ℝ) (w₀ : ℝ) (hw₀ : 0 < w₀) (hle : ∀ i, w₀ ≤ w i) :
     ∑ i : Fin m, (w i)⁻¹ ≤ (m : ℝ) / w₀ := by
@@ -496,7 +496,7 @@ theorem thm_24_lacunary_weight_tower_exponential_lower_bound
   obtain ⟨h1, h2⟩ := hpow k
   exact ⟨2 ^ k, rfl, h2, h1, h2.trans ((Nat.le_mul_of_pos_right (2 ^ k) hw₀).trans h1)⟩
 
-/-- Theorem 25: Discrete rectangle cardinality `∏ w_i` and `2^d` bound (`RectangularVolume.lean:15-52`). -/
+/-- Theorem 25: Discrete rectangle cardinality `∏ w_i` and `2^d` bound (`RectangularVolume.lean:9-10,66-79`). -/
 theorem thm_25_discrete_rectangle_lattice_cardinality_induction {d : ℕ}
     (w : Fin d → ℕ) (hw : ∀ i, 2 ≤ w i) :
     ∃ c : ℕ, c = (residueRectangle w).card ∧ c = (∏ i, w i) ∧ 2 ^ d ≤ c := by

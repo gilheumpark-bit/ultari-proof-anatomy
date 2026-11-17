@@ -13,7 +13,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.Real
 # OpenAI #017 (`The irrationality exponent of π is 2`): Pillar 3 Mathlib Formalization
 ## Gaussian-Integer Clearing, 3-Tier LCM Stratigraphy, Collision Cauchy-Schwarz, and Flint-Hills (`Theorems 51-75`)
 
-Formalizes Pillar 3 of `OAI.NumberTheory.PiExponent` (`Arithmetic.lean:1-65`,
+Formalizes Pillar 3 of `OAI.NumberTheory.PiExponent` (`Arithmetic.lean:13-74`,
 `MatrixArithmetic.lean:1-75`, `RowTranslation.lean:1-90`, `DeterminantContradiction.lean:1-180`,
 `CollisionCombinatorics.lean:1-95`, `CollisionOccupancy.lean:1-59`, `PeriodAnalytic.lean:1-90`,
 `FlintConsequence.lean:1-31`, `FlintSine.lean:1-160`).
@@ -36,7 +36,7 @@ noncomputable def sineGroup (n : ℕ) : ℕ := (round ((n : ℝ) / Real.pi)).toN
 /-- Distance `‖x‖ = |x - round x|` to nearest integer (`series.tex:9`, `FlintSine.lean:62`). -/
 noncomputable def nearestIntDist (x : ℝ) : ℝ := |x - (round x : ℝ)|
 
-/-- Dual-witness Gaussian-integer determinant clearing system (`Arithmetic.lean:49-65`). -/
+/-- Dual-witness Gaussian-integer determinant clearing system (`Arithmetic.lean:49-74`). -/
 structure PiDeterminantClearingSystem where
   dim : ℕ
   mat : Matrix (Fin dim) (Fin dim) ℂ
@@ -73,7 +73,7 @@ noncomputable def witnessPiDeterminantSystem : PiDeterminantClearingSystem where
     ext ⟨i, hi⟩ ⟨j, hj⟩
     interval_cases i <;> interval_cases j <;> simp [Matrix.vandermonde, map_ofNat]
 
-/-- Theorem 51: Nonzero determinant over `ℂ` cleared to `GaussianInt` (`Arithmetic.lean:49-65`). -/
+/-- Theorem 51: Nonzero determinant over `ℂ` cleared to `GaussianInt` (`Arithmetic.lean:49-74`). -/
 theorem thm_51_gaussian_integer_clearing_and_liouville_obstruction
     {ι : Type*} [Fintype ι] [DecidableEq ι]
     (A : Matrix ι ι ℂ) (B : Matrix ι ι GaussianInt) (r c : ι → ℝ)
@@ -312,7 +312,7 @@ theorem thm_59_dyadic_partial_summation_exponent_for_flint_hills
   have hfac_pos : 0 < ((K : ℝ) ^ 3 * d ^ 2)⁻¹ := inv_pos.mpr (mul_pos (pow_pos hK_pos 3) (sq_pos_of_pos hd))
   exact lt_of_le_of_lt hterm_le (by nlinarith)
 
-/-- Theorem 60: Generalized sine series comparison and `8/π < 16` audit (`series.tex:86, 138-140`, `FlintSine.lean:88`). -/
+/-- Theorem 60: Generalized sine series comparison and `8/π < 16` audit (`series.tex:86, 138-140`, `FlintSine.lean:74-86,88-126`). -/
 theorem thm_60_generalized_sine_series_convergence_threshold_and_gap_audit
     (n : ℕ) (a b : ℝ) (hn : 1 ≤ n) (hb : 0 ≤ b) :
     ∃ cPaper : ℝ, cPaper = 8 / Real.pi ∧ cPaper < 16 ∧

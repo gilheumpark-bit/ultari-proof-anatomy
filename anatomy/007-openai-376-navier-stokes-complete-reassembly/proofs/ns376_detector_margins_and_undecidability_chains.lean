@@ -259,7 +259,7 @@ theorem thm_43_picard_lindelof_slab_stitching_window
     floor_t + 1 ≥ 1 := by
   omega
 
-/-- Theorem 44: Degree -1 homogeneity and curl-free/divergence-free numerator balance of
+/-- Theorem 44: Degree -1 homogeneity and swirl-free (x0*V1 - x1*V0 = 0), divergence-free off 0 (curl V != 0) numerator balance of
     `homogeneousDatum` V(130z/(r^2+z^2)) in HomogeneousDatum.lean:40,65:
     for (130*x0*(x0^2+x1^2-x2^2), 130*x1*(x0^2+x1^2-x2^2), -260*x2^3) / (x0^2+x1^2+x2^2)^2,
     scaling x -> t*x scales the numerator by t^3 and denominator by t^4, giving t^-1. -/

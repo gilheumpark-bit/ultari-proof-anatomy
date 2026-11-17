@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Symbolic (SymPy) and GPU Numerical (PyTorch FP64) Verification for:
+Symbolic (SymPy) and Optional Numerical (PyTorch FP64) Verification for:
   OpenAI #376 (Universal Computation in Forced Navier-Stokes Flows)
   Complete Reassembly of the Unimported 650 (718) OAI Modules & Oct 6, 2026 Revision
 
@@ -282,7 +282,7 @@ def verify_breakthrough_5_cantor_and_stationary_contraction():
     assert sp.simplify(even_slot_gap - 1 / (b - 1)) == 0
     assert sp.simplify(even_slot_gap / single_slot_gap - b) == 0
 
-    # 2. Axisymmetric swirl-free homogeneousDatum V in HomogeneousDatum.lean:38,59
+    # 2. Axisymmetric swirl-free homogeneousDatum V in HomogeneousDatum.lean:40,65
     x0, x1, x2 = sp.symbols("x0 x1 x2", real=True)
     r2 = x0**2 + x1**2 + x2**2
     V0 = 130 * x0 * (x0**2 + x1**2 - x2**2) / (r2**2)

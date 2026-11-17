@@ -1,6 +1,6 @@
 /-
-  Google DeepMind `code-verification` (`libsignal-cli`, Commit `808b4b7ffef1`)
-  Case 013 - Part III:
+  Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, Commit `808b4b7ffef1`)
+  Part III: Comparator TCB Inclusion & Crypto Bounds:
   Headline `24`-Entry Reachability (`6,933,064` vs `595,231` Unreachable Lines),
   `ComparatorChallenge` `153,682`-Line TCB Laundering & Unsandboxed Linux `5.10` Execution,
   `DEV-LS31` vs `DEV-C14` `8`-Byte MAC Forgery Polynomial Cliffs (16-Byte MAC Rigidity Barrier),
@@ -452,7 +452,7 @@ theorem thm_74_inductive_multi_session_prefix_sum (b k : Nat) :
   | succ n ih =>
     simp [sessionPrefixSum, ih, Nat.succ_mul]
 
-/-- [Theorem 75] Case 013 Grand Forensic Anatomy Ledger across Pillars 1, 2, and 3:
+/-- [Theorem 75] Grand Forensic Anatomy Ledger across Pillars 1, 2, and 3:
 `>= 7,528,295` total `.lean` lines (`>= 6,933,064` reachable from the `6` headline files +
 `>= 595,231` unreachable), `55 / 64` bypassed binary symbols, `>= 16,767` unproved `Arm64/Trusted`
 TCB lines plus `>= 153,682` `ComparatorChallenge` laundered lines (`>= 170,449` combined), `35,211`

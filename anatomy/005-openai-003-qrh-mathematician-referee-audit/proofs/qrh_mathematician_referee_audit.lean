@@ -322,7 +322,7 @@ theorem thm_25_abstract_unconditional_siegel_zero_exclusion
   have hexcl : C.RealZeroGapExcluded F C.gapDenom := C.ax_step4_geometric_exclusion F c hspan
   exact ⟨⟨c, hspan⟩, hexcl, C.ax_gap_denom_pos⟩
 
-/-- Concrete arithmetic witness for `SiegelZeros/Structure/ArithmeticCutoffTransport.lean:51` (`D = 4*N_0 = 75272`), `SiegelZeros/Estimates/GeometricBoundary.lean` (`N_0 = 2*97^2`), & `SiegelZeros/Selection/PivotBounds.lean` (`H = 12*(2*96)*(2*N_0)`). -/
+/-- Concrete arithmetic witness for `SiegelZeros/Structure/ArithmeticCutoffTransport.lean:58-67` (`totalDegree_le_of_inBox`, `D = 4*N_0 = 75272`), `SiegelZeros/Estimates/GeometricBoundary.lean` (`N_0 = 2*97^2`), & `SiegelZeros/Selection/PivotBounds.lean` (`H = 12*(2*96)*(2*N_0)`). -/
 def siegel_concrete_witness : BezoutSiegelChain (Nat × Nat) Nat Nat where
   AdmissibleFamily := fun dq => dq.2 ≥ 3 ∧ dq.1 ≥ 3 ∧ dq.1 ≠ 1 ∧ dq.1 ≠ 2
   RegularSelection := fun dq n0 => dq.2 ≥ 3 ∧ dq.1 ≥ 3 ∧ dq.1 ≠ 1 ∧ dq.1 ≠ 2 ∧ n0 = 2 * 97 * 97 ∧ 4 * n0 = 75272

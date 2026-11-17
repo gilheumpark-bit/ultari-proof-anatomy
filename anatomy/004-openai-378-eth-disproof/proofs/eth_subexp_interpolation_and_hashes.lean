@@ -163,7 +163,7 @@ theorem taylor_jet_truncation_and_subset_pair_exponent
   omega
 
 /-- [Theorem 7] Three-way asymptotic parameter schedule and Hoeffding tail domination (`Section 3.4` & `Lemma 4.6`,
-`main_full_version.tex:2158-2197, 2536-2615`, `AsymptoticLayoutParameters.lean:15-48`).
+`main_full_version.tex:2158-2197, 2536-2615, 2747-2770`, `AsymptoticLayoutParameters.lean:15-48`).
 With `128 * (Q * nu) ≤ lam`, `log2_D = 2 * (Q * nu)`, and `R_sq ≥ 64 * (beta3_sq * log2_D)` (`R = (β+3)⌈√λ⌉`),
 the auxiliary dimension exponent satisfies `64 * log2_D ≤ lam`, while the Hoeffding binomial tail exponent
 satisfies `R_sq ≥ 2304`, ensuring `Pr[W ∉ I] ≤ 2 exp(-R^2 / (8Q))` is exponentially small in `nu`. -/
@@ -182,10 +182,10 @@ theorem asymptotic_three_way_exponent_balance_schedule
 /-!
 ## Part II: Beigel-Tarui Modulus-Amplifying Polynomials, Total-Order Truncation, Tanner Expander Codes,
 ## CIP Disjoint Sparsification, and `BitProgram 80 1220` Compiler Envelopes
-(`main_full_version.tex` Sections 5–7, Appendix A, `TruncatedRing.lean`, `SparseCharging.lean`, `Final.lean`)
+(`main_full_version.tex` Sections 5–6, Appendix A, `TruncatedRing.lean`, `SparseCharging.lean`, `Final.lean`)
 -/
 
-/-- [Theorem 8] Complemented Beigel-Tarui modulus-amplifying polynomial at `ℓ = 2` (`Section 5.1`, `Lemma 5.1`, `main_full_version.tex:2626-2695`).
+/-- [Theorem 8] Complemented Beigel-Tarui modulus-amplifying polynomial at `ℓ = 2` (`Section 5.1`, `Lemma 5.1`, `main_full_version.tex:2887-3013`).
 For `ℓ = 2`, `p_2(Y) = (1 - Y)^2 (1 + 2Y) = 1 - 3Y^2 + 2Y^3` admits the `h(Y) = Y(Y - 1)` decomposition
 `p_2(Y) = (1 - Y) + (2Y - 1) * h(Y)`. Evaluating on `y_even = 2m` and `y_odd = 2m + 1` gives
 `p_2(2m) - 1 = 4 * m^2 * (4m - 3) ≡ 0 (mod 4)` and `p_2(2m + 1) - 0 = 4 * m * (m + 1) * (4m + 1) ≡ 0 (mod 4)`. -/
@@ -240,7 +240,7 @@ theorem beigel_tarui_modulus_amplifying_polynomial_l2
   omega
 
 /-- [Theorem 9] Total-order truncated ring `ℚ[V]/(V^ℓ)` linear vs. quadratic degree bound (`Section 5.2`, `Lemma 5.2`,
-`main_full_version.tex:2697-2785`, `TruncatedRing.lean:18-98`).
+`main_full_version.tex:2887-3013`, `TruncatedRing.lean:18-98`).
 For `m_test ≥ 2` parity tests of width `k ≥ 1` and precision `ℓ ≥ 2`, multiplying in `ℚ[V]/(V^ℓ)` yields total degree
 `d_trunc = k * (m_test + 2 * (ell - 1))`, whereas naive expansion has degree `d_full = k * (m_test * (2 * ell - 1))`.
 The exact degree savings is `d_full - d_trunc = 2 * (k * ((m_test - 1) * (ell - 1))) ≥ 2 * k`, and at `k = 1, m_test = 2, ell = 2`
@@ -278,7 +278,7 @@ theorem total_order_truncated_ring_linear_vs_quadratic_degree
   dsimp [truncatedRingDegree, fullRingDegree]
   omega
 
-/-- [Theorem 10] Tanner expander code parameters and mixing distance lower bound (`Section 6.1`, `Lemma 6.1`, `main_full_version.tex:2945-3085`).
+/-- [Theorem 10] Tanner expander code parameters and mixing distance lower bound (`Section 6.1`, `Lemma 6.1`, `main_full_version.tex:3261-3437`).
 With `eps_inv = 200 * (B * mu)`, `delta_inv = 100 * (B * mu)` (`δ = 2ε = 1/(100 B μ)`), candidate list size
 `P = 20000 * (B_sq * mu_sq) = delta_inv * eps_inv = 1 / (δ(δ - ε))`, and local code distance `D_0 = 16 * (mu * P) = 320000 * B^2 * mu^3`,
 any non-zero syndrome with `q_G_d_G ≥ m` satisfies `P_h_prime ≥ q_G_d_G ≥ m` (`h' ≥ m / P`). -/
@@ -312,7 +312,7 @@ theorem tanner_expander_hash_parameters_and_mixing_distance
     _ = 20000 * (B_sq * mu_sq) := by rw [← hB_sq, ← hmu_sq]
   omega
 
-/-- [Theorem 11] Tanner expander check matrix row budget and variable locality (`Section 6.1`, `Lemma 6.1`, `main_full_version.tex:2985-3030`).
+/-- [Theorem 11] Tanner expander check matrix row budget and variable locality (`Section 6.1`, `Lemma 6.1`, `main_full_version.tex:3261-3437`).
 With `4 * (B * c_G) ≤ d_G` and `q_G * d_G ≤ 2 * (B * n)`, the Tanner check matrix `H_G` has `m_G = 2 * (q_G * c_G)` rows
 satisfying `B * m_G ≤ B * n`, hence `m_G ≤ n`. Adding `3 * n` greedy hash rows gives
 `m_test = m_G + 3 * n ≤ 4 * n`, with variable column weight `col_wt = B * d_L ≤ 16 * (B * mu)`. -/
@@ -355,7 +355,7 @@ theorem tanner_code_check_row_budget_and_locality
     rw [← Int.mul_assoc B 16 mu, Int.mul_comm B 16, Int.mul_assoc]
   omega
 
-/-- [Theorem 12] Greedy conditional-expectation hash contraction (`Section 6.2`, `Lemma 6.2`, `main_full_version.tex:3087-3180`,
+/-- [Theorem 12] Greedy conditional-expectation hash contraction (`Section 6.2`, `Lemma 6.2`, `main_full_version.tex:3446-3504`,
 `ConditionalExpectation.lean:147-177`).
 In each of the `3 * n` rounds, at least `1/4` of the `P` candidate rows reject any surviving bad assignment (`D_next ≤ (3/4) D_prev`).
 Over `3` rounds per variable, the numerator `3^3 = 27` and denominator `4^3 = 64` satisfy `2 * 27 = 54 < 64`,
@@ -386,7 +386,7 @@ theorem greedy_hash_selection_three_quarter_contraction
   omega
 
 /-- [Theorem 13] Calabro-Impagliazzo-Paturi disjoint sparsification insertion recurrence (`Appendix A`, `Lemma A.3`,
-`main_full_version.tex:3550-3625`, `SparseCharging.lean:74-111`).
+`main_full_version.tex:3771-3807`, `SparseCharging.lean:74-111`).
 In the width-`j` insertion recurrence `N_{j+1} ≤ 4 * n * M^j + 2 * ∑_{i=0}^{j-1} M^{j-i} N_{i+1}`,
 substituting the inductive bound `N_{i+1} ≤ 4 * (3M)^i * n` factors out `4 * n * M^j` and uses the geometric series identity
 `1 + 2 * ∑_{i=0}^{j-1} 3^i = 3^j` (`geom_sum_mul_add`) to close the induction `N_{j+1} ≤ 4 * (3M)^j * n`. -/

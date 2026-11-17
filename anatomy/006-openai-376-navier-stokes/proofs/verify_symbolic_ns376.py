@@ -7,15 +7,26 @@ import json
 import math
 import os
 from pathlib import Path
+import subprocess
 import sys
 import time
 
 import importlib.util
 
 if importlib.util.find_spec("sympy") is None or importlib.util.find_spec("torch") is None:
-    venv_py = Path.home() / "AI" / "ComfyUI" / ".venv" / "bin" / "python"
-    if venv_py.is_file():
-        os.execv(str(venv_py), [str(venv_py)] + sys.argv)
+    ai_root = Path.home() / "AI"
+    if ai_root.is_dir():
+        for project_dir in sorted(ai_root.iterdir()):
+            if not project_dir.is_dir() or project_dir.name.startswith("."):
+                continue
+            for rel_py in (".venv/bin/python", "venv/bin/python"):
+                venv_py = project_dir / rel_py
+                if venv_py.is_file() and subprocess.run(
+                    [str(venv_py), "-c", "import sympy, torch"],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                ).returncode == 0:
+                    os.execv(str(venv_py), [str(venv_py)] + sys.argv)
 
 import sympy as sp
 import torch

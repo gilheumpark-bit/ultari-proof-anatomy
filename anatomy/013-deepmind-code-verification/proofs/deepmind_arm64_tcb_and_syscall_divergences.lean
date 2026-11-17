@@ -1,6 +1,6 @@
 /-
-  Google DeepMind `code-verification` (`libsignal-cli`, Commit `808b4b7ffef1`)
-  Case 013 - Part II:
+  Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, Commit `808b4b7ffef1`)
+  Part II: Arm64/Trusted TCB & Syscall Divergences:
   Tier 3 Trusted Computing Base (`arm64-semantics/Arm64/Trusted`) Census (`61` Files, `16,767` Lines,
   `0` Theorems), `.Exception` / `.OutOfMemory` / `.trap` Terminal Branches (`177 + 12 + 10`),
   Concrete Linux / POSIX / musl Syscall Divergences, Rust CLI Zero-Tail RNG & Frozen `UNIX_EPOCH`
@@ -85,10 +85,10 @@ theorem thm_29_modeled_vs_unmodeled_linux_syscall_gap
     270 * s ≤ sys_unmodeled ∧ 8 * sys_modeled < sys_unmodeled ∧ enosys_ret + 38 * s ≥ 0 ∧ enosys_ret < 0 := by
   omega
 
-/-- [Theorem 30] `Hoare.lean` (`1-525`) partial-correctness implication under `.Exception`
-exclusion: if a specification guards postcondition `post_ok = 1` behind `is_exception = 0`, any
-input triggering `.Exception` (`is_exception = 1`) vacuously satisfies `is_exception = 0 -> post_ok = 1`
-even when `post_ok = 0` (corrupted/unhandled user state). -/
+/-- [Theorem 30] `Hoare.lean` (`124-222`) `Spec` / `SubroutineOutcome` (`reaches_outcome`, `safe_until`):
+upstream excludes `.Exception` fail-closed (requiring callers to prove unmodeled `177` fault paths
+unreachable) while excusing `.OutOfMemory` via `Spec.allowOom` (`onOom := ⌜True⌝`, `L178-179`).
+Abstract guard model: `is_exception = 0 -> post_ok = 1` passes `post_ok = 0` when `is_exception = 1`. -/
 theorem thm_30_hoare_exception_guard_vacuous_satisfaction
     (is_exception post_ok : Int)
     (hexc : is_exception = 1)
@@ -119,7 +119,7 @@ theorem thm_31_inductive_terminal_fault_absorption
       | succ m => rfl
     simp [stepTerminalAbsorb, ih, hne]
 
-/-- [Theorem 32] Deterministic `AT_RANDOM` and `UNIX_EPOCH` pinning (`Loader.lean:180-260`,
+/-- [Theorem 32] Deterministic `AT_RANDOM` and `UNIX_EPOCH` pinning (`Types.lean:120-121`, `Loader.lean:377-387, 419-427`,
 `Assumptions.lean:90-175`): `Loader.lean` fills all `16` bytes (`128` bits) of `AT_RANDOM` with `0`
 and sets initial wall/monotonic time to `0` (`UNIX_EPOCH`), losing all `128` bits of per-process
 stack-canary / hash-seed auxiliary-vector entropy. -/
@@ -154,7 +154,7 @@ theorem thm_33_mmap_oom_halt_vs_linux_enomem_return
   omega
 
 /-- [Theorem 34] `BitVec 64` two's-complement ABI encoding of `-ENOMEM` (`-12`) vs `MAP_FAILED`
-(`-1`) and `NULL` (`0`) on Linux AArch64 (`Errno.lean:1-43`, `Mmap.lean:1-320`):
+(`-1`) and `NULL` (`0`) on Linux AArch64 (unpreserved upstream `Errno.lean`, `Mmap.lean:1-320`):
 `0#64 - 12#64 = 0xfffffffffffffff4#64`, which exceeds the Linux syscall error threshold
 `0xfffffffffffff000#64` (`-4096`) and differs from both `0#64` (`NULL`) and `0x600000000000#64`. -/
 theorem thm_34_bitvec64_enomem_abi_encoding
@@ -204,9 +204,9 @@ theorem thm_37_closed_stdio_fd_ebadf_vs_exception
   omega
 
 /-- [Theorem 38] `MAX_RW_COUNT = 0x7ffff000` (`2,147,479,552 = 2^31 - 4096`) clamp vs `.Exception`
-(`ReadWrite.lean:40-120`, `ReadWritev.lean:35-115`, `Random.lean:20-56`): on Linux, `read`/`write`
-with `count >= 2^31` clamps to `2,147,479,552` bytes (`4,096` bytes below `2^31 = 2,147,483,648`),
-whereas `ReadWrite.lean` raises `.Exception` and `Random.lean` returns `-EINVAL` (`-22`). -/
+(`ReadWrite.lean:110, 156, 183, 188-189`, `ReadWritev.lean:100-101, 119`, `Random.lean:20-56`): on Linux
+`count >= 2^31` clamps to `2^31 - 4096` (`ReadWrite.lean` clamps `read`/`write`, faulting at
+`FS_SAFE_MAX_FILESIZE = 0xffffffff`, while `ReadWritev.lean` raises `.Exception`; `Random.lean` returns `-EINVAL`). -/
 theorem thm_38_max_rw_count_clamp_vs_exception_and_einval
     (s max_rw int32_ceil page_sz req_cnt random_einval : Int)
     (hs : 1 ≤ s)
@@ -348,7 +348,7 @@ theorem thm_46_excused_oom_hides_null_deref_counter_model
     (userResumed = 1 → callerNullSafe = 1) ∧ userResumed ≠ 1 ∧ callerNullSafe ≠ 1 := by
   refine ⟨fun h1 => by omega, by omega, by omega⟩
 
-/-- [Theorem 47] Linux AArch64 `openat` flag composition (`Uapi.lean:1-69`, `Open.lean:40-120`):
+/-- [Theorem 47] Linux AArch64 `openat` flag composition (unpreserved upstream `Uapi.lean`, `Open.lean:49-65`):
 `O_WRONLY (0x1) ||| O_CREAT (0x40) ||| O_TRUNC (0x200) = 0x241` (`577`), whose low access mask
 `0x241 &&& 0x3 = 0x1` selects write-only access. -/
 theorem thm_47_bitvec32_openat_flag_composition
@@ -409,7 +409,7 @@ theorem thm_50_pillar2_arm64_tcb_master_ledger
 -/
 
 /-- [Theorem 78] Rust CLI zero-tail RNG, frozen `UNIX_EPOCH` expiry bypass, and single-poll async
-executor (`coins.rs:32-46`, `cli/src/lib.rs:159, 212, 248-250`, `cli/handshake/src/lib.rs:58-65`,
+executor (`coins.rs:32-46`, `cli/src/lib.rs:159, 212, 248-250`, `cli/handshake/src/lib.rs:58-65`, `cli/ratchet/src/lib.rs:61-68`,
 `DEVIATIONS.md:1720-1739`, `GLOSSARY.md:62-64`): whenever `0 <= coins_avail < req_len`,
 `signal_session_coins_fill` pads `zero_tail = req_len - coins_avail >= 1` bytes with `0x00`;
 freezing `t_now = 0` and `t_start = 0` (`DEV-PQ8`) keeps elapsed age `0 < 2,592,000` (`30` days in

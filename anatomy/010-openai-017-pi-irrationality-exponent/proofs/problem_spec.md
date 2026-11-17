@@ -1,7 +1,7 @@
 # Problem Specification: OpenAI `#017` The Irrationality Exponent of Pi Is 2 (Zero-Hint Problem Specification)
 
 ## 1. Scope & Target Repository
-- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#017`: *The irrationality exponent of $\pi$ is 2*):
+- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#017`: The irrationality exponent of $\pi$ is 2):
   1. `preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026/build/` (`main.tex`, `references.bib`, and `sections/interpolation.tex`, `sections/determinant.tex`, `sections/conclusion.tex`, `sections/series.tex`)
   2. `lean/ComparatorChallenges/PiExponent.lean` and `lean/ComparatorChallenges/PiExponent.json`
   3. `lean/OAI/NumberTheory/PiExponent/` (`Main.lean`, `Statement.lean`, and all subdirectories `Geometry/`, `LocalAlgebra/`, `Approximation/`, `Cohomology/`, `Ampleness/`, `Jets/`, `Polynomials/`, `Analysis/`)
@@ -9,7 +9,7 @@
 ## 2. Target Symbols & Subsystems to Audit
 1. **Pillar 1 (Import-Cone Stratigraphy, Reasoning-Trace Evolution, and Simplex Parameters)**:
    - Import cone of `OAI.NumberTheory.PiExponent.Main` (`pi_eventual_lower_bound`, `pi_integer_eventual_lower_bound`, `pi_irrationalityExponent_eq_two`, `main`, `flint_hills_summable`) versus `ComparatorChallenges/PiExponent.lean` and `lean/docs/017.md`.
-   - `OAI.NumberTheory.PiExponent.Approximation.Parameters` (`paramB`, `paramDelta`, `paramTheta`, `paramA`, `paramC`, `paramBigB`) and `Approximation.AdmissibleParameters` (`conclusion.tex` Lemma 4.1).
+   - `OAI.NumberTheory.PiExponent.Approximation.Parameters` (`structure Parameters (ν : ℝ)` with fields `theta`, `A`, `B`, `C : ℚ`, `eta : ℝ`, `exists_rational_parameters`, `exists_eta_preserving_exponent_gap`, `exists_parameters`) and `Approximation.AdmissibleParameters` (`conclusion.tex` Lemma 4.1).
 2. **Pillar 2 (Transverse Multiplicity, Inscribed Discrete Rectangle vs Simplex, and Rees Blowup / Serre-Čech Vanishing)**:
    - `OAI.NumberTheory.PiExponent.Approximation.RectangularVolume`, `Jets.TransverseWeightedMultiplicity`, and `Approximation.WeightSeparationConstant` (`interpolation.tex` Lemma 2.2) versus `Polynomials.SimplexCounting` (`simplex_count_lower_sandwich`).
    - `OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole`, `Ampleness.BlowupIdeal`, `Ampleness.ExceptionalCurveDegree`, `Cohomology.FiniteCoverCohomology`, and `Approximation.WeightSeparation` (`interpolation.tex` Theorem 2.1 and Proposition 2.3).

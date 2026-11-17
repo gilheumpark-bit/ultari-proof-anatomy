@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Live regex and text parsers over `proofs/oai_ref/` for Case 013:
-Google DeepMind `code-verification` (`libsignal-cli`, commit `808b4b7ffef1`).
+Live regex and text parsers over `proofs/oai_ref/`:
+Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, commit `808b4b7ffef1`).
 
 Extracts hook tables, linker segments, Rust CLI harness constants, uncommitted
 AGPL-3.0-only ELF metadata, refinement-hygiene script allowlists, TCB trust

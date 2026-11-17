@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Deterministic Symbolic & Live Provenance Verification Suite for Case 010:
-OpenAI #017 — "The irrationality exponent of pi is 2" (September 24, 2026).
+Deterministic Symbolic & Live Provenance Verification Suite for
+OpenAI #017: "The irrationality exponent of pi is 2" (September 24, 2026).
 
 Reproduces and writes `symbolic_verification_result.json` with exact rational,
 floating-point, and live `oai_ref/` + `Mathlib 4` `.lean` kernel checks for:

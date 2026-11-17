@@ -1,6 +1,6 @@
 /-
   OpenAI `reasoning_traces/` Complete 10-Log Dissection
-  Case 014 - Part III:
+  Part III:
   Analytic, Spin-Glass, Operator-Algebraic, & Kinetic Engines (`#221`, `#271`, `#287`, `#362`),
   Exact 3-Stage Prompt -> Trace -> Preprint -> Comparator Scope Funnel, and
   Static `:= by sorry` Return-Type Scanner Blindness No-Go Theorem vs `2,170` Internal
@@ -280,7 +280,7 @@ theorem thm_65_bidirectional_citation_conservation
 /-- [Theorem 66] Challenge-level non-return-type binder verification (`No-Go / Rigidity`): all `5` challenge-level
 non-return-type binders across the `10` families (`hNP` in `OrdinaryElliott.lean:33`; `hK` in `MahlerConjecture.lean:15`,
 `SymmetricMahlerEquality.lean:43`, `SymmetricPolar.lean:40`; `hM` in `DilutedSpin.lean:148`) have `in_stub_type = 0`
-yet `in_oai_proof = 5` (`100%` genuine usage verified in `BinaryCorrectedElliott.lean:53`, `MainTheorem.lean:25`, `Classification.lean:542`). -/
+yet `in_oai_proof = 5` (`100%` genuine usage verified in `BinaryCorrectedElliott.lean:45, 47`, `MainTheorem.lean:20`, `Classification.lean:539`). -/
 theorem thm_66_five_challenge_stub_false_positives_verified_used
     (s stub_007 stub_087 stub_221 in_stub_type used_in_oai : Int)
     (hs : 1 ≤ s)
@@ -444,7 +444,7 @@ theorem thm_74_nonlinear_joint_provenance_fidelity_under_one_quarter
   rw [hrc, hfh, hprod_num] at hjn
   omega
 
-/-- [Theorem 75] Case 014 Grand Ten-Trace Anatomy Ledger uniting compiler, citation, scope, and Lean audits. -/
+/-- [Theorem 75] Grand Ten-Trace Anatomy Ledger uniting compiler, citation, scope, and Lean audits. -/
 theorem thm_75_case014_grand_ten_traces_anatomy_ledger
     (s traces pages tr_cites ret_cites drop_cites bib_cites mss_tot mss_traced oai_files oai_unused : Int)
     (hs : 1 ≤ s)

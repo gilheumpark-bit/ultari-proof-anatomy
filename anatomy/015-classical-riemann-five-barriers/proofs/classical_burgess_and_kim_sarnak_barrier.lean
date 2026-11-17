@@ -1,5 +1,5 @@
 /-
-  Case 015 - Paper 5 (Theorems 64-75): Burgess `q^{3/16 + ε}` Subconvexity & Kim-Sarnak `7/64` Barriers
+  Paper 5 (Theorems 64-75): Burgess `q^{3/16 + ε}` Subconvexity & Kim-Sarnak `7/64` Barriers
   Burgess (1963) `(r - 2)^2 / (16 r^2)` SOS Trap, Petrow-Young `1/6`, Selberg (1965), and Kim-Sarnak (2003).
   Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/

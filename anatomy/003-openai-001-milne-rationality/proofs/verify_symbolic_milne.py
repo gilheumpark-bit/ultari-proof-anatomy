@@ -16,8 +16,8 @@ try:
     import sympy as sp
     import torch
 except ImportError:
-    venv_py = pathlib.Path.home() / "AI" / "ComfyUI" / ".venv" / "bin" / "python"
-    if venv_py.is_file():
+    cands = [pathlib.Path.home() / s / "bin" / "python" for s in (".venv", "venv")] + [p / s / "bin" / "python" for p in sorted((pathlib.Path.home() / "AI").glob("*")) if p.is_dir() and not p.name.startswith(".") for s in (".venv", "venv")]
+    for venv_py in (p for p in cands if p.is_file() and __import__("subprocess").run([str(p), "-c", "import sympy, torch"], stdout=__import__("subprocess").DEVNULL, stderr=__import__("subprocess").DEVNULL).returncode == 0):
         os.execv(str(venv_py), [str(venv_py)] + sys.argv)
     raise
 

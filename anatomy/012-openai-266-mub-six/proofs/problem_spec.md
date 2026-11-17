@@ -1,7 +1,7 @@
 # Problem Specification: OpenAI `#266` Mutually Unbiased Bases in Dimension Six
 
 ## 1. Scope & Target Repository
-- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#266`: *Mutually unbiased bases in dimension six*):
+- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#266`: Mutually unbiased bases in dimension six):
   1. `lean/docs/266.md` (explicit scope disclosure separating the two `#266` preprints and their Lean formalization coverage)
   2. `lean/ComparatorChallenges/MUBSix.lean`, `lean/ComparatorChallenges/MUBSix.json`, `lean/ComparatorChallenges/HadamardCubeFiber.lean`, and `lean/ComparatorChallenges/HadamardCubeFiber.json`
   3. **Preprint 1 (`N(6) = 3` computer-assisted cover)**: `preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/` (`build/main.tex`, `build/references.bib`, `build/sections/*.tex`, `verification/saved-run/compiled-build/source/*.cpp`, `build.sh`, `check_records.py`, and `VERIFY.md`)

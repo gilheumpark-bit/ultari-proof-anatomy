@@ -1,6 +1,6 @@
 /-
   OpenAI #005 (Catalan's Constant Is Irrational)
-  Case 011, Part I:
+  Part I:
   Chebyshev-Laurent Row Contact, ζ(2) Cancellation, 2-Adic Quadratic Minimization,
   Odd-Prime Carry Filtration, and Repaired Profile Bounds (Theorems 1–25).
 

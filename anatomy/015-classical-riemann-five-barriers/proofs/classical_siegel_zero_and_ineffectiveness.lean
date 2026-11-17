@@ -1,7 +1,7 @@
 /-
-  Case 015 - Paper 3 (Theorems 36-50): Landau-Siegel Exceptional Zeros & Ineffectiveness Barrier
+  Paper 3 (Theorems 36-50): Landau-Siegel Exceptional Zeros & Ineffectiveness Barrier
   Estermann-Siegel 4-Fold Positivity, Perron `q_1` Constant Decay, Landau-Page Repulsion,
-  Goldfeld-Gross-Zagier Rank-3 Effectivization, and `#002 SiegelZeros` / `Case 009` Bridges.
+  Goldfeld-Gross-Zagier Rank-3 Effectivization, and `#003 SiegelZeros` / `OpenAI #013 Ostmann` Bridges.
   Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
@@ -306,8 +306,8 @@ theorem thm_47_gross_zagier_oesterle_rate_vs_effectivity_tradeoff (D ε : ℝ)
     linarith [hpow_gt, hx2]
   · nlinarith [hε0, hε1]
 
-/-- [Theorem 48] Audit of `#002 SiegelZeros` (`Theorem.lean` & `GeometricBoundary.lean` in local `proofs/oai_ref/` snapshot):
-    Bezout cutoff `H = 86,713,344 = 2^11 * 3^3 * 1568`? Exact factorization `86713344 = 96 * 903264 = 2^15 * 3^3 * 98 / ...`
+/-- [Theorem 48] Audit of `#003 SiegelZeros` (`Theorem.lean` & `GeometricBoundary.lean` in local `proofs/oai_ref/` snapshot):
+    Bezout cutoff `H = 86,713,344 = 96 * 903,264 = 4,608 * 18,818 = 2^10 * 3^2 * 97^2` (`18818 ≤ N`)
     and non-constructive `by_contra` model showing arbitrarily small valid `c = 1 / M` cannot be ruled out without a bound on `N_0`. -/
 theorem thm_48_openai_002_siegel_zeros_bezout_cutoff_and_by_contra_audit (H N M : ℕ)
     (hH : H = 86713344) (hHN : H ≤ N) (hM : 1 ≤ M) :
@@ -318,7 +318,7 @@ theorem thm_48_openai_002_siegel_zeros_bezout_cutoff_and_by_contra_audit (H N M 
   have hM_pos : (0 : ℝ) < (M : ℝ) := by exact_mod_cast hM
   refine ⟨by omega, by omega, inv_anti₀ hH_pos hHN_r, inv_strictAnti₀ hM_pos (by linarith)⟩
 
-/-- [Theorem 49] Bridge to `Case 009` (`#013 Ostmann`, `SiegelBoundProof.lean` & `ActualPageUniqueness.lean` in local `proofs/oai_ref/` snapshot):
+/-- [Theorem 49] Bridge to `OpenAI #013 Ostmann` (`SiegelBoundProof.lean` & `ActualPageUniqueness.lean` in local `proofs/oai_ref/` snapshot):
     effective `log log X_0` bottleneck ladder `L_tat = 87,689 < L_ultra = 255,983 < L_sharp = 640,722 < L_gpt = 4,115,904`. -/
 theorem thm_49_case009_ostmann_single_destruct_and_loglog_bottleneck_bridge
     (L_tat L_gpt L_sharp L_ultra : ℕ)

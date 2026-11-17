@@ -1,6 +1,6 @@
 /-
-  Case 015 - Paper 2 Part B (Theorems 26-35): Guth-Maynard (2024) & QRH Gram Energy Bridges
-  `σ*_GM = 7/10 => A = 30/13`, `17/30` Prime Gap, `det_3` Collapse, and `Case 001`/`005` Gram Slacks.
+  Paper 2 Part B (Theorems 26-35): Guth-Maynard (2024) & QRH Gram Energy Bridges
+  `σ*_GM = 7/10 => A = 30/13`, `17/30` Prime Gap, `det_3` Collapse, and `OpenAI #003 QRH` Gram Slacks.
   Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
@@ -162,7 +162,7 @@ theorem thm_30_guth_maynard_det3_rank_defect_s2_collapse_barrier (u v w : ℕ �
   exact ⟨hdet, hgap, by rw [div_le_iff₀ h5σ3]; linarith only [hσlo],
     by rw [hgap, div_le_div_iff₀ (by norm_num : (0 : ℝ) < 7) h5σ3]; linarith only [hσhi]⟩
 
-/-! ## Part II: Ultari `Case 001` & `Case 005` QRH Gram Energy Bridges (Theorems 31-35) -/
+/-! ## Part II: OpenAI #003 QRH Gram Energy Bridges (Theorems 31-35) -/
 
 noncomputable def coarseBundledSqrtExp (αX αY δ : ℝ) : ℝ := (5 * αX + αY) / 12 + (αY / 2) * δ
 noncomputable def unbundledKeptLSqrtExp (αX αY ℓ δ : ℝ) : ℝ := (αY - αX + ℓ) / 2 + (αX / 2) * δ

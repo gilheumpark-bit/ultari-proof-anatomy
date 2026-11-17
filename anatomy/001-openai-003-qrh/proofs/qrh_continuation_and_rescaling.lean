@@ -298,7 +298,7 @@ theorem theorem_40_energy_induction_compatible_below_seven_eighths :
     2 * (7 / 8 : Rat) - 1 = 3 / 4 := by decide +kernel
 
 -- ============================================================================
--- 4. Task 4: Complete 26-Module & 178-Declaration 1-to-1 Formal Audit (Theorems 41–48)
+-- 4. Task 4: Complete 26-Module & 179-Declaration 1-to-1 Formal Audit (Theorems 41–48)
 -- ============================================================================
 
 /-- [Theorem 41] Local Isolated Bézout Cone Dimension & 4-Variable Box Degree Bounds
@@ -444,8 +444,8 @@ theorem theorem_47_sextic_gauss_valuation_table_and_high_rows_scalar (r m j d : 
     (`DirichletL/Parameters.lean:12-63`, `DirichletL/ParametersHighData.lean:9-110`):
     (1) At `d = 1/6` (`compensated_geometry`, `DirichletL/Parameters.lean:12-26`), the five geometric bounds achieve equality:
         `5/6 - 2*d = 1/2`, `17/48 - d = 3/16`, `23/48 - d = 5/16`, `23/48 - d - 11/48 = 1/12`, `(17/48)/2 + (1/8)/12 = 3/16`.
-    (2) In `DirichletL/ParametersHighData.lean:39-50`, under the constructor scalings `t = 1/100000000`, `ε = t / 2000`,
-        `e = t / 2000`, `eps = t / (2 * (N + 2000))`, `sigma = t / 2`, all 9 budget inequalities hold simultaneously. -/
+    (2) Under `DirichletL/ParametersHighData.lean:52-114` witness (`L63-80`) and L451-458 scalings (`t = 1/100000000`, `rmin = t / 10`,
+        `ellMin = (7/8) * rmin`, `ε = t / 2000`, `e = ε / 2000`, `sigma = min (t / 2) (ellMin / 4) = ellMin / 4`), all 9 bounds (`L39-50`) hold. -/
 theorem theorem_48_high_data_nine_budget_inequalities :
     let t : Rat := 1 / 100000000
     let rmin : Rat := t / 10

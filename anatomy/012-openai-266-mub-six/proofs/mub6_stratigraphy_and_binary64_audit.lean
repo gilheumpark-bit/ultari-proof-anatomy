@@ -1,6 +1,6 @@
 /-
   OpenAI #266 (Mutually Unbiased Bases in Dimension Six & Order-Six Complex Hadamard Matrices)
-  Case 012 — Part III:
+  Part III:
   2,835,031-Line Stratigraphy of `MutuallyUnbiased/` (3,386 Files), `Main.lean` 15/16 Umbrella
   Laundering, Orphaned `Attainable 3`, Reflected Canonicalization Compression,
   Preprint 1 `binary64` Stage A/B/C Conservation & Hardware-ABI Contract, and Citation Audit (Theorems 51–75).
@@ -289,7 +289,7 @@ theorem thm_68_citation_concentration_both_preprints
   omega
 
 /-- [Theorem 69] Exact formalization gap between claimed `N(6) = 3` (`binary64`) and Lean-verified `3 <= N(6) <= 5`
-(`266.md:1-13`, `Bounds.lean:35-44`, `ThreeMain.lean:11-18`):
+(`266.md:1-13`, `Bounds.lean:35-44`, `ThreeMain.lean:9-15`):
 reconnecting orphaned `Attainable 3` (`lb = 3`) with active `family_size_le_five` (`ub_lean = 5`) leaves
 `ub_lean - lb = 2` unformalized integer candidates (`n = 4` and `n = 5`) inside `Lean 4`. -/
 theorem thm_69_mub6_formalization_gap_three_vs_five
@@ -401,4 +401,4 @@ theorem thm_75_family_266_grand_anatomy_ledger
     l_tot = 2835031 * N ∧ sos_margin < 0 ∧ l_noncone < saved_lines ∧ 62767 ≤ unused_binders := by
   omega
 
-end Mub6StratigraphyAndBinary64Audit -- Seal Seq 2 (2026-11-13, prev_sha256: f8e5845ad731044fecbf8e6ae8548508223171c06e917ceefd89dffd005726e3): L8 header comment wording cleanup (0 theorem/proof edits)
+end Mub6StratigraphyAndBinary64Audit -- Seal Seq 2 (2026-11-17, prev_sha256: f8e5845ad731044fecbf8e6ae8548508223171c06e917ceefd89dffd005726e3): header/docstring citation cleanup (0 theorem/proof edits)

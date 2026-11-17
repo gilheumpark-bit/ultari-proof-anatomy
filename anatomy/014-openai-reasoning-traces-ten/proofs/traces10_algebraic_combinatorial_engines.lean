@@ -1,6 +1,6 @@
 /-
   OpenAI `reasoning_traces/` Complete 10-Log Dissection
-  Case 014 - Part II:
+  Part II:
   Mathematical & Combinatorial Engines Across Traces `#007`, `#017`, `#087`, `#102`, `#159`, `#197`:
   Elliott Log-Saving Exponent & Prime-Shift Entropy Pigeonhole (`#007`),
   Single-Box `1 + 1/√a > 2` Barrier, Flint–Hills `2μ - 5 = -1/25` Convergence, & `m!` Simplex Pivot (`#017`),
@@ -254,7 +254,7 @@ theorem thm_38_ug102_sparse_projection_window_k_neg_two_thirds
   have hdeg_comm : 2 * (m * m) = (m * m) * 2 := Int.mul_comm 2 (m * m)
   omega
 
-/-- [Theorem 39] `#102` `5`-preprint complexity family decomposition (`102.md:1-36`, `OptimalMaxCut.lean:1-40`,
+/-- [Theorem 39] `#102` `5`-preprint complexity family decomposition (`102.md:1-31`, `OptimalMaxCut.lean:1-40`,
 `VertexCover.lean:1-40`, `DirectedFeedback.lean:1-40`): `1` UGC master proof drives `4` downstream hardness results. -/
 theorem thm_39_ug102_five_preprint_reduction_fanout
     (s ugc_core downstream_csps total_102_challenges traces_102 : Int)

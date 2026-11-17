@@ -1,6 +1,6 @@
 /-
   OpenAI #013 (Ostmann's Inverse Goldbach Conjecture / The Additive Indecomposability of the Primes)
-  Case 009 — Part II:
+  Part II:
   All-k Structural Induction for Binary Tree Frequency Budgets, Overlap Graph Bad Permutations,
   the -7/20 log r Contradiction Rate, Fossil Restoration, and Effective Ostmann Thresholds (Theorems 21–50).
 
@@ -13,14 +13,14 @@ namespace OstmannTreeTransfersAndContradiction
 ## Part IV: All-`k` Structural Induction (`induction k`) for Binary Tree Leaf Sums & Weighted Frequency Budgets (Theorems 21–27)
 -/
 
-/-- Recursive dyadic tree sum `∑_{j=0}^{k-1} 2^j` (`Scales.lean:51-55` `sum_dyadic`,
+/-- Recursive dyadic tree sum `∑_{j=0}^{k-1} 2^j` (`Conclusion/Scales.lean:51-55` `sum_dyadic`,
 `MovingFrequencyBudget.lean:36-42` `moving_sum_two_pow`, `09-conclusion.tex:355`). -/
 def dyadicSum : Nat → Int
   | 0 => 0
   | k + 1 => dyadicSum k + (2 : Int) ^ k
 
 /-- Recursive level-weighted dyadic tree sum `∑_{j=0}^{k-1} j * 2^j`, which is the integer coefficient of `log 2`
-in `∑_{j=0}^{k-1} 2^j * log(2^j)` (`Scales.lean:57-67` `sum_dyadic_log`, `09-conclusion.tex:355`). -/
+in `∑_{j=0}^{k-1} 2^j * log(2^j)` (`Conclusion/Scales.lean:57-67` `sum_dyadic_log`, `09-conclusion.tex:355`). -/
 def weightedDyadicSum : Nat → Int
   | 0 => 0
   | k + 1 => weightedDyadicSum k + (k : Int) * (2 : Int) ^ k
@@ -47,7 +47,7 @@ theorem thm_21_dyadic_tree_leaf_sum_by_induction
 
 /-- [Theorem 22] All-`k` structural induction (`induction k`) for the level-weighted dyadic tree sum:
 for every natural number `k : Nat`, `weightedDyadicSum k = k * 2^k - 2 * 2^k + 2`
-(`∑_{j=0}^{k-1} 2^j log(2^j) = (2^k log(2^k) - 2 * 2^k log 2 + 2 log 2)` in `Scales.lean:57-67`). -/
+(`∑_{j=0}^{k-1} 2^j log(2^j) = (2^k log(2^k) - 2 * 2^k log 2 + 2 log 2)` in `Conclusion/Scales.lean:57-67`). -/
 theorem thm_22_weighted_dyadic_level_sum_by_induction
     (k : Nat) (w0 w1 : Int)
     (hw0 : w0 = weightedDyadicSum 0)
@@ -111,7 +111,7 @@ theorem thm_24_single_diagram_second_moment_three_pow_r
   omega
 
 /-- [Theorem 25] Section 7 schedule parameters and square-root reserve absorption (`07-construction.tex:27-44`,
-`Scales.lean:10-39`, `MovingFrequencyBudget.lean:74-77`):
+`Conclusion/Scales.lean:10-39`, `MovingFrequencyBudget.lean:74-77`):
 for `m = 2 * half_m >= 4` with `m_sq = m * m`, `m` is even and satisfies `4 * m <= m_sq`, so the square-root
 reserve `sqrt(4 * m)` is absorbed by `1 * m` (`MovingFrequencyBudget.lean:74`). -/
 theorem thm_25_section_7_schedule_scales_and_even_bulk_size
@@ -125,7 +125,7 @@ theorem thm_25_section_7_schedule_scales_and_even_bulk_size
   omega
 
 /-- [Theorem 26] Exact closed-form summation of the tree frequency budget for all `k : Nat`
-(`Scales.lean:69-83` `frequencyBudget_eq`, `09-conclusion.tex:355-360`):
+(`Conclusion/Scales.lean:69-83` `frequencyBudget_eq`, `09-conclusion.tex:355-360`):
 for any `k : Nat`, substituting `S_k = dyadicSum k = 2^k - 1` and `W_k = weightedDyadicSum k = k * 2^k - 2 * 2^k + 2`
 shows that the difference between the leading approximation `(5 * D_const + 2 * log2 * k) * 2^k` and the exact sum
 `5 * D_const * S_k + 2 * log2 * W_k` is `5 * D_const + 4 * log2 * S_k`. -/
@@ -144,10 +144,10 @@ theorem thm_26_frequency_budget_exact_closed_form_all_k
   omega
 
 /-- [Theorem 27] Unification of Engine A's `movingFrequencyRate` (`MovingFrequencyBudget.lean:21-23`) and
-Engine B's `frequencyBudget_eq` (`Scales.lean:69-83`):
+Engine B's `frequencyBudget_eq` (`Conclusion/Scales.lean:69-83`):
 in both engines, the initial gap has `log z` coefficient `8`, the step gap has `log r` coefficient `2/5`, and
 when doubled across the two symmetric halves (`2 * E_k` in `09-conclusion.tex:365`), `Bs` and `8 * log z` double
-to `2 * Bs` and `16 * log z` (`(Bz + 16) * log(bulkScale k)` in `Scales.lean:87`). -/
+to `2 * Bs` and `16 * log z` (`(Bz + 16) * log(bulkScale k)` in `Conclusion/Scales.lean:87`). -/
 theorem thm_27_engine_a_vs_engine_b_frequency_rate_unification
     (init_logz_coeff Bs Bz doubled_Bs doubled_logz_coeff reserve_A : Int)
     (h_init : init_logz_coeff = 8)
@@ -187,7 +187,7 @@ theorem thm_29_bad_arrangement_multinomial_decay_three_quarters
   omega
 
 /-- [Theorem 30] The exact net contradiction rate `2/5 - 3/4 = -7/20 = -0.35 < 0`
-(`09-conclusion.tex:367` `eq:conclusion-final-rate` & `Scales.lean:85-87` `finalRate`):
+(`09-conclusion.tex:367` `eq:conclusion-final-rate` & `Conclusion/Scales.lean:85-87` `finalRate`):
 combining the frequency budget growth rate `+2/5 = +8/20 = +0.40` (`thm_26`) with the bad-arrangement combinatorial
 decay rate `-3/4 = -15/20 = -0.75` (`thm_29`) yields the net `log r` coefficient
 `(2 * 4 - 3 * 5) / (5 * 4) = -7 / 20 = -0.35 < 0`. -/
@@ -258,7 +258,7 @@ theorem thm_33_comparison_slot_complexity_bound
   omega
 
 /-- [Theorem 34] Linear `-(7/20) * k * log 2` decay dominates logarithmic `4 * (Bz + 16) * log k` growth
-(`Scales.lean:85-120` `finalRate_div_tendsto` & `exists_depth_for_final_rate`, `09-conclusion.tex:367-375`):
+(`Conclusion/Scales.lean:85-120` `finalRate_div_tendsto` & `exists_depth_for_final_rate`, `09-conclusion.tex:367-375`):
 for any fixed overhead `O_const` and target threshold `target = -(2 * B + 1)`, whenever `7 * k_log2 >= 20 * (O_const + 2 * B + 1)`,
 the scaled final rate `20 * final_rate = -7 * k_log2 + 20 * O_const` is strictly at most `-20 * (2 * B + 1) <= -20`. -/
 theorem thm_34_linear_k_log_2_dominates_logarithmic_4_log_k
@@ -290,7 +290,7 @@ theorem thm_35_final_amplitude_upper_vs_lower_contradiction
 
 /-- [Theorem 36] Engine A's 9-step conditional hypothesis discharge chain (`InverseGoldbach.lean` to
 `MainWithoutQuadraticSieve.lean`):
-starting from `15` analytic/sieve hypotheses in `InverseGoldbach.lean`, the `9` intermediate modules reduce the
+starting from `14` analytic inputs (+ `(CM CH : ℝ)`, `15 <= h0` bound) in `InverseGoldbach.lean:13-21`, the `9` intermediate modules reduce the
 unresolved hypothesis count strictly monotonically (`15 -> 12 -> 8 -> 7 -> 6 -> 5 -> 3 -> 1 -> 0`) by discharging
 `3, 4, 1, 1, 1, 2, 2, 1` hypotheses at each step. -/
 theorem thm_36_engine_a_15_step_conditional_discharge_spine
@@ -421,7 +421,7 @@ theorem thm_43_bad_component_max_size_quarter_bound
 `gamma_20 = 20 - 2*theta_20 - delta_20`) and minimum binary tree depth `k_min` reduction across the 3 evolutionary
 generations (`Construction/FinalExponentialContradiction.lean` Gen 1A, `SelectedScheduledFinalContradiction.lean` Gen 1B,
 and `Conclusion/Scales.lean` Gen 2):
-- GPT baseline (`theta = 5/20, delta = 3/20`): `gamma_20 = 7` (`7/20 = 0.35`, `k_min = 7041` in Engine B, `5340` in Engine A);
+- Upstream baseline (`theta = 5/20, delta = 3/20`): `gamma_20 = 7` (`7/20 = 0.35`, `k_min = 7041` in Engine B, `5340` in Engine A);
 - Tuned threshold (`theta = 1/20, delta = 1/20`): `gamma_20 = 17` (`17/20 = 0.85`, `k_min = 2036`, saving `5005` levels);
 - Deranged `t1 = 0` (`theta = 0, delta = 1/20`): `gamma_20 = 19` (`19/20 = 0.95`, `k_min = 1803`, saving `5238` levels);
 - Restored Gen 1A parity fossil (`theta = 0, delta = 0`): `gamma_20 = 20` (`20/20 = 1.00`, `k_min = 1040`, saving `6001` levels). -/
@@ -443,7 +443,7 @@ theorem thm_44_master_contraction_rate_and_depth_reduction
 
 /-- [Theorem 45] Section 5 supply contraction sharpening (`Supply/ContractionConstants.lean:45` and
 `Supply/CoverageMargin.lean:114`):
-restoring the unrounded local Parseval contraction constant `kappa = 33/20` (`1.65`, vs. GPT's rounded `8/5 = 32/20 = 1.60`)
+restoring the unrounded local Parseval contraction constant `kappa = 33/20` (`1.65`, vs. the baseline's rounded `8/5 = 32/20 = 1.60`)
 with sparse threshold `H = 61/100 L` (and asymptotic limit `kappa = 17/10 = 34/20` with `H = 60/100 L`) inside the
 harmonic band `17/20 L = 170/200 L` minus reserve `2/100 L = 4/200 L` keeps the scaled pair-sum exponent
 `2000 - kappa_20 * H_100` strictly negative (`-13 < 0` and `-40 < 0`, vs. `-176 < 0`) while expanding the guaranteed
@@ -464,13 +464,13 @@ theorem thm_45_supply_contraction_favorable_mass_expansion
   omega
 
 /-!
-## Part VIII: Eliminating Ineffectiveness — Effective Section 3 Bypass, $2^k$-Cancellation, and Explicit Thresholds (Theorems 46–50)
+## Part VIII: Eliminating Ineffectiveness - Effective Section 3 Bypass, $2^k$-Cancellation, and Explicit Thresholds (Theorems 46–50)
 -/
 
 /-- [Theorem 46] Effective Section 3 bound under OpenAI `#003` QRH (`Re(s) <= 7/8`) and `SiegelBoundProof.lean`'s
-effective `¬ hnear` branch (`ZeroDensity/SiegelBoundProof.lean:81`, `Quadratic/QuadraticSplitSupply.lean:25-31`):
-at `eps = 1/200` (`eta_inv = 4 * 200 = 800`), any real zero with `beta < 1 - eta/2 = 1599/1600` satisfies the explicit
-bound `(1 - beta)^{-1} <= K_away = 2 * eta_inv = 1600` (and under `#003` QRH `beta <= 7/8`, `(1 - beta)^{-1} <= K_qrh = 8`),
+effective `¬ hnear` branch (`ZeroDensity/SiegelBoundProof.lean:17,81`, `Quadratic/QuadraticSplitSupply.lean:25-31`):
+at `eps = 1/200` (`eta = min (eps/4) (1/4) = 1/800`), any real zero with `beta < 1 - eta/2 = 1599/1600` satisfies `(1 - beta)^{-1} <= 2/eta = 8/eps = 1600`
+(`K_away = 1600`; under `#003` QRH `beta <= 7/8`, `(1 - beta)^{-1} <= K_qrh = 8`),
 giving explicit Section 3 thresholds `sqrt_L_qrh = 320000` (`L_sec3_qrh = 39613`) and `sqrt_L_away = 64000000`
 (`L_sec3_away = 56170`) without invoking the ineffective `LargePrimeGaps.quadratic_siegel` branch. -/
 theorem thm_46_siegel_bound_effective_under_qrh_and_away_branch
@@ -522,7 +522,7 @@ theorem thm_48_combinatorial_2k_cancellation_in_bulk_exp_margin
 /-- [Theorem 49] Explicit effective log-log threshold `L_eff` and bottleneck shift from Section 3 (`L_sec3_tat = 87689`)
 to Section 7's arithmetic-error absorption condition (`Arithmetic/MovingStatisticDecay.lean:28`
 `eventually_bulk_arithmetic_error`: `exp(beta_decay * L) >= 2^k * C_rate(k) * k^4 * L`):
-- Under GPT's baseline depth `k = 7041` (`beta_10000 = 12`), `L_eff_gpt = 4115904` (exceeding `L_sec3_tat` by `4028215`);
+- Under the upstream baseline depth `k = 7041` (`beta_10000 = 12`), `L_eff_gpt = 4115904` (exceeding `L_sec3_tat` by `4028215`);
 - Under our sharpened tree depth `k = 1040` (`beta_10000 = 12`), `L_eff_sharp = 640722` (saving `3475182` in `log log X_0`, a `6.42x` reduction);
 - Under `k = 1040` + widened spectator cell (`beta_ultra_10000 = 30`), `L_eff_ultra = 255983` (saving `3859921` in `log log X_0`, a `16.08x` reduction). -/
 theorem thm_49_explicit_effective_loglog_threshold_bottleneck_shift

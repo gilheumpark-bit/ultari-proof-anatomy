@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Deterministic symbolic and forensic verification script for Case 012 (OpenAI #266):
+Deterministic symbolic and forensic verification script for OpenAI #266:
 "Mutually unbiased bases in dimension six" (September 24, 2026 release).
 
 Independently verifies all algebraic, spectral, superoperator, Positivstellensatz,

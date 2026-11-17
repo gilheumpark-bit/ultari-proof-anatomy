@@ -4,16 +4,16 @@
   "target_repository": "openai/math (Family 003: DirichletL/ShortDraft, CubicGauss/, paper.tex Part I, paper2.tex, AlexKontorovich/quasi-rh, and Baiying Liu arXiv:2610.12234)",
   "date": "2026-11-05",
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && ~/.elan/bin/lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean && ~/.elan/bin/lean proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
+    "lean4_kernel_check": "lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean && lean proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_qrh_synthesis.py"
   },
   "artifacts_sha256": {
     "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean": "db8865fae7d724f17f28f803d4df09157767e3068eca7c64b0e70dfaae41a029",
-    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "acb0e5752181dfeaa3e9436627b0a270d6231797fc541050ab12a5b3b2441f11",
-    "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "30af2cf261a76e101ac621ea1446acf55e5a8dd5598af4c87630f43824556a70",
-    "proofs/verify_symbolic_qrh_synthesis.py": "3cc6e87a939119a7118e617b9e3fc96e76873c14ac699768f3b91196633d88a4",
+    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "797b362b7cbf5a8d2822cee3c851037e6db47d5347fb755662d56c0457248c0d",
+    "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "95ff96ccc3e90f422a01d8d1be868e9c31d1ab9411c22b24a30661a839987a23",
+    "proofs/verify_symbolic_qrh_synthesis.py": "3a6c4de3c1f80944ee1da12fc260b742ac73661136dd7a4c076f4c268747b863",
     "proofs/symbolic_verification_result.json": "d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4",
-    "proofs/problem_spec.md": "a13ed8044caf9e708178651d22d61ee5f23282c795a6b882ce7b41e607f42c52"
+    "proofs/problem_spec.md": "610816b4cdb431bd97d8368e2d4e55753b5f828dedf0357292c2a61915ae7fc4"
   },
   "verified_key_results": {
     "pillar1_eleven_twelfths_vs_23_24_gap": {

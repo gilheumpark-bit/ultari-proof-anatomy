@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic symbolic and numerical verifier for Case 015 (Papers 1-5: Theorems 1-75)."""
+"""Deterministic symbolic and numerical verifier for Five Classical Riemann Barriers (Papers 1-5: Theorems 1-75)."""
 import hashlib
 import json
 import pathlib
@@ -462,6 +462,8 @@ def verify_paper4_levinson_conrey_and_mollifiers() -> dict:
     assert sp.solve(sp.Eq((7 * th - 4) / 2 + th * sp.Rational(7, 64), 0), th)[0] == sp.Rational(128, 231)
     assert sp.solve(sp.Eq(33 * th - 17, 0), th)[0] == sp.Rational(17, 33)
     assert sp.Rational(1, 2) < sp.Rational(17, 33) < sp.Rational(35, 66) < sp.Rational(4, 7)
+    # Rational numerical comparison benchmark (55264/135375 ≈ 0.408229 > Conrey 0.408058);
+    # unconnected to #003 SiegelZeros/Theorem.lean, which is audited in verify_paper3_siegel_goldfeld_and_ostmann.
     qrh_frac = sp.Rational(55264, 135375)
     assert qrh_frac > sp.Rational(2, 5)
     var_res = compute_paper4_conrey_variational()
@@ -496,7 +498,7 @@ def main() -> None:
     }
     out_path = pathlib.Path(__file__).resolve().parent / "symbolic_verification_result.json"
     out_path.write_text(json.dumps(res, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(f"[PASS] Case 015 Papers 1-5 symbolic & numerical verification -> {out_path.name}")
+    print(f"[PASS] Classical Riemann Barriers Papers 1-5 symbolic & numerical verification -> {out_path.name}")
 
 
 if __name__ == "__main__":

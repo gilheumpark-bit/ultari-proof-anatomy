@@ -1,5 +1,5 @@
 /-
-  Case 015 - Paper 4 (Theorems 51-63): Critical-Line Zeros & Mollifier `θ = 4/7` + `J_{AB} = -1/2` Barriers
+  Paper 4 (Theorems 51-63): Critical-Line Zeros & Mollifier `θ = 4/7` + `J_{AB} = -1/2` Barriers
   Selberg (1942), Levinson (1974), Deshouillers-Iwaniec (1982), Conrey (1989), and `BCR` (2017).
   Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/

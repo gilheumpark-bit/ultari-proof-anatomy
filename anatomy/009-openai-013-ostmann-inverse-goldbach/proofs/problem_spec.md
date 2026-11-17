@@ -1,7 +1,7 @@
 # Problem Specification: OpenAI `#013` Ostmann's Inverse Goldbach Conjecture (Zero-Hint Problem Specification)
 
 ## 1. Scope & Target Repository
-- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#013`: Ostmann's Inverse Goldbach Problem / *The additive indecomposability of the primes*):
+- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#013`: Ostmann's Inverse Goldbach Problem / The additive indecomposability of the primes):
   1. `preprints/the-additive-indecomposability-of-the-primes-September-24-2026/build/` (`paper.tex`, `references.bib`, `glyph-mappings.tex`, and `sections/01-introduction.tex` through `sections/09-conclusion.tex`)
   2. `lean/ComparatorChallenges/OstmannComplete.lean` and `lean/ComparatorChallenges/OstmannPrimes.lean`
   3. `lean/OAI/NumberTheory/Ostmann/` (`Complete.lean`, `Main.lean`, `Result.lean`, `Corollaries.lean`, `InverseGoldbach.lean`, and all subdirectories `Preliminaries/`, `Quadratic/`, `QuadraticCenter/`, `Characters/`, `ZeroDensity/`, `Supply/`, `Tree/`, `Construction/`, `Arithmetic/`, `Conclusion/`)

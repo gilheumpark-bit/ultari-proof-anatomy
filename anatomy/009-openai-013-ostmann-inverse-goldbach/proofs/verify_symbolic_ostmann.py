@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic symbolic (SymPy) and numerical (PyTorch) verifier for Case 009:
+"""Deterministic symbolic (SymPy) verifier for OpenAI #013:
 OpenAI #013 (Ostmann's Inverse Goldbach Conjecture / The Additive Indecomposability of the Primes):
 Twin-Engine 7,716-File Stratigraphy, Finite-Summand CRT + Collision Stability,
 Section 5 Nonsparse Fourier Supply Contraction (-11/125), and Section 6-9 Binary Tree
@@ -373,7 +373,7 @@ def verify_pillar3_tree_and_permutation_contradiction() -> dict:
 
 
 def verify_pillar4_algebraic_engines_and_cauchy_determinant() -> dict:
-    """Verifies Theorems 56-75: Common Center Lift, 2x2 Schur complement, Affine collision, and Cauchy determinant."""
+    """Verifies Theorems 56-75: Common Center Lift, 2x2 block norm & PSD completion, Affine collision, and 2x2 minor model."""
     n, m, a, t_p, s, p, u, v, y, lam, d, u1, u2, u3, t, a1, a2, b1, b2 = sp.symbols(
         "n m a t_p s p u v y lam d u1 u2 u3 t a1 a2 b1 b2"
     )
@@ -394,7 +394,7 @@ def verify_pillar4_algebraic_engines_and_cauchy_determinant() -> dict:
     assert sp.expand(vandermonde_step) == 0
     assert sp.expand((lam * d) * (lam * d - 1) - (lam * d - 1) ** 2 - (lam * d - 1)) == 0
 
-    # Section 8: 2x2 Cauchy determinant polynomial identity & quadratic congruence splitting
+    # Section 8 / algebraic minor model: 2x2 determinant polynomial identity & quadratic congruence splitting
     cauchy_cleared = (b1 - a2) * (b2 - a1) - (b1 - a1) * (b2 - a2)
     cauchy_factored = (b2 - b1) * (a1 - a2)
     assert sp.expand(cauchy_cleared - cauchy_factored) == 0
@@ -428,7 +428,7 @@ def main() -> None:
     }
     out_path = pathlib.Path(__file__).with_name("symbolic_verification_result.json")
     out_path.write_text(json.dumps(res, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"[OK] Symbolic & PyTorch verification passed -> {out_path}")
+    print(f"[OK] Symbolic verification passed -> {out_path}")
 
 
 if __name__ == "__main__":

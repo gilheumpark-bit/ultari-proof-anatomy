@@ -584,7 +584,7 @@ theorem mixed_product_graph_coboundary_and_cycle_sign_invariance (su sv sw : Int
      `Lemma setup:rho-lemma`, `Lemma comp:chain-acyclic`, `Lemma realization:copies`):
     On the central quartic K3 surface `B` (`dim N = 18`, `dim U_B = 3`), `dim P_B = 18 + 3 = 21`,
     strict-word chain complex acyclicity holds for all arities `j ≥ 2`, and copy-arrow invertibility
-    and copy-arrow invertibility requires `copies ≥ 3`. -/
+    requires `copies ≥ 3`. -/
 theorem directed_comparison_and_chain_acyclicity_thresholds (j copies : Int)
     (hj : 2 ≤ j) (h_copies : 3 ≤ copies) :
     let dim_N : Int := 18
@@ -597,8 +597,8 @@ theorem directed_comparison_and_chain_acyclicity_thresholds (j copies : Int)
 /-- [Theorem 35] `Remark 7.5` (`07-consequences.tex:324-336`) Beauville Weight-Zero Projector Repair
     (`oai_032_cm_remark_7_5_repair.patch`):
     When clearing the denominator `N ≥ 2` of `b ∈ Hom(A_0, B_0) ⊗ ℚ` in `Z_0 = N^(-2r) (Nb)^* Z_{CM,0}`:
-    1. On any non-zero Beauville weight component `CH^r_{(s)}(B_0)` (`s ≥ 1`), `[N]^*` acts by `N^(2r + s)`,
-       leaving residual exponent `(2r + s) - 2r = s ≥ 1` so `N^s ≥ 2 > 1` depends on `N`.
+    1. By `[Bea86, Prop. 2]`, `[N]^*` acts on `CH^r_{(s')}(B_0)` as `N^(2r - s')`, leaving `N^(-s') ≠ 1` on any
+       nonzero weight `|s'| = s ≥ 1` (Lean models the `s' = -s` exponent `(2r + s) - 2r = s ≥ 1`, `N^s ≥ 2`).
     2. After applying Beauville's weight-zero eigenprojector `P_{r,0}` (`s = 0`), the exponent difference is
        `(2r + 0) - 2r = 0`, making `Z_0` strictly independent of the choice of denominator `N`. -/
 theorem cm_remark_7_5_beauville_projector_denominator_invariance (N r s : Nat)

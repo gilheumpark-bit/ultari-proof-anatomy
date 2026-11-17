@@ -1,6 +1,6 @@
 /-
   OpenAI #266 (Mutually Unbiased Bases in Dimension Six & Order-Six Complex Hadamard Matrices)
-  Case 012 — Part II:
+  Part II:
   Cartan Killing Orthogonality, Weiner 6 -> 7 Realigned Kraus Completion, Sharp Dimension-Rigidity
   No-Go Below 6 Bases, Six Young-Symmetrizer Gram Blocks (98 Pivots > 40,000),
   and Exact Integer-Cleared Positivstellensatz Contradiction (Theorems 26–50).
@@ -150,7 +150,7 @@ theorem thm_34_partitions_of_five_young_block_count
   omega
 
 /-- [Theorem 35] Six Gram block dimensions sum to `98` pivots and `1,021` lower-triangle entries
-(`04-mixed.tex:235-247`, `GramNonnegative.lean:14-82`, `verify.py:401-408`):
+(`04-mixed.tex:235-247`, `GramNonnegative.lean:15-67`, `verify.py:401-408`):
 block sizes `(5, 21, 11, 27, 22, 12)` yield `98` diagonal Schur pivots and `15 + 231 + 66 + 378 + 253 + 78 = 1,021`
 packed symmetric integer entries. -/
 theorem thm_35_gram_block_dimensions_and_pivot_sum_98
@@ -162,7 +162,7 @@ theorem thm_35_gram_block_dimensions_and_pivot_sum_98
   omega
 
 /-- [Theorem 36] Decimal exponent scaling weights `5 * 10^(15 - e_b)` across `Block0..5`
-(`04-mixed.tex:281-285`, `GramNonnegative.lean:83-107`):
+(`04-mixed.tex:281-285`, `GramNonnegative.lean:62-92`):
 for decimal exponents `(14, 13, 13, 14, 14, 15)` with `E_max = 15`, the integer weights
 `5 * 10^(15 - e_b)` equal `(50, 500, 500, 50, 50, 5)` and preserve nonnegativity of `sourceGram`. -/
 theorem thm_36_gram_decimal_exponent_integer_weights
@@ -224,7 +224,7 @@ theorem thm_39_block0_leading_minor_sylvester_positivity
   omega
 
 /-- [Theorem 40] Mixed-table elimination rank, retained `Fin 3237` coordinates, and `2,425` leaves
-(`05-verification.tex:215-310`, `verify.py:2`, `Expression.lean:1-35`):
+(`05-verification.tex:215-310`, `verify.py:326-372`, `Expression.lean:1-35`):
 `46,041` equations in `3,429` mixed/pair coordinates (`3,237` retained in Lean, `192` pruned)
 produce `2,767` independent witness rows, of which `2,425` appear as leaves in `Expression.lean`. -/
 theorem thm_40_mixed_table_rank_and_retained_coordinates
@@ -413,4 +413,4 @@ theorem thm_50_weiner_completion_k5_counter_model
   subst hd; subst hk
   omega
 
-end Mub6WeinerCompletionAndGramSos -- Seal Seq 2 (2026-11-13, prev_sha256: e9b89f4f5a2d535a2a5454560d289c19d6a02d5d30249ee5412cb5d7cf3fec73): L8 header comment wording cleanup (0 theorem/proof edits)
+end Mub6WeinerCompletionAndGramSos -- Seal Seq 2 (2026-11-17, prev_sha256: e9b89f4f5a2d535a2a5454560d289c19d6a02d5d30249ee5412cb5d7cf3fec73): header/docstring citation cleanup (0 theorem/proof edits)

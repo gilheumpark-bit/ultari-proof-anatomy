@@ -5,16 +5,16 @@
   "date": "2026-11-10",
   "lean_version": "v4.29.0-rc8",
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/catalan_rows_two_adic_and_odd_primes.lean && ~/.elan/bin/lean proofs/catalan_palindromic_frobenius_and_modular.lean && ~/.elan/bin/lean proofs/catalan_real_place_energy_and_contradiction.lean",
+    "lean4_kernel_check": "lean proofs/catalan_rows_two_adic_and_odd_primes.lean && lean proofs/catalan_palindromic_frobenius_and_modular.lean && lean proofs/catalan_real_place_energy_and_contradiction.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_catalan005.py"
   },
   "artifacts_sha256": {
-    "proofs/catalan_rows_two_adic_and_odd_primes.lean": "0827a102b58a53f86d9d90b981acb63a415aa29f28e02c8136b8d2118fe13c83",
-    "proofs/catalan_palindromic_frobenius_and_modular.lean": "6ef02840b38e89f1064df01daed367c5e0091a1b65c058ebe6d5f32c0404c575",
-    "proofs/catalan_real_place_energy_and_contradiction.lean": "b85ac7af5d4744b450630ef0ec0463e81f8fb0c33f12408b69a21db312ac7ec2",
+    "proofs/catalan_rows_two_adic_and_odd_primes.lean": "194cfca5ed0b19bab3582fc453906b4904d46b5a5a3818813082fe9be590b918",
+    "proofs/catalan_palindromic_frobenius_and_modular.lean": "c4d28ebdd6a9102acd0496b7467a817a60d98bc41898093ca5b3114c24930354",
+    "proofs/catalan_real_place_energy_and_contradiction.lean": "77b4a4c45c9daecb1764434bd1e20741a6cc40a112fb59eb661fab2ad2bb2432",
     "proofs/verify_symbolic_catalan005.py": "b555a159da0e934d8c9a3673094ee61acbed535406db50dedcb652ed02958aa0",
     "proofs/symbolic_verification_result.json": "fb873e26faf086f35f9af70fd07190fed9b68d0e71551c289cb3542a4b559935",
-    "proofs/problem_spec.md": "dc3b72669679e321ca3cec32ee2d25d90e68a137cdce9373ae3fc270125f4ed5"
+    "proofs/problem_spec.md": "f4bc9f251f2fcf0dd2239fbd55bb83986b68c2b21d2dc598295ac26b69619039"
   },
   "verified_key_results": {
     "pillar1_rows_two_adic_and_odd_primes": {
@@ -522,15 +522,17 @@
     ]
   },
   "files": {
-    "ko/01_일반인용_해설서.md": "287a72b3b457d6834a1a749aacf350425fdf61aa4c05153986ff5860658ef211",
-    "ko/02_중급자용_수학및코드가이드.md": "13afeb08bf34369f78fa6219b584ef6ddae3fe684154cfa6ba898aba711b4c8a",
-    "ko/03_전문가용_학술및수리물리보고서.md": "add8f14e6267288be723585a12bc2d887681bb4e92c4f46a150343fb2eb04f7f",
-    "ko/04_자동검증및파서용_명세서.md": "8b95b361606aee56e67b69663ccf70b51640c85e1a0db36642f986e4f1f44de2",
-    "ko/05_OPFF_상세형_포렌식심사보고서_PR80.md": "0e328da23fecde49e1051ed7d46acc1d8404221657473bef7f700151851857fd",
-    "en/01_Executive_Summary_and_General_Guide.md": "9397447c6ca9ea6adea5cb15c4f79028e333ec11bd0cae92f3ddd45501b615c6",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "04c8e960a83432ed8663599827b7bd69385ea9a4b78583a10273ff9e6460d619",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "4405b034e268ba72613376aa661bf3b7891a8f8f6f19b6eab03c76482db6d33f",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "a01edd8602479bb9bd9f8ed3ae480f1f1a26ec9588f4725dc677364ab03fe771",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md": "0d660485f4bd3a74957b9dae1d20ed8b5aff9e7877f0c69dfa9f5eda17d6ce2f"
+    "ko/01_일반인용_해설서.md": "402deda4231a8c72680e0934d78b147f63b7786fb422dd030e6aec5a3a58ed60",
+    "ko/02_중급자용_수학및코드가이드.md": "d5276655c0e2ef909e4f8b21a0644c49d8dc45113614e7bb3e9711b60d23acc1",
+    "ko/03_전문가용_학술및수리물리보고서.md": "1c0636edb378f9cb94dc31aa61ff48e28e581124b53db15666242bc71f39e121",
+    "ko/04_자동검증및파서용_명세서.md": "c85bebe18d2dd81a8c78fe877aca8536f25d741c744040eeaf031057106a2a8c",
+    "ko/05_OPFF_상세형_포렌식심사보고서_PR80.md": "6b31821d71b54f989ff7f9a026482b43140f9ddc0820228661c95ea92acb318d",
+    "ko/06_OPFF_기본형_감사리포트_PR80.md": "d344c3ca701c2e0ffc1bbf2829e458dfe66c3d977c16a60151633cda477d61c5",
+    "en/01_Executive_Summary_and_General_Guide.md": "743962f7787cb5fa8be8ba97b22c3b3ffa96ef216b7d51134b9587efad5a9892",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "3ee23ea39be9018830209223b459c4e04c051ea109e50c8997622b768de5ed38",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "7ced2f3b2fe7e7689003d0af882ca71cb423674782d88663ec9970ae66d9d1b3",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "8b757fa3cfaf3d02b03b7b59ebbd2370e61155aede643f1b1ed8d742349ace54",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md": "d85c6427589d9987c17c1f030c784615b0e9fb1f3a7615dbb6488d05a6eba02d",
+    "en/06_OPFF_Basic_Audit_Report_PR80.md": "bcc76c926693b3e1cc7144628ded9032a6c7c0c670df7a12c8cd8783964d510c"
   }
 }

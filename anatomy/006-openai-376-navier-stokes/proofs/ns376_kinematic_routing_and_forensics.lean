@@ -5,13 +5,13 @@
   Total Theorems: 20 (Theorems 1 to 20), 0 sorry, 0 axiom.
 -/
 
-namespace UltariNS376
+namespace OPFFNS376
 
 -- ============================================================================
 -- Section 1: Manufactured Forcing Tautology & Orthogonal Shear Advection Annihilation
 -- ============================================================================
 
-/-- Theorem 1 (Manufactured Forcing Tautology — BoxCoding.lean:53-66):
+/-- Theorem 1 (Manufactured Forcing Tautology: BoxCoding.lean:53-66):
     Setting f₀ = dtU + convU, f₁ = -lapU, f = f₀ + ν * f₁, and grad_p = 0
     makes the Navier-Stokes momentum equation dtU + convU = -grad_p + ν * lapU + f
     an unconditional ring identity (`abel`) for ANY velocity field U. -/
@@ -42,7 +42,7 @@ theorem ns376_manufactured_force_arbitrary_trajectory_witness
   have hneg : nu * (-lapU) = -(nu * lapU) := Int.mul_neg nu lapU
   omega
 
-/-- Theorem 3 (Orthogonal Shear Advection Annihilation — SolenoidalSheetPrograms.lean:188):
+/-- Theorem 3 (Orthogonal Shear Advection Annihilation: SolenoidalSheetPrograms.lean:188):
     In a unidirectional shear sheet U(t, x₁, x₂, x₃) = (u₁(t, x₃), u₂(t, x₃), 0)
     where ∂₁U = ∂₂U = 0 and u₃ = 0, every component of the nonlinear Euler advection
     (U · ∇)U_i = u₁ ∂₁U_i + u₂ ∂₂U_i + u₃ ∂₃U_i vanishes identically, reducing
@@ -59,7 +59,7 @@ theorem ns376_orthogonal_shear_advection_zero
   have h3 : u3 * d3U = 0 := by rw [hu3]; exact Int.zero_mul d3U
   omega
 
-/-- Theorem 4 (Integer-Collar Temporal Disjointness — SolenoidalSheetPrograms.lean:102-103):
+/-- Theorem 4 (Integer-Collar Temporal Disjointness: SolenoidalSheetPrograms.lean:102-103):
     When pulse A is active in [n_step + eps, n_step + period - eps] and pulse B
     is active in [n_step + period + eps, n_step + 2 * period - eps] with eps > 0,
     their active intervals are separated by a quiet collar of width 2 * eps > 0
@@ -73,7 +73,7 @@ theorem ns376_collar_glue_time_support_disjoint
     tB_start - tA_end = 2 * eps ∧ n_step + eps < tA_end ∧ tA_end + 2 ≤ tB_start := by
   omega
 
-/-- Theorem 5 (Moving Affine Vector Potential Curl Key Trick — BoxTransport/Routing.lean:100-108):
+/-- Theorem 5 (Moving Affine Vector Potential Curl Key Trick: BoxTransport/Flow.lean:171-225):
     For 6 * Ψ_{i,j} = 3 * (v_i y_j - v_j y_i) + 2 * (l_i - l_j) y_i y_j, the 0-th curl
     component 6 * (∂₁ Ψ_{0,1} - ∂₂ Ψ_{2,0}) equals (3 v₀ + 2(l₀ - l₁) y₀) + (3 v₀ + 2(l₀ - l₂) y₀).
     Under the incompressibility trace condition l₀ + l₁ + l₂ = 0, this simplifies
@@ -107,7 +107,7 @@ theorem ns376_vector_potential_curl_divergence_free
 -- Section 2: Volume-Preserving Box Routing & 3-Stack / 2-Stack Turing Encoding
 -- ============================================================================
 
-/-- Theorem 7 (Volume-Preserving Third-Axis Scale Bound — BoxTransport/Routing.lean:51-72):
+/-- Theorem 7 (Volume-Preserving Third-Axis Scale Bound: BoxTransport/Routing.lean:51-72):
     When horizontal scales s₀, s₁ are bounded between m_min ≥ 1 and m_max ≥ m_min,
     the product s₀ * s₁ lies in [m_min², m_max²], guaranteeing strictly positive
     denominator for the compensating vertical scale s₂ = (s₀ * s₁)⁻¹. -/
@@ -124,7 +124,7 @@ theorem ns376_volume_preserving_third_scale_inversion
   have h3 : 1 * 1 ≤ m_min * m_min := Int.mul_le_mul hmin hmin (by omega) (by omega)
   omega
 
-/-- Theorem 8 (5-Stage Box Routing Schedule inside [1/4, 3/4] — BoxTransport/Motion.lean):
+/-- Theorem 8 (5-Stage Box Routing Schedule inside [1/4, 3/4]: BoxTransport/Motion.lean):
     In units of 1/20, the active window [1/4, 3/4] = [5, 15] has length 10 and
     partitions into 5 disjoint stages of width 2 each (stage 0: translation out,
     stage 1: alignment, stage 2: volume-preserving diagonal scaling, stage 3: target
@@ -141,7 +141,7 @@ theorem ns376_five_stage_box_routing_schedule_disjoint
     t1 = 7 ∧ t5 = 15 ∧ t5 - t0 = 5 * w ∧ t0 > 0 ∧ 20 - t5 = 5 := by
   omega
 
-/-- Theorem 9 (Base-b Stack Push/Pop Invertibility — NavierStokesVelocity.lean:61-65):
+/-- Theorem 9 (Base-b Stack Push/Pop Invertibility: NavierStokesVelocity.lean:61-65):
     In VelocityDetection.Stacks.update, pushing digit beta (0 ≤ beta < b) via `.right`
     maps (x, y) to (x' = b * x + beta, y' = y_quot) where y = b * y_quot + y_rem,
     and popping via `.left` from (x', y') recovers x' / b = x and top digit x' % b = beta. -/
@@ -163,7 +163,7 @@ theorem ns376_base_b_stack_push_pop_roundtrip
   rw [hpush, hcomm]
   omega
 
-/-- Theorem 10 (2-Stack Configuration Address Injectivity — NavierStokesVelocity.lean:82):
+/-- Theorem 10 (2-Stack Configuration Address Injectivity: NavierStokesVelocity.lean:82):
     The encoding address(B, i, x, y) = 1 + x + B * y + B² * i is strictly ordered
     across machine states i when 0 ≤ x < B and 0 ≤ y < B: any configuration in state
     i₂ ≥ i₁ + 1 has strictly larger address than any configuration in state i₁. -/
@@ -186,7 +186,7 @@ theorem ns376_stack_address_bijection_injective
   have hstep : B * B * (i1 + 1) = B * B * i1 + B * B * 1 := Int.mul_add (B * B) i1 1
   omega
 
-/-- Theorem 11 (Expanding Array Radius Lower Bound — NavierStokesVelocity.lean:94-99):
+/-- Theorem 11 (Expanding Array Radius Lower Bound: NavierStokesVelocity.lean:94-99):
     For lambda(D) = 4 * D and initialRadius(ν, K, D) = 1024 * 3000 * (1 + ν) * (4 * D) * (K * D + 2),
     even at the minimal parameters D ≥ 1, ν ≥ 0, K ≥ 0, the initial radius satisfies
     initialRadius ≥ 24,576,000 and expands by at least 4× per step. -/
@@ -214,7 +214,7 @@ theorem ns376_expanding_radius_geometric_growth
   have hR1_lo : R0 * 4 ≤ R0 * lam := Int.mul_le_mul_of_nonneg_left h2 (by omega)
   omega
 
-/-- Theorem 12 (Balanced 3-Stack Exponent Sum — BoxCoding.lean:47-51):
+/-- Theorem 12 (Balanced 3-Stack Exponent Sum: BoxCoding.lean:47-51):
     In a 3-stack balanced machine where stack 0 scales by r^(d₀), stack 1 by r^(d₁),
     and the compensating work stack 2 by r^(d₂) with d₂ = -(d₀ + d₁), the total
     log-volume shift d₀ + d₁ + d₂ equals 0 at every transition row. -/
@@ -225,7 +225,7 @@ theorem ns376_balanced_three_stack_determinant_balance
     total_log_det = 0 := by
   omega
 
-/-- Theorem 13 (Fixed Particle Observer Box Separation — BalancedThreeStack.lean:166-170):
+/-- Theorem 13 (Fixed Particle Observer Box Separation: BalancedThreeStack.lean:166-170):
     The fixed initial particle label fixedLabel = (4, 0, 0) lies strictly outside
     the open observer cube observer = (-1, 2)³, requiring a strict negative x₀-displacement
     Δx₀ = x₀(t) - 4 < -2 for halting detection. -/
@@ -284,10 +284,10 @@ theorem ns376_navier_stokes_dir_631_orphan_partition
     total_ns = 843 := by
   omega
 
-/-- Theorem 16 (Challenge Clone Module Identity — BalancedThreeStack vs ForcedNavierStokesComputation):
-    BalancedThreeStack.lean (239 lines) and ForcedNavierStokesComputation.lean (232 lines)
-    contain the exact same 38 definitions and the exact same 1 theorem
-    `balanced_three_stack_realization`, differing only in 7 namespace/docstring lines,
+/-- Theorem 16 (Challenge Clone Module Identity: BalancedThreeStack vs ForcedNavierStokesComputation):
+    BalancedThreeStack.lean (239 lines) and ForcedNavierStokesComputation.lean (232 lines) share the exact same
+    38 definitions (`37 def + 1 inductive`) among `51` declarations (`+ 3 structure + 9 abbrev + 1 theorem`)
+    and `balanced_three_stack_realization` (50 shared helper decls identical; differing by 7 wrapper/docstring lines),
     and both point to the single solution module `BalancedTransport.MainResult`. -/
 def cloneHeaderDiff (lines_b3 lines_fn : Int) : Int :=
   lines_b3 - lines_fn
@@ -361,7 +361,7 @@ theorem ns376_sobolev_three_derivative_loss
     k_psi - k_vel = 1 ∧ k_psi - k_vort = 2 ∧ k_psi - k_force = 3 ∧ 0 ≤ k_force := by
   omega
 
-/-- Theorem 20 (5D RationalBox Cell Subdivision Explosion — NavierStokesVelocity.lean:1134-1142):
+/-- Theorem 20 (5D RationalBox Cell Subdivision Explosion: NavierStokesVelocity.lean:1134-1142):
     In `boundTrial`, subdividing a 5D `RationalBox 5` into (k + 2) cells per axis
     requires evaluating (k + 2)⁵ grid cells per trial: 32 cells at k = 0, 243 cells
     at k = 1, and 100,000 cells at k = 8. -/
@@ -377,4 +377,4 @@ theorem ns376_rational_box_grid_combinatorial_explosion
   subst hk0 hk1 hk8
   omega
 
-end UltariNS376
+end OPFFNS376

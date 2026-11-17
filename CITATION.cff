@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this audit framework, the 5-Gate Joint International Audit Rubric, the 14 Forensic Checkpoints (CP-01 to CP-14), or any findings from the Case Verdict Ledgers (Case 001 to Case 015), please cite it using the metadata below."
 title: "OPFF Audit Charter & Forensic Verdict Ledger: Byte-Level Zero-Truncation Audit of Frontier Mathematical Corpora"
-abstract: "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,191/4,191 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Joint International Audit Rubric unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards."
+abstract: "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,217/4,217 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Joint International Audit Rubric unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards."
 type: software
 version: "1.0.0"
 doi: "10.5281/zenodo.24241228"

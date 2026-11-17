@@ -1,27 +1,27 @@
 {
   "case_id": "classical_riemann_five_barriers_full_anatomy",
   "title": "Five Foundational Classical Riemann Hypothesis Barriers (1896-2024): de la Vallee Poussin & Korobov-Vinogradov Zero-Free Slack Recovery vs Fejer-Riesz Barrier, Ingham-Huxley-Guth-Maynard Zero-Density Inflection Shift (3/4 -> 7/10) & QRH Gram Unbundling, Landau-Siegel Classical.em Ineffectiveness vs Elliptic Rank-3 Effectivization, Selberg-Levinson-Conrey Mollifier Calculus (J_AB = -1/2 => kappa < 1), and Burgess (3/16) SOS Trap vs Kim-Sarnak (7/64) GL_5 Amplification",
-  "target_repository": "Classical Riemann Hypothesis Barrier Literature (1896-2024) cross-audited against PrimeNumberTheoremAnd (ZetaBounds.lean) and openai/math (#001 QRH, #002 SiegelZeros, #005 Nonquadratic, Ostmann, Jacobsthal; 15 staged reference files in proofs/oai_ref/)",
+  "target_repository": "Classical Riemann Hypothesis Barrier Literature (1896-2024) cross-audited against PrimeNumberTheoremAnd (ZetaBounds_ZeroFree_excerpt.lean) and openai/math (#003 QRH & SiegelZeros, #005 Catalan, #013 Ostmann, #021 Jacobsthal / Erdos970; 15 staged reference files in proofs/oai_ref/)",
   "date": "2026-11-13",
   "lean_version": "v4.29.0-rc8",
   "external_gap_premises": [
     "htail"
   ],
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/classical_dlvp_korobov_and_zero_free.lean && ~/.elan/bin/lean proofs/classical_ingham_huxley_zero_density.lean && ~/.elan/bin/lean proofs/classical_guth_maynard_and_qrh_gram.lean && ~/.elan/bin/lean proofs/classical_siegel_zero_and_ineffectiveness.lean && ~/.elan/bin/lean proofs/classical_levinson_conrey_and_mollifier_barrier.lean && ~/.elan/bin/lean proofs/classical_burgess_and_kim_sarnak_barrier.lean",
+    "lean4_kernel_check": "lean proofs/classical_dlvp_korobov_and_zero_free.lean && lean proofs/classical_ingham_huxley_zero_density.lean && lean proofs/classical_guth_maynard_and_qrh_gram.lean && lean proofs/classical_siegel_zero_and_ineffectiveness.lean && lean proofs/classical_levinson_conrey_and_mollifier_barrier.lean && lean proofs/classical_burgess_and_kim_sarnak_barrier.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_classical_riemann.py"
   },
   "artifacts_sha256": {
-    "proofs/classical_dlvp_korobov_and_zero_free.lean": "af6541ccf6b13c36569f9f404073ba2b2f67082fdf69d99e59eb1629609f44ed",
-    "proofs/classical_ingham_huxley_zero_density.lean": "ce28dcbc8557015d7ce4c12de6cc4f796f9d9795e350313ffb0b50d725d51215",
-    "proofs/classical_guth_maynard_and_qrh_gram.lean": "ef89b7a2caa1638e950ecbe309fd08a583e089bf402c2596e4e7570e488f5455",
-    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "ac4b24c47f81e30e64d91319bb318e6125c7a8507e9e2e522036dc27602e6d6e",
-    "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "86b85b06ff93f7ff6ba799a18913106ede607986a1bd16aec7af8f223da44198",
-    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "fb788410a1bb52c5c4fca63d4a94c2bd3f7798b9ccf93fe94520ac563ede1a3e",
-    "proofs/verify_symbolic_classical_riemann.py": "2126c51dd29f929d792e08d235efe371741f32f4b23e61108b64305f726ebddf",
-    "proofs/symbolic_siegel_conrey_burgess.py": "0fc01ccd985065d164d2dd0d9d24d684b894d9e2a8f10ad55e43287f02148c28",
+    "proofs/classical_dlvp_korobov_and_zero_free.lean": "c4119be676231c12c65a2eb1eb85107fad279b711e7f3c4b47493c2ac960851b",
+    "proofs/classical_ingham_huxley_zero_density.lean": "696e7e58ce6b8a1fb11ca12a951b6ea5793eb5b50bcaf77736f1fea5d8b3426f",
+    "proofs/classical_guth_maynard_and_qrh_gram.lean": "e771762ef219d2cb3e52558763f3628b7c906950dabc4b3effbc5ba9385c5b28",
+    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "cc2532a99f0a37270e097a11af89c74a9aafdd2014b1f3f92745d9c2332b9e1a",
+    "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "cf67a2648cc092df1a3f3d4c5689462aa0b0aeba23f03f5a1fd53f494e68f56d",
+    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "213402efc6360d3eb78d3c32be42ae7037fa14ecd5a58a3007bfff54c97b3854",
+    "proofs/verify_symbolic_classical_riemann.py": "201563b296cc49b2f3b46775b44f2270d705b7febedffcc0412a3c79b099a9df",
+    "proofs/symbolic_siegel_conrey_burgess.py": "ae1a388193d630dcaf33115c1ca7ccb5dc85dc6eb759e8bb56957dc3887c060a",
     "proofs/symbolic_verification_result.json": "6314872da8f8f84b4ae3c240ed0e9d625a4943181e737270136641a52eefc326",
-    "proofs/problem_spec.md": "eed942a0eb0fda24dad832ec7f2ba153a5f7def3f070be5328479637e8338820"
+    "proofs/problem_spec.md": "79a27abe73a3f9290f843022755482a70d66defe5f74a4a9d811c92dc782f30c"
   },
   "verified_key_results": {
     "paper1_zero_free_and_fejer_riesz": {
@@ -134,7 +134,7 @@
       "universal_boundary_invariant_jab": "-1/2",
       "levinson_linear_proportion_floor": "1/3",
       "conrey_deg17_at_four_sevenths": 0.408058,
-      "qrh_theorem_fraction": "55264/135375",
+      "paper4_rational_benchmark_fraction": "55264/135375",
       "lean_theorems": [
         "thm_51_selberg_levinson_littlewood_jensen_proportion_floor (Theorem 51, L28)",
         "thm_52_deshouillers_iwaniec_kuznetsov_four_sevenths_barrier (Theorem 52, L43)",

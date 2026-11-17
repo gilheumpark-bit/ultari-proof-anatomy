@@ -13,18 +13,18 @@ import Mathlib.Data.Fintype.Pi
 ## Transverse Multiplicity, Inscribed Rectangle vs Simplex, Logarithmic Rigidity, and Blowup (`Theorems 26-50`)
 
 Formalizes Pillar 2 of `OAI.NumberTheory.PiExponent` (`WeightSeparationConstant.lean:1-77`,
-`RectangularVolume.lean:1-83`, `SimplexCounting.lean:1-90`, `TransverseMultiplicity.lean:1-90`,
+`RectangularVolume.lean:1-83`, `SimplexCounting.lean:40-110`, `TransverseMultiplicity.lean:1-90`,
 `TransverseWeightedMultiplicity.lean:1-91`, `LogarithmicObstruction.lean:1-100`,
 `FormalLogTruncation.lean:1-90`, `CurveZeroPole.lean:1-90`, `AdmissibleCurveInequality.lean:1-51`,
 `BlowupIdeal.lean:1-90`, `ExceptionalCurveDegree.lean:1-120`, `AdmissibleBlowupAmple.lean:1-19`,
-`ReesPushdown.lean:1-90`, `CechH1Transfer.lean:1-100`, `FiniteCoverCohomology.lean:1-120`).
+`ReesPushdown.lean:311-360`, `CechH1Transfer.lean:1-100`, `FiniteCoverCohomology.lean:1-120`).
 -/
 
 open scoped BigOperators LaurentSeries Polynomial
 
 namespace PiIrrationalityAnatomyPillar2
 
-/-- Continuous-simplex term `2 * k! * ((m + 2)/σ)^k` (`WeightSeparationConstant.lean:13`, `interpolation.tex:118`). -/
+/-- Continuous-simplex term `2 * k! * ((m + 2)/σ)^k` (`WeightSeparationConstant.lean:13`, `interpolation.tex:94,125-129`). -/
 noncomputable def cStarPaperTerm (m k : ℕ) (σ : ℝ) : ℝ :=
   2 * (k.factorial : ℝ) * (((m : ℝ) + 2) / σ) ^ k
 /-- Inscribed-rectangle term `k^k * ((m + 2)/σ)^k` (`WeightSeparationConstant.lean:39`). -/
@@ -60,8 +60,8 @@ def cechD0 {J M : Type*} [AddCommGroup M] (c : J → M) (i j : J) : M :=
 def cechD1 {J M : Type*} [AddCommGroup M] (g : J → J → M) (i j k : J) : M :=
   g j k - g i k + g i j
 
-/-- Theorem 26: Exact crossover between continuous simplex volume `2 * k!` (`interpolation.tex:118`)
-and Lean's inscribed discrete rectangle `k^k` (`RectangularVolume.lean:15-52`): for every `k ≥ 3`,
+/-- Theorem 26: Exact crossover between continuous simplex volume `2 * k!` (`interpolation.tex:94,125-129`)
+and Lean's inscribed discrete rectangle `k^k` (`RectangularVolume.lean:9-10,66-79`): for every `k ≥ 3`,
 `2 * k! < k^k` strictly. -/
 theorem thm_26_weighted_simplex_vs_inscribed_rectangle_quotient_length (k : ℕ) (hk : 3 ≤ k) :
     2 * k.factorial < k ^ k := by
@@ -116,7 +116,7 @@ theorem thm_27_paper_vs_lean_weight_separation_constant_c_star (m k : ℕ) (σ :
     norm_num [Nat.factorial]
 
 /-- Theorem 28: Riemann-free discrete binomial lower bound `(Q - k)^k ≤ k! * Q.choose k` via
-descending factorials (`SimplexCounting.lean:100-180`). -/
+descending factorials (`SimplexCounting.lean:40-110`). -/
 theorem thm_28_euclidean_quotient_remainder_simplex_sandwich (Q k : ℕ) (hkQ : k ≤ Q) :
     ∃ desc : ℕ, desc = Q.descFactorial k ∧
       1 ≤ Q.choose k ∧ (Q - k) ^ k ≤ desc ∧ desc = k.factorial * Q.choose k := by
@@ -191,7 +191,7 @@ theorem thm_31_bouts_lemma_transverse_w_degree_lower_bound {r : ℕ}
   exact (inv_lt_iff_one_lt_mul₀ h1σ).mpr h1_lt
 
 /-- Theorem 32: Curve exclusion criterion (`AdmissibleCurveInequality.lean:15-50`,
-`interpolation.tex:75-105`): a curve of positive degree `d_0 > 0` cannot simultaneously have
+`interpolation.tex:241-260`): a curve of positive degree `d_0 > 0` cannot simultaneously have
 non-negative nef blowup intersection and normalized multiplicity sum `> (1 + σ)⁻¹`. -/
 theorem thm_32_curve_exclusion_when_sum_h_p_exceeds_one_over_one_plus_sigma
     {ι : Type*} (s : Finset ι) (h : ι → ℝ) (d₀ σ : ℝ)
@@ -413,7 +413,7 @@ theorem thm_40_logarithmic_derivative_simple_pole_obstruction
 
 /-- Theorem 41: Monic coordinate quotient packet decomposition `Q_i %ₘ X^(w_i)` across `Fin d`
 with remainder degree `< w_i` and packet cardinality `∏ w_i`
-(`LocalizationQuotientParameters.lean:1-90`, `RectangularVolume.lean:15-52`). -/
+(`LocalizationQuotientParameters.lean:1-90`, `RectangularVolume.lean:9-10,66-79`). -/
 theorem thm_41_rectangular_quotient_packet_dimension_product
     {K : Type*} [Field K] {d : ℕ}
     (w : Fin d → ℕ) (Q : Fin d → Polynomial K) (hw : ∀ i, 0 < w i) :
@@ -494,7 +494,7 @@ theorem thm_44_complete_curve_zero_pole_vanishing_criterion
   linarith
 
 /-- Theorem 45: Seshadri blowup nefness along proper-transform curves (`ExceptionalCurveDegree.lean:120-260`,
-`interpolation.tex:210-235`). -/
+`interpolation.tex:499-522`). -/
 theorem thm_45_seshadri_blowup_nef_curve_intersection
     {ι : Type*} (s : Finset ι) (mult : ι → ℝ) (c₀ σ : ℝ)
     (hc₀ : 0 < c₀) (hσ : 0 < σ)
@@ -531,7 +531,7 @@ theorem thm_46_contracted_exceptional_curve_strict_positivity
 
 /-- Theorem 47: Module-level convex combination identity for Rees blowup ampleness
 `(a - 1) • (A - (1 + σ) • E) + σ • (a • A - E) = (a(1 + σ) - 1) • (A - E)` with strictly positive
-weights for `a > 1` and `σ > 0` (`AdmissibleBlowupAmple.lean:1-19`, `interpolation.tex:225-245`). -/
+weights for `a > 1` and `σ > 0` (`AdmissibleBlowupAmple.lean:1-19`, `interpolation.tex:524-535`). -/
 theorem thm_47_rees_blowup_ample_convex_combination_identity
     {V : Type*} [AddCommGroup V] [Module ℝ V]
     (A E : V) (a σ : ℝ) (ha : 1 < a) (hσ : 0 < σ) :
@@ -552,7 +552,7 @@ theorem thm_47_rees_blowup_ample_convex_combination_identity
       sub_add_eq_add_sub, ← add_assoc, add_sub_cancel_right, ← add_smul, hcoeff]
 
 /-- Theorem 48: Graded `Ideal` power multiplication and downward filtration `x * y ∈ I^k` for
-`x ∈ I^m`, `y ∈ I^n`, and `k ≤ m + n` (`ReesPushdown.lean:1-120`). -/
+`x ∈ I^m`, `y ∈ I^n`, and `k ≤ m + n` (`ReesPushdown.lean:311-360`, `interpolation.tex:538-550`). -/
 theorem thm_48_rees_pushdown_ideal_power_weight_inclusion
     {R : Type*} [CommSemiring R] (I : Ideal R) (x y : R) (m n k : ℕ)
     (hx : x ∈ I ^ m) (hy : y ∈ I ^ n) (hk : k ≤ m + n) :
@@ -563,7 +563,7 @@ theorem thm_48_rees_pushdown_ideal_power_weight_inclusion
   exact Ideal.pow_le_pow_right hk hmul
 
 /-- Theorem 49: Exact Čech cochain coboundary identity `d^1 (d^0 c) = 0` over any `AddCommGroup`
-(`CechH1Transfer.lean:82-100`, `GradedCech.lean:1-90`). -/
+(`CechH1Transfer.lean:82-100`, `GradedCech.lean:228-238`). -/
 theorem thm_49_cech_cochain_differential_squared_zero
     {J M : Type*} [AddCommGroup M] (c : J → M) (i j k : J) :
     cechD1 (cechD0 c) i j k = 0 := by
@@ -571,7 +571,7 @@ theorem thm_49_cech_cochain_differential_squared_zero
   abel
 
 /-- Theorem 50: Uniform Serre-Čech vanishing threshold across a finite nonempty affine cover via
-`Finset.sup'` (`FiniteCoverCohomology.lean:1-120`, `interpolation.tex:235-255`). -/
+`Finset.sup'` (`FiniteCoverCohomology.lean:1-120`, `interpolation.tex:552-584`). -/
 theorem thm_50_finite_affine_cover_uniform_vanishing_threshold
     {ι : Type*} (s : Finset ι) (Nloc : ι → ℕ) (Vanishes : ι → ℕ → Prop)
     (hne : s.Nonempty)

@@ -1,6 +1,6 @@
 /-
   OpenAI #266 (Mutually Unbiased Bases in Dimension Six & Order-Six Complex Hadamard Matrices)
-  Case 012 — Part I:
+  Part I:
   Kronecker Tensor-Product 3-MUB Attainment, Pair-Moment Contraction, Nonnegative SOS Dichotomy,
   Unimodular Palindromic Sextic, Cube-Fiber (3,3) Cancellation, Cubic Block 2+2 > 3 No-Go,
   Tao 5-Cycle Classification, and Repaired Partition Transitivity (Theorems 1–25).
@@ -16,7 +16,7 @@ namespace Mub6HadamardFourierAndCubicFibers
 -/
 
 /-- [Theorem 1] Kronecker product dimension and MUB count lower bound
-(`introduction.tex:166-210`, `ThreeMain.lean:11-18`, `Tensor.lean:17-99`):
+(`introduction.tex:166-210`, `ThreeMain.lean:9-15`, `Tensor.lean:17-99`):
 for prime factors `d1 = 2` and `d2 = 3` scaled by `N >= 1`, the composite dimension is
 `d = 6 * N`, and the prime-power tensor bound `min(d1 + 1, d2 + 1) = 3` yields `3` MUBs in `C^6`. -/
 theorem thm_01_kronecker_mub_lower_bound_scale
@@ -155,7 +155,7 @@ theorem thm_08_fourier_or_entrywise_square_dichotomy
   exact ⟨hc, hs, by omega⟩
 
 /-- [Theorem 9] Pair-table linear elimination rank margin
-(`05-verification.tex:80-165`, `verify.py:1-5`):
+(`05-verification.tex:80-165`, `verify.py:196, 199-214`):
 in the single-matrix pair table, `8,871` nonzero equations in `909` injective-moment coordinates
 yield `897` independent pivot rows, leaving a `909 - 897 = 12`-parameter residual space. -/
 theorem thm_09_pair_table_rank_nullity_margin
@@ -426,4 +426,4 @@ theorem thm_25_small_partitions_redundancy_accounting
     total_red = 40 * s ∧ 25 * s ≤ total_red - bell4 ∧ 40 ≤ total_red := by
   omega
 
-end Mub6HadamardFourierAndCubicFibers -- Seal Seq 2 (2026-11-13, prev_sha256: 1cbdf44e2ac2264afe7ea1442eb02dfbf39af1ce553c923afa170e8f8b1a5d40): L8 header comment wording cleanup (0 theorem/proof edits)
+end Mub6HadamardFourierAndCubicFibers -- Seal Seq 2 (2026-11-17, prev_sha256: 1cbdf44e2ac2264afe7ea1442eb02dfbf39af1ce553c923afa170e8f8b1a5d40): header/docstring citation cleanup (0 theorem/proof edits)

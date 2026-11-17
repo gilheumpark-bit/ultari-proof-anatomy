@@ -1,31 +1,32 @@
-> **Language**: **English** | [**한국어 (`README.ko.md`)**](./README.ko.md)
+- Language: English | [한국어 (README.ko.md)](./README.ko.md)
 
-# Case 006: OpenAI `#376` Universal Computation in Forced Navier–Stokes Flows
+# OpenAI #376 Universal Computation in Forced Navier–Stokes Flows
 
-This package audits the `1,010` Lean 4 files (`142,131` lines) and `75` LaTeX files of OpenAI `#376`. All findings are verified across `45` standalone Lean 4 theorems (`v4.29.0-rc8`, `0 sorry`, `184/184` hypothesis mutations caught).
+This audit examines the 1,010 Lean 4 files (142,131 lines) and 75 LaTeX files of OpenAI #376. All findings are verified across 45 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 184/184 hypothesis mutations caught).
 
 ## Key Findings
 
-1. **Core PDE Mechanisms Verified**: We verify volume-preserving affine box routing $U = \nabla\times(\chi\Psi)$ ([`BoxTransport/Flow.lean`](proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Flow.lean#L114-L225)), Serrin-Grönwall $L^2$ uniqueness ([`Comparison.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Comparison.lean#L85-L132)), and 2+1D Gaussian scalar detection ([`MildScalar.lean`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/MildScalar.lean#L1-L120)).
-2. **Inverse-Forcing Scope Boundary**: The 5 box/sheet challenges define the external force via the residual $f := \partial_t U + (U\cdot\nabla)U - \nu\Delta U$ with zero pressure ($p = 0$, [`BoxCoding.lean:53-66`](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/BoxCoding.lean#L53-L66)) or use shear sheets where $(u\cdot\nabla)u = 0$ ([`SolenoidalSheetPrograms.lean:188`](proofs/oai_ref/lean/ComparatorChallenges/SolenoidalSheetPrograms.lean#L188)).
-3. **Repository Packaging Audit**: The 6 challenges import `354` of `1,004` `OAI/` files, leaving `650` files (`64.7%`, including `ForcedComputation/`) unimported, while [`ForcedNavierStokesComputation.lean`](proofs/oai_ref/lean/ComparatorChallenges/ForcedNavierStokesComputation.lean#L1-L232) duplicates [`BalancedThreeStack.lean`](proofs/oai_ref/lean/ComparatorChallenges/BalancedThreeStack.lean#L1-L239).
-4. **Classical Literature Attribution & Uncited Bibliography Audit**: In the main manuscript (`Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/`, `16` `.tex` files, `5,864` lines), `9` of the `22` BibTeX entries (`40.9%`) in `references.bib` (including `Moser1965`, `Nash1958`, `Aronson1968`, `Tao2016`, `EtnyreGhrist2000`) are never cited via `\cite` in the text and are dropped from the compiled PDF, while `11` of the `15` section files (`4,630 / 5,808` lines, `79.7%`) contain zero human literature citations (see Section `1.7` of [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md)).
+1. Core PDE Mechanisms Verified: We verify volume-preserving affine box routing $U = \nabla\times(\chi\Psi)$ ([BoxTransport/Flow.lean](proofs/oai_ref/lean/OAI/Analysis/BoxTransport/Flow.lean#L114-L225)), Serrin-Grönwall $L^2$ uniqueness ([Comparison.lean](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/Comparison.lean#L85-L132)), and 2+1D Gaussian scalar detection ([MildScalar.lean](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/VelocityDetection/MildScalar.lean#L1-L120)).
+2. Inverse-Forcing Scope Boundary: The 5 box/sheet challenges define the external force via the residual $f := \partial_t U + (U\cdot\nabla)U - \nu\Delta U$ with zero pressure ($p = 0$, [BoxCoding.lean:53-66](proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/BalancedTransport/BoxCoding.lean#L53-L66)) or use shear sheets where $(u\cdot\nabla)u = 0$ ([SolenoidalSheetPrograms.lean:188](proofs/oai_ref/lean/ComparatorChallenges/SolenoidalSheetPrograms.lean#L188)).
+3. Repository Packaging Audit: The 6 challenges import 354 of 1,004 OAI/ files, leaving 650 files (64.7%, including ForcedComputation/) unimported, while [ForcedNavierStokesComputation.lean](proofs/oai_ref/lean/ComparatorChallenges/ForcedNavierStokesComputation.lean#L1-L232) duplicates [BalancedThreeStack.lean](proofs/oai_ref/lean/ComparatorChallenges/BalancedThreeStack.lean#L1-L239).
+4. Classical Literature Attribution & Uncited Bibliography Audit: In the main manuscript (Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/, 16 .tex files, 5,864 lines), 9 of the 22 BibTeX entries (40.9%) in references.bib (including Moser1965, Nash1958, Aronson1968, Tao2016, EtnyreGhrist2000) are never cited via `\cite` in the text and are dropped from the compiled PDF, while 11 of the 15 section files (4,630 / 5,808 lines, 79.7%) contain zero human literature citations (see Section 1.7 of [en/03_Expert_Forensic_and_Mathematical_Physics_Report.md](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md)).
 
 ## 4-Tier Reader Guide
 
 | Tier | Target Audience | Document | Summary |
 | :---: | :--- | :--- | :--- |
-| **Tier 1** | **Beginners** | [`en/01_Beginner_Guide.md`](en/01_Beginner_Guide.md) | Plain-language comparison between autonomous fluid dynamics and inverse-forcing box routing. |
-| **Tier 2** | **Intermediates** | [`en/02_Intermediate_Math_and_Code_Guide.md`](en/02_Intermediate_Math_and_Code_Guide.md) | Mapping of the 10 preprint folders, 6 challenges, and 45 Lean 4 theorems. |
-| **Tier 3** | **Experts** | [`en/03_Expert_Forensic_and_Mathematical_Physics_Report.md`](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | Mathematical-physics referee report, Leray projection leakage analysis, and 5 structural repairs. |
-| **Tier 4** | **Automated Verifiers** | [`en/04_Automated_Verification_and_Parser_Spec.md`](en/04_Automated_Verification_and_Parser_Spec.md)<br>[`manifest.json`](manifest.json) | SHA-256 checksum table and 1-to-1 theorem line mapping. |
-| **Tier 5** | **OPFF 7-Part Referee Audit Report (`PR #76`)** | [`en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md`](en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md) | Standalone OPFF 5-Gate (`Part 0–Part 7`) forensic referee report & `OPFF TIER F` verdict. |
+| Tier 1 | Beginners | [en/01_Beginner_Guide.md](en/01_Beginner_Guide.md) | Plain-language comparison between autonomous fluid dynamics and inverse-forcing box routing. |
+| Tier 2 | Intermediates | [en/02_Intermediate_Math_and_Code_Guide.md](en/02_Intermediate_Math_and_Code_Guide.md) | Mapping of the 10 preprint folders, 6 challenges, and 45 Lean 4 theorems. |
+| Tier 3 | Experts | [en/03_Expert_Forensic_and_Mathematical_Physics_Report.md](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | Mathematical-physics referee report, Leray projection leakage analysis, and 5 structural repairs. |
+| Tier 4 | Automated Verifiers | [en/04_Automated_Verification_and_Parser_Spec.md](en/04_Automated_Verification_and_Parser_Spec.md)<br>[manifest.json](manifest.json) | SHA-256 checksum table and 1-to-1 theorem line mapping. |
+| Tier 5 | OPFF 7-Part Referee Audit Report (PR #76) | [en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md](en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md)<br>[ko/05_OPFF_상세형_포렌식심사보고서_PR76.md](ko/05_OPFF_상세형_포렌식심사보고서_PR76.md) | Standalone OPFF 5-Gate (Part 0–Part 7) forensic referee report & OPFF TIER F verdict (45 core theorems, 184/184 mutations caught in `proofs/`; companion 48-theorem / 150/150-mutation unimported-module reassembly lives in the companion reassembly package). |
+| Tier 6 | OPFF Basic Audit Summary (PR #76) | [en/06_OPFF_Basic_Audit_Report_PR76.md](en/06_OPFF_Basic_Audit_Report_PR76.md)<br>[ko/06_OPFF_기본형_감사리포트_PR76.md](ko/06_OPFF_기본형_감사리포트_PR76.md) | OPFF Basic Audit summary: 8-metric executive scorecard (TL;DR), verified findings (45 theorems, 184/184 mutations), 6-question FAQ, and 10-second terminal reproduction. |
 
 ## Formal Proofs & One-Command Verification
 
-- [`proofs/ns376_kinematic_routing_and_forensics.lean`](proofs/ns376_kinematic_routing_and_forensics.lean): Theorems 1–20 (`106/106` mutations caught).
-- [`proofs/ns376_gronwall_uniqueness_and_repairs.lean`](proofs/ns376_gronwall_uniqueness_and_repairs.lean): Theorems 21–45 (`78/78` mutations caught).
-- [`proofs/verify_symbolic_ns376.py`](proofs/verify_symbolic_ns376.py), [`proofs/symbolic_verification_result.json`](proofs/symbolic_verification_result.json), and [`proofs/problem_spec.md`](proofs/problem_spec.md).
+- [proofs/ns376_kinematic_routing_and_forensics.lean](proofs/ns376_kinematic_routing_and_forensics.lean): Theorems 1–20 (106/106 mutations caught).
+- [proofs/ns376_gronwall_uniqueness_and_repairs.lean](proofs/ns376_gronwall_uniqueness_and_repairs.lean): Theorems 21–45 (78/78 mutations caught).
+- [proofs/verify_symbolic_ns376.py](proofs/verify_symbolic_ns376.py), [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json), and [proofs/problem_spec.md](proofs/problem_spec.md).
 
 ```bash
 lean proofs/ns376_kinematic_routing_and_forensics.lean && lean proofs/ns376_gronwall_uniqueness_and_repairs.lean && (cd proofs && python3 verify_symbolic_ns376.py)

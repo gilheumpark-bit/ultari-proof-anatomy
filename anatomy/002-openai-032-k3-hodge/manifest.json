@@ -7,27 +7,27 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_k3.py"
   },
   "artifacts_sha256": {
-    "README.md": "c5297986766d743e7df87a70eb8903dea42407824886a8227833cb0dac36a2de",
-    "README.ko.md": "f5ee33073585e5bb5176327e96836c09657927ca4654d942e132043d4c8b02a5",
-    "proofs/k3_forensic_paths.lean": "8b57f0fa6e79d0a0d49b6230ac4b52dc21f98bbed167914387b7b2512c908b77",
+    "README.md": "9bcee6ade86ac2801c72e57aee03ac9b2d2a8c523f7e0972fbde0bad275099cb",
+    "README.ko.md": "532bf64ed830065109ab4a213bcf53e625794dc75b49eacd1a03dc1dc3fa42be",
+    "proofs/k3_forensic_paths.lean": "5c628bfa293cbc88e902cee1c8d64c01bb56ddde5bbe7643801f07d0a6232163",
     "proofs/verify_symbolic_k3.py": "1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be",
     "proofs/symbolic_verification_result.json": "2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a",
     "proofs/problem_spec.md": "82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74",
-    "ko/01_초보자용_쉬운해설.md": "d40d2d3e870efdd49c12ff6793b693561750d6ae910f9aa37faee76fed9f210f",
-    "ko/02_중급자용_구조및수식가이드.md": "83ee95f7ad9aa86980cfce9b09d76ce2e98777dfee57d7e1daad08cff8d6c5d7",
-    "ko/03_전문가용_대수기하심플렉틱및형식증명보고서.md": "469bed39783556bcb47ca538985e6757e5961cd5cea4b9cafeb07ef997ee6e6f",
-    "ko/04_자동검증및파서용_명세서.md": "da2be8cdf277f5f3bba38226a41eb17b9d04a435ec6644be0361b11f40a081b8",
-    "ko/README.md": "ae2be2f68684a3615a84bdc24a4ea7f4ffcc0d37a892fd85c6032114d92afd08",
-    "en/01_Beginner_Guide.md": "d5e6ee16a68a38c7c4bf8ce6e84533bbbcf6ffe3dde3316ebb0d5f02146d01bb",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "a19070d1570a2cf154d624a2c233d09450d71518bf28192930ae4937b56e1ee9",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "0a2ee695bfe57c669967848a35c81b5ec26baefcc4c53d15582ae00fb4894d47",
-    "en/04_Automated_Verification_and_Manifest.md": "3d26180d6da30d9fff7d627c8aa9e10f34d6bc7737257cd717f39a1ad473e218",
-    "en/README.md": "36b678935cbd7a0f375a0e5174a5d48906afe1077d2c227437264810b99b2548",
+    "ko/01_초보자용_쉬운해설.md": "fe1150f28aef8283bf4c9af1f336c39822ad4477e64d43c99b29915dfc5dbf4e",
+    "ko/02_중급자용_구조및수식가이드.md": "571f01f5a397d84515ae8a177b8a6158014c90af5b6561d10ae5a4a48fa84ef0",
+    "ko/03_전문가용_대수기하심플렉틱및형식증명보고서.md": "008433c99566fc4417bd8106909a84a60692bced4f1e9845572fe8100897cad4",
+    "ko/04_자동검증및파서용_명세서.md": "b1b1e1937640a45687f2229f24bab021253ffaaa52c3887456d1ddefdc1080aa",
+    "ko/README.md": "7b4c21e1a64d33e169f26dfa230c29a06474c66cbd8f6d511c43e66bde721424",
+    "en/01_Beginner_Guide.md": "cd2b7d6adcf0ae0912b4bb40c522614d219e95e31e923843aa109590a46446ad",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "3f974a561e1d3d4b18dd22392e6d80c6a9ce779eb1d7e82f9e6905e1684fa993",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "3de61eaa241b21510801f000e43557c7e9c7c10b9eaafa360c8ffa856b0c4845",
+    "en/04_Automated_Verification_and_Manifest.md": "1d87152ffa72ec1ab2e4247d343e3dd6071341e81d6f5cadfe4574b8ef64bd3c",
+    "en/README.md": "18b3d02d71109bdf2b5d1f83cc5effc6669e1cd07846be2feb2e8914ff0108b1",
     "proofs/oai_032_cm_remark_7_5_repair.patch": "ecff86170caccd553c2186df6e393655330c7e291eb9ea8fd19b78c2e96f77f8"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "35 Lean 4 theorems over Int/Nat (0 sorry, 0 custom axiom, 135/135 hypothesis mutations caught) in proofs/k3_forensic_paths.lean + independent SymPy symbolic derivations, covering 100% (34/34 files, 173/173 environments & patches) of [EEMS13] and all three #032 preprints.",
-    "future_algebraic_geometric_extensions": "Constructing a modified seed cycle C_tilde = C_* + gamma on the central fiber B x E^512 with a positive pure-E^g fourth-degree component gamma in H^0(B) x H^4(E^g) satisfying Bogomolov positivity, together with equivariant semiregularity injectivity on the Clifford-spin invariant subspace."
+    "future_algebraic_geometric_extensions": "Constructing a modified seed cycle C_tilde = C_* + gamma on the central fiber B x E^{2^19} (Preprint III exactks.tex, g = 2^19 = 524288; cf. Preprint I manuscript.tex where g = 2^9 = 512 and B x E^512) with a positive pure-E^g fourth-degree component gamma in H^0(B) x H^4(E^g) satisfying Bogomolov positivity, together with equivariant semiregularity injectivity on the Clifford-spin invariant subspace."
   },
   "verified_key_results": {
     "problem_1_symplectic_double_bind_and_eems13": {

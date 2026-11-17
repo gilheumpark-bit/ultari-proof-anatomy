@@ -5,16 +5,16 @@
   "date": "2026-11-12",
   "lean_version": "v4.29.0-rc8",
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/mub6_hadamard_fourier_and_cubic_fibers.lean && ~/.elan/bin/lean proofs/mub6_weiner_completion_and_gram_sos.lean && ~/.elan/bin/lean proofs/mub6_stratigraphy_and_binary64_audit.lean",
+    "lean4_kernel_check": "lean proofs/mub6_hadamard_fourier_and_cubic_fibers.lean && lean proofs/mub6_weiner_completion_and_gram_sos.lean && lean proofs/mub6_stratigraphy_and_binary64_audit.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_mub266.py"
   },
   "artifacts_sha256": {
-    "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean": "af1c4f04261769573899a4f5260bafe8e0267f7b8e19e784903722e849560367",
-    "proofs/mub6_weiner_completion_and_gram_sos.lean": "ff1ad12bf6899f77825f27392703086600cec49298d320dc173f17db2dca8d2c",
-    "proofs/mub6_stratigraphy_and_binary64_audit.lean": "d22a9477cb62a1cf7b71dd2c272136f0c770a0f7eba24362ac09e8d666eb852e",
-    "proofs/verify_symbolic_mub266.py": "1c14ea9d1e931fac06bd0e935b2099bdb6271fe72f1e5ae06b829ab445f8e93b",
+    "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean": "d15df51beb425c543561b40f27bfd07a1a849267c04350a3b90d3d2c3187a270",
+    "proofs/mub6_weiner_completion_and_gram_sos.lean": "84fa18c465e5bc8884169398c79e4dc6b1282de61d44de9169bd680afc26cd58",
+    "proofs/mub6_stratigraphy_and_binary64_audit.lean": "818cc8871bac65e8da608e98de8b3d0b015cb4fd55ed61ffdfbdac337f6bbcc8",
+    "proofs/verify_symbolic_mub266.py": "96ec2c66ba17292b922e818b12a7962568fb96fac17735ae9c678772142c0bd1",
     "proofs/symbolic_verification_result.json": "92bb0e153e4f664ea4c9250be709630beae0db07e1e1199f67cdd63f3e84b47b",
-    "proofs/problem_spec.md": "99fb0660e1f6cad2b2255d32b226364955f975752948b3d84d89943ddc619241"
+    "proofs/problem_spec.md": "b42f8332e9aca18910ccb3aa53a5107eb53d104eb75b1fb0f8bc939961561428"
   },
   "seal_revision_ledger": [
     {
@@ -33,16 +33,16 @@
     },
     {
       "seq": 2,
-      "date": "2026-11-13",
+      "date": "2026-11-17",
       "supersedes_seq": 1,
-      "reason": "Removed internal prompt classification labels from L8 header comments of the 3 .lean files and L1 title of problem_spec.md, and appended prev_sha256 seal provenance footers at the bottom of each revised file (zero changes to theorem declarations, proof terms, or mathematical formulas).",
+      "reason": "Removed internal prompt classification labels from the headers of the 3 .lean files, verify_symbolic_mub266.py, and L1 of problem_spec.md, corrected OOB/stale docstring line spans in the .lean files, and preserved prev_sha256 seal provenance footers from Seq 1 (zero changes to theorem declarations, proof terms, line counts, or symbolic_verification_result.json outputs).",
       "artifacts_sha256": {
-        "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean": "f2ec0224dade6a0f0e0ff3880c607fded366b2891de69c20035f6a29a670c341",
-        "proofs/mub6_weiner_completion_and_gram_sos.lean": "7a35eb64367bd78f96b21491593f59686af7514994c7c46610d18a5bc3c0fb49",
-        "proofs/mub6_stratigraphy_and_binary64_audit.lean": "389340460d6644f782366ce7376733c840a73cf247628d53d38690083eebdd36",
-        "proofs/verify_symbolic_mub266.py": "1c14ea9d1e931fac06bd0e935b2099bdb6271fe72f1e5ae06b829ab445f8e93b",
+        "proofs/mub6_hadamard_fourier_and_cubic_fibers.lean": "d15df51beb425c543561b40f27bfd07a1a849267c04350a3b90d3d2c3187a270",
+        "proofs/mub6_weiner_completion_and_gram_sos.lean": "84fa18c465e5bc8884169398c79e4dc6b1282de61d44de9169bd680afc26cd58",
+        "proofs/mub6_stratigraphy_and_binary64_audit.lean": "818cc8871bac65e8da608e98de8b3d0b015cb4fd55ed61ffdfbdac337f6bbcc8",
+        "proofs/verify_symbolic_mub266.py": "96ec2c66ba17292b922e818b12a7962568fb96fac17735ae9c678772142c0bd1",
         "proofs/symbolic_verification_result.json": "92bb0e153e4f664ea4c9250be709630beae0db07e1e1199f67cdd63f3e84b47b",
-        "proofs/problem_spec.md": "99fb0660e1f6cad2b2255d32b226364955f975752948b3d84d89943ddc619241"
+        "proofs/problem_spec.md": "b42f8332e9aca18910ccb3aa53a5107eb53d104eb75b1fb0f8bc939961561428"
       }
     }
   ],
@@ -558,15 +558,17 @@
     ]
   },
   "files": {
-    "ko/01_일반인용_해설서.md": "4dba8fbaa8875913ff1f49e6f5d7a937095ccc8e00865912723afb9578ed7051",
-    "ko/02_중급자용_수학및코드가이드.md": "5a03db559df55a57bd90e83297ac851aa3b04f87eb62eb96704f194e68f50fc0",
-    "ko/03_전문가용_학술및수리물리보고서.md": "e8d85a70d2290290d2c1bab9e0ae82a1a598e4731eec5ee32d740512320c2bff",
-    "ko/04_자동검증및파서용_명세서.md": "33316b68f5fd0507dafc3ea3b7f0b2a57f779778f6bd6d2f882500043b169af9",
-    "ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md": "f6bff4914696c4481f42d3fb51cc72ce7344c2d6cf1c4f33e4ffa3c8c8e8cc26",
-    "en/01_Executive_Summary_and_General_Guide.md": "43daee23fea60b09235c6d9b41a6b072508e50f8b43e4ba57126c34bca5a35cc",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "4c276f97a0b61fd47208d024c7a81914d90eedfe6e5eaad534752dd1012cb3e1",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "ae059a576ec3a647cd5543a3688dbd72353274f03f1f27f3afa5418a9c6cedba",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "1a89cdddc8c45f00c6b184fee16221eb2247fe74d419b4dc6c2cf3e521549dea",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md": "9fd59c5a0a47a2f24650a93507b9c0b759f7849271091337daef34e9a40f3e81"
+    "ko/01_일반인용_해설서.md": "bef7be1d69d54daceb33107954347f0ebe888589133c2b626eb8c73025527f03",
+    "ko/02_중급자용_수학및코드가이드.md": "455778e7af57d3eb6e4e149a44f4988a0dab8ef2d09132cc82721bc2a9f47c67",
+    "ko/03_전문가용_학술및수리물리보고서.md": "78d661673a9f9e02b5144358f2d19cbbd36b18b94911801a3f795019ffa3ef84",
+    "ko/04_자동검증및파서용_명세서.md": "b32aed5ee3b3c449f6ee393cf9e7650e146a4c93ea21dfe4f5e7723ab775f91f",
+    "ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md": "6aae1e45986107e80e6d457d52b31380a0ae393b1c0c1648b9f4459ccbbbdf08",
+    "ko/06_OPFF_기본형_감사리포트_MUB266.md": "8e6b9adbcdfd7ccc22e3e17d0db1591b81833f85dad35cc9898566ddc9c413c6",
+    "en/01_Executive_Summary_and_General_Guide.md": "f8f1eed469209f3d5c1e2ce6c389b515540d99ef02aae8e8b0004dd87a01e159",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "b3f54e042751b987bda3778a06bbc7c7abb432b882f9de66f918912eeb396d34",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "afbcacf1af163cb8b600804bbbd56fcc2d9820c4ae5f006dceada8b57bd4aa1e",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "3f22d6b704859816cf8ea437c3d18e242003fcf98e900a59b3de7d6b838deefc",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md": "f91016cc59635b6bb10d6393e80af068fd1f2166d907772ccff0c71d0270e4ec",
+    "en/06_OPFF_Basic_Audit_Report_MUB266.md": "8dc48952c28a27684f8700ad5f9af203f16e502a4ac2f67cb28aa81cc1a0363a"
   }
 }

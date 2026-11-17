@@ -235,7 +235,7 @@ theorem T32_five_dimensional_oracle_absorbs_viscosity
 -- ============================================================================
 
 /--
-Theorem 33 (Repair 1 — Fixed Finite-Dimensional Forcing Subspace Constraints):
+Theorem 33 (Repair 1: Fixed Finite-Dimensional Forcing Subspace Constraints):
 Under the repaired Navier-Stokes universality formulation, the external body force `f` is restricted
 to a fixed finite-dimensional subspace `span{e_1, ..., e_K}` (`K` modes independent of the simulated step `n`),
 whereas the manufactured residual `residual nu U` requires `M_n > K` high-frequency modes at step `n`,
@@ -249,7 +249,7 @@ theorem T33_repair1_finite_dimensional_forcing_forbids_manufactured_residual
   omega
 
 /--
-Theorem 34 (Repair 2 — Unforced Autonomous Initial-Value Problem `f = 0`):
+Theorem 34 (Repair 2: Unforced Autonomous Initial-Value Problem `f = 0`):
 In the autonomous initial-value formulation (`f = 0`), the nonlinear acceleration + advection + viscous
 sum `accel + adv + visc` must vanish on its own (`accel + adv + visc = 0`) rather than being absorbed
 into `f`. If `accel + adv + visc = nonzero_residual != 0` while `f = 0`, the manufactured carrier `U`
@@ -264,7 +264,7 @@ theorem T34_repair2_autonomous_unforced_rejects_nonzero_residual
   omega
 
 /--
-Theorem 35 (Repair 3 — Deduplicating Challenge #5 and Challenge #6):
+Theorem 35 (Repair 3: Deduplicating Challenge #5 and Challenge #6):
 When `ForcedNavierStokesComputation` is re-bound to a distinct theorem specification (`distinct_spec_hash != three_stack_hash`)
 instead of cloning `BalancedThreeStack`, the challenge specification collision disappears.
 -/
@@ -276,7 +276,7 @@ theorem T35_repair3_distinct_challenge_specification
   omega
 
 /--
-Theorem 36 (Repair 4 — Removing `_hcomputable` by 4D Spacetime Oracle + Internal `nu` Oracle):
+Theorem 36 (Repair 4: Removing `_hcomputable` by 4D Spacetime Oracle + Internal `nu` Oracle):
 When the spacetime query oracle has dimension `dim_spacetime = 4` (`(t, x, y, z)`) and the viscosity
 `nu` is accessed exclusively through the `ComputableReal nu` witness (`visc_oracle_used = 1`),
 every theorem hypothesis is actively consumed (`unused_hyps = 0`).
@@ -290,7 +290,7 @@ theorem T36_repair4_active_viscosity_oracle_eliminates_vacuous_premise
   omega
 
 /--
-Theorem 37 (Repair 5 — Pruning the 650 Orphan Files and Challenge-Spec Stuffing):
+Theorem 37 (Repair 5: Pruning the 650 Orphan Files and Challenge-Spec Stuffing):
 Removing the `650` unreachable `.lean` files from the `1,004`-file `OAI/` tree leaves exactly
 the `354` reachable `.lean` files (`100%` reachability), and moving the implementation code out of
 `ComparatorChallenges/NavierStokesVelocity.lean` (`1,275` lines -> `180` lines) reduces the
@@ -306,7 +306,7 @@ theorem T37_repair5_pruned_repository_hundred_percent_reachability
   omega
 
 /--
-Theorem 38 (Layer 1 & Layer 2 Verdict — Genuine PDE Universal Computation vs Manufactured Forcing):
+Theorem 38 (Layer 1 & Layer 2 Verdict: Genuine PDE Universal Computation vs Manufactured Forcing):
 Let `score_autonomous_pde` be the number of challenges (`out of 6`) that solve the Navier-Stokes PDE
 without prescribing a trajectory-dependent forcing `f = residual(U)` or `2+1D` linear decoupling (`score = 0`),
 and let `score_manufactured_or_decoupled` be the number that rely on manufactured forcing (`5` challenges)
@@ -322,7 +322,7 @@ theorem T38_layers_1_and_2_verdict_partition
   omega
 
 /--
-Theorem 39 (Layer 3 & Layer 4 Verdict — Genuine Mathematical Tricks Inside the Proof Corpus):
+Theorem 39 (Layer 3 & Layer 4 Verdict: Genuine Mathematical Tricks Inside the Proof Corpus):
 Despite failing Layer 1 (autonomous 3D Navier-Stokes Turing completeness) and exhibiting Layer 2
 spec-laundering (manufactured forcing, shear annihilation, clone & orphan modules), the corpus has `3` genuine
 formalized mathematical mechanisms:

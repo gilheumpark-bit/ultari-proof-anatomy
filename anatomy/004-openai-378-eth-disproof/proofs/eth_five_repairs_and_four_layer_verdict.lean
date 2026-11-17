@@ -87,7 +87,7 @@ theorem layer2_engine_i_circuit_lower_bound_loglog_degradation
   omega
 
 /-- [Theorem 36] Galois ring inverse of `2` and tapered Hermite series certificate for `Engine II` (`RingModel.lean:19-68`,
-`quantitative-contraction.tex:185-335`).
+`quantitative-contraction.tex:180-242, 303-316`).
 In `ZMod (3^t)` at `t = 3` (`three_pow_t = 27`), `inv2 = (three_pow_t + 1) / 2 = 14` satisfies `2 * inv2 = three_pow_t + 1`
 (`(2 * inv2) % three_pow_t = 1`), and the tapered Hermite weight sum at `m = 4` (`sum_m4 = 1*8 + 4*4 + 9*2 + 16*1 = 58`)
 satisfies the closed identity `sum_m4 = 6 * 16 - (16 + 16 + 6) = 58 < 96`, eliminating the `(log log n)^2` factor. -/

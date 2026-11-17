@@ -4,16 +4,16 @@
   "target_repository": "openai/math (Family 013: OAI/NumberTheory/Ostmann/, ComparatorChallenges/OstmannComplete.lean, ComparatorChallenges/OstmannPrimes.lean, and preprints/the-additive-indecomposability-of-the-primes-September-24-2026)",
   "date": "2026-11-06",
   "verification_commands": {
-    "lean4_kernel_check": "~/.elan/bin/lean proofs/ostmann_twin_engines_and_supply_contraction.lean && ~/.elan/bin/lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean && ~/.elan/bin/lean proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
+    "lean4_kernel_check": "lean proofs/ostmann_twin_engines_and_supply_contraction.lean && lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean && lean proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ostmann.py"
   },
   "artifacts_sha256": {
-    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "0afde1e765bb1c12480105c24bfb3ac54321dd92c002ef3725d0b00145593adc",
-    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "3be4626bfca53841785db39bf8e56d80efb972054cb41dcef02ddf982f66f25a",
-    "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean": "f3a17f4d01c27996835f327523c708a98eb7f769ca61a6a9bc4afe9a9c61b4aa",
-    "proofs/verify_symbolic_ostmann.py": "dd14880ab1aaed9a94e80d5228485264346a8b2230488ead675957ab7b75b47e",
+    "proofs/ostmann_twin_engines_and_supply_contraction.lean": "edbc820be45ec3b384022ccb043fd33aa90a1ff28c0ebe83b878f51491a2185d",
+    "proofs/ostmann_tree_transfers_and_permutation_contradiction.lean": "529c59062f95b012231c781d29caa795fd6e5f948016d4f2bbc6bdc8c232df59",
+    "proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean": "1681e0b1fbd21477104b589aa6ae8f7a644bd0d4d672fd5beb65ca57972c1cf7",
+    "proofs/verify_symbolic_ostmann.py": "8f5c742ebfdec6a8aa943f51f6c5a650404d21aa9c970f86fc5afbc2f919bc98",
     "proofs/symbolic_verification_result.json": "c6c4fa27af9686d43667e708e00d34dfd3daa789c5a91ad502b03cb3b27208fa",
-    "proofs/problem_spec.md": "e40a539c681476cbc22768c1c14577d27dece9ae0bedb7b13098bf103d137b02"
+    "proofs/problem_spec.md": "e22ef37ca8d0cc2a7133e6bc1baed56713e6b27aa84aa23f23eb2284e0fff553"
   },
   "verified_key_results": {
     "pillar1_twin_engine_stratigraphy": {
@@ -118,7 +118,7 @@
       ]
     },
     "pillar4_algebraic_engines_and_cauchy_determinant": {
-      "common_center_cancellation_identity": "(a*n - a*t) - (a*m - a*t) = a*(n - m)",
+      "common_center_cancellation_identity": "(n - a*t) - (m - a*t) = n - m",
       "bonami_fourth_moment_excess": "(a + b)^4 + (a - b)^4 - 2*(a^4 + b^4) = 12*a^2*b^2",
       "balanced_variance_factorization": "9*s*(p - s) - 2*p^2 = (3*s - p)*(2*p - 3*s)",
       "rank2_kernel_discriminant": "(a + d)^2 - 4*(a*d - b^2) = (a - d)^2 + 4*b^2",
@@ -538,15 +538,17 @@
   },
   "lean_version": "v4.29.0-rc8",
   "files": {
-    "ko/01_Beginner_Guide.md": "0410a1926ffc9305922f553dce51a009dfd56ebe13686dec7651d488fbc80567",
-    "ko/02_Intermediate_Guide.md": "8d666f3ed985f319cb3d20fbe8265517d5412f4c1eb7f6b8390253e87117b2d8",
-    "ko/03_Advanced_Guide.md": "e55d2542154d27f1715b024092223cd3ce3013e400993b391c8db49e17e16b52",
-    "ko/04_Expert_Verification.md": "a967d88a63aef49394c59411e7e41ad816b43d3b6e2283675244581d6d2295d5",
-    "ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md": "27cd6ff281eb424c336851cb3f14d5ee0bd502eb3c989ed605292bf683cad5c8",
-    "en/01_Beginner_Guide.md": "b8ca8cfe2cb12e92ad44a19b2a96075549b299be8600b27c5b050aeb220cb6ce",
-    "en/02_Intermediate_Guide.md": "fe13ced43ed81055d1de82abed7f3ed0af95f2e3cadd09bfbaeb07a7071efb5e",
-    "en/03_Advanced_Guide.md": "c19006a7f138b0bcd76bbff7805599d7977367c3b2c572e251caf251e833d783",
-    "en/04_Expert_Verification.md": "dbf4854d6e6fbaa75c694db9c8dbe482cbef55d1352ae7f0b5b6e186cc12441e",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md": "b6a8e67afb2dc5e5a467c647613bed637949902366464e317e5cc4766bb5abb7"
+    "ko/01_Beginner_Guide.md": "71b51332a62d8c053440ac346e5b332e2707eeba0960e464f5a7bd4db183e3ce",
+    "ko/02_Intermediate_Guide.md": "95b3b76ce443126a7784305a572db9871685316ee79a24b9d61e8d252fec39f1",
+    "ko/03_Advanced_Guide.md": "58ddca2bbb606e8bf493768a27bc8d8ad3f4271ecb9f2d3f46e439beacfd8699",
+    "ko/04_Expert_Verification.md": "19cf412f7294ee069cfc7d654fcb4067cf36cf02871a6f4e3822f0a2af9db579",
+    "ko/05_OPFF_상세형_포렌식심사보고서_Ostmann013.md": "ce3f82a0bfdaa087ea5fa1a84d4ed34e62ada33420440d6219532f19eeb81b46",
+    "en/01_Beginner_Guide.md": "a29a938034a0296791b1801a760ca729af8f71a59457ec237bbe240b46e0c443",
+    "en/02_Intermediate_Guide.md": "04e0ee39a37c4c071d56f5d182003873ebaf073139387ede5d8456740bafc8ac",
+    "en/03_Advanced_Guide.md": "5b332c475724e303cd125d32e56dce51c3347f081281068eb8f1a9590a31405a",
+    "en/04_Expert_Verification.md": "c8fd53f521a7daf2d619b4e2d6971aca5115892425d39df682917299fd17f01d",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_Ostmann013.md": "cf4e12c3dd44f8a71f2a7d0137bdb3a524af00eea9abf78aa9f4a409f4678cce",
+    "ko/06_OPFF_기본형_감사리포트_Ostmann013.md": "73d7164bff1c0f0f385b4f0644fecfc5d56f58211e063ce474df01ae69d8f40f",
+    "en/06_OPFF_Basic_Audit_Report_Ostmann013.md": "434d80eee99be549fd6cc941b18944331f806803da284c613afaca4f8332be87"
   }
 }

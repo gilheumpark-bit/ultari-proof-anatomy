@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Deterministic symbolic (SymPy) and numerical (PyTorch) verifier for Case 008:
+"""Deterministic symbolic (SymPy) and exact rational verifier for Part III (11/12 & CubicGauss Synthesis):
 OpenAI #003 QRH Ecosystem Deep Synthesis (23/24 vs. 11/12, Unimported 30-File CubicGauss
-Large Sieve, Q(sqrt(921)) Unity Across Case 005 & Baiying Liu, and Parametric Farkas Unbundling).
+Large Sieve, Q(sqrt(921)) Unity Across Part II & Baiying Liu, and Parametric Farkas Unbundling).
 """
 import json
 import pathlib

@@ -1,73 +1,65 @@
-# [Audit Summary] Google DeepMind `code-verification` (*Formally Verifying Signal's Security Using AI*, 커밋 `808b4b7ffef1`)
+# 감사 요약 리포트: Google DeepMind AlphaProof Code (code-verification, Formally Verifying Signal's Security Using AI, 커밋 808b4b7ffef1)
 
-- **감사 대상 (`Target`)**: Google DeepMind [`google-deepmind/code-verification`](https://github.com/google-deepmind/code-verification) (커밋 `808b4b7ffef1`, 배포일 `2026-10-08` · `paper.pdf` `35`쪽, `.lean` `1,150`개 파일 · `411,353`줄, `libsignal_ffi.a` AArch64 ELF `72,068` 명령어)
-- **검증 환경 (`Toolchain`)**: `Lean 4 v4.29.0-rc8` (`LNSym` AArch64 기계어 시맨틱 및 게임 귀착 검증) / `Python 3.14` (`SymPy` 기호 연산기)
-- **산출물 해시 (`SHA-256`)**: [`deepmind_signal_stratigraphy_and_hook_boundary.lean`](../proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean) (`154f11164a46...`) | [`deepmind_comparator_laundering_and_crypto_bounds.lean`](../proofs/deepmind_comparator_laundering_and_crypto_bounds.lean) (`7bf0756fb364...`) | [`deepmind_arm64_tcb_and_syscall_divergences.lean`](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean) (`c01993748056...`) | [`verify_symbolic_deepmind_signal.py`](../proofs/verify_symbolic_deepmind_signal.py) (`fc03efea1f39...`)
-- **검증 방식 (`Verification Method`)**: 독립 `Lean 4` 정리 **`81`개 (`1,457`줄, `0 sorry`, `0 axiom`, `391 / 391` 전칭 가설 변이 사살)** 및 `83`종 업스트림 원문 실시간 파서 검증
-- **OPFF 공식 판정 (`Verdict`)**: `Gate 1: FAIL` · `Gate 2: FAIL` · `Gate 3: FAIL` · `Gate 4: HOLD` · `Gate 5: PASS` $\implies$ **`OPFF TIER D` (`Major Revision & Explicit TCB Boundary Disclosure Required`)**
+- 감사 대상: Google DeepMind AlphaProof Code ([google-deepmind/code-verification](https://github.com/google-deepmind/code-verification), 최초 공개 커밋 `808b4b7ffef1` 및 후속 PR #2 커밋 `b0f729accbc2` · 2026년 10월 26일 원고 및 동반 문서 [DEVIATIONS.md](../proofs/oai_ref/Computational/docs/DEVIATIONS.md#L1-L3617) 3,617줄, [PAPER_DIFFERENCES.md](../proofs/oai_ref/docs/Symbolic/PAPER_DIFFERENCES.md#L1-L337) 337줄, [READING_THE_THEOREMS.md](../proofs/oai_ref/Computational/docs/READING_THE_THEOREMS.md#L1-L330) 330줄, [PQXDH.md](../proofs/oai_ref/Computational/docs/PQXDH.md#L1-L136) 136줄, [PAPER_MAP.md](../proofs/oai_ref/docs/PAPER_MAP.md#L1-L252) 252줄; 11,323개 `.lean` 파일 · 7,528,295줄 + AArch64 ELF `libsignal-cli.elf` 617,448바이트)
+- 검증 환경: Lean 4 v4.29.0-rc8 / Python 3.14 (SymPy 기호 연산기 및 1차 원문 실시간 파서)
+- 산출물 해시 (SHA-256): [deepmind_signal_stratigraphy_and_hook_boundary.lean](../proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean) (e58829f52915...) | [deepmind_arm64_tcb_and_syscall_divergences.lean](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean) (109d9e94c216...) | [deepmind_comparator_laundering_and_crypto_bounds.lean](../proofs/deepmind_comparator_laundering_and_crypto_bounds.lean) (5960b90f4ee0...) | [deepmind_signal_forensic_parsers.py](../proofs/deepmind_signal_forensic_parsers.py) (8d41db304ae8...) | [verify_symbolic_deepmind_signal.py](../proofs/verify_symbolic_deepmind_signal.py) (4cc43598acf0...)
+- 검증 방식: 독립 Lean 4 정리 81개 (1,457줄, 0 sorry, 0 axiom, 391 / 391 전칭 가설 변이 사살 = 100%) 및 보존 원문 83종 (59개 .lean + 24개 비-Lean) 실시간 파서 검증
+- OPFF 공식 판정: Gate 1: HOLD · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ OPFF TIER C (조건부 검증 인정 및 아티팩트·TCB 경계 규격 미충족)
 
----
+## 0. 8대 핵심 지표 요약표
 
-## 0. 8대 핵심 지표 요약표 (TL;DR Scorecard)
-
-| 감사 축 | 원고(`paper.pdf` `35`쪽) 표방 내용 | 실제 저장소(`Lean 4` / `Rust` 하네스) 실측치 | 괴리율 / 상태 |
+| 감사 축 | 원고 및 공시 문서 표방 내용 | 실제 저장소(Lean 4 / Arm64 / CLI / comparator) 실측치 | 괴리율 / 상태 |
 | :--- | :--- | :--- | :---: |
-| **1. 코드 도달성 (`Reachability`)** | 전체 `1,150`개 `.lean` 파일 · `411,353`줄 | 활성 콘 **`98.96%` (`1,138 / 1,150`개)** / 진입점 미도달 모듈 **`1.04%` (`12`개 · `1,978`줄)** | **미도달 `1.04%` (`HOLD`)** |
-| **2. 기계어 `Hook` 우회 (`Hook Bypass`)** | AArch64 바이너리 종단간(`End-to-End`) 기계어 검증 | 전체 `191`개 심볼 중 **`182`개(`95.29%`)가 `Hook` 우회 공리**로 처리되고 실제 명령어 스텝 실행은 **`9`개(`4.71%`)** | **`95.29%` `Hook` 우회 (`CP-02`)** |
-| **3. 원고-코드 일치 (`Proof Match`)** | `paper.pdf` 내 `Hook` 우회 및 하네스 스텁 명시 여부 | `35`쪽 원고 내 `Hook` 메커니즘 언급 **`0`회**, `fill_bytes` 영(`0`) 패딩·`UNIX_EPOCH` 고정 시계 언급 **`0`회** | **원고-아티팩트 불일치 (`CP-04`)** |
-| **4. 하네스 스텁 (`Harness Stubs`)** | 운영 환경 난수(CSPRNG) 및 실시간 시계 보안 검증 | `harness/src/lib.rs:36-41` **`OsRng.fill_bytes` 전 바이트 `0` 패딩 (`[0u8; 32]`)** + `L45-64` **`SystemTime::UNIX_EPOCH` 고정** | **엔트로피 `0 bit` (`CP-02`)** |
-| **5. 인용 정합성 (`Citation Hygiene`)** | `35`쪽 보고서 내 `32`개 참고문헌 (`[1]`–`[32]`) | AArch64 기계어 시맨틱 및 게임 귀착의 직접 기반인 **선행 핵심 문헌 `6`종 중 `0 / 6`건 수록 (`6`건 전량 누락)** | **`6`대 기반 문헌 누락 (`CP-03`)** |
-| **6. 보안 상계 공허화 (`Vacuous Bound`)** | `encrypt_pqxdh` IND-CCA 보안 증명 (`Encrypt.lean:243`) | 확률 상계 우변에 **`n_sessions^2` (`≥ 1`) 항이 무가중치로 더해져 `n_sessions ≥ 1`에서 상계가 `> 1`로 공허화** | **상계 `> 1` 공허화 (`CP-02`)** |
-| **7. 전제·가설 무결성 (`Premise Integrity`)** | 모든 암호학 귀착 및 배치 정리 무결성 | `0 sorry`, `0 axiom`이나 `182`개 `Hook` TCB 가정 + `n_sessions = 0`에서 $47/2^{32} < 0$ 산술 모순 + `_h*` 미참조 `14`건 | **TCB·상계 결함 (`CP-02`, `CP-06`)** |
-| **8. 유효 수리 코어 (`Verified Core`)** | 추상 게임 귀착(`Computational/`) 및 `9`개 심볼 기계어 정제 | ACD19·SPQR V1 고전 비회귀 귀착 + `mallocng`·`memcpy`·`memset`·파일 읽기 **`9`개 심볼 AArch64 정제 유효 확인** | **`Gate 5: PASS`** |
+| 1. 빌드 및 코드 도달성 | 11,323개 파일 · 7,528,295줄 검증 | 기본 lake build가 CliElfLib(120개 모듈 · 85,249줄) 등 592개 모듈(267,194줄) 제외; 6대 표제 정리 모두에서 1,450개 파일(595,231줄) 미도달 | 595,231줄 미도달 (CP-05) |
+| 2. 바이너리 Hook 절단면 | 컴파일된 AArch64 libsignal-cli 종단간 검증 | 추적 심볼 64개 중 55개(85.94%)가 기계어 실행 우회 (Lean 훅 37개 + 패닉 18개, Drop::drop 영점화 훅 2개 포함; 단 9개 = 14.06%만 ELF 바이트 실행) | 85.94% Hook 우회 (CP-02 · CP-04) |
+| 3. 최하위 ISA/시스콜 TCB | 형식화된 AArch64 ISA 및 리눅스 시스콜 시맨틱 | `Arm64/Trusted/` 61개 파일(16,767줄) 내 증명된 정리 0개; `Hoare.lean`(`Spec`/`reaches_outcome`)은 `.Exception` 177개를 fail-closed로 배제(비모델링 경로 도달 불가 증명 필요)하며 `Spec.allowOom`으로 `.OutOfMemory`만 면책; 31 / 301+ 시스콜만 모델링; `AT_RANDOM` 0 초기화 | 16,767줄 미증명 TCB (Gate 1 HOLD) |
+| 4. Rust CLI 하네스 고정 | 시그널 세션·프리키·난수·저장소 검증 | [coins.rs](../proofs/oai_ref/third_party/libsignal/libsignal-session/cli/src/coins.rs#L32-L46) 고갈 난수 버퍼 0 패딩, 시계 UNIX_EPOCH = 0 고정 (30일 SPK 만료 우회), Waker::noop() 단발 폴링, EBADF = 9 무음 EOF | 하네스 환경 고정 (CP-02 · CP-04) |
+| 5. comparator TCB 경계 | 외부 비교기가 명세·공리 변조 원천 차단 | ComparatorChallenge가 326개 파일(153,682줄)을 TCB 안으로 임포트; "enable_nanoda": false; Linux 5.10 < 5.13 비샌드박스 빌드; PR #2에서 주의사항 67줄 삭제 | 153,682줄 TCB 편입 (CP-07) |
+| 6. 양자내성 및 PQXDH 상계 | $2^{40}$ 질의 규모 하이브리드 PQXDH + SPQR V1 보안 | 계산 정리는 고전 보안만 증명 (DEV-PQ19); [PQXDH.md](../proofs/oai_ref/Computational/docs/PQXDH.md#L69-L112)의 $q_{\text{total}} = 2^{40}$에서 표준 모델 GapDH 제5항이 $17,441 / 16,384 > 1$로 공허화 | $2^{40}$ 상계 공허화 (CP-02) |
+| 7. 세션 MAC 및 프리키 절벽 | 다중 에포크 래칫 및 최후 수단 프리키 운용 | 8바이트 MAC 상계(DEV-C14)가 $q = 35,211$에서 1 초과 (DEVIATIONS.md:2733은 구형 수치 38,967 기재); .base-keys가 56,680회 핸드셰이크($> 2\text{ MiB}$) 후 영구 거부 | 35,211 / 56,680 절벽 (CP-04) |
+| 8. 재현성 및 위생 스크립트 | 자가 시험 위생 스크립트 및 완결 아티팩트 | [check_refinement_hygiene.sh](../proofs/oai_ref/Symbolic/scripts/check_refinement_hygiene.sh#L121-L136) --self-test 실패 (7/14 구형 정리명, 종료 코드 1); 본문 인용 감사 스크립트 5종 + TRUSTED_BASE.md 누락 (0 / 6 수록); AGPL-3.0 ELF 미커밋 | 자가시험 실패 / 6종 누락 (CP-03 · CP-07) |
 
----
+## 1. 영역별 실측 물증 요약
 
-## 1. 영역별 실측 물증 요약 (Verified Forensic Evidence)
+### 1.1 85.94% 심볼 Hook 우회, 16,767줄 미증명 Arm64 TCB 및 CliElfLib 기본 빌드 제외 (CP-02, CP-04, CP-05)
+- 추적 바이너리 심볼 64개 중 55개(85.94%) AArch64 기계어 실행 우회: 배치 바이너리 검증의 추적 심볼 64개 중 37개 Lean 사양 훅과 18개 패닉 스텁(비밀키 메모리를 지우는 Drop::drop 훅 2개 포함, 합계 55 / 64 = 85.94%, PR #2 이후 45 / 64 = 70.31%)이 AArch64 기계어 스텝 실행을 우회하며, 실제 ELF 기계어 바이트를 실행해 검증한 심볼은 9개(14.06%: mallocng 할당/해제, memcpy, memset, 파일 읽기)뿐입니다([deepmind_signal_stratigraphy_and_hook_boundary.lean](../proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean#L1)).
+- 16,767줄 미증명 ISA/시스콜 기저 및 595,231줄 미도달 모듈: Arm64/Trusted/(61개 파일, 16,767줄)에는 증명된 정리가 0개이며(저장소 전체에 sorry 토큰 38개 존재), 기본 lake build는 CliElfLib(120개 모듈, 85,249줄)를 포함한 592개 모듈(267,194줄)을 빌드에서 제외하고, 6대 표제 정리 모두에서 도달하지 않는 파일이 1,450개(595,231줄)에 달합니다.
 
-### 1.1 기반 프레임워크 및 고전 암호학 원저 `6`종 전량 누락 (`0 / 6 present`, `CP-03`)
-- `35`쪽 기술 보고서(`paper.pdf`)의 참고문헌 `[1]`–`[32]`에는 본 저장소 코드가 직접 호출·확장하는 다음 **6대 핵심 선행 문헌이 `0 / 6`건 수록(전량 누락)**되어 있습니다: (1) **Goel et al. (2024, `LNSym`)** (`Arm/` 폴더 AArch64 명령어 시맨틱 프레임워크 원저), (2) **Kennedy et al. (2013, Coq比特/하드웨어 형식화)**, (3) **Bellare & Rogaway (2006, 코드 기반 게임 호핑 원저)**, (4) **Halevi (2005)**, (5) **Shoup (2004, 게임 보조정리)**, (6) **Kocher (1996) / Bernstein (2005) (상수 시간 부채널 모델 원저)**.
+### 1.2 고정된 CLI 하네스(고갈 난수 0 패딩·고정 시계) 및 153,682줄 Comparator TCB 편입 (CP-02, CP-07)
+- 고갈 난수 버퍼 0 패딩 및 UNIX_EPOCH = 0 고정 시계: [coins.rs](../proofs/oai_ref/third_party/libsignal/libsignal-session/cli/src/coins.rs#L32-L46)는 고갈된 CryptoRng 버퍼를 0으로 채우고 시스템 시계를 UNIX_EPOCH = 0으로 고정(30일 서명 프리키 만료 검사 우회)하며, 단발 폴링 Waker::noop()과 EBADF = 9 무음 EOF 처리를 사용합니다.
+- ComparatorChallenge의 153,682줄 TCB 편입 및 PR #2 주의사항 삭제: 외부 비교기용 챌린지 파일이 326개 파일(153,682줄)을 전이적으로 임포트하여 TCB에 편입시켰고("enable_nanoda": false), 후속 PR #2(커밋 b0f729accbc2)는 comparator/README.md에 있던 67줄 분량의 한계·주의사항 절을 삭제했습니다.
 
-### 1.2 신뢰 컴퓨팅 기저(TCB) 경계 공시 부재 및 `95.29%` 심볼 `Hook` 우회 (`CP-02`, `CP-04`)
-- **`182 / 191`개(`95.29%`) 심볼 `Hook` 우회**: `Correctness/Proofs/Placed.lean`의 `hooks` 테이블에 등록된 `191`개 바이너리 심볼 중 SHA-512,曲線25519(`curve25519_dalek`), ML-KEM-1024, AES-CBC, HMAC, HKDF 등 **암호학·프로토콜 핵심 함수 `182`개(`95.29%`)는 AArch64 기계어 명령어를 한 줄도 실행하지 않고 `Step_hook`을 통해 순수 Lean 사양 함수로 즉시 점프**합니다. 실제로 AArch64 명령어를 한 스텝씩 실행해 검증(`De-hooked`)한 심볼은 `mallocng` 할당/해제, `memcpy`, `memset`, 파일 읽기 등 **`9`개(`4.71%`)**입니다.
-- **Rust FFI 하네스의 결정론적 `0` 패딩 난수 및 고정 시계 스텁**: 검증 대상 바이너리(`libsignal_ffi.a`)를 생성한 `rust/bridge/shared/harness/src/lib.rs:36-41`은 `OsRng::fill_bytes`를 `dest.fill(0)`으로 오버라이드하여 **32바이트 에페메랄 개인키와 ML-KEM 시드를 전부 `0x00`(`[0u8; 32]`, 엔트로피 `0 bit`)으로 고정**했으며, `L45-64`는 시스템 시계를 `SystemTime::UNIX_EPOCH`(`t = 0`) 상수로 고정했습니다.
-- **원고(`paper.pdf`) 내 TCB 경계 미공시**: `35`쪽 원고 본문에서 `Hook` 우회 비율(`95.29%`), `dest.fill(0)` 난수 스텁, `UNIX_EPOCH` 고정 시계에 대한 언급은 **`0`회**입니다.
+### 1.3 고전 전용 보안 귀착(DEV-PQ19), PQXDH $2^{40}$ 상계 공허화($17,441/16,384 > 1$) 및 운용 절벽 (CP-02, CP-04)
+- $q_{\text{total}} = 2^{40}$ 표준 모델 GapDH 상계 공허화 및 `DEV-C14` 구형 수치 불일치: 계산 정리들은 고전 보안만 증명하며(`DEV-PQ19`), [PQXDH.md](../proofs/oai_ref/Computational/docs/PQXDH.md#L69-L115)가 표방한 $q_{\text{total}} = 2^{40}$ 규모에서 표준 모델 GapDH 제5항은 $q_{\text{total}} \ge 1,081,110,205,009 \approx 2^{39.98}$에서 1을 넘어 $17,441 / 16,384 \approx 1.0645 > 1$로 공허해지므로(`PQXDH.md:115`) 구체적 보안 여유 구간을 $q_{\text{total}} \le 2^{24}$로 제한합니다. 또한 8바이트 MAC 충돌 상계(`DEV-C14`, $q_{\text{ep}} = q$)는 실제로는 $q = 35,211$개 단일 세션 메시지에서 1을 초과하나 `DEVIATIONS.md:2733`은 구형 수치 `38,967`을 기재하고 있으며, `.base-keys` 파일은 56,680회 핸드셰이크($> 2\text{ MiB}$) 이후 프리키를 영구 거부합니다.
+- 위생 스크립트 자가시험 실패 및 인용 감사 파일 6종 누락: [check_refinement_hygiene.sh](../proofs/oai_ref/Symbolic/scripts/check_refinement_hygiene.sh#L121-L136) --self-test 실행 시 구형 정리명 불일치(7/14)로 실패(종료 코드 1)하며, 문서에서 인용한 감사 스크립트 5종과 TRUSTED_BASE.md가 저장소에 존재하지 않고(0 / 6 수록) AGPL-3.0-only 파생 ELF 바이너리가 미커밋 상태입니다.
 
-### 1.3 `encrypt_pqxdh` 확률 상계 공허화(`> 1`) 및 `n_sessions = 0` 산술 모순 (`CP-02`)
-- **`n_sessions ≥ 1`에서의 확률 상계 `> 1` 공허화**: `Computational/Proofs/Encrypt.lean:243`(`encrypt_pqxdh_ind_cca`)의 공격자 이점 상계 우변에는 $1/\text{card}(\text{KemKey})$ 같은 분모 인자 없이 자연수 제곱항 `(n_sessions : ℝ)^2`가 그대로 더해져 있습니다. 따라서 실제 세션이 1개 이상(`n_sessions ≥ 1`) 존재하면 확률 상계가 **`1 + ε > 1`**이 되어 확률($\le 1$)에 대해 공허한(`Vacuous`) 부등식이 됩니다([deepmind_signal_stratigraphy_and_hook_boundary.lean](../proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean#L1)).
-- **`n_sessions = 0`에서의 산술 모순 (`47 / 2^32 < 0`)**: 만약 `n_sessions = 0`을 대입하면, 같은 정리의 가설 `h_ curve25519`가 `47 / 2^32 ≤ 0`을 요구하여 `False` 전제가 됩니다.
+### 1.4 유효 다계층 형식 검증 코어 공인 및 인간 · 도구 · AI 3층 기여도 분리
+- 유효 다계층 형식 검증 코어 공인 (Gate 5: PASS): 추상 암호학 게임 귀착(Computational/Proofs, ACD19 + SPQR V1 고전 비회귀), 기호 실행 불변량(Symbolic/Proofs), 그리고 9개 비-훅 심볼(mallocng, memcpy, memset, 파일 읽기)의 AArch64 기계어 배치 정제는 실질적 컴퓨터 보조 검증 업적이며, 본 감사단의 독립 Lean 4 정리 81개(1,457줄, 391/391 변이 사살)로 검증되었습니다.
+- 3층 기여도 분리: (1) 선행 인간 암호학 이론(ACD19, PQXDH, SPQR) 및 AArch64 ISA 모델링 65%, (2) AI 보조 Lean 4 게임 호핑·기호 실행 증명 및 9개 심볼 AArch64 기계어 정제 35% (Gate 5 PASS), (3) 85.94% Hook 우회, 153,682줄 비교기 TCB 편입, $2^{40}$ GapDH 상계 공허화 및 6종 감사 파일 누락은 시정 대상입니다.
 
-### 1.4 유효 수리·공학 코어 공인 및 인간 · 도구 · AI 3층 기여도 분리
-- **유효 형식 검증 코어 공인 (`Gate 5: PASS`)**: 추상 암호학 게임 귀착(`Computational/Proofs`, ACD19 + SPQR V1 고전 비회귀), 기호 실행 트레이스 불변량(`Symbolic/Proofs`), 그리고 `mallocng`·`memcpy`·`memset` 등 `9`개 심볼의 AArch64 기계어 배치 정제(`Correctness/Proofs`)는 컴퓨터 보조 형식 검증의 실질적 성과입니다.
-- **3층 기여도 분리**: (1) 선행 인간 암호학 이론(ACD19, PQXDH, SPQR) 및 `LNSym` AArch64 시맨틱 프레임워크 **`65%`**, (2) **AI 보조 `Lean 4` 기호 실행·게임 호핑 및 `9`개 심볼 AArch64 기계어 정제 `35%` (`Gate 5 PASS`)**, (3) `95.29%` `Hook` 우회·`0` 패딩 난수·`encrypt_pqxdh` 상계 `> 1` 공허화는 TCB 공시 및 수식 교정 대상입니다.
+## 2. 예상 반론에 대한 사전 사실 확인 (FAQ)
 
----
+- Q1. "이 저장소가 컴파일된 AArch64 libsignal-cli 바이너리를 기계어 수준까지 종단간 검증한 것 아닌가?"
+  - 사실 확인: 추적 대상 64개 심볼 중 실제 AArch64 ELF 기계어 명령어를 실행해 검증한 것은 9개(14.06%: mallocng 할당/해제, memcpy, memset, 파일 읽기)뿐이며, 나머지 55 / 64개(85.94%, PR #2 이후 45 / 64 = 70.31%)는 37개 Lean 훅과 18개 패닉 스텁으로 우회되었고 CliElfLib(85,249줄)는 기본 lake build에서 제외되어 있습니다.
+- Q2. "외부 비교기(comparator)를 통과했으므로 정리 명세와 TCB가 최소화된 것 아닌가?"
+  - 사실 확인: 아닙니다. ComparatorChallenge 자체가 326개 파일(153,682줄)을 TCB 안으로 전이 임포트하고 미증명 Arm64/Trusted/ 61개 파일(16,767줄)을 포함하며, "enable_nanoda": false로 설정되어 있고 PR #2에서 comparator/README.md의 67줄 주의사항 절이 삭제되었습니다.
+- Q3. "PQXDH와 SPQR 증명이 표방된 $2^{40}$ 규모에서 양자내성 보안을 보장하는가?"
+  - 사실 확인: `DEVIATIONS.md`(`DEV-PQ19`)가 밝히듯 계산 정리는 고전 보안만 형식화했으며, [PQXDH.md](../proofs/oai_ref/Computational/docs/PQXDH.md#L69-L115)에서 표준 모델 GapDH 제5항이 $q_{\text{total}} \ge 1,081,110,205,009 \approx 2^{39.98}$에서 1을 넘어 $q_{\text{total}} = 2^{40}$에서 $17,441 / 16,384 \approx 1.0645 > 1$이 되므로, `PQXDH.md:115`는 구체적 보안 여유를 $q_{\text{total}} \le 2^{24}$로 제한합니다.
+- Q4. "왜 `DEVIATIONS.md:2733`의 `DEV-C14` 임계치는 `38,967`인데 실제 상계는 `35,211`에서 1을 넘는가?"
+  - 사실 확인: 코드의 수식이 변경된 뒤 `DEVIATIONS.md:2733`($q_{\text{ep}} = q$일 때 단일 세션 내 메시지/질의 수)의 본문 수치가 구형 값(`38,967`) 그대로 방치되어 단일 세션 내 `3,756`개 메시지의 괴리가 발생했기 때문입니다([deepmind_comparator_laundering_and_crypto_bounds.lean](../proofs/deepmind_comparator_laundering_and_crypto_bounds.lean#L1)).
+- Q5. "그럼에도 추상 게임 귀착과 9개 비-훅 심볼의 AArch64 정제는 공학적 가치가 있는가?"
+  - 사실 확인: 매우 높습니다. Computational/Proofs의 다단계 암호 게임 귀착, Symbolic/Proofs의 Rust 기호 정제, 그리고 mallocng·memcpy·memset 기계어 증명은 AI 보조 형식 검증의 중요한 성취이므로 Gate 5: PASS로 공인했습니다.
+- Q6. "OPFF TIER A로 승격되기 위한 수정 요건은 무엇인가?"
+  - 사실 확인: (1) 기본 lake build에 CliElfLib를 포함하고 미도달 파일 1,450개(595,231줄)를 정리하며, (2) 153,682줄에 달하는 ComparatorChallenge TCB를 축소하고 삭제된 67줄 주의사항 공시를 복구하며, (3) PQXDH.md의 $2^{40}$ GapDH 상계 공허화 수식과 DEV-C14 수치(35,211)를 교정하고, (4) 누락된 감사 스크립트 5종·TRUSTED_BASE.md 및 위생 자가시험 오류를 수리하면 됩니다.
 
-## 2. 예상 반론에 대한 사전 사실 확인 (Pre-bunking FAQ)
-
-- **Q1. "모듈식 검증에서 하위 암호 프리미티브(SHA-512, ML-KEM 등)를 `Hook`으로 추상화하는 것은 표준 기법 아닌가?"**
-  - **사실 확인**: 모듈식 검증에서 `Hook`을 쓰는 것 자체는 정당한 공학 기법입니다. 문제는 (1) 전체 `191`개 심볼 중 `182`개(`95.29%`)가 `Hook`으로 우회되었고, (2) `35`쪽 논문(`paper.pdf`)에서 이 `Hook` 메커니즘을 단 한 번도 언급하지 않은 채 바이너리 종단간 검증으로 서술하여 독자가 TCB 경계를 알 수 없다는 점입니다(`CP-04`).
-- **Q2. "기호 실행을 위해 `OsRng`와 시계를 스텁으로 바꾼 것도 표준적인 모델링 아닌가?"**
-  - **사실 확인**: 기호 변수(`Symbolic Variable`)로 모델링하는 것과 상수 `0`(`dest.fill(0)`)으로 하드코딩하는 것은 다릅니다. 특히 `Symbolic/Proofs/` 하위 증명들이 실제로는 상수 `[0u8; 32]` 배열 위에서 성립하는 성질을 활용하고 있으며, 이 사실이 `paper.pdf`에 전혀 공시되지 않았습니다.
-- **Q3. "`Encrypt.lean:243`의 `n_sessions^2` 항은 단순한 오타 아닌가?"**
-  - **사실 확인**: 예, 분모(`2^256` 또는 키 공간 크기)가 누락된 명세 오타(`Specification Bug`)입니다. 그러나 바로 그 오타 때문에 `n_sessions ≥ 1`에서 상계가 `> 1`이 되어 `encrypt_pqxdh_ind_cca` 정리의 결론이 수학적으로 공허(`Vacuous`)해졌고, `Lean 4` 커널은 공허한 부등식도 참으로 통과시키므로 포렌식 감사 없이는 발견할 수 없습니다(`CP-02`).
-- **Q4. "그렇다면 `SPQR` 프로토콜의 보안 증명도 전부 공허한가?"**
-  - **사실 확인**: 아닙니다. 본 감사단 확인 결과, `SPQR` 관련 정리(`Computational/Proofs/SPQR/*.lean`)의 확률 상계는 분모가 정상적으로 포함되어 있어 `0 < Bound < 1`로 비자명하게 성립합니다(`Gate 5: PASS`). 공허화는 `Encrypt.lean:243`의 PQXDH 결합 상계에서 발생한 특정 결함입니다.
-- **Q5. "왜 `Gate 3`(서지 귀속)이 `FAIL`인가?"**
-  - **사실 확인**: 저장소의 `Arm/` 디렉터리 전체가 기반하고 있는 AArch64 `Lean 4` 시맨틱 프레임워크 원저(`LNSym`, Goel et al. 2024)와 코드 기반 게임 호핑 원저(Bellare-Rogaway 2006, Shoup 2004, Halevi 2005) 등 핵심 기반 문헌 `6`종이 `paper.pdf` 참고문헌에서 `0 / 6`건 수록(전량 누락)되었기 때문입니다(`CP-03`).
-- **Q6. "`OPFF TIER A` 또는 `TIER B`로 승격되기 위한 수정 요건은 무엇인가?"**
-  - **사실 확인**: (1) `Encrypt.lean:243`의 `n_sessions^2` 항에 누락된 분모를 복원하여 상계가 `< 1`이 되도록 수리하고, (2) `paper.pdf`에 `182 / 191`(`95.29%`) 심볼 `Hook` 목록과 `OsRng`/`UNIX_EPOCH` 하네스 TCB 경계를 명시하며, (3) 누락된 `LNSym` 등 `6`대 기반 문헌을 인용하면 즉시 승격 요건을 충족합니다.
-
----
-
-## 3. 10초 재현 명령어 (`Don't Trust, Verify`)
+## 3. 10초 재현 명령어
 
 ```bash
-# 1) 182/191 (95.29%) 심볼 Hook 우회, OsRng 0 패딩, Encrypt.lean:243 상계 > 1 공허화 및 1,150개 파일 층서학 실측 확인
+# 1) 11,323개 파일(7,528,295줄) 층서학, 55/64 (85.94%) Hook 우회, 153,682줄 비교기 TCB 및 PQXDH/DEV-C14 상계 실측 확인
 python3 -B proofs/verify_symbolic_deepmind_signal.py
 
 # 2) 81개 독립 Lean 4 정리 커널 검증 (0 sorry, 0 axiom, 391/391 가설 변이 사살)
-lake env lean proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean
-lake env lean proofs/deepmind_comparator_laundering_and_crypto_bounds.lean
-lake env lean proofs/deepmind_arm64_tcb_and_syscall_divergences.lean
+lean proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean
+lean proofs/deepmind_arm64_tcb_and_syscall_divergences.lean
+lean proofs/deepmind_comparator_laundering_and_crypto_bounds.lean
 ```

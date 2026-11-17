@@ -1,6 +1,6 @@
 /-
   OpenAI #005 (Catalan's Constant Is Irrational)
-  Case 011, Part II:
+  Part II:
   Palindromic Bases U_l and Q_i, Frobenius Extraction Shifts, Involution Eigenvalue
   Block Factorization, Modulo-101 Certificate, and Corpus Stratigraphy (Theorems 26–50).
 

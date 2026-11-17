@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Deterministic symbolic and forensic verification suite for Case 013:
-Google DeepMind `code-verification` (`libsignal-cli`, commit `808b4b7ffef1`).
+Deterministic symbolic and forensic verification suite:
+Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, commit `808b4b7ffef1`).
 
 Delegates live regex/text extraction over `proofs/oai_ref/` (`83` preserved
 upstream files: `59` `.lean` + `24` non-Lean) to `deepmind_signal_forensic_parsers.py`,

@@ -1,7 +1,7 @@
 # Problem Specification: OpenAI `#005` Catalan's Constant Is Irrational (Zero-Hint Problem Specification)
 
 ## 1. Scope & Target Repository
-- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#005`: *Catalan's constant is irrational*):
+- **Primary Upstream Target**: `openai/math` (`mathcommunity/oai-math-revised`, Family `#005`: Catalan's constant is irrational):
   1. `preprints/Catalans-constant-is-irrational-September-24-2026/build/` (`main.tex`, `references.bib`, and `sections/introduction.tex`, `sections/foundations.tex`, `sections/odd-primes.tex`, `sections/nonvanishing.tex`, `sections/real-place.tex`, `sections/energy.tex`, `sections/certificate.tex`, `sections/conclusion.tex`)
   2. `lean/ComparatorChallenges/Catalan.lean` and `lean/ComparatorChallenges/Catalan.json`
   3. `lean/OAI/NumberTheory/Catalan/` (`Main.lean`, `Results/Catalan.lean`, `Results/Conclusions.lean`, and all subdirectories `Analysis/`, `Arithmetic/`, `Determinants/`, `Energy/`, `Estimates/`, `FiniteMatrices/`, `FirstBarrier/`, `Moments/`, `Polynomial/`, `PrimeLimits/`, `RowIdentities/`, `SecondBarrier/`)

@@ -405,8 +405,8 @@ theorem thm_23_unidirectional_shear_zero_advection_solenoidal
   rw [h_no_x, h_dt_div, h_lap_div]
   grind
 
-/-- Theorem 24: Time-collar vanishing margin around integer times in ShearFlows/Main.lean:77
-    (`realizingVelocity_fluid` with epsilon = 1/32, leaving active window 1 - 2/32 = 15/16). -/
+/-- Theorem 24: Time-collar vanishing margin around integer times in ShearFlows/Main.lean:103-104
+    (`reciprocal_affine_maps_by_shears` with epsilon = 1/32, leaving active window 1 - 2/32 = 15/16). -/
 theorem thm_24_shear_schedule_collar_margin
     (eps32 period32 : Int)
     (heps : eps32 = 1)

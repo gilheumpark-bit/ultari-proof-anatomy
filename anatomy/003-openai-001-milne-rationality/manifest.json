@@ -7,25 +7,25 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_milne.py"
   },
   "artifacts_sha256": {
-    "README.md": "2723b59297ab4ae312de4df7ea1d07199fed29ce71e5e907681d6d8791e4c746",
-    "README.ko.md": "54621561c184ff76b066787ba90d1c7fb5eecfe883fc176930870546aadaf712",
-    "proofs/milne_transport_and_filtration.lean": "081d9a5b4b2d150cabc1f652ca5cee76e5a583932de6757dd607fcb560e4296c",
-    "proofs/milne_weil_reduction_and_repairs.lean": "4bd06f974c4aea1f357aa60ace86697a3064b91eda8be6dfcf90db5e269072cc",
-    "proofs/verify_symbolic_milne.py": "13cd8628577c1aa90df21b7ea4c8530605f5eaf57fd17ddb2a2d08171e71e620",
+    "README.md": "c3dc9c1ec22d5988e8a11f0cb195381df46ee7c747f607f1d6c2a385259f059b",
+    "README.ko.md": "de6f3e4ce3d628e9a2658bd1843e232031cc80388d2ec432bdaa170eea73ed4e",
+    "proofs/milne_transport_and_filtration.lean": "c17477cbcad1600730d9471a7c4691e5244f271f96b0cefb444649fd245c39b5",
+    "proofs/milne_weil_reduction_and_repairs.lean": "b84eb920fd468bf7a941f330cc8d9c732cf8d3bc759ce31646e33a81aa9ea874",
+    "proofs/verify_symbolic_milne.py": "5f74cd9cb7bed53f814e3711bea590452cdfe8ee0019b7273c422f38160f0140",
     "proofs/symbolic_verification_result.json": "068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100",
-    "proofs/problem_spec.md": "2e2940a96167ef0c9d2ee4b201bf835decd6366c6d00cef80c828964ccfb9fc1",
+    "proofs/problem_spec.md": "44f1c4cd6d38162ddc9fdebe061c8b8895fbcf21549e526eeb6f605cbc73cbab",
     "proofs/oai_001_milne_repair.patch": "529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886",
-    "ko/01_초보자용_쉬운해설.md": "980ff2ee8b3f67f95ead648e0f1be6d8af13c3bb81aa6df7a58b88952332d55f",
-    "ko/02_중급자용_구조및수식가이드.md": "abe26548dd420459b5cd2b498b43af92d94135f86b779aef7a1ae25e7db4e0e1",
-    "ko/03_전문가용_산술기하및형식증명보고서.md": "a959d106361fe89a7a59342e31b5af3eff81d8df55af4bcee4d1465dbe2813cf",
-    "ko/04_자동검증및파서용_명세서.md": "db555f850c6a132fd1ee9345a9fc524756ea191ee3f1746d11d54b1366b5bd28",
-    "en/01_Beginner_Guide.md": "1a9afa6f26e2c6dbc63aa10e54d8bfab46d05b6a395d17787c0d00f2db694255",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "dc99aa18cc939c995d588060b32e5d1c265e50ccce966a69f6c81d3264ac71ff",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "79d46aa6c4cc122d0a57101e7ad1f24bd7d03daa1c990002d745ca04d452a3a7",
-    "en/04_Automated_Verification_and_Manifest.md": "c826436c088b601fbe015bd8579c35daf9ff86077efafb16bf8d99514f690de2"
+    "ko/01_초보자용_쉬운해설.md": "f345e6859ea6dc81b85ed5e1163ea911c5f39bfa0309040af46ef1f62f2f3d86",
+    "ko/02_중급자용_구조및수식가이드.md": "9e6d07b3d3e2c08f8c3f586f4fa9234739432229d675b207f88793149ed550c0",
+    "ko/03_전문가용_산술기하및형식증명보고서.md": "d579d071124991175600e175daacc2d3b66e22f1c78fef615794846c387b2f9b",
+    "ko/04_자동검증및파서용_명세서.md": "4abe3fea8239d35119dd3fc10e0a83f557f396cdad3f1e94a6a0cefbb551776e",
+    "en/01_Beginner_Guide.md": "5bee4166ecdd5f187a0706da7778eaa9d2970d884592217ffa3f0075e57c34b4",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "5aca9427b1ad82c2aea05518b8972d538134040ef0dcd7a7bbf576ae8b99fd62",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "f8996af221154c7dbf2500dff29bf4c220687a45e77ea858edaee32fdf81f4d7",
+    "en/04_Automated_Verification_and_Manifest.md": "0b591a341e568ed62dcd983756660a3ac16976f4ac1d2d8da82fcc55f2ced2b2"
   },
   "scope_and_limitations": {
-    "formalized_arithmetic_and_linear_algebra": "36 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 232/232 hypothesis mutations caught = 101/101 + 131/110) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and PyTorch tensor verification."
+    "formalized_arithmetic_and_linear_algebra": "36 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 232/232 hypothesis mutations caught = 101/101 + 131/131) across proofs/milne_transport_and_filtration.lean and proofs/milne_weil_reduction_and_repairs.lean + SymPy and PyTorch tensor verification."
   },
   "verified_key_results": {
     "transport_and_filtration_theorems": {
@@ -66,7 +66,10 @@
         "repair_medium2_beauville_projector_canonical_cycle_invariance (Theorem 30, L259)",
         "repair_low1_ramified_dvr_unconditional_lifting_range (Theorem 31, L278)",
         "repair_low2_sharp_kronecker_bound_attained_3var (Theorem 32, L296)",
-        "repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive (Theorem 33, L330)"
+        "repair_low3_rosati_positive_definite_u2_eigenvalues_strictly_positive (Theorem 33, L330)",
+        "lemma_2_1_comparison_isomorphism_and_tate_twist_compatibility (Theorem 34, L342)",
+        "lemma_2_2_lefschetz_pairing_functoriality_and_projection_system (Theorem 35, L358)",
+        "corollary_3_4_cm_transport_first_factor_pullback_recovery (Theorem 36, L381)"
       ]
     }
   },
@@ -281,19 +284,19 @@
       {
         "index": 34,
         "name": "lemma_2_1_comparison_isomorphism_and_tate_twist_compatibility",
-        "file": "proofs/milne_weil_reduction_and_repairs.lean",
+        "file": "milne_weil_reduction_and_repairs.lean",
         "line": 342
       },
       {
         "index": 35,
         "name": "lemma_2_2_lefschetz_pairing_functoriality_and_projection_system",
-        "file": "proofs/milne_weil_reduction_and_repairs.lean",
+        "file": "milne_weil_reduction_and_repairs.lean",
         "line": 358
       },
       {
         "index": 36,
         "name": "corollary_3_4_cm_transport_first_factor_pullback_recovery",
-        "file": "proofs/milne_weil_reduction_and_repairs.lean",
+        "file": "milne_weil_reduction_and_repairs.lean",
         "line": 381
       }
     ],

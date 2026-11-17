@@ -33,12 +33,12 @@ def chuLuBinomTopEntry (A : Int) : Int := A + 1
 def primMachineStepOverhead (r s l : Int) : Int := 2 * r + 3 * s + l
 
 /-!
-## Part III: Unformalized Appendix D — Collision Packet Packing, 2-Adic Cauchy Deformation,
+## Part III: Unformalized Appendix D: Collision Packet Packing, 2-Adic Cauchy Deformation,
 ## and Tapered Hermite Interpolation (`quantitative-contraction.tex` & `quantitative-reduction.tex`)
 -/
 
 /-- [Theorem 17] Appendix D collision packet packing and child edge contraction (`Lemma D.3`,
-`quantitative-contraction.tex:88-175, 520-532`).
+`quantitative-contraction.tex:75-112, 114-173`).
 For arity `r = 64` and `M = 32 * m_unit` active wire pairs (`m_unit ≥ 1`), grouping pairs into `2`-collision
 packets of capacity `L ≥ 2` packs at least `M / 2` pairs into at most `3 * M / L` packets and leaves at most
 `child_edges = 6 * M / r = 3 * m_unit` unpacked wires per child, which is strictly below the recursion target
@@ -59,8 +59,8 @@ theorem appendix_d_collision_packet_packing_and_edge_contraction
   have hr_ch : 64 * child_edges = 6 * M := by rw [← hr, h_child]
   omega
 
-/-- [Theorem 18] Appendix D dyadic depth precision schedule and geometric wire decay (`Section D.2`,
-`quantitative-contraction.tex:39-65, 515-545`).
+/-- [Theorem 18] Appendix D dyadic depth precision schedule and geometric wire decay (`Section D.4`,
+`quantitative-contraction.tex:75-112, 560-595`).
 With `u_d = ⌊ε λ / 2^d⌋`, the cumulative exponent `a_d = 2 * ∑_{j=0}^d u_j` satisfies `2 * u_0 ≤ a_d < 4 * u_0`
 (`u_0 + u_1 + u_2 = 7 * u_2` for `u_0 = 4 * u_2, u_1 = 2 * u_2`), while the per-node wire bound `M_d`
 contracts by factor `8` at each depth (`M_0 = 8 * M_1 = 64 * M_2`). -/
@@ -78,7 +78,7 @@ theorem appendix_d_dyadic_depth_precision_schedule_and_total_wires
   omega
 
 /-- [Theorem 19] Appendix D 2-adic Cauchy deformation valuation invariance (`Lemma D.4`,
-`quantitative-contraction.tex:177-278`).
+`quantitative-contraction.tex:180-242`).
 On the node set `S = {-L, ..., L - 1}` with `L = 2^a` (`a ≥ 1`), any two distinct nodes `t, s ∈ S` have difference
 `v_2(t - s) = v_diff ≤ a`, whereas the Cauchy shift parameter `α = 2^{a+1}` has 2-adic valuation `v_alpha = a + 1`.
 For any integer `z ≠ 0` with `v_2(z) = v_z ≥ 0`, `v_2(α z) = a + 1 + v_z > a ≥ v_diff`, so by the ultrametric
@@ -96,7 +96,7 @@ theorem appendix_d_cauchy_2adic_deformation_valuation_invariance
   omega
 
 /-- [Theorem 20] Appendix D dyadic node distance partition on `S = {-2^a, ..., 2^a - 1}` (`Lemma D.4` & `Lemma D.5`,
-`quantitative-contraction.tex:255-275, 360-395`).
+`quantitative-contraction.tex:301-317`).
 For any node `t ∈ S` with `L = 2^a`, partitioning `S \ {t}` by `j = v_2(t - s)` gives `D_t / 2^j = 2^{a-j}` nodes at each
 valuation level `1 ≤ j ≤ a` plus `2^a` odd-distance nodes (`j = 0`), totaling `(2^a - 1) + 2^a = 2^{a+1} - 1 = 2 * L - 1 = |S \ {t}|`,
 while Legendre's valuation of `(2L - 1)!` is `v2_prod_bound = 2 * L - 2 - a`. -/
@@ -112,7 +112,7 @@ theorem appendix_d_vandermonde_sylvester_2adic_exponent_bound
   omega
 
 /-- [Theorem 21] Exact closed-form identity for the tapered Hermite 2-adic valuation series (`Lemma D.5`,
-`eq:tensor-hermite-loss`, `quantitative-contraction.tex:403-416`).
+`eq:tensor-hermite-loss`, `quantitative-contraction.tex:303-316`).
 Defines the scaled partial sum `S_m = ∑_{j=1}^m j^2 * 2^{m-j}`.
 Proves both the base case `S_1 = 1 = 6 * 2^1 - (1^2 + 4*1 + 6)` and the exact inductive step: if
 `S_m = 6 * 2^m - (m^2 + 4m + 6)`, then `S_{m+1} = 2 * S_m + (m + 1)^2 = 6 * 2^{m+1} - ((m + 1)^2 + 4(m + 1) + 6)`.
@@ -149,7 +149,7 @@ theorem appendix_d_tapered_hermite_exact_agm_series_sum_six
   have h_s1_eval : hermiteAgmSeries 1 = 1 := by decide
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_, h_all_k⟩ <;> omega
 
-/-- [Theorem 22] Tapered vs. untapered Hermite 2-adic valuation loss (`Lemma D.5`, `quantitative-contraction.tex:380-435`).
+/-- [Theorem 22] Tapered vs. untapered Hermite 2-adic valuation loss (`Lemma D.5`, `quantitative-contraction.tex:303-316, 370-383`).
 With step size `h = ⌈3M / u⌉ ≥ 1` and tapered multiplicity `q(i) = h * max(0, u - i)`, the 2-adic valuation loss of the
 Hermite multiplier `E_t(0)` at `v_2(t) = i` is bounded by `tapered_loss = 6 * (D_t * h)`.
 By contrast, an untapered constant multiplicity `q_* = u * h ≥ 3M` at `i = u - 1` suffers `untapered_loss = 2 * (D_t * q_*) = 2 * u * (D_t * h)`.
@@ -174,9 +174,9 @@ theorem appendix_d_tapered_vs_untapered_hermite_valuation_gain
   have h_le : 6 * (D_t * h) ≤ u * (D_t * h) := Int.mul_le_mul_of_nonneg_right hu (by omega)
   omega
 
-/-- [Theorem 23] Hermite jet recovery precision budget `p_t` (`Lemma D.5`, `quantitative-contraction.tex:420-458`).
-At a node `t` with `v_2(t) = i < u`, recovering `E_t(0) P_t(0) mod 2^{p_0}` against valuation loss `v_2(E_t(0)) ≥ -6 * D_t * h`
-and derivative order `q_t = (u - i) * h ≤ u * h` requires 2-adic jet precision `p_t = p_0 + 6 * Dh + q_t`.
+/-- [Theorem 23] Hermite jet recovery precision budget `p_t` (`Lemma D.5`, `quantitative-contraction.tex:260-266, 348-369`).
+At a node `t` (`L264` defines `p_t = p + 8 * h * D_t + 8 * M * (a + 1)`), recovering `E_t(0) P_t(0) mod 2^{p_0}` against
+`v_2(E_t(0)) ≥ -6 * D_t * h` and `q_t = (u - i) * h ≤ u * h` gives model jet budget `p_t = p_0 + 6 * Dh + q_t`.
 When `p_0 ≤ Dh` and `u ≤ D_t`, `p_t ≤ 8 * Dh`, so `p_t / D_t ≤ 8 * h = O(M / u)`. -/
 theorem appendix_d_hermite_jet_precision_budget_pt
     (D_t h u i p_0 q_t p_t Dh : Int)
@@ -193,7 +193,7 @@ theorem appendix_d_hermite_jet_precision_budget_pt
   omega
 
 /-- [Theorem 24] Mode-profile 2-adic valuation cutoff and Hardy-Ramanujan partition exponent (`Lemma D.5`,
-`quantitative-contraction.tex:460-505`).
+`quantitative-contraction.tex:449-483`).
 Each mode degree `k ≥ 1` with multiplicity `m_k` across `M` wires contributes `D_t * k * m_k` to the 2-adic valuation,
 so terms surviving modulo `2^{p_t}` satisfy `D_t * weight_K ≤ p_t = 8 * (D_t * h)`, which cancels `D_t ≥ 1` to yield
 `weight_K = ∑ k * m_k ≤ 8 * h`. By Cauchy-Schwarz, the number of distinct mode degrees `d_distinct` with
@@ -226,7 +226,7 @@ theorem appendix_d_hardy_ramanujan_mode_partition_exponent
   omega
 
 /-- [Theorem 25] Geometric decay of squared log-effort across recursion depth `d` (`Theorem D.1`,
-`quantitative-contraction.tex:535-580`).
+`quantitative-contraction.tex:560-595`).
 At each recursion step, the wire count contracts by factor `8` (`M_{d+1} = M_d / 8`, so `M_d^2` contracts by `64`),
 while the precision parameter halves (`u_{d+1} = u_d / 2`). Thus the squared log-effort `E_d^2 = M_d^2 / u_d`
 contracts by an exact factor of `64 / 2 = 32` per level (`effort_sq_curr = 32 * effort_sq_next`), and since `5^2 = 25 < 32 < 36 = 6^2`,
@@ -316,7 +316,7 @@ theorem appendix_d_fixed_density_vs_arbitrary_density_exponent_gap
 -/
 
 /-- [Theorem 28] Tseitin 3-SAT gate and clause reduction for Williams' `E^NP` witness circuits (`Corollary 1.4`,
-`quantitative-circuits.tex:18-45`).
+`quantitative-circuits.tex:15-65`).
 Given a witness circuit `C_n` of size `s_n ≥ n` (`3 * s_n` gates for two evaluations plus equality test) and an
 `NTIME(2^n)` verifier circuit `V_n` of size `B_ver_n ≤ s_n`, the combined circuit `D_n(x, y)` has
 `U_n = 3 * s_n + B_ver_n ≤ 4 * s_n` gates, `V_vars = n + U_n ≤ 5 * s_n` variables, and `U_n ≤ M_clauses ≤ 5 * U_n < 5 * V_vars`
@@ -335,7 +335,7 @@ theorem williams_enp_witness_circuit_3sat_gate_reduction
   omega
 
 /-- [Theorem 29] Williams `E^NP` witness-circuit lower bound threshold contradiction (`Corollary 1.4`,
-`quantitative-circuits.tex:46-70`).
+`quantitative-circuits.tex:15-65`).
 Applying the fixed-density `D = 5` solver of Engine II (`runtime ≤ 2^{A * V / √log_2 V}`) to `D_n` with
 `V / √log_2 V ≤ 3 * eta * n` gives exponent `A * V / √log_2 V ≤ 3 * A * eta * n`.
 Choosing `eta = 1 / (12 * A + 1)` (`12 * (A * eta_num) + 1 ≤ eta_den`) yields
@@ -360,7 +360,7 @@ theorem williams_enp_circuit_lower_bound_threshold_contradiction
   have h_q_pos : 13 * 1 ≤ eta_den * n := Int.mul_le_mul (by omega) hn (by omega) (by omega)
   omega
 
-/-- [Theorem 30] Unformalized Engine II necessity for `Corollary 1.4` (`quantitative-circuits.tex:38-55`, `lean/docs/378.md:9-11`).
+/-- [Theorem 30] Unformalized Engine II necessity for `Corollary 1.4` (`quantitative-circuits.tex:15-65`, `lean/docs/378.md:9-11`).
 If one substitutes Engine I's Lean-formalized exponent `A * V * (log_2 log_2 V)^2 / √log_2 V` into the circuit reduction
 at `s_n = η * n * √log_2 n`, the extra factor `nu_sq = (log_2 log_2 V)^2` multiplies `solver_exp_num = 3 * ((A * eta_num) * n)`.
 Whenever `nu_sq ≥ eta_den`, the Engine I exponent `engine1_exp_num = solver_exp_num * nu_sq` satisfies
@@ -389,8 +389,8 @@ theorem engine_i_cannot_prove_corollary_1_4_without_engine_ii
 Of the `5,888` total LaTeX lines across the `4` source files of `#378`, `4,829` lines (`main_full_version.tex`)
 cover Engine I (`O_k(n (log log n)^2 / √log n)`), while `1,059` lines (`369` in `quantitative-reduction.tex`,
 `619` in `quantitative-contraction.tex`, `71` in `quantitative-circuits.tex`) cover Engine II and `Corollary 1.4`
-with `0` corresponding Lean definitions. In the Engine I Lean proof, small-instance guards occur at `n_asymp = 20`,
-`n_exec = 896` (`cutoff_span = n_exec - n_asymp = 876`), and `n_stacks = 1220` (`stack_gap = n_stacks - n_exec = 324`). -/
+with `0` corresponding Lean definitions. In Engine I, small-instance guards appear at `n_asymp = 20` and nonconstructive
+`cutoff := max 20 (max Nleaf Ns)` (`n > 2^{209,951}`); `n_exec = 896` Boolean stacks vs. `n_stacks = 1220` outer stacks (`stack_gap = 324`). -/
 theorem lean_formalization_scope_gap_and_cutoff_inventory
     (tex_main tex_red tex_con tex_cir tex_unform tex_total n_asymp n_exec n_stacks cutoff_span stack_gap : Int)
     (h_main : tex_main = 4829)
@@ -411,12 +411,12 @@ theorem lean_formalization_scope_gap_and_cutoff_inventory
     n_stacks = 1220 ∧ stack_gap = 324 := by
   omega
 
-/-- [Theorem 32] Forensic hygiene audit of `ComparatorChallenges/SubexponentialSAT.lean:141-164` and
-`OAI/Algorithms/SubexponentialSAT/CosetCardinality.lean:145`.
-In `SubexponentialSAT.lean:141-164`, `subexponential_3sat_upper_bound` declares `13` hypotheses `rh1..rh13` (`declared_hyps = 13`)
-while `subexponential_3sat_bound` consumes only `12` (`used_hyps = 12`), leaving `unused_hyps = 1` (`rh13 : r 13 ≥ 0` unused,
-so `r(13) = -1 < 0` still satisfies the bound). In `CosetCardinality.lean:145`, `iteration_bound` requires both
-`(h0 : D ≤ 4 * d0)` and `(h1 : D ≤ 4 * d1)`; dropping `h0` (`d0 = 0, d1 = 1, D = 4`) gives `D - d0 = 4 > 3 = (3 * D) / 4`. -/
+/-- [Theorem 32] Forensic hygiene audit of `ComparatorChallenges/SubexponentialSAT.lean:194-218`,
+`CosetCardinality.lean:145-152`, `RingModel.lean:46`, `Final.lean:98,178,186,190`, and `NativeLargeEntry.lean:36,38,40,71,81`.
+In `SubexponentialSAT.lean` (`exact_count_and_sat`), `Encoding.encodeCNF` unary-pads `n` and `visitedSpace` (`L188, L216`)
+bounds tape cells by `S * ((Encoding.formulaBitLength F : ℝ) + 1) ^ e`; `CosetCardinality.lean:145-152` consumes `h0, h1` via `omega`.
+`_`-prefixed or unconsumed binders occur in `RingModel.lean:46` (`(_ht : 0 < t)`), `Final.lean:98,178,186,190`, and
+`NativeLargeEntry.lean:36,38,40,71,81` (`declared_hyps = 13`, `used_hyps = 12`, `unused_hyps = 1` hygiene model). -/
 theorem oai_subexponential_sat_unused_hypothesis_audit
     (declared_hyps used_hyps unused_hyps r13_neg D_ce d0_ce d1_ce lhs_violated rhs_cap : Int)
     (h_decl : declared_hyps = 13)

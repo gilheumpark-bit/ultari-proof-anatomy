@@ -8,7 +8,7 @@
 - **Follow-up Formalizations Audited in Parallel**:
   1. Alex Kontorovich, `AlexKontorovich/quasi-rh` (`331` `.lean` files: `ElevenTwelfths/Amplification.lean`, `ElevenTwelfths/Nonvanishing.lean`, `docs/argument.md`)
   2. Baiying Liu, `arXiv:2610.12234` (`liubaiying101/Slightly-improved-zero-free-half-planes-for-the-quasi-Riemann-hypothesis`, `229` `.lean` files: `geometry/V2Optimization.lean`, `CombinedPaperVerification.lean`)
-  3. `Case 005` (`anatomy/005-openai-003-qrh-mathematician-referee-audit`) and Xu–Sang (`arXiv:2610.15291`).
+  3. `Part II (Referee & Unbundled Gram Audit)` (`anatomy/005-openai-003-qrh-mathematician-referee-audit`) and Xu–Sang (`arXiv:2610.15291`).
 
 ## 2. Target Symbols & Modules to Audit
 1. **Pillar 1 (`DirichletL/` vs. `paper2.tex` & `AlexKontorovich/quasi-rh`)**:
@@ -21,4 +21,4 @@
    - `OAI.NumberTheory.CubicGauss.ScalarBounds` (`mixed_one`, `mixed_two`, `scale_epsilon` in `CubicGauss/ScalarBounds.lean:14–114`) and `CubicGram/SieveImprovement.lean:163–274` (`CubicGram/Main.lean`)
 3. **Pillar 3 & Pillar 4 (`CubicMoment/Blueprint.lean`, `geometry/V2Optimization.lean`, and Unbundling Hierarchy)**:
    - `OAI.NumberTheory.CubicMoment.Blueprint` (`count`, `energy`, `Face_0`, `Face_K`, `Face_H`) and `geometry/V2Optimization.lean` (`delta_c`, `B_Liu`, `B_r`, Farkas dual multipliers)
-   - Parametric Farkas shift across `arXiv:2610.12234`, `arXiv:2610.15291`, `Case 005` componentwise Gram + Stickelberger unbundling, and `CubicGauss` Path-A wiring.
+   - Parametric Farkas shift across `arXiv:2610.12234`, `arXiv:2610.15291`, `Part II` componentwise Gram + Stickelberger unbundling, and `CubicGauss` Path-A wiring.

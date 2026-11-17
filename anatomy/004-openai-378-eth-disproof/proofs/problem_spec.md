@@ -13,7 +13,7 @@ Read `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/BinomialInterpolation.lean` 
 2. For the spectral window `I = {0, 1}` (`A_0 = 0, R = 2`), construct the Newton forward-difference polynomial `f_I(W_0)` and the truncated swap matrix `M_0 = V_0 * f_I(W_0)`. Compute `rank(I_D - M_0)` (`problem_2.rank_I_minus_M0_r2_Q3`) and the maximum number of mismatched slots `|E_{u,y}|` across all index pairs `(u, y)` where `M_0[u, y] != 0` (`problem_2.max_mismatch_support_r2_Q3`).
 
 ## Problem 3: Tanner Expander Hash Constants & Discrepancy Contraction (`main_full_version.tex`)
-Read `oai_ref/tex/main_full_version.tex` (Section 6, Lemmas 6.2 and 6.3).
+Read `oai_ref/tex/main_full_version.tex` (Section 6, Lemmas 6.1 and 6.2).
 1. Extract the symbolic formulas for the hash candidate list bound `P` and minimum code distance threshold `D_0` in terms of `B` and `mu`. Evaluate both exact integers at `B = 1, mu = 1` (`problem_3.tanner_P_B1_mu1` and `problem_3.tanner_D0_B1_mu1`).
 2. Given the per-round discrepancy contraction factor, evaluate the single-variable (`n = 1`) expected discrepancy ratio for `2*n` hash rounds versus `3*n` hash rounds as irreducible fraction strings `"num/den"` (`problem_3.two_n_rounds_ratio_n1` and `problem_3.three_n_rounds_ratio_n1`).
 

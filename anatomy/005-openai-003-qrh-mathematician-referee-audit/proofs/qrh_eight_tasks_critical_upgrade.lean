@@ -216,10 +216,10 @@ theorem thm_48_welch_rank_trace_duality_and_subconvexity_beta_bridge
     beta_b_strict1050 = 529 ∧ beta_b_damped1050 = 550 ∧ beta_w_damped1050 = 539 ∧
     525 < beta_b_strict1050 ∧ beta_b_strict1050 < beta_w_damped1050 ∧ beta_w_damped1050 < beta_b_damped1050 := by omega
 
-/-- Executable cleared-denominator function definitions mirroring `OAI.NumberTheory.DirichletL` (`C-01`, `R-01`, `R-03`):
-- `criticalBeta48000`: evaluates `48000 * (29/36 + (α_X + α_Y)/12)` at `12000`-scaled `(aX12000, aY12000)`.
-- `globalSosDiscriminant`: evaluates `(4 * A_M * C_M - B_M^2) / 144` (`10^6`-scaled discriminant) at `(aX12000, aY12000)`.
-- `hybridRequiredSaving132`: evaluates `132 * Δ_hybrid(α_X, α_Y, β)` at `132`-scaled `(aX132, aY132, beta132)`. -/
+/-- Five executable cleared-denominator definitions mirroring `OAI.NumberTheory.DirichletL` & `SiegelZeros` (`C-01`, `R-01`, `R-03`):
+- `criticalBeta48000` (`48000*(29/36 + (α_X + α_Y)/12)`), `globalSosDiscriminant` (`(4*A_M*C_M - B_M^2)/144`),
+- `hybridRequiredSaving132` (`132*Δ_hybrid`), `oaiSiegelPivotConstantH` (`12*(2*p)*(4*(p+1)^2)`), and
+- `voronoiZeroModeStrippedOp` (zero-mode-stripped Mellin residue linear combination across `c0, c1, c2`). -/
 def criticalBeta48000 (aX12000 aY12000 : Int) : Int :=
   (116000 + aX12000 + aY12000) / 3
 

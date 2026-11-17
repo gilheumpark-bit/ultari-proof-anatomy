@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic symbolic & primary-source forensic verifier for Case 014 (OpenAI 10 Reasoning Traces)."""
+"""Deterministic symbolic & primary-source forensic verifier for OpenAI 10 Reasoning Traces (`reasoning_traces/`)."""
 from fractions import Fraction
 import json
 import pathlib
