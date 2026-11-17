@@ -5,7 +5,7 @@ Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
 Official CERN Zenodo Concept DOI: https://doi.org/10.5281/zenodo.24241228 (v1.0.0 DOI: https://doi.org/10.5281/zenodo.24241229)
 Audit Charter: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
 
-1. Original Code, Formal Proofs, and Verification Harnesses (Apache-2.0)
+1. Original Code, Formal Proofs, and Verification Scripts (Apache-2.0)
    All original Lean 4 formal proof files (`proofs/*.lean`, excluding `oai_ref/`),
    symbolic and numerical verification scripts (`proofs/verify_*.py`, `tools/*.py`),
    and machine-readable verification ledgers (`manifest.json`,

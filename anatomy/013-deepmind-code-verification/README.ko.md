@@ -1,12 +1,10 @@
 # Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, 커밋 `808b4b7ffef1`): 포렌식 해부 및 형식 검증 보고서
 
-- English Guide: [README.md](README.md) | 상위 아카이브: [아카이브 메인 색인](../../README.ko.md)
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 본 해부는 Google DeepMind의 AlphaProof Code (`code-verification` 저장소, 커밋 `808b4b7ffef198e6a91f71ed776d641a1c236882`, 2026년 10월 26일 초안 Formally Verifying Signal's Security Using AI 동반 저장소, 총 11,323개 Lean 4 파일 · 7,528,295줄)를 대상으로 비기본 빌드 지층 격리(`CliElfLib`), 55/64 (85.94%) 바이너리 심볼 Hook 우회 단면(`808b4b7ffef1` 37개 훅 $\to$ 후속 PR #2 `b0f729accbc2` 27개 훅), `check_refinement_hygiene.sh --self-test` 자체 실패(7/14 사멸 항목), `ValidCall` 5대 이진 트레이스 제약 및 SPQR 고전 비퇴행 범위, Rust CLI 하네스의 0 패딩 `coins.rs` 난수기·`Waker::noop()` 동기 폴링 및 `UNIX_EPOCH` 고정 시계(30일 서명 프리키 만료 우회), 16,767줄 무증명 `Arm64/Trusted` TCB 시스콜 괴리 및 Sail·부채널·`Drop::drop` 영점화 후킹 공백, 153,682줄 `ComparatorChallenge` 신뢰 기반(TCB) 편입(및 PR #2 `b0f729accbc2`의 `comparator/README.md` 67줄 Linux 5.10 unsandboxed 고지 삭제), `PQXDH.md` $q_{\mathrm{total}} = 2^{40}$ 표준 모델 공허화(17,441 / 16,384 > 1), SPQR V1 8바이트 MAC 공허화 절벽($q = 35,211$), `.base-keys` 56,680회 영구 먹통 절벽, 미커밋 AGPL-3.0-only 파생 ELF(617,448바이트) 및 미참조 `LibsignalBinary/Heap/`(22개 미러 파일) 부채를 해부하고, 독립적인 81개 Lean 4 정리(1,457줄, `leanprover/lean4:v4.29.0-rc8`, 0 sorry, 391/391 가설 변이 포착 = 100%, 74/81 구조적 정리, DoF>0: 65/81, nonlin: 10)로 재검증한 자료입니다.
 
-
-
-## 1. 4단계 한·영 문서 색인 (en/ & ko/)
+## 1. 6단계 문서 색인 (en/ & ko/)
 
 | 단계 | 한국어 가이드 (ko/) | 영어 가이드 (en/) | 핵심 수록 범위 |
 | :---: | :--- | :--- | :--- |
@@ -17,8 +15,6 @@
 | Tier 5 | [ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md](ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md) | [en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md](en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md) | OPFF 5대 관문(제0부~제7부) 전수 감사 및 OPFF TIER C 공식 심사 판정서 |
 | Tier 6 | [ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md](ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md) | [en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md](en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md) | OPFF 기본형 감사 요약서(8대 지표 요약표, 실측 oai_ref/ 좌표, 6문 6답 FAQ 및 OPFF TIER C 판정) |
 
-
-
 ## 2. 검증 산출물 (proofs/)
 
 - [proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean](proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean#L1-L475) (Theorems 1-25, 76-77, 475줄, 27개 정리, 143/143 변이 포착, DoF>0: 24/27, nonlin: 1)
@@ -26,3 +22,11 @@
 - [proofs/deepmind_comparator_laundering_and_crypto_bounds.lean](proofs/deepmind_comparator_laundering_and_crypto_bounds.lean#L1-L522) (Theorems 51-75, 80-81, 522줄, 27개 정리, 129/129 변이 포착, DoF>0: 21/27, nonlin: 6)
 - [proofs/deepmind_signal_forensic_parsers.py](proofs/deepmind_signal_forensic_parsers.py#L1-L330) + [proofs/verify_symbolic_deepmind_signal.py](proofs/verify_symbolic_deepmind_signal.py#L1-L359) $\to$ [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json#L1-L276)
 - [proofs/problem_spec.md](proofs/problem_spec.md#L1-L19) & [manifest.json](manifest.json)
+
+## 3. 1줄 검증 명령어
+
+이 사례 폴더에서 아래 명령어를 실행하면 SHA-256 해시, Lean 4 커널, SymPy 재현, `#L` 링크 및 전칭 가설 돌연변이 시험을 일괄 검증합니다.
+
+```bash
+python3 ../../tools/verify_all.py --root .
+```

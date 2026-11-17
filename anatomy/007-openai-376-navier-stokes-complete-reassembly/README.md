@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #376 Reassembly of the 650 Unimported Modules & Oct 6 Bounds
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This 650-module reassembly audit reconnects all 650 (718 strictly unimported) OAI/ Lean 4 modules in OpenAI #376 alongside the October 6, 2026 revision. All results are verified across 48 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 150/150 hypothesis mutations caught).
 
@@ -26,5 +26,6 @@ This 650-module reassembly audit reconnects all 650 (718 strictly unimported) OA
 - [proofs/verify_symbolic_ns376_complete.py](proofs/verify_symbolic_ns376_complete.py), [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json), and [proofs/problem_spec.md](proofs/problem_spec.md).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/ns376_unimported_solenoidal_and_leray_bounds.lean && lean proofs/ns376_detector_margins_and_undecidability_chains.lean && (cd proofs && python3 verify_symbolic_ns376_complete.py)
 ```

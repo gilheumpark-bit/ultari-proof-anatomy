@@ -9,8 +9,8 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "67529b2db28b388dd82233c0ed3bee4b53fd3727b87e584f75f0eb176f8ab20f",
-    "README.ko.md": "0866aaf03ab29bf08bad058516c26ac42243433cf9236f5d647514e06a4601c7",
+    "README.md": "e3501f4bc19bd3d13a48e777638e400e6f4ae001e838b843618f20c305e9603f",
+    "README.ko.md": "7c839c02a832b896d05e53d6526fcbfea5a996cd8e9170e7d58d6f943c8d3236",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd",
     "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9",
     "proofs/verify_symbolic_ns376.py": "2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c",

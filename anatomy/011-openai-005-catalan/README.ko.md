@@ -1,12 +1,10 @@
 # OpenAI #005 (Catalan's constant is irrational): 포렌식 해부 및 형식 검증
 
-- English Guide: [README.md](README.md) | 상위 저장소: [ultari-proof-anatomy](../../README.md)
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 자료는 OpenAI의 대표 수론 문제군 #005 (Catalan's constant is irrational, 2026년 9월 24일)의 9개 LaTeX 원고 파일(3,001줄 + references.bib 319줄)과 OAI/NumberTheory/Catalan/의 981개 Lean 4 파일(573,816줄; ComparatorChallenges/Catalan.lean 포함 시 982개 파일 / 573,829줄) 전수를 수리·포렌식 관점에서 해부하고, 75개 독립 Lean 4 정리(1,336줄, 0 sorry, 0 axiom, 432/432 가설 변이 100% 포착, 69/75 구조적 정리, 15개 비선형·귀납 증명, 6개 ∀ k : Nat 귀납 정리, 이중 증인 검증)로 재검증한 아카이브입니다.
 
-
-
-## 1. 문서 색인 (en/ & ko/)
+## 1. 6단계 문서 색인 (en/ & ko/)
 
 | 단계 | 영문 문서 (en/) | 국문 문서 (ko/) | 핵심 범위 |
 | :---: | :--- | :--- | :--- |
@@ -17,8 +15,6 @@
 | Tier 5 | [en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md](en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md) | [ko/05_OPFF_상세형_포렌식심사보고서_PR80.md](ko/05_OPFF_상세형_포렌식심사보고서_PR80.md) | OPFF 5대 관문(제0부~제7부) 전수 감사(PR #80) 및 OPFF TIER F 공식 판정서 |
 | Tier 6 | [en/06_OPFF_Basic_Audit_Report_PR80.md](en/06_OPFF_Basic_Audit_Report_PR80.md) | [ko/06_OPFF_기본형_감사리포트_PR80.md](ko/06_OPFF_기본형_감사리포트_PR80.md) | OPFF 기본형 요약 감사리포트(PR #80): TL;DR 8대 지표 요약표, 실측 물증, 6문 6답 FAQ 및 10초 재현 명령 |
 
-
-
 ## 2. 검증 산출물 (proofs/)
 
 - [proofs/catalan_rows_two_adic_and_odd_primes.lean](proofs/catalan_rows_two_adic_and_odd_primes.lean#L1-L446) (Theorems 1–25, 446줄, 144/144 변이 포착, nonlin: 7)
@@ -26,3 +22,11 @@
 - [proofs/catalan_real_place_energy_and_contradiction.lean](proofs/catalan_real_place_energy_and_contradiction.lean#L1-L436) (Theorems 51–75, 436줄, 135/135 변이 포착, nonlin: 2)
 - [proofs/verify_symbolic_catalan005.py](proofs/verify_symbolic_catalan005.py#L1-L495) $\to$ [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json#L1-L226)
 - [proofs/problem_spec.md](proofs/problem_spec.md#L1-L19) & [manifest.json](manifest.json)
+
+## 3. 1줄 검증 명령어
+
+이 사례 폴더에서 아래 명령어를 실행하면 SHA-256 해시, Lean 4 커널, SymPy 재현, `#L` 링크 및 전칭 가설 돌연변이 시험을 일괄 검증합니다.
+
+```bash
+python3 ../../tools/verify_all.py --root .
+```

@@ -1,12 +1,10 @@
 # Google DeepMind AlphaProof Code (`code-verification`, `libsignal-cli`, Commit `808b4b7ffef1`): Forensic Anatomy & Formal Verification
 
-- 한국어 안내: [README.ko.md](README.ko.md) | Parent Archive: [Archive Main Index](../../README.md)
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This anatomy dissects Google DeepMind's AlphaProof Code (`code-verification` repository, commit `808b4b7ffef198e6a91f71ed776d641a1c236882`, accompanying the October 26, 2026 draft Formally Verifying Signal's Security Using AI), spanning 11,323 Lean 4 files (7,528,295 lines) across `Computational/`, `Symbolic/`, `LibsignalBinary/`, `arm64-semantics/`, and `comparator/`. It audits non-default `CliElfLib` target isolation, the 55/64 (85.94%) binary symbol Hook bypass (37 hooks in `808b4b7ffef1` $\to$ 27 hooks in subsequent PR #2 `b0f729accbc2`), `check_refinement_hygiene.sh --self-test` failure (7/14 stale entries), `ValidCall` 5-clause binary trace restrictions and SPQR classical non-regression scope, the Rust CLI harness's zero-padded `coins.rs` `CryptoRng`, `Waker::noop()` single-poll executors, and frozen `UNIX_EPOCH` clock (30-day signed-prekey expiry bypass), the 16,767-line unproved `Arm64/Trusted` TCB alongside Sail/Unicorn fault skips and hooked `Drop::drop` secret zeroization, 153,682-line `ComparatorChallenge` TCB inclusion (plus PR #2 `b0f729accbc2`'s 67-line `comparator/README.md` Linux 5.10 unsandboxed disclaimer removal), `PQXDH.md` $q_{\mathrm{total}} = 2^{40}$ standard-model vacuity (17,441 / 16,384 > 1), the SPQR V1 8-byte MAC vacuity cliff ($q = 35,211$), the `.base-keys` 56,680-key DoS cliff, and uncommitted AGPL-3.0-only `.GeneratedLean` ELF (617,448 B) plus unimported `LibsignalBinary/Heap/` (22 mirrored files) debt, re-verified via 81 standalone Lean 4 theorems (1,457 lines on `leanprover/lean4:v4.29.0-rc8`, 0 sorry, 391/391 hypothesis mutations caught = 100%, 74/81 structural, DoF>0: 65/81, nonlin: 10).
 
-
-
-## 1. Four-Tier Documentation Index (en/ & ko/)
+## 1. Six-Tier Documentation Index (en/ & ko/)
 
 | Tier | English Guide (en/) | Korean Guide (ko/) | Core Scope |
 | :---: | :--- | :--- | :--- |
@@ -17,8 +15,6 @@ This anatomy dissects Google DeepMind's AlphaProof Code (`code-verification` rep
 | Tier 5 | [en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md](en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md) | [ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md](ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md) | Standalone OPFF 5-Gate (Part 0–Part 7) forensic referee report & OPFF TIER C official determination |
 | Tier 6 | [en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md](en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md) | [ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md](ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md) | Concise OPFF basic audit summary (8-metric scorecard, verified oai_ref/ coordinates, 6-question FAQ & OPFF TIER C verdict) |
 
-
-
 ## 2. Verification Artifacts (proofs/)
 
 - [proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean](proofs/deepmind_signal_stratigraphy_and_hook_boundary.lean#L1-L475) (Theorems 1-25, 76-77, 475 lines, 27 theorems, 143/143 mutations caught, DoF>0: 24/27, nonlin: 1)
@@ -26,3 +22,11 @@ This anatomy dissects Google DeepMind's AlphaProof Code (`code-verification` rep
 - [proofs/deepmind_comparator_laundering_and_crypto_bounds.lean](proofs/deepmind_comparator_laundering_and_crypto_bounds.lean#L1-L522) (Theorems 51-75, 80-81, 522 lines, 27 theorems, 129/129 mutations caught, DoF>0: 21/27, nonlin: 6)
 - [proofs/deepmind_signal_forensic_parsers.py](proofs/deepmind_signal_forensic_parsers.py#L1-L330) + [proofs/verify_symbolic_deepmind_signal.py](proofs/verify_symbolic_deepmind_signal.py#L1-L359) $\to$ [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json#L1-L276)
 - [proofs/problem_spec.md](proofs/problem_spec.md#L1-L19) & [manifest.json](manifest.json)
+
+## 3. One-Command Verification
+
+Run the deterministic verifier from this case directory to check SHA-256 hashes, Lean 4 compilation, SymPy reproduction, `#L` links, and all hypothesis mutations:
+
+```bash
+python3 ../../tools/verify_all.py --root .
+```

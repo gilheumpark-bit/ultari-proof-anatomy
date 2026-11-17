@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #003 Quasi-Riemann Hypothesis ($\text{Re}(s) > 7/8$)
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This repository audits the 3,232 Lean 4 files in `DirichletL/` (2,926) and `SiegelZeros/` (306) within the broader 3,414-file upstream OpenAI #003 snapshot, including a 1-to-1 declaration-level audit of all 26/26 core reference files and 179/179 `def`/`theorem` declarations (178 public + 1 private, plus `instance polynomialComponentPrime_isPrime`). We recover the exact algebraic roots behind its rational proxies and verify 48 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 49/49 hypothesis mutations caught). This analysis examines the rational constants, algebraic roots, and inequality margins inside the Lean formalization and does not alter or dispute the paper's main theorems.
 
@@ -26,5 +26,6 @@ This repository audits the 3,232 Lean 4 files in `DirichletL/` (2,926) and `Sieg
 - [proofs/verify_symbolic_qrh.py](./proofs/verify_symbolic_qrh.py): Deterministic SymPy verification script reproducing [proofs/symbolic_verification_result.json](./proofs/symbolic_verification_result.json).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean && (cd proofs && python3 verify_symbolic_qrh.py)
 ```

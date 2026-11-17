@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 *.olean
 .DS_Store
+.lake/

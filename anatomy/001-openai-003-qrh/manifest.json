@@ -7,8 +7,8 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "e3f5e47fd7a82969dda743e248df83be8b9965095def91d119778e988a277442",
-    "README.ko.md": "6c66932217f5e8bbfcb6c1849dca2b8c24585669bf3f38b831c989734acbc7fe",
+    "README.md": "3e22a97d11703ad927a967d2218028a38cddec5fad349dffabf9482fbcfe5034",
+    "README.ko.md": "43d4bf1306aad3b6f7a04d480f217b98b92e5c633aed3b3ec5d861ea7469e20b",
     "proofs/qrh_exponent_and_parameter_bounds.lean": "2e98aff37741ab5ae4b67c9e36da3816e09325c40d0abcf462a676e0e2ec6ae1",
     "proofs/qrh_continuation_and_rescaling.lean": "7d64b243421117960431dc4e2ac86e4b3d086fae87af55746673e298976fa1e3",
     "proofs/verify_symbolic_qrh.py": "086704058c0c30ca0ff9e3397a7e3bf2a76663af2255a4f98bd695a97439aab6",
@@ -18,12 +18,12 @@
     "ko/02_중급자용_구조및수식가이드.md": "8dc511783810d8b8f5c84d30d3e4d4f16ef74a218496e7c838dd87f60942fd9d",
     "ko/03_전문가용_수론및형식증명보고서.md": "b370fcb21c8183ba8f44d9514cbba97c813a683cb00feb0c66036c9ad19aea01",
     "ko/04_자동검증및파서용_명세서.md": "b44bbb9ecd7e6cba61921ff105fed463c484ba53ae9f8fb6d6f3cca4011e835c",
-    "ko/README.md": "b862b765894e2cb6023ce3e31247b0d0a503399af48ae326c2642e7560fd7d00",
+    "ko/README.md": "ac56231333e9983fe11d389033bac57f5e2dd7553b197fe83cb26fc32fddb64b",
     "en/01_Beginner_Guide.md": "ff17f62e247167ce7326f5bb4fd47842c63845bf16af34920fe809834d81a523",
     "en/02_Intermediate_Math_and_Code_Guide.md": "49c0c6d8c6cd31c6fdcab5095f336bb3d1843318936c3afd249f9a697c8a9863",
     "en/03_Expert_Mathematical_and_Formal_Report.md": "0dbac12841f01bc36dfd5bd0808c0166eb39c73a1e970db72c614f12d062f107",
     "en/04_Automated_Verification_and_Manifest.md": "dc3e1e7e2268c8afe5345cae9c9a7e5e3fda778f27dda87756a06e2eac9032ca",
-    "en/README.md": "a18e849609f21ddabab3d2d9c32bf5615f0fab6a65a09e88d16667a11c022f9a"
+    "en/README.md": "4af48fe722fa94efd3b886c18c790be9b9cbf6307290ee930b476db3d7ff2728"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "48 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-48) + 100% 1-to-1 audit of all 26 OpenAI #003 reference files (179 def/theorem declarations: 178 public + 1 private, plus instance polynomialComponentPrime_isPrime).",

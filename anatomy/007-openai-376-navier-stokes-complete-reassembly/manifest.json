@@ -9,8 +9,8 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376_complete.py"
   },
   "artifacts_sha256": {
-    "README.md": "3a3569b1638a5b92bcc8f421f0b0bad34944772380d1628d3e7d4633fa8c7986",
-    "README.ko.md": "9e03bb04c2653ef66a55e2d8b2b122c7a683779a6c7e0407263e02d3e7cfe77e",
+    "README.md": "ae6831583393758a7ad31ce2d4d240fd308b4606b6bb7c418819d1032d738f6c",
+    "README.ko.md": "756a6f77755aadc7695564ffe2eb318b717edfb144fbd8bf92554e3d72e3b6c1",
     "proofs/ns376_unimported_solenoidal_and_leray_bounds.lean": "e2f1ec94d9550ab2afca92125ee70cc4726e2d43a3519d8911b85d964a12b119",
     "proofs/ns376_detector_margins_and_undecidability_chains.lean": "14a6aa6eb7dba85e962264c2d0ee8d377a819d55e744c7dd13c76e5a54539c4e",
     "proofs/verify_symbolic_ns376_complete.py": "d9f25efe93fed5b6bee03529da7be8a6a384ccde2c4d3d648b5e2ebc8b29435d",

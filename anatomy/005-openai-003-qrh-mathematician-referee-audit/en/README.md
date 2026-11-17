@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](../README.ko.md)
-
 # OpenAI #003 Referee Audit & Conditional $\beta \to 1/2$ Blueprint
+
+- Language: English | [한국어 (README.ko.md)](../README.ko.md) | Main Index: [ultari-proof-anatomy](../../../README.md)
 
 This audit examines OpenAI #003 (3,233 upstream `.lean` files and 26 reference modules in [proofs/oai_ref/](../proofs/oai_ref/Endpoint.lean)) from a journal referee perspective. All results are verified across 48 standalone Lean 4 theorems and 6 defs (5 in [qrh_eight_tasks_critical_upgrade.lean](../proofs/qrh_eight_tasks_critical_upgrade.lean) + `siegel_concrete_witness`, v4.29.0-rc8, 0 sorry, 441/441 hypothesis mutations caught, exact cleared-denominator arithmetic).
 
@@ -26,5 +26,6 @@ This audit examines OpenAI #003 (3,233 upstream `.lean` files and 26 reference m
 - [verify_qrh_mathematician_audit.py](../proofs/verify_qrh_mathematician_audit.py), [symbolic_verification_result.json](../proofs/symbolic_verification_result.json), and [problem_spec.md](../proofs/problem_spec.md).
 
 ```bash
-lean proofs/qrh_mathematician_referee_audit.lean && lean proofs/qrh_eight_tasks_critical_upgrade.lean && (cd proofs && python3 verify_qrh_mathematician_audit.py)
+python3 ../../../tools/verify_all.py --root ..
+lean ../proofs/qrh_mathematician_referee_audit.lean && lean ../proofs/qrh_eight_tasks_critical_upgrade.lean && (cd ../proofs && python3 verify_qrh_mathematician_audit.py)
 ```

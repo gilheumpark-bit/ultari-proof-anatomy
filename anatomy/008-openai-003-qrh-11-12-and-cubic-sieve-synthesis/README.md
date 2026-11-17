@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #003 23/24 vs. 11/12, Unimported CubicGauss & Trilogy Synthesis
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This 11/12 and CubicGauss synthesis audit unifies the full OpenAI #003 QRH ecosystem (`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, and [Part I (7/8 ShortDraft Audit)](../001-openai-003-qrh/README.md) + [Part II (Referee & Unbundled Gram Audit)](../005-openai-003-qrh-mathematician-referee-audit/README.md)). All findings are verified across 45 standalone Lean 4 theorems and 7 `def` declarations (v4.29.0-rc8, 0 sorry, 344/344 hypothesis mutations caught).
 
@@ -27,5 +27,6 @@ This 11/12 and CubicGauss synthesis audit unifies the full OpenAI #003 QRH ecosy
 - [verify_symbolic_qrh_synthesis.py](proofs/verify_symbolic_qrh_synthesis.py) & [symbolic_verification_result.json](proofs/symbolic_verification_result.json).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean && lean proofs/qrh_trilogy_induction_and_algebraic_bridge.lean && (cd proofs && python3 verify_symbolic_qrh_synthesis.py)
 ```

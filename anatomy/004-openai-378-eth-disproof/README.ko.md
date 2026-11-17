@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](./README.md) | 한국어
-
 # OpenAI #378 지수 시간 가설(ETH) 반증 감사 및 화석 고고학
+
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 OpenAI #378(OAI.Algorithms.SubexponentialSAT, .lean 3,977개 파일 710,320줄 및 .tex 4개 파일)을 전수 감사한 결과입니다. 모든 결과는 56개 독립 Lean 4 정리(v4.29.0-rc8, 0 sorry, 가설 변이 454/454건 포착)로 검증했습니다.
 
@@ -27,5 +27,6 @@ OpenAI #378(OAI.Algorithms.SubexponentialSAT, .lean 3,977개 파일 710,320줄 �
 - [verify_symbolic_eth.py](proofs/verify_symbolic_eth.py), [symbolic_verification_result.json](proofs/symbolic_verification_result.json), [problem_spec.md](proofs/problem_spec.md).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/eth_subexp_interpolation_and_hashes.lean && lean proofs/eth_tensor_contraction_and_circuits.lean && lean proofs/eth_five_repairs_and_four_layer_verdict.lean && (cd proofs && python3 verify_symbolic_eth.py)
 ```

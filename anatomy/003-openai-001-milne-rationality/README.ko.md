@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](./README.md) | 한국어
-
 # OpenAI #001 밀른의 유리성 추측 포렌식 감사 및 5대 수리
+
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 포렌식 감사는 OpenAI #001(아벨 다양체에 대한 밀른의 유리성 추측)의 LaTeX 6개 절 원고 및 부속 파일(`main.tex`, `references.tex`, `figures/two-transports.tex`)을 전수 감사하고, 5건의 수리 패치를 36개 독립 Lean 4 정리(v4.29.0-rc8, 0 sorry, 가설 변이 232/232건 포착)로 검증합니다.
 
@@ -26,5 +26,6 @@
 - [proofs/verify_symbolic_milne.py](./proofs/verify_symbolic_milne.py) 및 [proofs/oai_001_milne_repair.patch](./proofs/oai_001_milne_repair.patch).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean ./proofs/milne_transport_and_filtration.lean && lean ./proofs/milne_weil_reduction_and_repairs.lean && (cd ./proofs && python3 verify_symbolic_milne.py)
 ```

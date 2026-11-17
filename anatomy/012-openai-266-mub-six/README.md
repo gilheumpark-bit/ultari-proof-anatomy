@@ -1,10 +1,8 @@
 # OpenAI #266 (Mutually unbiased bases in dimension six): Forensic Anatomy & Formal Verification
 
-- 한국어 안내: [README.ko.md](README.ko.md) | Parent Repository: [ultari-proof-anatomy](../../README.md)
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This forensic anatomy dissects OpenAI's flagship quantum-information family #266 (Mutually unbiased bases in dimension six, September 24, 2026) across both accompanying preprints (Preprint 1 claiming $N(6) = 3$ via native C++ binary64 covers across 12 .tex files = 5,945 lines + 8 .cpp files = 2,316 lines, and Preprint 2 establishing exact Fourier certificates across 8 .tex files = 1,997 lines + verify.py = 576 lines) together with the single largest directory in openai/math: OAI/Analysis/MutuallyUnbiased/ (3,386 Lean 4 files, 2,835,031 lines) plus OAI/LinearAlgebra/Hadamard/ (9 files, 1,329 lines), independently re-verifying the architecture via 75 standalone Lean 4 theorems (1,249 lines, 0 sorry, 358/358 hypothesis mutations caught = 100%, 74/75 structural, 14 nonlinear/inductive proofs, dual-witness non-vacuity checks).
-
-
 
 ## 1. Six-Tier Documentation Index (en/ & ko/)
 
@@ -17,8 +15,6 @@ This forensic anatomy dissects OpenAI's flagship quantum-information family #266
 | Tier 5 (OPFF Detailed) | [en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md](en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md) | [ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md](ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md) | 7-part OPFF Detailed Forensic Referee Report (8-metric scorecard, 3-tier attribution analysis, 6-question FAQ, and OPFF TIER C verdict) |
 | Tier 6 (OPFF Basic) | [en/06_OPFF_Basic_Audit_Report_MUB266.md](en/06_OPFF_Basic_Audit_Report_MUB266.md) | [ko/06_OPFF_기본형_감사리포트_MUB266.md](ko/06_OPFF_기본형_감사리포트_MUB266.md) | Concise OPFF Basic Audit Summary (TL;DR 8-metric scorecard, verified physical findings, 6-question FAQ, and 10-second verification commands) |
 
-
-
 ## 2. Verification Artifacts (proofs/)
 
 - [proofs/mub6_hadamard_fourier_and_cubic_fibers.lean](proofs/mub6_hadamard_fourier_and_cubic_fibers.lean#L1-L429) (Theorems 1-25, 429 lines, 103/103 mutations caught, nonlin: 7)
@@ -26,3 +22,11 @@ This forensic anatomy dissects OpenAI's flagship quantum-information family #266
 - [proofs/mub6_stratigraphy_and_binary64_audit.lean](proofs/mub6_stratigraphy_and_binary64_audit.lean#L1-L404) (Theorems 51-75, 404 lines, 142/142 mutations caught, nonlin: 3)
 - [proofs/verify_symbolic_mub266.py](proofs/verify_symbolic_mub266.py#L1-L439) $\to$ [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json#L1-L180)
 - [proofs/problem_spec.md](proofs/problem_spec.md#L1-L24) & [manifest.json](manifest.json#L1-L572)
+
+## 3. One-Command Verification
+
+Run the deterministic verifier from this case directory to check SHA-256 hashes, Lean 4 compilation, SymPy reproduction, `#L` links, and all hypothesis mutations:
+
+```bash
+python3 ../../tools/verify_all.py --root .
+```

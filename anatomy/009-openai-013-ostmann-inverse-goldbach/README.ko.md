@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](./README.md) | 한국어
-
 # OpenAI #013 오스트만 역 골드바흐 추측 (Erdős #431) 해부 및 형식증명
+
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 감사 보고서는 OpenAI #013(The additive indecomposability of the primes, `OAI/NumberTheory/Ostmann/`, 7,716개 `.lean` 파일 609,199줄 및 프리프린트 9개 절 6,072줄 / 전체 빌드 6,624줄)을 해부한 결과물입니다. 모든 결론은 `proofs/oai_ref/` 원본 파일(60개)과의 1대1 대조 및 75개 독립 Lean 4 정리(1,517줄, `v4.29.0-rc8`, `0 sorry`, `0 axiom`, 가설 변이 393/393건 포착)로 검증했습니다.
 
@@ -29,5 +29,6 @@
 - [verify_symbolic_ostmann.py](proofs/verify_symbolic_ostmann.py) 및 [symbolic_verification_result.json](proofs/symbolic_verification_result.json).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/ostmann_twin_engines_and_supply_contraction.lean && lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean && lean proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean && (cd proofs && python3 -B verify_symbolic_ostmann.py)
 ```

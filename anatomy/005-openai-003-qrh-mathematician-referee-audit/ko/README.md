@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](../README.md) | 한국어
-
 # OpenAI #003 수론 심사위원 감사 및 조건부 $\beta \to 1/2$ 전달 설계도
+
+- 언어 선택: [English (README.md)](../README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../../README.ko.md)
 
 이 감사는 OpenAI #003(3,233개 원본 `.lean` 파일 및 [proofs/oai_ref/](../proofs/oai_ref/Endpoint.lean) 참조 모듈 26개)을 학술지 심사위원 관점에서 정밀 감사한 결과입니다. 모든 결과는 48개 독립 Lean 4 정리와 6개 `def`([qrh_eight_tasks_critical_upgrade.lean](../proofs/qrh_eight_tasks_critical_upgrade.lean) 5개 + `siegel_concrete_witness`, v4.29.0-rc8, 0 sorry, 가설 변이 441/441건 포착, 분모 소거 산술)로 검증했습니다.
 
@@ -26,5 +26,6 @@
 - [verify_qrh_mathematician_audit.py](../proofs/verify_qrh_mathematician_audit.py), [symbolic_verification_result.json](../proofs/symbolic_verification_result.json), [problem_spec.md](../proofs/problem_spec.md).
 
 ```bash
-lean proofs/qrh_mathematician_referee_audit.lean && lean proofs/qrh_eight_tasks_critical_upgrade.lean && (cd proofs && python3 verify_qrh_mathematician_audit.py)
+python3 ../../../tools/verify_all.py --root ..
+lean ../proofs/qrh_mathematician_referee_audit.lean && lean ../proofs/qrh_eight_tasks_critical_upgrade.lean && (cd ../proofs && python3 verify_qrh_mathematician_audit.py)
 ```

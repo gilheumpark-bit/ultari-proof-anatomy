@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](./README.md) | 한국어
-
 # OpenAI #376 강제 나비에-스토크스 유동의 보편 계산 감사
+
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 감사는 OpenAI #376(1,010개 `.lean` 파일 142,131줄 및 75개 `.tex` 파일)을 수리물리학 및 형식증명 관점에서 감사한 결과입니다. 모든 결론은 45개 독립 Lean 4 정리(v4.29.0-rc8, 0 sorry, 가설 변이 184/184건 포착)로 검증했습니다.
 
@@ -29,5 +29,6 @@
 - [proofs/verify_symbolic_ns376.py](proofs/verify_symbolic_ns376.py), [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json), [proofs/problem_spec.md](proofs/problem_spec.md).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/ns376_kinematic_routing_and_forensics.lean && lean proofs/ns376_gronwall_uniqueness_and_repairs.lean && (cd proofs && python3 verify_symbolic_ns376.py)
 ```

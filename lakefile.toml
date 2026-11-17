@@ -1,0 +1,7 @@
+name = "ultari_proof_anatomy"
+version = "1.0.0"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0"

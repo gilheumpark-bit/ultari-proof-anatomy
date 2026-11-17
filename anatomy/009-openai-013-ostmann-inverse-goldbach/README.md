@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #013: Ostmann's Inverse Goldbach Conjecture (Erdős #431)
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This forensic audit dissects OpenAI #013 (The additive indecomposability of the primes, `OAI/NumberTheory/Ostmann/`, 7,716 `.lean` files, 609,199 lines, and 6,072 preprint section lines / 6,624 total build lines). All findings are cross-referenced 1-to-1 against `proofs/oai_ref/` (60 upstream files) and verified across 75 standalone Lean 4 theorems (1,517 lines, `v4.29.0-rc8`, `0 sorry`, `0 axiom`, 393/393 hypothesis mutations caught).
 
@@ -29,5 +29,6 @@ This forensic audit dissects OpenAI #013 (The additive indecomposability of the 
 - [verify_symbolic_ostmann.py](proofs/verify_symbolic_ostmann.py) & [symbolic_verification_result.json](proofs/symbolic_verification_result.json).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/ostmann_twin_engines_and_supply_contraction.lean && lean proofs/ostmann_tree_transfers_and_permutation_contradiction.lean && lean proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean && (cd proofs && python3 -B verify_symbolic_ostmann.py)
 ```

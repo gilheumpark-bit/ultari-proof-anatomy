@@ -1,10 +1,8 @@
 # OpenAI #266 (Mutually unbiased bases in dimension six): 포렌식 해부 및 형식 검증
 
-- English Guide: [README.md](README.md) | 상위 저장소: [ultari-proof-anatomy](../../README.md)
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 자료는 OpenAI의 양자정보이론 대표 난제군 #266 (Mutually unbiased bases in dimension six, 2026년 9월 24일)의 두 프리프린트(N(6) = 3 컴퓨터 보조 원고 12개 .tex 5,945줄 + references_mub6.bib 363줄 + 8개 .cpp 2,316줄, 그리고 복소 아다마르 푸리에 인증서 원고 8개 .tex 1,997줄 + references.bib 326줄 + verify.py 576줄)와 저장소 단일 최대 규모인 OAI/Analysis/MutuallyUnbiased/의 3,386개 Lean 4 파일(2,835,031줄) 및 OAI/LinearAlgebra/Hadamard/의 9개 파일(1,329줄) 전수를 해부하고, 75개 독립 Lean 4 정리(1,249줄, 0 sorry, 358/358 가설 변이 100% 포착, 74/75 대수·논리 정리, 14개 비선형·귀납 증명, 이중 증인 비공허성 검증)로 재검증한 아카이브입니다.
-
-
 
 ## 1. 6단계 문서 색인 (en/ & ko/)
 
@@ -17,8 +15,6 @@
 | Tier 5 (OPFF 상세형) | [en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md](en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md) | [ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md](ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md) | 7부 구성 OPFF 학술 최종 포렌식 심사 보고서(8대 지표 스코어카드, 3층위 기여 주체 분석, 6문 6답 FAQ 및 OPFF TIER C 공식 판정문) |
 | Tier 6 (OPFF 기본형) | [en/06_OPFF_Basic_Audit_Report_MUB266.md](en/06_OPFF_Basic_Audit_Report_MUB266.md) | [ko/06_OPFF_기본형_감사리포트_MUB266.md](ko/06_OPFF_기본형_감사리포트_MUB266.md) | 요약형 OPFF 기본 감사 리포트(TL;DR 8대 지표 스코어카드, 실측 물증 요약, 6문 6답 FAQ 및 10초 재현 명령어) |
 
-
-
 ## 2. 검증 산출물 (proofs/)
 
 - [proofs/mub6_hadamard_fourier_and_cubic_fibers.lean](proofs/mub6_hadamard_fourier_and_cubic_fibers.lean#L1-L429) (Theorems 1-25, 429줄, 103/103 변이 포착, nonlin: 7)
@@ -26,3 +22,11 @@
 - [proofs/mub6_stratigraphy_and_binary64_audit.lean](proofs/mub6_stratigraphy_and_binary64_audit.lean#L1-L404) (Theorems 51-75, 404줄, 142/142 변이 포착, nonlin: 3)
 - [proofs/verify_symbolic_mub266.py](proofs/verify_symbolic_mub266.py#L1-L439) $\to$ [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json#L1-L180)
 - [proofs/problem_spec.md](proofs/problem_spec.md#L1-L24) & [manifest.json](manifest.json#L1-L572)
+
+## 3. 1줄 검증 명령어
+
+이 사례 폴더에서 아래 명령어를 실행하면 SHA-256 해시, Lean 4 커널, SymPy 재현, `#L` 링크 및 전칭 가설 돌연변이 시험을 일괄 검증합니다.
+
+```bash
+python3 ../../tools/verify_all.py --root .
+```

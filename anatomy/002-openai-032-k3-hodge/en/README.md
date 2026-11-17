@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](../README.ko.md)
-
 # OpenAI #032 Retracted K3 Hodge Conjecture Forensics
+
+- Language: English | [한국어 (README.ko.md)](../README.ko.md) | Main Index: [ultari-proof-anatomy](../../../README.md)
 
 This forensic audit dissects the three retracted K3 Hodge Conjecture preprints in OpenAI #032 (commit adc7f12) alongside [EEMS13]. All findings are verified across 35 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 135/135 hypothesis mutations caught).
 
@@ -25,5 +25,6 @@ This forensic audit dissects the three retracted K3 Hodge Conjecture preprints i
 - [proofs/verify_symbolic_k3.py](../proofs/verify_symbolic_k3.py): SymPy verifier reproducing [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json).
 
 ```bash
-lean proofs/k3_forensic_paths.lean && (cd proofs && python3 verify_symbolic_k3.py)
+python3 ../../../tools/verify_all.py --root ..
+lean ../proofs/k3_forensic_paths.lean && (cd ../proofs && python3 verify_symbolic_k3.py)
 ```

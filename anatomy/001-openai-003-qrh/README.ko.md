@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](./README.md) | 한국어
-
 # OpenAI #003 준리만 가설 ($\text{Re}(s) > 7/8$) 해부 및 형식증명
+
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 연구 저장소는 더 넓은 업스트림 스냅샷 3,414개 파일 가운데 OpenAI #003의 핵심 디렉터리 `DirichletL/`(2,926개)과 `SiegelZeros/`(306개) 총 3,232개 `.lean` 파일(핵심 레퍼런스 26/26개 파일 및 `def`/`theorem` 179/179개 선언문: 공개 178개 + 비공개 1개, 별도 `instance polynomialComponentPrime_isPrime` 1건 포함)을 1:1 전수 대조했습니다. 유리수 근사 상수 뒤의 정확한 대수 방정식을 복원하고 48개 독립 Lean 4 정리(v4.29.0-rc8, 0 sorry, 가설 변이 49/49건 포착)로 검증했습니다. 본 분석은 Lean 형식증명 내부의 유리수 상수·대수적 근·부등식 여유분을 규명하며 원 논문의 주정리 결론을 변경하거나 부정하지 않습니다.
 
@@ -26,5 +26,6 @@
 - [proofs/verify_symbolic_qrh.py](./proofs/verify_symbolic_qrh.py): [proofs/symbolic_verification_result.json](./proofs/symbolic_verification_result.json)을 재현하는 결정론적 SymPy 스크립트.
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean && (cd proofs && python3 verify_symbolic_qrh.py)
 ```

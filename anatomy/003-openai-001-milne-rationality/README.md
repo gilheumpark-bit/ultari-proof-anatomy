@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #001 Milne's Rationality Conjecture Audit & Repair
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This forensic audit examines the 6 LaTeX section files (alongside `main.tex`, `references.tex`, and `figures/two-transports.tex`) of OpenAI #001 (Milne's rationality conjecture for abelian varieties) and verifies 5 surgical repairs across 36 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 232/232 hypothesis mutations caught).
 
@@ -26,5 +26,6 @@ This forensic audit examines the 6 LaTeX section files (alongside `main.tex`, `r
 - [proofs/verify_symbolic_milne.py](./proofs/verify_symbolic_milne.py) & [proofs/oai_001_milne_repair.patch](./proofs/oai_001_milne_repair.patch).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean ./proofs/milne_transport_and_filtration.lean && lean ./proofs/milne_weil_reduction_and_repairs.lean && (cd ./proofs && python3 verify_symbolic_milne.py)
 ```

@@ -107,29 +107,47 @@ def check_manifest_hashes(case_dir, manifest):
     print(f"  [PASS] SHA-256 checksums ({len(manifest.get('artifacts_sha256', {}))} artifacts + 04_*.md tables)")
 
 
-def _lean_env(cwd):
+def _lean_cfg(cwd: pathlib.Path):
     env = os.environ.copy()
+    ep = pathlib.Path.home() / ".elan" / "bin" / "lean"
     if not env.get("LEAN_PATH"):
-        lps = [str(p) for b in (cwd, pathlib.Path.home() / ".cache" / "qcts_mathlib_v435") for p in [b / ".lake" / "build" / "lib" / "lean", *b.glob(".lake/packages/*/.lake/build/lib/lean")] if p.is_dir()]
-        if lps:
-            env["LEAN_PATH"] = ":".join(lps)
-    return env
+        c_dirs = sorted((pathlib.Path.home() / ".cache").glob("*mathlib*"), reverse=True) if (pathlib.Path.home() / ".cache").is_dir() else []
+        bases = [cwd, ROOT, *[pathlib.Path(x) for x in env.get("ULTARI_LEAN_CACHE", "").split(os.pathsep) if x.strip()], *c_dirs]
+        pats = (".lake/packages/*/.lake/build/lib/lean", ".lake/packages/*/build/lib/lean", ".lake/build/lib/lean")
+        hits = [(b, str(p)) for b in bases for pat in pats for p in sorted(b.glob(pat)) if p.is_dir()]
+        if hits:
+            env["LEAN_PATH"] = ":".join(dict.fromkeys(p for _, p in hits))
+            if not env.get("ELAN_TOOLCHAIN"):
+                for b, _ in hits:
+                    tcf = b / "lean-toolchain"
+                    if tcf.is_file() and (tc := tcf.read_text(encoding="utf-8").strip()):
+                        env["ELAN_TOOLCHAIN"] = tc
+                        break
+    lean_bin = str(ep) if ep.is_file() else LEAN_BIN
+    return lean_bin, env
 
 
 def _run_single_mutation(args):
-    src, start, end, open_ch, close_ch, names, fname, env = args
+    lean_bin, src, start, end, open_ch, close_ch, names, fname, env = args
     binder_str = " ".join(names)
     mutated = src[:start] + f"{open_ch}{binder_str} : True{close_ch}" + src[end:]
-    r = subprocess.run([LEAN_BIN, "--stdin"], input=mutated, env=env, capture_output=True, text=True, timeout=60)
+    r = subprocess.run([lean_bin, "--stdin"], input=mutated, env=env, capture_output=True, text=True, timeout=60)
     return binder_str, fname, r.returncode
 
 
 def check_lean_and_mutations(lean_file):
     src = lean_file.read_text(encoding="utf-8")
     assert not re.search(r"\b(?:sorry|admit)\b", re.sub(r"--[^\n]*|/-.*?-/", "", src, flags=re.S))
-    env = _lean_env(lean_file.parent)
-    res = subprocess.run([LEAN_BIN, "--stdin"], input=src, cwd=str(lean_file.parent), env=env, capture_output=True, text=True, timeout=60)
-    assert res.returncode == 0, f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}"
+    lean_bin, env = _lean_cfg(lean_file.parent)
+    res = subprocess.run([lean_bin, "--stdin"], input=src, cwd=str(lean_file.parent), env=env, capture_output=True, text=True, timeout=60)
+    if res.returncode != 0:
+        hint = (
+            "\nHint: run 'lake exe cache get' at the repository root (or set ULTARI_LEAN_CACHE) "
+            "to fetch precompiled Mathlib 4 binaries for Cases 010 and 015."
+            if re.search(r"(?m)^\s*import\s+Mathlib\b", src) and not env.get("LEAN_PATH")
+            else ""
+        )
+        raise AssertionError(f"Lean compile failed on {lean_file}:\n{res.stderr}\n{res.stdout}{hint}")
     hyps = extract_balanced_hyps(src)
     for (_, _, _, _, names, hbody) in hyps:
         assert " / " not in hbody, f"Truncating Int division '/' in hypothesis {names} of {lean_file.name}: {hbody}"
@@ -139,7 +157,7 @@ def check_lean_and_mutations(lean_file):
         ), (
             f"Euclidean divmod or transcendental constant-pin smuggling in hypothesis {names} of {lean_file.name}: {hbody}"
         )
-    tasks = [(src, s, e, och, cch, names, lean_file.name, env) for (s, e, och, cch, names, _) in hyps]
+    tasks = [(lean_bin, src, s, e, och, cch, names, lean_file.name, env) for (s, e, och, cch, names, _) in hyps]
     workers = os.cpu_count() or 8
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
         for bname, fname, rc in ex.map(_run_single_mutation, tasks):
@@ -270,6 +288,14 @@ def verify_case(case_dir: pathlib.Path):
     check_doc_depth(case_dir)
 
 
+def _uses_mathlib(case_dir: pathlib.Path, manifest: dict) -> bool:
+    for rel_lf in manifest.get("lean4_verification", {}).get("files", []):
+        p = case_dir / rel_lf
+        if p.is_file() and re.search(r"(?m)^\s*import\s+Mathlib\b", p.read_text(encoding="utf-8", errors="replace")):
+            return True
+    return False
+
+
 def main():
     if "--root" in sys.argv:
         idx = sys.argv.index("--root")
@@ -277,11 +303,17 @@ def main():
         verify_case(target)
         print("CASE VERIFIED SUCCESSFULLY (EXIT 0).")
         return 0
+    standalone_only = "--standalone-only" in sys.argv
     cases = sorted((ROOT / "anatomy").iterdir())
     assert cases, "No anatomy cases found"
     for case_dir in cases:
         if not case_dir.is_dir():
             continue
+        if standalone_only:
+            manifest = json.loads((case_dir / "manifest.json").read_text(encoding="utf-8"))
+            if _uses_mathlib(case_dir, manifest):
+                print(f"Skipping Mathlib case {case_dir.name} (--standalone-only)")
+                continue
         verify_case(case_dir)
     print("ALL CASES VERIFIED SUCCESSFULLY (EXIT 0).")
     return 0

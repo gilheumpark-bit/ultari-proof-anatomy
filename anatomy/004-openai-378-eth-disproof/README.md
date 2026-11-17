@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #378 Disproof of the Exponential Time Hypothesis (ETH)
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This study audits the 3,977 Lean 4 files (710,320 lines) and 4 LaTeX manuscripts of OpenAI #378 (OAI.Algorithms.SubexponentialSAT). All results are verified across 56 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 454/454 hypothesis mutations caught).
 
@@ -27,5 +27,6 @@ This study audits the 3,977 Lean 4 files (710,320 lines) and 4 LaTeX manuscripts
 - [verify_symbolic_eth.py](proofs/verify_symbolic_eth.py), [symbolic_verification_result.json](proofs/symbolic_verification_result.json), and [problem_spec.md](proofs/problem_spec.md).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/eth_subexp_interpolation_and_hashes.lean && lean proofs/eth_tensor_contraction_and_circuits.lean && lean proofs/eth_five_repairs_and_four_layer_verdict.lean && (cd proofs && python3 verify_symbolic_eth.py)
 ```

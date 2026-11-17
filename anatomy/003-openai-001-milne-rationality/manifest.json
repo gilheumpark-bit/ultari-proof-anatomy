@@ -7,8 +7,8 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_milne.py"
   },
   "artifacts_sha256": {
-    "README.md": "c3dc9c1ec22d5988e8a11f0cb195381df46ee7c747f607f1d6c2a385259f059b",
-    "README.ko.md": "de6f3e4ce3d628e9a2658bd1843e232031cc80388d2ec432bdaa170eea73ed4e",
+    "README.md": "82954b3d74d451f3099fe13dec6828ac01a5d4ab53a41eedc6b561abb321f674",
+    "README.ko.md": "94b72df676223f3c257bed92ff398566d4076f06b53e0632584746ca999a745b",
     "proofs/milne_transport_and_filtration.lean": "c17477cbcad1600730d9471a7c4691e5244f271f96b0cefb444649fd245c39b5",
     "proofs/milne_weil_reduction_and_repairs.lean": "b84eb920fd468bf7a941f330cc8d9c732cf8d3bc759ce31646e33a81aa9ea874",
     "proofs/verify_symbolic_milne.py": "5f74cd9cb7bed53f814e3711bea590452cdfe8ee0019b7273c422f38160f0140",

@@ -1,6 +1,6 @@
-- Language: English | [한국어 (README.ko.md)](./README.ko.md)
-
 # OpenAI #376 Universal Computation in Forced Navier–Stokes Flows
+
+- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This audit examines the 1,010 Lean 4 files (142,131 lines) and 75 LaTeX files of OpenAI #376. All findings are verified across 45 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 184/184 hypothesis mutations caught).
 
@@ -29,5 +29,6 @@ This audit examines the 1,010 Lean 4 files (142,131 lines) and 75 LaTeX files of
 - [proofs/verify_symbolic_ns376.py](proofs/verify_symbolic_ns376.py), [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json), and [proofs/problem_spec.md](proofs/problem_spec.md).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/ns376_kinematic_routing_and_forensics.lean && lean proofs/ns376_gronwall_uniqueness_and_repairs.lean && (cd proofs && python3 verify_symbolic_ns376.py)
 ```

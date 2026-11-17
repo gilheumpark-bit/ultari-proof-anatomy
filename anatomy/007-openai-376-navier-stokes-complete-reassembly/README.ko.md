@@ -1,6 +1,6 @@
-- 언어 선택 (Language): [English (README.md)](./README.md) | 한국어
-
 # OpenAI #376 미연결 650 모듈 전수 재조립 및 10월 6일 개정판 검증
+
+- 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
 이 650-모듈 재조립 감사는 OpenAI #376에서 6개 공식 챌린지에 연결되지 않았던 650개(718개 순수 미연결) OAI/ 모듈과 2026년 10월 6일 자 개정 프리프린트를 전수 재조립하고 재계산한 결과물입니다. 모든 결론은 48개 독립 Lean 4 정리(v4.29.0-rc8, 0 sorry, 가설 변이 150/150건 포착)로 검증했습니다.
 
@@ -26,5 +26,6 @@
 - [proofs/verify_symbolic_ns376_complete.py](proofs/verify_symbolic_ns376_complete.py), [proofs/symbolic_verification_result.json](proofs/symbolic_verification_result.json), [proofs/problem_spec.md](proofs/problem_spec.md).
 
 ```bash
+python3 ../../tools/verify_all.py --root .
 lean proofs/ns376_unimported_solenoidal_and_leray_bounds.lean && lean proofs/ns376_detector_margins_and_undecidability_chains.lean && (cd proofs && python3 verify_symbolic_ns376_complete.py)
 ```
