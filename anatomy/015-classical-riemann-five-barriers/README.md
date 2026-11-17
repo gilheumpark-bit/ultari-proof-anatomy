@@ -4,7 +4,7 @@
 
 ## 1. Executive Summary
 
-This formal anatomy reconstructs from first principles and formally verifies in Lean 4 (v4.29.0-rc8) over `ℝ` (75 theorems, 0 sorry, 0 custom axioms, 188 / 188 `: True` hypothesis mutations killed = 100%) the five foundational classical barrier proofs governing the Riemann Hypothesis and Dirichlet L-functions over the past 130 years. Every derivation is cross-audited line-by-line against 15 staged formalization files (`proofs/oai_ref/*.lean`, 1,988 lines) from Terence Tao's `PrimeNumberTheoremAnd` project and OpenAI's `openai/math` corpus (`#003` QRH & SiegelZeros, `#005` Catalan, `#013` Ostmann, `#021` Jacobsthal / Erdos970), cleanly separating recoverable hand-calculation slack from genuine structural obstructions.
+This formal anatomy reconstructs from first principles and formally verifies in Lean 4 (v4.35.0) over `ℝ` (75 theorems, 0 sorry, 0 custom axioms, 188 / 188 `: True` hypothesis mutations killed = 100%) the five foundational classical barrier proofs governing the Riemann Hypothesis and Dirichlet L-functions over the past 130 years. Every derivation is cross-audited line-by-line against 15 staged formalization files (`proofs/oai_ref/*.lean`, 1,988 lines) from Terence Tao's `PrimeNumberTheoremAnd` project and OpenAI's `openai/math` corpus (`#003` QRH & SiegelZeros, `#005` Catalan, `#013` Ostmann, `#021` Jacobsthal / Erdos970), cleanly separating recoverable hand-calculation slack from genuine structural obstructions.
 
 | Pillar | Classical Target & Formalized Cross-Audit | Recovered Hand-Calculation Slack | Genuine Mathematical Wall Proved in Lean 4 | Lean 4 Module (75 Theorems) |
 | :--- | :--- | :--- | :--- | :--- |

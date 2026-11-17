@@ -2,7 +2,7 @@
 
 - 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
-이 11/12 및 CubicGauss 통합 감사는 OpenAI #003 생태계 전체(`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, [제1부 (7/8 ShortDraft 감사)](../001-openai-003-qrh/README.ko.md) 및 [제2부 (심판관·비묶음 그람 감사)](../005-openai-003-qrh-mathematician-referee-audit/README.ko.md))를 통합 검증한 결과물입니다. 모든 결론은 45개 독립 Lean 4 정리와 7개 `def`(v4.29.0-rc8, 0 sorry, 가설 변이 344/344건 포착)로 증명했습니다.
+이 11/12 및 CubicGauss 통합 감사는 OpenAI #003 생태계 전체(`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, [제1부 (7/8 ShortDraft 감사)](../001-openai-003-qrh/README.ko.md) 및 [제2부 (심판관·비묶음 그람 감사)](../005-openai-003-qrh-mathematician-referee-audit/README.ko.md))를 통합 검증한 결과물입니다. 모든 결론은 45개 독립 Lean 4 정리와 11개 `def`(v4.29.0-rc8, 0 sorry, 가설 변이 344/344건 포착)로 증명했습니다.
 
 ## 핵심 해부 결과
 

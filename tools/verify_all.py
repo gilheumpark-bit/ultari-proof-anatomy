@@ -82,8 +82,9 @@ def extract_balanced_hyps(src: str):
 
 
 def check_manifest_hashes(case_dir, manifest):
-    assert manifest.get("lean_version") == "v4.29.0-rc8", f"Missing/mismatched lean_version in {case_dir.name}/manifest.json"
-    assert manifest.get("lean4_verification", {}).get("compiler") == "leanprover/lean4:v4.29.0-rc8", (
+    lv = manifest.get("lean_version")
+    assert lv in ("v4.29.0-rc8", "v4.35.0"), f"Missing/mismatched lean_version in {case_dir.name}/manifest.json"
+    assert manifest.get("lean4_verification", {}).get("compiler") == f"leanprover/lean4:{lv}", (
         f"Missing/mismatched lean4_verification.compiler in {case_dir.name}/manifest.json"
     )
     for key in ("artifacts_sha256", "file_checksums_sha256"):

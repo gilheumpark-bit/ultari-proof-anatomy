@@ -2,8 +2,6 @@
 
 - Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
-- 한국어 안내서: [README.ko.md](README.ko.md) | Parent Repository: [ultari-proof-anatomy](../../README.md)
-
 This forensic anatomy provides a complete mathematical and formal-verification analysis of OpenAI's flagship number-theory family #005 (Catalan's constant is irrational, September 24, 2026) across all 9 LaTeX manuscript files (3,001 lines + references.bib 319 lines) and all 981 Lean 4 files (573,816 lines in OAI/NumberTheory/Catalan/, 982 files / 573,829 lines including ComparatorChallenges/Catalan.lean), backed by 75 standalone machine-checked Lean 4 theorems (1,336 lines, 0 sorry, 0 axiom, 432/432 hypothesis mutations caught, 69/75 structural, 15 nonlinear/inductive proofs, 6 universal ∀ k : Nat inductions, and dual-witness verification).
 
 ## 1. Six-Tier Documentation Index (en/ & ko/)

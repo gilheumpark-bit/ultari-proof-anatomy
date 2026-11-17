@@ -24,7 +24,7 @@
 # 1. Verify SHA-256 checksums
 sha256sum -c proofs/checksums.sha256
 
-# 2. Run Lean 4 kernel check (v4.29.0-rc8 + Mathlib 4, 0 sorry, 75 theorems across 1,646 lines)
+# 2. Run Lean 4 kernel check (v4.35.0 + Mathlib 4, 0 sorry, 75 theorems across 1,646 lines)
 lean proofs/pi_simplex_parameters_and_stratigraphy.lean
 lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean
 lean proofs/pi_laurent_determinant_and_flint_hills.lean

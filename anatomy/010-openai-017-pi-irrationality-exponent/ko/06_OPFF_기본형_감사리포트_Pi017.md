@@ -1,7 +1,7 @@
 # Audit Summary: OpenAI #017 (The irrationality exponent of $\pi$ is $2$)
 
 - 감사 대상: OpenAI openai/math Family #017 (main.tex 및 `sections/*.tex` 5개 파일 · 1,591줄, OAI/NumberTheory/PiExponent/ 869개 .lean 파일 · 94,948줄 + reasoning_traces/irrationality-exponent-of-pi.pdf 42쪽)
-- 검증 환경: Lean 4 v4.34.1 (원본) · Lean 4 v4.29.0-rc8 (검증 표준) / Python 3.14 (SymPy 기호 연산기)
+- 검증 환경: Lean 4 v4.34.1 (원본) · Lean 4 v4.35.0 (검증 표준) / Python 3.14 (SymPy 기호 연산기)
 - 산출물 해시 (SHA-256): [pi_simplex_parameters_and_stratigraphy.lean](../proofs/pi_simplex_parameters_and_stratigraphy.lean) (fa4c73cf1acb...) | [pi_transverse_multiplicity_and_seshadri_blowup.lean](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean) (2e7c8c2e726c...) | [pi_laurent_determinant_and_flint_hills.lean](../proofs/pi_laurent_determinant_and_flint_hills.lean) (3795672a078f...) | [verify_symbolic_pi017.py](../proofs/verify_symbolic_pi017.py) (602809c6314c...)
 - 검증 방식: 독립 Lean 4 정리 75개 (1,646줄, 0 sorry, 0 axiom, 120 / 120 가설 변이 사살, 44개 비선형·귀납 증명) 및 oai_ref/ 60개 파일 실시간 파서 검증
 - OPFF 공식 판정: Gate 1: PASS · Gate 2: HOLD · Gate 3: FAIL · Gate 4: HOLD · Gate 5: PASS $\implies$ OPFF TIER C (Conditional Revision Required - Genuine Mathematical Breakthrough with Trace-to-Paper Citation Drop & Technical Attribution Deficit)
@@ -65,7 +65,7 @@
 # 1) 869개 모듈 층서학, Lemma 4.1 유리수 해, 3단 LCM 상수 및 추론 로그 서지 탈락 실측 확인
 python3 -B proofs/verify_symbolic_pi017.py
 
-# 2) 75개 독립 Lean 4 정리 커널 검증 (v4.29.0-rc8, 1,646줄, 0 sorry, 0 axiom, 120/120 변이 사살)
+# 2) 75개 독립 Lean 4 정리 커널 검증 (v4.35.0, 1,646줄, 0 sorry, 0 axiom, 120/120 변이 사살)
 lean proofs/pi_simplex_parameters_and_stratigraphy.lean
 lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean
 lean proofs/pi_laurent_determinant_and_flint_hills.lean

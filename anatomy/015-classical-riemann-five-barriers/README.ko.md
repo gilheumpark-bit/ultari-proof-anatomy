@@ -4,7 +4,7 @@
 
 ## 1. 핵심 결론 요약
 
-본 해부 보고서는 지난 130년간 리만 가설(Riemann Hypothesis)과 디리클레 L-함수 연구의 진행을 가로막아 온 5대 고전 한계 증명(Classical Barrier Proofs)을 중간 유도식부터 전수 재계산하고, Lean 4 (v4.29.0-rc8) 실수체(`ℝ`) 위에서 75개 정리(0 sorry, 0 사용자 정의 공리, 188 / 188 가설 `: True` 변이 100% 사살)로 무공리 검증한 수리 해부 결과입니다. 아울러 Terence Tao 팀의 `PrimeNumberTheoremAnd` 및 OpenAI `openai/math` 저장소(`#003` QRH·SiegelZeros, `#005` Catalan, `#013` Ostmann, `#021` Jacobsthal / Erdos970)의 참조 원본 15개(`proofs/oai_ref/*.lean`, 1,988줄)와 1대1 대조하여 교과서적 손계산 타협으로 버려진 여유분과 진짜 수학적 장벽을 분리했습니다.
+본 해부 보고서는 지난 130년간 리만 가설(Riemann Hypothesis)과 디리클레 L-함수 연구의 진행을 가로막아 온 5대 고전 한계 증명(Classical Barrier Proofs)을 중간 유도식부터 전수 재계산하고, Lean 4 (v4.35.0) 실수체(`ℝ`) 위에서 75개 정리(0 sorry, 0 사용자 정의 공리, 188 / 188 가설 `: True` 변이 100% 사살)로 무공리 검증한 수리 해부 결과입니다. 아울러 Terence Tao 팀의 `PrimeNumberTheoremAnd` 및 OpenAI `openai/math` 저장소(`#003` QRH·SiegelZeros, `#005` Catalan, `#013` Ostmann, `#021` Jacobsthal / Erdos970)의 참조 원본 15개(`proofs/oai_ref/*.lean`, 1,988줄)와 1대1 대조하여 교과서적 손계산 타협으로 버려진 여유분과 진짜 수학적 장벽을 분리했습니다.
 
 | 논문 축 | 해부 대상 고전 정리 및 현대 교차 검증 | 복원된 손계산 여유분 / 개선 폭 | Lean 4 커널이 증명한 진짜 수학적 장벽 | Lean 모듈 (75개 정리) |
 | :--- | :--- | :--- | :--- | :--- |

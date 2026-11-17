@@ -7,7 +7,7 @@
 | 대상 논문 / 프리프린트 | The irrationality exponent of $\pi$ is $2$ (preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026/, main.tex 및 `sections/*.tex` 총 5개 파일 · 1,591줄, references.bib 269줄 · 25개 엔트리) |
 | 대상 코드 저장소 및 범위 문서 | openai/math Family 017 (OAI/NumberTheory/PiExponent/ 869개 .lean 파일 · 94,948줄 + ComparatorChallenges/PiExponent.lean 19줄 + lean/docs/017.md 17줄) |
 | 동반 추론 로그 / 패치 | reasoning_traces/irrationality-exponent-of-pi.pdf (42쪽, 45개 절: Part I Sections 1–44 $\mu(\pi) \le 62/25 = 2.48$, Part II Section 45 $\mu(\pi) = 2$) / 외부 서드파티 패치 0건 (Mathlib 순수 의존) |
-| 툴체인 및 컴파일러 | Lean 4 v4.34.1 (원본 코퍼스) · Lean 4 v4.29.0-rc8 (검증 아카이브 표준) / Python 3.14 (SymPy 기호 연산기) |
+| 툴체인 및 컴파일러 | Lean 4 v4.34.1 (원본 코퍼스) · Lean 4 v4.35.0 (검증 아카이브 표준) / Python 3.14 (SymPy 기호 연산기) |
 | 검증 산출물 (1·2·3) | • [pi_simplex_parameters_and_stratigraphy.lean](../proofs/pi_simplex_parameters_and_stratigraphy.lean): `fa4c73cf1acb7f311a5dae2018c521b69cb2eeb031b65880034e2ecc6362ca1d`<br>• [pi_transverse_multiplicity_and_seshadri_blowup.lean](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean): `2e7c8c2e726ce1180002dc3a2f0f84d37fb1bc8a28c88d83aa567bb12d828313`<br>• [pi_laurent_determinant_and_flint_hills.lean](../proofs/pi_laurent_determinant_and_flint_hills.lean): `3795672a078f1f74760c2ec9f7723d2ba4915f963b916008cf4e26ffc599d8b9` |
 | 검증 산출물 (4·5) | • [verify_symbolic_pi017.py](../proofs/verify_symbolic_pi017.py): `602809c6314c4c89e605e2a6544e993e2860a4707b34eb4144511490ce01ff4d`<br>• [symbolic_verification_result.json](../proofs/symbolic_verification_result.json): `01470abe37f8962dd8b5e9fe2331d0c3184993848ae371f3d4fd65859bda73a1` |
 | 검증 방식 | 독립 Lean 4 형식 증명 75개 정리 (1,646줄, 0 sorry, 0 axiom, 120/120 가설 변이 사살, 44개 비선형·귀납 증명) + oai_ref/ 60개 파일 결정론적 파서 검증 |
@@ -195,7 +195,7 @@
 # 1. OpenAI #017 869개 모듈 층서학, Lemma 4.1 유리수 해, 3단 LCM 상수 및 서지 감사 실측 검증
 python3 -B proofs/verify_symbolic_pi017.py
 
-# 2. 75개 독립 Lean 4 정리 커널 검증 (v4.29.0-rc8, 1,646줄, 0 sorry, 0 axiom)
+# 2. 75개 독립 Lean 4 정리 커널 검증 (v4.35.0, 1,646줄, 0 sorry, 0 axiom)
 lean proofs/pi_simplex_parameters_and_stratigraphy.lean
 lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean
 lean proofs/pi_laurent_determinant_and_flint_hills.lean

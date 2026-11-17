@@ -3,7 +3,7 @@
   "title": "Five Foundational Classical Riemann Hypothesis Barriers (1896-2024): de la Vallee Poussin & Korobov-Vinogradov Zero-Free Slack Recovery vs Fejer-Riesz Barrier, Ingham-Huxley-Guth-Maynard Zero-Density Inflection Shift (3/4 -> 7/10) & QRH Gram Unbundling, Landau-Siegel Classical.em Ineffectiveness vs Elliptic Rank-3 Effectivization, Selberg-Levinson-Conrey Mollifier Calculus (J_AB = -1/2 => kappa < 1), and Burgess (3/16) SOS Trap vs Kim-Sarnak (7/64) GL_5 Amplification",
   "target_repository": "Classical Riemann Hypothesis Barrier Literature (1896-2024) cross-audited against PrimeNumberTheoremAnd (ZetaBounds_ZeroFree_excerpt.lean) and openai/math (#003 QRH & SiegelZeros, #005 Catalan, #013 Ostmann, #021 Jacobsthal / Erdos970; 15 staged reference files in proofs/oai_ref/)",
   "date": "2026-11-13",
-  "lean_version": "v4.29.0-rc8",
+  "lean_version": "v4.35.0",
   "external_gap_premises": [
     "htail"
   ],
@@ -176,7 +176,7 @@
     }
   },
   "lean4_verification": {
-    "compiler": "leanprover/lean4:v4.29.0-rc8",
+    "compiler": "leanprover/lean4:v4.35.0",
     "theorems_proved": 75,
     "lean4_lines": 2238,
     "sorry_count": 0,

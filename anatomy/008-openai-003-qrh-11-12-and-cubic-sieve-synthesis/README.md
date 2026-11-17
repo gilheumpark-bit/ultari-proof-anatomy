@@ -2,7 +2,7 @@
 
 - Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
-This 11/12 and CubicGauss synthesis audit unifies the full OpenAI #003 QRH ecosystem (`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, and [Part I (7/8 ShortDraft Audit)](../001-openai-003-qrh/README.md) + [Part II (Referee & Unbundled Gram Audit)](../005-openai-003-qrh-mathematician-referee-audit/README.md)). All findings are verified across 45 standalone Lean 4 theorems and 7 `def` declarations (v4.29.0-rc8, 0 sorry, 344/344 hypothesis mutations caught).
+This 11/12 and CubicGauss synthesis audit unifies the full OpenAI #003 QRH ecosystem (`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, and [Part I (7/8 ShortDraft Audit)](../001-openai-003-qrh/README.md) + [Part II (Referee & Unbundled Gram Audit)](../005-openai-003-qrh-mathematician-referee-audit/README.md)). All findings are verified across 45 standalone Lean 4 theorems and 11 `def` declarations (v4.29.0-rc8, 0 sorry, 344/344 hypothesis mutations caught).
 
 ## Key Findings
 

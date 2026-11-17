@@ -503,7 +503,7 @@
         "line": 546
       }
     ],
-    "compiler": "leanprover/lean4:v4.29.0-rc8"
+    "compiler": "leanprover/lean4:v4.35.0"
   },
-  "lean_version": "v4.29.0-rc8"
+  "lean_version": "v4.35.0"
 }

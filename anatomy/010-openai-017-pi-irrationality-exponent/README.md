@@ -2,8 +2,6 @@
 
 - Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
-- 한국어 안내서: [README.ko.md](README.ko.md) | Parent Repository: [ultari-proof-anatomy](../../README.md)
-
 This forensic anatomy provides a complete mathematical and formal-verification dissection of OpenAI's flagship number-theory family #017 (The irrationality exponent of π is 2, September 24, 2026) across its 5 LaTeX manuscript files (1,591 lines + references.bib 269 lines), its 869 Lean 4 files (94,948 lines in OAI/NumberTheory/PiExponent/), and its 42-page (45-section) reasoning trace (irrationality-exponent-of-pi.pdf), backed by 75 standalone Mathlib 4 algebraic and analytic Lean 4 theorems (1,646 lines, 0 sorry, 0 custom axioms, 120/120 hypothesis mutations caught, 44 nonlinear/inductive proofs, and dual-witness verification).
 
 ## 1. Six-Tier Documentation Index (en/ & ko/)

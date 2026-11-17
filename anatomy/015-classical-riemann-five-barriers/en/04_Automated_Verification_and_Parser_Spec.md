@@ -28,7 +28,7 @@
 # 1. Verify cryptographic SHA-256 checksums
 sha256sum -c proofs/checksums.sha256
 
-# 2. Compile all 6 Lean 4 modules (v4.29.0-rc8, 0 sorry, 2,238 lines, 75 theorems)
+# 2. Compile all 6 Lean 4 modules (v4.35.0, 0 sorry, 2,238 lines, 75 theorems)
 lean proofs/classical_dlvp_korobov_and_zero_free.lean
 lean proofs/classical_ingham_huxley_zero_density.lean
 lean proofs/classical_guth_maynard_and_qrh_gram.lean

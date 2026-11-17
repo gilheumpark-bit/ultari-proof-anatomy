@@ -7,7 +7,7 @@
 | Target Paper / Preprint | The irrationality exponent of $\pi$ is $2$ (preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026/, 5 files across main.tex and `sections/*.tex` · 1,591 lines; references.bib 269 lines · 25 entries) |
 | Target Code Repository & Scope Doc | openai/math Family 017 (869 .lean files in OAI/NumberTheory/PiExponent/ · 94,948 lines + ComparatorChallenges/PiExponent.lean 19 lines + lean/docs/017.md 17 lines) |
 | Companion Reasoning Logs / Patches | reasoning_traces/irrationality-exponent-of-pi.pdf (42 pages, 45 sections: Part I Sections 1–44 $\mu(\pi) \le 62/25 = 2.48$, Part II Section 45 $\mu(\pi) = 2$) / 0 third-party patches (pure Mathlib dependency) |
-| Toolchain & Compiler | Lean 4 v4.34.1 (upstream corpus) · Lean 4 v4.29.0-rc8 (OPFF verification archive standard) / Python 3.14 (SymPy symbolic engine) |
+| Toolchain & Compiler | Lean 4 v4.34.1 (upstream corpus) · Lean 4 v4.35.0 (OPFF verification archive standard) / Python 3.14 (SymPy symbolic engine) |
 | Verification Artifact SHA-256 (1–3) | • [pi_simplex_parameters_and_stratigraphy.lean](../proofs/pi_simplex_parameters_and_stratigraphy.lean): `fa4c73cf1acb7f311a5dae2018c521b69cb2eeb031b65880034e2ecc6362ca1d`<br>• [pi_transverse_multiplicity_and_seshadri_blowup.lean](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean): `2e7c8c2e726ce1180002dc3a2f0f84d37fb1bc8a28c88d83aa567bb12d828313`<br>• [pi_laurent_determinant_and_flint_hills.lean](../proofs/pi_laurent_determinant_and_flint_hills.lean): `3795672a078f1f74760c2ec9f7723d2ba4915f963b916008cf4e26ffc599d8b9` |
 | Verification Artifact SHA-256 (4–5) | • [verify_symbolic_pi017.py](../proofs/verify_symbolic_pi017.py): `602809c6314c4c89e605e2a6544e993e2860a4707b34eb4144511490ce01ff4d`<br>• [symbolic_verification_result.json](../proofs/symbolic_verification_result.json): `01470abe37f8962dd8b5e9fe2331d0c3184993848ae371f3d4fd65859bda73a1` |
 | Verification Method | Independent Lean 4 formalization 75 theorems (1,646 lines, 0 sorry, 0 axiom, 120/120 hypothesis mutations killed, 44 nonlinear/inductive proofs) + deterministic parser audit across 60 oai_ref/ files |
@@ -193,7 +193,7 @@
 # 1. Verify the 869-module stratigraphy, Lemma 4.1 rational witnesses, 3-tier LCM constants, and citation audit
 python3 -B proofs/verify_symbolic_pi017.py
 
-# 2. Kernel-check all 75 independent Lean 4 theorems (v4.29.0-rc8, 1,646 lines, 0 sorry, 0 axiom)
+# 2. Kernel-check all 75 independent Lean 4 theorems (v4.35.0, 1,646 lines, 0 sorry, 0 axiom)
 lean proofs/pi_simplex_parameters_and_stratigraphy.lean
 lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean
 lean proofs/pi_laurent_determinant_and_flint_hills.lean

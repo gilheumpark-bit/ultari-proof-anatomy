@@ -1,7 +1,7 @@
 # Audit Summary: OpenAI #017 (The irrationality exponent of $\pi$ is $2$)
 
 - Target (Repository / Preprint): OpenAI openai/math Family #017 (5 files across main.tex and `sections/*.tex` · 1,591 lines; 869 .lean files in OAI/NumberTheory/PiExponent/ · 94,948 lines + reasoning_traces/irrationality-exponent-of-pi.pdf 42 pages)
-- Verification Toolchain: Lean 4 v4.34.1 (upstream) · Lean 4 v4.29.0-rc8 (OPFF standard) / Python 3.14 (SymPy symbolic engine)
+- Verification Toolchain: Lean 4 v4.34.1 (upstream) · Lean 4 v4.35.0 (OPFF standard) / Python 3.14 (SymPy symbolic engine)
 - Artifact Checksums (SHA-256): [pi_simplex_parameters_and_stratigraphy.lean](../proofs/pi_simplex_parameters_and_stratigraphy.lean) (fa4c73cf1acb...) | [pi_transverse_multiplicity_and_seshadri_blowup.lean](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean) (2e7c8c2e726c...) | [pi_laurent_determinant_and_flint_hills.lean](../proofs/pi_laurent_determinant_and_flint_hills.lean) (3795672a078f...) | [verify_symbolic_pi017.py](../proofs/verify_symbolic_pi017.py) (602809c6314c...)
 - Verification Method: 75 independent Lean 4 theorems (1,646 lines, 0 sorry, 0 axiom, 120 / 120 hypothesis mutations killed, 44 nonlinear/inductive proofs) & live parser verification across 60 oai_ref/ files
 - OPFF Formal Verdict: Gate 1: PASS · Gate 2: HOLD · Gate 3: FAIL · Gate 4: HOLD · Gate 5: PASS $\implies$ OPFF TIER C (Conditional Revision Required - Genuine Mathematical Breakthrough with Trace-to-Paper Citation Drop & Technical Attribution Deficit)
@@ -65,7 +65,7 @@
 # 1) Verify the 869-module stratigraphy, Lemma 4.1 rational witnesses, 3-tier LCM constants, and citation audit
 python3 -B proofs/verify_symbolic_pi017.py
 
-# 2) Kernel-check all 75 independent Lean 4 theorems (v4.29.0-rc8, 1,646 lines, 0 sorry, 0 axiom, 120/120 mutations killed)
+# 2) Kernel-check all 75 independent Lean 4 theorems (v4.35.0, 1,646 lines, 0 sorry, 0 axiom, 120/120 mutations killed)
 lean proofs/pi_simplex_parameters_and_stratigraphy.lean
 lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean
 lean proofs/pi_laurent_determinant_and_flint_hills.lean
