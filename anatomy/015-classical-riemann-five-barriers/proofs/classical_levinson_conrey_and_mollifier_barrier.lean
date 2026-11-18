@@ -1,7 +1,7 @@
 /-
   Paper 4 (Theorems 51-63): Critical-Line Zeros & Mollifier `θ = 4/7` + `J_{AB} = -1/2` Barriers
   Selberg (1942), Levinson (1974), Deshouillers-Iwaniec (1982), Conrey (1989), and `BCR` (2017).
-  Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
+  Lean 4 (`v4.35.0`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
 import Mathlib.Analysis.SpecialFunctions.Pow.Real

@@ -1,33 +1,32 @@
 {
   "package_name": "OpenAI_003_Quasi_Riemann_Hypothesis_Parameter_and_Exponent_Analysis",
   "release_date": "2026-10-31",
-  "target_repository": "openai/math (Family 003: Quasi-Riemann Hypothesis for Dirichlet & Hecke L-Functions, lean/OAI/NumberTheory/DirichletL/ & SiegelZeros/)",
+  "target_repository": "openai/math (HEAD 4eaee87; oai-math-revised PR #70 ca28f20; Family 003: Quasi-Riemann Hypothesis for Dirichlet & Hecke L-Functions, lean/OAI/NumberTheory/DirichletL/ & SiegelZeros/)",
   "verification_commands": {
     "lean4_kernel_check": "lean proofs/qrh_exponent_and_parameter_bounds.lean && lean proofs/qrh_continuation_and_rescaling.lean",
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_qrh.py"
   },
   "artifacts_sha256": {
-    "README.md": "3e22a97d11703ad927a967d2218028a38cddec5fad349dffabf9482fbcfe5034",
+    "README.md": "92fbbea00231c34c2f55a776b7cd0f7308d1b0eaa4ce57ef7870bce0ab814dc3",
     "README.ko.md": "43d4bf1306aad3b6f7a04d480f217b98b92e5c633aed3b3ec5d861ea7469e20b",
     "proofs/qrh_exponent_and_parameter_bounds.lean": "2e98aff37741ab5ae4b67c9e36da3816e09325c40d0abcf462a676e0e2ec6ae1",
     "proofs/qrh_continuation_and_rescaling.lean": "7d64b243421117960431dc4e2ac86e4b3d086fae87af55746673e298976fa1e3",
     "proofs/verify_symbolic_qrh.py": "086704058c0c30ca0ff9e3397a7e3bf2a76663af2255a4f98bd695a97439aab6",
     "proofs/symbolic_verification_result.json": "072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55",
     "proofs/problem_spec.md": "7738b0510123db636cde912e60a856b2055b75ba561ce8dcebf1b3865ee30625",
-    "ko/01_초보자용_쉬운해설.md": "dc59f355bb1f9dfd860d273dc25dca4b94721e98cc2f1c8a0d207ca7b5137da1",
-    "ko/02_중급자용_구조및수식가이드.md": "8dc511783810d8b8f5c84d30d3e4d4f16ef74a218496e7c838dd87f60942fd9d",
-    "ko/03_전문가용_수론및형식증명보고서.md": "b370fcb21c8183ba8f44d9514cbba97c813a683cb00feb0c66036c9ad19aea01",
-    "ko/04_자동검증및파서용_명세서.md": "b44bbb9ecd7e6cba61921ff105fed463c484ba53ae9f8fb6d6f3cca4011e835c",
-    "ko/README.md": "ac56231333e9983fe11d389033bac57f5e2dd7553b197fe83cb26fc32fddb64b",
-    "en/01_Beginner_Guide.md": "ff17f62e247167ce7326f5bb4fd47842c63845bf16af34920fe809834d81a523",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "49c0c6d8c6cd31c6fdcab5095f336bb3d1843318936c3afd249f9a697c8a9863",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "0dbac12841f01bc36dfd5bd0808c0166eb39c73a1e970db72c614f12d062f107",
-    "en/04_Automated_Verification_and_Manifest.md": "dc3e1e7e2268c8afe5345cae9c9a7e5e3fda778f27dda87756a06e2eac9032ca",
-    "en/README.md": "4af48fe722fa94efd3b886c18c790be9b9cbf6307290ee930b476db3d7ff2728"
+    "ko/01_초보자용_쉬운해설.md": "2a8740cb9f371caa0f0f18feda80e121b65d73ac1e6edd47038a46ead9b11d79",
+    "ko/02_중급자용_구조및수식가이드.md": "028502d563de16f67c0a426564b1473259dce7c53a054d94b87a662004dc0d08",
+    "ko/03_전문가용_수론및형식증명보고서.md": "3ee4373542b2e49acb9c33e275b540e6a6dec58a2421749de9cc51e00c6b3781",
+    "ko/04_자동검증및파서용_명세서.md": "75e4da8492ea3a1ea45256a1b5f1f61d10b8f35093f06308d5e8b7d924459f42",
+    "en/01_Beginner_Guide.md": "7ca89ad692ef182dee4b60b37ca6b3fe711e49d692273adfc635e5947a172b2f",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "a56e74ed93ce865453e7f053e7fd8cd3eb0b67d00542a8842158e0d02be4a845",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "2d3d1dc0bb2d3e7cb21455f3b0a82716cf8b3a00fefcee28717c7d9a33cd6485",
+    "en/04_Automated_Verification_and_Manifest.md": "d5469bb95a4f8747813c62a02cf579910c9d0be9c3daf695e5c913c7d1c7f56f"
   },
   "verification_scope": {
     "formalized_rational_and_integer_theorems": "48 Lean 4 theorems over Rat/Int/Nat (0 sorry, 0 custom axiom) across proofs/qrh_exponent_and_parameter_bounds.lean (Theorems 1-27) and proofs/qrh_continuation_and_rescaling.lean (Theorems 28-48) + 100% 1-to-1 audit of all 26 OpenAI #003 reference files (179 def/theorem declarations: 178 public + 1 private, plus instance polynomialComponentPrime_isPrime).",
-    "future_complex_analytic_extensions": "Complex-analytic Mellin residue continuation of the separated m=1 finite terms, interval-arithmetic formalization of finite prime norms 4 <= Q < 480 in Lean 4, and off-diagonal bilinear phase cancellation for the diagonal peak_scale term."
+    "future_complex_analytic_extensions": "Complex-analytic Mellin residue continuation of the separated m=1 finite terms, explicit Lean 4 interval checks for finite prime norms 4 <= Q < 480 when tightening the central-quotient threshold below 480 (global Euler tails already absorb finite primes in DirichletL/PrimeRows/FirstTail.lean at openai/math 4eaee87 / oai-math-revised PR #70 ca28f20), and off-diagonal bilinear phase cancellation for the diagonal peak_scale term.",
+    "upstream_snapshot_provenance": "Upstream files referenced by path outside proofs/oai_ref/ (e.g., DirichletL/PrimeRows/FirstTail.lean, CubePrimeThresholds.lean, PrincipalMellinResidues.lean, PrincipalSignalComparison.lean, Energy/CertifiedExistence.lean, SiegelZeros/Main.lean, PrimeNumberTheoremAnd/Wiener.lean, CONTENTS.md, paper.tex) are audited against openai/math commit 4eaee87 (oai-math-revised PR #70 commit ca28f20)."
   },
   "verified_key_results": {
     "problem_1_floor_margin_root": {
@@ -398,7 +397,7 @@
     ],
     "sorry_count": 0,
     "axiom_count": 0,
-    "scope_and_limitations": "Proves 48 core theorems covering universal polynomial factor cancellation over Int (Theorems 28, 31), non-vanishing on all 21 small Eisenstein prime-power norms 4 <= Q < 112 (Theorem 29), second continuation barrier reduction to 97/600 < 1/6 and exact z0-invariance at d0 = 13/16 (Theorems 32-34), exact affine master equations for base exponents 3/16 and -11/16, the active DirichletL/Detector/LowSourceScales.lean vs. dead DirichletL/Parameters.lean split trade-off, the rescaled target beta < 7/8 with zero-free zone width 29/100 (Theorems 35-40), and the complete 1-to-1 formal audit of all 26 reference files (179 def/theorem declarations = 178 public + 1 private, plus instance polynomialComponentPrime_isPrime, Theorems 41-48)."
+    "scope_and_limitations": "Proves 48 core theorems covering universal polynomial factor cancellation over Int (Theorems 28, 31), non-vanishing on all 21 small Eisenstein prime-power norms 4 <= Q < 112 (Theorem 29), second continuation barrier reduction to 97/600 < 1/6 and exact z0-invariance at d0 = 13/16 (Theorems 32-34), exact affine master equations for base exponents 3/16 and -11/16, the active DirichletL/Detector/LowSourceScales.lean vs. unreferenced DirichletL/Parameters.lean split trade-off, the rescaled target beta < 7/8 with zero-free zone width 29/100 (Theorems 35-40), and the complete 1-to-1 formal audit of all 26 reference files (179 def/theorem declarations = 178 public + 1 private, plus instance polynomialComponentPrime_isPrime, Theorems 41-48). Upstream files outside proofs/oai_ref/ are audited against openai/math commit 4eaee87 (oai-math-revised PR #70 commit ca28f20)."
   },
   "lean_version": "v4.29.0-rc8"
 }

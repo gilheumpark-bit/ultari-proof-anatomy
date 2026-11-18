@@ -1,7 +1,7 @@
 /-
   Paper 1 (Theorems 1-15): Zero-Free Regions & `σ = 1 - o(1)` Asymptotic Wall
   de la Vallee Poussin (1896), Mertens (1898), Korobov-Vinogradov (1958), Fejer-Riesz Ceilings.
-  Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
+  Lean 4 (`v4.35.0`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
 import Mathlib.Analysis.SpecialFunctions.Pow.Real

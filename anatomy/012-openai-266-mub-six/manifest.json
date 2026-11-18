@@ -558,17 +558,17 @@
     ]
   },
   "files": {
-    "ko/01_일반인용_해설서.md": "bef7be1d69d54daceb33107954347f0ebe888589133c2b626eb8c73025527f03",
-    "ko/02_중급자용_수학및코드가이드.md": "455778e7af57d3eb6e4e149a44f4988a0dab8ef2d09132cc82721bc2a9f47c67",
-    "ko/03_전문가용_학술및수리물리보고서.md": "78d661673a9f9e02b5144358f2d19cbbd36b18b94911801a3f795019ffa3ef84",
-    "ko/04_자동검증및파서용_명세서.md": "b32aed5ee3b3c449f6ee393cf9e7650e146a4c93ea21dfe4f5e7723ab775f91f",
-    "ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md": "97b48db389d04ca57bf694e90f53bfb9512b56ec5f26bdd5fae31168b2554806",
-    "ko/06_OPFF_기본형_감사리포트_MUB266.md": "038e09a3ab7a11e19ccabfd22878f008856ca39a1f91b2c25ff25729a6111825",
-    "en/01_Executive_Summary_and_General_Guide.md": "f8f1eed469209f3d5c1e2ce6c389b515540d99ef02aae8e8b0004dd87a01e159",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "b3f54e042751b987bda3778a06bbc7c7abb432b882f9de66f918912eeb396d34",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "afbcacf1af163cb8b600804bbbd56fcc2d9820c4ae5f006dceada8b57bd4aa1e",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "3f22d6b704859816cf8ea437c3d18e242003fcf98e900a59b3de7d6b838deefc",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md": "4c71b6ab2326dffc22bddcc15def176a20a462d05e65ece549993001e3505d25",
-    "en/06_OPFF_Basic_Audit_Report_MUB266.md": "1dd3ec2bc7b28d2db4d3c1e27953522881a4b4d311aad72b0e5028ec4be5b5d4"
+    "ko/01_일반인용_해설서.md": "bcdf315dc736991cca554fb044dc3f475a438abfc22f5daac9427bd0bf73fb6d",
+    "ko/02_중급자용_수학및코드가이드.md": "5f0cb144df059ed9958c308652761054073fc5696b0ca3ac72f3fdd18e2d0a95",
+    "ko/03_전문가용_학술및수리물리보고서.md": "038106372c64f8892286e67e9f9f900ffc9841d58db111b015f5e015127305a3",
+    "ko/04_자동검증및파서용_명세서.md": "6c2cca920903a55769e29f2fd82dadfe3208ed274e9b6d57fd81e338429ba05d",
+    "ko/05_상세형_포렌식심사보고서_MUB266.md": "d7fbbfced25d745abc5afd0fecd5ca4ae0f12ccc0b692a02abed9ef201fc5785",
+    "ko/06_기본형_감사리포트_MUB266.md": "932b27bc34ad4ece67265c08c0ee45f761e6dd8b0e982a4c2b232cdf28e4f0f5",
+    "en/01_Executive_Summary_and_General_Guide.md": "197dd87c34b64b7ea430c42eee8c6c6c2e5e6150bffe0365b5a8cc1de867a3fb",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "362073364826c39a6b6aa87f5ab9b022909b76c12bc17f4f4c8d5650fdaf7efc",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "bf7690a28af518093b92f4da2e23bf6f13da44d14fba82ac23d15ed22b41ace6",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "446bdea6f59c8b8f8eca87fecb7599a4d88e391146cd9cfbb1b86e784d243cb9",
+    "en/05_Detailed_Forensic_Referee_Report_MUB266.md": "7fecf9b87b8d93adb0a6fdd90c713950eb0ce42d8a6a17dc24fc903bf1983831",
+    "en/06_Basic_Audit_Report_MUB266.md": "356e0d1229e82401acc3e4b8d839d643b8afcffd15e89d7f31e43ff94daecac6"
   }
 }

@@ -2,7 +2,7 @@
   Paper 3 (Theorems 36-50): Landau-Siegel Exceptional Zeros & Ineffectiveness Barrier
   Estermann-Siegel 4-Fold Positivity, Perron `q_1` Constant Decay, Landau-Page Repulsion,
   Goldfeld-Gross-Zagier Rank-3 Effectivization, and `#003 SiegelZeros` / `OpenAI #013 Ostmann` Bridges.
-  Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
+  Lean 4 (`v4.35.0`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
 import Mathlib.Analysis.SpecialFunctions.Pow.Real

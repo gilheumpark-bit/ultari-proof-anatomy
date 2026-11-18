@@ -1,7 +1,7 @@
 {
   "case_id": "openai_017_pi_irrationality_exponent",
   "title": "OpenAI #017 (The Irrationality Exponent of π Is 2): 869-File Stratigraphy, 62/25 -> 2 Full-Simplex Pivot, Rees Blowup & Serre-Čech Vanishing, and Flint-Hills Convergence Audit",
-  "target_repository": "openai/math (Family 017: OAI/NumberTheory/PiExponent/, ComparatorChallenges/PiExponent.lean, and preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026)",
+  "target_repository": "openai/math (commit 4eaee87, Family 017: OAI/NumberTheory/PiExponent/, ComparatorChallenges/PiExponent.lean, and preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026)",
   "date": "2026-11-14",
   "verification_commands": {
     "lean4_kernel_check": "lean proofs/pi_simplex_parameters_and_stratigraphy.lean && lean proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean && lean proofs/pi_laurent_determinant_and_flint_hills.lean",
@@ -505,5 +505,19 @@
     ],
     "compiler": "leanprover/lean4:v4.35.0"
   },
-  "lean_version": "v4.35.0"
+  "lean_version": "v4.35.0",
+  "files": {
+    "ko/01_일반인용_해설서.md": "d28224f2abf178636e22fbb4adbd405a96aa2bf77f747f349941b6a454d3ea61",
+    "ko/02_중급자용_구조및수식가이드.md": "fa9775f41c456e8f9871dd51612df8a09da4fdc63f4cb77c0f2a46302f557a58",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "238ad30eb5add6859d8dfc16ee3b427aabab39e7399d341a4eb3e4bef8c906d9",
+    "ko/04_자동검증및파서용_명세서.md": "2c7b9c3b759cdb839cdf3c3b66f5bf75db39aea3443dba9c9d9721b37b6173ff",
+    "ko/05_상세형_포렌식심사보고서_Pi017.md": "4ab52f3da7c3096c77d101b13b29efa403c9888a10ab824a4e21a823bcf6fa5d",
+    "ko/06_기본형_감사리포트_Pi017.md": "5558b585c42989e758e6e0b5b95ffae10c7bcdf3b90a13264b0e7437657d205b",
+    "en/01_Executive_Summary_and_General_Guide.md": "cf35c276dce838e6d226251a3e845322cf45d6468a7bb71f9ddfe04f28b82763",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "ccd4156980c21dccfec09209ecf67cbc57b17e0e6fcccb8710ec7e564afd1019",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "65ba14eac35accbdfb6842926bc0dcc16781367521890f60de44d1cbbe4ff960",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "fb244cae4c954c5783d247d191fe99c5c36b1ba96bf6cc1aba17d23afc31d402",
+    "en/05_Detailed_Forensic_Referee_Report_Pi017.md": "c602784dd30877c12674ee1298b8ecfca9db441b2012236dca2a7e72ef82bdb8",
+    "en/06_Basic_Audit_Report_Pi017.md": "d11269ef726ce6918ef78d1a1b340fced99c88060d917b01b0957de7be02319f"
+  }
 }

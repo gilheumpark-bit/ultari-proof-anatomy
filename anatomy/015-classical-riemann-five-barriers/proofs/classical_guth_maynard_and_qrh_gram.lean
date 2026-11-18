@@ -1,7 +1,7 @@
 /-
   Paper 2 Part B (Theorems 26-35): Guth-Maynard (2024) & QRH Gram Energy Bridges
   `σ*_GM = 7/10 => A = 30/13`, `17/30` Prime Gap, `det_3` Collapse, and `OpenAI #003 QRH` Gram Slacks.
-  Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
+  Lean 4 (`v4.35.0`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic

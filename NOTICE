@@ -16,33 +16,33 @@ Audit Rubric: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
    contained within this `NOTICE` file, including `ultari-proof-anatomy`
    (Gilheum Park), the repository URL, and any associated Zenodo DOI.
 
-2. Audit Rubric, Referee Reports, Verdict Ledgers, and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
-   The 5-Gate Audit Rubric & Master Verdict Ledger (`AUDIT_CHARTER.md`,
+2. Audit Rubric, Technical Reports, Evaluation Ledgers, and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
+   The project's 5-Gate Audit Rubric & Master Evaluation Ledger (`AUDIT_CHARTER.md`,
    `AUDIT_CHARTER.ko.md`), all mathematical referee reports, forensic analyses,
    and 4-tier reader guides (`*.md`) are licensed under both the Apache License,
    Version 2.0 and the Creative Commons Attribution 4.0 International License
    (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/).
    Pursuant to Section 3(a) of CC BY 4.0 and Section 4 of Apache-2.0, any
    reproduction, redistribution, translation, adaptation, or academic citation
-   of the 5-Gate Audit Rubric (OPFF), the 14 Forensic Checkpoints
-   (`CP-01`–`CP-14`), or the Case Verdict Ledgers (`Case 001`–`Case 015`) must
+   of the 5-Gate Audit Rubric (OPFF), the 14 Checkpoints
+   (`CP-01`–`CP-14`), or the Case Evaluation Ledgers (`Case 001`–`Case 015`) must
    provide explicit attribution to `ultari-proof-anatomy` (Gilheum Park),
    cite the official repository / Zenodo DOI, and indicate if changes were made.
-   Omission of attribution when reusing these forensic findings or frameworks
+   Omission of attribution when reusing these materials
    constitutes a license violation and an attribution deficit under
    COPE Core Practices.
 
-3. Trademark and Endorsement Restriction (Apache-2.0 Section 6)
+3. Project Name and Endorsement Restriction (Apache-2.0 Section 6)
    Pursuant to Section 6 (Trademarks) of the Apache License, Version 2.0 and
    Section 2(b)(1) of CC BY 4.0, neither license grants permission to use the
-   project names or verdict labels of the Licensor (including
+   project names or evaluation labels of the Licensor (including
    "ultari-proof-anatomy", "Open Proof Forensic Framework", "OPFF",
-   "공개 증명 포렌식 프레임워크", or the rubric labels
-   "TIER S", "TIER A", "TIER C", "TIER F") to endorse or represent
-   external repositories, papers, or artifacts not recorded in this
-   repository's ledger as reviewed or accepted by ultari-proof-anatomy, except
-   as required for reasonable and customary use in describing the origin of the
-   Work and reproducing the content of this `NOTICE` file.
+   "공개 증명 포렌식 프레임워크", or the project tier labels
+   "TIER S", "TIER A", "TIER C", "TIER F") to imply endorsement by or represent
+   external repositories, papers, or artifacts not reviewed in this
+   repository's ledger, except as required for reasonable and customary use
+   in describing the origin of the Work and reproducing the content of this
+   `NOTICE` file.
 
 4. Third-Party Reference Snapshots (`oai_ref/`)
    Files located under `proofs/oai_ref/` (and `anatomy/*/proofs/oai_ref/`) are

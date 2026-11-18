@@ -1,6 +1,6 @@
 # Tier 4 Automated Verification & Parser Spec: OpenAI 10 Publicly Released Reasoning Traces (reasoning_traces/) SHA-256 Integrity & Reproduction Protocol
 
-- Target Audience: Automated verification pipelines (tools/verify_all.py) and reproducibility auditors
+- Target Audience: Automated verification pipelines (tools/verify_all.py) and reproducibility auditors (anchored to `openai/math` commit `4eaee87` / `4eaee87548250b2682affda7d05d947c05554bae`)
 - Navigation: [English Main README (README.md)](../README.md) | [Executive Summary (en/01_)](01_Executive_Summary_and_General_Guide.md) | [Intermediate Guide (en/02_)](02_Intermediate_Math_and_Code_Guide.md) | [Expert Forensic Report (en/03_)](03_Expert_Forensic_and_Mathematical_Physics_Report.md)
 
 
@@ -14,7 +14,7 @@
 | [proofs/traces10_analytic_operator_and_scope_audit.lean](../proofs/traces10_analytic_operator_and_scope_audit.lean) | `d0e7dbd98a321edb0e6b1616b9935acfd3720d7860a4ead4199c27eb7f28c02a` | Theorems 51-75 (465 lines: #221 quadratic & quartic cavity SOS identities, #271 Heisenberg reflection-positivity floor & infrared shell 4s < 5s, #287 Haagerup radial word bound & Dykema-Radulescu 1+(r-1)/t^2=2 compression, #362 Vlasov-Maxwell 496 > 410 bootstrap & subluminal gap, 22 -> 11 -> 9 -> 7 scope attrition funnel, 5/5 stub false positives vs 2,170 OAI/ vacuous hypotheses No-Go theorem, #087 (45p/2,191L) vs #221 (5p/210L) dispersion, 115/115 mutations caught) |
 | [proofs/verify_symbolic_traces10.py](../proofs/verify_symbolic_traces10.py) | `d62cd7c19b3dfb69d06332c4b703be78b45501a0a186be6f90fd4cadc9c03d8b` | Deterministic symbolic and primary-source forensic verifier (341 lines; live-parses all 51 oai_ref/ reference files and reproduces symbolic_verification_result.json byte-for-byte) |
 | [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json) | `f018edf7128ebe7dbb410bc27603e4de64c4d37c36bc750ac540d85e8f2dfe15` | Live forensic audit ledger (177 lines: 211-line mezard-parisi-formula.tex template audit, per-trace 332-vs-315 citation breakdown, 21 challenge & 9,929 OAI/ checks, and exact SymPy invariants across all 10 domains) |
-| [proofs/problem_spec.md](../proofs/problem_spec.md) | `0a26e80df6c7a2f9d4e0cda13e5f4464b5742c61de72e9a60be2396e5a603354` | Problem specification, exclusion boundary, anchor checks, and three-pillar subsystem scope (21 lines) |
+| [proofs/problem_spec.md](../proofs/problem_spec.md) | `ad4ae0032cd3a8a33debf3cd5ced2ada99c99d5b4024d8899b75dbe1372484e6` | Problem specification, exclusion boundary, anchor checks, and three-pillar subsystem scope (21 lines) |
 
 
 

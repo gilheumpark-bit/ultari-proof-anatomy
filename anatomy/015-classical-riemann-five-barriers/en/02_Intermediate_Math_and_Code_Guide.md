@@ -33,7 +33,7 @@ To prove an unconditional ceiling at arbitrary degree $N$, [thm_12_general_cosin
 
 1. Hadamard zero-dropping cone (c_k >= 0): $W = \sum_{k=1}^N c_k$ satisfies $W \ge 2 c_1 - c_0$ from evaluation at $\theta = \pi$.
 2. Two-sided Weyl bound (c_k ∈ ℝ arbitrary sign): Under $|-\operatorname{Re}(\zeta'/\zeta(\sigma + i k t))| \le A M$, the denominator is $W_{\mathrm{abs}} = \sum_{k=1}^N |c_k|$, which satisfies $W_{\mathrm{abs}} \ge 2 c_1 - c_0$ unconditionally and reduces to $W$ when $c_k \ge 0$.
-3. Refutation of W_+ = ∑ max(c_k, 0) on sign-changing Fejer polynomials: The explicit degree-3 Fejer square (signChangeWitnessC)
+3. Refutation of $W_+ = \sum \max(c_k, 0)$ on sign-changing Fejer polynomials: The explicit degree-3 Fejer square (signChangeWitnessC)
    $$\left|1 + \frac{3}{2}e^{i\theta} + \frac{3}{4}e^{2i\theta} - \frac{1}{2}e^{3i\theta}\right|^2 = \frac{65}{16} + \frac{9}{2}\cos\theta + 0\cos 2\theta - \cos 3\theta \ge 0$$
    is strictly nonnegative for all $\theta \in \mathbb{R}$, yet $W_+ = \frac{9}{2} = \frac{72}{16} < \frac{79}{16} = 2 c_1 - c_0$, whereas $W_{\mathrm{abs}} = \frac{11}{2} = \frac{88}{16} \ge \frac{79}{16}$.
 

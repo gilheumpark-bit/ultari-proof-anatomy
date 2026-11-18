@@ -1,6 +1,7 @@
 # 04. Automated Verification & Parser Specification
 
 ## 1. Verification Environment & Toolchain
+- Audited Upstream Provenance: `openai/math` Family 376 (commit `4eaee87`; companion manuscript bibliography PR: `mathcommunity/oai-math-revised` `PR #76`)
 - Operating System: Linux (Ubuntu 26.04 LTS, x86_64)
 - Lean 4 Kernel: leanprover/lean4:v4.29.0-rc8 (0 sorry, 0 custom axioms, 184/184 dynamic hypothesis mutations killed)
 - Symbolic & Numerical Engine: Python 3 (SymPy + PyTorch FP64 Spectral & Autograd Engine)
@@ -16,8 +17,8 @@
 
 | Artifact Path | SHA-256 Checksum | Lines | Scope | sorry / axiom | Hypothesis Mutation Kill Rate (verify_all.py) |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| [proofs/ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean) | `cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd` | 380 | Theorems 1–20 (`OPFFNS376`) | 0 / 0 | 100.0% (106/106 killed) |
-| [proofs/ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) | `2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9` | 439 | Theorems 21–45 (`OpenAI376ForensicsAndRepairsPart2`) | 0 / 0 | 100.0% (78/78 killed) |
+| [proofs/ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean) | `cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd` | 380 | Theorems 1–20 | 0 / 0 | 100.0% (106/106 killed) |
+| [proofs/ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) | `2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9` | 439 | Theorems 21–45 | 0 / 0 | 100.0% (78/78 killed) |
 | [proofs/verify_symbolic_ns376.py](../proofs/verify_symbolic_ns376.py) | `2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c` | 446 | SymPy symbolic verifier + PyTorch FP64 spectral/autograd simulations (exp1–exp3) | N/A | All assertions PASS (ALL #376 CHECKS PASSED) |
 | [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json) | `49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80` | 79 | Deterministic symbolic, spectral, and corpus stratigraphy receipt JSON | N/A | Exact byte-for-byte match on re-run |
 | [proofs/problem_spec.md](../proofs/problem_spec.md) | `46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222` | 35 | #376 target entrypoints and symbol specification | N/A | Specification verified |
@@ -43,7 +44,7 @@
 - Theorem 14 ([ns376_ecosystem_1010_file_stratigraphy](../proofs/ns376_kinematic_routing_and_forensics.lean#L251)): Proves the exact 1,010-file (142,131-line) decomposition into 6 challenge files (2,284 lines) + 354 reachable OAI/ files (66,480 lines) + 650 unimported OAI/ files (73,367 lines).
 - Theorem 15 ([ns376_navier_stokes_dir_631_orphan_partition](../proofs/ns376_kinematic_routing_and_forensics.lean#L270)): Proves the partition of the 631 unimported files inside OAI/MathematicalPhysics/NavierStokes/ (843 total = 212 reachable + 576 ForcedComputation + 31 ShearFlows + 21 Material + 3 root).
 - Theorem 16 ([ns376_challenge_clone_module_identity](../proofs/ns376_kinematic_routing_and_forensics.lean#L295)): Proves the 38-definition (37 `def` + 1 `inductive`) among 51 declarations (50 helper declarations and 1 main theorem `balanced_three_stack_realization` identical; 7 wrapper, docstring, and `Fintype Direction` lines differ) overlap between [BalancedThreeStack.lean](../proofs/oai_ref/lean/ComparatorChallenges/BalancedThreeStack.lean#L1-L239) (239 lines) and [ForcedNavierStokesComputation.lean](../proofs/oai_ref/lean/ComparatorChallenges/ForcedNavierStokesComputation.lean#L1-L232) (232 lines).
-- Theorem 17 ([ns376_velocity_challenge_spec_stuffing_ratio](../proofs/ns376_kinematic_routing_and_forensics.lean#L319)): Proves that [NavierStokesVelocity.lean](../proofs/oai_ref/lean/ComparatorChallenges/NavierStokesVelocity.lean#L1-L1275) (1,275 lines, helper sorry at line 454) exceeds the combined 1,009 lines of the other 5 challenge files.
+- Theorem 17 ([ns376_velocity_challenge_spec_stuffing_ratio](../proofs/ns376_kinematic_routing_and_forensics.lean#L319)): Proves that [NavierStokesVelocity.lean](../proofs/oai_ref/lean/ComparatorChallenges/NavierStokesVelocity.lean#L1-L1275) (1,275 lines, 48 inlined namespaces with stripped `Prop` quotient proof at line 454 vs `TapeCodes.lean:32-33` 0 sorry preserving `isDefEq`, distinct from target placeholder `main_result` at L1232/L1270) exceeds the combined 1,009 lines of the other 5 challenge files.
 - Theorem 18 ([ns376_vacuous_computable_viscosity_premise](../proofs/ns376_kinematic_routing_and_forensics.lean#L338)): Proves the 5D RationalBox 5 $(\nu, t, X_0, X_1, X_2)$ dimension accounting behind the unused `_hcomputable` premise.
 - Theorem 19 ([ns376_sobolev_three_derivative_loss](../proofs/ns376_kinematic_routing_and_forensics.lean#L355)): Proves the 3-derivative regularity loss from potential $\Psi \in C^k$ to $U = \nabla\times\Psi \in C^{k-1}$, $\omega \in C^{k-2}$, and $f \in C^{k-3}$.
 - Theorem 20 ([ns376_rational_box_grid_combinatorial_explosion](../proofs/ns376_kinematic_routing_and_forensics.lean#L368)): Proves the $(k+2)^5$ grid subdivision counts ($32, 243, 100000$ at $k = 0, 1, 8$) for RationalBox 5.
@@ -933,7 +934,7 @@ Every single Lean 4 declaration (theorem, lemma, def, abbrev, structure) across 
 | 848 | [Differential.lean:L99](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L99) | theorem | scheduleVelocity_advection_zero | T03 (L50), T19 (L355) |
 | 849 | [Differential.lean:L115](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L115) | def | directional | T03 (L50), T19 (L355) |
 | 850 | [Differential.lean:L117](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L117) | theorem | directional_contDiff | T03 (L50), T19 (L355) |
-| 887 | [Differential.lean:L121](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L121) | theorem | directional_directional | T03 (L50), T19 (L355) |
+| 851 | [Differential.lean:L121](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L121) | theorem | directional_directional | T03 (L50), T19 (L355) |
 | 852 | [Differential.lean:L129](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L129) | theorem | directional_commute | T03 (L50), T19 (L355) |
 | 853 | [Differential.lean:L137](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L137) | theorem | directional_translation | T03 (L50), T19 (L355) |
 | 854 | [Differential.lean:L145](../proofs/oai_ref/lean/OAI/MathematicalPhysics/SheetFlows/Differential.lean#L145) | theorem | directional_zero | T03 (L50), T19 (L355) |

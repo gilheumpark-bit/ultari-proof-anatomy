@@ -1,25 +1,24 @@
 # 고급 가이드: 전 구간 수학적 귀납법(induction n), $\mathbb{Z}[\sqrt{921}]$ 대수적 통합, 매개변수 파카스 쌍대성, 그리고 준리만 가설 3단계 통합 브리지
 
 - 대상 독자: 해석적 정수론 연구자, 형식 검증 전문가, 그리고 `CubicGauss` 비선형 점화식의 전 구간 귀납법 증명, $\mathbb{Z}[\sqrt{921}]$ 정역 연산, 매개변수 파카스 쌍대성, 및 제1부·제2부·제3부 3부작이 어떻게 단일 대수적 불변량으로 통합되는지 확인하고 싶은 분.
+- 범위 및 원문 출처 명시: [proofs/oai_ref/](../proofs/oai_ref/Endpoint.lean)에 포함되지 않은 업스트림 파일은 `openai/math` 저장소(커밋 `4eaee87` / `PR #70` `ca28f20`)에 속합니다. 먼저 `#003`의 증명된 주정리 `SevenEighths.lean`($\beta = 7/8 = 21/24$, `0 sorry`)이 이미 $\text{Re}(s) > 11/12$와 $\text{Re}(s) > 23/24$를 논리적으로 모두 함의하며 `DescentScale.lean`도 저장소에 존재하므로, 본 보고서의 `ElevenTwelfths`(`23/24`) 및 미연결 30개 `CubicGauss` 분석은 `#003`이 $11/12$에 도달하지 못했다는 주장이 아니라 엄밀한 **모듈 층위(module-stratigraphy) 및 중간 목표 분석**입니다. 또한 `thm_27`, `thm_40`은 $\beta = 71/108$에 이르는 **조건부 LP/대수적 지수 합성**을 검증하며, 실제 $\beta = 71/108$ 달성은 슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달의 완전한 해석적 증명 구축(미구축 이론적 설계도)에 조건부로 의존합니다.
 
+## 1. `CubicGauss` 비선형 점화식의 뫼비우스 공액 변환 선형화 및 모든 $n \in \mathbb{N}$에서 수학적 귀납법 증명 (정리 9–14, 31–33)
 
-
-## 1. `CubicGauss` 비선형 점화식의 뫼비우스 공액 변환 선형화 및 모든 $n \in \mathbb{N}$에 대한 수학적 귀납법 증명 (정리 9–14, 31–33)
-
-`lean/OAI/NumberTheory/CubicGauss/Recurrence.lean:350-370`에서 정의된 3차 큰 체 지수 점화식은 다음과 같습니다:
+`lean/OAI/NumberTheory/CubicGauss/Recurrence.lean:350-370`(`openai/math` 커밋 `4eaee87` / `PR #70` `ca28f20`)에서 정의된 3차 큰 체 지수 점화식은 다음과 같습니다:
 $$\text{sieveThreshold}(\alpha) = \frac{6\alpha - 5}{3\alpha - 1}, \qquad \text{sieveStep}(\alpha) = \frac{6\alpha - 4}{3\alpha - 1}.$$
-OpenAI의 `CubicGauss/LargeSieve.lean:75`는 $\text{sieveStep}(\alpha)$를 느슨한 등비 상한선 $\alpha_n = \frac{4}{3} + \left(\frac{2}{3}\right)^{n+1}$로 근사했습니다. 그러나 $\alpha = p/q > 4/3$($\delta = 3p - 4q > 0$, $D = 3p - q$)에서 1단계마다 버려지는 정확한 이차 여유분은 양수입니다([thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L190-L209)):
+OpenAI의 `CubicGauss/LargeSieve.lean:75`(`openai/math` 커밋 `4eaee87` / `PR #70` `ca28f20`)는 $\text{sieveStep}(\alpha)$를 기하급수 상계 $\alpha_n = \frac{4}{3} + \left(\frac{2}{3}\right)^{n+1}$로 위에서 유계합니다. 이 기하급수 상계는 정확한 비선형 점화식 $\tilde{\alpha}_n$과 완전히 동일한 점근 고정점 $\alpha^{\ast} = 4/3$에 도달하는 유효한 단순화입니다(유한 단계 $n$에서의 초과분만 3배 차이 남). 다만 $\alpha = p/q > 4/3$($\delta = 3p - 4q > 0$, $D = 3p - q$)에서 1단계마다 버려지는 정확한 이차 여유분은 양수입니다([thm_10_cubic_gauss_quadratic_slack_and_attracting_fixed_point](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L190-L209)):
 $$\frac{2}{3}\left(\alpha - \frac{4}{3}\right) - \left(\text{sieveStep}(\alpha) - \frac{4}{3}\right) = \frac{2(3p - 4q)^2}{9q(3p - q)} = \frac{2\delta^2}{9qD} > 0.$$
-고정점 방정식 $3\alpha^2 - 7\alpha + 4 = (3\alpha - 4)(\alpha - 1) = 0$의 두 근 $\alpha^{\ast} = 4/3$, $\alpha^{\ast\ast} = 1$을 이용해 뫼비우스 좌표 $u(\alpha) = \frac{\alpha - 4/3}{\alpha - 1} = \frac{3p - 4q}{3(p - q)}$를 도입하면, $\alpha' = p'/q' = \frac{6p - 4q}{3p - q}$에 대해([thm_11_mobius_conjugacy_exact_closed_form_solution](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L214-L232)):
+고정점 방정식 $3\alpha^2 - 7\alpha + 4 = (3\alpha - 4)(\alpha - 1) = 0$의 두 근 $\alpha^{\ast} = 4/3$, $\alpha^{\ast\ast} = 1$을 이용해 뫼비우스 좌표 $u(\alpha) = \frac{\alpha - 4/3}{\alpha - 1} = \frac{3p - 4q}{3(p - q)}$를 도입하면, $\alpha' = p'/q' = \frac{6p - 4q}{3p - q}$에서 다음이 성립해([thm_11_mobius_conjugacy_exact_closed_form_solution](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L214-L232)):
 $$3p' - 4q' = 3(6p - 4q) - 4(3p - q) = 2(3p - 4q), \qquad p' - q' = (6p - 4q) - (3p - q) = 3(p - q)$$
-가 성립하여 $u(\text{sieveStep}(\alpha)) = \frac{2}{3}u(\alpha)$로 오차 0의 선형 공액이 됩니다.
+$u(\text{sieveStep}(\alpha)) = \frac{2}{3}u(\alpha)$로 오차 0의 선형 공액이 됩니다.
 
 [proofs/qrh_trilogy_induction_and_algebraic_bridge.lean](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L21-L107)에서는 재귀함수 `sieveIter (n : Nat) : Nat × Nat`:
 $$\text{sieveIter}(0) = (2, 1), \qquad \text{sieveIter}(n+1) = (6p_n - 4q_n,\; 3p_n - q_n)$$
-및 `mobiusNum(p, q) = 3p - 4q`, `mobiusDen(p, q) = p - q`를 정의하고, $n \in \mathbb{N}$에 대한 구조적 수학적 귀납법(`induction n with | zero => ... | succ k ih => ...`)으로 모든 자연수 $n \ge 0$에 대해 다음 세 정리를 증명했습니다:
+및 `mobiusNum(p, q) = 3p - 4q`, `mobiusDen(p, q) = p - q`를 정의하고, 모든 자연수 $n \in \mathbb{N}$($n \ge 0$)의 수학적 귀납법(`induction n with | zero => ... | succ k ih => ...`)으로 다음 세 정리를 증명했습니다:
 1. 전 구간 뫼비우스 불변량 ([thm_31_sieve_iter_mobius_invariants_by_induction](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L36-L69)):
    $$3p_n - 4q_n = 2^{n+1}, \qquad p_n - q_n = 3^n.$$
-2. 모든 $n \in \mathbb{N}$에 대한 정확한 닫힌 해 ([thm_32_sieve_iter_exact_closed_form_all_n](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L73-L86)):
+2. 모든 $n \in \mathbb{N}$의 정확한 닫힌 해 ([thm_32_sieve_iter_exact_closed_form_all_n](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L73-L86)):
    $$p_n = 4\cdot 3^n - 2^{n+1}, \qquad q_n = 3\cdot 3^n - 2^{n+1}, \qquad \tilde{\alpha}_n = \frac{p_n}{q_n} = \frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}} = \frac{\frac{4}{3} - \left(\frac{2}{3}\right)^{n+1}}{1 - \left(\frac{2}{3}\right)^{n+1}}.$$
 3. OpenAI 선형 상한 수열 대비 보편적 우위 ([thm_33_sieve_iter_strictly_beats_openai_sieve_exponent_all_n](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L92-L107), [thm_12_nonlinear_vs_linearized_sieve_iterates_comparison](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L237-L254)):
    $$\tilde{\alpha}_n - \frac{4}{3} = \frac{2^{n+1}}{3q_n}, \qquad \alpha_n - \frac{4}{3} = \frac{2^{n+1}}{3^{n+1}}, \qquad 9\cdot 3^n - 3q_n = 3\cdot 2^{n+1} > 0, \qquad \lim_{n\to\infty} \frac{\tilde{\alpha}_n - 4/3}{\alpha_n - 4/3} = \frac{1}{3}.$$
@@ -34,19 +33,20 @@ $$\text{sieveIter}(0) = (2, 1), \qquad \text{sieveIter}(n+1) = (6p_n - 4q_n,\; 3
 ## 2. $\mathbb{Z}[\sqrt{921}]$ 이차 정역과 파카스 쌍대 가중치의 보편적 $(M, \ell)$-소거 (정리 16–23, 34–35)
 
 ### 2.1 임계 이차방정식 $288\delta_c^2 - 588\delta_c + 185 = 0$과 `ZSqrt921` 정역 (`thm_16`, `thm_34`)
-6차 모멘트 개수 상한 $R(d, u)$가 최악 단면 $u = 1/2$에서 날카로운 3차 큰 체 목표치 $R(\delta_c, 1/2) = 2/3$와 만나는 방정식은 $288\delta_c^2 - 588\delta_c + 185 = 0$이며, 그 근은 $\delta_c = \frac{49 - \sqrt{921}}{48}$입니다([thm_16_shared_critical_quadratic_288_588_185_and_count_2_3](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L24-L42)).
+제2부와 Baiying Liu의 `arXiv:2610.12234` (미심사 프리프린트; `geometry/V2Optimization.lean:211-243`)에서 6차 모멘트 개수 상한 $R(d, u)$가 최악 단면 $u = 1/2$에서 날카로운 3차 큰 체 목표치 $R(\delta_c, 1/2) = 2/3$와 만나는 방정식은 $288\delta_c^2 - 588\delta_c + 185 = 0$이며, 그 근은 $\delta_c = \frac{49 - \sqrt{921}}{48}$입니다([thm_16_shared_critical_quadratic_288_588_185_and_count_2_3](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L24-L42)).
 
 [proofs/qrh_trilogy_induction_and_algebraic_bridge.lean](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L110-L161)에서는 이차 정역 $\mathbb{Z}[\sqrt{921}]$을 `structure ZSqrt921` (`⟨a, b⟩ = a + b√921`)로 형식화하고 환 곱셈 `z921Mul`, 켤레 `z921Conj`, 노름 `z921Norm x = x.a^2 - 921*x.b^2`를 정의하여 다음을 증명했습니다:
-- 정역 내 정확한 근 확인 ([thm_34_zsqrt921_norm_and_critical_quadratic_root](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L130-L138)): $X = 48\delta_c = \langle 49, -1\rangle$에 대해 $\operatorname{Norm}(X) = 49^2 - 921 = 1480 = 8 \times 185$이고 $288 X^2 - 588\cdot 48 X + 185\cdot 48^2 = \langle 0, 0\rangle$.
+- 정역 내 정확한 근 확인 ([thm_34_zsqrt921_norm_and_critical_quadratic_root](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L130-L138)): $X = 48\delta_c = \langle 49, -1\rangle$의 노름이 $\operatorname{Norm}(X) = 49^2 - 921 = 1480 = 8 \times 185$이고 $288 X^2 - 588\cdot 48 X + 185\cdot 48^2 = \langle 0, 0\rangle$입니다.
 - 켤레 곱 유리화 및 제2부 대 Liu 격차 노름 ([thm_35_zsqrt921_liu_rationalization_and_case005_gap](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L144-L157), [thm_19_exact_gap_between_fixed_scale_saddle_and_liu_optimum](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L85-L97)):
   $$\langle 203, -3\rangle \cdot \langle 219, 3\rangle = \langle 36168, -48\rangle = 24 \cdot \langle 1507, -2\rangle, \qquad \operatorname{Norm}(\langle 219, -3\rangle) = 39672 = 24 \times 1653$$
   으로부터 $B_{\mathrm{Liu}} = \frac{1507 - 2\sqrt{921}}{1653}$이 도출되며, 제2부(심판관·비결합 그램 감사) 안장점과의 차이 $\beta_{\mathrm{SOS}}(0) - B_{\mathrm{Liu}} = \frac{1195\sqrt{921} - 36189}{4175478}$의 분자 원소 $\langle -36189, 1195\rangle$는 노름이 $(-36189)^2 - 921\times 1195^2 = -5567304 < 0$이므로 엄격히 양수입니다.
 
 ### 2.2 파카스 쌍대 가중치와 매개변수 이동 정리 (`thm_21`–`thm_30`)
-세 활성 면 $\text{Face}_0, \text{Face}_K, \text{Face}_H$에 대해 파카스 쌍대 가중치
+세 활성 면 $\text{Face}_0, \text{Face}_K, \text{Face}_H$ 위에서 파카스 쌍대 가중치
 $$w_0(\delta_c) = \frac{4 + 18\delta_c}{9 + 18\delta_c}, \qquad w_K(\delta_c) = \frac{2}{9 + 18\delta_c}, \qquad w_H(\delta_c) = \frac{3}{9 + 18\delta_c}$$
-는 임의의 $\delta_c$에 대해 $(M, \ell)$을 항등 소거하며([thm_21_farkas_dual_weights_and_closure_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L124-L139)), 각 면의 비음수 절감량 $(\Delta_0, \Delta_K, \Delta_H)$에 대해 최적 경계를 정확히 선형 이동시킵니다([thm_24_parametric_unbundled_farkas_shift_theorem](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L187-L211)–[thm_30_master_qrh_ecosystem_synthesis_verdict](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L308-L321)):
-$$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w_K\,\Delta_K + w_H\,\Delta_H\right).$$
+는 임의의 $\delta_c$에서 $(M, \ell)$을 항등 소거하며([thm_21_farkas_dual_weights_and_closure_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L124-L139)), 각 면의 비음수 절감량 $(\Delta_0, \Delta_K, \Delta_H)$만큼 매개변수 LP 최적 경계를 선형 이동시킵니다([thm_24_parametric_unbundled_farkas_shift_theorem](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L187-L211)–[thm_30_master_qrh_ecosystem_synthesis_verdict](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L308-L321)):
+$$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w_K\,\Delta_K + w_H\,\Delta_H\right)$$
+Xu–Sang(`arXiv:2610.15291`, 미심사 프리프린트)의 $\delta = 0$ 경계 $0.8748867$, 비묶음 그람 목표치 $\frac{4103}{4896}$, $\frac{4069}{4896}$, 그리고 조건부 LP/대수적 지수 합성 목표치 $\frac{71}{108}$을 도출합니다(실제 $\beta = 71/108$ 달성은 슈티켈베르거 극점 소멸 $k_\infty = -6$ 및 보로노이-멜린 전달의 완전한 해석적 증명 구축에 조건부로 의존).
 
 
 
@@ -55,21 +55,21 @@ $$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w
 [proofs/qrh_trilogy_induction_and_algebraic_bridge.lean](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L167-L354)에서는 우리의 리만 관련 3개 리포트가 왜 동일한 소수 인자와 분모를 공유하는지 10개의 정리(`thm_36`–`thm_45`)로 증명합니다:
 
 1. 소수 기울기 17과 3264 $\leftrightarrow$ 4896 분모 브리지 ([thm_36_trilogy_denominator_bridge_3264_and_4896](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L167-L178)):
-   제1부(7/8 ShortDraft 감사)에서 발굴한 성분별 그람 지수 $\frac{14 + 17\delta}{96}$의 소수 기울기 17과 분모 96의 곱이 3부작 기본 단위 $17 \times 96 = 1632 = \gcd(3264, 4896)$을 형성하며, $d_{001} = 2 \times 1632 = 3264$, $d_{005} = 3 \times 1632 = 4896$으로 정확히 $2 : 3$ 비율을 이룹니다.
+   제1부(7/8 ShortDraft 감사)에서 발굴한 성분별 그람 지수 $\frac{14 + 17\delta}{96}$의 소수 기울기 17과 분모 96의 곱이 3부작 기본 단위 $17 \times 96 = 1632 = \gcd(3264, 4896)$을 형성하며, 제1부 분모 $d_{\mathrm{I}} = 2 \times 1632 = 3264$와 제2부 분모 $d_{\mathrm{II}} = 3 \times 1632 = 4896$은 정확히 $2 : 3$ 비율을 이룹니다.
 2. 분자 215 보존 법칙: 제1부의 $\frac{215}{3264}$가 제2부의 $\frac{4069}{4896}$을 구동함 ([thm_37_case001_margin_215_3264_drives_case005_4069_4896](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L185-L205), [thm_38_case001_unbundling_breaks_case008_farkas_wall](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L212-L225)):
    교차점 $\delta_{\max} = \frac{15}{34}$에서 제1부가 확보한 총 결합 해제 여백은 $\frac{215}{3264}$입니다. 여기에 3차 큰 체 가중치 $\frac{2}{3}$를 곱하면:
    $$\frac{7}{8} - \frac{4069}{4896} = \frac{4284 - 4069}{4896} = \frac{215}{4896} = \frac{2}{3} \times \frac{215}{3264}.$$
    즉 제2부의 3항 결합 해제 경계 $\frac{4069}{4896}$가 $7/8$에서 내려간 폭 $\frac{215}{4896}$는 제1부의 여백 $\frac{215}{3264}$에 정확히 $\frac{2}{3}$를 곱한 값입니다.
 3. 아이젠슈타인 극점 쌍대성 $\alpha^{\ast} + \beta_{\mathrm{pole}} = 2$ 및 3264 / 44064 항등식 ([thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L232-L243)–[thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L293)):
-   - 제3부(11/12 및 `CubicGauss` 통합)의 `CubicGauss` 수렴 고정점 $\alpha^{\ast} = \frac{4}{3}$과 제2부의 `coordR` 극점 장벽 $\beta_{\mathrm{pole}} = \frac{2}{3}$는 $\alpha^{\ast} + \beta_{\mathrm{pole}} = 2$ 쌍대 관계를 만족하며, `CubicGauss`를 연결한 바닥 경계 $\frac{71}{108}$는 $\beta_{\mathrm{pole}} = \frac{72}{108}$를 $\frac{1}{108}$만큼 돌파합니다.
-   - 동시에 제1부의 가우스 분기 6/8 소멸($\frac{1}{6} \to \frac{1}{12}$, 절감량 $\frac{1}{12}$)과 제2부의 슈티켈베르거 소멸자($k_\infty = -6$, 순 극점 위수 $1 - 1 = 0$)가 극점 장벽을 $\frac{2}{3} \to \frac{7}{12} \to \frac{1}{2}$로 이동시킵니다.
-   - 3부작 최소공배수 분모 $44064 = \operatorname{lcm}(24, 4896, 108) = 9 \times 4896$ 위에서 $\frac{71}{108}$과 이동된 극점 $\frac{7}{12}$ 사이의 거리는 정확히 제1부의 분모 $d_{001} = 3264$입니다:
-     $$\left(\frac{71}{108} - \frac{7}{12}\right) \times 44064 = 28968 - 25704 = 3264 = d_{001}.$$
+   - 제3부(11/12 및 `CubicGauss` 통합)의 `CubicGauss` 수렴 고정점 $\alpha^{\ast} = \frac{4}{3}$과 제2부의 `coordR` 극점 장벽 $\beta_{\mathrm{pole}} = \frac{2}{3}$는 $\alpha^{\ast} + \beta_{\mathrm{pole}} = 2$ 쌍대 관계를 만족하며, `CubicGauss`를 연결한 조건부 LP 바닥 지수 $\frac{71}{108}$은 $\beta_{\mathrm{pole}} = \frac{72}{108}$보다 $\frac{1}{108}$ 아래에 놓입니다.
+   - 동시에 제1부의 가우스 분기 6/8 소멸($\frac{1}{6} \to \frac{1}{12}$, 절감량 $\frac{1}{12}$)과 제2부의 슈티켈베르거 소멸자($k_\infty = -6$, 순 극점 위수 $1 - 1 = 0$)는 극점 좌표를 $\frac{2}{3} \to \frac{7}{12} \to \frac{1}{2}$로 이동시킵니다.
+   - 3부작 최소공배수 분모 $44064 = \operatorname{lcm}(24, 4896, 108) = 9 \times 4896$ 위에서 $\frac{71}{108}$과 이동된 극점 $\frac{7}{12}$ 사이의 거리는 정확히 제1부 분모 $d_{\mathrm{I}} = 3264$입니다:
+     $$\left(\frac{71}{108} - \frac{7}{12}\right) \times 44064 = 28968 - 25704 = 3264 = d_{\mathrm{I}}.$$
 4. 6단계 망원 분해와 $\beta = 1/2$ (0.5) 도달을 위한 엄밀한 범위 경계 ([thm_43_eleven_twelfths_to_seven_eighths_bridge](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L299-L309)–[thm_45_grand_trilogy_synthesis_verdict](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L338-L354)):
    공통분모 $44064$ 위에서 $\frac{23}{24}$부터 $\frac{1}{2}$까지의 전체 폭 $20196$은 6단계 정수 폭으로 분해됩니다:
    $$1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = \left(\frac{23}{24} - \frac{1}{2}\right) \times 44064.$$
-   - 기존 `0 sorry` 모듈 조립으로 달성 가능한 영역 (1–4단계, 합계 $13260 / 44064 \to \beta = 71/108 \approx 0.6574$ 및 $\beta = 2/3$ 극점 제거): 가변 하강 스케일($1836$), 3차 모멘트 전환($1836$), 그램 결합 해제 + 슈티켈베르거 이동($1935$), 미연결 `CubicGauss` 연결($7653$)로 달성됩니다.
-   - 진정한 미해결 해석적 난제로 남는 영역 (5–6단계, 합계 $(3264 + 3672) / 44064 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$): 극점 장벽 제거로 길은 열렸으나, 실제 모멘트 에너지 바닥을 $\frac{71}{108}$에서 $\frac{1}{2}$까지 밀어 내리려면 큰 체 부등식을 넘어서는 비대각 스펙트럼/클루스터만 제곱근 상쇄($\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$)에 대한 새로운 해석적 증명이 필요합니다.
+   - 조건부 LP 및 대수적 지수 합성 검증 영역 (1–4단계, 합계 $13260 / 44064 \to \beta = 71/108 \approx 0.6574$): `0 sorry` Lean 4 정리(`thm_27`, `thm_40`)는 가변 하강 스케일($1836$), 3차 모멘트 전환($1836$), 그램 결합 해제 + 슈티켈베르거 이동($1935$), 미연결 `CubicGauss` 연결($7653$)의 조건부 LP/대수적 지수 합성과 순 극점 위수(`net_pole_order = 0`)를 검증합니다. 다만 실제 $\beta = 71/108$ 달성은 슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달의 완전한 해석적 증명 구축(아직 미구축인 이론적 설계도)에 조건부로 의존합니다.
+   - $\beta = 1/2$까지의 추가 해석적 난제 영역 (5–6단계, 합계 $(3264 + 3672) / 44064 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$): $71/108$ 전달 설계도 구축 이후에도 실제 모멘트 에너지 바닥을 $\frac{71}{108}$에서 $\frac{1}{2}$까지 내리려면 큰 체 부등식을 넘어서는 비대각 스펙트럼/클루스터만 제곱근 상쇄($\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$)에 관한 새로운 해석적 증명이 추가로 필요합니다.
 
 
 
@@ -264,4 +264,4 @@ $$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w
 ## 5. 원고 기준선 너머의 대안 해법 진전 경계와 해석적 불능·강성 장벽
 
 1. 하향 영점 비존재 경계 진전 ($23/24 \to 11/12 \to 7/8 \to B_{\mathrm{Liu}} \to 71/108$): 영점 비존재 경계는 [thm_28_ten_tier_qrh_boundary_hierarchy](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L268-L284)에서 입증되듯 아래쪽으로 단조 진전합니다. 고정 여유분 제약을 풀면 `ShortDraft`의 $23/24$가 $11/12$로 내려가며, 이 $11/12$는 $\mathbb{Z}[\omega]$ 위의 6차 코시-슈바르츠 극한 지수에서 도출됩니다([thm_02_symbolic_sixth_power_cauchy_schwarz_exponent](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L44-L55), [thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L76-L92)). 헤케 3차 모멘트로 전환하면 $11/12$가 $7/8$로 낮아지며([thm_43_eleven_twelfths_to_seven_eighths_bridge](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L299-L309)), $3/16$은 영점 비존재 경계가 아니라 내부 원천 절감 지수입니다.
-2. $7/8$ 부근 파카스 평형점과 $\beta = 1/2$에서의 해석적 혼합 결손: 보편적 $(M, \ell)$-소거 아래 3면 파카스 쌍대 경계는 $11/12$가 아니라 $7/8$ 부근의 대수적 상수 $B_{\mathrm{Liu}} = (1507 - 2\sqrt{921})/1653 \approx 0.874957$에서 정지합니다([thm_18_liu_three_face_equalization_in_Q_sqrt_921](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L67-L78), [thm_21_farkas_dual_weights_and_closure_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L124-L139)). 매개변수 결합 해제와 `CubicGauss`의 뫼비우스 선형화 $2/3$ 체 연결로 경로 A 바닥 경계는 $71/108 \approx 0.657407$까지 내려가지만([thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L252-L264)), $\beta = 1/2$까지의 5·6단계를 메우려면 미해결 해석적 혼합 결손 $\Delta_{\mathrm{hybrid}} = 14/33$의 증명이 여전히 필요합니다([thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L293)–[thm_44_six_stage_trilogy_telescoping_decomposition](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L316-L331)).
+2. $7/8$ 부근 파카스 평형점과 $\beta = 1/2$에서의 해석적 혼합 결손: 보편적 $(M, \ell)$-소거 아래 3면 파카스 쌍대 경계는 $11/12$가 아니라 $7/8$ 부근의 대수적 상수 $B_{\mathrm{Liu}} = (1507 - 2\sqrt{921})/1653 \approx 0.874957$ (`arXiv:2610.12234`, 미심사 프리프린트)에서 정지합니다([thm_18_liu_three_face_equalization_in_Q_sqrt_921](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L67-L78), [thm_21_farkas_dual_weights_and_closure_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L124-L139)). 매개변수 결합 해제와 `CubicGauss`의 뫼비우스 선형화 $2/3$ 체 연결은 조건부 LP/대수적 지수 합성 목표치 $71/108 \approx 0.657407$을 검증하며([thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L252-L264)), 실제 도달은 슈티켈베르거 극점 소멸($k_\infty = -6$)과 보로노이-멜린 전달의 완전한 해석적 증명 구축(미구축 이론적 설계도)에 조건부로 의존하고, $\beta = 1/2$까지의 5·6단계를 메우려면 미해결 해석적 혼합 결손 $\Delta_{\mathrm{hybrid}} = 14/33$의 증명이 추가로 필요합니다([thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L293)–[thm_44_six_stage_trilogy_telescoping_decomposition](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L316-L331)).

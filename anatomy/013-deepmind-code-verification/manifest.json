@@ -1,6 +1,6 @@
 {
   "case_id": "deepmind_code_verification_signal_cli",
-  "title": "Google DeepMind AlphaProof Code (code-verification, libsignal-cli, Commit 808b4b7ffef1): 7,528,295-Line Build Stratigraphy, 55/64 (85.94%) Binary Hook Bypass, 16,767-Line Unproved Arm64/Trusted TCB & Syscall Divergences, 153,682-Line Comparator TCB Laundering, and SPQR V1 8-Byte MAC Vacuity (q = 35,211) & .base-keys 2 MiB Bricking (56,680 Keys) Audit",
+  "title": "Google DeepMind AlphaProof Code (code-verification, libsignal-cli, Commit 808b4b7ffef1): 7,528,295-Line Build Stratigraphy, 55/64 (85.94%) Specification Hook/Panic Stubs, Custom Arm64 TCB Boundary Deltas (TrustedClosure.lean Arm64 Exemption, Syscalls, Hoare/Mmap OOM, Sail, AT_RANDOM), 153,682-Line Trusted. ComparatorChallenge TCB Inclusion, Stale DEV-C14 8-Byte MAC Bound (q = 35,211) & Disclosed .base-keys 56,680 Ceiling Audit",
   "target_repository": "google-deepmind/code-verification (AlphaProof Code; commit 808b4b7ffef198e6a91f71ed776d641a1c236882, accompanying the October 26, 2026 draft Formally Verifying Signal's Security Using AI)",
   "date": "2026-11-12",
   "lean_version": "v4.29.0-rc8",
@@ -582,17 +582,17 @@
     ]
   },
   "files": {
-    "ko/01_일반인용_해설서.md": "b28cd9eedca6f3c8bf2041514a39da2702d2177d957b7587b5899e1ff037522d",
-    "ko/02_중급자용_수학및코드가이드.md": "8c328f605199af34780a526e70b5eb5a311ce61c089f8c6800a49c0fcf01c2d3",
-    "ko/03_전문가용_학술및수리물리보고서.md": "d3500c3217374ac778f41293af546420815b8b65138adc3497f4e91f03f43fba",
-    "ko/04_자동검증및파서용_명세서.md": "de03251d026c923fa9e1a9501dab10a28bd7ea319b2c0ac50a37069b51923158",
-    "ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md": "4b46a761c2aede2e8f0a44179583e5a9caa54ca8f1ae4d9c62fa09debe386dff",
-    "en/01_Executive_Summary_and_General_Guide.md": "7770bb7d1fc1c5be8d0ee0b28fcaee032cc7aa74891ac45d26bc24984bdc73ae",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "455689896fa079911ad62fd0c847e42631b5284fe36c54ed724580de318c896a",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "5918c6e611ddeb5dfad8dd22571fd478fba01210e53fe744736db3b07cde5974",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "a15c699e6c0aa50565b939a6ed7b0b3ffdca7a0bc827e891be7599de9b8d0d3d",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "b8062b190cdd7d68aa8d368a58dd4895d647046b51a40020c7f2243d64f669ac",
-    "ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md": "0aa929325277e45bfbc0c38e261cb29657e736bac086bce420c333150aedb709",
-    "en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md": "c1d1e877fedd56eb2cd8853bdd89d65c3dd67fe15649a71e05406bdd7b3750a8"
+    "ko/01_일반인용_해설서.md": "9b379ecf2ec0980d46a11f0b7a33adf2956d37b86e07bb44d7f54d4fbcb65688",
+    "ko/02_중급자용_수학및코드가이드.md": "4105f1eee92616d5fcfadc6b5a4686639d4529df5db28d17b815f02ba4dc0376",
+    "ko/03_전문가용_학술및수리물리보고서.md": "e0596457e83b43a9093e1ce63a4d1496f9c53f6273ffeae65a2f392cdd0135bf",
+    "ko/04_자동검증및파서용_명세서.md": "65aa73f43bc271078b1119f36049f08f913708a904540eb09307c4d967689475",
+    "ko/05_상세형_포렌식심사보고서_DeepMind_Signal.md": "9abefe1c48cc891cb958b6bf06cd223bf459899e329b1ff76b8b67c4e69f99d3",
+    "en/01_Executive_Summary_and_General_Guide.md": "d1204249cb2876ef1269f5fe5d280e7c7d2adf7e15877f16950d5973c246cc7e",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "43e7534134ec5d11fd9ace7f4db5c72e41470de9cfeabaef014bbfd13eb20398",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "e4d28ea554d2e04601855ef73aa5d6b56a0f2cf2b1c9354c2105ed71faa2dcde",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "f87d765ea224607592149e7eba9fb8d81f197b744d6a8333fe3f350cbc3edb68",
+    "en/05_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "9ad0157cca3d912ed0155c2a4883389b7dc736e12b9ca8132b7884a6ebf5117a",
+    "ko/06_기본형_감사리포트_DeepMind_Signal.md": "1d999a84f729b4be0614ceeaa535e30f1b3a1ed46663bbffa329c05994377b6e",
+    "en/06_Basic_Audit_Report_DeepMind_Signal.md": "20713e18861ae429b53ca4db884060506b754ea552aebedc7ed97a196dc5ebdc"
   }
 }

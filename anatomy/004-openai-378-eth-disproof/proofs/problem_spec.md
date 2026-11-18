@@ -2,7 +2,7 @@
 
 Using only the raw reference files in `./oai_ref/` (`.lean` modules and `.tex` manuscripts) and standard Python (`sympy`, `fractions`, `math`), extract the definitions directly from the source files, solve the 6 problems below from scratch without external hints, and write the resulting JSON dictionary to `symbolic_reproduction_result.json`.
 
-## Problem 1: Generation 1 & Generation 2 Discarded Fossil Bottlenecks (`ExponentArithmetic.lean`, `SubexpParameters.lean`)
+## Problem 1: Generation 1 & Generation 2 Unimported Prior-Generation Module Bottlenecks (`ExponentArithmetic.lean`, `SubexpParameters.lean`)
 Read `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/ExponentArithmetic.lean` and `oai_ref/lean/OAI/Algorithms/SubexponentialSAT/SubexpParameters.lean`.
 1. From `ExponentArithmetic.lean`, extract the rational definition of `leafCoefficient` as a function of capacity `ell`. Evaluate `leafCoefficient` at `ell = 4096` as an irreducible fraction string `"num/den"`, and compute the combined exponent coefficient after adding the sparsification term `one_thirty_second` as `"num/den"`. Record both under `problem_1.gen1_leaf_coeff_4096` and `problem_1.gen1_combined_coeff_4096`.
 2. From `SubexpParameters.lean`, inspect `GoodInput`, `goodInput_s_ge_32`, and `blockSize_pow_le_doubleExp`. Determine the minimum integer value of the parameter `s(n)` required by `GoodInput` (`problem_1.gen2_min_s`) and the integer `k` such that `n >= 2^(2^k)` is required for `s(n)` to reach that threshold (`problem_1.gen2_min_double_exp_k`).

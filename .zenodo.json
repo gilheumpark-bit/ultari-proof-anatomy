@@ -1,14 +1,14 @@
 {
   "upload_type": "publication",
   "publication_type": "report",
-  "title": "Ultari Proof Anatomy: 5-Gate Forensic Audit Rubric & Verdict Ledger for Frontier Mathematical & Code Verification Corpora (v1.0.2)",
+  "title": "Ultari Proof Anatomy: 5-Gate Technical Audit & Formal Dissection Archive for Frontier Mathematical & Code Verification Corpora (v1.0.3)",
   "creators": [
     {
       "name": "Park, Gilheum",
       "affiliation": "Independent Researcher (ultari-proof-anatomy)"
     }
   ],
-  "description": "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,217/4,217 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Audit Rubric (OPFF) unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards.",
+  "description": "Byte-level zero-truncation technical audit and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (15 case studies, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,217/4,217 hypothesis mutations killed, covering 44,833 distinct upstream .lean files and 49,969 cumulative per-case file-audits across >12.4M lines) under the project's 5-Gate Audit Rubric (OPFF) synthesizing COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR guidelines.",
   "access_right": "open",
   "license": "CC-BY-4.0",
   "keywords": [

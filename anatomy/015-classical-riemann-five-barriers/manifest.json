@@ -12,12 +12,12 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_classical_riemann.py"
   },
   "artifacts_sha256": {
-    "proofs/classical_dlvp_korobov_and_zero_free.lean": "c4119be676231c12c65a2eb1eb85107fad279b711e7f3c4b47493c2ac960851b",
-    "proofs/classical_ingham_huxley_zero_density.lean": "696e7e58ce6b8a1fb11ca12a951b6ea5793eb5b50bcaf77736f1fea5d8b3426f",
-    "proofs/classical_guth_maynard_and_qrh_gram.lean": "e771762ef219d2cb3e52558763f3628b7c906950dabc4b3effbc5ba9385c5b28",
-    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "cc2532a99f0a37270e097a11af89c74a9aafdd2014b1f3f92745d9c2332b9e1a",
-    "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "cf67a2648cc092df1a3f3d4c5689462aa0b0aeba23f03f5a1fd53f494e68f56d",
-    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "213402efc6360d3eb78d3c32be42ae7037fa14ecd5a58a3007bfff54c97b3854",
+    "proofs/classical_dlvp_korobov_and_zero_free.lean": "2a92e463b1b09c54bfd7981ccf5dff3619daae33fd178da0e52563726d58f341",
+    "proofs/classical_ingham_huxley_zero_density.lean": "21dc3cf43f73fb819b42e5411d4905d2dc54f8477f64ac62c3d6491ee434b140",
+    "proofs/classical_guth_maynard_and_qrh_gram.lean": "fbd5c524ed2283a65763c1d6e4a83f09320f969f01ccf967ff96d2a9761494a3",
+    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "10830e4e50668c2da9d85feb45823e82c152f3ade0ae7029f399f9b8679dae2a",
+    "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "3d065f7dc823c42c261932e4423714b9d85b3bef79e12db9bba189ba731faff5",
+    "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "776e09813a00b76adaa702a1905b0bec3c7c83d94959021447682fd9d8f9c0e1",
     "proofs/verify_symbolic_classical_riemann.py": "201563b296cc49b2f3b46775b44f2270d705b7febedffcc0412a3c79b099a9df",
     "proofs/symbolic_siegel_conrey_burgess.py": "ae1a388193d630dcaf33115c1ca7ccb5dc85dc6eb759e8bb56957dc3887c060a",
     "proofs/symbolic_verification_result.json": "6314872da8f8f84b4ae3c240ed0e9d625a4943181e737270136641a52eefc326",
@@ -98,7 +98,7 @@
       ],
       "siegel_threshold": "1 - eps/(2*(A + eps))",
       "landau_page_pair_margin": "5/46",
-      "openai_002_bezout_cutoff": 86713344,
+      "openai_003_bezout_cutoff": 86713344,
       "ostmann_conductor_ladder": [
         87689,
         255983,

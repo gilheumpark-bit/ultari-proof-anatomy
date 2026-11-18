@@ -2,13 +2,13 @@
 
 - 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
-이 11/12 및 CubicGauss 통합 감사는 OpenAI #003 생태계 전체(`DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234`, [제1부 (7/8 ShortDraft 감사)](../001-openai-003-qrh/README.ko.md) 및 [제2부 (심판관·비묶음 그람 감사)](../005-openai-003-qrh-mathematician-referee-audit/README.ko.md))를 통합 검증한 결과물입니다. 모든 결론은 45개 독립 Lean 4 정리와 11개 `def`(v4.29.0-rc8, 0 sorry, 가설 변이 344/344건 포착)로 증명했습니다.
+이 11/12 및 CubicGauss 통합 감사는 OpenAI #003 생태계(`proofs/oai_ref/` 외부 파일은 `openai/math` 커밋 `4eaee87` / `PR #70` `ca28f20` 기준: `DirichletL/ShortDraft`, `CubicGauss/`, `paper2.tex`, `AlexKontorovich/quasi-rh`, Baiying Liu `arXiv:2610.12234` (미심사 프리프린트), [제1부 (7/8 ShortDraft 감사)](../001-openai-003-qrh/README.ko.md) 및 [제2부 (심판관·비묶음 그람 감사)](../005-openai-003-qrh-mathematician-referee-audit/README.ko.md))를 분석한 결과물입니다. 먼저 `#003`의 증명된 주정리 `SevenEighths.lean`($\beta = 7/8 = 21/24$, `0 sorry`)이 이미 $11/12$와 $23/24$를 논리적으로 모두 함의하고 `DescentScale.lean`도 저장소에 이미 존재하므로, 본 보고서의 `ElevenTwelfths`($23/24$) 및 미연결 30개 `CubicGauss` 발굴은 `#003`이 $11/12$에 도달하지 못했다는 주장이 아니라 엄밀히 **모듈 층위(module-stratigraphy) 및 중간 목표 분석**임을 밝힙니다. 모든 결과는 3개 파일의 45개 독립 Lean 4 정리, 11개 `def`, 1개 `structure`(`ZSqrt921`)(v4.29.0-rc8, 0 sorry, 가설 변이 344/344건 포착)로 검증했습니다.
 
 ## 핵심 해부 결과
 
-1. 23/24 고정 원인 및 11/12 확장: `DirichletL/CubicSieve/ClosedRecursion.lean`의 `reserve = 1/20` 상수가 $\vartheta = 1/10 \implies \frac{23}{24}$을 강제한 원인을 밝히고, `CanonicalDescentScale`을 통한 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
-2. 미연결 CubicGauss 발굴 및 귀납법 닫힌 해: 미연결 30개 파일(6,252줄)의 날카로운 $2/3$ 삼차 큰 체를 감사하고, 모든 $n \in \mathbb{N}$에 대해 점화식 `sieveIter`의 일반항 $\frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$을 수학적 귀납법으로 증명합니다.
-3. $\mathbb{Z}[\sqrt{921}]$ 링 및 제1·2·3부 통합: 제2부와 Liu의 $\mathbb{Q}(\sqrt{921})$ 이차방정식을 통합하고, 기존 0 sorry 모듈만으로 도달 가능한 $\beta = \frac{71}{108} \approx 0.6574$와 $\beta = \frac{1}{2}$ 도달에 필요한 열린 해석적 조건($\Delta_{\mathrm{hybrid}} = \frac{14}{33}$)의 경계를 확정합니다.
+1. `ShortDraft` 23/24 대 11/12 모듈 층위·중간 목표 분석: `#003`의 증명된 주정리 `SevenEighths.lean`($\beta = 7/8 = 21/24$, `0 sorry`)이 이미 $11/12$와 $23/24$를 논리적으로 함의하며 `DescentScale.lean`도 저장소에 존재하지만, `DirichletL/CubicSieve/ClosedRecursion.lean`의 `reserve = 1/20` 상수가 독립 `ShortDraft` 목표만 $\vartheta = 1/10 \implies \frac{23}{24}$에 고정시킨 원인임과 `CanonicalDescentScale`의 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
+2. 미연결 `CubicGauss` 발굴 및 귀납법 닫힌 해: 미연결 30개 파일(6,252줄)의 날카로운 $2/3$ 삼차 큰 체를 감사하고, 모든 $n \in \mathbb{N}$에서 점화식 `sieveIter`의 일반항 $\frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$을 수학적 귀납법으로 증명합니다. `CubicGauss/LargeSieve.lean:75`의 기하급수 상계 역시 정확한 점화식과 동일한 점근 고정점 $\alpha^* = 4/3$에 도달하는 유효한 단순화입니다.
+3. $\mathbb{Z}[\sqrt{921}]$ 링 및 조건부 3부작 지수 합성: 제2부와 Liu(`arXiv:2610.12234`, 미심사 프리프린트)의 $\mathbb{Q}(\sqrt{921})$ 이차방정식을 통합합니다. `0 sorry` Lean 4 정리(`thm_27`, `thm_40`)는 $\beta = \frac{71}{108} \approx 0.6574$에 이르는 **조건부 LP/대수적 지수 합성**을 검증하며, 실제 $\beta = \frac{71}{108}$ 달성은 **슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달의 완전한 해석적 증명 구축**(아직 구현되지 않은 이론적 설계도)에 조건부로 의존함을 명시하고 $\beta = \frac{1}{2}$ 도달에 필요한 추가 조건 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$과 구분합니다.
 
 ## 4단계 독자 맞춤형 가이드
 
@@ -21,9 +21,9 @@
 
 ## 형식증명 코드 및 1줄 검증 명령어
 
-- [qrh_eleven_twelfths_and_cubic_large_sieve.lean](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean): 정리 1~15 (115/115 변이 포착).
-- [qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean): 정리 16~30 (125/125 변이 포착).
-- [qrh_trilogy_induction_and_algebraic_bridge.lean](proofs/qrh_trilogy_induction_and_algebraic_bridge.lean): 정리 31~45 + def 7개 (104/104 변이 포착).
+- [qrh_eleven_twelfths_and_cubic_large_sieve.lean](proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean): 정리 1~15 + `def` 2개 (115/115 변이 포착).
+- [qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean](proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean): 정리 16~30 + `def` 2개 (125/125 변이 포착).
+- [qrh_trilogy_induction_and_algebraic_bridge.lean](proofs/qrh_trilogy_induction_and_algebraic_bridge.lean): 정리 31~45 + `def` 7개 + `structure` 1개 (`ZSqrt921`) (104/104 변이 포착).
 - [verify_symbolic_qrh_synthesis.py](proofs/verify_symbolic_qrh_synthesis.py) 및 [symbolic_verification_result.json](proofs/symbolic_verification_result.json).
 
 ```bash

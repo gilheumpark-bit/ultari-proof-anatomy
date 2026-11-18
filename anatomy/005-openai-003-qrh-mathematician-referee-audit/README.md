@@ -1,14 +1,14 @@
 # OpenAI #003 Referee Audit & Conditional $\beta \to 1/2$ Blueprint
 
-- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
+- Language: English | [Korean (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
-This audit examines OpenAI #003 (3,233 upstream `.lean` files and 26 reference modules in [proofs/oai_ref/](proofs/oai_ref/Endpoint.lean)) from a journal referee perspective. All results are verified across 48 standalone Lean 4 theorems and 6 defs (5 in [qrh_eight_tasks_critical_upgrade.lean](proofs/qrh_eight_tasks_critical_upgrade.lean) + `siegel_concrete_witness`, v4.29.0-rc8, 0 sorry, 441/441 hypothesis mutations caught, exact cleared-denominator arithmetic).
+This audit examines OpenAI #003 (26 bundled reference modules in [proofs/oai_ref/](proofs/oai_ref/Endpoint.lean) plus recorded DAG counts for 3,233 upstream `.lean` files from `openai/math` commit `4eaee87`, `PR #70` `ca28f20`; `#003` itself only claimed and proved $\beta = 7/8$ with `0 sorry`) from a journal referee perspective. All results are verified across 48 standalone Lean 4 theorems and 6 defs (5 in [qrh_eight_tasks_critical_upgrade.lean](proofs/qrh_eight_tasks_critical_upgrade.lean) + `siegel_concrete_witness`, v4.29.0-rc8, 0 sorry, 441/441 hypothesis mutations caught, exact cleared-denominator arithmetic).
 
 ## Key Findings
 
 1. Three Distinct $\beta$ Regimes: We separate the 20-module global SOS saddle ($\beta_{\mathrm{SOS}}(0) = \frac{6843 - 7\sqrt{921}}{7578} \approx 0.874975 < \frac{7}{8}$, rational witness $\frac{41999}{48000}$), the local $\delta = 0$ slice ($\frac{131}{150}$ and $\frac{209}{240}$), and the unbundled tail floor ($\frac{4103}{4896} \approx 0.8380$).
 2. Breaking the $\beta = 2/3$ Pole Wall: Using Stickelberger-Eisenstein annihilation ($k_\infty = -6 \neq 0$) and $(1 - R_p)$ cancellation, we shift the coordR convergence boundary from $\frac{401}{600} (\to \frac{2}{3})$ down to $\frac{117}{200} (\to \frac{7}{12})$ and $\frac{301}{600} (\to \frac{1}{2})$.
-3. Conditional Transfer to $\beta = 1/2$: We prove the linear transfer laws $\beta(\Delta_{\mathrm{gram}})$ and show that reaching $\beta = \frac{1}{2}$ along the coupled [Path A + Path B] locus requires the conditional hybrid saving $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$ ([thm_35](proofs/qrh_mathematician_referee_audit.lean#L454-L461), [thm_46](proofs/qrh_eight_tasks_critical_upgrade.lean#L156-L177)).
+3. Conditional Transfer to $\beta = 1/2$: We prove the linear transfer laws $\beta(\Delta_{\mathrm{gram}})$ and show that reaching $\beta = \frac{1}{2}$ along the coupled [Path A + Path B] locus remains contingent on open analytic hypotheses (specifically $\mathrm{res}_{w_1} = 0$, $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$, and $\mathrm{gain}_{\mathrm{amp}} \ge \frac{2}{11}$; [thm_35](proofs/qrh_mathematician_referee_audit.lean#L454-L461), [thm_44](proofs/qrh_eight_tasks_critical_upgrade.lean#L122-L140), [thm_46](proofs/qrh_eight_tasks_critical_upgrade.lean#L156-L177)).
 
 ## 4-Tier Reader Guide
 

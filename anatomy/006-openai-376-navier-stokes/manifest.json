@@ -3,34 +3,38 @@
   "problem_id": "376",
   "title": "Universal computation in forced Navier-Stokes flows",
   "release_date": "2026-11-05",
-  "target_repository": "openai/math (Family 376: Universal computation in forced Navier-Stokes flows, lean/ComparatorChallenges/ & lean/OAI/)",
+  "target_repository": "openai/math (commit 4eaee87; Family 376: Universal computation in forced Navier-Stokes flows, lean/ComparatorChallenges/ & lean/OAI/) / companion bibliography PR mathcommunity/oai-math-revised#76",
   "verification_commands": {
     "lean4_kernel_check": "lean proofs/ns376_kinematic_routing_and_forensics.lean && lean proofs/ns376_gronwall_uniqueness_and_repairs.lean",
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "cbeb87d58cce5e3685256412b0b9deb6d5a3ea54cb8dc85cb0ed53150cb7ca11",
-    "README.ko.md": "7a9b31514975fa9d6e0c454efc609f6be5a08ff2ec512a380de5f7d3d19d8fc1",
+    "README.md": "eabbf3c5c535826d1aedcc8cf7ccf954a646a92488072f20be249f5ee02dd261",
+    "README.ko.md": "52950ffb42e1c7113b0bcd41c6493872d416547452fc0fbf41a6732d7851a6b3",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd",
     "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9",
     "proofs/verify_symbolic_ns376.py": "2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c",
     "proofs/symbolic_verification_result.json": "49ccc91a954df8b1bf8a8c6b2dd980e026d6f728034021a1670d4e6a8e042b80",
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
-    "ko/01_초보자용_쉬운해설.md": "21371789a4041baf31139b0dad204df9a16662c63bb4e30a8b9b3cf15973a173",
-    "ko/02_중급자용_구조및수식가이드.md": "18912bf1abeda74cbb239ffb3a220078eb6bc7bc3548e14a04d4b11ca08c3f94",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "2e77bf7f5a2d8ea7b10dd302b6c4a8c21bfc78df1cad06e1ff6abc2cf43d724a",
-    "ko/04_자동검증및파서용_명세서.md": "58f0c87e54abb487dba46ae757d6a7477b3ed584df67cb18db2215b7d5ef808a",
-    "en/01_Beginner_Guide.md": "c6cb8341d9708bfe6dad3fea16bbbe421b7fa30b935fdbb8fc69e5d21670f69b",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "640907442daac8dfe6c3a838fa737db89bd3a93010bb56b7219ff130b676a01f",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "be8137de5b2713cc204662d9bfb7628180055a9fd5bf2d49c7d79ccd0f21b21a",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "f69b550e6e6757a118c8e9fad8453c60471d1bc5a2674a4b3878c9202129a0c8"
+    "ko/01_초보자용_쉬운해설.md": "f34ce5018838c95d222757b58baf2b725d370182e198893ab095f242e909842e",
+    "ko/02_중급자용_구조및수식가이드.md": "9acef475c80f87fc00bd1cd9e0ebf3a211c62736cdca30dbb1a7df7b9850c1c8",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "940e015de19c5ec45c72bd9a53f81882695e2d1ca5293771f36543c9fdc27c74",
+    "ko/04_자동검증및파서용_명세서.md": "1ac2ec19f5d234da2ee7b1d667aa7ceddd0ff58850598d08b8a13d73f12cda2b",
+    "ko/05_상세형_포렌식심사보고서_NS376.md": "151cd02d1b627c558e3c6ac05bd6386167c46865b83cdd349ff930fb9b8ceb59",
+    "ko/06_기본형_감사리포트_NS376.md": "4be15c58d37068af9dde7906fa1964210dcb2a654b9dc34eb281baaf7a580ae9",
+    "en/01_Beginner_Guide.md": "20129b237d9ef9ab90aa23189c8905f42e47f5d8315d5663a4536e0ba2311d4c",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "9a3c59a0310845831256c858c5cfa0c8290ec2390ef53b5f537ab6a51ae575a7",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "ca95d843ab49fd31b1d3c3525575e39e963e4d9b22ceaaa2b80805eb9b9521fc",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "563c21e01e79c22ad4f54c6b8c6216c6afb6d75b54ca1455e5914e63f488d0a6",
+    "en/05_Detailed_Forensic_Referee_Report_NS376.md": "7c71c39bb569b4058950cfd239e51b9b2f9c84795c43e05c668414d479f0a0f7",
+    "en/06_Basic_Audit_Report_NS376.md": "4a2b0cf4f06fb50027c9502c26ffda3fc033fd8fa8f4c4a3942177c99185edca"
   },
   "verdict": {
-    "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup prescribing a divergence-free velocity U = curl(chi * Psi) starting from rest with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
-    "layer_1b_autonomous_pde_vs_inverse_forcing": "CONDITIONAL / INVERSE-FORCING (5 box/sheet challenges satisfy the momentum equation via point-by-point residual substitution f := dt_U + (U.grad)U - nu*Delta U discharged by abel or unidirectional shear sheets with (u.grad)u = 0; Challenge 3 decouples vertical velocity into a 2+1D linear passive-scalar heat equation; SolenoidalSheetPrograms omits the paper fixed-particle halting detector and solid-box reciprocal maps)",
-    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (ForcedNavierStokesComputation.lean [232L] shares all 38 definitions [37 def + 1 inductive] among 51 declarations [50 helper decls + main theorem, differing by 7 wrapper/docstring lines] with BalancedThreeStack.lean [239L]; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including 576 ForcedComputation/ files] are unimported by the 6 challenges; ComparatorChallenges/NavierStokesVelocity.lean embeds 48 internal namespaces and retains a stripped sorry at line 454 in VelocityDetection.TapeCodes.half [proved in VelocityDetection/TapeCodes.lean:32-33]; VelocityDetection/MainResult.lean leaves _hcomputable unused; in the main manuscript build/, 9 of 22 references.bib entries [40.9%] are never cited via \\cite and 11 of 15 section files [4,630/5,808 lines, 79.7%] have zero human citations)",
+    "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup starting from u(0)=0 and prescribing a divergence-free velocity U = curl(chi * Psi) with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",
+    "layer_1b_autonomous_pde_vs_inverse_forcing": "FAIL (Gate 5 Modeling Scope Disqualification; TIER F): docs/376.md:1,12,14,26 and analysis.tex:36-41,263-267 match the 5 box/sheet comparator challenges with p=0 inverse-forcing residual substitution f := dt_U + (U.grad)U - nu*Delta U and unidirectional shear (u.grad)u = 0 (Class A disclosed scope, not Gate 1 or paper-code divergence), yet co-generating both manuscript and challenges without pressure projection or nonlinear advection eliminates 3D incompressible fluid dynamics and disqualifies Gate 5 while keeping the 3 internal auxiliary mechanisms (Flow, Comparison, MildScalar) valid; SolenoidalSheetPrograms omits the paper fixed-particle halting detector and solid-box reciprocal maps",
+    "layer_2_formal_repository_and_packaging_audit": "ISSUES IDENTIFIED (Class B defects: ForcedNavierStokesComputation.lean [232L] shares all 38 definitions [37 def + 1 inductive] and 50 helper decls + main theorem among 51 declarations [differing by 7 wrapper/docstring lines] with BalancedThreeStack.lean [239L]; 650 of 1,004 OAI/ modules [64.7%, 73,367 lines, including non-zero pressure PeriodicLattice/Solenoidal.lean and all 576 ForcedComputation/ files] are unimported by the 6 challenges; VelocityDetection/MainResult.lean:51 leaves _hcomputable unused; ComparatorChallenges/NavierStokesVelocity.lean inlines 48 internal namespaces and retains (by sorry) at line 454 in helper def VelocityDetection.TapeCodes.half [while TapeCodes.lean:32-33 and MainResult.lean:11-55 are 0 sorry, preserving isDefEq via Lean 4 Prop proof irrelevance and exposing a comparator sorry-scanner blind spot on helper def declarations, distinct from target placeholder main_result at L1232/L1270]; in the main manuscript build/ [16 .tex files: main.tex 56L + 15 sections 5,808L = 5,864L], 9 of 22 references.bib entries [40.9%] are never cited via \\cite and 11 of 15 section files [4,630/5,808 lines, 79.7%] have zero human citations)",
     "layer_3_genuine_mathematical_mechanisms": "PASS (3 core mechanisms verified: curl(chi * Psi) volume-preserving affine box routing, 12*C Serrin-Gronwall L^2 energy uniqueness, and 2+1D Gaussian heat-kernel Duhamel positivity)",
-    "layer_4_opff_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 184/184 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
+    "layer_4_formal_and_symbolic_verification": "PASS (45 Lean 4 theorems, 0 sorry, 0 custom axioms, 184/184 hypothesis mutations killed, SymPy + PyTorch FP64 spectral/autograd verification)"
   },
   "verified_key_results": {
     "part1_kinematic_routing_and_forensics": {

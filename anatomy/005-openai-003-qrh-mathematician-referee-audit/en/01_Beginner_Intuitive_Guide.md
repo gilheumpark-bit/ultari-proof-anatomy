@@ -1,6 +1,6 @@
 # Tier 1: Beginner Guide: What Mathematicians and Referees Look For in OpenAI #003
 
-Checking that a Lean 4 file compiles without syntax errors is only the first step. When an analytic number theorist audits OpenAI #003 (Quasi-Riemann Hypothesis at $\beta = 7/8$ and Siegel Zero Exclusion), five deeper questions arise. This guide explains those five questions and the conditional blueprint toward $\beta = 1/2$ in plain language.
+Checking that a Lean 4 file compiles without syntax errors is only the first step. When an analytic number theorist audits OpenAI #003 (Quasi-Riemann Hypothesis at $\beta = 7/8$ and Siegel Zero Exclusion), five deeper questions arise. Note that OpenAI #003 itself only claimed and proved $\beta = 7/8$ (with 0 sorry), whereas our extensions (Theorems 27 to 48) formalize exact cleared-denominator rational exponent transfers and the conditional blueprint toward $\beta = 1/2$ contingent on open analytic hypotheses (specifically $\mathrm{res}_{w_1} = 0$ and $\mathrm{gain}_{\mathrm{amp}} \ge 2/11$).
 
 
 
@@ -16,16 +16,18 @@ Similarly, in [SiegelZeros/Estimates/GeometricBoundary.lean:26](../proofs/oai_re
 
 
 
-## 2. How Much Margin Was Wasted for Coding Convenience?
+## 2. How Much Formalization Slack Came from Proof-Tactic Choices vs. Unused Constraints?
 
-1. Three-Tier Tail Exponent Losses (181/3264, 215/3264, 487/3264):
-   - To make nlinarith proofs shorter, [DirichletL/Detector/LowSourceScales.lean:88-98](../proofs/oai_ref/LowSourceScales.lean#L88-L98) bounds a constant $B$ by $Z^{1/16}$, losing $1/32 = 102/3264$.
-   - Next, [DirichletL/Detector/GramScaleLoss.lean:29](../proofs/oai_ref/GramScaleLoss.lean#L29) drops $P^{-\delta}$, losing $79/3264$ at the SOS point $\delta_{\mathrm{SOS}} = 79/204$.
-   - Combining these with the $1/96$ bundling loss gives a 3-term slack of $215/3264 \approx 0.0659$ ([thm_04_gram_relaxation_three_tier_exponent_losses](../proofs/qrh_mathematician_referee_audit.lean#L53-L64)), and adding the $1/12$ divisor bound gives $487/3264 \approx 0.1492$.
+1. Three-Tier Tail Exponent Formalization Slack (181/3264, 215/3264, 487/3264):
+   - For compact nlinarith closure, [DirichletL/Detector/LowSourceScales.lean:88-98](../proofs/oai_ref/LowSourceScales.lean#L88-L98) bounds a constant $B$ by $Z^{1/16}$, adding a formalization slack of $1/32 = 102/3264$.
+   - Next, [DirichletL/Detector/GramScaleLoss.lean:29](../proofs/oai_ref/GramScaleLoss.lean#L29) relaxes $P^{-\delta}$, adding $79/3264$ of formalization slack at the SOS point $\delta_{\mathrm{SOS}} = 79/204$.
+   - Combining these with the $1/96$ bundling relaxation gives a 3-term formalization slack of $215/3264 \approx 0.0659$ ([thm_04_gram_relaxation_three_tier_exponent_losses](../proofs/qrh_mathematician_referee_audit.lean#L53-L64)), and adding the $1/12$ divisor bound gives $487/3264 \approx 0.1492$.
 2. Bounding Before Cancelling (Q >= 480 vs. Q >= 128):
    - In [DirichletL/Detector/Local.lean:16-24](../proofs/oai_ref/Local.lean#L16-L24), the factor $(1-V)$ cancels identically as a polynomial ([thm_07_marked_factor_one_minus_V_polynomial_cancellation](../proofs/qrh_mathematician_referee_audit.lean#L96-L106)).
-   - Because [DirichletL/Detector/CorrectionBounds.lean:26, 58](../proofs/oai_ref/CorrectionBounds.lean#L26) applies the triangle inequality before cancelling $(1-V)$, the prime-norm cutoff is inflated from $Q \ge 128$ to $Q \ge 480$, wasting 30 prime-ideal norms ([thm_08_correction_bounds_unreduced_480_vs_reduced_128](../proofs/qrh_mathematician_referee_audit.lean#L107-L119)).
-3. Bézout-to-Siegel-Zero Discharge Chain:
+   - Because [DirichletL/Detector/CorrectionBounds.lean:26, 58](../proofs/oai_ref/CorrectionBounds.lean#L26) applies the triangle inequality before cancelling $(1-V)$, the prime-norm cutoff shifts from $Q \ge 128$ to $Q \ge 480$, introducing a formalization slack of 30 prime-ideal norms ([thm_08_correction_bounds_unreduced_480_vs_reduced_128](../proofs/qrh_mathematician_referee_audit.lean#L107-L119)).
+3. Unreferenced Hygiene Delta in Parameters.lean:
+   - Distinct from the active detector slack above, compensated_geometry and its three companion lemmas in [DirichletL/Parameters.lean:12-17](../proofs/oai_ref/Parameters.lean#L12-L17) have 0 external references across the 26 bundled reference modules and recorded 2,925 downstream DirichletL modules from openai/math commit 4eaee87 ([thm_05_dead_constraint_parameters_vs_active_poisson](../proofs/qrh_mathematician_referee_audit.lean#L65-L77)).
+4. Bézout-to-Siegel-Zero Discharge Chain:
    - The hgeometry premise in [SiegelZeros/Estimates/GeometricBoundary.lean:18-22](../proofs/oai_ref/GeometricBoundary.lean#L18-L22) is discharged across [SiegelZeros/Intersection/IsolatedBezoutFromRegularSelection.lean:346-366](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L346-L366), [SiegelZeros/Structure/ArithmeticCutoffTransport.lean:488-515](../proofs/oai_ref/ArithmeticCutoffTransport.lean#L488-L515), [SiegelZeros/Intersection/BezoutBoundary.lean:13-20](../proofs/oai_ref/BezoutBoundary.lean#L13-L20), and [SiegelZeros/Conclusions/Theorem.lean:11-20](../proofs/oai_ref/Theorem.lean#L11-L20) ([thm_23_siegel_zero_conditional_hgeometry_vs_cubic_independence](../proofs/qrh_mathematician_referee_audit.lean#L278-L287)).
 
 
@@ -41,14 +43,18 @@ Similarly, in [SiegelZeros/Estimates/GeometricBoundary.lean:26](../proofs/oai_re
 
 ## 4. Conditional Transfer Blueprint Toward $\beta = 1/2$
 
-We separate the unconditional structural advances from the conditional analytic inputs needed to reach the critical line $\beta = 1/2$:
+OpenAI #003 only proved $\beta = 7/8$ (0 sorry), whereas Theorems 27 to 48 separate unconditional algebraic exponent advances from the conditional analytic inputs required to reach $\beta = 1/2$ (contingent on open analytic hypotheses such as $\mathrm{res}_{w_1} = 0$ and $\mathrm{gain}_{\mathrm{amp}} \ge 2/11$):
 
-| Regime / Component | Exact Value | Mathematical Status |
-| :--- | :---: | :--- |
-| 1. Global SOS Saddle $\beta_{\mathrm{SOS}}(0)$ | $\frac{6843 - 7\sqrt{921}}{7578} \approx 0.874975$ | Unconditional global bound across all $(\delta, y) \in [0, 5/6]\times[0, 1/2]$ (rational witness $\frac{41999}{48000} < \frac{7}{8}$, [thm_32](../proofs/qrh_mathematician_referee_audit.lean#L412-L430), [thm_33](../proofs/qrh_mathematician_referee_audit.lean#L431-L441)). |
-| 2. Local $\delta=0$ Slice Equilibria | $\frac{131}{150} \approx 0.8733$ / $\frac{209}{240} \approx 0.8708$ | Local boundary equilibria in [DirichletL/Detector/CentralExponent.lean:15-81](../proofs/oai_ref/CentralExponent.lean#L15-L81) and [DirichletL/Detector/GramBound.lean:56](../proofs/oai_ref/GramBound.lean#L56) ([thm_27](../proofs/qrh_mathematician_referee_audit.lean#L356-L367), [thm_28](../proofs/qrh_mathematician_referee_audit.lean#L368-L378), [thm_34](../proofs/qrh_mathematician_referee_audit.lean#L444-L451)). |
-| 3. Unbundled Tail Floor $\beta_{\mathrm{floor}}$ | $\frac{4103}{4896} \approx 0.8380$ ($\frac{4069}{4896}$) | Isolated non-exceptional tail floor after zero-mode subtraction and thm_04 unbundling. |
-| 4. coordR Stickelberger Pole Shift | $\frac{2}{3} \to \frac{7}{12} \to \frac{1}{2}$ | Factoring out $\psi_{\mathrm{Stick}}\eta^6$ ($k_\infty = -6 \neq 0$) in [DirichletL/Detector/EulerCoordinates.lean:36](../proofs/oai_ref/EulerCoordinates.lean#L36) removes the pole at $2/3$ ([thm_29](../proofs/qrh_mathematician_referee_audit.lean#L379-L385), [thm_30](../proofs/qrh_mathematician_referee_audit.lean#L388-L399)). |
-| 5. HighRows Cauchy Box (Path B) | $[0.48, 0.52]$ Open | Shifting $z_{\mathrm{high}} = 7/20$ in [DirichletL/Detector/HighRowsCentralTerms.lean:38-114](../proofs/oai_ref/HighRowsCentralTerms.lean#L38-L114) opens all 9 high-row branches down to $0.48 < 1/2$ ([thm_31](../proofs/qrh_mathematician_referee_audit.lean#L400-L411), [thm_42](../proofs/qrh_eight_tasks_critical_upgrade.lean#L77-L96)). |
-| 6. Conditional Hybrid Saving for $\beta = 1/2$ | $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$ | Required saving threshold inversion (beta132 = 66 $\implies$ d_hyb132 = 56) at $(35/66, 59/66, 7/11, 7/20)$ ([thm_35](../proofs/qrh_mathematician_referee_audit.lean#L454-L461) to [thm_38](../proofs/qrh_mathematician_referee_audit.lean#L486-L498)). |
-| 7. 8-Task Upgrade & Single-$\zeta(s)$ Bridge | $\mathrm{gain}_{\mathrm{amp}} \ge \frac{2}{11}$ | Stage 1 refactors 5 modules ([thm_39](../proofs/qrh_eight_tasks_critical_upgrade.lean#L21-L37) to [thm_43](../proofs/qrh_eight_tasks_critical_upgrade.lean#L97-L121)), while Stage 2 proves the conditional Voronoi/single-$\zeta(s)$ thresholds and extensions ([thm_44](../proofs/qrh_eight_tasks_critical_upgrade.lean#L122-L140) to [thm_48](../proofs/qrh_eight_tasks_critical_upgrade.lean#L200-L241)). |
+1. Global SOS Saddle ($\beta_{\mathrm{SOS}}(0) = \frac{6843 - 7\sqrt{921}}{7578} \approx 0.874975$): Unconditional global bound across all $(\delta, y) \in [0, 5/6] \times [0, 1/2]$, verified at the rational witness $\frac{41999}{48000} < \frac{7}{8}$ ([thm_32](../proofs/qrh_mathematician_referee_audit.lean#L412-L430), [thm_33](../proofs/qrh_mathematician_referee_audit.lean#L431-L441)).
+
+2. Local $\delta = 0$ Slice Equilibria ($\frac{131}{150} \approx 0.8733$ and $\frac{209}{240} \approx 0.8708$): Local boundary equilibria in [DirichletL/Detector/CentralExponent.lean:15-81](../proofs/oai_ref/CentralExponent.lean#L15-L81) and [DirichletL/Detector/GramBound.lean:56](../proofs/oai_ref/GramBound.lean#L56) ([thm_27](../proofs/qrh_mathematician_referee_audit.lean#L356-L367), [thm_28](../proofs/qrh_mathematician_referee_audit.lean#L368-L378), [thm_34](../proofs/qrh_mathematician_referee_audit.lean#L444-L451)).
+
+3. Unbundled Tail Floor ($\beta_{\mathrm{floor}} = \frac{4103}{4896} \approx 0.8380$, or $\frac{4069}{4896}$ with bundling): Isolated non-exceptional tail floor obtained after zero-mode subtraction and restoring the formalization slack quantified in [thm_04](../proofs/qrh_mathematician_referee_audit.lean#L53-L64).
+
+4. coordR Stickelberger Pole Shift ($\frac{2}{3} \to \frac{7}{12} \to \frac{1}{2}$): Factoring out $\psi_{\mathrm{Stick}}\eta^6$ ($k_\infty = -6 \neq 0$) in [DirichletL/Detector/EulerCoordinates.lean:36](../proofs/oai_ref/EulerCoordinates.lean#L36) shifts the Euler-product convergence wall past $2/3$ ([thm_29](../proofs/qrh_mathematician_referee_audit.lean#L379-L385), [thm_30](../proofs/qrh_mathematician_referee_audit.lean#L388-L399)).
+
+5. HighRows Cauchy Box ($[0.48, 0.52]$ Open): Shifting $z_{\mathrm{high}} = 7/20$ in [DirichletL/Detector/HighRowsCentralTerms.lean:38-114](../proofs/oai_ref/HighRowsCentralTerms.lean#L38-L114) opens all 9 high-row branches down to $0.48 < 1/2$ ([thm_31](../proofs/qrh_mathematician_referee_audit.lean#L400-L411), [thm_42](../proofs/qrh_eight_tasks_critical_upgrade.lean#L77-L96)).
+
+6. Conditional Hybrid Saving for $\beta = 1/2$ ($\Delta_{\mathrm{hybrid}} = \frac{14}{33}$): Required saving threshold inversion (beta132 = 66 implies d_hyb132 = 56) at $(35/66, 59/66, 7/11, 7/20)$, contingent on achieving the corresponding off-diagonal cancellation ([thm_35](../proofs/qrh_mathematician_referee_audit.lean#L454-L461) to [thm_38](../proofs/qrh_mathematician_referee_audit.lean#L486-L498)).
+
+7. Parameter-Upgrade Specs and Conditional Single-$\zeta(s)$ Bridge ($\mathrm{gain}_{\mathrm{amp}} \ge \frac{2}{11}$): Stage 1 formalizes parameter-upgrade arithmetic specifications for five module groups ([thm_39](../proofs/qrh_eight_tasks_critical_upgrade.lean#L21-L37) to [thm_43](../proofs/qrh_eight_tasks_critical_upgrade.lean#L97-L121)), while Stage 2 formalizes conditional Voronoi and single-$\zeta(s)$ bridge thresholds contingent on open analytic hypotheses such as $\mathrm{res}_{w_1} = 0$ and $\mathrm{gain}_{\mathrm{amp}} \ge \frac{2}{11}$ ([thm_44](../proofs/qrh_eight_tasks_critical_upgrade.lean#L122-L140) to [thm_48](../proofs/qrh_eight_tasks_critical_upgrade.lean#L200-L241)).

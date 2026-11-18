@@ -1,4 +1,4 @@
-# Tier 3 Expert Forensic & Mathematical Physics Report: Complete Algebraic-Variational Anatomy, Hand-Calculation Slack Recovery, and Axiom-Free Lean 4 Ledger of the Five Classical Riemann Barriers (Theorems 1-75)
+# Tier 3 Expert Forensic & Mathematical Physics Report: Complete Algebraic-Variational Anatomy, Constructive Bound Refinement, and Axiom-Free Lean 4 Ledger of the Five Classical Riemann Barriers (Theorems 1-75)
 
 - Target Audience: Specialists in analytic number theory, automorphic forms, harmonic analysis, and interactive theorem proving (Lean 4 / Mathlib)
 - Parent Index: [Main English README (README.md)](../README.md) | [Executive Summary (en/01_)](01_Executive_Summary_and_General_Guide.md) | [Intermediate Guide (en/02_)](02_Intermediate_Math_and_Code_Guide.md) | [Verification Spec (en/04_)](04_Automated_Verification_and_Parser_Spec.md)
@@ -7,13 +7,13 @@
 
 ## 1. Architectural Synthesis: Five-Step Causal Chain and Beyond-Baseline Alternative Bounds
 
-Over the past 130 years since de la Vallee Poussin's 1896 proof of the Prime Number Theorem, five canonical analytical offensives against the Riemann zeta function $\zeta(s)$ and Dirichlet $L$-functions $L(s,\chi)$ have each arrested at exact algebraic or variational thresholds. Across 6 Lean 4 modules (2,238 lines, 75 theorems over ℝ, 0 sorry, 0 custom axioms, 188 / 188 : True hypothesis mutations killed = 100%) cross-audited against 15 upstream formalization files (`proofs/oai_ref/*.lean`, 1,988 lines), this anatomy derives every intermediate balance equation and isolates recoverable hand-calculation slack from genuine structural obstructions.
+Over the past 130 years since de la Vallee Poussin's 1896 proof of the Prime Number Theorem, five canonical analytical approaches to the Riemann zeta function $\zeta(s)$ and Dirichlet $L$-functions $L(s,\chi)$ have each arrested at exact algebraic or variational thresholds. Across 6 Lean 4 modules (2,238 lines, 75 theorems over ℝ, 0 sorry, 0 custom axioms, 188 / 188 : True hypothesis mutations killed = 100%) cross-audited against 15 upstream formalization files (`proofs/oai_ref/*.lean`, 1,988 lines), this anatomy derives every intermediate balance equation and separates classical asymptotic constant slack from genuine structural obstructions.
 
 ### 1.1 Five-Step Causal Chain
 - Step 1 (Exact Barrier & Bottleneck Phenomenon): Zero-free width 1/100 and asymptotic 1 - β = o(1), zero-density inflection σ = 3/4 -> 7/10 (A = 12/5 -> 30/13), Landau-Siegel ineffectiveness constant c(ε), Conrey's critical-line proportion κ(4/7) = 0.408058 < 1, and the Burgess 3/16 and Kim-Sarnak 7/64 subconvexity/Ramanujan bounds each originate from a distinct algebraic balance.
 - Step 2 (Necessary Operator & Transform Mechanism): Hadamard partial-fraction positivity projection (Re(-ζ'/ζ)), Halasz-Montgomery Gram operators paired with Dirichlet-polynomial functional-equation reflection, Estermann's biquadratic Euler product with Perron contour truncation, Levinson-Conrey mollifier integration by parts (d/dv), and Weil character-sum moments paired with Rankin-Selberg convolutions act as the unique positivity/spectral extractors in each regime.
 - Step 3 (Core Algebraic Derivation & Factorization): Every equilibrium equation reduces to an explicit sum-of-squares (SOS) decomposition, rational minimax intersection, Cauchy-Schwarz discriminant $1 \le 4 I_{AA} J_{BB}$, or rational numerator factorization (r - 2)^2 / (16 r^2).
-- Step 4 (Contradiction, Non-Vanishing & Fossil Repair): Removing textbook hand-calculation fossils (s_1 = 4δ, coarse 9A splitting, Schur absolute-value row sums, bundled Gram row losses, and asymmetric coth ω relaxation) recovers substantial slack while proving that diagonal collisions and the boundary invariant $J_{AB} = -1/2$ enforce strictly positive residuals.
+- Step 4 (Contradiction, Non-Vanishing & Parameter Refinement): Refining classical asymptotic parameterizations (s_1 = 4δ, coarse 9A splitting, Schur absolute-value row sums, bundled Gram row losses, and asymmetric coth ω relaxation) recovers substantial slack while proving that diagonal collisions and the boundary invariant $J_{AB} = -1/2$ enforce strictly positive residuals.
 - Step 5 (Formalization Boundary & Lean 4 Kernel Proof): High-precision quadrature and prime-sum evaluations are executed deterministically in [verify_symbolic_classical_riemann.py](../proofs/verify_symbolic_classical_riemann.py#L20-L481), while every polynomial SOS identity, rational minimax crossover, HasDerivAt calculus invariant, Real.exp hyperbolic bound, and Chebyshev recurrence is proved without axioms in Lean 4 (v4.35.0).
 
 ### 1.2 Beyond-Baseline Alternative Bounds and No-Go Rigidity Obstructions
@@ -21,7 +21,7 @@ Over the past 130 years since de la Vallee Poussin's 1896 proof of the Prime Num
   1. Replacing the textbook s_1 = 4δ choice (1/100) on (3, 4, 1) by its exact AM-GM stationary point `u* = 2√3` yields (7 - 4√3)/5 ≈ 0.014359 (+43.59%), and substituting the integer square (17, 24, 8) ((4 cos θ + 3)^2 >= 0) achieves (41 - 4√102)/32 ≈ 0.018812 (+88.12%, within 99.96% of the global degree-2 optimum 0.018819).
   2. Unbundling the three QRH Gram regimes universally in δ ∈ ℝ (1/24 + δ/16 and 1/8 + δ/16) recovers 487/3264 ≈ 0.149203 at δ = 79/204, while single-destruct specialization in Ostmann lowers the Siegel-Walfisz conductor threshold from 4,115,904 to 255,983 (16.08x reduction).
 - Sharp No-Go / Rigidity Obstruction Theorems:
-  1. Degree-3 Sign-Changing Fejer Counterexample & Universal Ceiling: On sign-changing nonnegative cosine polynomials, the positive-part weight bound W_+ = ∑ max(c_k, 0) >= 2 c_1 - c_0 is refuted by the explicit degree-3 Fejer square (65/16, 9/2, 0, -1) (W_+ = 72/16 < 79/16), whereas both the Hadamard cone weight W = ∑ c_k (c_k >= 0) and the two-sided Weyl absolute weight `W_abs = ∑ |c_k|` (c_k ∈ ℝ) obey >= 2 c_1 - c_0 and are trapped below (3 - 2√2)/3 ≈ 0.057191 by Fejer-Riesz autocorrelation c_1 < 2 c_0, forcing 1 - β -> 0.
+  1. Degree-3 Sign-Changing Fejer Counterexample & Universal Ceiling: On sign-changing nonnegative cosine polynomials, the positive-part weight bound $W_+ = \sum \max(c_k, 0)$ satisfying $W_+ \ge 2 c_1 - c_0$ is refuted by the explicit degree-3 Fejer square (65/16, 9/2, 0, -1) (W_+ = 72/16 < 79/16), whereas both the Hadamard cone weight W = ∑ c_k (c_k >= 0) and the two-sided Weyl absolute weight `W_abs = ∑ |c_k|` (c_k ∈ ℝ) obey >= 2 c_1 - c_0 and are trapped below (3 - 2√2)/3 ≈ 0.057191 by Fejer-Riesz autocorrelation c_1 < 2 c_0, forcing 1 - β -> 0.
   2. Gram Phase Destruction, Classical.em Non-Constructivity, $J_{AB} = -1/2$ Barrier, and Burgess SOS Trap: Schur's triangle-inequality ε n^2 > 0 gap (4.5390 vs. 3.0245 at R=64, N=128), phantom-modulus branching in Siegel's theorem, Conrey's finite-θ ceiling κ(θ) < 1, and (r - 2)^2 / (16 r^2) >= 0 are sealed as unconditional No-Go / rigidity theorems.
 
 
@@ -89,7 +89,7 @@ Upstream QRH (`#003 SevenEighths`) audits examine [oai_ref/GramBound.lean#L13-L9
 
 
 
-## 4. Paper 3 (Theorems 36-50): Siegel (1935) Ineffectiveness & Goldfeld-Gross-Zagier (1985) Effectivization Anatomy
+## 4. Paper 3 (Theorems 36-50): Siegel (1935) Ineffectiveness & Goldfeld-Gross-Zagier (1986) Effectivization Anatomy
 
 ### 4.1 Estermann Biquadratic Series, Perron Truncation, and the Classical.em Barrier
 For real primitive characters $\chi_1, \chi_2$ ($\chi_1^2 = \chi_2^2 = 1$), the local Euler factor of $F(s) := \zeta(s) L(s,\chi_1) L(s,\chi_2) L(s,\chi_1\chi_2)$ obeys
@@ -172,7 +172,7 @@ Upstream `#003` (QRH) audits inspect [oai_ref/Parameters.lean#L12-L66](../proofs
 
 | Pillar | symbolic_verification_result.json Computed Invariants | Mathematical Verdict |
 | :--- | :--- | :--- |
-| Paper 1 Zero-Free | 0.010000 -> 0.014359353945 -> 0.018811882705 (ceiling 0.057190958418) | +88.12% slack recovery & Fejer-Riesz ceiling sealed |
+| Paper 1 Zero-Free | 0.010000 -> 0.014359353945 -> 0.018811882705 (ceiling 0.057190958418) | +88.12% constructive refinement & Fejer-Riesz ceiling sealed |
 | Paper 2 Zero-Density | 3.02447839 vs 4.53901002, 30/13, 215/3264, 487/3264, -17/132 | Schur phase loss, 7/10 shift & QRH 3-mode unbundling |
 | Paper 3 Siegel Zeros | 5/46, 86713344, 255983, 4115904, 5077 | Landau-Page margin, Ostmann cutoff & rank-3 effectivity |
 | Paper 4 Critical Line | 0.3635, 0.408058, 55264/135375, 0.528097 | Symmetric degree-17 optima vs relaxed $\coth$ ceiling |

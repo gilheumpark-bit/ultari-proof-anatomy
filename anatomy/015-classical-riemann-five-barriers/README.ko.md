@@ -4,26 +4,26 @@
 
 ## 1. 핵심 결론 요약
 
-본 해부 보고서는 지난 130년간 리만 가설(Riemann Hypothesis)과 디리클레 L-함수 연구의 진행을 가로막아 온 5대 고전 한계 증명(Classical Barrier Proofs)을 중간 유도식부터 전수 재계산하고, Lean 4 (v4.35.0) 실수체(`ℝ`) 위에서 75개 정리(0 sorry, 0 사용자 정의 공리, 188 / 188 가설 `: True` 변이 100% 사살)로 무공리 검증한 수리 해부 결과입니다. 아울러 Terence Tao 팀의 `PrimeNumberTheoremAnd` 및 OpenAI `openai/math` 저장소(`#003` QRH·SiegelZeros, `#005` Catalan, `#013` Ostmann, `#021` Jacobsthal / Erdos970)의 참조 원본 15개(`proofs/oai_ref/*.lean`, 1,988줄)와 1대1 대조하여 교과서적 손계산 타협으로 버려진 여유분과 진짜 수학적 장벽을 분리했습니다.
+본 해부 보고서는 지난 130년간 리만 가설(Riemann Hypothesis)과 디리클레 L-함수 연구의 진행을 가로막아 온 5대 고전 한계 증명(Classical Barrier Proofs)을 중간 유도식부터 전수 재계산하고, Lean 4 (v4.35.0) 실수체(`ℝ`) 위에서 75개 정리(0 sorry, 0 사용자 정의 공리, 188 / 188 가설 `: True` 변이 100% 사살)로 무공리 검증한 수리 해부 결과입니다. 아울러 Terence Tao 팀의 `PrimeNumberTheoremAnd` 및 OpenAI `openai/math` 저장소(`#003` QRH·SiegelZeros, `#005` Catalan, `#013` Ostmann, `#021` Jacobsthal / Erdos970)의 참조 원본 15개(`proofs/oai_ref/*.lean`, 1,988줄)와 1대1 대조하여 고전 점근 상수 여유와 진짜 수학적 장벽을 분리했습니다.
 
-| 논문 축 | 해부 대상 고전 정리 및 현대 교차 검증 | 복원된 손계산 여유분 / 개선 폭 | Lean 4 커널이 증명한 진짜 수학적 장벽 | Lean 모듈 (75개 정리) |
+| 논문 축 | 해부 대상 고전 정리 및 현대 교차 검증 | 복원된 고전 점근 상수 여유 / 개선 폭 | Lean 4 커널이 증명한 진짜 수학적 장벽 | Lean 모듈 (75개 정리) |
 | :--- | :--- | :--- | :--- | :--- |
 | Paper 1 | 드라발레푸생(1896) · 코로보프-비노그라도프(1958) 영점 부재 영역 | `(3,4,1)` AM-GM 정류점 +43.59%, 완전제곱 `(17,24,8)` +88.12% ($(41-4\sqrt{102})/32$) | 파예르-리스 자기상관 $c_1 < 2 c_0$, 보편 천장 $(3-2\sqrt{2})/3$, $M(\|t\|) \to \infty$에 따른 $\sigma = 1 - o(1)$ 장벽 | [classical_dlvp_korobov_and_zero_free.lean](proofs/classical_dlvp_korobov_and_zero_free.lean#L33-L37) (Theorems 1-15, 39/39 변이 사살) |
 | Paper 2 | 잉엄(1940) · 헉슬리(1972) · 구스-메이나드(2024) 영점 밀도 및 `#003` QRH 그람 행렬 | 구스-메이나드 $\sigma^* = 3/4 \to 7/10$ 이동으로 12/5 -> 30/13 (6/65 절감), `#003` QRH 3모드 분리 487/3264 복원 | 할라스-슈어 위상 파괴($\varepsilon n^2 > 0$), $\det_3$ 계수 결손 $S_2$ 붕괴, 임계선 하이브리드 -17/132 적자 | [classical_ingham_huxley_zero_density.lean](proofs/classical_ingham_huxley_zero_density.lean#L29-L53) · [classical_guth_maynard_and_qrh_gram.lean](proofs/classical_guth_maynard_and_qrh_gram.lean#L23-L75) (Theorems 16-35, 53/53 변이 사살) |
-| Paper 3 | 지겔(1935) 예외 영점 · 란다우-페이지 반발 · 골드펠드-그로스-자기에(1985) | 란다우-페이지 쌍 배제 여유 `60/23 - 5/2 = 5/46`, `#013` Ostmann 도체 4,115,904 -> 255,983 | 미지의 잠재 지겔 영점 $\beta_1$에 의존하는 배중률(`Classical.em`) 비효과성 장벽 대 타원곡선 $\mathrm{ord} = 3$ 로그 손실 | [classical_siegel_zero_and_ineffectiveness.lean](proofs/classical_siegel_zero_and_ineffectiveness.lean#L21-L35) (Theorems 36-50, 47/47 변이 사살) |
+| Paper 3 | 지겔(1935) 예외 영점 · 란다우-페이지 반발 · 골드펠드-그로스-자기에(1986) | 란다우-페이지 쌍 배제 여유 `60/23 - 5/2 = 5/46`, `#013` Ostmann 도체 4,115,904 -> 255,983 | 미지의 잠재 지겔 영점 $\beta_1$에 의존하는 배중률(`Classical.em`) 비효과성 장벽 대 타원곡선 $\mathrm{ord} = 3$ 로그 손실 | [classical_siegel_zero_and_ineffectiveness.lean](proofs/classical_siegel_zero_and_ineffectiveness.lean#L21-L35) (Theorems 36-50, 47/47 변이 사살) |
 | Paper 4 | 셀베르그(1942) · 레빈슨(1974) · 콘리(1989) 임계선 영점 비율 | 레빈슨 $Q(v)=1-v$ ($\kappa > 1/3$) -> 대칭 17차 다항식 $\theta = 4/7$에서 $\kappa = 0.408058$, BCR 17/33 | 쿠즈네초프 오프대각 $7\theta - 4 < 0$ ($\theta < 4/7$) 및 부분적분 경계 불변량 $J_{AB} = -1/2 \implies \kappa(\theta) < 1$ | [classical_levinson_conrey_and_mollifier_barrier.lean](proofs/classical_levinson_conrey_and_mollifier_barrier.lean#L28-L42) (Theorems 51-63, 29/29 변이 사살) |
 | Paper 5 | 버지스(1963) 3/16 준볼록성 · 셀베르그(1965) · 킴-사르낙(2003) 7/64 | 페트로-영 3차 모멘트 +1 충돌 제거 7/36 -> 1/6 (1/48 절감), $\mathrm{GL}_5$ 증폭 3/26 -> 7/64 (5/832 절감) | 버지스 제곱합 함정 $E(r) - 3/16 = (r-2)^2/(16 r^2)$ ($r=2$ 유일 최소) 및 $\mathrm{Sym}^k$ 유한 층 잔류 오차 $< 1/(2k)$ | [classical_burgess_and_kim_sarnak_barrier.lean](proofs/classical_burgess_and_kim_sarnak_barrier.lean#L21-L31) (Theorems 64-75, 20/20 변이 사살) |
 
 ## 2. 계층별 문서 구성
 
 - [일반인용 해설서 (ko/01_일반인용_해설서.md)](ko/01_일반인용_해설서.md): 왜 130년 동안 리만 가설의 다섯 방향 공격(옆에서 밀기, 예외 개수 세기, 지겔 예외 영점 배제하기, 중심선 비율 올리기, 주기합 쪼개기)이 각각 정확한 유리수·무리수 벽 앞에서 멈췄는지 직관적으로 설명합니다.
-- [중급자용 수학 및 코드 가이드 (ko/02_중급자용_수학및코드가이드.md)](ko/02_중급자용_수학및코드가이드.md): 5대 논문의 핵심 유도 방정식, 손계산 타협과 진짜 장벽의 분리, 그리고 부호 교대 파예르 다항식 반례((65/16, 9/2, 0, -1)) 및 QRH 하이브리드 균형식(Δ_hybrid = 14/33)을 수식과 코드로 안내합니다.
+- [중급자용 수학 및 코드 가이드 (ko/02_중급자용_수학및코드가이드.md)](ko/02_중급자용_수학및코드가이드.md): 5대 논문의 핵심 유도 방정식, 고전 점근 상수 여유와 진짜 장벽의 분리, 그리고 부호 교대 파예르 다항식 반례((65/16, 9/2, 0, -1)) 및 QRH 하이브리드 균형식(Δ_hybrid = 14/33)을 수식과 코드로 안내합니다.
 - [전문가용 포렌식 및 수리물리 보고서 (ko/03_전문가용_학술및수리물리보고서.md)](ko/03_전문가용_학술및수리물리보고서.md): Theorems 1-75 전 정리의 줄 번호 1대1 매핑, oai_ref/ 15개 원본 파일 정밀 대조, 80점 가우스-르장드르 변분 최적화 및 p <= 1999 클루스터만 합 상쇄(98.01%) 수치를 수록합니다.
 - [자동검증 및 파서용 명세서 (ko/04_자동검증및파서용_명세서.md)](ko/04_자동검증및파서용_명세서.md): 전 산출물 SHA-256 해시 대조표와 원클릭 검증 명령어를 제공합니다.
 
 ## 3. 1줄 검증 명령어
 
-이 사례 폴더에서 아래 명령어를 실행하면 SHA-256 해시, Lean 4 커널, SymPy 재현, `#L` 링크 및 전칭 가설 돌연변이 시험을 일괄 검증합니다 (`Mathlib 4`는 `.lake/`, `LEAN_PATH`, `ULTARI_LEAN_CACHE`에서 자동 탐색).
+이 사례 폴더에서 아래 명령어를 실행하면 SHA-256 해시, Lean 4 커널, SymPy 재현, `#L` 링크 및 전칭 가설 돌연변이 시험을 일괄 검증합니다 (`Mathlib 4`는 `.lake/` 및 `LEAN_PATH`에서 자동 탐색).
 
 ```bash
 python3 ../../tools/verify_all.py --root .

@@ -35,7 +35,7 @@ sha256sum proofs/milne_transport_and_filtration.lean \
 | [proofs/milne_weil_reduction_and_repairs.lean](../proofs/milne_weil_reduction_and_repairs.lean) | `b84eb920fd468bf7a941f330cc8d9c732cf8d3bc759ce31646e33a81aa9ea874` | Theorems 17-36 (Part IV-V, VI-B, VII), 0 sorry, 131/131 mutations caught |
 | [proofs/verify_symbolic_milne.py](../proofs/verify_symbolic_milne.py) | `5f74cd9cb7bed53f814e3711bea590452cdfe8ee0019b7273c422f38160f0140` | SymPy + PyTorch FP64 7-audit verifier (Audits 1-7) |
 | [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json) | `068711cf9de4c2004a735e1f627b1d5e02268b851eb6b39f7284221480df6100` | Deterministic JSON output for Audits 1-7 |
-| [proofs/problem_spec.md](../proofs/problem_spec.md) | `44f1c4cd6d38162ddc9fdebe061c8b8895fbcf21549e526eeb6f605cbc73cbab` | Forensic repair specification |
+| [proofs/problem_spec.md](../proofs/problem_spec.md) | `51552edfb974c51b41d8fbad18e6614e5c4dee2a4f01afe2997f8af7aea620c1` | Forensic refinement specification |
 | [proofs/oai_001_milne_repair.patch](../proofs/oai_001_milne_repair.patch) | `529cf8b70667a8e48ffd8ae2c9eeea7cabfc341605f5816a72e7716a2df81886` | 234-line unified diff across 6 files (`references.tex` + 5 section files) |
 
 
@@ -45,6 +45,9 @@ sha256sum proofs/milne_transport_and_filtration.lean \
 1. Boundary Between Formalized Dimension, Slope, Valuation, and Eigenspace Arithmetic and Scheme-Theoretic Cohomology:
    - The 36 theorems in [milne_transport_and_filtration.lean](../proofs/milne_transport_and_filtration.lean) and [milne_weil_reduction_and_repairs.lean](../proofs/milne_weil_reduction_and_repairs.lean) verify the exact integer/rational dimension, rank, slope-duality, Kronecker degree, valuation, and Beauville eigenspace identities over `Int` (232/232 hypothesis mutations caught).
    - The main proof of the rational Hodge conjecture for CM abelian varieties ([OAI26, Theorem 1.1]) is formalized in OpenAI's separate Lean 4 library (`ComparatorChallenges/HodgeConjectureCMAbelianVarieties/Solution.lean`).
+2. Manuscript Snapshot Provenance (`proofs/oai_ref/repaired_build/`):
+   - `proofs/oai_ref/repaired_build/` is the **post-patch manuscript snapshot** (upstream `openai/math` commit `4eaee87` October 7, 2026 submission with [proofs/oai_001_milne_repair.patch](../proofs/oai_001_milne_repair.patch) applied), not the raw unpatched October 7 submission.
+   - In this snapshot, `[GLX26]` (`references.tex:61-68`) is the formally published 2026 *Inventiones Mathematicae* paper by Gleason–Lim–Xu (*Invent. Math.* 243 (2026), 805–861, `doi:10.1007/s00222-025-01386-1`), whereas `[KZ25b]` (`references.tex:128-135`, `arXiv:2505.02165v1`) is a 2025 preprint used with `[PR24]` for the localized pointwise lift in `Lemma 3.3`.
 
 
 

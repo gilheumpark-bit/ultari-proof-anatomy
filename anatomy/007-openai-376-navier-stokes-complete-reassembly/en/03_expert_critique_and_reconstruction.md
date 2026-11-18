@@ -1,13 +1,15 @@
 # 03. Expert Critique and Reconstruction: Verbatim Code Audit of the Unimported 650 (718) Modules and the 5 Breakthroughs
 
-## 1. Executive Assessment: Recovering the Unimported Master Hub ForcedComputation/Main.lean
+## 1. Executive Assessment: Challenge Scope Boundaries and Recovering the Unimported Master Hub ForcedComputation/Main.lean
 
-In our initial #376 6-challenge audit of OpenAI #376 (Universal computation in forced Navier-Stokes flows), we showed that the 6 official Comparator Challenges (`ComparatorChallenges/*.json`) import only 286 `OAI/` files (354 when `RapidForcing/Main` and `PeriodicLattice/Main` are grouped), all of which use identically zero pressure ($p \equiv 0$) and terminate at step-simulation equivalences ($\text{particle enters box} \leftrightarrow \text{finite-table machine halts}$). In this 650-module reassembly audit, we audited the remaining 650 (718 strictly unimported, 73,367 lines) `OAI/` Lean 4 modules and the October 6, 2026 revision (`Incompressible-Box-Transport-and-Finite-Computation-October-6-2026`), explaining why those modules were orphaned, why the Poisson pressure correction $p = -\phi$ and `ComputablePred.halting_problem 0` bridge are required by necessity to cross the $p \equiv 0$ and step-simulation barrier, and the exact reason why the master hub [ForcedComputation/Main.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean#L1-L33) completes all 9 papers, establishing three structural discoveries and five quantitative mathematical breakthroughs:
+An inspection restricted to the 6 official Comparator Challenges (`ComparatorChallenges/*.json`; upstream `openai/math` commit `4eaee87` for files outside `proofs/oai_ref/`, alongside companion bibliography `PR #76` on `oai-math-revised`) imports only 286 `OAI/` files (354 when `RapidForcing/Main` and `PeriodicLattice/Main` are grouped), all of which use identically zero pressure ($p \equiv 0$) and terminate at step-simulation equivalences ($\text{particle enters box} \leftrightarrow \text{finite-table machine halts}$). In this 650-module reassembly audit, we analyze the remaining 650 (718 strictly unimported, 73,367 lines) `OAI/` Lean 4 modules and the October 6, 2026 revision (`Incompressible-Box-Transport-and-Finite-Computation-October-6-2026`).
+
+Why were those modules separated from the challenge JSONs, and why does connecting them matter mathematically? OpenAI explicitly disclosed the zero-pressure architectural split upfront: `lean/docs/376.md:12,26` (`openai/math` commit `4eaee87`) specifies zero pressure ($p \equiv 0$) for direct solenoidal shear sheets on $\mathbb{T}^3$ and compactly supported flows on $\mathbb{R}^3$, while [analysis.tex:263-267](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L263-L267) (`Proposition 2.4 (\label{prop:projection-l2})`) states explicitly that Helmholtz-Leray Poisson projection shifts pressure to $-\phi$, supplies no compact-support conclusion on Euclidean space $\mathbb{R}^3$, and is distinct from the direct zero-pressure solenoidal shear construction. On the periodic torus $\mathbb{T}_L^3$, however, compact spatial support is not required, so Poisson projection $\Delta \phi = \operatorname{div} g$ produces genuine non-zero pressure $p = -\phi \neq 0$ and solenoidal forcing $\operatorname{div} f_{\text{sol}} = 0$. Reconnecting the 650 unimported modules via the master hub [ForcedComputation/Main.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean#L1-L33) therefore completes the periodic solenoidal half of the repository alongside the disclosed $p \equiv 0$ Euclidean and shear-sheet half, establishing three architectural discoveries and five quantitative sharpenings. Throughout this report, Lean 4 verifies all module partitions, algebraic identities, rational bounds, and conditional ratio inequalities (`48` theorems, `0 sorry`, `150/150` hypothesis mutations caught), while transcendental evaluations ($Z_3(2) \approx 16.532316$, $e^{4\pi}$, $\pi$ brackets) and symbolic calculus ($1/\lambda$ Green kernel integration) are evaluated in [proofs/verify_symbolic_ns376_complete.py](../proofs/verify_symbolic_ns376_complete.py) and passed to Lean 4 (`thm_17`, `thm_09`, `thm_13`) as explicit hypotheses.
 
 1. Discovery of the Unimported Master Hub [ForcedComputation/Main.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean#L1-L33):
    Not referenced by any `ComparatorChallenges/*.json`, [ForcedComputation/Main.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Main.lean#L1-L33) imports 30 sub-main modules spanning 770 files (696 disjoint from the challenge roots) across all 9 papers of Family 376.
 2. Resolution of the Scope Note in `lean/docs/376.md`:
-   `lean/docs/376.md:14` states that the selected statement covering sheet programs (`SolenoidalSheetPrograms.json`, pointing to `SheetFlows/SheetProgram.lean`) excludes the fixed-particle halting detector and its reciprocal maps on solid boxes from that selected statement's scope, without claiming they were omitted from the archive. Both theorems are proved with zero gaps in [ShearFlows/Main.lean:92-120](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Main.lean#L92-L120) (`reciprocal_affine_maps_by_shears`) and [ForcedComputation/Programs/FixedParticleMain.lean:29-53](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FixedParticleMain.lean#L29-L53) (`fixed_particle_effective_computation`).
+   `lean/docs/376.md:12,14,26` (`openai/math` commit `4eaee87`) records that the zero-pressure constructions cover compactly supported $\mathbb{R}^3$ flows and sheet programs (`SolenoidalSheetPrograms.json`, pointing to `SheetFlows/SheetProgram.lean`), while placing the fixed-particle halting detector and its reciprocal maps on solid boxes outside the selected sheet-program statement without omitting them from the archive. Both theorems are proved with zero gaps in [ShearFlows/Main.lean:92-120](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Main.lean#L92-L120) (`reciprocal_affine_maps_by_shears`) and [ForcedComputation/Programs/FixedParticleMain.lean:29-53](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FixedParticleMain.lean#L29-L53) (`fixed_particle_effective_computation`).
 3. Genuine Non-Zero Pressure $p = -\phi \neq 0$, Solenoidal Forcing $\operatorname{div} f_{\text{sol}} = 0$, and Unconditional Halting Undecidability:
    [PeriodicLattice/Solenoidal.lean:334-373](../proofs/oai_ref/lean/OAI/Analysis/PeriodicLattice/Solenoidal.lean#L334-L373) solves $\Delta \phi = \operatorname{div} g$ on $\mathbb{T}^3$ so that $p = -\phi \neq 0$ and $\operatorname{div} f_{\text{sol}} = 0$, while [VelocityUnconditional.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean#L16-L149) and [FiniteMachineHaltingDischarge.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Programs/FiniteMachineHaltingDischarge.lean#L1-L25) connect Mathlib's `ComputablePred.halting_problem 0` to unconditional fluid observation undecidability.
 
@@ -119,11 +121,13 @@ theorem first_weighted_bound (lam t : ℝ) {H : ℝ → ℝ → ℝ} {w C : ℝ}
 ```
 
 Critique and Reconstruction ([thm_07–thm_10](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L97-L185)):
-Applying `Real.exp (lam * s) ≤ Real.exp |lam|` inside `screened (4 * Real.pi) = first (-4*pi) (first (4*pi) H)` multiplies the negative-exponent step by $e^{4\pi} \approx 286,751.31$ instead of $1$, and fails to integrate the positive kernel $|1 - e^{\pm\lambda}|^{-1}\int_0^1 e^{\pm\lambda s}\,ds = |\lambda|^{-1}$. Replacing the pointwise bound by exact positive-kernel integration tightens the operator norm from $\frac{e^{12\pi}}{(e^{4\pi}-1)^2} \approx 286,753.3131$ to $\frac{1}{16\pi^2} \approx 0.006332574$ (45,282,268.18x tighter).
+Applying `Real.exp (lam * s) ≤ Real.exp |lam|` inside `screened (4 * Real.pi) = first (-4*pi) (first (4*pi) H)` multiplies the negative-exponent step by $e^{4\pi} \approx 286,751.31$ instead of $1$, and fails to integrate the positive kernel $|1 - e^{\pm\lambda}|^{-1}\int_0^1 e^{\pm\lambda s}\,ds = |\lambda|^{-1}$. Replacing the pointwise bound by exact positive-kernel integration tightens the operator norm from $\frac{e^{12\pi}}{(e^{4\pi}-1)^2} \approx 286,753.3131$ to $\frac{1}{16\pi^2} \approx 0.006332574$ (45,282,268.18x tighter). On the Lean 4 vs. Python trust boundary, `thm_07` and `thm_08` prove the sign-aware reduction and algebraic $(E-1)$ cancellation unconditionally in Lean 4, `thm_09` certifies `lamSq * E >= 45,019,907 > 4.5e7` given external lower-bound hypotheses `lamSq >= 157` and `E >= 286751`, and SymPy plus 4,096-point quadrature in `verify_symbolic_ns376_complete.py` verify the exact $1/|\lambda|$ integral and float ratio.
 
 
 
-## 3. Breakthrough #2 Audit: October 6, 2026 3D Torus Leray Constant (`oct06/build/analysis.tex:213-224`)
+## 3. Breakthrough #2 Audit: October 6, 2026 3D Torus Leray Constant ([Proposition 2.4 (\label{prop:projection-l2})](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L164-L267))
+
+The excerpt from [Proposition 2.4 (\label{prop:projection-l2})](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L164-L224) at `analysis.tex:213-224` (with the Euclidean compact-support distinction recorded at `analysis.tex:263-267`) reads:
 
 ```tex
 % Source: proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex:213-224
@@ -142,11 +146,13 @@ For the tail $|k|_\infty>N\ge1$, it is at most
 ```
 
 Critique and Reconstruction ([thm_11–thm_17](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L190-L292)):
-Keeping $|k|_2 \ge |k|_\infty = n$ with rational bounds $\sum n^{-2} \le \frac{7}{4}$ and $\sum n^{-4} \le \frac{4}{3}$ tightens 52 to $\frac{134}{3} = 44.\overline{6}$ (`thm_12`), while the exact $L^\infty$-shell sum is $4\pi^2 + \frac{\pi^4}{45} \approx 41.6431$ (`thm_13`). Decomposing each cubical shell $S_n$ into 5 Euclidean strata (`thm_14`) reduces the $n=1$ shell from $26$ to $\frac{89}{9} \approx 9.8889$ (`thm_15`) and yields the 3D Epstein zeta constant $Z_3(2) \approx 16.532316$ (Richardson extrapolation from $N=250$ gives $16.532149$, 3.145x smaller than 52, `thm_17`).
+Keeping $|k|_2 \ge |k|_\infty = n$ with rational bounds $\sum n^{-2} \le \frac{7}{4}$ and $\sum n^{-4} \le \frac{4}{3}$ tightens 52 to $\frac{134}{3} = 44.\overline{6}$ unconditionally in Lean 4 (`thm_12`), while the exact $L^\infty$-shell sum is $4\pi^2 + \frac{\pi^4}{45} \approx 41.6431$ (`thm_13`, conditioned on rational $\pi^2, \pi^4$ brackets). Decomposing each cubical shell $S_n$ into 5 Euclidean strata (`thm_14`) reduces the $n=1$ shell unconditionally in Lean 4 from $26$ to $\frac{89}{9} \approx 9.8889$ (`thm_15`). For the full 3D Epstein zeta constant $Z_3(2) \approx 16.532316$, Lean 4 `thm_17` accepts the externally supplied scaled constant `(hz3 : z3_scaled = 165324)` as a hypothesis and proves `314 * z3_scaled < 100 * 520000` ($> 3.14\times$ reduction). Lean 4 does not compute the infinite lattice sum $Z_3(2)$ itself; `verify_symbolic_ns376_complete.py` evaluates the $N=250$ cubical-shell sum ($16.490619$), Richardson extrapolation ($16.532149$), and analytical spherical-tail upper bound ($16.540885 < 16.59$), giving a $3.145\times$ tighter constant than $52$ in `Proposition 2.4 (\label{prop:projection-l2})`.
 
 
 
-## 4. Breakthroughs #3, #4, and #5 Audit: ShearFlows/Affine.lean, VelocityDetectorScales.lean, and Material/Encoding.lean
+## 4. Breakthroughs #3 & #4 Audit: `ShearFlows/Affine.lean` and `VelocityDetectorScales.lean`
+
+### 4.1 Four-Shear Reciprocal Excursion Bound (`ShearFlows/Affine.lean:40-52`)
 
 ```lean
 -- Source: proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ShearFlows/Affine.lean:40-52
@@ -164,6 +170,43 @@ theorem reciprocal_correction_bound {lam s h : ℝ} (hlam : 0 < lam)
     constructor <;> linarith
 ```
 
+Critique and Reconstruction ([thm_20–thm_22](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L324-L392)):
+When $0 \le s$ in the proof above, both $0 \le s/\lambda \le h$ and $s \le \min(1, \lambda)h$ hold, so the difference of two nonnegative numbers $|s/\lambda - s|$ is bounded by $(1 - \min(\lambda, \lambda^{-1}))h < h$ rather than $h$. Consequently, the intermediate $x$-excursion bound in `scaling_endpoints_bound` tightens from $2h$ to $(2 - \min(\lambda, \lambda^{-1}))h < 2h$.
+
+### 4.2 Velocity Detector Mass Series and Wait Margins (`VelocityDetectorScales.lean:64-92` & `DetectorMargins.lean:17-27`)
+
+```lean
+-- Source: proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityDetectorScales.lean:64-92
+theorem diffusion_loss_small (C L n : ℕ) :
+    2 * duration C L n * laplacianBound C L n < 1 / 16 := by
+  have hD := laplacianBound_nonneg C L n
+  have hd : (0 : ℚ) < 100 * (1 + laplacianBound C L n) := by positivity
+  unfold duration
+  rw [show 2 * (1 / (100 * (1 + laplacianBound C L n))) * laplacianBound C L n =
+    (2 * laplacianBound C L n) / (100 * (1 + laplacianBound C L n)) by ring]
+  apply (div_lt_iff₀ hd).mpr
+  linarith
+
+theorem heat_wait_long (C L n : ℕ) : 1 < 2 - 2 * duration C L n := by
+  have h := duration_le C L n
+  linarith
+
+theorem massBound_small (L : ℕ) : 0 ≤ massBound L ∧ massBound L < 1 / 100000000000 := by
+  have h₀ := geometricRatio_pos L
+  have h₁ := geometricRatio_le_half L
+  have hq : 0 ≤ geometricRatio L ^ 2 ∧ geometricRatio L ^ 2 ≤ 1 / 4 := by
+    constructor
+    · positivity
+    · nlinarith
+  have hd : 0 < 1 - geometricRatio L ^ 2 := by linarith
+  constructor
+  · unfold massBound
+    positivity
+  · unfold massBound
+    apply (div_lt_iff₀ hd).mpr
+    nlinarith [hq.1, hq.2]
+```
+
 ```lean
 -- Source: proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/DetectorMargins.lean:17-27
 theorem detector_old_mass_margin (L : ℕ) :
@@ -178,6 +221,17 @@ theorem detector_wait_margin (L : ℕ) {H : ℝ} (hH : H ≤ 1000000000) :
   nlinarith
 ```
 
+Critique and Reconstruction ([ns376_detector_margins_and_undecidability_chains.lean:17-111](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L17-L111), `thm_25`–`thm_32`):
+1. `compact_detector_unconditional` ([VelocityUnconditional.lean:104-120](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/ForcedComputation/Detector/VelocityUnconditional.lean#L104-L120)) assumes `hL : 0 < L` ($L \ge 1$). For $L \ge 1$, $\text{geometricRatio}(L) \le \frac{1}{8}$ and $q_L \le \frac{1}{64}$, yielding $\text{massBound}(L) \le \frac{1}{15,750,000,000,000}$, which is 157.5x smaller than `massBound_small`'s $10^{-11}$ (`thm_26`).
+2. The left-hand side $\frac{2D}{100(1+D)}$ of `diffusion_loss_small` is strictly below $\frac{1}{50}$ for all $D \ge 0$, which is 3.125x smaller than $\frac{1}{16}$ (`thm_29`).
+3. Substituting both sharpened constants into `detector_wait_margin` expands the admissible amplification factor from $H \le 10^9$ to $H \le 7,559,999,999,984$ (7,560x larger, `thm_30`).
+
+
+
+## 5. Breakthrough #5 Audit: Cantor Encoding (`Material/Encoding.lean`) and Axisymmetric Stationary Contraction (`StationaryContraction.lean`)
+
+[Material/Encoding.lean:12-16](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/Material/Encoding.lean#L12-L16) restricts allowed digits via `Even d ∧ d + 2 ≤ b`:
+
 ```lean
 -- Source: proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/Material/Encoding.lean:12-16
 def AllowedDigits (b : ℕ) (ds : List ℕ) : Prop :=
@@ -186,12 +240,12 @@ def AllowedDigits (b : ℕ) (ds : List ℕ) : Prop :=
 noncomputable def tailBound (b : ℕ) : ℝ := ((b : ℝ) - 2) / ((b : ℝ) - 1)
 ```
 
-In [thm_20–thm_22](../proofs/ns376_unimported_solenoidal_and_leray_bounds.lean#L324-L392), [thm_25–thm_32](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L17-L111), and [thm_41–thm_48](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L226-L392), we formally prove the $(1 - \min(\lambda, \lambda^{-1}))h$ excursion bound, the 157.5x mass tightening and 7,560x $H$-range expansion at $L \ge 1$, the $b$-fold even-digit Cantor cylinder separation $\frac{1}{b-1}$, and the exact rational Banach contraction margins of `StationaryContraction.lean`.
+For distinct allowed even digits $d < d'$, we have $d' \ge d + 2$, so the true cylinder separation is $\frac{d+2}{b} - \frac{d + (b-2)/(b-1)}{b} = \frac{1}{b-1}$, which is $b$-fold larger than the single-slot gap $\frac{1}{b(b-1)}$ ([thm_41, thm_42](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L226-L248)). Furthermore, for the 3-file stationary axisymmetric branch archived in [HomogeneousDatum.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/HomogeneousDatum.lean#L1-L65), [FiniteRankGap.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/FiniteRankGap.lean#L34-L71), and [StationaryContraction.lean](../proofs/oai_ref/lean/OAI/MathematicalPhysics/NavierStokes/StationaryContraction.lean#L24-L72), we formally verify the degree $-1$ scaling ($t^{-1}$), finite-rank moment coercivity inequality, and exact rational Banach contraction budgets ($219{,}422{,}196 / 8{,}410{,}000{,}000 < 27 / 1000$) in [thm_44–thm_48](../proofs/ns376_detector_margins_and_undecidability_chains.lean#L266-L392).
 
 
 
 
-## 5. Complete 1-to-1 Declaration & LaTeX Environment Audit Ledger (24 / 24 Files, 339 / 339 Items = 100.0%)
+## 6. Complete 1-to-1 Declaration & LaTeX Environment Audit Ledger (24 / 24 Files, 339 / 339 Items = 100.0%)
 
 Every single Lean 4 declaration (`theorem`, `lemma`, `def`, `abbrev`, `structure`, `inductive`) across all 23 `.lean` files (335 declarations) plus all 4 LaTeX theorem/lemma environments in [analysis.tex](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L1-L282) (339 / 339 items = 100.0%) is cataloged and mapped 1-to-1 to our 48 formal theorems below:
 
@@ -535,11 +589,11 @@ Every single Lean 4 declaration (`theorem`, `lemma`, `def`, `abbrev`, `structure
 | 336 | [analysis.tex:L16](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L16) | `latex_lemma` | Lemma (lem:b-gradient) | `thm_11` (L190), `thm_12` (L207), `thm_13` (L224), `thm_14` (L243), `thm_15` (L258), `thm_16` (L277), `thm_17` (L286) |
 | 337 | [analysis.tex:L36](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L36) | `latex_lemma` | Lemma (lem:b-comparison) | `thm_11` (L190), `thm_12` (L207), `thm_13` (L224), `thm_14` (L243), `thm_15` (L258), `thm_16` (L277), `thm_17` (L286) |
 | 338 | [analysis.tex:L144](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L144) | `latex_lemma` | Lemma (lem:p2-chart) | `thm_11` (L190), `thm_12` (L207), `thm_13` (L224), `thm_14` (L243), `thm_15` (L258), `thm_16` (L277), `thm_17` (L286) |
-| 339 | [analysis.tex:L164](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L164) | `latex_proposition` | Proposition (prop:projection-l2) | `thm_11` (L190), `thm_12` (L207), `thm_13` (L224), `thm_14` (L243), `thm_15` (L258), `thm_16` (L277), `thm_17` (L286) |
+| 339 | [analysis.tex:L164](../proofs/oai_ref/tex/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/build/analysis.tex#L164) | `latex_proposition` | Proposition 2.4 (`\label{prop:projection-l2}`) | `thm_11` (L190), `thm_12` (L207), `thm_13` (L224), `thm_14` (L243), `thm_15` (L258), `thm_16` (L277), `thm_17` (L286) |
 
 
 
-## 6. Beyond-Baseline Alternative Bound, Margin Repair, and Sharp Rigidity Obstruction
+## 7. Beyond-Baseline Alternative Bound, Margin Repair, and Sharp Rigidity Obstruction
 
-1. Verified 5 Sharpened Analytical Bounds (`thm_06`–`thm_24`, `thm_28`–`thm_32`, `thm_41`–`thm_42`): Reassembles all 1,004 modules across the four strata, tightening `PeriodicInverse.lean` (`thm_06`–`thm_10`) via positive-kernel integration to $\frac{1}{16\pi^2}$, decomposing the October 6 3D torus Leray cubic shells (`thm_11`–`thm_17`) to $Z_3(2) \approx 16.532316$, bounding the 4-shear intermediate excursion (`thm_18`–`thm_24`) strictly below $2h$, expanding the detector threshold (`thm_28`–`thm_32`) to $H \le 7.56 \times 10^{12}$, and enlarging the even-digit Cantor gap (`thm_41`–`thm_42`) by a factor of $b$ to $\frac{1}{b-1}$.
+1. Verified 5 Sharpened Analytical Bounds (`thm_06`–`thm_24`, `thm_28`–`thm_32`, `thm_41`–`thm_42`): Reassembles all 1,004 modules across the four strata, tightening `PeriodicInverse.lean` (`thm_07`–`thm_08` algebraic proof in Lean 4, `thm_09` conditioned on external `lamSq >= 157` and `E >= 286751`, and SymPy exact integral $\frac{1}{16\pi^2}$), decomposing the October 6 3D torus Leray cubic shells (`thm_11`–`thm_16` unconditionally/rationally in Lean 4, `thm_17` conditioned on external `z3_scaled = 165324`, plus Python $N=250$ cubical sum $16.490619$, Richardson $16.532149$, tail upper bound $16.540885 < 16.59$ matching Ewald $Z_3(2) \approx 16.532316$), bounding the 4-shear intermediate excursion (`thm_18`–`thm_24`) strictly below $2h$, expanding the detector threshold (`thm_28`–`thm_32`) to $H \le 7.56 \times 10^{12}$, and enlarging the even-digit Cantor gap (`thm_41`–`thm_42`) by a factor of $b$ to $\frac{1}{b-1}$.
 2. Two-Mode Convective Curl/Divergence Dichotomy (`thm_04`–`thm_05`, `thm_44`–`thm_45`): Contrasts the unimported `PeriodicLattice/Solenoidal.lean` mechanism (solving $\Delta \phi = \operatorname{div} g$ across modes $k_z = 0, 2$ so non-zero pressure $p = -\phi$ yields $\operatorname{div} f_{\text{sol}} = 0$) against the stationary axisymmetric `homogeneousDatum` (`thm_44`–`thm_45`), which is swirl-free ($x_0 V_1 - x_1 V_0 = 0$) and divergence-free off $0$ while carrying non-zero vorticity ($\nabla \times V \neq 0$) and finite-rank moment-matrix coercivity.

@@ -1,7 +1,7 @@
 # Tier 3: Expert Technical Report: Mathematical Structure & Formal Verification of Exponent and Parameter Bounds in OpenAI #003
 
 - Date: 2026-10-31
-- Target Repository: openai/math (Family 003: Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis, lean/OAI/NumberTheory/DirichletL/ & SiegelZeros/)
+- Target Repository: openai/math (HEAD `4eaee87`; `oai-math-revised` PR `#70` `ca28f20`; Family 003: Dirichlet & Hecke $L$-Function Quasi-Riemann Hypothesis, `lean/OAI/NumberTheory/DirichletL/` & `SiegelZeros/`)
 - Verification Toolchain: Lean 4 (v4.29.0-rc8) and Python 3 (SymPy / Fractions) (`verify_symbolic_qrh.py`)
 - Primary Formal Proof Artifacts: [proofs/qrh_exponent_and_parameter_bounds.lean](../proofs/qrh_exponent_and_parameter_bounds.lean) (SHA-256: `2e98aff37741ab5ae4b67c9e36da3816e09325c40d0abcf462a676e0e2ec6ae1`, 404 lines, 27 theorem declarations) and [proofs/qrh_continuation_and_rescaling.lean](../proofs/qrh_continuation_and_rescaling.lean) (SHA-256: `7d64b243421117960431dc4e2ac86e4b3d086fae87af55746673e298976fa1e3`, 469 lines, 21 theorem declarations; total 48 theorems, 0 sorry, 0 custom axiom, lean exit 0)
 - Symbolic Verification Artifact: [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json) (SHA-256: `072bdd831bd69aa096ea87eef639a6ac221051371cdbe80ea0ffa1b98c86bd55`)
@@ -119,7 +119,7 @@ The four upper-bound relaxations between individual proven terms in [DirichletL/
 | Scope | Details | Formal Status |
 | :--- | :--- | :--- |
 | Formalized Rational & Integer Theorems<br>(`qrh_exponent_and_parameter_bounds.lean` & `qrh_continuation_and_rescaling.lean`) | Exact `Rat`, `Int`, and `Nat` parameter budgets (48 theorems total: 0 sorry, 0 custom axiom), SOS decompositions, stationary-point identities, $m \ge 2$ Gauss valuation table vanishing (6 of 8 branches), componentwise Gram exponent differences ($\frac{215}{3264}$ and $\frac{487}{3264}$), $(w, z)$ contour-shift exponent budgets ($17/48000$), universal 2nd/3rd Euler continuation cancellations, master scale-coupling equations, and the 26-file / 179 `def`/`theorem` declaration 1-to-1 audit. | Kernel-verified in Lean 4 (exit 0) and matched deterministically against [symbolic_verification_result.json](../proofs/symbolic_verification_result.json). |
-| Future Complex-Analytic Extensions | Complex-analytic Mellin residue continuation for separated finite $m=1$ terms and the sextic pole $z = \frac{1}{6}$ across the 3,232-file `DirichletL/` (2,926) and `SiegelZeros/` (306) formalization (within the 3,414-file broader upstream snapshot), interval-arithmetic Lean 4 proofs for $4 \le Q < 480$, and off-diagonal bilinear phase cancellation for the diagonal `peak_scale` term. | Open Research Tasks (neither proof module alone claims an unconditional proof of RH or $\beta < 7/8$). |
+| Future Complex-Analytic Extensions | Complex-analytic Mellin residue continuation for separated finite $m=1$ terms and the sextic pole $z = \frac{1}{6}$ across the 3,232-file `DirichletL/` (2,926) and `SiegelZeros/` (306) formalization (within the 3,414-file broader upstream snapshot at `openai/math` `4eaee87` / `oai-math-revised` PR `#70` `ca28f20`), explicit Lean 4 interval-arithmetic proofs for $4 \le Q < 480$ if tightening the central-quotient threshold below $480$ (global tails already absorb finite primes via `FirstTail.lean`), and off-diagonal bilinear phase cancellation for the diagonal `peak_scale` term. | Open Research Tasks (neither proof module alone claims an unconditional proof of RH or $\beta < 7/8$). |
 
 
 
@@ -138,7 +138,9 @@ The four upper-bound relaxations between individual proven terms in [DirichletL/
 
 ## 7. Completion of Tasks 1–3: Small-Norm Threshold Removal, 2nd/3rd Complex Mellin Continuation, and Master Scale-Coupling Equations (Theorems 28–48)
 
-### 7.1 Task 1: Removal of $4 \le Q < 480$ Threshold & Finite Bad-Prime Mask Absorption (Theorems 28–30)
+(Note: Upstream files cited by path in Sections 7 and 10 that lie outside the 26-file local `proofs/oai_ref/` snapshot are audited against `openai/math` commit `4eaee87` / `oai-math-revised` PR `#70` commit `ca28f20`.)
+
+### 7.1 Task 1: Parameter Tightening on $4 \le Q < 480$ & Finite Bad-Prime Mask Absorption (Theorems 28–30)
 1. Call-Graph Verification (`DirichletL/PrimeRows/CubePrimeThresholds.lean:13-33`, `DirichletL/PrimeRows/FirstTail.lean:81-100`):
    - `DirichletL/Detector/HighRowsCentralQuotient.lean:9` (`480 ≤ Q`) is only invoked on dyadic pool primes $P \in T_j$ (`DirichletL/PrimeRows/CubePrimeBound.lean:105`), where `DirichletL/PrimeRows/CubePrimeThresholds.lean:13-33` (`central_pool_good_eventually`) unconditionally discharges `480 ≤ Q` via $Q \ge c Z^{d_{\min} r_{\min}} \to \infty$.
    - Global Euler product tails are handled by `DirichletL/PrimeRows/FirstTail.lean:81-100` (`exists_both_source_exclusions`), which absorbs `smallPrimeSet N` into the finite bad-prime mask $S = S_0 \cup \text{smallPrimeSet}(N)$.
@@ -357,30 +359,30 @@ This section provides the exhaustive declaration-by-declaration 1-to-1 cross-ref
 
 ## 9. Beyond-Baseline Alternative Bounds and Sharp Rigidity Obstructions
 
-1. Beyond-Baseline Alternative Bound: Eliminates the baseline finite cutoff compromise $Q \ge 480$ across the full finite range $4 \le Q < 480$ via finite bad-prime mask absorption (`theorem_28_marked_factor_singularity_cancels_identically`, `theorem_29_all_small_eisenstein_norms_nonvanishing`, `theorem_30_universal_finite_bad_prime_mask_absorption`) and restores the $m=1$ residue structure with 2nd/3rd-order Euler product continuation (`theorem_31_second_continuation_exact_polynomial_identity` through `theorem_40_energy_induction_compatible_below_seven_eighths`).
+1. Beyond-Baseline Alternative Bound: Because `DirichletL/PrimeRows/FirstTail.lean` (`openai/math` `4eaee87` / `oai-math-revised` PR `#70` `ca28f20`) already absorbs finite bad primes into the exclusion mask $S$ and `DirichletL/PrimeRows/CubePrimeThresholds.lean` discharges $Q \ge 480$ on dyadic pool primes, the reduction from $Q \ge 480$ to $Q \ge 112$ via $(1-V)$ cancellation (`theorem_28_marked_factor_singularity_cancels_identically`, `theorem_29_all_small_eisenstein_norms_nonvanishing`, `theorem_30_universal_finite_bad_prime_mask_absorption`) constitutes a parameter-tightening and constant-slack analysis over $4 \le Q < 480$, complemented by the $m=1$ residue structure and 2nd/3rd-order Euler product continuation (`theorem_31_second_continuation_exact_polynomial_identity` through `theorem_40_energy_induction_compatible_below_seven_eighths`).
 2. Sharp No-Go / Rigidity Obstruction: Proves that quadratic Cauchy-Schwarz amplification alone hits a strict parity rigidity floor at the baseline exponent $3/16$ (signal exponent $-11/16$), preventing any further reduction without higher-order cubic reciprocity.
 
 
 
-## 10. Extended Audit of the Full #003 Codebase (3,232 Files · 556,376 Lines, Within 3,414-File Upstream Snapshot) and Companion Manuscripts (21,438 Lines)
+## 10. Extended Audit of the Full #003 Codebase (3,232 Files · 556,376 Lines, Within 3,414-File Upstream Snapshot at `openai/math` `4eaee87` / `oai-math-revised` PR `#70` `ca28f20`) and Companion Manuscripts (21,438 Lines)
 
-### 10.1 Kernel Verification of All 4 `ComparatorChallenges` and `W22` / `W63` (Gate 1 & Gate 5: PASS)
+### 10.1 Kernel Verification of All 4 `ComparatorChallenges` and `W22` / `W63`
 - Full Corpus Scale & Kernel Soundness: Across all 3,232 Lean 4 files (556,376 lines: 2,926 files / 486,558 lines in `DirichletL/` + 306 files / 69,818 lines in `SiegelZeros/`, within the broader 3,414-file upstream snapshot), there are 0 occurrences of `sorry`, `axiom`, `unsafe`, or `implemented_by`.
 - Verification of the 4 Comparator Challenges & Core Algebraic/Analytic Engines:
   1. All 4 comparator challenges (`QuasiRiemannHypothesis` for $47/48$ zero-free region, `DirichletSevenEighths` for $7/8$ zero-free region for Dirichlet $L$-functions, `HeckeSevenEighths` for $7/8$ zero-free region over $K=\mathbb{Q}(\sqrt{-3})$, and `SiegelZeros` via [Theorem.lean:11-27](../proofs/oai_ref/Theorem.lean#L11-L27) `exists_absolute_real_zero_gap`, excluding Landau-Siegel zeros) match standard Mathlib definitions and compile unconditionally.
   2. Both `W22` ([IsolatedBezoutFromRegularSelection.lean:25-373](../proofs/oai_ref/IsolatedBezoutFromRegularSelection.lean#L25-L373), local isolated Bézout bound on polynomial-torus rings) and `W63` (`UnconditionalPrimeBias` for $X \ge 2$) are fully verified within the active proof cone.
 
 ### 10.2 Five Structural, Patch, and Bibliographic Findings Across #003
-1. 19 / 21 (90.48%) Non-Propagating Root Imports in `SiegelZeros/Main.lean` & 104-File Cross-Family Clone into #021 (CP-05, CP-10):
+1. 19 / 21 (90.48%) Non-Propagating Root Imports in `SiegelZeros/Main.lean` & Unreachable Modules in `SiegelZeros/` (upstream files outside `oai_ref/` audited at `openai/math` `4eaee87` / `oai-math-revised` PR `#70` `ca28f20`):
    - Of the 21 modules directly imported by `SiegelZeros/Main.lean`, only 2 / 21 (9.52%: `Conclusions.Theorem` and `Conclusions.PrimeBias`) propagate to the main theorem [exists_absolute_real_zero_gap](../proofs/oai_ref/Theorem.lean#L11-L27), leaving 19 / 21 (90.48%) as non-propagating root imports.
-   - Across `SiegelZeros/` (306 files, 69,818 lines), the active cone reaches 268 files (87.58%, 63,264 lines), while 38 files (12.42%, 6,554 lines, including [PivotBounds.lean](../proofs/oai_ref/PivotBounds.lean#L1-L96)) are unreachable. Furthermore, 104 files from `SiegelZeros/` are cloned into #021 (`OAI/NumberTheory/Jacobsthal/Siegel/`).
-2. Upstream `PrimeNumberTheoremAnd.Wiener` -2,716-Line Truncation & Omitted Library Attribution (CP-03, CP-08):
-   - Direct imports of `PrimeNumberTheoremAnd.Wiener` by `DirichletL` (`IdealMangoldt` and `Progressions`) triggered the -2,716-line truncation of upstream `Wiener` in the repository patch to eliminate 2 upstream `sorry`s from the build graph.
-   - Across all 21,438 `.tex` lines (90 `.bib` entries) of the #003 manuscripts, there are 0 citations (omitted/absent) to Kontorovich-Tao's `PrimeNumberTheoremAnd`, Kebekus (2025), Cipollina (2026), or Benenson (`rellich-kondrachov`).
-3. `[Lean]` Badge in `CONTENTS.md` vs. 0% (0-Line) Formalization of the October-5-2026 Companion Paper (CP-04):
-   - While `CONTENTS.md:66-92` attaches a `[Lean]` badge to 3 papers in #003, the 2nd companion manuscript (October-5-2026, An alternate proof of the 11/12 zero-free region, 3,988 lines) has 0% (0 lines) of Lean 4 formalization.
-   - In addition, the 11/12 section in the primary manuscript (`paper.tex:6536`) is conditional on the unproved hypothesis `eq:late-height-hypothesis`.
-4. 11,499 Consecutive Uncited Lines (68.95%) in Primary Manuscript `paper.tex` (CP-03):
-   - In `paper.tex` (16,677 lines), `\cite` appears on only 12 lines (0.072 per 100 lines), with 0 citations across 11,499 consecutive lines from L5179 to L16677 (68.95%).
-5. 2,238 Unused Hypothesis Binders Across Internal Helper Lemmas (CP-06):
-   - Static AST analysis across all 3,232 `.lean` files detects 2,238 unused hypothesis binders (1,077 inside the active `DirichletL` proof cone).
+   - Across `SiegelZeros/` (306 files, 69,818 lines), the active cone reaches 268 files (87.58%, 63,264 lines), while 38 files (12.42%, 6,554 lines, including [PivotBounds.lean](../proofs/oai_ref/PivotBounds.lean#L1-L96)) are unreachable from `exists_absolute_real_zero_gap`.
+2. Upstream `PrimeNumberTheoremAnd/Wiener.lean` Apache-2.0 Header, -2,716-Line Trim, and Classical Literature Attribution (`openai/math` `4eaee87` / `oai-math-revised` PR `#70` `ca28f20`):
+   - Direct imports of `PrimeNumberTheoremAnd.Wiener` by `DirichletL` (`IdealMangoldt` and `Progressions`) triggered a -2,716-line compatibility trim of upstream `Wiener.lean` in the repository patch (removing 2 upstream `sorry`s from the build graph). Explicitly, `PrimeNumberTheoremAnd/Wiener.lean:1-5` preserves its Apache-2.0 attribution header ("Adapted from PrimeNumberTheoremAnd by Alex Kontorovich and contributors. Licensed under the Apache License, Version 2.0; see the upstream LICENSE. This compatibility port retains the proven declarations used by this project.").
+   - External package notices such as `Kebekus (2025)`, `Cipollina (2026)`, and `Benenson` (`rellich-kondrachov`) are unused transitive `lakefile` packages inherited from `PrimeNumberTheoremAnd`, not direct mathematical dependencies of `#003`. Instead, the actual borrowing and bibliographic omission in the `#003` manuscripts (21,438 `.tex` lines, 90 `.bib` entries) concerns Wiener-Ikehara / `PrimeNumberTheoremAnd` smoothing (`0` manuscript citations to `PrimeNumberTheoremAnd`) and uncited classical Large Sieve literature in the Large Sieve proof sections.
+3. `CONTENTS.md` `[Lean]` Badge Mismatch (`Class B`) vs. Disclosed Conditional Assumption in `paper.tex:6536` (`Class A`):
+   - `Class B` (documentation badge mismatch): `CONTENTS.md:66-92` attaches a `[Lean]` badge to 3 papers in `#003`, whereas the 2nd companion manuscript (October-5-2026, *An alternate proof of the 11/12 zero-free region*, 3,988 lines) has 0% (0 lines) of Lean 4 formalization.
+   - `Class A` (disclosed assumption): Separately, the 11/12 zero-free region section in the primary manuscript (`paper.tex:6536`) explicitly labels its hypothesis `eq:late-height-hypothesis` as conditional rather than claiming an unconditional theorem.
+4. 11,499 Consecutive Lines Without `\cite` (68.95%) in Primary Manuscript `paper.tex`:
+   - In `paper.tex` (16,677 lines), `\cite` commands appear on only 12 lines (`0.072` `\cite`-containing lines per 100 lines; because a single `\cite`-containing line can contain multiple `\cite` commands or comma-separated citation keys, exact `\cite` command and individual key totals are distinct from the 12-line count and are not independently itemized in the local `oai_ref/` subset), with 0 `\cite` lines across 11,499 consecutive lines from L5179 to L16677 (68.95%).
+5. 2,238 Unused Hypothesis Binders Across Internal Helper Lemmas vs. 0 Unused Premises in `ComparatorChallenges`:
+   - Static AST analysis across all 3,232 `.lean` files detects 2,238 unused `_h*` hypothesis binders inside internal helper lemmas (1,077 inside the active `DirichletL` proof cone), while the headline `ComparatorChallenges` target theorems themselves contain 0 unused premises, preserving an unconditionally valid core.

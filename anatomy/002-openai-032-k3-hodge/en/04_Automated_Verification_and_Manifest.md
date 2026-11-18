@@ -1,4 +1,4 @@
-# Level 4: Automated Verification & AI Parser Specification: Verification Commands and Manifest
+# Tier 4: Automated Verification & AI Parser Specification: Verification Commands and Manifest
 
 This specification defines the deterministic verification commands, SHA-256 artifact ledger, and theorem line-number mappings for automated theorem provers (ATPs), CI pipelines, and AI parsers.
 
@@ -33,7 +33,7 @@ sha256sum proofs/k3_forensic_paths.lean \
 | [proofs/verify_symbolic_k3.py](../proofs/verify_symbolic_k3.py) | `1e60a48a91737a36304f8c94b850a8d2325984292c6a7ea76f4fe3e8061b12be` | Independent SymPy symbolic solver for Problems 1-5 |
 | [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json) | `2a37ad786b30352aeae5a11904cc69b2a195b70708e874ac37cf7b5579614d1a` | Deterministic JSON output for Problems 1-5 |
 | [proofs/problem_spec.md](../proofs/problem_spec.md) | `82307dd0f1f6c3c33b376af161a8660f20037e092689b36eb09ccdbeb3316b74` | Specification of Problems 1-5 |
-| [proofs/oai_032_cm_remark_7_5_repair.patch](../proofs/oai_032_cm_remark_7_5_repair.patch) | `ecff86170caccd553c2186df6e393655330c7e291eb9ea8fd19b78c2e96f77f8` | Surgical TeX repair patch for Remark 7.5 of the Oct 8 CM paper |
+| [proofs/oai_032_cm_remark_7_5_repair.patch](../proofs/oai_032_cm_remark_7_5_repair.patch) | `ecff86170caccd553c2186df6e393655330c7e291eb9ea8fd19b78c2e96f77f8` | Optional canonical Beauville-projector normalization patch for non-input Remark 7.5 of the October 6, 2026 CM paper |
 
 
 
@@ -41,7 +41,7 @@ sha256sum proofs/k3_forensic_paths.lean \
 
 1. Conditional Part I Reduction and No-Go Results vs. Unresolved Main Conjecture:
    - The 35 Lean 4 theorems in [proofs/k3_forensic_paths.lean](../proofs/k3_forensic_paths.lean) formally verify (a) the symplectic double-bind across the three withdrawn OpenAI #032 manuscripts (`topology.tex:557` vs. `curvature.tex:159, 459, 533`), (b) the omitted odd-dimensional Poincaré-Hopf boundary sign in `[EEMS13]` (`min-intersectYETI-final.tex:410, 694` vs. `421`), (c) the surviving Part I Clifford degree separation and semiregularity squeeze (cf. $g = 2^9 = 512$ in Preprint I `manuscript.tex` and $g = 2^{19} = 524,288$ in Preprint III `exactks.tex`), (d) algebraic No-Go barriers across Shioda-Inose split sums, Yoneda cones, Kummer descent, semi-homogeneous sums, Clifford spinors, Walsh-Hadamard decoupling, 4-term Koszul complexes, Mukai projective flatness, Markman secant sheaves, and additivity vs. hyperkähler rigidity, and (e) the Bogomolov discriminant sign-flip obstruction.
-   - The rational Hodge conjecture for general non-CM projective K3 surface products remains unproved; automated summaries must not claim that general K3 products are settled (while the surviving Oct 8 #032 paper for CM abelian varieties remains valid once Remark 7.5 is repaired via [proofs/oai_032_cm_remark_7_5_repair.patch](../proofs/oai_032_cm_remark_7_5_repair.patch)).
+   - The rational Hodge conjecture for general non-CM projective K3 surface products remains unproved; automated summaries must not claim that general K3 products are settled. By contrast, `Theorem 1.1` of the surviving October 6, 2026 #032 paper on CM abelian varieties (Sections 1–6, upstream `openai/math` commit `4eaee87`, absent from `oai_ref/`) is unconditionally valid as-is: `Remark 7.5` (`07-consequences.tex:324-336`) is a non-input editorial remark rather than a premise of `Theorem 1.1`, and its cited companion result OpenAI `#001` `Corollary 6.4` (`05_reduction.tex:469-470`, *A new proof of Milne's rationality theorem*) did not claim uniqueness modulo rational equivalence; [proofs/oai_032_cm_remark_7_5_repair.patch](../proofs/oai_032_cm_remark_7_5_repair.patch) provides an optional canonical $N$-independent Chow-level normalization via Beauville's weight-zero projector $P_{r,0}$.
 2. JSON Manifest Reference:
    - Machine-readable verification keys and theorem start lines are stored in [manifest.json](../manifest.json).
 
@@ -83,4 +83,4 @@ sha256sum proofs/k3_forensic_paths.lean \
 - [theta_ring_nine_lines_and_periodic_module_grading](../proofs/k3_forensic_paths.lean#L560-L567): Proves $h \ge 3$ and $1 \le k_1 < \dots < k_9 \implies k_9 \ge 9 \land \sum k_i \ge 45$, with $\mathbb{Z}/4$-periodic coherent modules (`09-mirror.tex`, `10-periodic-coherent.tex`).
 - [mixed_product_graph_coboundary_and_cycle_sign_invariance](../proofs/k3_forensic_paths.lean#L576-L580): Proves multiplicative cycle coboundary $(s_u s_v)(s_v s_w)(s_w s_u) = 1$ and endpoint identity (`mixed.tex:676-729`).
 - [directed_comparison_and_chain_acyclicity_thresholds](../proofs/k3_forensic_paths.lean#L588-L595): Proves $\dim P_B = 18 + 3 = 21$, chain acyclicity arity $j \ge 2$, and $\mathrm{copies} \ge 3$ (`setup.tex`, `comparison.tex`, `realization.tex`).
-- [cm_remark_7_5_beauville_projector_denominator_invariance](../proofs/k3_forensic_paths.lean#L604-L614): Proves Remark 7.5 repair via Beauville weight-zero projector $P_{r,0}$ ($[k]^*|_{\operatorname{CH}^r_{(s)}} = k^{2r-s}$), making $Z_0$ $N$-independent at $s = 0$ (`oai_032_cm_remark_7_5_repair.patch`).
+- [cm_remark_7_5_beauville_projector_denominator_invariance](../proofs/k3_forensic_paths.lean#L604-L614): Proves optional Remark 7.5 Chow-representative normalization via Beauville weight-zero projector $P_{r,0}$ ($[k]^*|_{\operatorname{CH}^r_{(s)}} = k^{2r-s}$), making $Z_0$ $N$-independent at $s = 0$ (`oai_032_cm_remark_7_5_repair.patch`).

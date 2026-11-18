@@ -1,6 +1,6 @@
 # OpenAI #003 Quasi-Riemann Hypothesis ($\text{Re}(s) > 7/8$)
 
-- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
+- Language: English | [Korean (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
 This repository audits the 3,232 Lean 4 files in `DirichletL/` (2,926) and `SiegelZeros/` (306) within the broader 3,414-file upstream OpenAI #003 snapshot, including a 1-to-1 declaration-level audit of all 26/26 core reference files and 179/179 `def`/`theorem` declarations (178 public + 1 private, plus `instance polynomialComponentPrime_isPrime`). We recover the exact algebraic roots behind its rational proxies and verify 48 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 49/49 hypothesis mutations caught). This analysis examines the rational constants, algebraic roots, and inequality margins inside the Lean formalization and does not alter or dispute the paper's main theorems.
 

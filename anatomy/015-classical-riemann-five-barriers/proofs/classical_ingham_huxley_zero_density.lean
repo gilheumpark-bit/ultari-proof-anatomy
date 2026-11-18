@@ -1,7 +1,7 @@
 /-
   Paper 2 Part A (Theorems 16-25): Ingham (1940), Halasz-Schur Gram Duality, and Huxley (1972)
   Exact `σ* = 3/4` Minimax Inflection (`A = 12/5`), `k = 2 -> 3` Bottleneck, and `ε n^2` Phase Loss.
-  Lean 4 (`v4.29.0-rc8`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
+  Lean 4 (`v4.35.0`) over `ℝ`, 0 sorry, 0 custom axioms, 100% hypothesis mutation kill.
 -/
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic

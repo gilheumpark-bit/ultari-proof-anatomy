@@ -7,22 +7,22 @@
     "symbolic_solver_check": "cd proofs && python3 verify_symbolic_eth.py"
   },
   "artifacts_sha256": {
-    "README.md": "18d06dc02c1ffc095867f64856d3e6a19068cec85adaf383f93a4297be309fb3",
-    "README.ko.md": "ce62811e6e4899ccbefd727c3faefb1993f3569960e0d5dc4cc92f31fad2a02e",
+    "README.md": "aa7eb009117da97aa258a7322842ea185340a7d0eadf7d9b762c3fdca006e121",
+    "README.ko.md": "b1b82d3d84905b3f643bcb5f0dcf1fda29fb8e66befe398aa3907bc67dc389e3",
     "proofs/eth_subexp_interpolation_and_hashes.lean": "a9bd5df33d032abc1fb1c4d710bca0d14d80e6e95c3f22bb30f4546815cd63b5",
     "proofs/eth_tensor_contraction_and_circuits.lean": "d5bb1300d4e279c22aaf7744fc29fb903130113d1296be231987317d71fa454e",
     "proofs/eth_five_repairs_and_four_layer_verdict.lean": "a78e57413c063847961ada65c1a7e7650ab93cf304f241eb5d2ddbca801e2b31",
     "proofs/verify_symbolic_eth.py": "8ca3f1cf601106c6bcaff5e1c21f9b9dda688f335a27b4df52fe1d23862a959e",
     "proofs/symbolic_verification_result.json": "2972c7b446e2f8b464cf4cfbeb05b1a4ae8ff989a3579f075701120bd504f735",
-    "proofs/problem_spec.md": "72ed5066c99307570d33f101ee445b62cae551fc980e715478762792d407ff35",
-    "ko/01_초보자용_쉬운해설.md": "16634bc2eb093171d6e6aefccab929d3da495de645c4a5b30b078ac5f759c857",
-    "ko/02_중급자용_구조및수식가이드.md": "2b0f825e415526317a1b809515402db4fd987299ed34bcb0fd37b4678c1771de",
-    "ko/03_전문가용_전산학및형식증명심사보고서.md": "9837390ff6797e68cf99880f8f42fbdb133dd8d8c72f8af358ac31b136eda86f",
-    "ko/04_자동검증및파서용_명세서.md": "5f522c51ee6de9bea4c82675cdfb6de633afabc2fd3a6b2e9c17d02ec25fba91",
-    "en/01_Beginner_Guide.md": "06fff3e11b274eaf58844b52b567f3b534634e05a4106dc19ee20ca7ea5d5300",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "06d23969dbb824c8f0615d784b1818e953194a46a3945d4a6d6f68c2eee7b9a0",
-    "en/03_Expert_Complexity_and_Formal_Report.md": "db505d6d47d497be2a2e7956584b6fd886f8aec1847789d93e412cfd14498a41",
-    "en/04_Automated_Verification_and_Manifest.md": "f384b7474ea1dc7d1a3de579a7cea7d018a081ea18727b8101afa376f271ace4"
+    "proofs/problem_spec.md": "62fb2e2f2456b0a6621e711eed72ebdfe72f1fc8658268e158dea963893c162a",
+    "ko/01_초보자용_쉬운해설.md": "2903e70d35f0a9bc83055c7b42591584290b6014951e306d8940e6318400b4e5",
+    "ko/02_중급자용_구조및수식가이드.md": "27795e95c061edf5dd096505e98fd84384ba73b1607b2d2bcd101fa260aa7c4e",
+    "ko/03_전문가용_전산학및형식증명심사보고서.md": "1a341ba24f8559290872650b4e39d2232594afb3f07f89e8ed7fc056c58b395c",
+    "ko/04_자동검증및파서용_명세서.md": "57ba716bd669cd87250c5d8f66be5d5607d1a1d6416c7dbb181d70f4eb5d16bd",
+    "en/01_Beginner_Guide.md": "523aa344e6158f20e390a3d6b64d2a3b0bfd721e77ab13b4ebc9a747e17be33f",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "da586333466efe99a313914afb92aaa8641d6b35dceee639b10ed205b3d52c17",
+    "en/03_Expert_Complexity_and_Formal_Report.md": "818ccedddd3b7dfc56f46a4820e7e732d08aaaa4eca9b77adefcb88a7c1627ee",
+    "en/04_Automated_Verification_and_Manifest.md": "145c1c30ad5ddbaf926df6517f7d3993870527acbd8d76181ace907a31607259"
   },
   "scope_and_limitations": {
     "formalized_arithmetic_and_linear_algebra": "56 Lean 4 theorems over Int (0 sorry, 0 custom axiom, 454/454 hypothesis mutations caught = 128/128 + 177/177 + 149/149) across proofs/eth_subexp_interpolation_and_hashes.lean, proofs/eth_tensor_contraction_and_circuits.lean, and proofs/eth_five_repairs_and_four_layer_verdict.lean + SymPy and PyTorch tensor verification covering 100% (48/48 files, 629/629 formal statements, 940/940 total declarations & environments) of #378."

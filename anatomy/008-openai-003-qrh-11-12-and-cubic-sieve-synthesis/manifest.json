@@ -1,7 +1,7 @@
 {
   "case_id": "openai_003_qrh_11_12_and_cubic_sieve_synthesis",
   "title": "OpenAI #003 (QRH Ecosystem Deep Synthesis): The 23/24 vs. 11/12 Formalization Gap, Unimported 30-File Sharp CubicGauss Large Sieve, and Q(sqrt(921)) Farkas Unbundling",
-  "target_repository": "openai/math (Family 003: DirichletL/ShortDraft, CubicGauss/, paper.tex Part I, paper2.tex, AlexKontorovich/quasi-rh, and Baiying Liu arXiv:2610.12234)",
+  "target_repository": "openai/math (commit 4eaee87 / PR #70 ca28f20; Family 003: DirichletL/ShortDraft, CubicGauss/, paper.tex Part I, paper2.tex, AlexKontorovich/quasi-rh, and Baiying Liu arXiv:2610.12234 (unrefereed preprint))",
   "date": "2026-11-05",
   "verification_commands": {
     "lean4_kernel_check": "lean proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean && lean proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean && lean proofs/qrh_trilogy_induction_and_algebraic_bridge.lean",

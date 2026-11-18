@@ -2,13 +2,13 @@
 
 - 언어 선택: [English (README.md)](./README.md) | 한국어 | 상위 목차: [ultari-proof-anatomy](../../README.ko.md)
 
-이 감사는 OpenAI #003(3,233개 원본 `.lean` 파일 및 [proofs/oai_ref/](proofs/oai_ref/Endpoint.lean) 참조 모듈 26개)을 학술지 심사위원 관점에서 정밀 감사한 결과입니다. 모든 결과는 48개 독립 Lean 4 정리와 6개 `def`([qrh_eight_tasks_critical_upgrade.lean](proofs/qrh_eight_tasks_critical_upgrade.lean) 5개 + `siegel_concrete_witness`, v4.29.0-rc8, 0 sorry, 가설 변이 441/441건 포착, 분모 소거 산술)로 검증했습니다.
+이 감사는 OpenAI #003(동봉 참조 모듈 26개 [proofs/oai_ref/](proofs/oai_ref/Endpoint.lean) 및 `openai/math` 커밋 `4eaee87`, `PR #70` `ca28f20` 기준 기록된 원본 3,233개 `.lean` 파일 DAG 수치; 원문 `#003` 자체는 $\beta = 7/8$까지만 주장·증명, `0 sorry`)을 학술지 심사위원 관점에서 정밀 감사한 결과입니다. 모든 결과는 48개 독립 Lean 4 정리와 6개 `def`([qrh_eight_tasks_critical_upgrade.lean](proofs/qrh_eight_tasks_critical_upgrade.lean) 5개 + `siegel_concrete_witness`, v4.29.0-rc8, 0 sorry, 가설 변이 441/441건 포착, 분모 소거 산술)로 검증했습니다.
 
 ## 핵심 해부 결과
 
 1. 혼재된 3종 $\beta$ 지표 분리: 20개 모듈 전역 SOS 안장점($\beta_{\mathrm{SOS}}(0) = \frac{6843 - 7\sqrt{921}}{7578} \approx 0.874975 < \frac{7}{8}$, 유리수 증인 $\frac{41999}{48000}$), 국소 $\delta=0$ 단면 균형점($\frac{131}{150}$, $\frac{209}{240}$), 비예외 꼬리 바닥($\frac{4103}{4896} \approx 0.8380$)을 엄밀히 구분합니다.
 2. $\beta = 2/3$ 극점 장벽 돌파: 슈티켈베르거-아이젠슈타인 소멸($k_\infty = -6 \neq 0$)과 $(1 - R_p)$ 약분을 결합해 coordR 수렴 경계를 $\frac{401}{600}(\to \frac{2}{3})$에서 $\frac{117}{200}(\to \frac{7}{12})$ 및 $\frac{301}{600}(\to \frac{1}{2})$로 낮춥니다.
-3. 임계선($\beta = 1/2$) 조건부 전달 법칙: 그람 이득에 따른 선형 전달 법칙 $\beta(\Delta_{\mathrm{gram}})$을 유도하고, [Path A + Path B] 결합 경로에서 $\beta = \frac{1}{2}$에 도달하기 위한 조건부 하이브리드 임계치 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$을 역산합니다([thm_35](proofs/qrh_mathematician_referee_audit.lean#L454-L461), [thm_46](proofs/qrh_eight_tasks_critical_upgrade.lean#L156-L177)).
+3. 임계선($\beta = 1/2$) 조건부 전달 법칙: 그람 이득에 따른 선형 전달 법칙 $\beta(\Delta_{\mathrm{gram}})$을 유도하고, [Path A + Path B] 결합 경로에서 $\beta = \frac{1}{2}$에 도달하기 위해서는 미해결 해석적 가설(구체적으로 $\mathrm{res}_{w_1} = 0$, $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$, $\mathrm{gain}_{\mathrm{amp}} \ge \frac{2}{11}$)이 필요함을 역산합니다([thm_35](proofs/qrh_mathematician_referee_audit.lean#L454-L461), [thm_44](proofs/qrh_eight_tasks_critical_upgrade.lean#L122-L140), [thm_46](proofs/qrh_eight_tasks_critical_upgrade.lean#L156-L177)).
 
 ## 4단계 독자 맞춤형 가이드
 

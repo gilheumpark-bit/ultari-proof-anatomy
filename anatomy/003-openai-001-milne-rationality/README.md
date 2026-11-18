@@ -1,14 +1,14 @@
 # OpenAI #001 Milne's Rationality Conjecture Audit & Repair
 
-- Language: English | [한국어 (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
+- Language: English | [Korean (README.ko.md)](./README.ko.md) | Main Index: [ultari-proof-anatomy](../../README.md)
 
-This forensic audit examines the 6 LaTeX section files (alongside `main.tex`, `references.tex`, and `figures/two-transports.tex`) of OpenAI #001 (Milne's rationality conjecture for abelian varieties) and verifies 5 surgical repairs across 36 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 232/232 hypothesis mutations caught).
+This forensic audit examines the 6 LaTeX section files (alongside `main.tex`, `references.tex`, and `figures/two-transports.tex`) of OpenAI #001 (Milne's rationality conjecture for abelian varieties) and verifies 5 targeted refinements across 36 standalone Lean 4 theorems (v4.29.0-rc8, 0 sorry, 232/232 hypothesis mutations caught). Note that `proofs/oai_ref/repaired_build/` is the **post-patch manuscript snapshot** (upstream `openai/math` commit `4eaee87` October 7, 2026 submission with [proofs/oai_001_milne_repair.patch](./proofs/oai_001_milne_repair.patch) applied), not the raw unpatched October 7 submission.
 
 ## Key Findings
 
 1. Dependency Boundary with `[OAI26]`: We confirm that `Theorem 1.1` and `Corollary 6.3` are completely independent of `[OAI26]`, whereas `Corollary 6.4` in Section 6 (`05_reduction.tex:370, 412`) invokes the non-retracted CM abelian variety companion paper `[OAI26, Theorem 1.1]` (*The rational Hodge conjecture for CM abelian varieties*, October 6, 2026; only the K3 preprints in `#032` were retracted).
-2. Pointwise KZ25 Lift ([Medium-1]): We replace the unpublished `[GLX26]` family assumption in `Proposition 3.1` / `Lemma 3.3` (`02_transport.tex:474-487, 520-540`) with pointwise Breuil-Kisin (`[PR24]`) and Kisin-Zhou (`[KZ25b]`) integral lifts.
-3. Canonical Beauville Projector ([Medium-2]): We normalize the non-unique Section 6 cycle lift via Beauville's weight-0 projector $P_{r,0}$ and tighten 3 ramified DVR, Kronecker, and Rosati bounds ([Low-1] to [Low-3]).
+2. Pointwise `[KZ25b]` Lift (`[Medium-1]`): In `Proposition 3.1` / `Lemma 3.3` (`02_transport.tex:474-487, 520-540`), we eliminate reliance on the global formal-scheme representability assumption `(U_x)` of `[GLX26, Corollary 6.3]` (Gleason–Lim–Xu, *Inventiones Mathematicae* 243 (2026), 805–861, `doi:10.1007/s00222-025-01386-1`) by localizing the integral lift to pointwise Breuil-Kisin (`[PR24]`) and Kisin-Zhou (`[KZ25b]`, `arXiv:2505.02165v1`, 2025 preprint) lifts.
+3. Canonical Beauville Projector (`[Medium-2]`) and Precision Refinements (`[Low-1]`–`[Low-3]`): While `05_reduction.tex:469-470` explicitly disclaimed cycle uniqueness modulo rational equivalence, applying Beauville's weight-0 projector $P_{r,0}$ makes the `Corollary 6.4` cycle lift canonical across all $N \ge 1$ in $\operatorname{CH}^r(A_0)_\mathbb{Q}$, alongside 3 precision and formalization boundary refinements for `Lemma 2.4` (whose second sentence already noted the `[Tat67]` generic-fiber route), `Lemma 4.2`, and `Theorem 4.1`.
 
 ## 4-Tier Reader Guide
 
