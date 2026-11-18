@@ -524,15 +524,15 @@
   "files": {
     "ko/01_일반인용_해설서.md": "402deda4231a8c72680e0934d78b147f63b7786fb422dd030e6aec5a3a58ed60",
     "ko/02_중급자용_수학및코드가이드.md": "d5276655c0e2ef909e4f8b21a0644c49d8dc45113614e7bb3e9711b60d23acc1",
-    "ko/03_전문가용_학술및수리물리보고서.md": "1c0636edb378f9cb94dc31aa61ff48e28e581124b53db15666242bc71f39e121",
-    "ko/04_자동검증및파서용_명세서.md": "c85bebe18d2dd81a8c78fe877aca8536f25d741c744040eeaf031057106a2a8c",
-    "ko/05_OPFF_상세형_포렌식심사보고서_PR80.md": "6b31821d71b54f989ff7f9a026482b43140f9ddc0820228661c95ea92acb318d",
-    "ko/06_OPFF_기본형_감사리포트_PR80.md": "d344c3ca701c2e0ffc1bbf2829e458dfe66c3d977c16a60151633cda477d61c5",
+    "ko/03_전문가용_학술및수리물리보고서.md": "df67de699a6d54b510352bacd17cb2f89f5ec16e737f0604fb03153f163ef8c6",
+    "ko/04_자동검증및파서용_명세서.md": "f48c4ed4b930dc377caaaaf4b68918cfebd36a51721f2a12e80a810088c5e284",
+    "ko/05_OPFF_상세형_포렌식심사보고서_PR80.md": "5369a6be7ef8991a720349a230d7aaf150afc2711a87cfb2d446f3886f2d8191",
+    "ko/06_OPFF_기본형_감사리포트_PR80.md": "a385f200bd59199a26a91269d3527784ce6e818e96913f0847ac5f4e9f9de9df",
     "en/01_Executive_Summary_and_General_Guide.md": "743962f7787cb5fa8be8ba97b22c3b3ffa96ef216b7d51134b9587efad5a9892",
     "en/02_Intermediate_Math_and_Code_Guide.md": "3ee23ea39be9018830209223b459c4e04c051ea109e50c8997622b768de5ed38",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "7ced2f3b2fe7e7689003d0af882ca71cb423674782d88663ec9970ae66d9d1b3",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "8b757fa3cfaf3d02b03b7b59ebbd2370e61155aede643f1b1ed8d742349ace54",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md": "d85c6427589d9987c17c1f030c784615b0e9fb1f3a7615dbb6488d05a6eba02d",
-    "en/06_OPFF_Basic_Audit_Report_PR80.md": "bcc76c926693b3e1cc7144628ded9032a6c7c0c670df7a12c8cd8783964d510c"
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "8c234b62dd19801ae2d6590af72d1e74fad056a7ced0093a9a43a69844f4b335",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "a2a62a7eb47b35f4f67bf35300a855d3eb5683c5f76fcb4855daf17a5283d97b",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md": "b6a1e464987567fce06d539944a9d890db936bde7a3f6882c440840ffe50cc04",
+    "en/06_OPFF_Basic_Audit_Report_PR80.md": "d64ef292706decdf9e319b01e78e436a77772768076360ac2604c3e3a3fb8822"
   }
 }

@@ -1,17 +1,14 @@
 {
   "upload_type": "publication",
   "publication_type": "report",
-  "title": "OPFF Audit Charter & Forensic Verdict Ledger: Byte-Level Zero-Truncation Audit of Frontier Mathematical Corpora (v1.0.1)",
+  "title": "Ultari Proof Anatomy: 5-Gate Forensic Audit Rubric & Verdict Ledger for Frontier Mathematical & Code Verification Corpora (v1.0.2)",
   "creators": [
     {
-      "name": "Open Proof Forensics Foundation (OPFF)"
-    },
-    {
       "name": "Park, Gilheum",
-      "affiliation": "Open Proof Forensics Foundation (OPFF)"
+      "affiliation": "Independent Researcher (ultari-proof-anatomy)"
     }
   ],
-  "description": "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,217/4,217 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Joint International Audit Rubric unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards.",
+  "description": "Byte-level zero-truncation forensic audit of frontier AI and classical mathematical formal verification corpora (15 deep-dive cases, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,217/4,217 hypothesis mutations killed, auditing 48,603 upstream .lean files across 12.4M+ lines) executed under the 5-Gate Audit Rubric (OPFF) unifying COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR reproducibility standards.",
   "access_right": "open",
   "license": "CC-BY-4.0",
   "keywords": [
@@ -21,7 +18,7 @@
     "proof-forensics",
     "academic-integrity",
     "ai-audit",
-    "open-proof-forensics-foundation",
+    "open-proof-forensic-framework",
     "opff"
   ]
 }

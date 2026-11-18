@@ -10,8 +10,8 @@
 | 툴체인 및 컴파일러 | Lean 4 v4.29.0-rc8 (`leanprover/lean4:v4.29.0-rc8`) 대 피감 원본 v4.34.1 / Python 3.14 (SymPy 기호 연산기) |
 | 검증 산출물 SHA-256 | • [ostmann_twin_engines_and_supply_contraction.lean](../proofs/ostmann_twin_engines_and_supply_contraction.lean): `edbc820be45ec3b384022ccb043fd33aa90a1ff28c0ebe83b878f51491a2185d`<br>• [ostmann_tree_transfers_and_permutation_contradiction.lean](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean): `529c59062f95b012231c781d29caa795fd6e5f948016d4f2bbc6bdc8c232df59`<br>• [ostmann_algebraic_engines_and_cauchy_determinant.lean](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean): `1681e0b1fbd21477104b589aa6ae8f7a644bd0d4d672fd5beb65ca57972c1cf7`<br>• [verify_symbolic_ostmann.py](../proofs/verify_symbolic_ostmann.py): `8f5c742ebfdec6a8aa943f51f6c5a650404d21aa9c970f86fc5afbc2f919bc98` |
 | 검증 방식 | 독립 Lean 4 정리 75개 + 재귀 def 3개 + structure 1개 (1,517줄, 0 `sorry`, 0 `axiom`, 전칭 가설 돌연변이 포착 393 / 393건 = 100%) 및 결정론적 SymPy 재현 스크립트 |
-| 준거 감사 헌장 | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5대 관문 및 공식 등급 판정 | Gate 1 (수리·커널): PASS (0 `sorry`, 표준 Mathlib 정의 보존) · Gate 2 (원고-코드): FAIL (쌍둥이 엔진 7,335개 파일 569,682줄 중복 구축·381개 미도달 화석 39,517줄·`Erdos970` 패치 +47,394줄 내 NOTICE 누락 및 주석 2,253줄 공백 치환·문턱값 16.08배 이완) · Gate 3 (서지·윤리): FAIL (7장 784줄·9장 386줄 인용 0건 및 #021·#026 타 문제군 18개 모듈 미공시 차용) · Gate 4 (공정·개입): FAIL (추론 로그 0편·`formalization.yaml` 누락 및 `All.lean`·`PaperMain.lean` 미전파 루트 화석) · Gate 5 (수리 가치): PASS $\implies$ OPFF TIER C (오스트만 역 골드바흐 추측 해결 수리 코어 유효 확인 / 쌍둥이 중복 트리·패치 고지 누락·서지 기근·비효과적 시겔 상한 패키징 기준 미충족 / Valid Mathematical Core & Non-Conforming Artifact Packaging) |
+| 적용 감사 규격 | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5대 관문 및 등급 판정 | Gate 1 (수리·커널): PASS (0 `sorry`, 표준 Mathlib 정의 보존) · Gate 2 (원고-코드): FAIL (쌍둥이 엔진 7,335개 파일 569,682줄 중복 구축·381개 미도달 화석 39,517줄·`Erdos970` 패치 +47,394줄 내 NOTICE 누락 및 주석 2,253줄 공백 치환·문턱값 16.08배 이완) · Gate 3 (서지·윤리): FAIL (7장 784줄·9장 386줄 인용 0건 및 #021·#026 타 문제군 18개 모듈 미공시 차용) · Gate 4 (공정·개입): FAIL (추론 로그 0편·`formalization.yaml` 누락 및 `All.lean`·`PaperMain.lean` 미전파 루트 화석) · Gate 5 (수리 가치): PASS $\implies$ TIER C (오스트만 역 골드바흐 추측 해결 수리 코어 유효 확인 / 쌍둥이 중복 트리·패치 고지 누락·서지 기근·비효과적 시겔 상한 패키징 기준 미충족 / Valid Mathematical Core & Non-Conforming Artifact Packaging) |
 
 
 
@@ -100,7 +100,7 @@
 
 ### 4.2 전술 자동화 편의를 위한 4대 상한 이완(Formalization Slack) 및 가설 전달 구조
 
-| 이완 항목 (파일:행) | 코드의 형식화 축약 방식 | 발생한 정량적 손실 | 본 감사단의 무손실 복원 정리 |
+| 이완 항목 (파일:행) | 코드의 형식화 축약 방식 | 발생한 정량적 손실 | 독립 무손실 복원 정리 |
 | :--- | :--- | :--- | :--- |
 | 1. 대칭군 확장 ($(S_r)^m \to S_{rm}$)<br>`Tree/ArrangementGraph.lean:12`, `Conclusion/OverlapComponents.lean:10` (`oai_ref/` 미수록) | 화석 `FinalReassignments.lean`(`oai_ref/` 미수록)의 슬롯별 순열군 $(S_r)^m$ 대신 전체 곱 대칭군 `Equiv.Perm (Fin r × Fin m)`($S_{rm}$) 사용 | 크기 1 비분할 성분($a_c = 1$) 허용으로 나쁜 순열 감쇠율이 $-1$에서 $-3/4$로 약화되어 순 수축률이 $1 \to 7/20$으로 감소($k_{\min}: 1,040 \to 7,041$) | [thm_41](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L381-L388), [thm_42](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L396-L405), [thm_44](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L442) |
 | 2. 성분 로그 일괄 상한 ($\log a_i \le \log r$)<br>`Tree/ComponentFactorial.lean:35-53` (`oai_ref/` 미수록) | 분할 항등식 $\sum(a_i - 1) = r - t$ 적용 전 `Finset.single_le_sum`으로 $a_i \le r$ 일괄 적용 | 나쁜 순열 영역($4(r-t) \le r$)의 실제 최대 성분 크기 상한 $a_c \le r/4 + 1$ 대비 4배 여유 손실 | [thm_43_bad_component_max_size_quarter_bound](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L412-L418) |
@@ -111,9 +111,9 @@
 
 ## 제5부. 유효 수리 코어(Gate 5: PASS) 공인, 4대 대수 엔진 재검증 및 문턱값 16.08배 단축 (Constructive Verification & Sharp Bounds)
 
-### 5.1 오스트만 역 골드바흐 추측 해결 코어의 수학적 완결성 공인 (Gate 1 & Gate 5: PASS)
+### 5.1 오스트만 역 골드바흐 추측 해결 코어의 수학적 완결성 확인 (Gate 1 & Gate 5: PASS)
 
-- 쌍둥이 엔진 중복 및 패키징 결함과 별개로, `OAI/NumberTheory/Ostmann/`의 활성 증명 트리는 `sorry`·커스텀 `axiom`이 0건이며 표준 Mathlib 정의 위에서 76년 미해결 난제인 오스트만 역 골드바흐 추측(Erdős #431)을 수학적으로 참되게 해결함(Gate 5: PASS)을 공인함:
+- 쌍둥이 엔진 중복 및 패키징 결함과 별개로, `OAI/NumberTheory/Ostmann/`의 활성 증명 트리는 `sorry`·커스텀 `axiom`이 0건이며 표준 Mathlib 정의 위에서 76년 미해결 난제인 오스트만 역 골드바흐 추측(Erdős #431)을 수학적으로 참되게 해결함(Gate 5: PASS)을 확인함:
   1. 유한 가산항 배제 ([thm_06](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L148-L161)): 원소 2개 이상인 유한 집합 $A$와 무한 집합 $B$에 대해 2-원소 치환 사상과 CRT·디리클레 소수 정리로 무한히 많은 합성수 $f(a)+b = k q_a \in A+B$를 구성.
   2. 3절 공통 유리 중심 리프트 및 보나미 4차 모멘트 ([thm_51](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L427-L440), [thm_56](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L54-L60)~[thm_60](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L136-L143)): $(n - a t_p) - (m - a t_p) = n - m$ 위상 소거와 보나미 초수축 항등식 $(a+b)^4 + (a-b)^4 - 2(a^4+b^4) = 12a^2b^2 \ge 0$으로 고가중치 제곱인수 없음 지수를 $-625K$로 제어.
   3. 5절 랭크-2 블록 노름 고유값 상한 및 푸리에 공급 수축 ([thm_14](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L296-L309)~[thm_15](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L317-L331), [thm_61](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L153-L182)~[thm_64](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean#L224-L233)): 특성다항식 판별식 $(a-d)^2 + 4b^2 \ge 0$과 블록 노름 주 기울기 $s_p(1,1) = 1 - (2t_0/p^2)\lVert\Pi_p F_p\rVert^2 + O(\varepsilon_0/p) \le 1 - (1.7 - O(\varepsilon_0))/p$을 통해 희소 스펙트럼 가정을 $1 - \frac{8}{5}\cdot\frac{17}{25} = -\frac{11}{125} < 0$으로 기각.
@@ -152,7 +152,7 @@
 
 
 
-## 제7부. 국제 학술기준 대비 불부합 대조표, 3층 기여도 분리 및 최종 판정 (OPFF Standard-Bound Verdict)
+## 제7부. 국제 학술기준 대비 불부합 대조표, 3층 기여도 분리 및 최종 판정 (Standard-Bound Verdict)
 
 ### 7.1 국제 출판·형식검증 가이드라인 대조표 (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS)
 
@@ -178,9 +178,9 @@
 - Q2. "원고 5절 Remark 5.4에 OpenAI #003(QRH)이 인용되어 있으니, #003의 조건부 한계에 종속되는 것 아닌가?"
   - 사실 확인: 원고 Remark 5.4가 #003을 선택적 비고로 언급할 뿐, 실제 Lean 코드(엔진 A·B 모두)는 `OAI.NumberTheory.DirichletL`(#003)을 단 한 줄도 임포트하지 않으며(0건) 고전 몽고메리 영점 밀도와 란다우-페이지 예외 영점 제거만으로 완전 독립 증명되어 있습니다([thm_19](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L386-L395)).
 - Q3. "엔진 A의 33개 파일에 비효과적 시겔 정리(`PublishedSiegelBound`)가 등장하므로 명시적 반례 크기를 계산할 수 없는 비구성적 증명 아닌가?"
-  - 사실 확인: 원본 엔진 A는 `ZeroDensity/HadamardPrimeBound.lean:48`(`oai_ref/` 미수록) 1곳에서 시겔 정리를 분해하여 비효과적이었으나, 본 감사단의 [thm_46](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L476-L486)~[thm_50](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L552-L562)에서 타투자와 정리(384,002)와 예외 소인수 1개 추가 제거($\lvert D_{\mathrm{ext}}\rvert \le 3$)로 이를 완전 유효화하여 명시적 로그-로그 반례 문턱값 $L_{\mathrm{eff}} = 640,722$ (초정밀 $255,983$)를 구성적으로 확립했습니다.
+  - 사실 확인: 원본 엔진 A는 `ZeroDensity/HadamardPrimeBound.lean:48`(`oai_ref/` 미수록) 1곳에서 시겔 정리를 분해하여 비효과적이었으나, 독립 재검증 [thm_46](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L476-L486)~[thm_50](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L552-L562)에서 타투자와 정리(384,002)와 예외 소인수 1개 추가 제거($\lvert D_{\mathrm{ext}}\rvert \le 3$)로 이를 완전 유효화하여 명시적 로그-로그 반례 문턱값 $L_{\mathrm{eff}} = 640,722$ (초정밀 $255,983$)를 구성적으로 확립했습니다.
 - Q4. "엔진 B `Conclusion/Scales.lean`의 0 기반 색인이나 이완된 상수(`Bs=200`, `BD=322`)가 이진 트리 상한을 해치는가?"
-  - 사실 확인: 아닙니다. [Conclusion/Scales.lean:51-83](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Conclusion/Scales.lean#L51-L83)은 `Finset.range k` 위에서 구조적 귀납법(`induction k`)으로 `sum_dyadic`과 `sum_dyadic_log`를 직접 증명해 [09-conclusion.tex:355-358](../proofs/oai_ref/tex/sections/09-conclusion.tex#L355-L358)의 1기반 합산과 일치하며, 본 감사단의 [thm_21](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L30-L46)~[thm_26](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L144)이 모든 $k \in \mathbb{N}$에 대해 이를 독립 재검증했고 [thm_41](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L381-L388)~[thm_44](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L442)가 $k_{\min}$을 7,041에서 1,040으로 단축했습니다.
+  - 사실 확인: 아닙니다. [Conclusion/Scales.lean:51-83](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Conclusion/Scales.lean#L51-L83)은 `Finset.range k` 위에서 구조적 귀납법(`induction k`)으로 `sum_dyadic`과 `sum_dyadic_log`를 직접 증명해 [09-conclusion.tex:355-358](../proofs/oai_ref/tex/sections/09-conclusion.tex#L355-L358)의 1기반 합산과 일치하며, 독립 재검증 [thm_21](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L30-L46)~[thm_26](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L132-L144)이 모든 $k \in \mathbb{N}$에 대해 이를 독립 재검증했고 [thm_41](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L381-L388)~[thm_44](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L428-L442)가 $k_{\min}$을 7,041에서 1,040으로 단축했습니다.
 - Q5. "[SiegelBoundProof.lean:81](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/ZeroDensity/SiegelBoundProof.lean#L81)의 `2 / η = 8 / ε = 1600` 분기가 원고 3절의 $\varepsilon_1 = 1/200$ 시겔 상한과 충돌하지 않는가?"
   - 사실 확인: 충돌하지 않습니다. [QuadraticSplitSupply.lean:25-33](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Quadratic/QuadraticSplitSupply.lean#L25-L33)은 $\varepsilon = 1/200$에서 `(40000 * K)^2 <= L`을 요구하고, [SiegelBoundProof.lean:17,81](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/ZeroDensity/SiegelBoundProof.lean#L81)은 `η = min (ε/4) (1/4)`($\varepsilon = 1/200$에서 `1/800`)로 설정하여 `¬ hnear` 분기에서 `(1 - e.beta)^{-1} <= 2/η = 8/ε = 1600`을 증명하며, [thm_10](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L218-L234) 및 [thm_46](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L476-L486)~[thm_50](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean#L552-L562)이 타투자와 정리 대체를 통해 비효과적 분기까지 완전 유효화했습니다.
 - Q6. "그렇다면 #013은 #376(나비에-스토크스)처럼 문제를 축소·변형한 것인가, 아니면 진짜 난제를 푼 것인가?"
@@ -199,10 +199,10 @@ lean proofs/ostmann_twin_engines_and_supply_contraction.lean && \
 sha256sum -c proofs/checksums.sha256 && python3 -B ../../tools/verify_all.py --root .
 ```
 
-### 7.5 최종 심사 판정문 (Formal OPFF Referee Verdict Box)
+### 7.5 최종 심사 판정문 (Referee Verdict Summary)
 
-- 최종 공식 판정: OPFF TIER C (Valid Mathematical Core & Non-Conforming Artifact Packaging): 수리 코어(Gate 1·5: PASS) 채택 권고 / 쌍둥이 중복 트리 정리·Erdos970 고지 복원 및 7·9장 서지·교차 의존성(#021·#026) 보완 후 게재(Accept after Artifact & Bibliographic Revision)
+- 최종 판정: TIER C (Valid Mathematical Core & Non-Conforming Artifact Packaging): 수리 코어(Gate 1·5: PASS) 채택 권고 / 쌍둥이 중복 트리 정리·Erdos970 고지 복원 및 7·9장 서지·교차 의존성(#021·#026) 보완 후 게재(Accept after Artifact & Bibliographic Revision)
 - 
 - OpenAI #013(The additive indecomposability of the primes)은 1950년 제기된 오스트만 역 골드바흐 추측(Erdős #431)을 유한 가산항 CRT 합성수 증인, 공통 유리 중심 리프트와 보나미 4차 모멘트, 랭크-2 제곱 전달 커널($K^2$, 블록 노름 기울기 $2t_0 = 17/10 > 8/5$) 푸리에 공급 수축(-11/125 < 0), 그리고 2차 아핀 연산자·[08-arithmetic.tex:407-497](../proofs/oai_ref/tex/sections/08-arithmetic.tex#L407-L497)의 분모 소거 $2\times 2$ 선형형식 소행렬식 판정 및 슈바르츠-지펠 상한·이진 트리 순열 감쇠(2/5 - 3/4 = -7/20 < 0)의 결합으로 표준 Mathlib 정의 위에서 0 `sorry`, 0 `axiom`으로 완결하여 Gate 1 (수리·커널): PASS 및 Gate 5 (수리 가치): PASS를 충족한다.
 - 
-- 다만 제출된 저장소 패키징과 원고 서지는 (1) 동일한 정리를 증명하는 쌍둥이 엔진(`Complete.lean` 3,165개 vs. `Main.lean` 4,175개, 공유 코어 5개 = 0.065%)과 381개 미도달 화석(39,517줄, 루트 `All.lean`·`PaperMain.lean` 포함)의 무정리 병치, (2) +47,394줄 규모 `Erdos970` 업스트림 패치 내 `SiegelZeros/NOTICE.md` 누락·주석 2,253줄 0x20 공백 치환·`formalization.yaml`(`oai_ref/` 미수록) #013 누락 및 16.08배 문턱값 이완, (3) 원고 7장(784줄)·9장(386줄)의 인용 0건 기근, 3절 고전 1차 원전(Page 1935, Siegel 1935) 및 외부 Lean 저장소 3종(`PrimeNumberTheoremAnd`·`StrongPNT`·`CBirkbeck/AINTLIB`) 누락, 그리고 코드에서 쓰이지 않는 #003 인용 대 미공시 #021·#026 외부 모듈 18개(전이 183개) 차용으로 인해 현 상태 아티팩트 기준 OPFF TIER C로 판정하며, 위 패키징 정리·라이선스 복원 및 서지 보완 반영 시 최상위 수론 학술지 정식 게재 등급(OPFF TIER A/S)으로 승격 가능함을 확인한다.
+- 다만 제출된 저장소 패키징과 원고 서지는 (1) 동일한 정리를 증명하는 쌍둥이 엔진(`Complete.lean` 3,165개 vs. `Main.lean` 4,175개, 공유 코어 5개 = 0.065%)과 381개 미도달 화석(39,517줄, 루트 `All.lean`·`PaperMain.lean` 포함)의 무정리 병치, (2) +47,394줄 규모 `Erdos970` 업스트림 패치 내 `SiegelZeros/NOTICE.md` 누락·주석 2,253줄 0x20 공백 치환·`formalization.yaml`(`oai_ref/` 미수록) #013 누락 및 16.08배 문턱값 이완, (3) 원고 7장(784줄)·9장(386줄)의 인용 0건 기근, 3절 고전 1차 원전(Page 1935, Siegel 1935) 및 외부 Lean 저장소 3종(`PrimeNumberTheoremAnd`·`StrongPNT`·`CBirkbeck/AINTLIB`) 누락, 그리고 코드에서 쓰이지 않는 #003 인용 대 미공시 #021·#026 외부 모듈 18개(전이 183개) 차용으로 인해 현 상태 아티팩트 기준 TIER C로 판정하며, 위 패키징 정리·라이선스 복원 및 서지 보완 반영 시 최상위 수론 학술지 정식 게재 등급(TIER A/S)으로 승격 가능함을 확인한다.

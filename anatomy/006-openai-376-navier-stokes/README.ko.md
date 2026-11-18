@@ -19,8 +19,8 @@
 | 2단계 | 중급자 (이공계·개발자) | [ko/02_중급자용_구조및수식가이드.md](ko/02_중급자용_구조및수식가이드.md) | 10개 프리프린트 폴더·6대 챌린지 매핑 및 45개 Lean 4 정리 1대1 색인표. |
 | 3단계 | 전문가 (수리물리·형식증명 연구자) | [ko/03_전문가용_수리물리및형식증명심사보고서.md](ko/03_전문가용_수리물리및형식증명심사보고서.md) | 4계층 심사 판정, 1,010개 파일 임포트 지층 분석, 르레이 투영 비국소성 및 5대 수리 규격. |
 | 4단계 | 자동 검증기 및 파서 | [ko/04_자동검증및파서용_명세서.md](ko/04_자동검증및파서용_명세서.md)<br>[manifest.json](manifest.json) | SHA-256 해시 원장 및 45개 Lean 4 정리 줄 번호 매핑표. |
-| 5단계 | OPFF 7부작 공식 포렌식 심사리포트 (PR #76) | [ko/05_OPFF_상세형_포렌식심사보고서_PR76.md](ko/05_OPFF_상세형_포렌식심사보고서_PR76.md)<br>[en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md](en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md) | OPFF 5대 관문(제0부~제7부) 전수 감사 및 OPFF TIER F 공식 판정서 (`proofs/` 45개 핵심 정리, 184/184 변이 포착; 미연결 모듈 재조립 48개 정리·150/150 변이는 동반 재조립 패키지에 수록). |
-| 6단계 | OPFF 기본형 감사 리포트 (PR #76) | [ko/06_OPFF_기본형_감사리포트_PR76.md](ko/06_OPFF_기본형_감사리포트_PR76.md)<br>[en/06_OPFF_Basic_Audit_Report_PR76.md](en/06_OPFF_Basic_Audit_Report_PR76.md) | OPFF 기본형 요약: 8대 핵심 지표 스코어카드(TL;DR), 실측 물증 요약(45개 정리, 184/184 변이), 6문 6답 Q&A 및 10초 터미널 재현 명령어. |
+| 5단계 | 7부작 상세 포렌식 심사보고서 (PR #76) | [ko/05_OPFF_상세형_포렌식심사보고서_PR76.md](ko/05_OPFF_상세형_포렌식심사보고서_PR76.md)<br>[en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md](en/05_OPFF_Detailed_Forensic_Referee_Report_PR76.md) | 5대 관문(제0부~제7부) 전수 감사 및 TIER F 심사 판정서 (`proofs/` 45개 핵심 정리, 184/184 변이 포착; 미연결 모듈 재조립 48개 정리·150/150 변이는 동반 재조립 패키지에 수록). |
+| 6단계 | 기본형 감사 요약 리포트 (PR #76) | [ko/06_OPFF_기본형_감사리포트_PR76.md](ko/06_OPFF_기본형_감사리포트_PR76.md)<br>[en/06_OPFF_Basic_Audit_Report_PR76.md](en/06_OPFF_Basic_Audit_Report_PR76.md) | 기본형 감사 요약: 8대 핵심 지표 스코어카드(TL;DR), 실측 물증 요약(45개 정리, 184/184 변이), 6문 6답 Q&A 및 10초 터미널 재현 명령어. |
 
 ## 형식증명 코드 및 1줄 검증 명령어
 

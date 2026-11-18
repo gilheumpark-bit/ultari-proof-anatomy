@@ -12,8 +12,8 @@
 | Tier 2 | [en/02_Intermediate_Math_and_Code_Guide.md](en/02_Intermediate_Math_and_Code_Guide.md) | [ko/02_중급자용_수학및코드가이드.md](ko/02_중급자용_수학및코드가이드.md) | 3대 기둥 수식 파이프라인, 75개 정리 매핑(thm_01~thm_75), 기호 검증기 해설 |
 | Tier 3 | [en/03_Expert_Forensic_and_Mathematical_Physics_Report.md](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | [ko/03_전문가용_학술및수리물리보고서.md](ko/03_전문가용_학술및수리물리보고서.md) | 3,386 + 9개 파일 층서학(2,835,031줄 대 576줄 파이썬 = 4,921.9배 팽창, Main.lean 15/16 미사용 임포트, 62,767개 공허 `_h*` 바인더, 고아 Attainable 3 342줄), 69/69 oai_ref/ 전수 #L 인용, 반사 정규화(>201만줄 절감) 및 바이너 차원 강성($36-5k=6 \iff k=6$), binary64 하드웨어 계약 및 .bib 인용 감사 |
 | Tier 4 | [en/04_Automated_Verification_and_Parser_Spec.md](en/04_Automated_Verification_and_Parser_Spec.md) | [ko/04_자동검증및파서용_명세서.md](ko/04_자동검증및파서용_명세서.md) | 암호학적 SHA-256 체크섬 대조표 및 원클릭 재현 명령 |
-| Tier 5 (OPFF 상세형) | [en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md](en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md) | [ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md](ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md) | 7부 구성 OPFF 학술 최종 포렌식 심사 보고서(8대 지표 스코어카드, 3층위 기여 주체 분석, 6문 6답 FAQ 및 OPFF TIER C 공식 판정문) |
-| Tier 6 (OPFF 기본형) | [en/06_OPFF_Basic_Audit_Report_MUB266.md](en/06_OPFF_Basic_Audit_Report_MUB266.md) | [ko/06_OPFF_기본형_감사리포트_MUB266.md](ko/06_OPFF_기본형_감사리포트_MUB266.md) | 요약형 OPFF 기본 감사 리포트(TL;DR 8대 지표 스코어카드, 실측 물증 요약, 6문 6답 FAQ 및 10초 재현 명령어) |
+| Tier 5 (상세 심사) | [en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md](en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md) | [ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md](ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md) | 7부 구성 상세 포렌식 심사 보고서(8대 지표 스코어카드, 3층위 기여 주체 분석, 6문 6답 FAQ 및 TIER C 심사 판정문) |
+| Tier 6 (핵심 요약) | [en/06_OPFF_Basic_Audit_Report_MUB266.md](en/06_OPFF_Basic_Audit_Report_MUB266.md) | [ko/06_OPFF_기본형_감사리포트_MUB266.md](ko/06_OPFF_기본형_감사리포트_MUB266.md) | 요약형 기본 감사 리포트(TL;DR 8대 지표 스코어카드, 실측 물증 요약, 6문 6답 FAQ 및 10초 재현 명령어) |
 
 ## 2. 검증 산출물 (proofs/)
 

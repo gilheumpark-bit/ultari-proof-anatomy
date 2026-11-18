@@ -4,7 +4,7 @@
 - Verification Toolchain: Lean 4 v4.29.0-rc8 / Python 3.14 (SymPy symbolic engine & PyTorch FP64 spectral checks)
 - Artifact Checksums (SHA-256): [ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean) (cab492b22b85...) | [ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) (2f871a49e16d...) | [verify_symbolic_ns376.py](../proofs/verify_symbolic_ns376.py) (2f39eefded4b...)
 - Verification Method: 45 independent Lean 4 kinematic/forensic theorems in `proofs/` (0 sorry, 0 axiom, 184 / 184 hypothesis mutations killed) + 48 unimported-module reassembly theorems in the companion reassembly package (0 sorry, 150 / 150 mutations killed) = 93 combined theorems (334 / 334 mutations killed) & deterministic Python verification script
-- OPFF Formal Verdict: Gate 1: FAIL · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: FAIL (HOLD upon reassembly) $\implies$ OPFF TIER F (Hard Reject / Non-Conforming Artifact)
+- 5-Gate Audit Verdict: Gate 1: FAIL · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: FAIL (HOLD upon reassembly) $\implies$ TIER F (Hard Reject / Non-Conforming Artifact)
 
 
 

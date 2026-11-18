@@ -12,8 +12,8 @@
 | Tier 2 | [en/02_Intermediate_Math_and_Code_Guide.md](en/02_Intermediate_Math_and_Code_Guide.md) | [ko/02_중급자용_수학및코드가이드.md](ko/02_중급자용_수학및코드가이드.md) | 제2~8절 수식 파이프라인, 75개 정리 매핑(thm_01–thm_75), 기호 검증기 해설 |
 | Tier 3 | [en/03_Expert_Forensic_and_Mathematical_Physics_Report.md](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | [ko/03_전문가용_학술및수리물리보고서.md](ko/03_전문가용_학술및수리물리보고서.md) | 981개 파일 층서학(473개 활성 vs 508개 미도달 + 7개 ZetaFive + 14개 타오 팀 PrimeNumberTheoremAnd 패치 외부 네임스페이스 배치), 58/58 oai_ref/ TeX/Lean/patch #L 라인 인용(references.bib 포함 59개), 13개 중복 선언, 10개 가설·필터 결함 + ((n N)!)^2 >= 1 방기 괴리 수리, 28/28 .bib 인용 층서학 감사 |
 | Tier 4 | [en/04_Automated_Verification_and_Parser_Spec.md](en/04_Automated_Verification_and_Parser_Spec.md) | [ko/04_자동검증및파서용_명세서.md](ko/04_자동검증및파서용_명세서.md) | 암호학적 SHA-256 체크섬 대조표 및 원클릭 재현 명령 |
-| Tier 5 | [en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md](en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md) | [ko/05_OPFF_상세형_포렌식심사보고서_PR80.md](ko/05_OPFF_상세형_포렌식심사보고서_PR80.md) | OPFF 5대 관문(제0부~제7부) 전수 감사(PR #80) 및 OPFF TIER F 공식 판정서 |
-| Tier 6 | [en/06_OPFF_Basic_Audit_Report_PR80.md](en/06_OPFF_Basic_Audit_Report_PR80.md) | [ko/06_OPFF_기본형_감사리포트_PR80.md](ko/06_OPFF_기본형_감사리포트_PR80.md) | OPFF 기본형 요약 감사리포트(PR #80): TL;DR 8대 지표 요약표, 실측 물증, 6문 6답 FAQ 및 10초 재현 명령 |
+| Tier 5 | [en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md](en/05_OPFF_Detailed_Forensic_Referee_Report_PR80.md) | [ko/05_OPFF_상세형_포렌식심사보고서_PR80.md](ko/05_OPFF_상세형_포렌식심사보고서_PR80.md) | 5대 관문(제0부~제7부) 전수 감사(PR #80) 및 TIER F 심사 판정서 |
+| Tier 6 | [en/06_OPFF_Basic_Audit_Report_PR80.md](en/06_OPFF_Basic_Audit_Report_PR80.md) | [ko/06_OPFF_기본형_감사리포트_PR80.md](ko/06_OPFF_기본형_감사리포트_PR80.md) | 기본형 감사 요약 리포트(PR #80): TL;DR 8대 지표 요약표, 실측 물증, 6문 6답 FAQ 및 10초 재현 명령 |
 
 ## 2. 검증 산출물 (proofs/)
 

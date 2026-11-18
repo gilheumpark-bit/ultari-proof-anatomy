@@ -7,11 +7,11 @@
 | Target Paper / Preprint | Incompressible Box Transport and Finite Computation (preprints/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/, 15 section files in `build/*.tex` · 5,808 lines; 75 total .tex files across companion folders) |
 | Target Code Repository & Submitted PR | openai/math Family 376 (1,010 .lean files: 1,004 in lean/OAI/ + 6 in lean/ComparatorChallenges/) / Submitted PR: [mathcommunity/oai-math-revised#76](https://github.com/mathcommunity/oai-math-revised/pull/76) (head commit 7bc55b7) |
 | Companion Reasoning Logs / Patches | Reasoning trace PDFs not provided (0 files) / 6 comparator challenge entrypoints (SolenoidalSheetPrograms.lean, NavierStokesAlternating.lean, NavierStokesVelocity.lean, BalancedBoxRouting.lean, BalancedThreeStack.lean, ForcedNavierStokesComputation.lean) |
-| Toolchain & Compiler | Lean 4 v4.29.0-rc8 (OPFF verification archive standard) / Python 3.14 (SymPy symbolic engine & PyTorch FP64 spectral/autograd checks) |
+| Toolchain & Compiler | Lean 4 v4.29.0-rc8 (ultari-proof-anatomy verification archive standard) / Python 3.14 (SymPy symbolic engine & PyTorch FP64 spectral/autograd checks) |
 | Verification Artifact SHA-256 | • [ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean): `cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd`<br>• [ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean): `2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9`<br>• [verify_symbolic_ns376.py](../proofs/verify_symbolic_ns376.py): `2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c` |
 | Verification Method | Local kinematic/routing/forensic Lean 4 theorems 45 (0 sorry, 0 axiom, 184/184 hypothesis mutations killed in this package) + companion unimported-module reassembly theorems 48 (0 sorry, 150/150 mutations killed in the companion reassembly package) $\implies$ 93 combined independent theorems (334/334 mutations killed) |
-| Governing Charter | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5-Gate & Formal Tier Verdict | Gate 1 (Kernel/Spec): FAIL · Gate 2 (Paper-Code): FAIL · Gate 3 (Bib/Ethics): FAIL · Gate 4 (Provenance): FAIL · Gate 5 (Math Value): FAIL (HOLD upon reassembly) $\implies$ OPFF TIER F (Hard Reject / Non-Conforming Artifact) |
+| Governing Audit Rubric | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5-Gate & Tier Verdict | Gate 1 (Kernel/Spec): FAIL · Gate 2 (Paper-Code): FAIL · Gate 3 (Bib/Ethics): FAIL · Gate 4 (Provenance): FAIL · Gate 5 (Math Value): FAIL (HOLD upon reassembly) $\implies$ TIER F (Hard Reject / Non-Conforming Artifact) |
 
 
 
@@ -129,7 +129,7 @@
   2. Cancellation of identical forcing `(res_u - f) - (res_U - f) = res_u - res_U` and Grönwall $L^2$ uniqueness for $w = u - U$ (BalancedTransport/Comparison.lean, Theorems 21–26).
   3. Positivity detection of the 2+1D Gaussian heat-kernel Duhamel integral (VelocityDetection/MildScalar.lean, Theorems 27–31).
 
-### 6.2 OPFF Independent Lean 4 Verification & Companion Reassembly of the 650 Unimported Modules (45 Local + 48 Companion = 93 Combined Theorems, 334/334 Mutations Killed)
+### 6.2 Independent Lean 4 Verification & Companion Reassembly of the 650 Unimported Modules (45 Local + 48 Companion = 93 Combined Theorems, 334/334 Mutations Killed)
 
 1. Kinematic, Routing, Uniqueness & Forensic Verification (45 local theorems in `006/proofs/`, 184/184 mutations killed):
    - Formalizes the tautological force inversion identity, shear-sheet zero advection, `_hcomputable` non-reference, 1,010-file stratigraphy, and 5 repair specifications (`T33_repair1`–`T37_repair5`) across [ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean) and [ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean).
@@ -138,7 +138,7 @@
 
 
 
-## Part 7. Standard-Bound Verdict & Formal Conclusion (OPFF Verdict)
+## Part 7. Standard-Bound Verdict & Formal Conclusion (Standard-Bound Verdict)
 
 ### 7.1 International Standards & COPE Non-Conformance Matrix
 
@@ -192,10 +192,10 @@ lean proofs/ns376_gronwall_uniqueness_and_repairs.lean
 
 
 
-### 7.5 Formal OPFF Referee Verdict Box
+### 7.5 Referee Verdict Summary
 
-- Formal Verdict: OPFF TIER F (Hard Reject / Non-Conforming Artifact, original submission) / PR #76 Bibliographic & Forensic Audit Pending Merge
+- Formal Verdict: TIER F (Hard Reject / Non-Conforming Artifact, original submission) / PR #76 Bibliographic & Forensic Audit Pending Merge
 - 
-- While the active repository contains valid sub-proofs for affine curl-potential box routing (BoxTransport/Flow.lean), Grönwall $L^2$ uniqueness (Comparison.lean), and 2+1D Gaussian heat-kernel positivity (MildScalar.lean), the original OpenAI #376 (Incompressible Box Transport and Finite Computation) submission is assigned OPFF TIER F (Hard Reject / Non-Conforming Artifact) under the OPFF 5-Gate rubric due to: (1) nonlinear-term zero degeneration (`advection = 0`, `SheetFlows/SheetProgram.lean:28`) and zero-pressure ($p=0$) tautological force inversion (BoxCoding.lean, CP-02), (2) an unresolved sorry at NavierStokesVelocity.lean:454 and unreferenced `_hcomputable` binder at MainResult.lean:51 (CP-01, CP-06), (3) 650 / 1,004 (64.7%, 73,367 lines) unreachable module strata disconnected from the six challenge entrypoints (CP-05), and (4) 0 literature citations across 11/15 technical sections (4,630 / 5,808 lines, 79.7%) alongside 9/22 (40.9%) unlinked .bib entries (CP-03).
+- While the active repository contains valid sub-proofs for affine curl-potential box routing (BoxTransport/Flow.lean), Grönwall $L^2$ uniqueness (Comparison.lean), and 2+1D Gaussian heat-kernel positivity (MildScalar.lean), the original OpenAI #376 (Incompressible Box Transport and Finite Computation) submission is assigned TIER F (Hard Reject / Non-Conforming Artifact) under the 5-Gate Audit Rubric (`AUDIT_CHARTER`) due to: (1) nonlinear-term zero degeneration (`advection = 0`, `SheetFlows/SheetProgram.lean:28`) and zero-pressure ($p=0$) tautological force inversion (BoxCoding.lean, CP-02), (2) an unresolved sorry at NavierStokesVelocity.lean:454 and unreferenced `_hcomputable` binder at MainResult.lean:51 (CP-01, CP-06), (3) 650 / 1,004 (64.7%, 73,367 lines) unreachable module strata disconnected from the six challenge entrypoints (CP-05), and (4) 0 literature citations across 11/15 technical sections (4,630 / 5,808 lines, 79.7%) alongside 9/22 (40.9%) unlinked .bib entries (CP-03).
 - 
 - Submitted [PR #76](https://github.com/mathcommunity/oai-math-revised/pull/76) (mathcommunity/oai-math-revised) restores the 9 unlinked .bib keys and 14 missing primary foundational citations at their exact mathematical call sites and records the formal verification and stratigraphy audit in NOTES.md.

@@ -11,7 +11,7 @@ lean proofs/ostmann_twin_engines_and_supply_contraction.lean && \
 # 2. Deterministic Symbolic (SymPy) Verification
 python3 proofs/verify_symbolic_ostmann.py
 
-# 3. Full OPFF Proof Anatomy Gate (SHA-256 + Mutation Tests + Line Links + Zero-Hint Check)
+# 3. Full Proof Anatomy Verification Gate (SHA-256 + Mutation Tests + Line Links + Zero-Hint Check)
 python3 ../../tools/verify_all.py --root .
 ```
 

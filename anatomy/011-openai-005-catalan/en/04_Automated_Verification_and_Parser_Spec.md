@@ -32,6 +32,6 @@ lean proofs/catalan_real_place_energy_and_contradiction.lean
 # 3. Reproduce symbolic/numerical solver output
 python3 -B proofs/verify_symbolic_catalan005.py
 
-# 4. Run full OPFF verification gate (432/432 mutations + Elab MetaM DoF 51/75 + nonlin 15 + oai_ref 58/58 100% [59 total with references.bib])
+# 4. Run full automated verification gate (432/432 mutations + Elab MetaM DoF 51/75 + nonlin 15 + oai_ref 58/58 100% [59 total with references.bib])
 python3 -B ../../tools/verify_all.py --root .
 ```

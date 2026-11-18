@@ -10,12 +10,12 @@
 | 툴체인 및 컴파일러 | Lean 4 v4.29.0-rc8 (검증 아카이브 표준) 대 피감 원본 v4.34.1 / Python 3.14 (SymPy 기호 연산기) |
 | 검증 산출물 SHA-256 | • [catalan_rows_two_adic_and_odd_primes.lean](../proofs/catalan_rows_two_adic_and_odd_primes.lean): `194cfca5ed0b19bab3582fc453906b4904d46b5a5a3818813082fe9be590b918`<br>• [catalan_palindromic_frobenius_and_modular.lean](../proofs/catalan_palindromic_frobenius_and_modular.lean): `c4d28ebdd6a9102acd0496b7467a817a60d98bc41898093ca5b3114c24930354`<br>• [catalan_real_place_energy_and_contradiction.lean](../proofs/catalan_real_place_energy_and_contradiction.lean): `77b4a4c45c9daecb1764434bd1e20741a6cc40a112fb59eb661fab2ad2bb2432`<br>• [verify_symbolic_catalan005.py](../proofs/verify_symbolic_catalan005.py): `b555a159da0e934d8c9a3673094ee61acbed535406db50dedcb652ed02958aa0` |
 | 검증 방식 | 독립 스탠드얼론 Lean 4 정리 75개 + def 3개 (1,336줄, 0 sorry, 0 axiom, 전칭 가설 돌연변이 사살 432 / 432건 = 100%) 및 결정론적 SymPy 재현 스크립트 |
-| 준거 감사 헌장 | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5대 관문 및 공식 등급 판정 | Gate 1 (수리·커널): FAIL (CP-12 외부 네임스페이스 무귀속 배치) · Gate 2 (원고-코드): FAIL · Gate 3 (서지·윤리): FAIL · Gate 4 (공정·개입): FAIL · Gate 5 (수리 가치): PASS $\implies$ OPFF TIER F (업스트림 고지문 공백 치환·외부 네임스페이스 무귀속 배치·78.3% 진입점 미도달 모듈 층위에 따른 기준 미충족 기각 / Hard Reject / Non-Conforming Artifact) |
+| 적용 감사 규격 | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5대 관문 및 등급 판정 | Gate 1 (수리·커널): FAIL (CP-12 외부 네임스페이스 무귀속 배치) · Gate 2 (원고-코드): FAIL · Gate 3 (서지·윤리): FAIL · Gate 4 (공정·개입): FAIL · Gate 5 (수리 가치): PASS $\implies$ TIER F (업스트림 고지문 공백 치환·외부 네임스페이스 무귀속 배치·78.3% 진입점 미도달 모듈 층위에 따른 기준 미충족 기각 / Hard Reject / Non-Conforming Artifact) |
 
 ### 0.1 8대 핵심 지표 요약 스코어카드
 
-| # | 포렌식 감사 지표 | 원본 주장 또는 외형 (Surface Claim) | 계측된 물리적 수치 (Measured Reality) | OPFF 체크포인트 및 판정 |
+| # | 포렌식 감사 지표 | 원본 주장 또는 외형 (Surface Claim) | 계측된 물리적 수치 (Measured Reality) | 규격 체크포인트 및 판정 |
 | :---: | :--- | :--- | :--- | :---: |
 | 1 | 저장소 활성 증명 도달률 (Active Proof Cone) | 981개 .lean 파일 · 573,816줄 | 활성 473 / 981개 (48.2%, 124,449줄 = 21.7%) 대 미도달 508 / 981개 (51.8%, 449,367줄 = 78.3%) | CP-05 FAIL |
 | 2 | 루트 진입점(Main.lean) 전파율 | 29개 import 구문 (30줄, 정리 0개) | 활성 전파 1 / 29개 (Results.Catalan, 3.4%) 대 미전파 루트 임포트 28 / 29개 (96.6%) | CP-05 FAIL |
@@ -24,13 +24,13 @@
 | 5 | 외부 패키지 패치(PrimeNumberTheoremAnd) | lean/patches/PrimeNumberTheoremAnd-lean4341.patch (39,904줄) | PrimeNumberTheoremAnd/IEANTN/Mertens(oai_ref 미수록, @@ -284,23 +284,23 @@, 발췌 L228–L284) 원저자 고지문 17행을 동일 행 수의 공백(0x0A $\times 17$)으로 치환 + PrimeNumberTheoremAnd/ 하위에 자체 파일 46개(+33,333줄) 무귀속 배치 | CP-03 · CP-12 FAIL |
 | 6 | 원고 장절별 인용 밀도 및 선행 문헌 귀속 | 전체 .tex 3,001줄 내 `\cite` 37회 (references.bib 28개 키) | 서론·결론 303줄에 30/37회(81.1%, 9.90회/100줄) 대 본문 2,698줄에 7/37회(18.9%, 0.26회/100줄 = 38.1 : 1); PrimeNumberTheoremAnd 및 1차 고전 문헌 12건 미수록 | CP-09 · CP-10 FAIL |
 | 7 | 활성 코드 내 가설·네임스페이스 무결성 | 0 sorry, 0 axiom (커널 타입체크 통과) | 더미 바인딩(have _ := hlo) 1건, 콜론 뒤 필터 배치 1건, 미사용 `_h*` 바인더 8건, 동일 네임스페이스 중복 private theorem 13건 | CP-01 · CP-06 WARN |
-| 8 | 아델-아르키메데스 수리 코어 유효성 | 카탈랑 상수의 무리수성 ($G \notin \mathbb{Q}$) | 유한 자리 지수 > -2.29084 대 실수 자리 지수 < -2.290939875 < -2.2909 모순 완결; OPFF 독립 정리 75개(432/432 변이 사살)로 1,336줄 재증명 | Gate 5 PASS |
+| 8 | 아델-아르키메데스 수리 코어 유효성 | 카탈랑 상수의 무리수성 ($G \notin \mathbb{Q}$) | 유한 자리 지수 > -2.29084 대 실수 자리 지수 < -2.290939875 < -2.2909 모순 완결; 독립 정리 75개(432/432 변이 사살)로 1,336줄 재증명 | Gate 5 PASS |
 
 ### 0.2 3단계 신호등 판정 요약표 (Three-Tier Traffic-Light Scope Summary)
 
-- (수학적 유효성 공인) 아델-아르키메데스 부등식 압착 코어 (124,449줄, Gate 5: PASS): 테일러 접촉 차수 $L=59N$에서의 $\zeta(2)$ 상쇄, $2$-진 완전제곱 $-\frac{2809}{4608}\log 2$, 쿠머 단일 올림수 여과 및 8구간 홀수 소수 적분 $\frac{8609}{2}$(> -2.29084), 회문 프로베니우스 블록 분해($\det U = 2^{p(p-1)/2}$)와 $\operatorname{ZMod} 101$ 우역행렬 인증서($\det \equiv 27, 50, 74 \not\equiv 0$), 실수 자리 2엽 블라슈케-코시 등각 에너지 및 50점 데카르트 브래킷 상한(< -2.290939875 < -2.2909)을 결합한 $G \notin \mathbb{Q}$ 증명은 수학적으로 유효하며 독립 Lean 4 정리 75개(0 sorry, 432/432 변이 사살)로 교차 검증됨.
+- (수학적 유효성 확인) 아델-아르키메데스 부등식 압착 코어 (124,449줄, Gate 5: PASS): 테일러 접촉 차수 $L=59N$에서의 $\zeta(2)$ 상쇄, $2$-진 완전제곱 $-\frac{2809}{4608}\log 2$, 쿠머 단일 올림수 여과 및 8구간 홀수 소수 적분 $\frac{8609}{2}$(> -2.29084), 회문 프로베니우스 블록 분해($\det U = 2^{p(p-1)/2}$)와 $\operatorname{ZMod} 101$ 우역행렬 인증서($\det \equiv 27, 50, 74 \not\equiv 0$), 실수 자리 2엽 블라슈케-코시 등각 에너지 및 50점 데카르트 브래킷 상한(< -2.290939875 < -2.2909)을 결합한 $G \notin \mathbb{Q}$ 증명은 수학적으로 유효하며 독립 Lean 4 정리 75개(0 sorry, 432/432 변이 사살)로 교차 검증됨.
 - (원고-코드 불일치 및 가설 결함): 원고 Table 1에 대응하는 376,998줄 법 101($\mathbb{F}_{101}$) 가우스 소거 트레이스(`FixedGaussian*` 147개 파일)는 활성 증명 콘에서 제외되어 있으며(활성 코드 `FixedDeterminantsNonzero.lean`은 L494, L504, L514의 64자리 정수 상수 `S_scale`로 분모 소거 후 $\operatorname{ZMod} 101$ 우역행렬 곱셈을 수행), `RealDeterminantUpper.lean:27`에 정의된 $(n!)^2$ 분모는 L39-50에서 `1 <= ((n N).factorial : ℝ)^2`으로 완화됨. 또한 활성 콘 내부에 더미 바인딩 1건(have _ := hlo), 콜론 뒤 필터 1건, 미사용 `_h*` 바인더 8건, 중복 선언 13건이 존재함.
-- (국제 출판·아티팩트 규격 미충족): 업스트림 PrimeNumberTheoremAnd/IEANTN/Mertens(oai_ref 미수록, @@ -284,23 +284,23 @@)의 원저자 고지문 17행을 동일 행 수의 개행 공백(0x0A $\times 17$)으로 치환하고 PrimeNumberTheoremAnd/ 네임스페이스 하위에 자체 파일 46개(+33,333줄)를 무귀속 배치한 패치 구조(CP-03, CP-12), 전체 코드의 78.3%(449,367줄)에 달하는 진입점 미도달 모듈 층위와 Main.lean의 28/29(96.6%) 미전파 루트 임포트(CP-05), 그리고 PrimeNumberTheoremAnd 및 1차 문헌 12건의 서지 누락(CP-09, CP-10)으로 인해 원본 아티팩트는 OPFF TIER F로 판정됨.
+- (국제 출판·아티팩트 규격 미충족): 업스트림 PrimeNumberTheoremAnd/IEANTN/Mertens(oai_ref 미수록, @@ -284,23 +284,23 @@)의 원저자 고지문 17행을 동일 행 수의 개행 공백(0x0A $\times 17$)으로 치환하고 PrimeNumberTheoremAnd/ 네임스페이스 하위에 자체 파일 46개(+33,333줄)를 무귀속 배치한 패치 구조(CP-03, CP-12), 전체 코드의 78.3%(449,367줄)에 달하는 진입점 미도달 모듈 층위와 Main.lean의 28/29(96.6%) 미전파 루트 임포트(CP-05), 그리고 PrimeNumberTheoremAnd 및 1차 문헌 12건의 서지 누락(CP-09, CP-10)으로 인해 원본 아티팩트는 TIER F로 판정됨.
 
 
 
@@ -42,7 +42,7 @@
 | :--- | :--- | :---: | :---: | :---: | :---: |
 | 서론 및 결론 (3개 파일) | build/main.tex(44줄, 0회)·introduction.tex(208줄, 26회)·conclusion.tex(51줄, 4회) | 303줄 (10.1%) | 30회 (81.1%) | 9.90회 | 서두·결말 인용 집중 |
 | 기술 증명 본문 (§2~§7) | foundations.tex, odd-primes.tex, real-place.tex 등 본문 | 2,698줄 (89.9%) | 7회 (18.9%) | 0.26회 | 기술 본문 귀속 결손 |
-| 합계 | 전체 .tex (references.bib 28개 키) | 3,001줄 (100%) | 37회 (100%) | 1.23회 | 인용 밀도 비율 38.1 : 1 |
+| 합계 | 전체 .tex (references.bib 28개 키; 비의존 `Sun2026` `[math.GM]` 1건 포함) | 3,001줄 (100%) | 37회 (100%) | 1.23회 | 인용 밀도 비율 38.1 : 1 |
 
 ### 1.2 선행 라이브러리 귀속 결손(Attribution Deficit) 및 1차 문헌 복원 매핑
 
@@ -125,14 +125,14 @@
 
 ## 제6부. 유효 증명 코어(Gate 5: PASS) 공인, 독립 재검증 및 대안 수리 명세 (Constructive Verification & Repair)
 
-### 6.1 컴퓨터 보조 증명 활성 코어(Active Proof Core, 124,449줄)의 수학적 유효성 공인
+### 6.1 컴퓨터 보조 증명 활성 코어(Active Proof Core, 124,449줄)의 수학적 유효성 확인
 
-- 패치 배치 및 미도달 모듈 층위와 독립적으로, 실제 활성 증명 콘(473개 파일, 124,449줄)이 수행하는 아델-아르키메데스 부등식 압착(Adelico-Archimedean Squeeze) 수리 코어는 수학적으로 완결되어 카탈랑 상수의 무리수성($G \notin \mathbb{Q}$)을 유효하게 증명함(Gate 5: PASS)을 공인함:
+- 패치 배치 및 미도달 모듈 층위와 독립적으로, 실제 활성 증명 콘(473개 파일, 124,449줄)이 수행하는 아델-아르키메데스 부등식 압착(Adelico-Archimedean Squeeze) 수리 코어는 수학적으로 완결되어 카탈랑 상수의 무리수성($G \notin \mathbb{Q}$)을 유효하게 증명함(Gate 5: PASS)을 확인함:
   1. 유한 자리($2$-진 및 홀수 소수) 하한: 테일러 접촉 차수 $L=59N$에서의 $\zeta(2)$ 상쇄, $2$-진 완전제곱 계수 $-\frac{2809}{4608}\log 2$, 쿠머 단일 올림수 여과 및 8구간 홀수 소수 손실 적분 $\frac{8609}{2}$을 결합해 유한 자리 지수 하한 > -2.29084 달성 (Theorems 1–25).
   2. 회문 프로베니우스 분해 및 법 101 비소멸 인증서: 회문 기저 전환 행렬식 $\det U = 2^{p(p-1)/2}$과 $\operatorname{ZMod} 101$ 우역행렬 곱셈($\det \equiv 27, 50, 74 \not\equiv 0 \pmod{101}$)으로 비영 유리수 행렬식 보장 (Theorems 26–50).
   3. 실수 자리 2엽 에너지 상한 및 유리성 모순: 블라슈케-코시 등각 접합과 50점 데카르트 부호 변화 브래킷으로 실수 자리 지수 상한 < -2.290939875 < -2.2909를 확립하여, 곱 공식($-2.29084 < -2.2909$ 모순)으로부터 $G \notin \mathbb{Q}$ 도출 (Theorems 51–75).
 
-### 6.2 OPFF 독립 Lean 4 재검증 및 수리 명세 (75개 정리, 432/432 변이 사살)
+### 6.2 독립 Lean 4 재검증 및 수리 명세 (75개 정리, 432/432 변이 사살)
 
 1. 3개 독립 .lean 파일(75개 정리 + def 3개, 0 sorry, 0 axiom, 432/432 변이 사살):
    - 573,829줄의 원본 코퍼스를 1,336줄의 스탠드얼론 Lean 4 정본 정리 75개로 재구축하고, have _ := hlo 더미 바인딩 수리본([thm_13](../proofs/catalan_rows_two_adic_and_odd_primes.lean#L237))과 콜론 앞 필터 교정본([thm_45](../proofs/catalan_palindromic_frobenius_and_modular.lean#L368))을 직접 증명함.
@@ -154,7 +154,7 @@
 
 
 
-## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (OPFF Standard-Bound Verdict)
+## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (Standard-Bound Verdict)
 
 ### 7.1 출판윤리위원회(COPE) 및 5대 국제 학술 표준 대비 불부합 대조표
 
@@ -176,8 +176,8 @@
 
 ### 7.3 예상 반론 및 팩트 선제 차단 Q&A (Pre-bunking FAQ, 6문 6답)
 
-- Q1. "Results/Catalan.lean이 0 sorry, 0 axiom으로 Lean 4 커널을 통과했는데 왜 OPFF TIER F인가?"
-  - A1. OPFF 헌장은 수학적 유효성(Gate 5)과 아티팩트·서지·패치 무결성(Gate 1~4)을 분리 심사합니다. 활성 수리 코어는 Gate 5: PASS를 받았으나, 외부 라이브러리(PrimeNumberTheoremAnd) 네임스페이스 하위에 46개 파일을 무귀속 배치하고 원저자 고지문 17행을 공백 치환한 패치(Gate 1·3·4 FAIL) 및 78.3% 미도달 모듈·원고 Table 1 불일치(Gate 2 FAIL)는 국제 출판·아티팩트 규격(COPE, ACM v1.1)의 Hard Reject 요건에 해당합니다.
+- Q1. "Results/Catalan.lean이 0 sorry, 0 axiom으로 Lean 4 커널을 통과했는데 왜 TIER F인가?"
+  - A1. 5대 관문 감사 규격은 수학적 유효성(Gate 5)과 아티팩트·서지·패치 무결성(Gate 1~4)을 분리 심사합니다. 활성 수리 코어는 Gate 5: PASS를 받았으나, 외부 라이브러리(PrimeNumberTheoremAnd) 네임스페이스 하위에 46개 파일을 무귀속 배치하고 원저자 고지문 17행을 공백 치환한 패치(Gate 1·3·4 FAIL) 및 78.3% 미도달 모듈·원고 Table 1 불일치(Gate 2 FAIL)는 국제 출판·아티팩트 규격(COPE, ACM v1.1)의 Hard Reject 요건에 해당합니다.
 - Q2. "376,998줄의 가우스 소거 코드(`FixedGaussian*`)가 사용되지 않았다면 비소멸성 증명에 구멍이 뚫린 것 아닌가?"
   - A2. 아닙니다. 정수 행렬 $M \in \mathbb{Z}^{48 \times 48}$의 행렬식이 소수 $p = 101$을 법으로 하여 $\det(M \bmod 101) \equiv 27, 50, 74 \not\equiv 0 \pmod{101}$이면 정수 위에서도 $\det M \neq 0$이 즉시 성립합니다([thm_41](../proofs/catalan_palindromic_frobenius_and_modular.lean#L290)). 즉 수학적으로는 523줄의 $\operatorname{ZMod} 101$ 우역행렬 증명이 훨씬 간결하고 완전하며, 문제는 수학적 구멍이 아니라 폐기된 376,998줄의 구세대 법 101 가우스 소거 트레이스 코드를 저장소에 남겨두고 원고 Table 1에 마치 활성 증명인 것처럼 수록한 원고-아티팩트 불일치입니다(64자리 정수 `S_scale`은 `FixedDeterminantsNonzero.lean:494,504,514`의 분모 소거용 스케일링 상수임).
 - Q3. "원고 Eq. (5.15)와 달리 코드(RealDeterminantUpper.lean:39-50)가 $(n!)^2$ 분모를 1로 완화했다면 실수 자리 상한 부등식이 깨지지 않는가?"
@@ -202,8 +202,8 @@ lean proofs/catalan_real_place_energy_and_contradiction.lean && \
 sed -n '228,284p' proofs/oai_ref/patches/PrimeNumberTheoremAnd-lean4341.patch
 ```
 
-### 7.5 최종 심사 판정문 (Formal OPFF Referee Verdict Box)
+### 7.5 최종 심사 판정문 (Referee Verdict Summary)
 
-- 최종 공식 판정: OPFF TIER F (Hard Reject / Non-Conforming Artifact, 원본 패치·아티팩트 기준) / PR #80 서지 복원·포렌식 감사 병합 대기
-- OpenAI #005(Catalan's Constant Is Irrational)의 활성 수리 코어(473개 파일, 124,449줄: $\operatorname{ZMod} 101$ 우역행렬 인증서 및 아델-아르키메데스 부등식 압착)는 카탈랑 상수의 무리수성($G \notin \mathbb{Q}$)을 수학적으로 유효하게 증명하여 Gate 5 (수리 가치): PASS를 충족하나, 제출된 원고와 저장소 패키징은 (1) PrimeNumberTheoremAnd/IEANTN/Mertens(oai_ref 미수록, @@ -284,23 +284,23 @@)의 원저자 고지문 17행을 동일 행 수의 공백(0x0A $\times 17$)으로 치환하고 PrimeNumberTheoremAnd/ 네임스페이스 하위에 46개 파일(+33,333줄)을 무귀속 배치한 패치 구조(CP-03, CP-12), (2) 전체 코드의 449,367 / 573,816줄(78.3%, 508 / 981개 파일)이 진입점 미도달 모듈 층위이고 Main.lean 루트 임포트의 28 / 29개(96.6%)가 미전파 임포트인 아티팩트 불일치(CP-05), (3) 미도달 상태인 376,998줄 법 101 가우스 소거 피벗을 원고 Table 1에 수록하고 코드에서 1 <= (n!)^2으로 완화한 분모를 명시적으로 반영했다고 기술한 원고-아티팩트 불일치(CP-04, CP-07)로 인해 OPFF 5대 관문 심사에서 OPFF TIER F (Hard Reject / Non-Conforming Artifact)로 판정한다.
+- 최종 판정: TIER F (Hard Reject / Non-Conforming Artifact, 원본 패치·아티팩트 기준) / PR #80 서지 복원·포렌식 감사 병합 대기
+- OpenAI #005(Catalan's Constant Is Irrational)의 활성 수리 코어(473개 파일, 124,449줄: $\operatorname{ZMod} 101$ 우역행렬 인증서 및 아델-아르키메데스 부등식 압착)는 카탈랑 상수의 무리수성($G \notin \mathbb{Q}$)을 수학적으로 유효하게 증명하여 Gate 5 (수리 가치): PASS를 충족하나, 제출된 원고와 저장소 패키징은 (1) PrimeNumberTheoremAnd/IEANTN/Mertens(oai_ref 미수록, @@ -284,23 +284,23 @@)의 원저자 고지문 17행을 동일 행 수의 공백(0x0A $\times 17$)으로 치환하고 PrimeNumberTheoremAnd/ 네임스페이스 하위에 46개 파일(+33,333줄)을 무귀속 배치한 패치 구조(CP-03, CP-12), (2) 전체 코드의 449,367 / 573,816줄(78.3%, 508 / 981개 파일)이 진입점 미도달 모듈 층위이고 Main.lean 루트 임포트의 28 / 29개(96.6%)가 미전파 임포트인 아티팩트 불일치(CP-05), (3) 미도달 상태인 376,998줄 법 101 가우스 소거 피벗을 원고 Table 1에 수록하고 코드에서 1 <= (n!)^2으로 완화한 분모를 명시적으로 반영했다고 기술한 원고-아티팩트 불일치(CP-04, CP-07)로 인해 5대 관문 감사에서 TIER F (Hard Reject / Non-Conforming Artifact)로 판정한다.
 - 아울러 mathcommunity/oai-math-revised에 제출된 [PR #80](https://github.com/mathcommunity/oai-math-revised/pull/80)은 원고 본문에서 누락된 PrimeNumberTheoremAnd 및 1차 고전 문헌 12건을 정확한 수식 위치에 복원하고, NOTES.md(oai_ref 미수록)에 위 패치 구조·고지문 치환·미도달 모듈 층위 감사 원장을 공식 기록하는 시정 기여이다.

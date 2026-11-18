@@ -11,8 +11,8 @@
 | 검증 산출물 (1·2) | • [ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean): `cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd`<br>• [ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean): `2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9` |
 | 검증 산출물 (3) | • [verify_symbolic_ns376.py](../proofs/verify_symbolic_ns376.py): `2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c` |
 | 검증 방식 | 운동학·라우팅·포렌식 Lean 4 정리 본 패키지 45개 (0 sorry, 0 axiom, 184/184 가설 변이 사살) + 동반 재조립 패키지 미연결 모듈 재조립 정리 48개 (0 sorry, 150/150 변이 사살) $\implies$ 합산 93개 독립 정리 (334/334 변이 사살) |
-| 준거 감사 헌장 | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5대 관문 및 공식 등급 판정 | Gate 1 (수리·커널): FAIL · Gate 2 (원고-코드): FAIL · Gate 3 (서지·윤리): FAIL · Gate 4 (공정·개입): FAIL · Gate 5 (수리 가치): FAIL (재조립 시 HOLD) $\implies$ OPFF TIER F (기준 미충족 기각 / Hard Reject / Non-Conforming Artifact) |
+| 적용 감사 규격 | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5대 관문 및 등급 판정 | Gate 1 (수리·커널): FAIL · Gate 2 (원고-코드): FAIL · Gate 3 (서지·윤리): FAIL · Gate 4 (공정·개입): FAIL · Gate 5 (수리 가치): FAIL (재조립 시 HOLD) $\implies$ TIER F (기준 미충족 기각 / Hard Reject / Non-Conforming Artifact) |
 
 
 
@@ -40,7 +40,7 @@
   4. 기술 본문 79.7% 무인용 및 .bib 40.9% 미연결 (CP-03): `build/*.tex` 15개 섹션(5,808줄) 중 11개 기술 증명 섹션(4,630줄, 79.7%)에서 선행 문헌 인용이 0건이며, references.bib 22개 키 중 9개(40.9%)가 본문 `\cite`에서 누락됨.
 * 공정 투명성 결손 (Provenance Deficit: CP-07):
   - 추론 로그 PDF가 0편으로 미제공됨. `docs/376.md:12,14,26`에서 영압력($p=0$), $f_0 + \nu f_1$, `SolenoidalSheetPrograms.lean` 제외 범위는 명시했으나, 비영 압력 모델(Solenoidal.lean, ForcedComputation/)이 활성 진입점에서 분리되고 영압력 외력 역산 및 선형 전단 시트 모델로 전환된 추론 경위는 문서화되지 않음.
-* 수학적 유효성 공인 및 재조립 복원 (Verified Valid Sub-Mechanisms):
+* 수학적 유효성 확인 및 재조립 복원 (Verified Valid Sub-Mechanisms):
   - 아핀 컬 퍼텐셜 $U = \nabla\times(\chi\Psi)$ 상자 라우팅(BoxTransport/Flow.lean), 동일 외력 상쇄 후 그론월 $L^2$ 에너지 유일성(BalancedTransport/Comparison.lean), 2+1차원 가우스 열핵 두하멜 적분 양수성(VelocityDetection/MildScalar.lean)의 3가지 보조 메커니즘은 수학적으로 유효하며, 동반 재조립 패키지에서 미도달 650개 모듈(ForcedComputation/Main.lean 및 Solenoidal.lean)을 재조립할 경우 비영 압력 $p = -\phi \neq 0$ 무발산 외력 모델 복원 및 차폐 그린 함수 노름 상한 $4.528 \times 10^7$배 압축이 성립함을 본 패키지 45개 정리(184/184 변이 사살) + 동반 재조립 패키지 48개 정리(150/150 변이 사살) = 합산 93개 독립 정리(334/334 변이 사살)로 검증함.
 
 
@@ -127,12 +127,12 @@
 
 ### 6.1 유효 수리 메커니즘 분리 공인 (Valid Mechanisms Verified)
 
-- 위 명세 불일치와 별개로, 저장소 내부의 다음 3가지 보조 수리 메커니즘은 수학적으로 유효하게 성립함을 확인하여 공인함:
+- 위 명세 불일치와 별개로, 저장소 내부의 다음 3가지 보조 수리 메커니즘은 수학적으로 유효하게 성립함을 확인하여 확인함:
   1. 아핀 컬 퍼텐셜 $U = \nabla\times(\chi\Psi)$를 이용한 부피보존 상자 라우팅 (BoxTransport/Flow.lean).
   2. 동일 외력 $f$를 공유하는 두 해의 차 $w = u - U$에 대한 외력 상쇄(`(res_u - f) - (res_U - f) = res_u - res_U`) 및 그론월(Grönwall) $L^2$ 에너지 유일성 (BalancedTransport/Comparison.lean, Theorems 21–26).
   3. 2+1차원 가우스 열핵 두하멜(Duhamel) 적분의 양수성 검출 (VelocityDetection/MildScalar.lean, Theorems 27–31).
 
-### 6.2 OPFF 독립 Lean 4 재검증 및 동반 재조립 패키지의 미도달 650개 모듈 재조립 (본 패키지 45개 + 동반 재조립 48개 = 합산 93개 정리, 334/334 변이 사살)
+### 6.2 독립 Lean 4 재검증 및 동반 재조립 패키지의 미도달 650개 모듈 재조립 (본 패키지 45개 + 동반 재조립 48개 = 합산 93개 정리, 334/334 변이 사살)
 
 1. 운동학·라우팅·포렌식 검증 (본 패키지 `006/proofs/` 45개 정리, 184/184 변이 사살):
    - 외력 역산 항등식, 전단 유동 선형화, `_hcomputable` 미참조, 1,010개 파일 층서학 및 5대 수리 조건(`T33_repair1`~`T37_repair5`: 유한차원 외력 공간 제한, 자율 무외력 분리, `_hcomputable` 오라클 실제 소비, 100% 도달성 가지치기)을 커널 검증함([ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean), [ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean)).
@@ -141,11 +141,11 @@
 
 
 
-## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (OPFF Standard-Bound Verdict)
+## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (Standard-Bound Verdict)
 
 ### 7.1 5대 국제 학술 표준 및 COPE 가이드라인 대비 불부합 대조표
 
-| 불부합 범주 | 준거 국제 규정 및 OPFF 코드 의미 | 본 사건(#376) 확정 좌표 및 수치 | 최종 판정 |
+| 불부합 범주 | 준거 국제 규정 및 규격 코드 | 본 사건(#376) 확정 좌표 및 수치 | 최종 판정 |
 | :--- | :--- | :--- | :---: |
 | 명세 정합성 미충족 및 미해소 스텁 (Gate 1) | IMU/AMS + Lean Kernel TCB<br>• CP-01: 미완성 증명 스텁(sorry) 잔존<br>• CP-02: 외력 역산 항등식화 및 비선형 항 영(0) 퇴화<br>• CP-06: 미사용 가설(`_hcomputable`) 선언 | 영압력($p=0$) 외력 역산 정의(BoxCoding.lean), `advection = 0` 퇴화(`SheetFlows/SheetProgram.lean:28`), `_hcomputable` 미참조(MainResult.lean:51), NavierStokesVelocity.lean:454 sorry 잔존 | 기준 미충족 |
 | 원고-아티팩트 불일치 및 미도달 층위 (Gate 2) | ACM Artifact Badging v1.1<br>• CP-04: 원고 주장과 코드 형식화 범위 불일치<br>• CP-05: 진입점 미도달 모듈 층위(Unreachable Module Strata)<br>• CP-10: 챌린지 명세 중복 | OAI/ 1,004개 모듈 중 650개(64.7%, 73,367줄) 진입점 미도달, 챌린지 38개 정의(51개 선언, 래퍼 7줄 차이) 중복, 48개 네임스페이스 병합 | 기준 미충족 |
@@ -160,7 +160,7 @@
 | 기여 층위 (Contribution Stratum) | 비중 (Share) | 실측 구성 내용 및 파일 좌표 | 검증 판정 |
 | :--- | :---: | :--- | :---: |
 | 1. 선행 인간 수리물리·계산이론 (Human Classical Theory) | 75% | 르레이-헬름홀츠 직교 분해(von Helmholtz 1858; Leray 1934), 그론월 에너지 부등식(Gronwall 1919), 국소 부피보존 확장(Krygin 1971), 2/3스택 만능 기계(Minsky 1961/1967), 칸토어 스택 인코딩(Siegelmann-Sontag 1995), 계산 가능 해석학(Pour-El-Richards 1989) 등 14대 고전 뼈대 | 인간 선행 이론 (11/15개 섹션에서 무인용 차용) |
-| 2. 유효 보조 형식화 코어 (Valid Formalized Sub-Mechanisms) | 25% | 아핀 컬 퍼텐셜 $U = \nabla\times(\chi\Psi)$ 라우팅(BoxTransport/Flow.lean), 동일 외력 차감 그론월 유일성(BalancedTransport/Comparison.lean), 2+1차원 열핵 두하멜 양수성(VelocityDetection/MildScalar.lean) 및 미연결 Solenoidal.lean 압력 복원 모듈 | 수학적·기계적 유효성 공인 (본 패키지 45개 + 동반 재조립 48개 정리) |
+| 2. 유효 보조 형식화 코어 (Valid Formalized Sub-Mechanisms) | 25% | 아핀 컬 퍼텐셜 $U = \nabla\times(\chi\Psi)$ 라우팅(BoxTransport/Flow.lean), 동일 외력 차감 그론월 유일성(BalancedTransport/Comparison.lean), 2+1차원 열핵 두하멜 양수성(VelocityDetection/MildScalar.lean) 및 미연결 Solenoidal.lean 압력 복원 모듈 | 수학적·기계적 유효성 확인 (본 패키지 45개 + 동반 재조립 48개 정리) |
 | 3. 단독 AI 비선형 유체역학 난제 돌파 (Autonomous AI Nonlinear Breakthrough) | 0% | 활성 챌린지 진입점에서 압력을 p = 0으로 고정하고 외력을 `f := res_U`로 역산(BoxCoding.lean)하거나 이류항을 `advection = 0`으로 소거(`SheetFlows/SheetProgram.lean:28`)하여, 비선형 3D 나비에-스토크스 고유 난제에 대한 단독 AI 돌파 기여도는 0%임 | CP-02 퇴화 및 650개(64.7%) 미도달 모듈 분리 |
 
 
@@ -172,7 +172,7 @@
 2. Q2. "외력 나비에-스토크스 방정식에서 외력 $f$를 사용하는 것은 표준적이지 않은가?"
    - A2. 물리적·수리적 강제 나비에-스토크스 문제는 고정되거나 유한차원 제어 공간에 속한 외력 $f$ 아래서 해 $u$의 동역학을 구하는 것입니다. 반면 BoxCoding.lean처럼 임의의 목표 궤적 $U$를 먼저 고른 뒤 사후적으로 $f := \mathrm{PDE\_residual}(U)$로 역산 정의하면, 유체역학과 무관한 임의의 매끄러운 시공간 궤적도 항상 항등식 `res_U - res_U = 0`으로 "해"가 됩니다([ns376_manufactured_force_arbitrary_trajectory_witness](../proofs/ns376_kinematic_routing_and_forensics.lean#L34)).
 3. Q3. "저장소 안에 비영 압력(p != 0) 모듈인 Solenoidal.lean과 ForcedComputation/이 존재하지 않는가?"
-   - A3. 존재하나, ForcedComputation/ 576개 파일 전량과 Solenoidal.lean을 포함한 650 / 1,004개 모듈(64.7%, 73,367줄)이 6개 `ComparatorChallenges/*.lean` 진입점 중 어느 곳에서도 임포트되지 않는 진입점 미도달 모듈 층위(Unreachable Module Strata, CP-05)로 남아 있습니다. 본 감사단의 동반 재조립 패키지는 해당 650개 미도달 모듈을 전수 재조립하여 비영 압력 $p = -\phi \neq 0$ 모델을 복원하고 그린 함수 상수를 $4.528 \times 10^7$배 압축했습니다.
+   - A3. 존재하나, ForcedComputation/ 576개 파일 전량과 Solenoidal.lean을 포함한 650 / 1,004개 모듈(64.7%, 73,367줄)이 6개 `ComparatorChallenges/*.lean` 진입점 중 어느 곳에서도 임포트되지 않는 진입점 미도달 모듈 층위(Unreachable Module Strata, CP-05)로 남아 있습니다. 동반 재조립 패키지는 해당 650개 미도달 모듈을 전수 재조립하여 비영 압력 $p = -\phi \neq 0$ 모델을 복원하고 그린 함수 상수를 $4.528 \times 10^7$배 압축했습니다.
 4. Q4. "VelocityDetection/MainResult.lean:51의 `_hcomputable : ComputableReal ν`는 왜 문제인가?"
    - A4. 원고는 계산 가능 점성 계수 $\nu > 0$ 가정을 핵심 전제로 내세우나, 실제 형식 증명(MainResult.lean:51)에서는 가설 이름을 언더스코어(`_hcomputable`)로 바인딩하고 증명 본문에서 단 한 번도 참조하지 않았습니다(CP-06). 즉 무리수·비계산 실수 $\nu$를 대입해도 동일한 증명 항이 그대로 성립합니다([ns376_vacuous_computable_viscosity_premise](../proofs/ns376_kinematic_routing_and_forensics.lean#L338)).
 5. Q5. "원고에 references.bib 파일(22개 엔트리)이 있는데 왜 귀속 결손(CP-03)인가?"
@@ -195,11 +195,11 @@ lean proofs/ns376_gronwall_uniqueness_and_repairs.lean
 
 
 
-### 7.5 최종 심사 판정문 (Formal OPFF Referee Verdict Box)
+### 7.5 최종 심사 판정문 (Referee Verdict Summary)
 
-- 최종 공식 판정: OPFF TIER F (Hard Reject / Non-Conforming Artifact, 원본 기준) / PR #76 서지·아티팩트 감사 병합 대기
+- 최종 판정: TIER F (Hard Reject / Non-Conforming Artifact, 원본 기준) / PR #76 서지·아티팩트 감사 병합 대기
 - 
-- OpenAI #376(Incompressible Box Transport and Finite Computation) 원본 제출물은 아핀 컬 퍼텐셜 라우팅(BoxTransport/Flow.lean), 그론월 $L^2$ 에너지 유일성(Comparison.lean), 2+1차원 가우스 열핵 양수성(MildScalar.lean)에서 유효한 보조 증명을 포함하고 있으나, 다음 4가지 규격 미충족 사유로 인해 OPFF 5대 관문 심사에서 OPFF TIER F (Hard Reject / Non-Conforming Artifact)로 판정한다:
+- OpenAI #376(Incompressible Box Transport and Finite Computation) 원본 제출물은 아핀 컬 퍼텐셜 라우팅(BoxTransport/Flow.lean), 그론월 $L^2$ 에너지 유일성(Comparison.lean), 2+1차원 가우스 열핵 양수성(MildScalar.lean)에서 유효한 보조 증명을 포함하고 있으나, 다음 4가지 규격 미충족 사유로 인해 5대 관문 감사에서 TIER F (Hard Reject / Non-Conforming Artifact)로 판정한다:
 - 1. 비선형 항 영(0) 퇴화 및 외력 역산 항등식화(CP-02): 비선형 이류항 소거(`advection = 0`, `SheetFlows/SheetProgram.lean:28`) 및 영압력($p=0$) 외력 역산 정의(BoxCoding.lean)를 통해 방정식을 대수적 항등식(abel)으로 환원함.
 - 2. 미해소 스텁 잔존 및 미사용 가설(CP-01, CP-06): 비교 챌린지 NavierStokesVelocity.lean:454 내 미해소 sorry가 존재하며 점성 계산 가능성 가설 `_hcomputable`(MainResult.lean:51)이 증명에서 참조되지 않음.
 - 3. 진입점 미도달 모듈 층위 및 명세 중복(CP-05, CP-10): 전체 1,004개 모듈 중 650개(64.7%, 73,367줄)가 6개 챌린지 진입점에서 임포트되지 않으며 챌린지 5·6번이 38개 정의(51개 선언 중 50개 보조 선언·주정리 동일, 래퍼 7줄 차이)를 공유함.

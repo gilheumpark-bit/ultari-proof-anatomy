@@ -4,7 +4,7 @@
 - 검증 환경: Lean 4 v4.29.0-rc8 (업스트림 v4.34.1 대조) / Python 3.14 (SymPy 기호 연산기)
 - 산출물 해시 (SHA-256): [ostmann_twin_engines_and_supply_contraction.lean](../proofs/ostmann_twin_engines_and_supply_contraction.lean) (edbc820be45e...) | [ostmann_tree_transfers_and_permutation_contradiction.lean](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) (529c59062f95...) | [ostmann_algebraic_engines_and_cauchy_determinant.lean](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean) (1681e0b1fbd2...) | [verify_symbolic_ostmann.py](../proofs/verify_symbolic_ostmann.py) (8f5c742ebfde...)
 - 검증 방식: 독립 Lean 4 정리 75개 + 재귀 def 3개 + structure 1개 (1,517줄, 0 sorry, 0 axiom, 393 / 393 전칭 가설 변이 사살 = 100%) 및 결정론적 SymPy 재현 스크립트
-- OPFF 공식 판정: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ OPFF TIER C (수학적 돌파 코어 유효 및 아티팩트 패키징·서지 규격 미충족)
+- 5대 관문 판정: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ TIER C (수학적 돌파 코어 유효 및 아티팩트 패키징·서지 규격 미충족)
 
 ## 0. 8대 핵심 지표 요약표
 
@@ -33,24 +33,24 @@
 - 14개 `Published*` 해석적 입력 전수 무결성 확인 (Gate 1: PASS): [InverseGoldbach.lean:13-21](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/InverseGoldbach.lean#L13-L21)에 임포트된 14개 `Published*` 모듈(1,514줄)과 양대 공급 사슬(엔진 A #026 모듈 42개, 엔진 B #021·#026 모듈 183개)을 전수 대조하여 명세 약화 0건, `publishedComplexZeroDensity`([ComplexDensityProof.lean:28](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/ZeroDensity/ComplexDensityProof.lean#L28))의 `actualCharacterZeros` 전단사 정합, `sorryAx` 0건을 확인했습니다.
 - 반례 임계치 16.08배 압축: 곱대칭군 이완 $(S_r)^m \to S_{rm}$ 제거, 성분 팩토리얼 상한 $\log a_i \le \log r \to a_c \le r/4+1$ 정밀화, $\kappa = 8/5 \to 33/20$ 복원을 결합해 최소 트리 깊이를 $k_{\min}: 7,041 \to 1,040$으로 줄이고 유효 반례 로그-로그 스케일을 $L_{\mathrm{eff}}: 4,115,904 \to 255,983$으로 16.08배 압축했습니다.
 
-### 1.4 수학적 돌파 유효성 공인 및 인간 · 고전 · AI 3층 기여도 분리
+### 1.4 수학적 돌파 유효성 확인 및 인간 · 고전 · AI 3층 기여도 분리
 - 오스트만 역 골드바흐 문제 (1950, Erdős #431) 최초 무조건부 해결 공인 (Gate 1 & Gate 5: PASS): 1단계(유한 생성원 중국인의 나머지 정리 합성수 구성, [FiniteCRT.lean](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/FiniteCRT.lean#L1)), 2단계(대체법 푸리에 공급 수축 $-11/125 < 0$), 3단계(이진 트리 주파수 예산 대 순열 감쇠 $2/5 - 3/4 = -7/20 < 0$ 및 [08-arithmetic.tex:407-497](../proofs/oai_ref/tex/sections/08-arithmetic.tex#L407-L497)의 분모 소거 $2\times 2$ 선형형식 소행렬식 판정·슈바르츠-지펠 근 상한)의 3단 증명은 수학적·기계적으로 완전 무결합니다.
 - 3층 기여도 분리: (1) 선행 인간 해석적 수론·가법 조합론 뼈대 60%, (2) AI 이진 트리 주파수-순열 결합 및 0 sorry 형식화 돌파 40% (Gate 1 & Gate 5 PASS), (3) 쌍둥이 중복 트리(7,335개 파일)·미도달 화석(381개 파일)·외부 Erdos970 패치(+47,394줄, NOTICE 누락·주석 2,253줄 공백화)·`formalization.yaml` 누락·제7/9장 무인용은 시정 대상입니다.
 
 ## 2. 예상 반론에 대한 사전 사실 확인 (FAQ)
 
 - Q1. "오스트만 역 골드바흐 문제(Erdős #431)가 미증명 가설 없이 실제로 해결된 것이 맞는가?"
-  - 사실 확인: 예. 엔진 A(`Complete.lean`)와 엔진 B(`Main.lean`) 모두 0 sorry, 0 커스텀 공리, 표준 Mathlib `Nat.Prime` 및 `DirichletCharacter.LFunction` 정의 위에서 컴파일되며, 본 감사단의 독립 정리 75개(393/393 가설 변이 사살)로 교차 검증되었습니다(Gate 1 & Gate 5: PASS).
-- Q2. "수학적 증명이 유효한데 왜 최종 등급이 OPFF TIER C인가?"
+  - 사실 확인: 예. 엔진 A(`Complete.lean`)와 엔진 B(`Main.lean`) 모두 0 sorry, 0 커스텀 공리, 표준 Mathlib `Nat.Prime` 및 `DirichletCharacter.LFunction` 정의 위에서 컴파일되며, 독립 정리 75개(393/393 가설 변이 사살)로 교차 검증되었습니다(Gate 1 & Gate 5: PASS).
+- Q2. "수학적 증명이 유효한데 왜 최종 등급이 TIER C인가?"
   - 사실 확인: 단일 폴더 안에 거의 겹치지 않는 두 개의 거대 증명 트리(3,165 + 4,175 - 5 = 7,335개 파일, 공유율 0.065%)와 미도달 화석 파일 381개(39,517줄)가 혼재되어 있고, 외부 Erdos970 패치 +47,394줄 내 `SiegelZeros/NOTICE.md` 누락 및 주석 2,253줄 공백화(`formalization.yaml` 내 #013 누락, `oai_ref/` 미수록)를 포함하며, 제7장(784줄)·제9장(386줄) 인용이 0회이고 #021·#026 외부 모듈 18개 임포트가 원고에 공시되지 않았기 때문입니다(Gate 2·3·4: FAIL).
 - Q3. "`Conclusion/Scales.lean`과 `SiegelBoundProof.lean`의 수식은 원고와 어떻게 대응하는가?"
   - 사실 확인: [Conclusion/Scales.lean:51-83](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Conclusion/Scales.lean#L51-L83)은 `sum_dyadic`과 `sum_dyadic_log`를 모두 `Finset.range k`(원고의 1 기반 대 0 기반 첨자) 위에서 k에 대한 수학적 귀납법(`induction k`)으로 증명하며 엔진 B의 `Bs = 200`, `BD = 322` 매개변수 패딩이 16.08배 여유분에 기여합니다. 또한 [QuadraticSplitSupply.lean:25-33](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Quadratic/QuadraticSplitSupply.lean#L25-L33)과 [SiegelBoundProof.lean:17,81](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/ZeroDensity/SiegelBoundProof.lean#L81)은 `¬ hnear`에서 `2/η = 8/ε = 1600`을 엄밀히 증명합니다.
 - Q4. "전체 파일 수 7,716개는 어떻게 산출된 것인가?"
   - 사실 확인: 포함-배제 원리에 따라 엔진 A(`Complete.lean` 콘) 3,165개 + 엔진 B(`Main.lean` 콘) 4,175개 - 공통 교집합 5개(`Defs.lean`, `Statement.lean`, `Endpoint.lean`, `FiniteCRT.lean`, `FiniteFactor.lean`) = 도달 가능 파일 7,335개에 미도달 화석 파일 381개를 합산($3,165 + 4,175 - 5 + 381 = 7,716$)한 정확한 실측치입니다([thm_01_ostmann_directory_inclusion_exclusion_partition](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L30-L48)).
 - Q5. "임계치 $L_{\mathrm{eff}}$의 16.08배 여유분이 정성적 무한성 정리에 영향을 주는가?"
-  - 사실 확인: 영향을 주지 않습니다. 오스트만 문제는 대칭차 $(A+B)\triangle\mathcal{P}$의 무한성을 묻는 점근적 정리이므로 임의의 유한 임계치 $L_{\mathrm{eff}}$만 확보되면 논리적으로 완결되며, 본 감사단의 16.08배 압축($4,115,904 \to 255,983$)은 전술 자동화 과정에서 발생한 상수 팽창을 정량화해 복원한 것입니다.
-- Q6. "OPFF TIER A로 승격되기 위한 수정 요건은 무엇인가?"
-  - 사실 확인: (1) 쌍둥이 중복 증명 트리를 단일화하고 미도달 화석 파일 381개(39,517줄)를 정리하며, (2) `Erdos970` 패치 내 누락된 `SiegelZeros/NOTICE.md` 및 2,253줄 공백 치환 주석을 복구하고 `formalization.yaml`(`oai_ref/` 미수록)에 #013을 등재하며, (3) 제4~9장 고전 문헌 인용 복원 및 #021·#026 교차 임포트 18건 공시를 추가하면 즉시 OPFF TIER A 요건을 충족합니다.
+  - 사실 확인: 영향을 주지 않습니다. 오스트만 문제는 대칭차 $(A+B)\triangle\mathcal{P}$의 무한성을 묻는 점근적 정리이므로 임의의 유한 임계치 $L_{\mathrm{eff}}$만 확보되면 논리적으로 완결되며, 독립 16.08배 압축($4,115,904 \to 255,983$)은 전술 자동화 과정에서 발생한 상수 팽창을 정량화해 복원한 것입니다.
+- Q6. "TIER A로 승격되기 위한 수정 요건은 무엇인가?"
+  - 사실 확인: (1) 쌍둥이 중복 증명 트리를 단일화하고 미도달 화석 파일 381개(39,517줄)를 정리하며, (2) `Erdos970` 패치 내 누락된 `SiegelZeros/NOTICE.md` 및 2,253줄 공백 치환 주석을 복구하고 `formalization.yaml`(`oai_ref/` 미수록)에 #013을 등재하며, (3) 제4~9장 고전 문헌 인용 복원 및 #021·#026 교차 임포트 18건 공시를 추가하면 즉시 TIER A 요건을 충족합니다.
 
 ## 3. 10초 재현 명령어
 

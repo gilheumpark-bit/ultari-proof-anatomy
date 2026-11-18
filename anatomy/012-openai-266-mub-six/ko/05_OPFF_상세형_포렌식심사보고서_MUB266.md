@@ -10,12 +10,12 @@
 | 툴체인 및 컴파일러 | Lean 4 v4.29.0-rc8 (leanprover/lean4:v4.29.0-rc8) 대 피감 원본 v4.34.1 / Python 3.14 (SymPy 기호 연산기) |
 | 검증 산출물 SHA-256 | • [mub6_hadamard_fourier_and_cubic_fibers.lean](../proofs/mub6_hadamard_fourier_and_cubic_fibers.lean): `d15df51beb425c543561b40f27bfd07a1a849267c04350a3b90d3d2c3187a270`<br>• [mub6_weiner_completion_and_gram_sos.lean](../proofs/mub6_weiner_completion_and_gram_sos.lean): `84fa18c465e5bc8884169398c79e4dc6b1282de61d44de9169bd680afc26cd58`<br>• [mub6_stratigraphy_and_binary64_audit.lean](../proofs/mub6_stratigraphy_and_binary64_audit.lean): `818cc8871bac65e8da608e98de8b3d0b015cb4fd55ed61ffdfbdac337f6bbcc8`<br>• [verify_symbolic_mub266.py](../proofs/verify_symbolic_mub266.py): `96ec2c66ba17292b922e818b12a7962568fb96fac17735ae9c678772142c0bd1` |
 | 검증 방식 | 독립 Lean 4 정리 75개 + def 5개 (1,249줄, 0 sorry, 0 axiom, 전칭 가설 돌연변이 사살 358 / 358건 = 100%, 구조적 정리 74 / 75건, 비선형·귀납 14건) 및 69개 업스트림 원문 실시간 파싱·기호 검증 스위트 |
-| 준거 감사 헌장 | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5대 관문 및 공식 등급 판정 | Gate 1 (수리·커널): PASS (프리프린트 2 범위 N(6)<=5 커널 검증 0 sorry) · Gate 2 (원고-코드): FAIL (프리프린트 1 N(6)=3 Lean 형식화 0줄·check_records.py 수식 재계산 0건·고아 Attainable 3 미연결·Main.lean 15/16 미전파 임포트) · Gate 3 (서지·윤리): FAIL (서두 60.6%·58.5% 인용 집중 및 1차 고전 문헌 5건 미수록) · Gate 4 (공정·개입): FAIL (추론 로그 0편, 9월 7일 미인증 실행본 사후 교체, `enable_nanoda: false`, 62,767개 미사용 `_h*` 바인더) · Gate 5 (수리 가치): PASS $\implies$ OPFF TIER C (프리프린트 2 $N(6) \le 5$ 정확 푸리에·그람 SOS 인증서 유효 공인 / 프리프린트 1 $N(6) = 3$ 미형식화 binary64 하드웨어 조건부 의존 및 283.5만줄 전개 패키징 기준 미충족 / Conditional Verification & Non-Conforming Artifact) |
+| 적용 감사 규격 | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5대 관문 및 등급 판정 | Gate 1 (수리·커널): PASS (프리프린트 2 범위 N(6)<=5 커널 검증 0 sorry) · Gate 2 (원고-코드): FAIL (프리프린트 1 N(6)=3 Lean 형식화 0줄·check_records.py 수식 재계산 0건·고아 Attainable 3 미연결·Main.lean 15/16 미전파 임포트) · Gate 3 (서지·윤리): FAIL (서두 60.6%·58.5% 인용 집중 및 1차 고전 문헌 5건 미수록) · Gate 4 (공정·개입): FAIL (추론 로그 0편, 9월 7일 미인증 실행본 사후 교체, `enable_nanoda: false`, 62,767개 미사용 `_h*` 바인더) · Gate 5 (수리 가치): PASS $\implies$ TIER C (프리프린트 2 $N(6) \le 5$ 정확 푸리에·그람 SOS 인증서 유효성 확인 / 프리프린트 1 $N(6) = 3$ 미형식화 binary64 하드웨어 조건부 의존 및 283.5만줄 전개 패키징 기준 미충족 / Conditional Verification & Non-Conforming Artifact) |
 
 ### 0.1 8대 핵심 지표 요약 스코어카드
 
-| # | 포렌식 감사 지표 | 원본 주장 또는 외형 (Surface Claim) | 계측된 물리적 수치 (Measured Reality) | OPFF 체크포인트 및 판정 |
+| # | 포렌식 감사 지표 | 원본 주장 또는 외형 (Surface Claim) | 계측된 물리적 수치 (Measured Reality) | 규격 체크포인트 및 판정 |
 | :---: | :--- | :--- | :--- | :---: |
 | 1 | 형식 검증 범위 (N(6) = 3 대 N(6) <= 5) | 6차원 상호 불편 기저 최대 개수 $N(6) = 3$ 해결 (#266) | Lean 4 커널 증명 범위는 $N(6) \le 5$ (프리프린트 2); 프리프린트 1의 N(6) = 3은 Lean 형식화 0줄(n = 4, 5 배제는 미형식화 C++ binary64 탐색에 의존) | CP-04 FAIL |
 | 2 | 코드베이스 전개 팽창 및 도달성 | MutuallyUnbiased/ 3,386개 파일 · 2,835,031줄 | 576줄 [verify.py](../proofs/oai_ref/tex_fourier/verify.py#L1-L576) 대비 4,921.9배 줄 수 팽창; 커널 반사(Reflected Canonicalizer) 적용 시 2,015,523줄(71.1%) 즉시 절감 | CP-05 WARN |
@@ -24,13 +24,13 @@
 | 5 | binary64 하드웨어 계약 및 미인증 실행본 | IEEE-754 부동소수점 엄밀 구간 덮개 증명 | MXCSR 0x1f80, -ffp-contract=off, covrun 오프셋 6035 수동 역어셈블에 조건부 의존; [covout.cpp](../proofs/oai_ref/cpp/covout.cpp#L100-L136) checkcpu() 누락; 9월 7일 초기 실행본 미인증 시인 후 10월 4일 실행본으로 교체 | CP-07 · CP-11 FAIL |
 | 6 | 전제 무결성 (`_h*` 미사용 바인더) | 629,541개 선언 (0 sorry, 0 axiom) | 자동 생성 푸비니 정규화 파일 등에 참조되지 않는 미사용 `_h*` 바인더 62,767개(MixedSemantics 54,676 + PairSemantics 7,685 + [SmallPartitions.lean](../proofs/oai_ref/lean/SmallPartitions.lean#L77-L307) 40개 등) | CP-01 · CP-06 WARN |
 | 7 | 두 프리프린트 서지 편중 및 문헌 누락 | 프리프린트 1 `\cite` 33회, 프리프린트 2 `\cite` 41회 | 서두 파일에 20/33(60.6%) 및 24/41(58.5%) 집중(refinement.tex 656줄·execution.tex 400줄 인용 0회); 본문 호명 1차 문헌 5건(Delsarte 1973, Kraus 1971, Schur 1905 등) .bib 미수록 | CP-09 · CP-10 FAIL |
-| 8 | 정확 푸리에·그람 SOS 수리 코어 유효성 | MRW 비-타오 소멸, $(3,3)$ 세제곱 5-순환, $N(6) \le 5$ | 6개 슈어 블록(98개 피벗 > 40,000), 분모 교량 5,806,080, 바이너 차원 강성 $d^2-k(d-1)=d \iff k=d$ 완결; OPFF 정리 75개(358/358 변이 사살)로 교차 검증 | Gate 1 & Gate 5 PASS |
+| 8 | 정확 푸리에·그람 SOS 수리 코어 유효성 | MRW 비-타오 소멸, $(3,3)$ 세제곱 5-순환, $N(6) \le 5$ | 6개 슈어 블록(98개 피벗 > 40,000), 분모 교량 5,806,080, 바이너 차원 강성 $d^2-k(d-1)=d \iff k=d$ 완결; 독립 정리 75개(358/358 변이 사살)로 교차 검증 | Gate 1 & Gate 5 PASS |
 
 ### 0.2 3단계 신호등 판정 요약표 (Three-Tier Traffic-Light Scope Summary)
 
-- (수학적·커널 유효성 공인) 프리프린트 2 정확 푸리에·그람 SOS 인증서 및 $3 \le N(6) \le 5$ (Gate 1 & Gate 5: PASS): (i) $8,871 \times 909$ 쌍 모멘트 계수행렬($\operatorname{rank} = 897$)과 26항 유리수 푸리에 증인 $L_H$를 통한 비-타오 아다마르 행렬의 $3\langle|L_H|^2\rangle + \langle|g_H(\alpha)g_H(q)|^2\rangle = 0$ 소멸, (ii) 뉴턴 거듭제곱합 소거 $z^6 - e_3 z^3 + e_6$ 위에서 $(3,3)$ 세제곱 섬유의 유일한 연결 5-순환 그래프 분류, (iii) 바이너(Weiner)의 $6 \to 7$ 재정렬 크라우스 초연산자 보완($d^2 - k(d-1) = d \iff k = d$)과 $S_5$의 6개 영 대칭자 슈어 블록(98개 피벗 > 40,000, 순 정수 마진 -2,517,408,343,748,053,647,360 < 0)을 결합한 $N(6) \le 5$ 증명은 Lean 4 커널에서 0 sorry로 성립하며, 미임포트 고아로 방치된 Attainable 3(342줄)을 재연결하면 $3 \le N(6) \le 5$가 완결됨.
+- (수학적·커널 유효성 확인) 프리프린트 2 정확 푸리에·그람 SOS 인증서 및 $3 \le N(6) \le 5$ (Gate 1 & Gate 5: PASS): (i) $8,871 \times 909$ 쌍 모멘트 계수행렬($\operatorname{rank} = 897$)과 26항 유리수 푸리에 증인 $L_H$를 통한 비-타오 아다마르 행렬의 $3\langle|L_H|^2\rangle + \langle|g_H(\alpha)g_H(q)|^2\rangle = 0$ 소멸, (ii) 뉴턴 거듭제곱합 소거 $z^6 - e_3 z^3 + e_6$ 위에서 $(3,3)$ 세제곱 섬유의 유일한 연결 5-순환 그래프 분류, (iii) 바이너(Weiner)의 $6 \to 7$ 재정렬 크라우스 초연산자 보완($d^2 - k(d-1) = d \iff k = d$)과 $S_5$의 6개 영 대칭자 슈어 블록(98개 피벗 > 40,000, 순 정수 마진 -2,517,408,343,748,053,647,360 < 0)을 결합한 $N(6) \le 5$ 증명은 Lean 4 커널에서 0 sorry로 성립하며, 미임포트 고아로 방치된 Attainable 3(342줄)을 재연결하면 $3 \le N(6) \le 5$가 완결됨.
 - (조건부 하드웨어 의존 및 전술 전개 팽창): 프리프린트 1의 $N(6) = 3$ 증명(n = 4, 5 배제)은 Lean 4로 형식화되지 않았으며(0줄), x86-64 리틀엔디언 binary64 하드웨어 반올림(MXCSR 0x1f80), FMA 비활성화(-ffp-contract=off), 바이너리 오프셋 6035 수동 역어셈블에 조건부로 의존함. 또한 Lean 코드베이스는 푸비니 유한합 교환을 56,427개 키마다 개별 파일로 풀어 써서 2,835,031줄(verify.py 대비 4,921.9배)과 62,767개의 미사용 `_h*` 바인더를 발생시킴.
-- (국제 출판·아티팩트 규격 미충족): ① [check_records.py](../proofs/oai_ref/cpp/check_records.py#L2-L7)가 아다마르 잔차나 특이값 경계를 재계산하지 않는 파생 포맷 검증기임에도 검증 스크립트로 제시된 점, ② [introduction.tex:155-159](../proofs/oai_ref/tex_mub/introduction.tex#L155-L159) 및 [execution.tex:4, 395-400](../proofs/oai_ref/tex_mub/execution.tex#L395-L400)([execution.tex:4](../proofs/oai_ref/tex_mub/execution.tex#L4))이 시인하듯 2026년 9월 7일 초기 실행본은 완전한 증거 패킷이 복구되지 않아 인증되지 않았고("was not authenticated because its complete evidence packet was not recovered") 사후(10월 4일) 실행본으로 교체된 점, ③ [Main.lean](../proofs/oai_ref/lean/Main.lean#L1-L33)의 15/16(93.75%) 미전파 루트 임포트와 두 챌린지의 `enable_nanoda: false` 비활성화, ④ 서두 인용 편중(60.6%·58.5%) 및 1차 문헌 5건 미수록으로 인해 전체 제출물은 OPFF TIER C로 판정됨.
+- (국제 출판·아티팩트 규격 미충족): ① [check_records.py](../proofs/oai_ref/cpp/check_records.py#L2-L7)가 아다마르 잔차나 특이값 경계를 재계산하지 않는 파생 포맷 검증기임에도 검증 스크립트로 제시된 점, ② [introduction.tex:155-159](../proofs/oai_ref/tex_mub/introduction.tex#L155-L159) 및 [execution.tex:4, 395-400](../proofs/oai_ref/tex_mub/execution.tex#L395-L400)([execution.tex:4](../proofs/oai_ref/tex_mub/execution.tex#L4))이 시인하듯 2026년 9월 7일 초기 실행본은 완전한 증거 패킷이 복구되지 않아 인증되지 않았고("was not authenticated because its complete evidence packet was not recovered") 사후(10월 4일) 실행본으로 교체된 점, ③ [Main.lean](../proofs/oai_ref/lean/Main.lean#L1-L33)의 15/16(93.75%) 미전파 루트 임포트와 두 챌린지의 `enable_nanoda: false` 비활성화, ④ 서두 인용 편중(60.6%·58.5%) 및 1차 문헌 5건 미수록으로 인해 전체 제출물은 TIER C로 판정됨.
 
 
 
@@ -109,14 +109,14 @@
 
 ## 제6부. 유효 증명 코어(Gate 5: PASS) 공인, 2,015,523줄 반사 압축 및 바이너 차원 강성 증명 (Constructive Verification & Repair)
 
-### 6.1 프리프린트 2 정확 푸리에·그람 SOS 수리 코어(Gate 1 & Gate 5: PASS)의 유효성 공인
+### 6.1 프리프린트 2 정확 푸리에·그람 SOS 수리 코어(Gate 1 & Gate 5: PASS)의 유효성 확인
 
 1. MRW 비-타오 아다마르 푸리에 소멸 및 세제곱 5-순환 분류 (Theorems 1–25):
    - $8,871 \times 909$ 쌍 모멘트 선형계($\operatorname{rank} = 897$)와 26항 유리수 증인 $L_H$를 통해 $3\langle|L_H|^2\rangle + \langle|g_H(\alpha)g_H(q)|^2\rangle = 0$을 유도하고, 세제곱 아다마르 행렬의 $(3,3)$ 영합 섬유가 5개 정점 위에서 유일한 2-정칙 연결 그래프인 5-순환($C_5$)을 이룸을 증명함.
 2. 바이너 $6 \to 7$ 크라우스 초연산자 보완 및 6개 슈어 블록 Positivstellensatz (Theorems 26–50):
    - $6$개 MUB가 존재하면 여공간 차원 $36 - 5 \times 6 = 6$ 위에서 재정렬 크라우스 초연산자의 고정점 공간이 가환 대수를 이루어 7번째 기저가 강제됨(Attainable 6 -> Attainable 7)을 보이고, $S_5$의 6개 영 블록 위에서 98개 슈어 여행렬 피벗(> 40,000, Block0 선두 $2\times 2$ 소행렬식 35,303,779,555,791 > 0)과 46,041개 혼합 모멘트 방정식(2,425개 잎 이진 트리)으로 $\neg\text{Attainable } 7 \implies \neg\text{Attainable } 6$ ($N(6) \le 5$)을 완결함.
 
-### 6.2 OPFF 대안 수리: 커널 반사(2,015,523줄 절감) 및 바이너 차원 강성 장벽 증명
+### 6.2 대안 수리: 커널 반사(2,015,523줄 절감) 및 바이너 차원 강성 장벽 증명
 
 1. 커널 반사(Reflected Canonicalizer)를 통한 2,015,523줄(71.1%) 코드 압축 ([thm_58](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L122-L143), [thm_59](../proofs/mub6_stratigraphy_and_binary64_audit.lean#L145-L165)):
    - 56,427개 모멘트 키(48,742 + 7,685)의 행·열 순열 동치 증명을 매번 풀어 쓰는 2,073,150줄의 전개 코드를 1,200줄 반사 정규화 정리와 키당 1줄 decide 호출(57,627줄)로 대체하여 2,073,150 - 57,627 = 2,015,523줄(71.1%)과 56,534개 미사용 바인더를 동시에 제거함.
@@ -125,7 +125,7 @@
 
 
 
-## 제7부. 외부 규격 대비 불부합 판정, 3층위 기여 분석 및 최종 결론 (OPFF Standard-Bound Verdict)
+## 제7부. 외부 규격 대비 불부합 판정, 3층위 기여 분석 및 최종 결론 (Standard-Bound Verdict)
 
 ### 7.1 국제 출판·형식검증 표준 대비 불부합 대조표 (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS)
 
@@ -170,7 +170,7 @@ lean proofs/mub6_stratigraphy_and_binary64_audit.lean && \
 python3 proofs/verify_symbolic_mub266.py
 ```
 
-### 7.5 최종 심사 판정문 (Formal OPFF Referee Verdict Box)
+### 7.5 최종 심사 판정문 (Referee Verdict Summary)
 
-- 최종 공식 판정: OPFF TIER C (Conditional Verification & Non-Conforming Artifact): 프리프린트 2 ($N(6) \le 5$) 형식증명 코어 유효 공인 / 프리프린트 1 ($N(6) = 3$) 미형식화 binary64 조건부 한계 명시 및 283.5만줄 아티팩트 재구축 전 무수정 게재 불가
-- OpenAI #266(Mutually Unbiased Bases in Dimension Six) 가운데 프리프린트 2와 MutuallyUnbiased/Results/Bounds.lean이 구축한 정확 푸리에 모멘트 소멸, $(3,3)$ 세제곱 섬유 5-순환 분류, 바이너 $6 \to 7$ 크라우스 초연산자 보완 및 $S_5$ 6개 슈어 블록(98개 피벗 > 40,000) Positivstellensatz는 상한 $N(6) \le 5$를 Lean 4 커널(0 sorry)에서 유효하게 증명하여 Gate 1 & Gate 5: PASS를 충족한다. 그러나 전체 제출물은 (1) 대표 원고인 프리프린트 1의 $N(6) = 3$ 주장(n = 4, 5 배제)이 Lean 4로 형식화되지 않았고(0줄), 동반 check_records.py가 수식 재계산 0건인 파생 포맷 검증기이며, 초기(9월 7일) 실행본이 미인증 상태여서 사후(10월 4일) 교체된 점(CP-04, CP-07, CP-11), (2) Main.lean의 15 / 16(93.75%, 29,683줄) 미전파 루트 임포트, 완성된 Attainable 3(342줄, 0 sorry) 하한 증명의 미임포트 방치, 62,767개의 미사용 `_h*` 바인더 및 4,921.9배 전개 팽창(CP-05, CP-06), (3) 두 원고의 서두 인용 편중(60.6%·58.5%)과 본문 호출 1차 고전 문헌 5건의 .bib 미수록(CP-09, CP-10)으로 인해 OPFF 5대 관문 심사에서 OPFF TIER C (Conditional Verification & Non-Conforming Artifact)로 판정한다.
+- 최종 판정: TIER C (Conditional Verification & Non-Conforming Artifact): 프리프린트 2 ($N(6) \le 5$) 형식증명 코어 유효성 확인 / 프리프린트 1 ($N(6) = 3$) 미형식화 binary64 조건부 한계 명시 및 283.5만줄 아티팩트 재구축 전 무수정 게재 불가
+- OpenAI #266(Mutually Unbiased Bases in Dimension Six) 가운데 프리프린트 2와 MutuallyUnbiased/Results/Bounds.lean이 구축한 정확 푸리에 모멘트 소멸, $(3,3)$ 세제곱 섬유 5-순환 분류, 바이너 $6 \to 7$ 크라우스 초연산자 보완 및 $S_5$ 6개 슈어 블록(98개 피벗 > 40,000) Positivstellensatz는 상한 $N(6) \le 5$를 Lean 4 커널(0 sorry)에서 유효하게 증명하여 Gate 1 & Gate 5: PASS를 충족한다. 그러나 전체 제출물은 (1) 대표 원고인 프리프린트 1의 $N(6) = 3$ 주장(n = 4, 5 배제)이 Lean 4로 형식화되지 않았고(0줄), 동반 check_records.py가 수식 재계산 0건인 파생 포맷 검증기이며, 초기(9월 7일) 실행본이 미인증 상태여서 사후(10월 4일) 교체된 점(CP-04, CP-07, CP-11), (2) Main.lean의 15 / 16(93.75%, 29,683줄) 미전파 루트 임포트, 완성된 Attainable 3(342줄, 0 sorry) 하한 증명의 미임포트 방치, 62,767개의 미사용 `_h*` 바인더 및 4,921.9배 전개 팽창(CP-05, CP-06), (3) 두 원고의 서두 인용 편중(60.6%·58.5%)과 본문 호출 1차 고전 문헌 5건의 .bib 미수록(CP-09, CP-10)으로 인해 5대 관문 감사에서 TIER C (Conditional Verification & Non-Conforming Artifact)로 판정한다.

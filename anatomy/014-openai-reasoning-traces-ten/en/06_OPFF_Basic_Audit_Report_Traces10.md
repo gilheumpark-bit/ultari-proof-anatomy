@@ -4,7 +4,7 @@
 - Verification Toolchain: Lean 4 v4.29.0-rc8 (vs. audited v4.34.1) / Python 3.14 (SymPy symbolic engine & bidirectional citation parser)
 - Artifact Checksums (SHA-256): [traces10_compiler_and_citation_drop.lean](../proofs/traces10_compiler_and_citation_drop.lean) (b5dfc6a6656a...) | [traces10_algebraic_combinatorial_engines.lean](../proofs/traces10_algebraic_combinatorial_engines.lean) (8375e84057d5...) | [traces10_analytic_operator_and_scope_audit.lean](../proofs/traces10_analytic_operator_and_scope_audit.lean) (d0e7dbd98a32...) | [verify_symbolic_traces10.py](../proofs/verify_symbolic_traces10.py) (d62cd7c19b3d...)
 - Verification Method: 75 independent Lean 4 theorems (1,337 lines, 0 sorry, 0 axiom, 346 / 346 universal-hypothesis mutations killed = 100%) & live parser verification across 51 preserved upstream reference files (29 indexed declarations)
-- OPFF Formal Verdict: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ OPFF TIER C (Valid Mathematical Engines & Non-Conforming Provenance Artifact)
+- 5-Gate Audit Verdict: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ TIER C (Valid Mathematical Engines & Non-Conforming Provenance Artifact)
 
 ## 0. 8-Metric Executive Scorecard (TL;DR)
 
@@ -17,7 +17,7 @@
 | 5. Byte-Preserving Space Masking | Clean comparator challenges and OAI/ entrypoints | [MinUncut.lean:5-13, 63-101](../proofs/oai_ref/challenges/MinUncut.lean#L5-L13) replaces 22 docstring lines (`L5-L7, L9-L13` + 6 blocks in `L63-L101`) with 1,401 strictly `0x20` ASCII spaces; [BinaryCorrectedElliott.lean:6-32](../proofs/oai_ref/oai_modules/BinaryCorrectedElliott.lean#L6-L32) has 27 duplicate `open` lines | 1,401-Byte Space Masking (CP-03 · CP-12 FAIL) |
 | 6. 22 -> 11 -> 10 -> 7 Funnel | Full family resolution & Lean 4 formalization | 11 / 22 (50%) sibling manuscripts have 0 traces, 4 / 8 sibling papers in #197·#271 have 0 Lean lines, and #017·#102·#159 drop headline/quantitative parts (joint fidelity = 714/3320 = 21.51% < 1/4) | 21.51% Joint Fidelity (CP-04 · CP-05 FAIL) |
 | 7. Stubs vs. 2,170 Unused Binders | Premise hygiene across stubs and OAI/ modules | All 5 flagged challenge-stub premises (hNP, hK $\times 3$, hM) are 100% consumed in OAI/ proof terms, whereas 9,929 OAI/ files contain 2,170 unused internal lemma hypotheses (1,537 = 70.83% in #159) | 2,170 Unused Binders (CP-01 · CP-06 WARN) |
-| 8. Ten-Domain Math Engines | 10 domains across number theory, geometry, algebra, physics & PDEs | All 10 core proof engines ($m=2n$ Beta factorial cancellation for $\mu(\pi)=2$, Hanner polar duality, 4th-order cavity SOS, Heisenberg IR integral, Vlasov-Maxwell bootstrap) verified (75 OPFF theorems, 346/346 mutants killed) | Gate 1 & Gate 5 PASS |
+| 8. Ten-Domain Math Engines | 10 domains across number theory, geometry, algebra, physics & PDEs | All 10 core proof engines ($m=2n$ Beta factorial cancellation for $\mu(\pi)=2$, Hanner polar duality, 4th-order cavity SOS, Heisenberg IR integral, Vlasov-Maxwell bootstrap) verified (75 standalone Lean 4 theorems, 346/346 mutants killed) | Gate 1 & Gate 5 PASS |
 
 ## 1. Summary of Verified Physical Findings
 
@@ -54,7 +54,7 @@
   - Fact: Across the 22 manuscripts in these 10 families, 18 have Lean 4 formalizations (4 headline sibling papers totaling 11,895 lines in #197 and #271 have 0 Lean lines), 11 primary manuscripts map to the 10 released trace PDFs (11 sibling papers have 0 traces), and 7 preserve their full headline scope in ComparatorChallenges/ (#017, #102, #159 omit quantitative/headline parts, giving joint fidelity $714 / 3,320 = 21.51\%$).
 - Q5. "Do the 10 released reasoning traces (202 pages, 9,308 lines) have genuine scientific value?"
   - Fact: Yes. They document authentic trial-and-error mathematical discovery - falsifying fixed-parameter dead ends ($\mu \le 62/25 = 2.48$) in #017 before discovering the $m \to \infty$ simplex cancellation, and pivoting to van Kampen curvature obstructions in #197 (Gate 5: PASS).
-- Q6. "What exact revisions are required to upgrade the 10-trace corpus to OPFF TIER A?"
+- Q6. "What exact revisions are required to upgrade the 10-trace corpus to TIER A?"
   - Fact: (1) Release the missing reasoning traces for the 11 untraced sibling manuscripts and formalize the 4 omitted flagship papers in #197 and #271, (2) restore the 230 dropped trace references (including the 3 companion OpenAI preprints) to the .bib files, and (3) remove the 1,401-byte space masking in MinUncut.lean and align the comparator wrappers for #017, #102, #159.
 
 ## 3. 10-Second Terminal Reproduction (Don't Trust, Verify)

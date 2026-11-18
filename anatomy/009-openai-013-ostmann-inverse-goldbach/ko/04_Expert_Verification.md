@@ -11,7 +11,7 @@ lean proofs/ostmann_twin_engines_and_supply_contraction.lean && \
 # 2. 결정론적 기호(SymPy) 검증
 python3 proofs/verify_symbolic_ostmann.py
 
-# 3. OPFF 증명 해부 통합 게이트 (SHA-256 + 가설 변이 시험 + 줄 번호 링크 + 무힌트 명세 검사)
+# 3. 증명 해부 통합 검증 게이트 (SHA-256 + 가설 변이 시험 + 줄 번호 링크 + 무힌트 명세 검사)
 python3 ../../tools/verify_all.py --root .
 ```
 

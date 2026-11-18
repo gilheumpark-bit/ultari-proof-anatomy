@@ -4,7 +4,7 @@
 - 검증 환경: Lean 4 v4.29.0-rc8 / Python 3.14 (SymPy 기호 연산기 및 PyTorch FP64 스펙트럼 검증)
 - 산출물 해시 (SHA-256): [ns376_kinematic_routing_and_forensics.lean](../proofs/ns376_kinematic_routing_and_forensics.lean) (cab492b22b85...) | [ns376_gronwall_uniqueness_and_repairs.lean](../proofs/ns376_gronwall_uniqueness_and_repairs.lean) (2f871a49e16d...) | [verify_symbolic_ns376.py](../proofs/verify_symbolic_ns376.py) (2f39eefded4b...)
 - 검증 방식: 독립 Lean 4 정리 본 패키지 45개 (0 sorry, 0 axiom, 184 / 184 가설 변이 사살) + 동반 재조립 패키지 48개 (0 sorry, 150 / 150 변이 사살) = 합산 93개 정리 (334 / 334 변이 사살) 및 결정론적 파이썬 검증 스크립트
-- OPFF 공식 판정: Gate 1: FAIL · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: FAIL (재조립 시 HOLD) $\implies$ OPFF TIER F (Hard Reject / Non-Conforming Artifact)
+- 5대 관문 판정: Gate 1: FAIL · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: FAIL (재조립 시 HOLD) $\implies$ TIER F (Hard Reject / Non-Conforming Artifact)
 
 
 

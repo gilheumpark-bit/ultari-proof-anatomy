@@ -10,10 +10,10 @@
 | :---: | :--- | :--- | :--- |
 | Tier 1 | [ko/01_일반인용_해설서.md](ko/01_일반인용_해설서.md) | [en/01_Executive_Summary_and_General_Guide.md](en/01_Executive_Summary_and_General_Guide.md) | 5대 인과적 질문(62/25 -> 2 도약, $b \in (1/2, 1-1/\nu)$, 리우빌 수 장애, 017.md 대 Main.lean 범위 대조, 3단 LCM 상수 지층 및 4대 이산·대수 치환) 해설 |
 | Tier 2 | [ko/02_중급자용_구조및수식가이드.md](ko/02_중급자용_구조및수식가이드.md) | [en/02_Intermediate_Math_and_Code_Guide.md](en/02_Intermediate_Math_and_Code_Guide.md) | Sections 2–5 수식 파이프라인, 75개 Mathlib 4 정리(thm_01~thm_75) 매핑 및 수치 시뮬레이션 |
-| Tier 3 | [ko/03_전문가용_수리물리및형식증명심사보고서.md](ko/03_전문가용_수리물리및형식증명심사보고서.md) | [en/03_Expert_Forensic_and_Mathematical_Physics_Report.md](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | 869개 파일 층위학, 60개 oai_ref 전수 링크, 25개 BibTeX DOI 감사 및 6대 무인용 고전 원저 귀속 |
+| Tier 3 | [ko/03_전문가용_수리물리및형식증명심사보고서.md](ko/03_전문가용_수리물리및형식증명심사보고서.md) | [en/03_Expert_Forensic_and_Mathematical_Physics_Report.md](en/03_Expert_Forensic_and_Mathematical_Physics_Report.md) | 869개 파일 층위학, 60개 oai_ref 전수 링크, 25개 BibTeX DOI·`math.GM`(`Carella2022`·`withdrawn v2`) 감사, `PiExponent.lean` 9줄 명세 검토 및 6대 무인용 고전 원저 귀속 |
 | Tier 4 | [ko/04_자동검증및파서용_명세서.md](ko/04_자동검증및파서용_명세서.md) | [en/04_Automated_Verification_and_Parser_Spec.md](en/04_Automated_Verification_and_Parser_Spec.md) | SHA-256 체크섬 테이블 및 원클릭 검증 프로토콜 |
-| OPFF 심사 | [ko/05_OPFF_상세형_포렌식심사보고서_Pi017.md](ko/05_OPFF_상세형_포렌식심사보고서_Pi017.md) | [en/05_OPFF_Detailed_Forensic_Referee_Report_Pi017.md](en/05_OPFF_Detailed_Forensic_Referee_Report_Pi017.md) | OPFF 5대 관문 7부작 상세 포렌식 심사 보고서(Part 0–Part 7: 추론 로그 16/23 (69.6%, 항목 20/25) 인용 탈락, 017.md:11 대 Main.flint_hills_summable, 4대 대수·이산 치환 및 OPFF TIER C 공식 판정) |
-| OPFF 요약 | [ko/06_OPFF_기본형_감사리포트_Pi017.md](ko/06_OPFF_기본형_감사리포트_Pi017.md) | [en/06_OPFF_Basic_Audit_Report_Pi017.md](en/06_OPFF_Basic_Audit_Report_Pi017.md) | OPFF 기본형 감사 리포트(OPFF TIER C): 8대 핵심 지표 요약표(TL;DR), 핵심 실측 물증, 6문 6답 FAQ 및 10초 재현 명령어 |
+| Tier 5 | [ko/05_OPFF_상세형_포렌식심사보고서_Pi017.md](ko/05_OPFF_상세형_포렌식심사보고서_Pi017.md) | [en/05_OPFF_Detailed_Forensic_Referee_Report_Pi017.md](en/05_OPFF_Detailed_Forensic_Referee_Report_Pi017.md) | 5대 관문 7부작 상세 포렌식 심사 보고서(Part 0–Part 7: 추론 로그 16/23 (69.6%) 탈락 대 `3/25` `math.GM` 인용, 017.md:11 대 Main.flint_hills_summable, 4대 대수·이산 치환, 커널 통과 대 미완료 동료심사 구분 및 TIER C 판정) |
+| Tier 6 | [ko/06_OPFF_기본형_감사리포트_Pi017.md](ko/06_OPFF_기본형_감사리포트_Pi017.md) | [en/06_OPFF_Basic_Audit_Report_Pi017.md](en/06_OPFF_Basic_Audit_Report_Pi017.md) | 기본형 감사 요약 리포트(TIER C): 8대 핵심 지표 요약표(TL;DR), 핵심 실측 물증, 6문 6답 FAQ 및 10초 재현 명령어 |
 
 ## 2. 검증 아티팩트 요약 (proofs/)
 

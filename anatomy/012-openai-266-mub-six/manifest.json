@@ -562,13 +562,13 @@
     "ko/02_중급자용_수학및코드가이드.md": "455778e7af57d3eb6e4e149a44f4988a0dab8ef2d09132cc82721bc2a9f47c67",
     "ko/03_전문가용_학술및수리물리보고서.md": "78d661673a9f9e02b5144358f2d19cbbd36b18b94911801a3f795019ffa3ef84",
     "ko/04_자동검증및파서용_명세서.md": "b32aed5ee3b3c449f6ee393cf9e7650e146a4c93ea21dfe4f5e7723ab775f91f",
-    "ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md": "6aae1e45986107e80e6d457d52b31380a0ae393b1c0c1648b9f4459ccbbbdf08",
-    "ko/06_OPFF_기본형_감사리포트_MUB266.md": "8e6b9adbcdfd7ccc22e3e17d0db1591b81833f85dad35cc9898566ddc9c413c6",
+    "ko/05_OPFF_상세형_포렌식심사보고서_MUB266.md": "97b48db389d04ca57bf694e90f53bfb9512b56ec5f26bdd5fae31168b2554806",
+    "ko/06_OPFF_기본형_감사리포트_MUB266.md": "038e09a3ab7a11e19ccabfd22878f008856ca39a1f91b2c25ff25729a6111825",
     "en/01_Executive_Summary_and_General_Guide.md": "f8f1eed469209f3d5c1e2ce6c389b515540d99ef02aae8e8b0004dd87a01e159",
     "en/02_Intermediate_Math_and_Code_Guide.md": "b3f54e042751b987bda3778a06bbc7c7abb432b882f9de66f918912eeb396d34",
     "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "afbcacf1af163cb8b600804bbbd56fcc2d9820c4ae5f006dceada8b57bd4aa1e",
     "en/04_Automated_Verification_and_Parser_Spec.md": "3f22d6b704859816cf8ea437c3d18e242003fcf98e900a59b3de7d6b838deefc",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md": "f91016cc59635b6bb10d6393e80af068fd1f2166d907772ccff0c71d0270e4ec",
-    "en/06_OPFF_Basic_Audit_Report_MUB266.md": "8dc48952c28a27684f8700ad5f9af203f16e502a4ac2f67cb28aa81cc1a0363a"
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_MUB266.md": "4c71b6ab2326dffc22bddcc15def176a20a462d05e65ece549993001e3505d25",
+    "en/06_OPFF_Basic_Audit_Report_MUB266.md": "1dd3ec2bc7b28d2db4d3c1e27953522881a4b4d311aad72b0e5028ec4be5b5d4"
   }
 }

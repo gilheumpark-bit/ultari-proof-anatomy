@@ -10,12 +10,12 @@
 | 툴체인 및 컴파일러 | Lean 4 v4.29.0-rc8 (leanprover/lean4:v4.29.0-rc8) 대 피감 원본 v4.34.1 / Python 3.14 (SymPy 기호 연산기 및 양방향 인용 매칭 파서) |
 | 검증 산출물 SHA-256 | • [traces10_compiler_and_citation_drop.lean](../proofs/traces10_compiler_and_citation_drop.lean): `b5dfc6a6656a5b29c9e1834bf3a4951cb5e352d53c3bddff4f1dde924fb36a8a`<br>• [traces10_algebraic_combinatorial_engines.lean](../proofs/traces10_algebraic_combinatorial_engines.lean): `8375e84057d579430a17595c6d8459b60e4301ca5cbec2e88884334678f3d9d3`<br>• [traces10_analytic_operator_and_scope_audit.lean](../proofs/traces10_analytic_operator_and_scope_audit.lean): `d0e7dbd98a321edb0e6b1616b9935acfd3720d7860a4ead4199c27eb7f28c02a`<br>• [verify_symbolic_traces10.py](../proofs/verify_symbolic_traces10.py): `d62cd7c19b3dfb69d06332c4b703be78b45501a0a186be6f90fd4cadc9c03d8b` |
 | 검증 방식 | 독립 Lean 4 정리 75개 (1,337줄, 0 sorry, 0 axiom, 전칭 가설 돌연변이 사살 346 / 346건 = 100%, 구조적 정리 74 / 75건, 비선형·귀납 19건) 및 51개 업스트림 참조 원문(29개 핵심 선언) 실시간 파싱·기호 검증 스위트 |
-| 준거 감사 헌장 | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5대 관문 및 공식 등급 판정 | Gate 1 (수리·커널): PASS (형식화된 18편 코어 0 sorry) · Gate 2 (원고-코드): FAIL (22->11->10->7 범위 축소 깔때기·4/8 자매 원고 미형식화·087.md 내부 모순·OAI/ 2,170개 미사용 가설) · Gate 3 (서지·윤리): FAIL (추론 인용 230/332 = 69.28% 탈락·자사 2026년 동반 원고 3/3 = 100% 삭제·사후 213건 삽입·자카드 일치도 18.72%) · Gate 4 (공정·개입): FAIL (사후 LuaLaTeX 조판 컴파일러·프롬프트 비공개 2편·다중 봉합 5편·MinUncut.lean 1,401바이트 공백 치환) · Gate 5 (수리 가치): PASS $\implies$ OPFF TIER C (10개 분야 수리·해석 증명 엔진 유효 공인 / 69.28% 추론 참고문헌 탈락·사후 LuaLaTeX 편집·21.51% 결합 출처 충실도 기준 미충족 / Valid Mathematical Engines & Non-Conforming Provenance Artifact) |
+| 적용 감사 규격 | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5대 관문 및 등급 판정 | Gate 1 (수리·커널): PASS (형식화된 18편 코어 0 sorry) · Gate 2 (원고-코드): FAIL (22->11->10->7 범위 축소 깔때기·4/8 자매 원고 미형식화·087.md 내부 모순·OAI/ 2,170개 미사용 가설) · Gate 3 (서지·윤리): FAIL (추론 인용 230/332 = 69.28% 탈락·자사 2026년 동반 원고 3/3 = 100% 삭제·사후 213건 삽입·자카드 일치도 18.72%) · Gate 4 (공정·개입): FAIL (사후 LuaLaTeX 조판 컴파일러·프롬프트 비공개 2편·다중 봉합 5편·MinUncut.lean 1,401바이트 공백 치환) · Gate 5 (수리 가치): PASS $\implies$ TIER C (10개 분야 수리·해석 증명 엔진 유효성 확인 / 69.28% 추론 참고문헌 탈락·사후 LuaLaTeX 편집·21.51% 결합 출처 충실도 기준 미충족 / Valid Mathematical Engines & Non-Conforming Provenance Artifact) |
 
 ### 0.1 8대 핵심 지표 요약 스코어카드
 
-| # | 포렌식 감사 지표 | 원본 주장 또는 외형 (Surface Claim) | 계측된 물리적 수치 (Measured Reality) | OPFF 체크포인트 및 판정 |
+| # | 포렌식 감사 지표 | 원본 주장 또는 외형 (Surface Claim) | 계측된 물리적 수치 (Measured Reality) | 규격 체크포인트 및 판정 |
 | :---: | :--- | :--- | :--- | :---: |
 | 1 | 추론 로그 대 원고 인용 보존율 | 추론 로그(332건 인용) 기반 원고(.bib 315건) 작성 | 보존 102건(30.72%) 대 원고 탈락 230 / 332건(69.28% = 115/166) + 사후 추가 213건(67.62%); 양방향 자카드 일치도 102 / 545 = 18.72% < 1/5 | CP-08 · CP-09 FAIL |
 | 2 | 자사 2026년 동반 원고 인용 및 #287 탈락 | 문제 간 독립 추론 및 정직한 서지 귀속 | #017이 20회 이상 호출한 #005(카탈랑) 등 OpenAI 2026년 자사 동반 원고 3 / 3건(100%) 전량 삭제; #287 자유군 인자는 49 / 54건(90.7%) 탈락 | CP-08 · CP-10 FAIL |
@@ -24,13 +24,13 @@
 | 5 | 바이트 보존 주석 공백 치환 및 헤더 중복 | 깔끔한 비교 챌린지 및 OAI/ 진입점 코드 | [MinUncut.lean:5-13, 63-101](../proofs/oai_ref/challenges/MinUncut.lean#L5-L13)에서 `L5-L7, L9-L13` 8줄과 `L63-L101` 6개 주석 블록 14줄(총 22줄, 순수 `0x20` 아스키 공백 1,401바이트)이 치환됨; [BinaryCorrectedElliott.lean:6-32](../proofs/oai_ref/oai_modules/BinaryCorrectedElliott.lean#L6-L32) 27줄 중복 `open` | CP-03 · CP-12 FAIL |
 | 6 | 22 -> 11 -> 10 -> 7 범위 축소 깔때기 | 10개 난제군 전수 해결 및 Lean 4 형식화 | 22편 원고 중 자매 원고 11편(50%) 추론 로그 미공개, #197·#271 자매 원고 4 / 8편 미형식화, #017·#102·#159 표제·정량 파트 제외로 온전 보존 7 / 10 (결합 충실도 714/3320 = 21.51% < 1/4) | CP-04 · CP-05 FAIL |
 | 7 | 스텁 위양성 5/5 대 OAI/ 2,170개 미사용 가설 | 챌린지 스텁 가설 및 내부 보조정리 무결성 | 챌린지 스텁 가설 5개(hNP, hK $\times 3$, hM)는 OAI/ 본문에서 5 / 5(100%) 실제 소비되나, OAI/ 9,929개 파일 내부 보조정리에 미사용 가설 2,170개(#159에 1,537개 = 70.83%) 존재 | CP-01 · CP-06 WARN |
-| 8 | 10개 분야 수리·해석 증명 엔진 유효성 | 수론·볼록기하·복잡도·군환·수리물리·PDE 10개 난제군 | m=2n 베타 계승 상쇄($\mu(\pi)=2$), 하너 극체 쌍대성, 희석 스핀 유리 4차 SOS, 하이젠베르크 적외선 껍질, 블라소프-맥스웰 부트스트랩 등 10개 코어 완결(Gate 5: PASS, OPFF 정리 75개 346/346 변이 사살) | Gate 1 & Gate 5 PASS |
+| 8 | 10개 분야 수리·해석 증명 엔진 유효성 | 수론·볼록기하·복잡도·군환·수리물리·PDE 10개 난제군 | m=2n 베타 계승 상쇄($\mu(\pi)=2$), 하너 극체 쌍대성, 희석 스핀 유리 4차 SOS, 하이젠베르크 적외선 껍질, 블라소프-맥스웰 부트스트랩 등 10개 코어 완결(Gate 5: PASS, 독립 정리 75개 346/346 변이 사살) | Gate 1 & Gate 5 PASS |
 
 ### 0.2 3단계 신호등 판정 요약표 (Three-Tier Traffic-Light Scope Summary)
 
-- (수학적·커널 유효성 공인) 10개 분야 핵심 수리·해석 증명 엔진 및 스텁 가설 5/5 실제 소비 확인 (Gate 1 & Gate 5: PASS): #007 3척도 엔트로피 비둘기집 망원 합, #017 투도세 3중 베타 적분 $m=2n$ 계승 상쇄($\mu(\pi)=2$), #087 하너 극체 쌍대성·리카티 곡률 여유분(194 - 180 = 14), #102 희소 튜플 사영 $\beta = k^{-2/3}$, #159 조화 블록 비둘기집, #197 모서리 결손 멱등원 $e = 1 - ba$ 및 반 캄펜 오일러 결손(1/2 > 0), #221 4차 공동 볼록성 SOS 항등식 $(A-B)^2((A+B)^2+2B^2)$, #271 3차원 스핀파 적외선 적분($4s < 5s$), #287 호게루프 방사 감쇠·다이케마-라둘레스쿠 압축, #362 글래시-스트라우스 상대론적 부트스트랩 여유분(43/500 > 0) 등 10개 분야 수리 코어는 유효하며 독립 정리 75개(0 sorry, 346/346 변이 사살)로 검증됨.
+- (수학적·커널 유효성 확인) 10개 분야 핵심 수리·해석 증명 엔진 및 스텁 가설 5/5 실제 소비 확인 (Gate 1 & Gate 5: PASS): #007 3척도 엔트로피 비둘기집 망원 합, #017 투도세 3중 베타 적분 $m=2n$ 계승 상쇄($\mu(\pi)=2$), #087 하너 극체 쌍대성·리카티 곡률 여유분(194 - 180 = 14), #102 희소 튜플 사영 $\beta = k^{-2/3}$, #159 조화 블록 비둘기집, #197 모서리 결손 멱등원 $e = 1 - ba$ 및 반 캄펜 오일러 결손(1/2 > 0), #221 4차 공동 볼록성 SOS 항등식 $(A-B)^2((A+B)^2+2B^2)$, #271 3차원 스핀파 적외선 적분($4s < 5s$), #287 호게루프 방사 감쇠·다이케마-라둘레스쿠 압축, #362 글래시-스트라우스 상대론적 부트스트랩 여유분(43/500 > 0) 등 10개 분야 수리 코어는 유효하며 독립 정리 75개(0 sorry, 346/346 변이 사살)로 검증됨.
 - (22 -> 11 -> 10 -> 7 범위 축소 깔때기 및 내부 2,170개 미사용 가설): 10개 난제군 소속 22편 프리프린트 중 자매 원고 11편은 추론 로그가 제공되지 않았고, #197의 무비틀림 직접유한성 반례 원고 1편과 #271의 자매 원고 3편(합계 4 / 8편)은 Lean 4로 형식화되지 않았으며, #102의 원래 표제(BasicSDP 임계값)와 #159의 2부 준다항식 상한은 비교 챌린지에서 제외됨. 또한 OAI/ 9,929개 파일 내부 보조정리에 미사용 가설 바인더 2,170개(#159에 1,537개)가 존재함.
-- (서지 69.28% 탈락 및 사후 조판·주석 공백 치환): ① 추론 로그가 실제 참조한 선행 문헌 332건 중 230건(69.28%)이 주원고 .bib에서 탈락하고(자사 2026년 동반 원고 3 / 3 = 100% 삭제, #287 49 / 54 = 90.7% 삭제) 로그에 없던 213건이 사후 삽입되어 양방향 자카드 일치도가 18.72%(102 / 545)에 불과한 점, ② 유출된 mezard-parisi-formula.tex가 일괄 사후 요약 조판(#102 매크로, "自由" 한자 폴백, [Administrative details redacted.]) 및 프롬프트 비공개(2편)·다중 실행 봉합(5편)을 입증하는 점, ③ MinUncut.lean의 22줄(1,401바이트) 주석이 아스키 공백(0x20)으로 바이트 보존 치환된 점으로 인해 OPFF TIER C로 판정됨.
+- (서지 69.28% 탈락 및 사후 조판·주석 공백 치환): ① 추론 로그가 실제 참조한 선행 문헌 332건 중 230건(69.28%)이 주원고 .bib에서 탈락하고(자사 2026년 동반 원고 3 / 3 = 100% 삭제, #287 49 / 54 = 90.7% 삭제) 로그에 없던 213건이 사후 삽입되어 양방향 자카드 일치도가 18.72%(102 / 545)에 불과한 점, ② 유출된 mezard-parisi-formula.tex가 일괄 사후 요약 조판(#102 매크로, "自由" 한자 폴백, [Administrative details redacted.]) 및 프롬프트 비공개(2편)·다중 실행 봉합(5편)을 입증하는 점, ③ MinUncut.lean의 22줄(1,401바이트) 주석이 아스키 공백(0x20)으로 바이트 보존 치환된 점으로 인해 TIER C로 판정됨.
 
 
 
@@ -122,7 +122,7 @@ $$102\text{ (보존)} + 230\text{ (원고 탈락)} = 332\text{ (로그 인용)} 
 
 
 
-## 제7부. 외부 규격 대비 불부합 판정, 3층위 기여 분석 및 최종 결론 (OPFF Standard-Bound Verdict)
+## 제7부. 외부 규격 대비 불부합 판정, 3층위 기여 분석 및 최종 결론 (Standard-Bound Verdict)
 
 ### 7.1 국제 출판·형식검증 표준 대비 불부합 대조표 (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS)
 
@@ -151,7 +151,7 @@ $$102\text{ (보존)} + 230\text{ (원고 탈락)} = 332\text{ (로그 인용)} 
 - Q3. "비교 챌린지(`ComparatorChallenges/*.lean`)에서 hNP, hK, hM 가설이 반환형에 쓰이지 않으니 공허한 가짜 정리 아닌가?"
   - A3. 그것은 := by sorry 스텁 파일만 보고 실제 OAI/ 증명 본문을 열지 않은 피상적 스캐너의 5 / 5 (100%) 오경보(False Positive)입니다. 본 감사가 OAI/ 증명항을 전수 추적한 결과 5개 가설 전부가 실제 증명에 필수적으로 소비됨을 입증했습니다([thm_66](../proofs/traces10_analytic_operator_and_scope_audit.lean#L284-L297)). 진짜 미사용 가설은 스텁이 아니라 OAI/ 9,929개 파일 내부 보조정리에 있는 2,170개(#159에 1,537개)입니다([thm_67](../proofs/traces10_analytic_operator_and_scope_audit.lean#L298-L329)).
 - Q4. "#017에서 Flint-Hills 급수 수렴(Corollary 1.2)은 미형식화된 것 아닌가?"
-  - A4. 비교 챌린지 스텁 [PiExponent.lean](../proofs/oai_ref/challenges/PiExponent.lean#L7-L18)과 문서 017.md:11에서는 제외되었으나, 실제 OAI/NumberTheory/PiExponent/Main.lean:29-32(flint_hills_summable, oai_ref/ 미수록) 내부에는 0 sorry로 증명되어 있습니다. 반면 #102의 BasicSDP 따름정리와 #159의 2부 준다항식 상한, 그리고 #197·#271의 자매 원고 4편은 실제로 미형식화 상태입니다([thm_22](../proofs/traces10_compiler_and_citation_drop.lean#L351-L364)~[thm_24](../proofs/traces10_compiler_and_citation_drop.lean#L379-L386)).
+  - A4. 비교 챌린지 스텁 [PiExponent.lean](../proofs/oai_ref/challenges/PiExponent.lean#L7-L18)과 문서 017.md:11에서는 제외되었으나, 실제 OAI/NumberTheory/PiExponent/Main.lean:29-32(flint_hills_summable, oai_ref/ 미수록) 내부에는 0 sorry로 증명되어 있습니다(단 #017 `Case 010` 심사에서 확인된 `.bib` 내 `3/25` `math.GM` 프리프린트 `Carella2022`·`withdrawn v2` 수록 및 정식 동료심사 진행 중과는 별개임). 반면 #102의 BasicSDP 따름정리와 #159의 2부 준다항식 상한, 그리고 #197·#271의 자매 원고 4편은 실제로 미형식화 상태입니다([thm_22](../proofs/traces10_compiler_and_citation_drop.lean#L351-L364)~[thm_24](../proofs/traces10_compiler_and_citation_drop.lean#L379-L386)).
 - Q5. "MinUncut.lean의 1,401바이트 공백은 단순한 줄바꿈 포맷팅 아닌가?"
   - A5. 일반적인 포맷터는 줄 끝 후행 공백(trailing whitespace)을 제거합니다. 반면 [MinUncut.lean:5-13, 63-101](../proofs/oai_ref/challenges/MinUncut.lean#L5-L101)의 22개 행은 각 행마다 원래 /-- ... -/ 주석 글자 수와 일치하는 수십 개의 연속 아스키 공백(0x20, 합계 1,401바이트)으로 채워져 있어 바이트 오프셋과 행 번호가 보존된 상태입니다([thm_07](../proofs/traces10_compiler_and_citation_drop.lean#L111-L126)).
 - Q6. "추론 로그에서 탈락한 230건의 참고문헌을 복원하면 어떤 의미가 있는가?"
@@ -167,7 +167,7 @@ lean proofs/traces10_analytic_operator_and_scope_audit.lean && \
 python3 proofs/verify_symbolic_traces10.py
 ```
 
-### 7.5 최종 심사 판정문 (Formal OPFF Referee Verdict Box)
+### 7.5 최종 심사 판정문 (Referee Verdict Summary)
 
-- 최종 공식 판정: OPFF TIER C (Valid Mathematical Engines & Non-Conforming Provenance Artifact) | 10개 분야 수리·해석 증명 코어 유효 공인 / 탈락된 230건(69.28%) 추론 참고문헌 및 자사 동반 원고 3건 복원·미공개 추론 로그 11편 및 미형식화 자매 원고 4편 공시 전 무수정 게재 불가
-- OpenAI가 공개한 추론 로그 10편(#007~#362, 202쪽, 9,308줄)과 OAI/ 9,929개 파일에 구현된 10개 분야 수리·해석 증명 엔진($\mu(\pi)=2$ 단체 계승 상쇄, 말러 극체 쌍대성, 희소 사영 창, 카플란스키 결손 멱등원, 희석 스핀 유리 4차 SOS, 하이젠베르크 적외선 적분, 자유군 인자 압축, 블라소프-맥스웰 부트스트랩)은 수학적으로 유효하며 비교 챌린지 스텁 가설 5종(hNP, hK, hM) 역시 실제 증명항에서 100% 소비되어 Gate 1 & Gate 5: PASS를 충족한다. 그러나 제출된 추론 로그 및 원고 패키지는 (1) 추론 로그 인용 332건 중 230건(69.28%)과 자사 2026년 동반 원고 3 / 3건(100%)이 주원고 .bib에서 탈락하고 사후 213건이 삽입되어 양방향 자카드 일치도가 18.72%(102 / 545)에 그친 귀속 결손(CP-08, CP-09, CP-10), (2) 유출된 mezard-parisi-formula.tex(211줄)가 입증하는 사후 일괄 LuaLaTeX 요약 조판(#102 매크로, "自由" 한자 폴백, [Administrative details redacted.]), 초기 프롬프트 비공개(2편), 다중 실행 봉합(5편) 및 MinUncut.lean의 22줄(1,401바이트) 공백 치환(CP-03, CP-11, CP-12), (3) 22 -> 11 -> 10 -> 7 범위 축소 깔때기(자매 원고 11편 로그 미공개, #197·#271 자매 원고 4 / 8편 미형식화, 표제·정량 파트 3건 제외로 결합 충실도 21.51% < 1/4) 및 OAI/ 내부 보조정리 미사용 가설 2,170개(CP-01, CP-04, CP-06)로 인해 OPFF 5대 관문 심사에서 OPFF TIER C로 판정한다.
+- 최종 판정: TIER C (Valid Mathematical Engines & Non-Conforming Provenance Artifact) | 10개 분야 수리·해석 증명 코어 유효성 확인 / 탈락된 230건(69.28%) 추론 참고문헌 및 자사 동반 원고 3건 복원·미공개 추론 로그 11편 및 미형식화 자매 원고 4편 공시 전 무수정 게재 불가
+- OpenAI가 공개한 추론 로그 10편(#007~#362, 202쪽, 9,308줄)과 OAI/ 9,929개 파일에 구현된 10개 분야 수리·해석 증명 엔진($\mu(\pi)=2$ 단체 계승 상쇄, 말러 극체 쌍대성, 희소 사영 창, 카플란스키 결손 멱등원, 희석 스핀 유리 4차 SOS, 하이젠베르크 적외선 적분, 자유군 인자 압축, 블라소프-맥스웰 부트스트랩)은 수학적으로 유효하며 비교 챌린지 스텁 가설 5종(hNP, hK, hM) 역시 실제 증명항에서 100% 소비되어 Gate 1 & Gate 5: PASS를 충족한다. 그러나 제출된 추론 로그 및 원고 패키지는 (1) 추론 로그 인용 332건 중 230건(69.28%)과 자사 2026년 동반 원고 3 / 3건(100%)이 주원고 .bib에서 탈락하고 사후 213건이 삽입되어 양방향 자카드 일치도가 18.72%(102 / 545)에 그친 귀속 결손(CP-08, CP-09, CP-10), (2) 유출된 mezard-parisi-formula.tex(211줄)가 입증하는 사후 일괄 LuaLaTeX 요약 조판(#102 매크로, "自由" 한자 폴백, [Administrative details redacted.]), 초기 프롬프트 비공개(2편), 다중 실행 봉합(5편) 및 MinUncut.lean의 22줄(1,401바이트) 공백 치환(CP-03, CP-11, CP-12), (3) 22 -> 11 -> 10 -> 7 범위 축소 깔때기(자매 원고 11편 로그 미공개, #197·#271 자매 원고 4 / 8편 미형식화, 표제·정량 파트 3건 제외로 결합 충실도 21.51% < 1/4) 및 OAI/ 내부 보조정리 미사용 가설 2,170개(CP-01, CP-04, CP-06)로 인해 5대 관문 감사에서 TIER C로 판정한다.

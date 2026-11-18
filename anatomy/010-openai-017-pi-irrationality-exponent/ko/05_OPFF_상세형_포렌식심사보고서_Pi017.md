@@ -11,8 +11,8 @@
 | 검증 산출물 (1·2·3) | • [pi_simplex_parameters_and_stratigraphy.lean](../proofs/pi_simplex_parameters_and_stratigraphy.lean): `fa4c73cf1acb7f311a5dae2018c521b69cb2eeb031b65880034e2ecc6362ca1d`<br>• [pi_transverse_multiplicity_and_seshadri_blowup.lean](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean): `2e7c8c2e726ce1180002dc3a2f0f84d37fb1bc8a28c88d83aa567bb12d828313`<br>• [pi_laurent_determinant_and_flint_hills.lean](../proofs/pi_laurent_determinant_and_flint_hills.lean): `3795672a078f1f74760c2ec9f7723d2ba4915f963b916008cf4e26ffc599d8b9` |
 | 검증 산출물 (4·5) | • [verify_symbolic_pi017.py](../proofs/verify_symbolic_pi017.py): `602809c6314c4c89e605e2a6544e993e2860a4707b34eb4144511490ce01ff4d`<br>• [symbolic_verification_result.json](../proofs/symbolic_verification_result.json): `01470abe37f8962dd8b5e9fe2331d0c3184993848ae371f3d4fd65859bda73a1` |
 | 검증 방식 | 독립 Lean 4 형식 증명 75개 정리 (1,646줄, 0 sorry, 0 axiom, 120/120 가설 변이 사살, 44개 비선형·귀납 증명) + oai_ref/ 60개 파일 결정론적 파서 검증 |
-| 준거 감사 헌장 | Open Proof Forensics Foundation (OPFF) 5-Gate Joint International Audit Charter (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
-| OPFF 5대 관문 및 공식 등급 판정 | Gate 1 (수리·커널): PASS · Gate 2 (원고-코드): HOLD · Gate 3 (서지·윤리): FAIL · Gate 4 (공정·개입): HOLD · Gate 5 (수리 가치): PASS $\implies$ OPFF TIER C (조건부 수정 요구 / Conditional Revision Required) |
+| 적용 감사 규격 | ultari-proof-anatomy 5-Gate Audit Rubric (Open Proof Forensic Framework, OPFF) (COPE · IMU/AMS · ACM v1.1 · ICMJE/CRediT · NeurIPS, Charter DOI: [10.5281/zenodo.24241228](https://doi.org/10.5281/zenodo.24241228), Ledger v1.0.0 DOI: [10.5281/zenodo.24241229](https://doi.org/10.5281/zenodo.24241229)) |
+| 5대 관문 및 등급 판정 | Gate 1 (수리·커널): PASS · Gate 2 (원고-코드): HOLD · Gate 3 (서지·윤리): FAIL · Gate 4 (공정·개입): HOLD · Gate 5 (수리 가치): PASS $\implies$ TIER C (조건부 수정 요구 / Conditional Revision Required) |
 
 
 
@@ -24,7 +24,7 @@
 | 2 | 외부 공리·미완성 스텁·전제 무결성 (Kernel & Premise Integrity) | 0 sorry, 0 axiom, 0 third-party patches · 14 unused `_h*` lines (15 binders) | 0 sorry, 0 axiom | PASS (Kernel Sound) |
 | 3 | 주정리 명세 및 범위 노트 정합성 | Theorem 1.1 ($\mu(\pi)=2$) & Corollary 1.2 (Flint-Hills) proved (017.md:11 omits Cor 1.2) | Exact scope match | PASS (Gate 1) / HOLD (Gate 2) |
 | 4 | 장절별 인용 밀도 편중 | 서론 24개 명령 / 25회 키 호출 (1k줄당 90.9회) vs. Secs 2–5 13 (9.8 / 1k lines) (9.3 : 1 skew; Sec 4 0) | Balanced attribution | FAIL (CP-03) |
-| 5 | 추론 로그 대비 원고 서지 탈락 및 미귀속 고전 | 25 / 25 .bib linked · 16 / 23 (69.6%) trace refs dropped + 6 classical families uncited | Zero trace ref drop | FAIL (CP-03) |
+| 5 | 추론 로그 대비 원고 서지 탈락 및 `math.GM`·고전 인용 결손 | 25 / 25 .bib linked · 16 / 23 (69.6%) trace refs dropped + 6 classical families uncited + 3/25 `math.GM` (`Carella2022`, `withdrawn v2`) | Zero trace ref drop | FAIL (CP-03) |
 | 6 | 네임스페이스 귀속 및 워커 분절 지층 | 0 external namespace placement · 20 worker namespaces (W06–W64) · 263 dup names | Unified namespace | HOLD (CP-10) |
 | 7 | 생성 이력 및 추론 로그 완결성 | 42-page (45-section) trace (Sec 1–44 $\mu \le 62/25$ $\to$ Sec 45 $\mu = 2$) provided | Full trace disclosure | HOLD (CP-07) |
 | 8 | 수리적 돌파 가치 및 독립 재검증 | Genuine resolution of $\mu(\pi) = 2$ & Flint-Hills convergence · 75 thms (120/120 mutations) | Genuine breakthrough | PASS (Gate 5) |
@@ -35,12 +35,12 @@
 
 * 규격 불부합 (Non-Conformance: CP-03):
   1. 추론 로그 참고문헌의 원고 탈락 (Trace-to-Paper Citation Drop: 16 / 23 = 69.6%): 42쪽 추론 로그(irrationality-exponent-of-pi.pdf)의 참고문헌 23건 중 16건(69.6%, Esnault-Viehweg 1984, Ru-Vojta 1997, Vojta 1996, Bombieri-Vaaler 1983, Fischler-Rivoal 2018/2023, Hartshorne 1977 및 35회 인용된 선행 프리프린트 #005 Catalan 등)이 최종 원고 references.bib에서 제외됨.
-  2. 핵심 기술 본문(Sections 2–5)의 인용 편중(9.3 : 1) 및 6대 고전 정리 무인용 전개 (CP-03): 서론(main.tex, 264줄)에 \cite 명령 24회(인용 키 호출 25회)가 집중된 반면, 실제 증명이 수행되는 Sections 2–5(1,327줄)에는 인용이 13회(conclusion.tex 0회)에 그치며, 곱사영공간 가중 영점 추정(Esnault-Viehweg 1984; Faltings 1991; Fischler-Nakamaye 2014), 로그 미분 유수 강성(Ax 1971; Lang 1982), 대수적 Serre-Čech 소멸(Serre 1955; Hartshorne 1977), 로랑 보간 행렬식 행 변환(Laurent 1991; Waldschmidt 2000), 중심 이항계수 최소공배수 상한(Chebyshev 1852; Hanson 1972; Nair 1982), 이진 반원 최소간격 정렬 및 조르당 사인 부등식(Jordan 1882; Hardy-Littlewood 1923) 등 6대 고전 기법이 호출부 인용 없이 전개됨.
+  2. 핵심 기술 본문(Sections 2–5)의 인용 편중(9.3 : 1), 6대 고전 정리 무인용 전개 및 `math.GM` 부실 인용 (CP-03): 서론(main.tex, 264줄)에 \cite 명령 24회(인용 키 호출 25회)가 집중된 반면, 실제 증명이 수행되는 Sections 2–5(1,327줄)에는 인용이 13회(conclusion.tex 0회)에 그치며, 곱사영공간 가중 영점 추정(Esnault-Viehweg 1984; Faltings 1991; Fischler-Nakamaye 2014), 로그 미분 유수 강성(Ax 1971; Lang 1982), 대수적 Serre-Čech 소멸(Serre 1955; Hartshorne 1977), 로랑 보간 행렬식 행 변환(Laurent 1991; Waldschmidt 2000), 중심 이항계수 최소공배수 상한(Chebyshev 1852; Hanson 1972; Nair 1982), 이진 반원 최소간격 정렬 및 조르당 사인 부등식(Jordan 1882; Hardy-Littlewood 1923) 등 6대 고전 기법이 호출부 인용 없이 전개됨. 동시에 `references.bib`에는 `#23`–`#25` 미심사 `arXiv [math.GM]` 프리프린트 3건(`LopezZapata2026`, `withdrawn v2`인 `MantzakourasLopezZapata2025`, 그리고 [main.tex:146-155](../proofs/oai_ref/tex/main.tex#L146-L155) 각주 1이 Thm 8.1 부호 오류를 짚으면서도 $\mu(\pi)=2$ 주장은 `"not decide"`로 남긴 `Carella2022` `arXiv:1902.08817v10`)이 포함됨.
 * 아티팩트 범위 기술 불일치 및 코드 중복 (Artifact & Scope Divergence: CP-04, CP-05, CP-10):
   1. lean/docs/017.md:11 범위 기술과 Main.lean:29-32 실제 형식화의 불일치: 017.md:11은 챌린지 래퍼 ComparatorChallenges/PiExponent.lean(theorem main)만을 기준으로 Flint-Hills 급수 수렴 결과가 선택 명제 밖이라고 기술하여 외부 논평에서 미형식화로 오인되었으나, 실제 최상위 모듈 OAI/NumberTheory/PiExponent/Main.lean:29-32에는 flint_hills_summable(Corollary 1.2)이 0 sorry로 완전히 증명되어 있음(실제 미형식화 항목은 2-매개변수 일반화인 Corollary 5.2뿐임).
   2. 논문 대 Lean 코드의 4대 대수·조합적 치환 및 내부 사문화 선언: 연속 단체 부피($2k!$) $\to$ 내접 직사각형($k^k$, $C_*$ 3.83 × 10^6배 팽창), 최소공배수 상수 $\Lambda_{\text{PNT}} \approx 1.732 \to \Lambda_{\text{paper}} = 4\log 2 \approx 2.773 \to \Lambda_{\text{Lean}} = \log 4 + 4 \approx 5.386$, 복소 Kodaira 소멸 $\to$ 대수적 Rees 폭발 + 유한 아핀 덮개 Čech 코호몰로지, Flint-Hills 상수 $8/\pi \to 16$ (Fin 4 잉여류 분할)의 4대 구조적 치환이 이루어졌으며, 869개 모듈 내부에 미참조 임포트 파일 4개(259줄), 인스턴스 전용 모듈 5개(309줄), 미참조 선언 552개, 동명 중복 선언 263종(656회), 완전 복제 정리 23쌍, 병렬 워커 네임스페이스 20개(W06~W64)가 잔존함.
-* 수학적·형식적 난제 해결 완결성 공인 (Verified Mathematical Breakthrough: Gate 1 & Gate 5 PASS):
-  - 초월수론의 미해결 난제였던 원주율의 무리수 지수 $\mu(\pi) = 2$ 확정 (Theorem 1.1) 및 Flint-Hills 급수 $\sum_{n=1}^{\infty} (n^3 \sin^2 n)^{-1} < \infty$ 수렴 (Corollary 1.2) 증명은 수학적으로나 기계적 형식증명(869개 파일, 94,948줄, 0 sorry, 0 커스텀 공리, 0 외부 패치)으로나 유효하고 완결된 돌파임을 본 감사단의 독립 Lean 4 정리 75개(120/120 가설 변이 사살)로 최종 공인함.
+* 수학적·형식적 난제 해결 완결성 확인 (Verified Mathematical Breakthrough: Gate 1 & Gate 5 PASS):
+  - 초월수론의 미해결 난제였던 원주율의 무리수 지수 $\mu(\pi) = 2$ 확정 (Theorem 1.1) 및 Flint-Hills 급수 $\sum_{n=1}^{\infty} (n^3 \sin^2 n)^{-1} < \infty$ 수렴 (Corollary 1.2) 증명은 수학적으로나 기계적 형식증명(869개 파일, 94,948줄, 0 sorry, 0 커스텀 공리, 0 외부 패치)으로나 유효하고 완결된 돌파임을 독립 Lean 4 정리 75개(120/120 가설 변이 사살)로 독립 교차 검증함.
 
 
 
@@ -135,11 +135,11 @@
 
 ## 제6부. 유효 증명 구조 공인, 독립 재검증 및 상수 최적화 수리 (Constructive Verification & Constant Compression)
 
-### 6.1 수학적·기계적 난제 돌파 완결성 공인 (Gate 1 & Gate 5: PASS)
+### 6.1 수학적·기계적 난제 돌파 완결성 확인 (Gate 1 & Gate 5: PASS)
 
-- 본 감사단은 869개 원본 모듈(94,948줄)의 24개 구조체 번들과 핵심 대수기하 정의(Scheme, LineBundle.IsAmple, cohomology, IntegralCurve, curveDegree)를 전수 대조한 결과, 정의 왜곡이나 가설 동어반복이 0건이며 오일러 주기 $e^{2\pi i j} = 1 \in \mathbb{Z}[i]$와 가우스 정수 행렬식 노름 $\|\Delta\| \ge 1$을 통해 일반 리우빌 수($\mu(\alpha)=\infty$)로의 과잉 일반화(Overreach)가 엄밀히 차단됨을 확인함([thm_51_gaussian_integer_clearing_and_liouville_obstruction](../proofs/pi_laurent_determinant_and_flint_hills.lean#L77-L109)).
+- 본 감사는 869개 원본 모듈(94,948줄)과 9줄 챌린지 명세([PiExponent.lean](../proofs/oai_ref/lean/ComparatorChallenges/PiExponent.lean#L7-L15): `2 ≤ Q`, `2 ≤ r.den`, `Set.Infinite`, `sSup ... = 2` 및 [Main.lean](../proofs/oai_ref/lean/OAI/NumberTheory/PiExponent/Main.lean#L14-L27) `irrationalityExponent Real.pi = 2`), 24개 구조체 번들·핵심 대수기하 정의(Scheme, LineBundle.IsAmple, cohomology, IntegralCurve, curveDegree)를 전수 대조한 결과, 정의 왜곡이나 가설 동어반복이 0건이며 오일러 주기 $e^{2\pi i j} = 1 \in \mathbb{Z}[i]$와 가우스 정수 행렬식 노름 $\|\Delta\| \ge 1$로 일반 리우빌 수($\mu(\alpha)=\infty$)로의 과잉 일반화(Overreach)가 차단됨을 확인함([thm_51_gaussian_integer_clearing_and_liouville_obstruction](../proofs/pi_laurent_determinant_and_flint_hills.lean#L77-L109)). 이는 독립 커널 재검증(`cert-machine` 등) 결과와 합치하나, 정식 학술지 인간 동료심사 완료(`oai-math-revised` 원고 교정 및 2026년 10월 검증 지원금 심사 진행 중)와는 별개의 기계 검증 판정임.
 
-### 6.2 OPFF 독립 Lean 4 재검증(75개 정리) 및 $C_*$ 5,000배 팽창 제거 대안 해법
+### 6.2 독립 Lean 4 재검증(75개 정리) 및 $C_*$ 5,000배 팽창 제거 대안 해법
 
 1. 독립 Lean 4 정리 75개 (1,646줄, 0 sorry, 120/120 가설 변이 사살):
    - [pi_simplex_parameters_and_stratigraphy.lean](../proofs/pi_simplex_parameters_and_stratigraphy.lean) (Theorems 1–25), [pi_transverse_multiplicity_and_seshadri_blowup.lean](../proofs/pi_transverse_multiplicity_and_seshadri_blowup.lean) (Theorems 26–50), [pi_laurent_determinant_and_flint_hills.lean](../proofs/pi_laurent_determinant_and_flint_hills.lean) (Theorems 51–75)에서 4대 대수·기하 축과 디리클레 하한 강성 장벽($\mu(\pi) \ge 2$)을 완전 검증함.
@@ -148,15 +148,15 @@
 
 
 
-## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (OPFF Standard-Bound Verdict)
+## 제7부. 외부 규격 대비 불부합 판정 및 최종 결론 (Standard-Bound Verdict)
 
 ### 7.1 5대 국제 학술 표준 및 COPE 가이드라인 대비 대조표
 
-| 심사 관문 (OPFF Gate) | 준거 국제 표준 및 OPFF 코드 | 본 사건(#017) 실측 결과 | 최종 판정 |
+| 심사 관문 (Audit Gate) | 준거 국제 표준 및 체크포인트 코드 | 본 사건(#017) 실측 결과 | 최종 판정 |
 | :--- | :--- | :--- | :---: |
 | Gate 1 (수리·커널 무결성) | IMU/AMS + Lean Kernel TCB | 869개 파일(94,948줄) 0 sorry, 0 axiom, 0 외부 패치; $\mu(\pi)=2$ (Main.main) 및 Flint-Hills 수렴 (Main.flint_hills_summable) 커널 검증 완료 | PASS |
 | Gate 2 (원고-아티팩트 정합성) | ACM Artifact Badging v1.1 (CP-04, CP-05, CP-10) | 017.md:11이 flint_hills_summable 형식화 사실을 누락 기술; 논문 대 Lean 4대 상수·기하 치환($\Lambda$: $4\log 2 \to \log 4 + 4$ 등); 미참조 모듈 4개(259줄), 미참조 선언 552개, 복제 정리 23쌍 | HOLD |
-| Gate 3 (서지·귀속 무결성) | COPE + AMS Ethical Guidelines (CP-03) | 추론 로그 참고문헌 16 / 23건(69.6%) 원고 탈락(#005 Catalan 35회 인용 및 Esnault-Viehweg, Ru-Vojta 등 누락); 본문 Sections 2–5 인용 밀도비 9.3 : 1 편중 및 6대 고전 정리군 무인용 전개 | FAIL (귀속 결손) |
+| Gate 3 (서지·귀속 무결성) | COPE + AMS Ethical Guidelines (CP-03) | 추론 로그 참고문헌 16 / 23건(69.6%) 원고 탈락(#005 Catalan 35회 인용 및 Esnault-Viehweg, Ru-Vojta 등 누락), 본문 Sections 2–5 6대 고전 무인용 및 `references.bib` 내 3/25 `math.GM` 미심사 프리프린트(`Carella2022` `arXiv:1902.08817v10`, `withdrawn v2` 포함) 수록 | FAIL (귀속·서지 결손) |
 | Gate 4 (공정 투명성) | ICMJE + CRediT + NeurIPS (CP-07) | 42쪽(45절) 추론 로그 PDF 공개(Part I $62/25 \to$ Part II $2$), 코드 내 20개 병렬 워커 네임스페이스(W06–W64) 잔존 | HOLD |
 | Gate 5 (수리적 돌파 가치) | IMO / Erdős / Mathlib Standard | 초월수론 난제 $\mu(\pi) = 2$ 및 Flint-Hills 급수 수렴의 완전한 해결 (75개 독립 정리 · 120/120 변이 사살로 교차 검증) | PASS |
 
@@ -175,17 +175,17 @@
 ### 7.3 예상 반론에 대한 사전 사실 확인 (Pre-bunking FAQ 6문 6답)
 
 1. Q1. "원주율의 무리수 지수 $\mu(\pi)=2$와 Flint-Hills 급수 수렴이 실제로 빈틈없이 증명되었는가?"
-   - A1. 예. `OAI/NumberTheory/PiExponent/Main.lean`의 `pi_irrationalityExponent_eq_two` (`L14-15`), `main` (`L17-27`), `flint_hills_summable` (`L29-32`)은 869개 모듈(94,948줄) 전체에 걸쳐 0 sorry, 0 커스텀 공리, 0 외부 패치로 완전히 기계 검증되었으며, 정의 왜곡이나 가설 동어반복 결함이 0건임을 본 감사단의 독립 Lean 4 정리 75개(120/120 변이 사살)로 교차 확인하였습니다.
+   - A1. `OAI/NumberTheory/PiExponent/Main.lean`의 `pi_irrationalityExponent_eq_two` (`L14-15`), `main` (`L17-27`), `flint_hills_summable` (`L29-32`)과 9줄 순수 `Mathlib` 챌린지 명세([PiExponent.lean](../proofs/oai_ref/lean/ComparatorChallenges/PiExponent.lean#L7-L15))는 869개 모듈(94,948줄) 전체에서 0 sorry, 0 커스텀 공리, 0 외부 패치로 컴파일되며, 정의 왜곡이나 가설 동어반복 결함이 0건임을 독립 Lean 4 정리 75개(120/120 변이 사살)로 교차 확인했습니다. 다만 Lean 커널 무결성(`Gate 1 PASS`)이 곧 정식 학술지 인간 동료심사 완료를 뜻하지는 않으며, 원고 서술·서지 교정은 외부 개정 작업(`oai-math-revised`)과 병행 진행 중이어서 종합 판정을 조건부 `TIER C`로 유지합니다.
 2. Q2. "외부 리뷰에서는 lean/docs/017.md를 근거로 Flint-Hills 급수가 형식화되지 않았다고 했는데 어느 쪽이 맞는가?"
    - A2. lean/docs/017.md:11은 외부 비교기용 단일 정리 래퍼인 ComparatorChallenges/PiExponent.lean(theorem main)만을 기준으로 설명했기 때문에 빚어진 오해입니다. 실제 최상위 모듈인 [Main.lean:29-32](../proofs/oai_ref/lean/OAI/NumberTheory/PiExponent/Main.lean#L29-L32)와 [FlintConsequence.lean](../proofs/oai_ref/lean/OAI/NumberTheory/PiExponent/Analysis/FlintConsequence.lean#L17-L31)(ν = 9/4 대입)에 고전적 Flint-Hills 급수 수렴(Corollary 1.2)이 0 sorry로 완전히 증명되어 있습니다([thm_03_flint_hills_scope_note_vs_main_lean_audit](../proofs/pi_simplex_parameters_and_stratigraphy.lean#L95-L103)).
 3. Q3. "이 증명이 임의의 실수 $\alpha$에 대해서도 $\mu(\alpha)=2$를 증명해 버리는 과잉 일반화(Overreach) 오류는 없는가?"
    - A3. 없습니다. Lemma 3.1(MatrixArithmetic.lean)과 Lemma 3.2(RowTranslation.lean)는 오일러 주기 항등식 $e^{2\pi i j} = 1 \in \mathbb{Z}[i]$와 순허수 가우스 정수 $q_i r_i = 2\pi i p_i \in 2\pi i \mathbb{Z}[i]$에 결정적으로 의존합니다. 일반 리우빌 수 $\alpha$에 대해서는 $e^{j\alpha} \notin \mathbb{Z}[i]$이므로 행 변환 불변성과 가우스 정수 행렬식 하한 $\|\Delta\| \ge 1$이 성립하지 않습니다([thm_51_gaussian_integer_clearing_and_liouville_obstruction](../proofs/pi_laurent_determinant_and_flint_hills.lean#L77-L109)).
 4. Q4. "논문과 Lean 코드 사이에 최소공배수 상수($4\log 2$ 대 $\log 4 + 4$)와 분리 상수($C_*$)가 다른데 증명이 깨지지 않는가?"
    - A4. 깨지지 않습니다. Section 4(AdmissibleParameters.lean)에서 차원 $m$을 먼저 충분히 크게 고른 뒤 가중치 수열 $w_1 \gg w_2 \gg \dots \gg w_m$의 비율을 귀납적으로 선택하므로, $m$에만 의존하는 분리 상수 $C_*$나 상수 배율 $\Lambda$는 가중치 꼬리 합 $\Lambda \sum_{i=1}^m 1/w_i < \varepsilon_0 / 3$ (WeightErrorMargin.lean)에 의해 임의로 작게 흡수되어 최종 극한 $\mu(\pi)=2$에 영향을 주지 않습니다.
-5. Q5. "Gate 1과 Gate 5가 모두 PASS인데 왜 최종 등급이 OPFF TIER C인가?"
-   - A5. 수학적 증명과 커널 무결성은 완전 통과(PASS)했으나, Gate 3(서지 귀속)에서 (1) 42쪽 추론 로그에서 실제 사용한 참고문헌 23건 중 16건(69.6%, #005 Catalan 35회 인용 및 Esnault-Viehweg 1984, Ru-Vojta 1997 등)이 최종 원고 .bib에서 탈락했고, (2) 핵심 증명 본문(Sections 2–5)에서 6대 고전 정리군이 호출부 인용 없이 전개되었기 때문입니다(CP-03).
-6. Q6. "OPFF TIER A로 승격되기 위한 구체적 수정 요건은 무엇인가?"
-   - A6. 수학적 증명이나 Lean 커널 코드를 재작성할 필요 없이, (1) 추론 로그에서 탈락한 16개 참고문헌과 본 보고서 1.2절 표의 6대 고전 원저를 `sections/*.tex` 해당 정리 호출부에 복원하고, (2) lean/docs/017.md:11에 Main.flint_hills_summable 형식화 사실을 명시하며, (3) 미참조 파일 4개(259줄)를 정리하면 즉시 OPFF TIER A 요건을 충족합니다.
+5. Q5. "Gate 1과 Gate 5가 모두 PASS인데 왜 최종 등급이 TIER C인가?"
+   - A5. 수학적 증명과 커널 무결성(`Gate 1 & 5: PASS`)은 확인되었으나, 정식 학술지 동료심사와 별개로 Gate 3(서지 귀속)에서 (1) 42쪽 추론 로그에서 실제 사용한 참고문헌 23건 중 16건(69.6%, #005 Catalan 35회 인용 및 Esnault-Viehweg 1984, Ru-Vojta 1997 등)이 최종 원고 .bib에서 탈락한 반면 `#23`–`#25` 미심사 `math.GM` 프리프린트 3건(`Carella2022` `arXiv:1902.08817v10` 및 `withdrawn v2` 포함)이 실렸고, (2) 핵심 증명 본문(Sections 2–5)에서 6대 고전 정리군이 호출부 인용 없이 전개되었기 때문입니다(CP-03).
+6. Q6. "TIER A로 승격되기 위한 구체적 수정 요건은 무엇인가?"
+   - A6. 수학적 증명이나 Lean 커널 코드를 재작성할 필요 없이, (1) 추론 로그에서 탈락한 16개 참고문헌과 본 보고서 1.2절 표의 6대 고전 원저를 `sections/*.tex` 해당 정리 호출부에 복원하고 `math.GM` 부실·철회 프리프린트 인용을 정비하며, (2) lean/docs/017.md:11에 Main.flint_hills_summable 형식화 사실을 명시하고, (3) 미참조 파일 4개(259줄)를 정리하면 즉시 TIER A 요건을 충족합니다.
 
 
 
@@ -203,8 +203,8 @@ lean proofs/pi_laurent_determinant_and_flint_hills.lean
 
 
 
-### 7.5 최종 심사 판정문 (Formal OPFF Referee Verdict Box)
+### 7.5 최종 심사 판정문 (Referee Verdict Summary)
 
-- 최종 공식 판정: OPFF TIER C (Conditional Revision Required - Genuine Mathematical Breakthrough with Trace-to-Paper Citation Drop & Technical Attribution Deficit)
+- 최종 판정: TIER C (Conditional Revision Required - Genuine Mathematical Breakthrough with Trace-to-Paper Citation Drop & Technical Attribution Deficit)
 - OpenAI #017(The irrationality exponent of $\pi$ is $2$)은 $(\mathbb{P}^1)^m \times \mathbb{P}^1$ 위의 가중 다중점 로랑 보간 행렬식과 유한 여길이 아이디얼 Rees 폭발·대수적 Serre-Čech 소멸을 결합하여 초월수론의 미해결 난제인 $\mu(\pi) = 2$ (Theorem 1.1)와 Flint-Hills 급수 수렴 (Corollary 1.2, Main.lean:29-32)을 869개 Lean 4 모듈(94,948줄, 0 sorry, 0 axiom)로 완결 증명한 유효한 수리적 돌파(Gate 1: PASS, Gate 5: PASS)이다.
-- 다만 (1) 42쪽 추론 로그의 참고문헌 23건 중 16건(69.6%, #005 Catalan 35회 인용 및 Esnault-Viehweg 1984, Ru-Vojta 1997 등)이 최종 원고 references.bib에서 탈락하고 본문 Sections 2–5(1,327줄)에서 6대 고전 기법이 호출부 인용 없이 전개된 귀속 결손(Gate 3: FAIL, CP-03), 및 (2) lean/docs/017.md:11의 flint_hills_summable 범위 오기와 4개 미참조 모듈(259줄)·552개 미참조 선언·20개 병렬 워커 네임스페이스(W06–W64) 잔존(Gate 2 & Gate 4: HOLD)이 확인되므로 OPFF TIER C로 판정하며, 위 서지 귀속 및 범위 문서 교정 시 OPFF TIER A로의 승격을 권고한다.
+- 다만 (1) 42쪽 추론 로그의 참고문헌 23건 중 16건(69.6%, #005 Catalan 35회 인용 및 Esnault-Viehweg 1984, Ru-Vojta 1997 등)이 최종 원고 references.bib에서 탈락하고 `3/25` `math.GM` 미심사·철회 프리프린트(`Carella2022` `arXiv:1902.08817v10`·`withdrawn v2`)가 수록되며 본문 Sections 2–5(1,327줄)에서 6대 고전 기법이 호출부 인용 없이 전개된 귀속 결손(Gate 3: FAIL, CP-03), 및 (2) lean/docs/017.md:11의 flint_hills_summable 범위 오기와 4개 미참조 모듈(259줄)·552개 미참조 선언·20개 병렬 워커 네임스페이스(W06–W64) 잔존(Gate 2 & Gate 4: HOLD)이 확인되며(Lean 커널 통과는 정식 인간 동료심사 완료와 별개), 이에 TIER C로 판정하고 위 서지 귀속 및 범위 문서 교정 시 TIER A로의 승격을 권고한다.

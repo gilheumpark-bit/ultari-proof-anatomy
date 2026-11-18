@@ -4,7 +4,7 @@
 - Verification Toolchain: Lean 4 v4.29.0-rc8 (vs. audited v4.34.1) / Python 3.14 (SymPy symbolic engine)
 - Artifact Checksums (SHA-256): [mub6_hadamard_fourier_and_cubic_fibers.lean](../proofs/mub6_hadamard_fourier_and_cubic_fibers.lean) (d15df51beb42...) | [mub6_weiner_completion_and_gram_sos.lean](../proofs/mub6_weiner_completion_and_gram_sos.lean) (84fa18c465e5...) | [mub6_stratigraphy_and_binary64_audit.lean](../proofs/mub6_stratigraphy_and_binary64_audit.lean) (818cc8871bac...) | [verify_symbolic_mub266.py](../proofs/verify_symbolic_mub266.py) (96ec2c66ba17...)
 - Verification Method: 75 independent Lean 4 theorems + 5 defs (1,249 lines, 0 sorry, 0 axiom, 358 / 358 universal-hypothesis mutations killed = 100%) & live parser verification across 69 preserved oai_ref/ files
-- OPFF Formal Verdict: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ OPFF TIER C (Conditional Verification & Non-Conforming Artifact)
+- 5-Gate Audit Verdict: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ TIER C (Conditional Verification & Non-Conforming Artifact)
 
 ## 0. 8-Metric Executive Scorecard (TL;DR)
 
@@ -17,7 +17,7 @@
 | 5. binary64 & Sept 7 Run | Rigorous IEEE-754 floating-point cover exclusion | Conditionally depends on MXCSR 0x1f80, -ffp-contract=off, and manual disassembly at covrun offset 6035; [covout.cpp](../proofs/oai_ref/cpp/covout.cpp#L100-L136) omits checkcpu(); Sept 7 run unauthenticated & replaced Oct 4 | Hardware & Provenance Gap (CP-07 · CP-11 FAIL) |
 | 6. Premise Hygiene (_h*) | 629,541 declarations (0 sorry, 0 axiom) | 62,767 unused _h* hypothesis binders across generated Fubini normalization shards (54,676 in MixedSemantics, 7,685 in PairSemantics, 40 in [SmallPartitions.lean](../proofs/oai_ref/lean/SmallPartitions.lean#L77-L307)) | 62,767 Unused Binders (CP-01 · CP-06 WARN) |
 | 7. Citation Hygiene | Preprint 1: 33 \cite calls; Preprint 2: 38 commands (41 key invocations) | 20/33 (60.6%) and 23/38 commands (24/41 key invocations = 58.5%) concentrated in the opening file (refinement.tex 656L & execution.tex 400L have 0 citations); 5 named classics omitted | Front-Loaded / 5 Omitted (CP-09 · CP-10 FAIL) |
-| 8. Exact Fourier & SOS Core | MRW non-Tao vanishing, $(3,3)$ cubic 5-cycle, $N(6) \le 5$ | 6 Schur blocks (98 pivots $> 40,000$), denominator bridge 5,806,080, Weiner dimension lock $d^2-k(d-1)=d \iff k=d$ verified; confirmed by 75 OPFF theorems (358/358 mutants killed) | Gate 1 & Gate 5 PASS |
+| 8. Exact Fourier & SOS Core | MRW non-Tao vanishing, $(3,3)$ cubic 5-cycle, $N(6) \le 5$ | 6 Schur blocks (98 pivots $> 40,000$), denominator bridge 5,806,080, Weiner dimension lock $d^2-k(d-1)=d \iff k=d$ verified; confirmed by 75 standalone Lean 4 theorems (358/358 mutants killed) | Gate 1 & Gate 5 PASS |
 
 ## 1. Summary of Verified Physical Findings
 
@@ -48,7 +48,7 @@
   - Fact: Because the generator emitted separate Fubini sum-swap normalization lemmas across 56,427 keys instead of using a kernel-reflected canonicalizer, inflating the 576-line Python verifier by 4,921.9x and leaving 62,767 unused _h* binders.
 - Q5. "Why is the September 7, 2026 C++ execution flagged under Gate 4 (Provenance)?"
   - Fact: Because [introduction.tex:155-159](../proofs/oai_ref/tex_mub/introduction.tex#L155-L159) and [execution.tex:4, 395-400](../proofs/oai_ref/tex_mub/execution.tex#L395-L400) ([execution.tex:4](../proofs/oai_ref/tex_mub/execution.tex#L4)) explicitly state that the initial September 7 run was not authenticated because its complete evidence packet was not recovered and had to be replaced post-hoc by an October 4 re-execution, while [covout.cpp](../proofs/oai_ref/cpp/covout.cpp#L100-L136) omits the checkcpu() MXCSR hardware guard.
-- Q6. "What exact revisions are required to upgrade #266 to OPFF TIER A?"
+- Q6. "What exact revisions are required to upgrade #266 to TIER A?"
   - Fact: (1) Replace check_records.py with an independent interval-arithmetic verifier (or Lean 4 formalization) that recomputes Preprint 1's cover exclusions from raw matrix witnesses, (2) wire Attainable 3 into Main.lean and prune the 15 disconnected root imports, (3) fold the 2.02M lines of unrolled Fubini shards via reflection, and (4) restore the 5 omitted primary citations in the technical sections.
 
 ## 3. 10-Second Terminal Reproduction (Don't Trust, Verify)

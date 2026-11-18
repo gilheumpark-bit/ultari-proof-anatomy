@@ -1,9 +1,9 @@
-Open Proof Forensics Foundation (OPFF) / 오픈 수리·형식증명 포렌식 재단
-ultari-proof-anatomy: Dissecting Human & AI Mathematical Proofs
-Copyright 2026 Open Proof Forensics Foundation (OPFF) & Gilheum Park (parkgilheum) <gilheum.park@gmail.com>
+Ultari Proof Anatomy (ultari-proof-anatomy) - Open Proof Forensic Framework (OPFF) / 공개 증명 포렌식 프레임워크
+Dissecting Human & AI Mathematical and Code-Verification Proofs
+Copyright 2026 Gilheum Park (parkgilheum) <gilheum.park@gmail.com>
 Repository: https://github.com/gilheumpark-bit/ultari-proof-anatomy
 Official CERN Zenodo Concept DOI: https://doi.org/10.5281/zenodo.24241228 (v1.0.0 DOI: https://doi.org/10.5281/zenodo.24241229)
-Audit Charter: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
+Audit Rubric: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
 
 1. Original Code, Formal Proofs, and Verification Scripts (Apache-2.0)
    All original Lean 4 formal proof files (`proofs/*.lean`, excluding `oai_ref/`),
@@ -13,36 +13,36 @@ Audit Charter: AUDIT_CHARTER.md / AUDIT_CHARTER.ko.md
    Version 2.0 (see `LICENSE`).
    Pursuant to Section 4(d) of the Apache License, Version 2.0, any redistribution
    or derivative work must retain a readable copy of the attribution notices
-   contained within this `NOTICE` file, including the name of the Open Proof
-   Forensics Foundation (OPFF), the repository URL, and any associated Zenodo DOI.
+   contained within this `NOTICE` file, including `ultari-proof-anatomy`
+   (Gilheum Park), the repository URL, and any associated Zenodo DOI.
 
-2. Audit Charter, Referee Reports, Verdict Ledgers, and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
-   The Joint International Audit Charter (`AUDIT_CHARTER.md`, `AUDIT_CHARTER.ko.md`),
-   all mathematical referee reports, forensic analyses, and 4-tier reader guides
-   (`*.md`) are licensed under both the Apache License, Version 2.0 and the
-   Creative Commons Attribution 4.0 International License (CC BY 4.0,
-   https://creativecommons.org/licenses/by/4.0/).
+2. Audit Rubric, Referee Reports, Verdict Ledgers, and 4-Tier Guides (Apache-2.0 / CC BY 4.0)
+   The 5-Gate Audit Rubric & Master Verdict Ledger (`AUDIT_CHARTER.md`,
+   `AUDIT_CHARTER.ko.md`), all mathematical referee reports, forensic analyses,
+   and 4-tier reader guides (`*.md`) are licensed under both the Apache License,
+   Version 2.0 and the Creative Commons Attribution 4.0 International License
+   (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/).
    Pursuant to Section 3(a) of CC BY 4.0 and Section 4 of Apache-2.0, any
    reproduction, redistribution, translation, adaptation, or academic citation
-   of the 5-Gate Joint International Audit Rubric, the 14 Forensic Checkpoints
+   of the 5-Gate Audit Rubric (OPFF), the 14 Forensic Checkpoints
    (`CP-01`–`CP-14`), or the Case Verdict Ledgers (`Case 001`–`Case 015`) must
-   provide explicit attribution to the "Open Proof Forensics Foundation (OPFF)",
+   provide explicit attribution to `ultari-proof-anatomy` (Gilheum Park),
    cite the official repository / Zenodo DOI, and indicate if changes were made.
    Omission of attribution when reusing these forensic findings or frameworks
-   constitutes a license violation and grounds for editorial retraction under
+   constitutes a license violation and an attribution deficit under
    COPE Core Practices.
 
-3. Trademark and Official Certification Stamp Reservation (Apache-2.0 Section 6)
+3. Trademark and Endorsement Restriction (Apache-2.0 Section 6)
    Pursuant to Section 6 (Trademarks) of the Apache License, Version 2.0 and
    Section 2(b)(1) of CC BY 4.0, neither license grants permission to use the
-   trade names, trademarks, service marks, or official certification stamps of
-   the Licensor (including "Open Proof Forensics Foundation", "OPFF",
-   "오픈 수리·형식증명 포렌식 재단", or the official audit verdict stamps
-   "OPFF TIER S", "OPFF TIER A", "OPFF TIER C", "OPFF TIER F") to endorse or
-   certify any external repository, paper, or artifact not officially audited and
-   recorded in the OPFF Verdict Ledger, except as required for reasonable and
-   customary use in describing the origin of the Work and reproducing the content
-   of this `NOTICE` file.
+   project names or verdict labels of the Licensor (including
+   "ultari-proof-anatomy", "Open Proof Forensic Framework", "OPFF",
+   "공개 증명 포렌식 프레임워크", or the rubric labels
+   "TIER S", "TIER A", "TIER C", "TIER F") to endorse or represent
+   external repositories, papers, or artifacts not recorded in this
+   repository's ledger as reviewed or accepted by ultari-proof-anatomy, except
+   as required for reasonable and customary use in describing the origin of the
+   Work and reproducing the content of this `NOTICE` file.
 
 4. Third-Party Reference Snapshots (`oai_ref/`)
    Files located under `proofs/oai_ref/` (and `anatomy/*/proofs/oai_ref/`) are

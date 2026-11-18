@@ -15,7 +15,7 @@
     "proofs/deepmind_signal_forensic_parsers.py": "8d41db304ae88c0ccebd8119ff3e4de6824ad0e5a3384a66ff7e4cb5b2e4a05c",
     "proofs/verify_symbolic_deepmind_signal.py": "4cc43598acf05cb2b062677e3a5bd9b55adec7eeaa32ecdf30f70954bb60cd00",
     "proofs/symbolic_verification_result.json": "9f3da5893afca7f3b8c14461c773cc315fcaf5dfc4420f40a7223873d8d744b5",
-    "proofs/problem_spec.md": "6185e2dff33a84587d368a5c5ef40b22a16eb95e1ae6f63dcb9c38e9f15b05ae"
+    "proofs/problem_spec.md": "01e022bc8529204cbc50d66bd48f7506d912a80f2fb2eb51aad4e3d8fc84801d"
   },
   "verified_key_results": {
     "pillar1_stratigraphy_and_hook_boundary": {
@@ -582,17 +582,17 @@
     ]
   },
   "files": {
-    "ko/01_일반인용_해설서.md": "c64c34be19380d076e8ac334f1358e41c55a912f7961ee45422b5d3139ea981f",
-    "ko/02_중급자용_수학및코드가이드.md": "7deb53d52e18c5208ff562c89bd1d08fa83ed226f8d78988ee25e041b734d0b2",
-    "ko/03_전문가용_학술및수리물리보고서.md": "c74d055b47ef888b3630140bae140f8a823aa0f79f4909b7857dd70658eada6a",
-    "ko/04_자동검증및파서용_명세서.md": "e3b1e288626598d96ac62310b939a9409c220754273055961b889f6611653021",
-    "ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md": "7d88c74f200b66efe886b1cae07031aa63f81dcef9c01cd67a2e5b71c8e0bb93",
-    "en/01_Executive_Summary_and_General_Guide.md": "177fce575a149b87d2193571885b1db2aee317374a74223832b8747e0da5adb8",
-    "en/02_Intermediate_Math_and_Code_Guide.md": "56afeb059fbca34f815d23c99c50b3b700b80d6743e4d521f7ff5e7cc08d032c",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "c3484bb2fbe84208cd2a022608c3821ae7402707caf728be39bb0192f6652bb0",
-    "en/04_Automated_Verification_and_Parser_Spec.md": "dfa004d1c360c48e708d51d829641512ca0e155544d7a83c8b37399b1a8cd56a",
-    "en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "56b35b74ace38cda47fb36d2c503a0d7bc540a28b394e75b6debf012bb312fb1",
-    "ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md": "7cad8e0ac64a78540ea279f6a6890ecd1b9024f5b2ddac1c874d4e1a1a265c06",
-    "en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md": "cf1b1f15009c0581d9e350c14d5788120ff0cf89395554692517bb67ad3447b3"
+    "ko/01_일반인용_해설서.md": "b28cd9eedca6f3c8bf2041514a39da2702d2177d957b7587b5899e1ff037522d",
+    "ko/02_중급자용_수학및코드가이드.md": "8c328f605199af34780a526e70b5eb5a311ce61c089f8c6800a49c0fcf01c2d3",
+    "ko/03_전문가용_학술및수리물리보고서.md": "d3500c3217374ac778f41293af546420815b8b65138adc3497f4e91f03f43fba",
+    "ko/04_자동검증및파서용_명세서.md": "de03251d026c923fa9e1a9501dab10a28bd7ea319b2c0ac50a37069b51923158",
+    "ko/05_OPFF_상세형_포렌식심사보고서_DeepMind_Signal.md": "4b46a761c2aede2e8f0a44179583e5a9caa54ca8f1ae4d9c62fa09debe386dff",
+    "en/01_Executive_Summary_and_General_Guide.md": "7770bb7d1fc1c5be8d0ee0b28fcaee032cc7aa74891ac45d26bc24984bdc73ae",
+    "en/02_Intermediate_Math_and_Code_Guide.md": "455689896fa079911ad62fd0c847e42631b5284fe36c54ed724580de318c896a",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "5918c6e611ddeb5dfad8dd22571fd478fba01210e53fe744736db3b07cde5974",
+    "en/04_Automated_Verification_and_Parser_Spec.md": "a15c699e6c0aa50565b939a6ed7b0b3ffdca7a0bc827e891be7599de9b8d0d3d",
+    "en/05_OPFF_Detailed_Forensic_Referee_Report_DeepMind_Signal.md": "b8062b190cdd7d68aa8d368a58dd4895d647046b51a40020c7f2243d64f669ac",
+    "ko/06_OPFF_기본형_감사리포트_DeepMind_Signal.md": "0aa929325277e45bfbc0c38e261cb29657e736bac086bce420c333150aedb709",
+    "en/06_OPFF_Basic_Audit_Report_DeepMind_Signal.md": "c1d1e877fedd56eb2cd8853bdd89d65c3dd67fe15649a71e05406bdd7b3750a8"
   }
 }

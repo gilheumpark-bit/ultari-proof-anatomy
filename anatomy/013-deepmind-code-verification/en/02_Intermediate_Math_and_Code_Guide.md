@@ -73,7 +73,7 @@
 | # | Lean 4 Theorem & Exact Line Link | Mathematical / Forensic Content |
 | :---: | :--- | :--- |
 | 26 | [thm_26_arm64_trusted_six_subsystem_partition](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L24) | 61 Arm64/Trusted files (27 Syscalls + 9 Spec + 7 ISA + 7 Process + 6 Surface + 3 Object + 2 Root) with 0 theorems |
-| 27 | [thm_27_arm64_trusted_line_budget_decomposition](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L43) | >= 16,767 unproved TCB lines (7,166 ISA + 2,774 Syscalls + 1,967 Spec + 1,779 Surface + 1,715 Process + 1,276 Object + 90 Root) and 3,072-line Eval.lean |
+| 27 | [thm_27_arm64_trusted_line_budget_decomposition](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L43) | >= 16,767 axiomatic TCB lines (7,166 ISA + 2,774 Syscalls + 1,967 Spec + 1,779 Surface + 1,715 Process + 1,276 Object + 90 Root) and 3,072-line Eval.lean |
 | 28 | [thm_28_tcb_exception_oom_and_trap_census](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L61) | 199 terminal TCB branches (177 .Exception + 12 .OutOfMemory + 10 .trap; 145 unique fault sites) |
 | 29 | [thm_29_modeled_vs_unmodeled_linux_syscall_gap](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L78) | 31 modeled Linux AArch64 syscalls vs >= 270 unmodeled syscalls (301+ total) halting with .Exception |
 | 30 | [thm_30_hoare_exception_guard_vacuous_satisfaction](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L92) | Abstract implication guard (`is_exception = 0 -> post_ok = 1` vacuously passes at `is_exception = 1`), contrasting `Hoare.lean:124-222` fail-closed `.Exception` exclusion (`Spec.allowOom` excuses `.OutOfMemory`) |
@@ -96,7 +96,7 @@
 | 47 | [thm_47_bitvec32_openat_flag_composition](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L354) | BitVec 32 O_WRONLY + O_CREAT + O_TRUNC = 0x241#32 (577) bitmask isolation |
 | 48 | [thm_48_nonlinear_iovec_product_exceeds_max_rw_count](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L369) | Nonlinear writev `iov_cnt * seg_len` exceeding MAX_RW_COUNT (0x7ffff000) |
 | 49 | [thm_49_signal_handler_table_bypass_on_sync_faults](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L383) | rt_sigaction records 64 handler slots (Signal.lean) that synchronous .Exception faults never invoke |
-| 50 | [thm_50_pillar2_arm64_tcb_master_ledger](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L396) | Pillar 2 master ledger combining 16,767 unproved lines, 199 stops, and >= 270 unmodeled syscalls |
+| 50 | [thm_50_pillar2_arm64_tcb_master_ledger](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L396) | Pillar 2 master ledger combining 16,767 axiomatic TCB lines, 199 stops, and >= 270 unmodeled syscalls |
 | 78 | [thm_78_rust_harness_zero_rng_and_frozen_epoch_bypass](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L418) | coins.rs zero-filled RNG tail (avail < req), frozen UNIX_EPOCH = 0 bypassing 30-day (2,592,000 s) SPK expiry, and 1 MiB/2 MiB/37 B harness caps |
 | 79 | [thm_79_sail_unicorn_fault_skip_and_hooked_zeroize_gap](../proofs/deepmind_arm64_tcb_and_syscall_divergences.lean#L439) | Sail/Unicorn skipped fault statuses (1, 13) and 2 skipped instructions, alink_check.py `3 * 4 = 12` B udf #0 weak-atomic stubs, and 2 hooked Drop::drop zeroize symbols |
 

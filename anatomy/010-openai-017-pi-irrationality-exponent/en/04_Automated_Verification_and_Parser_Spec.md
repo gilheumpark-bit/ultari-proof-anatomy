@@ -32,6 +32,6 @@ lean proofs/pi_laurent_determinant_and_flint_hills.lean
 # 3. Reproduce symbolic/numerical solver output
 python3 -B proofs/verify_symbolic_pi017.py
 
-# 4. Run full OPFF automated verification gate (120/120 mutations + Elab MetaM DoF 75/75 + nonlin 44 + oai_ref 60/60 100%)
+# 4. Run full automated verification gate (120/120 mutations + Elab MetaM DoF 75/75 + nonlin 44 + oai_ref 60/60 100%)
 python3 -B ../../tools/verify_all.py --root .
 ```

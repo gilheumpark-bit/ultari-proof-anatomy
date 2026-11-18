@@ -4,7 +4,7 @@
 - Verification Toolchain: Lean 4 v4.29.0-rc8 (vs. upstream v4.34.1) / Python 3.14 (SymPy symbolic engine)
 - Artifact Checksums (SHA-256): [ostmann_twin_engines_and_supply_contraction.lean](../proofs/ostmann_twin_engines_and_supply_contraction.lean) (edbc820be45e...) | [ostmann_tree_transfers_and_permutation_contradiction.lean](../proofs/ostmann_tree_transfers_and_permutation_contradiction.lean) (529c59062f95...) | [ostmann_algebraic_engines_and_cauchy_determinant.lean](../proofs/ostmann_algebraic_engines_and_cauchy_determinant.lean) (1681e0b1fbd2...) | [verify_symbolic_ostmann.py](../proofs/verify_symbolic_ostmann.py) (8f5c742ebfde...)
 - Verification Method: 75 independent Lean 4 theorems + 3 recursive defs + 1 structure (1,517 lines, 0 sorry, 0 axiom, 393 / 393 universal-hypothesis mutations killed = 100%) & deterministic SymPy reproduction script
-- OPFF Formal Verdict: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ OPFF TIER C (Valid Mathematical Core & Non-Conforming Artifact Packaging)
+- 5-Gate Audit Verdict: Gate 1: PASS · Gate 2: FAIL · Gate 3: FAIL · Gate 4: FAIL · Gate 5: PASS ⇒ TIER C (Valid Mathematical Core & Non-Conforming Artifact Packaging)
 
 ## 0. 8-Metric Executive Scorecard (TL;DR)
 
@@ -41,7 +41,7 @@
 
 - Q1. "Is Ostmann's Inverse Goldbach Problem (Erdős #431) genuinely solved without unproved assumptions?"
   - Fact: Yes. Both Engine A (`Complete.lean`) and Engine B (`Main.lean`) compile with 0 sorry, 0 custom axioms, and standard Mathlib `Nat.Prime` / `DirichletCharacter.LFunction` definitions, independently confirmed by our 75 Lean 4 theorems (393/393 hypothesis mutations killed, Gate 1 & Gate 5: PASS).
-- Q2. "If the theorem is validly proved, why is the overall verdict OPFF TIER C?"
+- Q2. "If the theorem is validly proved, why is the overall verdict TIER C?"
   - Fact: Because the repository ships two nearly disjoint proof trees (3,165 + 4,175 - 5 = 7,335 files sharing only 0.065%) alongside 381 unreachable fossil files (39,517 lines), includes +47,394 lines of Erdos970 patches with `SiegelZeros/NOTICE.md` omitted and 2,253 comment lines space-blanked (plus #013 omitted from `formalization.yaml`, absent from `oai_ref/`), leaves Sections 7 and 9 (1,170 lines) with 0 citations, and imports 18 files from #021/#026 without manuscript disclosure (Gate 2, Gate 3, Gate 4: FAIL).
 - Q3. "How do `Conclusion/Scales.lean` and `SiegelBoundProof.lean` match the manuscript formulas?"
   - Fact: [Conclusion/Scales.lean:51-83](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Conclusion/Scales.lean#L51-L83) proves `sum_dyadic` and `sum_dyadic_log` by induction on k over `Finset.range k` (0-based indexing vs. the paper's 1-based indexing), while Engine B's `Bs = 200` and `BD = 322` parameter padding contributes to the 16.08x slack; meanwhile [QuadraticSplitSupply.lean:25-33](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/Quadratic/QuadraticSplitSupply.lean#L25-L33) and [SiegelBoundProof.lean:17,81](../proofs/oai_ref/lean/OAI/NumberTheory/Ostmann/ZeroDensity/SiegelBoundProof.lean#L81) establish `2/η = 8/ε = 1600` on `¬ hnear`.
@@ -49,7 +49,7 @@
   - Fact: By exact inclusion–exclusion: 3,165 files in the `Complete.lean` cone + 4,175 files in the `Main.lean` cone - 5 shared files (`Defs.lean`, `Statement.lean`, `Endpoint.lean`, `FiniteCRT.lean`, `FiniteFactor.lean`) = 7,335 reachable files, plus 381 unreachable orphan files = 7,716 files ([thm_01_ostmann_directory_inclusion_exclusion_partition](../proofs/ostmann_twin_engines_and_supply_contraction.lean#L30-L48)).
 - Q5. "Does the 16.08x constant slack in the tree depth threshold affect the qualitative infinitude theorem?"
   - Fact: No. Because Ostmann's problem asks whether $(A+B)\triangle\mathcal{P}$ is infinite (an asymptotic statement as $N \to \infty$), any finite threshold $L_{\mathrm{eff}}$ suffices logically; our tightening ($L_{\mathrm{eff}}: 4,115,904 \to 255,983$) quantifies and removes the automation slack.
-- Q6. "What revisions are required to upgrade #013 to OPFF TIER A?"
+- Q6. "What revisions are required to upgrade #013 to TIER A?"
   - Fact: (1) Consolidate the duplicate twin engines and prune the 381 unreachable fossil files, (2) restore `SiegelZeros/NOTICE.md` and the 2,253 space-blanked comment lines in the `Erdos970` patches plus register #013 in `formalization.yaml` (absent from `oai_ref/`), and (3) restore call-site citations in Sections 4–9 and disclose the 18 cross-family imports from #021 and #026.
 
 ## 3. 10-Second Terminal Reproduction (Don't Trust, Verify)
