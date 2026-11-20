@@ -9,8 +9,8 @@
     "symbolic_solver_check": "python3 proofs/verify_symbolic_ns376.py"
   },
   "artifacts_sha256": {
-    "README.md": "eabbf3c5c535826d1aedcc8cf7ccf954a646a92488072f20be249f5ee02dd261",
-    "README.ko.md": "52950ffb42e1c7113b0bcd41c6493872d416547452fc0fbf41a6732d7851a6b3",
+    "README.md": "0f9e2ec7f3bec7d7f3445039a818e81dd064554635c36e511b4c917a3bb44640",
+    "README.ko.md": "3b9f34e46d7bceda7281ea675c7e437ac0f967f8f92868879423f4def733cc9e",
     "proofs/ns376_kinematic_routing_and_forensics.lean": "cab492b22b85491d1b74b32e30cdc6ace221a0af05905b4b8cb609e486c0fcdd",
     "proofs/ns376_gronwall_uniqueness_and_repairs.lean": "2f871a49e16d64c582bcb2e272158d5fa1e9f35667c48647e00fc4323b0210f9",
     "proofs/verify_symbolic_ns376.py": "2f39eefded4b2e34488d3b8fc98fdcd940b397238a7772e80d7a755ec4e7b84c",
@@ -18,16 +18,16 @@
     "proofs/problem_spec.md": "46cd2c28be1d952564a437a66cfa70ff8c6a702b57fb1a031d0923a8ff083222",
     "ko/01_초보자용_쉬운해설.md": "f34ce5018838c95d222757b58baf2b725d370182e198893ab095f242e909842e",
     "ko/02_중급자용_구조및수식가이드.md": "9acef475c80f87fc00bd1cd9e0ebf3a211c62736cdca30dbb1a7df7b9850c1c8",
-    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "940e015de19c5ec45c72bd9a53f81882695e2d1ca5293771f36543c9fdc27c74",
+    "ko/03_전문가용_수리물리및형식증명심사보고서.md": "92eebbed17418395690f684027b20881656207517e9a6e40f4ee26c5b1ccd205",
     "ko/04_자동검증및파서용_명세서.md": "1ac2ec19f5d234da2ee7b1d667aa7ceddd0ff58850598d08b8a13d73f12cda2b",
-    "ko/05_상세형_포렌식심사보고서_NS376.md": "151cd02d1b627c558e3c6ac05bd6386167c46865b83cdd349ff930fb9b8ceb59",
-    "ko/06_기본형_감사리포트_NS376.md": "4be15c58d37068af9dde7906fa1964210dcb2a654b9dc34eb281baaf7a580ae9",
+    "ko/05_상세형_포렌식심사보고서_NS376.md": "18699f59f8b4947510b69201fa671bfa6a092a96508eb4dd1ed44d6723bed40c",
+    "ko/06_기본형_감사리포트_NS376.md": "5e2b048149af3d9046b9bd5f99f591c14a08755e6695afc18b238fff83208908",
     "en/01_Beginner_Guide.md": "20129b237d9ef9ab90aa23189c8905f42e47f5d8315d5663a4536e0ba2311d4c",
     "en/02_Intermediate_Math_and_Code_Guide.md": "9a3c59a0310845831256c858c5cfa0c8290ec2390ef53b5f537ab6a51ae575a7",
-    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "ca95d843ab49fd31b1d3c3525575e39e963e4d9b22ceaaa2b80805eb9b9521fc",
+    "en/03_Expert_Forensic_and_Mathematical_Physics_Report.md": "bb5ef695acb72b3e9b0389f7ccb9804b310eb5ed430dbc289be8c611978c3c39",
     "en/04_Automated_Verification_and_Parser_Spec.md": "563c21e01e79c22ad4f54c6b8c6216c6afb6d75b54ca1455e5914e63f488d0a6",
-    "en/05_Detailed_Forensic_Referee_Report_NS376.md": "7c71c39bb569b4058950cfd239e51b9b2f9c84795c43e05c668414d479f0a0f7",
-    "en/06_Basic_Audit_Report_NS376.md": "4a2b0cf4f06fb50027c9502c26ffda3fc033fd8fa8f4c4a3942177c99185edca"
+    "en/05_Detailed_Forensic_Referee_Report_NS376.md": "a5f1672ef44c61a36c305f9825344ee088ee408c8be9ddede5202e1ef9c5e838",
+    "en/06_Basic_Audit_Report_NS376.md": "1c476ae0014c5b5bc52dcf6d55b4b47a75734475c655b69a242027f0497ad13f"
   },
   "verdict": {
     "layer_1a_papers_stated_forced_flow_model": "PASS (Under the papers explicit setup starting from u(0)=0 and prescribing a divergence-free velocity U = curl(chi * Psi) with body force f := dt_U + (U.grad)U - nu*Delta U and time-1 periodicity PeriodicAfterOne for t >= 1, the Lagrangian ODE trajectories and uniqueness claims hold)",

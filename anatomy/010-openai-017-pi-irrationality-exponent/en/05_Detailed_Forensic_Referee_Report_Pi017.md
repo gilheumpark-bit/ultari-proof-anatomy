@@ -20,13 +20,13 @@
 
 | # | Audit Dimension | Measured Metric | Standard | Status |
 | :-: | :--- | :---: | :---: | :---: |
-| 1 | Reachability & Call-Graph Redundancy | 869 / 869 imported (100%) · 4 files (259 lines) unreferenced · 552 unused decls | Clean call-graph | HOLD (CP-05, CP-10) |
+| 1 | Reachability & Call-Graph Redundancy | 869 / 869 imported (100%) · 4 files (259 lines) unreferenced · 552 unused decls | Clean call-graph | HOLD (CP-05) |
 | 2 | Kernel & Premise Integrity | 0 sorry, 0 axiom, 0 third-party patches · 14 unused `_h*` lines (15 binders) | 0 sorry, 0 axiom | PASS (Kernel Sound) |
 | 3 | Main Theorem & Scope Note Alignment | Theorem 1.1 ($\mu(\pi)=2$) & Corollary 1.2 (Flint-Hills) proved (017.md:11 scopes PiExponent.lean; Main.lean:29-32 adds Cor 1.2, Class C unclaimed) | Exact scope match | PASS (Gate 1) / HOLD (Gate 2) |
 | 4 | Section Citation Skew (Manuscript Distribution) | Intro 24 commands / 25 keys (90.9 / 1k lines) vs. Secs 2–5 13 (9.8 / 1k lines) (9.3 : 1 skew; Sec 4 0) | Balanced attribution | FAIL (CP-03) |
 | 5 | Trace-to-Paper Citation Drop & Selection Asymmetry | 25 / 25 .bib linked · 16 / 23 (69.6%) trace refs dropped + 6 classical families uncited vs. 3/25 non-input `math.GM` notes | Zero trace ref drop | FAIL (CP-03) |
-| 6 | Worker Namespace Strata & Duplication | 0 external namespace placement · 20 worker namespaces (W06–W64) · 263 dup names | Unified namespace | HOLD (CP-10) |
-| 7 | Provenance & Reasoning Trace Completeness | 42-page (45-section) trace (Sec 1–44 $\mu \le 62/25$ $\to$ Sec 45 $\mu = 2$) provided | Full trace disclosure | HOLD (CP-07) |
+| 6 | Worker Namespace Strata & Duplication | 0 external namespace placement · 20 worker namespaces (W06–W64) · 263 dup names | Unified namespace | HOLD (CP-10, CP-11) |
+| 7 | Provenance & Reasoning Trace Completeness | 42-page (45-section) trace (Sec 1–44 $\mu \le 62/25$ $\to$ Sec 45 $\mu = 2$) provided | Full trace disclosure | HOLD (CP-11) |
 | 8 | Mathematical Breakthrough & Mutation Kill | Genuine resolution of $\mu(\pi) = 2$ & Flint-Hills convergence · 75 thms (120/120 mutations) | Genuine breakthrough | PASS (Gate 5) |
 
 
@@ -36,7 +36,7 @@
 * Standard Non-Conformance (CP-03):
   1. Trace-to-Paper Citation Drop (16 / 23 = 69.6%): Out of 23 references cited in the 42-page reasoning trace (reasoning_traces/irrationality-exponent-of-pi.pdf), 16 references (69.6%) were dropped from the final manuscript's references.bib, including 35 citations to the companion preprint #005 (Catalan's constant is irrational, [17]), Esnault-Viehweg (1984, [11]), Ru-Vojta (1997, [20]), Vojta (1996, [22]), Bombieri-Vaaler (1983, [6]), Fischler-Rivoal (2018/2023, [12, 13]), and Hartshorne (1977, [14]).
   2. Technical Body Citation Skew (9.3 : 1), 6 Uncited Classical Theorem Families & Bibliographic Selection Asymmetry (CP-03): While the introduction (main.tex, 264 lines) contains 24 \cite commands (25 key invocations, 90.91 commands per 1,000 lines), the 4 technical proof sections (Sections 2–5, 1,327 lines) contain only 13 citations (9.80 per 1,000 lines, with 0 in conclusion.tex), deploying 6 foundational theorem families without citation at the call sites (Esnault-Viehweg 1984 / Faltings 1991 / Fischler-Nakamaye 2014 weighted multiprojective zero estimates; Ax 1971 / Lang 1982 logarithmic differential residue rigidity; Serre 1955 / Hartshorne 1977 algebraic Čech-Serre vanishing; Laurent 1991 / Waldschmidt 2000 interpolation determinant row translation; Chebyshev 1852 / Hanson 1972 / Nair 1982 dyadic LCM bounds; Jordan 1882 / Hardy-Littlewood 1923 dyadic semicircle spacing). Meanwhile, whereas 16 / 23 (69.6%) peer-reviewed reasoning-trace inputs were dropped, `references.bib` retains 3 / 25 unrefereed `arXiv [math.GM]` preprints explicitly cited in [main.tex:140-155](../proofs/oai_ref/tex/main.tex#L140-L155) as non-input contextual notes (`LopezZapata2026`, `withdrawn v2` `MantzakourasLopezZapata2025`, and `Carella2022` `arXiv:1902.08817v10` where main.tex explicitly states `"Neither claim is used here"` while Footnote 1 notes Thm 8.1's sign obstruction and leaves the $\mu(\pi)=2$ claim `"not decide[d]"`).
-* Class C Unclaimed Formalization Discovery, Structural Adaptations & Call-Graph Redundancy (CP-05, CP-10):
+* Class C Unclaimed Formalization Discovery, Structural Adaptations & Call-Graph Redundancy (CP-04, CP-05, CP-07, CP-10, CP-11):
   1. Class C Unclaimed Formalization Discovery (`017.md:11` vs. `Main.lean:29-32` `flint_hills_summable`): `017.md:11` states accurately relative to the comparator wrapper `PiExponent.lean` (`theorem main`) that `"The paper's convergence consequence for the Flint-Hills series is outside this selected statement"`; meanwhile, `OAI/NumberTheory/PiExponent/Main.lean:29-32` (`flint_hills_summable`) proves Corollary 1.2 with `0 sorry` as an unclaimed formalization discovery (only the two-parameter generalization Corollary 5.2 is omitted).
   2. Four Constructive Paper-to-Lean Adaptations & Internal Redundancy: The Lean formalization replaces continuous simplex volume ($2k!$) in Lemma 2.2 with an inscribed discrete rectangle ($k^k$, inflating $C_*$ by 3.83 × 10^6$\times$ at $m=6$), shifts the LCM constant across three strata ($\Lambda_{\text{PNT}} \approx 1.732 \to \Lambda_{\text{paper}} = 4\log 2 \approx 2.773 \to \Lambda_{\text{Lean}} = \log 4 + 4 \approx 5.386$), replaces complex Kodaira vanishing with algebraic Rees blowups and finite-cover Čech cohomology, and simplifies the Flint-Hills constant from $8/\pi$ to 16 via Fin 4 residue partitioning. Across the 869 imported files, 4 files (259 lines) have 0 outgoing references, 5 files (309 lines) are instance-only, 552 declarations are unreferenced, 263 declaration names are duplicated (656 times), 23 theorem pairs are verbatim duplicates, and 20 parallel worker namespaces (W06–W64, 137 blocks) remain unmerged.
 * Verified Mathematical & Formal Breakthrough (Gate 1 & Gate 5: PASS):
@@ -87,7 +87,7 @@
 
 ## Part 3. Parallel Worker Namespace Strata & Code Duplication Audit
 
-1. 20 Parallel Agent Worker Namespaces (W06–W64, 137 blocks) Retained in Code (CP-10):
+1. 20 Parallel Agent Worker Namespaces (W06–W64, 137 blocks) Retained in Code (CP-11):
    - OAI/NumberTheory/PiExponent/ retains 20 numbered worker namespaces across PiExponentJets.W06–W64 (11), PiExponentSiegel.W08–W58 (6), and PiExponentSiegelAux.W09/W30/W31 (3).
 2. 263 Duplicate Declaration Names (656 occurrences) & 23 Verbatim Cloned Theorem Pairs (CP-10):
    - Across 422 namespaces, 263 declaration names are defined multiple times (schemeFreeOpen 34 times across 30 files; schemeUnit 10 times), and 23 pairs of theorems ($\ge 120$ characters) have byte-identical proof bodies (including 7 declarations cloned between Cohomology/PencilCohomologySections.lean and Approximation/GlobalSectionClearing.lean).
@@ -155,9 +155,9 @@
 | Audit Gate | Governing Standard | Measured Evidence in #017 | Verdict |
 | :--- | :--- | :--- | :---: |
 | Gate 1 (Kernel & Spec Soundness) | IMU/AMS + Lean Kernel TCB | 869 files (94,948 lines) with 0 sorry, 0 axiom, 0 external patches; both $\mu(\pi)=2$ (Main.main) and Flint-Hills convergence (Main.flint_hills_summable) kernel-verified | PASS |
-| Gate 2 (Paper–Artifact Alignment) | ACM Artifact Badging v1.1 (CP-04, CP-05, CP-10) | `Main.lean:29-32` `flint_hills_summable` (`0 sorry`) Class C unclaimed discovery (`017.md:11` accurately scopes `PiExponent.lean`); 4 paper-to-Lean constant/geometric adaptations ($\Lambda$: $4\log 2 \to \log 4 + 4$); 4 unreferenced files (259 lines), 552 unused decls, 23 cloned theorem pairs | HOLD |
+| Gate 2 (Paper–Artifact Alignment) | ACM Artifact Badging v1.1 (CP-04, CP-05, CP-07) | `Main.lean:29-32` `flint_hills_summable` (`0 sorry`) Class C unclaimed discovery (`017.md:11` accurately scopes `PiExponent.lean`); 4 paper-to-Lean constant/geometric adaptations ($\Lambda$: $4\log 2 \to \log 4 + 4$); 4 unreferenced files (259 lines), 552 unused decls | HOLD |
 | Gate 3 (Bibliographic Attribution) | COPE + AMS Ethical Guidelines (CP-03) | 16 / 23 (69.6%) peer-reviewed reasoning-trace inputs dropped from `references.bib` (incl. #005 Catalan x35, Esnault-Viehweg 1984, Ru-Vojta 1997); 6 classical theorem families uncited in Sections 2–5; bibliographic selection asymmetry with `3/25` explicit non-input `arXiv [math.GM]` contextual notes retained | FAIL (Attribution & Bib Deficit) |
-| Gate 4 (Process Provenance) | ICMJE + CRediT + NeurIPS (CP-07) | 42-page (45-section) reasoning trace PDF disclosed (Part I $62/25 \to$ Part II $2$); 20 parallel worker namespaces (W06–W64) retained in code | HOLD |
+| Gate 4 (Process Provenance) | ICMJE + CRediT + NeurIPS (CP-10, CP-11) | 42-page (45-section) reasoning trace PDF disclosed (Part I $62/25 \to$ Part II $2$); 20 parallel worker namespaces (W06–W64), 263 duplicate names, and 23 cloned theorem pairs retained in code | HOLD |
 | Gate 5 (Mathematical Breakthrough) | IMO / Erdős / Mathlib Standard | Complete unconditional resolution of $\mu(\pi) = 2$ and Flint-Hills series convergence, independently verified across 75 theorems (120/120 mutations killed) | PASS |
 
 
