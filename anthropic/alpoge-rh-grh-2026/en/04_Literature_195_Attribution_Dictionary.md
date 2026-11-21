@@ -185,7 +185,7 @@ Covers local/global Langlands correspondences, Galois representations in Shimura
 | `056` | `clozel_purity_of_literature` (`L329`) | Ramanujan-Weil weight purity at unramified places for regular algebraic cusp forms | Clozel (1991), S. W. Shin (2011), Caraiani (2012) |
 | `058` | `cusp_bounded_of_literature` (`L333`) | Global boundedness of cuspidal automorphic forms on unitary/reductive groups | Harish-Chandra (1968), Borel |
 | `059` | `cusp_decay_bound_of_literature` (`L335`) | Rapid decay bounds for cusp forms near cusps of Siegel domains | Gelfand-Piatetski-Shapiro, Harish-Chandra (1968) |
-| `060` | `cusp_decay_sobolev_of_literature` (`L337`) | Pointwise rapid-decay bounds controlled by automorphic Sobolev norms | Bernstein-Reznikov, Cogdell-Michel, Muller |
+| `060` | `cusp_decay_sobolev_of_literature` (`L337`) | Pointwise rapid-decay bounds controlled by automorphic Sobolev norms | Harish-Chandra (1968), Borel (1974), Arthur (1978), Bernstein-Reznikov (2004) |
 | `061` | `cusp_rapid_decay_of_literature` (`L339`) | Super-polynomial decay of cuspidal automorphic forms on Siegel sets | Harish-Chandra (1968), Moeglin-Waldspurger (1995) |
 | `062` | `cusp_trace_class_of_literature` (`L341`) | Trace-class property of smooth convolution operators on the cuspidal spectrum | Muller (Ann. Math., 1989), Arthur, Donnelly |
 | `064` | `cuspidal_spectrum_gl_of_literature` (`L345`) | Discrete Hilbert-space decomposition of $L^2_{\mathrm{cusp}}(\mathrm{GL}_n(F)\backslash\mathrm{GL}_n(\mathbb{A})^1)$ | Gelfand-Piatetski-Shapiro (1963), Moeglin-Waldspurger |
@@ -197,7 +197,7 @@ Covers local/global Langlands correspondences, Galois representations in Shimura
 | `113` | `jacquet_shalika_of_literature` (`L443`) | Nonvanishing on $\mathrm{Re}(s)=1$ and unique Euler-product factorization of $\mathrm{GL}_n$ isobaric sums | Jacquet-Shalika (1981) |
 | `120` | `cuspidal_multiplicity_one_of_literature` (`L457`) | Multiplicity-`1` theorem for the cuspidal automorphic spectrum of $\mathrm{GL}_n(\mathbb{A})$ | Shalika (Ann. Math., 1974), Piatetski-Shapiro (1979) |
 | `121` | `carU_local_global_of_literature` (`L459`) | Local-global compatibility at all $\ell \neq p$ places for regular algebraic Galois representations | Taylor-Yoshida (2007), S. W. Shin (2011), Caraiani (2012) |
-| `122` | `carU_above_l_of_literature` (`L461`) | Crystalline/de Rham local-global compatibility at $\ell = p$ for regular algebraic representations | Barnet-Lamb-Gee-Geraghty, Caraiani (Duke Math. J., 2014) |
+| `122` | `carU_above_l_of_literature` (`L461`) | Crystalline/de Rham local-global compatibility at $\ell = p$ for regular algebraic representations | Caraiani (Duke Math. J., 2014), Barnet-Lamb-Gee-Geraghty-Taylor (BLGGT, 2014) |
 | `138` | `regular_algebraic_purity_of_literature` (`L493`) | Frobenius-eigenvalue weight purity for RAECSDC automorphic representations | Clozel (1990), S. W. Shin (2011), Caraiani (2012) |
 
 ---
@@ -210,7 +210,7 @@ Covers Artin reciprocity, Poitou-Tate duality, the Greenberg-Wiles formula, Shim
 | :---: | :--- | :--- | :--- |
 | `001` | `logDerivOne` (`L219`) | Pole and nonvanishing behavior of logarithmic derivatives of $\zeta(s)$ and $L(s, \chi)$ near $s = 1$ | Hadamard, de la Vallee Poussin (1896), Landau |
 | `002` | `ellipticMainTheoremCM'` (`L221`) | Main theorem of complex multiplication generating abelian extensions from CM torsion | Kronecker, Hasse, Shimura-Taniyama (1961) |
-| `003` | `heckeTateFunctionalEquation'` (`L223`) | Adelic analytic continuation and Tate functional equation for Hecke $L$-functions | Tate (Tate's Thesis, 1950) |
+| `003` | `heckeTateFunctionalEquation'` (`L223`) | Adelic analytic continuation and Tate functional equation for Hecke $L$-functions | John Tate (Tate's Thesis, 1950) |
 | `004` | `hilbertClassFieldJ'` (`L225`) | Algebraic integrality of singular $j$-invariants and generation of the Hilbert class field | Weber (1908), Hasse (1927), Shimura (1971) |
 | `005` | `partial_zeta_functional_equation_of_literature` (`L227`) | Meromorphic continuation and functional equation of ray-class partial zeta functions | Hecke (1917), Tate (1950), Siegel |
 | `006` | `deligne_ribet_of_literature` (`L229`) | Hilbert modular Eisenstein congruences and $p$-adic $L$-functions over totally real fields | Deligne-Ribet (Inv. Math., 1980) |

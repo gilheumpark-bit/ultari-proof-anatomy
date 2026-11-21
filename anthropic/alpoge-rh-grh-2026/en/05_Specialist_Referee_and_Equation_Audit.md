@@ -1,8 +1,8 @@
 # 05. Specialist Referee and Equation Audit (Acts 3-5 Core Identities, Parity Split & Cross-Audit)
 
-Across `175,187` Lean 4 modules (`17,374,215` lines), Levent Alpöge and Claude construct the positive Stepanov determinant functional $W(\cdot) \ge 0$ by combining Bargmann-Fock symmetric tensor determinants with $\mathfrak{gl}_2$ Yangian RTT fusion, eliminate the quadratic `2/3`-barrier loss $-C m^2 L / k$ via companion lattice rank normalization $k \asymp x^{9/2+10\varepsilon}$, and discharge `VWin` (`Ct = 401`,
-$\varepsilon < 1/52$) by joining an odd (`minus`) Stickelberger-Kato wing with an even (`plus`, Vandiver) $\mathrm{GSp}_4 \cdot U(3)$ Hida deformation-patching wing (`PASS`).
-This referee report reconstructs the exact equations, magic constants, formalization slacks, and compression paths directly from source, backed by 15 standalone kernel-checked theorems in [alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean) (`0 sorry`, `LEAN_RC:0`).
+Across `175,187` Lean 4 modules (`17,374,215` lines), Levent Alpöge and Claude construct the positive Stepanov determinant functional $W(\cdot) \ge 0$ by combining Bargmann-Fock symmetric tensor determinants with $\mathfrak{gl}_2$ Yangian RTT fusion.
+They then eliminate the quadratic `2/3`-barrier loss $-C m^2 L / k$ via companion lattice rank normalization $k \asymp x^{9/2+10\varepsilon}$, and close the critical line $\mathrm{Re}(s) = 1/2$ by welding `VWin` (`Ct = 401`, $\varepsilon < 1/52$) into the global Arakelov product formula (`ProductFormula` · `DivIneqObj`, `PASS`).
+This referee report reconstructs the exact equations, magic constants, global product-formula closure, formalization slacks, and compression paths directly from source, backed by **17 standalone kernel-checked theorems** in [alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean) (`0 sorry`, `LEAN_RC:0`).
 
 ---
 
@@ -33,15 +33,17 @@ Two independent bottlenecks pin the global threshold $\varepsilon < \frac{1}{52}
 1. Half the reciprocal of the base polynomial constant $A = 26$ (`DataParams₂.lean:41`) equals $\frac{1}{2A} = \frac{1}{52}$, aligning lattice-perturbation decay $x^{-A/2} = x^{-13}$ against $\varepsilon$-losses.
 2. In `src/Formalism/SharpRestriction/GrowthBounds/MultisetValuation/PriceLinearCombinationLe.lean:45-81` (`ne_rG_lt`), fitting the small-prime price degree $r_G = \lceil 8(h_G + 2)/\varepsilon \rceil + 1 < 32E + 66$ inside $(34E)^2 \le x^2 \le x^{9/2+10\varepsilon-\mathrm{szTh}} \le k$ explicitly invokes `have hinv : 52 < E` (line `60`).
 
-### 1.3 Auxiliary Prime Pair `WinPair` and the 12-Digit Lucas Witness Prime $g_A = 413{,}718{,}278{,}401$
+### 1.3 Dynamic Window Primes `WinPair` vs Separate Local-Ring Lucas Witness $g_A = 413{,}718{,}278{,}401$
 
-In `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38`, `WinPair eps Y q d` imposes simultaneous congruence and divisibility conditions on auxiliary primes $(q, d)$:
+Two distinct auxiliary prime-pair constructions in the archive reuse the letters $(q, d)$ under different divisibility hypotheses and must be kept separate:
+- **Dynamic Window Pair `WinPair` (`ExistsPageN.lean:27-38` · `WinPairs.lean:5-81`, `thm_06`)**: Constructed dynamically at arbitrarily large scales $Y$ via Linnik's theorem (`src/Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean:5-81`), `WinPair eps Y q d` in `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` imposes all four conditions below:
+    - Because $d \equiv 7 \pmod{16}$ implies $-d \equiv 1 \pmod 8$, the prime $2$ splits completely in $K = \mathbb{Q}(\sqrt{-d})$ (matching `ThetaNormCM.lean:31`), while $p \mid d + 1$ gives $\bigl(\frac{-d}{p}\bigr) = \bigl(\frac{1}{p}\bigr) = +1$, splitting every odd prime $p \le Y^{\varepsilon/5}$ in $K$.
 
 $$q \equiv 3 \pmod 8, \qquad d \equiv 7 \pmod{16}, \qquad q \mid d + 1, \qquad \forall p \le Y^{\varepsilon/5}\;(p \neq 2 \implies p \mid d + 1)$$
 
-- **Arithmetic Reason (`thm_06`)**: $d \equiv 7 \pmod{16}$ implies $-d \equiv 1 \pmod 8$, so $2$ splits completely in the imaginary quadratic field $K = \mathbb{Q}(\sqrt{-d})$ (matching the exact hypothesis of `ThetaNormCM.lean:31`), while $d \equiv -1 \pmod p$ gives $\bigl(\frac{-d}{p}\bigr) = \bigl(\frac{1}{p}\bigr) = +1$, splitting every odd prime $p \le Y^{\varepsilon/5}$ in $K$.
-- **Non-Vacuity Witness (`thm_07`)**: To prove non-emptiness at the base of the local-ring hierarchy, `src/Formalism/LocalRingCardinality/SpanPowerMembership.lean:18-29` and `src/Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86-87` instantiate $q = 571$ ($571 \equiv 3 \bmod 8$) and $d = 599$ ($599 \equiv 7 \bmod{16}$, $599+1 = 600 = 2^3 \cdot 3 \cdot 5^2$).
-  Over this pair, the code certifies the explicit 12-digit prime below in-kernel via the Lucas primality test (`lucas_list`) at primitive root base `34`:
+- **Separate Static Witness `(571, 599)` for `SpanPowerMembership` (`thm_07`)**: Independently, `src/Formalism/LocalRingCardinality/SpanPowerMembership.lean:18-29` and `src/Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:17-87` instantiate $q = 571$ ($571 \equiv 3 \bmod 8$) and $d = 599$ ($599 \equiv 7 \bmod{16}$, $599 + 1 = 600 = 2^3 \cdot 3 \cdot 5^2$).
+  Note **`571 ∤ 600`, so `(571, 599)` is not a `WinPair`**, as `SpanPowerMembership` does not require $q \mid d + 1$.
+  Over `(571, 599)`, the code certifies the explicit 12-digit prime below in-kernel via the Lucas primality test (`lucas_list`) at primitive root base `34`:
 
 $$g_A = 413{,}718{,}278{,}401, \qquad g_A - 1 = 2^8 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 571 \cdot 599 \equiv 0 \pmod{16 \cdot 571 \cdot 599}$$
 
@@ -73,7 +75,7 @@ Over any discrete valuation ring (DVR) $\mathcal{O}$, Gauss prime-ideal localiza
 
 $$g \cdot \det\bigl(B(b_i, b_j)\bigr) = 1 \implies \mathrm{length}_{\mathcal{O}}(L / L^\vee) = v_{\mathcal{O}}(g)$$
 
-coupling Archimedean positivity ($\det G \ge 0$) to finite-place $p$-adic invertibility (Bost slope inequality, `remark.pdf` item 13) through `Formalism/ProductFormula`.
+coupling Archimedean positivity ($\det G \ge 0$) to finite-place $p$-adic invertibility (Bost slope inequality, `remark.pdf` item 13) through the global Arakelov product-formula and slope inequalities detailed in Chapter 5 (`Formalism/ProductFormula` · `DivisorInequality`).
 
 ### 2.3 $\mathfrak{gl}_2$ Yangian RTT Transfer Matrices and Word Fusion (`src/Formalism/HermitianCurvature/StatementW.lean:9-27`)
 
@@ -150,6 +152,9 @@ Over cyclotomic subfields $E \subset \mathbb{Q}(\zeta_N)$ satisfying `IsChiField
 
 $$\sum_{l \in S} (\log l) \sum_{e=1}^{\lfloor x^{401} \rfloor - 1} \mathrm{shaLen}_l(E, e) \le \sqrt{\exp(x^\varepsilon)} = \exp\!\left(\frac{1}{2} x^\varepsilon\right) \qquad \left(0 < \varepsilon < \frac{1}{52}\right)$$
 
+- **Why Arbitrary Finite Prime Sets $S$ Do Not Diverge (`vvRecord`)**: For each fixed $(E, e)$, the unramified global étale / Galois cohomology group (linked via Quillen-Lichtenbaum to finite algebraic $K$-groups of $\mathcal{O}_E$, formalized as `ShaFinOdd` in `src/Formalism/SharpRestriction/GlobalTheoremInputs.lean:25-27`) has finite order.
+  Hence $\mathrm{shaLen}_l(E, e) = 0$ for all but finitely many primes $l$, and `vvRecord` (`src/Development/AutomorphicArithmetic/CharacterBoxes/DivinNOfHypV.lean:17-58`) upgrades the uniform finite-set bound directly to $\sum_{l=1}^\infty \mathrm{vvTerm}(D, l) \le \exp(\frac{1}{2} x^\varepsilon)$.
+
 The integer `401` originates in the $\mathrm{GL}_3$ Jacobi character-sum modules `src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/TailNum.lean:33-53` and `src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/MSqDiagA.lean:238-259` (`thm_09`):
 truncating the diagonal main sum at $\lfloor x^{400} \rfloor$ produces a tail polynomial $x^{398}(x^2 + 1) \le x^{401}$ and log factor $1 + \log\lfloor x^{400} \rfloor \le 401 \log x$ ($x \ge e$), instantiated as `400 + 1 = 401` at `HVCore.lean:21`.
 
@@ -192,9 +197,64 @@ $$\mathrm{Vn}(\psi)\,\log l \le \frac{c_4}{21}\, o\, l\, 2^{n'} \bigl(l\, 2^{n'}
 
 ---
 
-## Chapter 5. Formalization Slacks, OpenAI `#003` Cross-Audit & Compression Blueprint
+## Chapter 5. Global Arakelov Product Formula and the Prime $p$-adic Divisibility Closure Loop (`ProductFormula` · `DivIneqObj` · `DivinNOfHypV`)
 
-### 5.1 Four Formalization Slacks and Scaffolding Artifacts Audited in Source
+How the prime-power von Mangoldt sums $\Lambda(n)$ and Chebyshev nodes ($m \asymp \sqrt{x}$) of Acts 1 to 3 lock into the Siegel-Weil mass ratio $D^*/d^*$ and cohomology length `shaLen` of Chapters 3 and 4 is resolved across four modules: `Formalism/ProductFormula`, `Formalism/DivisorInequality`, `CharacterBoxes/DivinNOfHypV.lean`, and `SizeWindowBrackets/SChain.lean`.
+
+### 5.1 Integer Product Formula (`ProductFormula`), Legendre $p$-adic Valuation, and the CM `3/4` Prototype (`StatementOCCM.lean`, `thm_17`)
+
+Item 2 of `remark.pdf` (p. 3, `10/9/26`), citing the Stepanov divisibility of $D^a\theta(0)/\Omega^a$ by $p^{\lfloor a/p\rfloor + \lfloor a/p^3\rfloor + \dots}$ at inert primes $p$, is formalized verbatim in `src/Formalism/ProductFormula/StatementOCCM.lean:16-161` alongside `src/Formalism/EisensteinCokernelLengths/FactorialValuationBounds/PadicValNatFactorialLeReal.lean:11-28`:
+- **Integer Product Formula & Legendre Factorial Valuation (`StatementOCCM.lean:153-161`, `thm_17`)**: Every nonzero integer determinant $\Delta \in \mathbb{Z} \setminus \{0\}$ obeys the global conservation law `ProductFormula` / `DetGain`, while Taylor-denominator factorials satisfy Legendre's exact identity `(p - 1) * legendreFactVal p n + baseDigitSum p n = n` (`thm_17`, `padicValNat_factorial_le_real`: $(\ell - 1)v_\ell(n!) \le n$):
+
+$$\sum_{p \in S} g(p)\log p \le \sum_{p \mid \Delta} v_p(\Delta)\log p = \log\lvert\Delta\rvert \qquad (\Delta \in \mathbb{Z} \setminus \{0\})$$
+
+- **CM Differential Vanishing Gain (`gainCM`) & Dual-Type Cancellation (`StatementOCCM.lean:27-35, 68-123`)**: At every good prime $p \le x$ ($p \notin \mathrm{Bad}$), prime powers $p^i \bmod l \notin \Psi$ contribute Stepanov $p$-adic valuation gain `gainCM` (lines `27-31`) lower-bounding submodule valuation $v_K(j, p)$ (lines `92-93`):
+    - Under $a_1 \approx a = xb$ and $w \approx b$, multiplying $\frac{a_1}{p^i} - w \approx b\bigl(\frac{x}{p^i} - 1\bigr)$ by $2\log p$ and summing over $p \le x$ recovers the von Mangoldt sum $A_\Psi(x)$ (lines `16-20`).
+    - Pairing a CM type $\Phi$ with its conjugate dual $\overline{\Phi}$ (`T1` · `T2`, lines `118-120`) covers every $p^i \bmod l \neq \pm 1$, while the Archimedean Stirling/Chowla-Selberg bound $s_K(j) \le a\log a - a - a\log\Omega + O(k^2 f \log(al))$ (lines `79-80`, $\gamma + \log(\pi/v) - \ell \le (\log\Omega_1 + \log\Omega_2)/2$) joins $h_{\mathrm{fin}} = -\sum_{p \in S} 2(\log p)\,v_t(p)$ (line `84`).
+      Inside $\mu_Q \le \mu_{\max,R} + h_\infty + h_{\mathrm{fin}}$ (line `74`), the two terms cancel $x\log x - (1+\gamma)x$ and leave `OCCMEstimate` (lines `121-122`).
+    - In the single-step CM prototype (`ZetaQuarterPowerCorollary`, lines `137-152`), choosing $(m, k, l) \asymp (x^{1/4}, x^{1/2}, x^{1/4})$ balances all four terms $(x/m, xm/k, x/f, kf)$ of `MainCM` at degree $3/4$ (`thm_17` `mainCmQuarterDeg 4 1 2 1 = 3`), yielding $\zeta(s) \neq 0$ for $\mathrm{Re}(s) > 3/4$.
+
+$$\mathrm{gainCM}(p) = \sum_{1 \le i \le \lfloor x \rfloor,\, p^i \bmod l \notin \Psi} \max\!\left(\frac{a_1}{p^i} - w,\, 0\right) - \frac{a\log(al)}{x^2} - \frac{(k+2m)\log a}{\log p} - 1 - \frac{L_0}{p - 1} \le v_K(j, p)$$
+
+$$G_z(x) \le x\ell + 2x\sum_{p \in \mathrm{Bad}} \frac{\log p}{p} + K \cdot \mathrm{MainCM}\bigl(x, \log(al), r, \eta, m, k, f\bigr)$$
+
+### 5.2 General-Rank Arakelov Harder-Narasimhan Slope Inequality (`DivIneqObj`) and Prime Class Sums (`LinkG_at`)
+
+Across the general-rank $\sqrt{x}$-iterated unitary tower, the CM product formula promotes to Arakelov Harder-Narasimhan slope duality for hermitian lattices over a totally complex field $K$:
+- **1. From Prime-Power Sums to Non-Archimedean Lattice Gains (`LinkG_at`, `src/Formalism/SharpRestriction/GlobalTheoremInputs.lean:122-141`)**: At every inert or signal residue characteristic $p = \mathrm{resChar}(w) \le X''$, lines `132-135` bound the von Mangoldt class sum by the local lattice index gain $\mathrm{gain}(j, w)$ minus local torsion $\tau(w)$:
+
+$$\sum_{j \in \mathrm{lifts}(D)} \sum_{t \in \mathrm{TT}_w} \bigl(\mathrm{vonMangoldtClassSum}(j, t, p) - \mathrm{loG}(p)\bigr) - m \cdot \mathrm{flG}(p) \le \sum_{j \in \mathrm{lifts}(D)} \mathrm{gain}(j, w) - \tau(w)$$
+
+- **2. Global Slope Inequality (`DivIneqObj`, `src/Formalism/DivisorInequality/StatementObj.lean:239-425`)**: Summing finite-place lattice gains into $F_o := \sum_j \sum_{y \in \mathrm{Tw}} \mathrm{lw}(y)\,\mathrm{ramw}(y)\,F_0(y, j)$ (line `328`) against the Archimedean Stirling function $\mathrm{ph}(y) := y\log y - y$ (`src/Formalism/LogFactorialBounds/LogFactorialSandwich.lean:9`)
+  yields the master inequality at lines `422-424` (`LinkDIV_at`, `GlobalTheoremInputs.lean:82-84`):
+
+$$\mu_C + h_u - 2 F_o \le \sum_{t \in \mathrm{TT}} \bigl(m(\mathrm{ph}(a_T(t)) - a_T(t)\log\Omega) - a_T(t)\log T\bigr) + (50 C_0 + 10)\bigl(\lvert\mathrm{TT}\rvert a L_a + m(B_0 + N_c)x_e\bigr)$$
+
+### 5.3 Welding Siegel-Weil Mass Ratio (`LinkS`) and `shaLen` (`divinN_of_hypV`) into `ZeroFreeAll` (`thm_17`)
+
+Both Chapter 3's mass ratio $D^*/d^*$ and Chapter 4's `VWin` (`shaLen`) enter directly into closing the error budget $B_0 + N_c$ ($B_0 := f m b x^\varepsilon$) and slope non-degeneracy of `DivIneqObj`:
+- **1. Algebraic Reduction of `VWin` (`shaLen`) to `DIVinN` (`DivinNOfHypV.lean:76-131`)**: At twist places ($\mu_w \neq \mu_0$), `LinkN_at` (`GlobalTheoremInputs.lean:40-44`) bounds the Eisenstein-cuspidal boundary defect `etaSum(L, j)` via $\sum_l \mathrm{vvTerm}(D, l) = \sum_l (\log l)\sum_{1 \le e < t} \mathrm{shaLen}_l(E, e)$.
+  `divinN_of_hypV` (lines `117-131`) substitutes `VWin`'s bound $\sum_l \mathrm{vvTerm}(D, l) \le \sqrt{b} \le b \le B_0$ ($b = \exp(x^\varepsilon) \ge 1$) and $(\log x)^2 \le x^\varepsilon$ (`log_sq_le_rpow`, lines `59-74`) into `divinN_at` (lines `76-116`) to establish `DIVinN_at` (`GlobalTheoremInputs.lean:59-61`):
+
+$$\mathrm{etaSum}(L, j) \le d_{Z,0}(j)\left(C\bigl(f m b L^2 + (\log x)^2 N_c\bigr) + \sum_{l} \mathrm{vvTerm}(D, l)\right) \le D_0 \cdot (\lvert C \rvert + 1)\, x^\varepsilon (B_0 + N_c)$$
+
+- **2. Hilbert-Schmidt Quasi-Orthogonality from $D^*/d^*$ (`LinkS_at`, `GlobalTheoremInputs.lean:145-163`)**: Chapter 3's two-sided bound on $\frac{\log(D^*/d^*)}{[K^+:\mathbb{Q}] k}$ forces off-diagonal Gram inner products $\mathrm{hsSq}(u, u') \le (1 + \eta_0)\frac{d_u d_{u'}}{D^*}$ ($\eta_0, \eta_1, \sqrt{e_0} \le \exp(-x^{\varepsilon/8})$), securing full-rank non-degeneracy (`NuFullF` · `J.linkMu_of_linkDIV`).
+- **3. Top-Level Closure (`DesWin.lean:28-31` $\to$ `ShapeWin.lean:46` $\to$ `SChain.lean:88-101` $\to$ `ZeroFreeAllOfTopG.lean:26-35`, `thm_17`)**: `ShapeWin.lean:46` feeds `(LinkG, LinkS, LinkIRR, LinkDIV, LinkMu)` at `(eD, eL) = (2, 0)` into `topDesWin` (`DesWin.lean:11-32`) to obtain `ChainTied`.
+  `src/Formalism/SizeWindowBrackets/SChain.lean:88-101` (`ChainAt`, line `90`) converts `ChainTied` into the window bound below (`thm_17` `sChainEpsMult 2 0 = 8`), while `ZeroFreeAllOfTopG.lean:26-35` (`zeroFreeAll_of_topG`) sends $\varepsilon \to 0^+$ across window scales to establish `ZeroFreeAll` and `EveryCharacter`.
+
+$$G_z(x) \le x^{1/2 + (e_D + e_L + 6)\varepsilon} = x^{1/2 + 8\varepsilon} \qquad \left(0 < \varepsilon < \frac{1}{52},\; \frac{1}{2} + \frac{8}{52} = \frac{17}{26} < 1\right)$$
+
+### 5.4 Why Global Product-Formula Rigidity Escapes the Analytic Perturbation Barrier
+
+Purely complex-analytic or spectral positivity arguments face a well-known obstruction: Beurling-type or pseudo-zeta perturbations of Euler products can mimic smooth growth and functional symmetry while harboring off-line zeros.
+By contrast, Sections 5.1 to 5.3 pass through **exact $\mathcal{O}_K$-lattice integrality across every finite and infinite place simultaneously (`ProductFormula` · `DivIneqObj`: $\sum_v \log\lvert\cdot\rvert_v = 0$)** together with **global unramified Galois cohomology finiteness (`VWin`)**.
+Any continuous perturbation of local Euler factors destroys both the underlying $\mathcal{O}_K$-integral theta lattice and Hecke-Galois reciprocity, breaking `ProductFormula` immediately.
+
+---
+
+## Chapter 6. Formalization Slacks, OpenAI `#003` Cross-Audit & Compression Blueprint
+
+### 6.1 Four Formalization Slacks and Scaffolding Artifacts Audited in Source
 
 - **1. Rounding Margin `1 / 500` in the Cubic Eisenstein Tail (`thm_08`)**:
   In `src/Formalism/EisensteinCokernelLengths/FactorialValuationBounds/RationalTailBoundCubic.lean:24-43`, `lemma numC_cubic (ℓ : ℝ) (hℓ : 11 ≤ ℓ)` (lines `24-27`) proves the cleared-denominator cubic polynomial inequality over real $\ell \ge 11$,
@@ -212,7 +272,7 @@ $$3111(\ell - 1)^3 - 100\bigl(8(2\ell-1)\ell^2 + 8\ell^2(\ell-1) + \ell(\ell-1)^
     - **2 Dead `Prop := True` Hypothesis Slots (`14` pairs)**: Only `UnusedSlot55` (`4` files, `TrivialLocalCondition.lean:89`) and `UnusedSlot72` (`10` files, `DiscreteSpectrumResidualClassification.lean:7` and [04_Literature_195_Attribution_Dictionary.md](./04_Literature_195_Attribution_Dictionary.md) `#144` `L505`) are dummy `True` hypotheses.
     - **7 Live Mathematical `namespace` Identifiers (`361` pairs)**: `UnusedSlot33` (`71`), `34` (`37`), `35` (`10`), `36` (`2`, `OrderValuation.lean:7`), `38` (`5`, `GradedCompletionLemmas.lean:8`), `39` (`43`), and `80` (`193`, `ExtensionInvariantClause.lean:7`) are active `namespace` blocks containing live theorems ([03_Lean_Code_Spine_Ledger.md](./03_Lean_Code_Spine_Ledger.md) Section 6).
 
-### 5.2 One-to-One Cross-Audit: OpenAI `#003` (`(2, 3, 6)`-Triangle Multiplicity-`1` Stepanov) vs Alpöge + Claude
+### 6.2 One-to-One Cross-Audit: OpenAI `#003` (`(2, 3, 6)`-Triangle Multiplicity-`1` Stepanov) vs Alpöge + Claude
 
 On p. 2 of `remark.pdf`, Alpöge explicitly identifies OpenAI's public Problem `#003` (`DirichletL` · `SevenEighths.lean` · `ShortDraft`) on the `(2, 3, 6)`-triangle CM curve $\mathbb{C}/\mathbb{Z}[\omega]$ as **"a Stepanov argument without multiplicity"**. Comparing the public `#003` formalization directly against Alpöge and Claude's `175,187`-file archive isolates four structural bifurcation points:
 
@@ -223,7 +283,7 @@ On p. 2 of `remark.pdf`, Alpöge explicitly identifies OpenAI's public Problem `
 | **Off-Diagonal Gauss Control** | Constrained by fixed-rank oscillatory character/Voronoi cancellation limits | Bypasses fixed-rank oscillation via level-projected Poincaré series (`ExistsMultTEqPoin.lean:15-109`) + two-type Cauchy-Schwarz decay $q^{-(k - 2r - 5)}$ (`GaussSumCharacterAverageBound.lean:21-98`, `thm_15`) | Large companion rank $k$ crushes off-diagonal leakage exponentially |
 | **Abelian Stickelberger vs Parity Wall** | Abelian Stickelberger elements act nontrivially only on odd parity and vanish ($v - c(v) = 0$, `thm_12`) on even fixed classes $c(v) = v$ | Restricts Stickelberger/Behrend to odd `ThmBab · ThmBcFree`, deploying Kato + $\mathrm{GSp}_4 \cdot U(3)$ patching across the 7-branch even `PointHV` | **Even Vandiver blind spot blocks any Stickelberger-only shortcut** |
 
-### 5.3 Parity-Aware Short-Proof Compression Routes
+### 6.3 Parity-Aware Short-Proof Compression Routes
 
 Because `thm_12` rules out replacing the even Vandiver block (`vwin_of_row`) by abelian Stickelberger elements alone, viable compression paths narrow to three routes (estimate):
 
@@ -234,9 +294,9 @@ Because `thm_12` rules out replacing the even Vandiver block (`vwin_of_row`) by 
 
 ---
 
-## Chapter 6. Standalone 16-Theorem Formal Verification Ledger ([alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean))
+## Chapter 7. Standalone 17-Theorem Formal Verification Ledger ([alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean))
 
-Every exponent, congruence, parity, and slack identity in this report corresponds 1-to-1 to a zero-dependency theorem checked under official `leanprover/lean4:v4.33.1` (`0 sorry`, `LEAN_RC:0`):
+Every exponent, congruence, parity, product-formula valuation, and slack identity in this report corresponds 1-to-1 to a zero-dependency theorem checked under official `leanprover/lean4:v4.33.1` (`0 sorry`, `LEAN_RC:0`):
 
 | Audit Theorem | Verified Algebraic Invariant | Upstream Module |
 | :--- | :--- | :--- |
@@ -256,3 +316,4 @@ Every exponent, congruence, parity, and slack identity in this report correspond
 | `thm_14_literature_195_partition` | `184 + 1 + 9 + 1 = 195` wrapper split and `2 + 7 = 9` (`14 + 361 = 375`) `UnusedSlot` split | `EveryCharacterOfLiteratureOfVWin.lean:219-810` |
 | `thm_15_cauchy_schwarz_exponent_and_decay_margin` | Cauchy-Schwarz exponent gap $30r^2 + 42r + 1 \ge 1$ ($r=0$ min gap `1`) and decay floor $2^{2r+2}$ | `GaussSumCharacterAverageBound.lean:83` |
 | `thm_16_vandiver_pluslen_and_cone_partition` | `vwin_of_row` cone split (`15,057,843 + 1,029,481`) and `plusLen` exponents `a+b+4`, `C0+D+K+KD` | `SumOut.lean:31` · `PointArith.lean:5` |
+| `thm_17_legendre_padic_factorial_and_global_chain_closure` | Legendre valuation `(p-1)*v_p(n!)+s_p(n)=n`, CM `3/4` balance, and `SChain` `(eD,eL)=(2,0)` closure `1/2 + 8ε < 1` | `PadicValNatFactorialLeReal.lean:19` · `StatementOCCM.lean:112` · `SChain.lean:90` |

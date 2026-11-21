@@ -55,9 +55,11 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
     2. Theta-lift Galois local-global compatibility (`galoisLocalGlobalStrong_recParameter`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`): `66,168` files / `7,850,273` lines.
     3. Automorphic window discharge (`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): `157,604` files / `16,087,324` lines (`146,772` files / `15,057,843` lines [`93.6%`] overlapping `OpenLiteratureStatements` + `10,832` files / `1,029,481` lines [`6.4%`] novel Vandiver layer `Pure_Vwin_Outside_Literature`).
 
-### 3.2 Automorphic Window Interface (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:12-50`)
-- Primitive nonvanishing assembly (`plugWin`, `EveryCharacter.lean` lines `8-11`): combines Green-function bounds (`Green`), the automorphic window (`VWin`), and closed character families at dyadic scale `la := 3 / 2` to deduce `ZeroFreeAll`, then extends to imprimitive characters at line `18` (`imprimitive`).
-- Window exponent and auxiliary primes (`VWin`, `ExistsPageN.lean` line `49`): sets `Ct = 401` and $\varepsilon < 1/52$ over prime pairs $(q \equiv 3 \pmod 8,\; d \equiv 7 \pmod{16},\; q \mid d+1)$ (`WinPair`, lines `27-38`) to enforce `VVle E ⌊x^401⌋₊ √(exp(x^ε))`.
+### 3.2 Automorphic Window Interface & Global Product-Formula Closure (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:11-32`)
+- Primitive nonvanishing assembly (`plugWin`, `EveryCharacter.lean` lines `8-11`): combines Green-function bounds (`Green`), the automorphic window (`VWin`), and closed character families at dyadic scale `la := 3 / 2` (`SupplyChi.lean:8-16`) via `ZeroFreeAllOfTopG.lean:26-35` (`zeroFreeAll_of_topG`) to deduce `ZeroFreeAll`, then extends to imprimitive characters at line `18` (`imprimitive`).
+- Global product-formula & Harder-Narasimhan slope weld (`ShapeWin.lean:27-50` · `DesWin.lean:11-32` · `DivinNOfHypV.lean:76-131`): `divinN_of_hypV` converts `VWin`'s cohomology bound `HypV` into the boundary valuation bound `DIVinN` (`GlobalTheoremInputs.lean:59-64`).
+  It then joins prime-sum valuation gain `LinkG` (lines `122-141`), Siegel-Weil mass ratio `LinkS` (lines `145-163`), and Arakelov slope duality `DivIneqObj` (`src/Formalism/DivisorInequality/StatementObj.lean:239-425`; CM prototype in `src/Formalism/ProductFormula/StatementOCCM.lean:27-161`) at `(eD, eL) = (2, 0)` to close `ChainTied` (`src/Formalism/SizeWindowBrackets/SChain.lean:88-101`).
+- Window exponent and auxiliary primes (`VWin`, `ExistsPageN.lean` line `49`): sets `Ct = 401` and $\varepsilon < 1/52$ over prime pairs $(q \equiv 3 \pmod 8,\; d \equiv 7 \pmod{16},\; q \mid d+1)$ (`WinPair`, lines `27-38`, constructed dynamically via Linnik's theorem in `WinPairs.lean:5-81`) to enforce `VVle E ⌊x^401⌋₊ √(exp(x^ε))`.
 
 ---
 
@@ -85,7 +87,7 @@ Short module names appear in the table for readability; full repository paths fo
 
 ## 5. Exhaustive Audit of All 8 Metaprogramming Files
 
-Across all `175,187` files, only the 8 files below invoke `import Lean` or `CoreM` elaborators; all 8 pass C++ kernel typechecking on both `x86_64` and `aarch64` (`PASS`):
+Across all `175,187` files, only the 8 files below invoke `import Lean` or `CoreM` elaborators; all 8 pass C++ kernel typechecking under `lean4:v4.33.1` (`x86_64` and `aarch64`) as well as external independent multi-kernel verification (`leanchecker`, Rust `nanoda`, `con-leche --compare`, and `lean4lean` across `175,187` modules and `1,468,418` declarations, `PASS`):
 
 1. Search-denylist registration (`src/BuildAid/D1.lean:1-4` through `src/BuildAid/D5.lean:1-4`, `5` files): registers `nameDenyListExt` entries only.
 2. Metavariable assignment tactic (`src/Formalism/LocalToGlobal/IndefiniteReal/HeckeNonvanishing/Imports.lean:1-8`): defines `elab "kexactB "` (verified by the C++ kernel upon declaration addition).
@@ -96,7 +98,7 @@ Across all `175,187` files, only the 8 files below invoke `import Lean` or `Core
 
 ## 6. `VWin` (`Ct = 401`) Parity Join, 7-Branch Vandiver Chain & `UnusedSlot` (`2 + 7 = 9`) Split
 
-The assembly modules merging odd/even parity cohomology inside `vwin_of_row` (`157,604`-file cone) and the exact classification of all `UnusedSlot*` identifiers across the archive are pinned below (equation derivations in [05_Specialist_Referee_and_Equation_Audit.md](./05_Specialist_Referee_and_Equation_Audit.md) Chapters 4 and 5):
+The assembly modules merging odd/even parity cohomology inside `vwin_of_row` (`157,604`-file cone) and the exact classification of all `UnusedSlot*` identifiers across the archive are pinned below (equation derivations in [05_Specialist_Referee_and_Equation_Audit.md](./05_Specialist_Referee_and_Equation_Audit.md) Chapters 4 to 6):
 
 - **`VWin` Odd/Even Merge and Deep `PsiEven` 7-Branch Patching Chain**:
     - Top-level odd (`minusLen`) / even (`plusLen`) join (`vwin_of_counts` · `point` · `sumOut`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`,

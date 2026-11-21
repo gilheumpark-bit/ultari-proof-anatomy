@@ -1,17 +1,18 @@
 # 00. Executive Overview and Map: Inside the 17.37M-Line Riemann Hypothesis Archive
 
-Levent Alpöge and Claude's formal `Lean 4` archive proving the Riemann Hypothesis (`RiemannHypothesis`) and the Generalized Riemann Hypothesis (`GRH`) for Dirichlet $L$-functions compiled from scratch across all `175,187 / 175,187` modules with `0` errors under official `leanprover/lean4:v4.33.1` (`2026-11-21 10:10 KST`, `PASS`, receipt in `FINAL_FEDERATED_VERDICT.txt`).
-Out of `17,374,215` lines, `88.35%` (`15,350,921` lines) sits inside the dependency cone re-proving `195` classical theorems from scratch so that zero external axioms are needed, while the novel engine compresses into a five-act architecture combining $\sqrt{X}$-iterated theta lifts, seesaw companion-rank division, and odd/even parity patching with a Behrend-filtered cyclotomic tower ([anatomy_stats.json](../data/anatomy_stats.json)).
+Levent Alpöge and Claude's formal `Lean 4` archive for the Riemann Hypothesis (`RiemannHypothesis`) and Dirichlet `GRH` passed mechanical formal certification across all `175,187 / 175,187` modules with `0` errors under official `leanprover/lean4:v4.33.1` (`x86_64` and `aarch64`) as well as independent external kernels (`nanoda`, `con-leche`, `lean4lean`, `2026-11-21`, `PASS`, receipt in `FINAL_FEDERATED_VERDICT.txt`).
+Out of `17,374,215` lines, `88.35%` (`15,350,921` lines) lies inside the **transitive import cone** of `OpenLiteratureStatements` (overlapping shared lower-level foundations used by `Formalism`, rather than forming a disjoint folder), while the novel engine combines $\sqrt{X}$-iterated theta lifts, seesaw companion-rank division, the global Arakelov product formula, and odd/even parity patching ([anatomy_stats.json](../data/anatomy_stats.json)).
 
 ---
 
-## 1. Three-Layer Audit Scope Summary
+## 1. Four-Layer Epistemological Audit Scope
 
-| Layer | Target Component | Verdict | Verification Basis |
+| Layer | Target Component | Verdict | Verification Basis & Remaining Boundary |
 | :--- | :--- | :---: | :--- |
-| **Machine-Verified Proof** | All 5 top-level theorems (`src/Main.lean:1-12`) and all `175,187` modules | **`PASS`** | Dual-architecture (`x86_64` and `aarch64`) build with `0` errors, `0` `sorryAx`, and only the 3 standard Lean axioms |
-| **Classical Re-Proof Cone** | `OpenLiteratureStatements` (`195` wrappers and transitive subtrees) | **`PASS`** | Proved from first principles atop upstream `Mathlib` (`0df444a3`) with zero unproved external hypotheses |
-| **Prose & Bibliography** | Human-readable exposition and `.bib` source attributions | **`NOT_RUN`** | Shipped upstream with `0` comments and `0` `.bib` entries; reconstructed across Volumes `01` through `05` |
+| **Local Dual-CPU Build** | All 5 top-level theorems (`src/Main.lean:1-12`) and all `175,187` modules | **`PASS`** | `lean4:v4.33.1` C++ kernel (`x86_64` · `aarch64`) build with `0` errors, `0` `sorryAx`, and only the 3 standard Lean axioms |
+| **Independent Multi-Kernel Check** | `175,187` modules · `1,468,418` declarations (A. Sutherland `2026-11-21` report) | **`PASS`** | Byte-identical `Mathlib` cache match plus full pass under `leanchecker`, Rust `nanoda`, `con-leche --compare`, and `lean4lean` (end-to-end `lake comparator` and paranoid export replay ongoing) |
+| **Classical Dependency Cone** | `OpenLiteratureStatements` transitive cone (`195` wrappers, `15,350,921` lines) | **`PASS`** | Proved from first principles atop `Mathlib` (`0df444a3`) with zero external axioms (transitively overlapping shared foundations) |
+| **Semantic Audit & Peer Review** | Semantic fidelity of `Mathlib` `riemannZeta`/`LFunction` definitions & community acceptance | **`ONGOING`** | Machine kernel certification is complete, while human mathematical digestion, definition-level semantic review, and the CMI 2-year publication/consensus process remain underway (commentless prose/bibliography reconstructed in Volumes `01` to `05`) |
 
 ---
 

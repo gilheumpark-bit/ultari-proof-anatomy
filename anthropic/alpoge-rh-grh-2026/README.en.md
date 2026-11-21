@@ -2,16 +2,16 @@
 
 > **Language**: **English** | [**한국어 (`README.md`)**](./README.md)
 
-Levent Alpöge and Claude's commentless `175,187`-file (`17,374,215`-line) `Lean 4` archive proving the Riemann Hypothesis (`RiemannHypothesis`) and Generalized Riemann Hypothesis (`GRH`) for Dirichlet $L$-functions was independently compiled from scratch across dual hardware architectures (`x86_64` and `aarch64`) under official `leanprover/lean4:v4.33.1`.
-All `175,187` modules compiled with `0` errors, `0` `sorryAx`, and only the three standard axioms `[propext, Classical.choice, Quot.sound]` (`PASS`, receipt in [FINAL_FEDERATED_VERDICT.txt](./data/FINAL_FEDERATED_VERDICT.txt)).
-This directory provides complete English (`en/`) and Korean (`./`) 6-volume mathematical decompilations, `195 / 195` (`100.0%`) classical literature attribution dictionaries, 8 high-DPI figures, a 16-theorem standalone `Lean 4` arithmetic audit, and typeset A4 monographs in both languages.
+Levent Alpöge and Claude's commentless `175,187`-file (`17,374,215`-line) `Lean 4` archive for the Riemann Hypothesis (`RiemannHypothesis`) and Dirichlet `GRH` passed mechanical formal certification across dual CPU architectures (`x86_64` and `aarch64`) under official `leanprover/lean4:v4.33.1` as well as independent external kernels (`nanoda`, `con-leche`, `lean4lean`).
+All `175,187` modules verified with `0` errors, `0` `sorryAx`, and only the three standard axioms `[propext, Classical.choice, Quot.sound]` (`PASS`, receipt in [FINAL_FEDERATED_VERDICT.txt](./data/FINAL_FEDERATED_VERDICT.txt); semantic definition review and mathematical peer review remain ongoing).
+This directory provides complete English (`en/`) and Korean (`./`) 6-volume mathematical decompilations, `195 / 195` (`100.0%`) classical literature attribution dictionaries, 8 high-DPI figures, a 17-theorem standalone `Lean 4` arithmetic audit, and typeset A4 monographs in both languages.
 
 ---
 
 ## Typeset Monographs (Print & Offline Reading)
 
-- **English Edition (`51` pages A4)**: **[Alpoge_RH_17M_Complete_Decompilation_EN.pdf](./book/Alpoge_RH_17M_Complete_Decompilation_EN.pdf)** · **[Offline HTML](./book/Alpoge_RH_17M_Complete_Decompilation_EN.html)** (`PASS`)
-- **Korean Edition (`48` pages A4)**: **[리만가설_1737만줄_완전풀이집.pdf](./book/리만가설_1737만줄_완전풀이집.pdf)** · **[Offline HTML](./book/리만가설_1737만줄_완전풀이집.html)** (`PASS`)
+- **English Edition (`55` pages A4)**: **[Alpoge_RH_17M_Complete_Decompilation_EN.pdf](./book/Alpoge_RH_17M_Complete_Decompilation_EN.pdf)** · **[Offline HTML](./book/Alpoge_RH_17M_Complete_Decompilation_EN.html)** (`PASS`)
+- **Korean Edition (`53` pages A4)**: **[리만가설_1737만줄_완전풀이집.pdf](./book/리만가설_1737만줄_완전풀이집.pdf)** · **[Offline HTML](./book/리만가설_1737만줄_완전풀이집.html)** (`PASS`)
 
 ---
 
@@ -29,13 +29,13 @@ This directory provides complete English (`en/`) and Korean (`./`) 6-volume math
     - Exhaustive `100.0%` (`34 + 10 + 23 + 52 + 27 + 39 + 10 = 195`) line-pinned restoration of every `UpperTheory.LiteratureTheorems.*` wrapper in `EveryCharacterOfLiteratureOfVWin.lean` ([literature_195_en.json](./data/literature_195_en.json)).
 6. **[05_Specialist_Referee_and_Equation_Audit.md](./en/05_Specialist_Referee_and_Equation_Audit.md)** (`Number Theorists & Referees · Deep Equations & Cross-Audit`)
     - Reconstructs `Scale` ($\varepsilon < 1/52$, Lucas prime `413,718,278,401`), Fock/`MasterIdentity`/Yangian RTT positivity, Siegel-Weil $-C m^2 L / k$ cancellation,
-      projected Poincaré & Cauchy-Schwarz decay $q^{-(k-2r-5)}$, deep 7-branch $\mathrm{GSp}_4 \cdot U(3)$ Vandiver patching inside `VWin` (`16.09M` lines: `15.06M` classical + `1.03M` novel, [Figure 4](./figures/fig4_vwin_parity_and_counts_en.png)), formalization slacks, and the OpenAI `#003` cross-audit.
+      projected Poincaré & Cauchy-Schwarz decay $q^{-(k-2r-5)}$, deep 7-branch $\mathrm{GSp}_4 \cdot U(3)$ Vandiver patching inside `VWin` (`16.09M` lines: `15.06M` classical + `1.03M` novel, [Figure 4](./figures/fig4_vwin_parity_and_counts_en.png)), the global Arakelov product-formula closure (`ProductFormula` · `DivIneqObj` · `DivinNOfHypV`), formalization slacks, and the OpenAI `#003` cross-audit.
 
 ---
 
 ## Verification & Reproducible Build Scripts
 
-- **[alpoge_spine_arithmetic_audit.lean](./proofs/alpoge_spine_arithmetic_audit.lean)**: Standalone `0 sorry` `Lean 4` proof of 16 core exponent, congruence, parity, `plusLen` consolidation, and slack theorems (`leanprover/lean4:v4.33.1`, zero external imports).
+- **[alpoge_spine_arithmetic_audit.lean](./proofs/alpoge_spine_arithmetic_audit.lean)**: Standalone `0 sorry` `Lean 4` proof of 17 core exponent, congruence, parity, `plusLen` consolidation, Legendre valuation, global chain closure, and slack theorems (`leanprover/lean4:v4.33.1`, zero external imports).
 - **[FINAL_FEDERATED_VERDICT.txt](./data/FINAL_FEDERATED_VERDICT.txt)**: Dual-kernel (`x86_64` and `aarch64`) `#print axioms` verification receipt for all 5 top-level RH/GRH theorems.
 - **[extract_proof_anatomy.py](./scripts/extract_proof_anatomy.py)** and **[prime_intuition_lab.py](./scripts/prime_intuition_lab.py)**: Static 175,187-file import-cone parser ([anatomy_stats.json](./data/anatomy_stats.json)) and $X \le 10,000$ residual/Behrend lab ([prime_lab_results.json](./data/prime_lab_results.json)).
 - **[build_04_dict.py](./scripts/build_04_dict.py)**, **[generate_figures.py](./scripts/generate_figures.py)**, and **[build_typeset_book.py](./scripts/build_typeset_book.py)**: Deterministic generators for both `195 / 195` dictionaries, all 8 figures, and both A4 PDF/HTML monographs (`PASS`).

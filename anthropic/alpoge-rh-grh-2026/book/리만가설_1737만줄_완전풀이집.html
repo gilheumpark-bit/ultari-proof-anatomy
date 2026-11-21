@@ -82,44 +82,50 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
     <div class="cover-kicker">수리 포렌식 및 형식증명 역설계 단행본 · 2026-11-21</div>
     <h1 class="cover-title" style="border:none;font-size:23.5pt;">리만 가설 1,737만 줄 Lean 증명<br/>한국어 완전 풀이집</h1>
     <div class="cover-sub">Anthropic 레벤트 알푀게(Levent Alpöge)와 Claude의 무주석 형식증명 아카이브(175,187개 파일) 전수 컴파일 검증 및 일반 독자·전공자 계단식 역설계 해설서</div>
-    <div class="cover-meta"><div><strong>커널 검증 상태</strong> : 공식 leanprover/lean4:v4.33.1 이중 아키텍처(x86_64 · aarch64) 175,187 / 175,187 완주 (에러 0건, PASS)</div><div><strong>의존 공리 검증</strong> : 표준 수학 3공리(propext, Classical.choice, Quot.sound) 외 비표준 공리·sorryAx 0건</div><div><strong>수록 범위</strong> : 전체 지도 · 무수식 비유 풀이 · 제곱근 리프트 대수 유도 · Lean 척추 원장 · 기출 195선 전수 복원 · 전공자용 심층 수리 심사서</div></div>
+    <div class="cover-meta"><div><strong>기계 커널 검증</strong> : lean4:v4.33.1(x86_64 · aarch64) 및 외부 이종 커널(nanoda · con-leche · lean4lean) 175,187개 모듈 통과 (PASS)</div><div><strong>공리 · 동료심사</strong> : 표준 수학 3공리만 의존(sorryAx 0건) · Mathlib 정의 의미론 감사 및 학계 동료심사 진행 중 (ONGOING)</div><div><strong>수록 범위</strong> : 전체 지도 · 무수식 비유 풀이 · 제곱근 리프트 대수 유도 · Lean 척추 원장 · 기출 195선 전수 복원 · 전공자용 심층 수리 심사서</div></div>
   </header>
   <nav class="toc-box">
     <h2 class="toc-title">목차</h2>
-    <ol class="toc-list"><li><a href="#chap-0"><strong>제0부 · 전체 지도</strong> · 한눈에 보는 전체 지도: 1,737만 줄 리만 가설 증명의 실제 해부도</a></li><li><a href="#chap-1"><strong>제1부 · 일반 독자용 비유 풀이</strong> · 수식 없이 읽는 비유 풀이: 167년 난제를 무너뜨린 5개의 징검다리</a></li><li><a href="#chap-2"><strong>제2부 · 핵심 수리 원리 5막</strong> · 눈으로 만지는 핵심 원리 5막: <span class='math-inline math-nowrap'><span class='sqrt'>√<span class='rad'>X</span></span></span> 리프트 횟수의 수리적 도출</a></li><li><a href="#chap-3"><strong>제3부 · Lean 코드 척추 해부 원장</strong> · Lean 코드 척추 해부 원장 (<code class="code-nowrap">Main.lean</code>부터 5막 기저까지 1대1 대조)</a></li><li><a href="#chap-4"><strong>제4부 · 기출 대정리 195선 전수 복원 사전</strong> · 기출 대정리 원전 복원 사전 (<code class="code-nowrap">OpenLiteratureStatements</code> 195선 전수 매핑)</a></li><li><a href="#chap-5"><strong>제5부 · 전공자용 수론 심층 심사 및 수식 복원서</strong> · 전공자용 수론 심층 심사 및 수식 복원서 (제3~5막 핵심 등식 · 기우성 분해 · 교차 감사)</a></li></ol>
+    <ol class="toc-list"><li><a href="#chap-0"><strong>제0부 · 전체 지도</strong> · 한눈에 보는 전체 지도: 1,737만 줄 리만 가설 증명의 실제 해부도</a></li><li><a href="#chap-1"><strong>제1부 · 일반 독자용 비유 풀이</strong> · 수식 없이 읽는 비유 풀이: 167년 난제 형식 증명을 잇는 5개의 징검다리</a></li><li><a href="#chap-2"><strong>제2부 · 핵심 수리 원리 5막</strong> · 눈으로 만지는 핵심 원리 5막: <span class='math-inline math-nowrap'><span class='sqrt'>√<span class='rad'>X</span></span></span> 리프트 횟수의 수리적 도출</a></li><li><a href="#chap-3"><strong>제3부 · Lean 코드 척추 해부 원장</strong> · Lean 코드 척추 해부 원장 (<code class="code-nowrap">Main.lean</code>부터 5막 기저까지 1대1 대조)</a></li><li><a href="#chap-4"><strong>제4부 · 기출 대정리 195선 전수 복원 사전</strong> · 기출 대정리 원전 복원 사전 (<code class="code-nowrap">OpenLiteratureStatements</code> 195선 전수 매핑)</a></li><li><a href="#chap-5"><strong>제5부 · 전공자용 수론 심층 심사 및 수식 복원서</strong> · 전공자용 수론 심층 심사 및 수식 복원서 (제3~5막 핵심 등식 · 기우성 분해 · 교차 감사)</a></li></ol>
   </nav>
   <section class="chapter" id="chap-0"><div class="chapter-badge">제0부 · 전체 지도</div><h1>00. 한눈에 보는 전체 지도: 1,737만 줄 리만 가설 증명의 실제 해부도</h1>
-<p>Anthropic 소속 정수론자 레벤트 알푀게(Levent Alpöge)와 Claude가 공개한 리만 가설(RH) 및 디리클레 GRH 형식 증명은 공식 <code class="code-wrap">leanprover/<wbr/>lean4:v4.<wbr/>33.<wbr/>1</code> 커널에서 <code class="code-nowrap">175,187 / 175,187</code>개 파일 전량 에러 <code class="code-nowrap">0</code>건으로 컴파일을 통과했습니다(<code class="code-nowrap">2026-11-21 10:10 KST</code>, <code class="code-nowrap">PASS</code>, 영수증 <code class="code-wrap">FINAL_<wbr/>FEDERATED_<wbr/>VERDICT.<wbr/>txt</code>).
-전체 분량 <code class="code-nowrap">17,374,215</code>줄 가운데 약 <code class="code-nowrap">88.35%</code> (<code class="code-nowrap">15,350,921</code>줄)는 외부 공리를 쓰지 않기 위해 기출 현대 수학 대정리 <code class="code-nowrap">195</code>개 묶음을 밑바닥부터 다시 증명한 기초 공사이며, 새로 발명된 핵심 논증은 제곱근 횟수의 반복 세타 리프트, 동반 격자 시소 정규화, 홀·짝 기우성 양날개 패칭 및 베렌트 타워를 결합한 5단계 엔진으로 압축됩니다(<a href="./data/anatomy_stats.json">anatomy_stats.json</a>).</p>
+<p>Anthropic 소속 정수론자 레벤트 알푀게(Levent Alpöge)와 Claude가 공개한 리만 가설(RH) 및 디리클레 GRH 형식 증명은 공식 <code class="code-wrap">leanprover/<wbr/>lean4:v4.<wbr/>33.<wbr/>1</code> 커널(<code class="code-nowrap">x86_64</code> · <code class="code-nowrap">aarch64</code>) 및 독립 검증 커널(<code class="code-nowrap">nanoda</code> · <code class="code-nowrap">con-leche</code> · <code class="code-nowrap">lean4lean</code>)에서 <code class="code-nowrap">175,187 / 175,187</code>개 모듈 전량 에러 <code class="code-nowrap">0</code>건으로 기계적 형식 인증을 통과했습니다(<code class="code-nowrap">2026-11-21</code>, <code class="code-nowrap">PASS</code>, 영수증 <code class="code-wrap">FINAL_<wbr/>FEDERATED_<wbr/>VERDICT.<wbr/>txt</code>).
+전체 분량 <code class="code-nowrap">17,374,215</code>줄 가운데 약 <code class="code-nowrap">88.35%</code> (<code class="code-nowrap">15,350,921</code>줄)는 기출 현대 수학 대정리 <code class="code-nowrap">195</code>개 묶음(<code class="code-nowrap">OpenLiteratureStatements</code>)이 끌어들이는 <strong>이행적 의존 콘(transitive import cone)</strong>(하위 공유 기초에서 <code class="code-nowrap">Formalism</code> 등과 중첩 포함)이며, 새로 발명된 핵심 논증은 제곱근 횟수의 반복 세타 리프트, 동반 격자 시소 정규화, 전역 아라켈로프 곱공식, 홀·짝 기우성 양날개 패칭 및 베렌트 타워로 압축됩니다(<a href="./data/anatomy_stats.json">anatomy_stats.json</a>).</p>
 <hr />
-<h2>1. 검증 범위 3단 구분 요약</h2>
+<h2>1. 검증 범위 4단 인식론적 구분 요약</h2>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">구분</th>
 <th style="text-align: left;">대상 계층</th>
 <th style="text-align: center;">검증 상태</th>
-<th style="text-align: left;">핵심 판정 근거</th>
+<th style="text-align: left;">핵심 판정 근거 및 잔여 경계</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>독립 증명 완료</strong></td>
-<td style="text-align: left;">최상위 선언문(<code class="code-nowrap">src/Main.lean:1-12</code>) 5대 정리 및 <code class="code-nowrap">175,187</code>개 모듈 전체</td>
+<td style="text-align: left;"><strong>로컬 이중 CPU 컴파일</strong></td>
+<td style="text-align: left;">최상위 선언문(<code class="code-nowrap">src/Main.lean:1-12</code>) 5대 정리 및 <code class="code-nowrap">175,187</code>개 모듈</td>
 <td style="text-align: center;"><strong><code class="code-nowrap">PASS</code></strong></td>
-<td style="text-align: left;"><code class="code-nowrap">x86_64</code> · <code class="code-nowrap">aarch64</code> 이중 커널 컴파일 에러 <code class="code-nowrap">0</code>건, <code class="code-nowrap">sorryAx</code> <code class="code-nowrap">0</code>건, 표준 3공리만 의존</td>
+<td style="text-align: left;"><code class="code-nowrap">lean4:v4.33.1</code> C++ 커널(<code class="code-nowrap">x86_64</code> · <code class="code-nowrap">aarch64</code>) 에러 <code class="code-nowrap">0</code>건, <code class="code-nowrap">sorryAx</code> <code class="code-nowrap">0</code>건, 표준 3공리만 의존</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>기출 재구축 영역</strong></td>
-<td style="text-align: left;">기출 문헌 명제 묶음(<code class="code-nowrap">OpenLiteratureStatements</code>) <code class="code-nowrap">195</code>개 래퍼 및 하위 트리</td>
+<td style="text-align: left;"><strong>외부 이종 독립 커널 검증</strong></td>
+<td style="text-align: left;"><code class="code-nowrap">175,187</code>개 모듈 · <code class="code-nowrap">1,468,418</code>개 선언 (<code class="code-nowrap">2026-11-21</code> 서덜랜드 공개 검증)</td>
 <td style="text-align: center;"><strong><code class="code-nowrap">PASS</code></strong></td>
-<td style="text-align: left;">무증명 외부 공리 없이 순정 <code class="code-nowrap">Mathlib</code>(<code class="code-nowrap">0df444a3</code>) 위에서 자급자족 증명 완료</td>
+<td style="text-align: left;"><code class="code-nowrap">Mathlib</code> 공식 캐시 바이트 일치 및 <code class="code-nowrap">leanchecker</code> · Rust <code class="code-nowrap">nanoda</code> · <code class="code-nowrap">con-leche --compare</code> · <code class="code-nowrap">lean4lean</code> 전량 통과 (<code class="code-nowrap">lake comparator</code> · 편집증 커널 재검증 진행 중)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>학술 서지·산문</strong></td>
-<td style="text-align: left;">인간 가독용 수리 논문 및 선행 연구 <code class="code-nowrap">.bib</code> 서지 귀속</td>
-<td style="text-align: center;"><strong><code class="code-nowrap">NOT_RUN</code></strong></td>
-<td style="text-align: left;">원천 아카이브가 주석 <code class="code-nowrap">0</code>줄·서지 <code class="code-nowrap">0</code>건 상태로 배포되어 본 풀이집(<code class="code-nowrap">01</code>~<code class="code-nowrap">05</code>)에서 전수 역복원함</td>
+<td style="text-align: left;"><strong>기출 재구축 의존 콘</strong></td>
+<td style="text-align: left;"><code class="code-nowrap">OpenLiteratureStatements</code> <code class="code-nowrap">195</code>개 래퍼 이행적 의존 콘(<code class="code-nowrap">15,350,921</code>줄)</td>
+<td style="text-align: center;"><strong><code class="code-nowrap">PASS</code></strong></td>
+<td style="text-align: left;">무증명 외부 공리 없이 순정 <code class="code-nowrap">Mathlib</code>(<code class="code-nowrap">0df444a3</code>) 위에서 자급자족 증명 완료(<code class="code-nowrap">Formalism</code> 하위 기초와 중첩 포함)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>정의 의미론 · 학계 동료심사</strong></td>
+<td style="text-align: left;"><code class="code-nowrap">Mathlib</code> 내 <code class="code-nowrap">riemannZeta</code> · <code class="code-nowrap">LFunction</code> 정의 충실성 감사 및 수학계 공인</td>
+<td style="text-align: center;"><strong><code class="code-nowrap">ONGOING</code></strong></td>
+<td style="text-align: left;">기계적 형식 인증은 완료되었으나 정의의 의미론적 대조, 인간 수학자의 전 구간 소화, CMI 출판 후 2년 학계 검증은 진행 중(무주석 원문의 서지·수식 해설은 본 <code class="code-nowrap">01</code>~<code class="code-nowrap">05</code>권에서 역복원)</td>
 </tr>
 </tbody>
 </table>
@@ -284,8 +290,8 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
 <li><strong>실제 Lean 코드 선언문과 기출 <code class="code-nowrap">195</code>선 전수 서지를 대조할 연구자</strong>: <a href="./03_Lean코드_척추_해부원장.md">03_Lean코드_척추_해부원장.md</a>와 <a href="./04_기출대정리_원전복원사전.md">04_기출대정리_원전복원사전.md</a>에 정확한 행 번호가 전수 정리되어 있습니다.</li>
 <li><strong>후반부 보형·코호몰로지 등식, 형식화 여유분, OpenAI 교차 심사를 검증할 전공자</strong>: <a href="./05_전공자용_수론심층심사및수식복원서.md">05_전공자용_수론심층심사및수식복원서.md</a> 및 보조 증명 <a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>에서 모든 심부 수식을 대조할 수 있습니다.</li>
 <li><strong>책 형태로 통독하거나 인쇄하려는 독자</strong>: <a href="./book/리만가설_1737만줄_완전풀이집.pdf">단행본 PDF</a> 또는 <a href="./book/리만가설_1737만줄_완전풀이집.html">오프라인 전자책 HTML</a>을 열면 전 6권과 도판 4종이 통합 조판된 합본으로 읽을 수 있습니다.</li>
-</ol></section><section class="chapter" id="chap-1"><div class="chapter-badge">제1부 · 일반 독자용 비유 풀이</div><h1>01. 수식 없이 읽는 비유 풀이: 167년 난제를 무너뜨린 5개의 징검다리</h1>
-<p>리만 가설은 소수들의 간격을 조종하는 무수한 주파수 바늘(영점)이 단 하나의 예외도 없이 <code class="code-nowrap">0.5</code> 눈금선 위에만 정렬되어 있다는 명제이며, 알푀게와 Claude의 <code class="code-nowrap">175,187</code>개 Lean 파일은 자연수에서 불가능하던 미분 증폭을 '제곱근 횟수의 연속 세타 리프트'로 대체해 이 명제를 빈칸 없이 증명했습니다(<code class="code-nowrap">PASS</code>). 이 글은 수학 기호를 단 하나도 쓰지 않고 손으로 따라갈 수 있는 작은 숫자 예시와 다섯 개의 비유만으로 전체 원리를 설명합니다.</p>
+</ol></section><section class="chapter" id="chap-1"><div class="chapter-badge">제1부 · 일반 독자용 비유 풀이</div><h1>01. 수식 없이 읽는 비유 풀이: 167년 난제 형식 증명을 잇는 5개의 징검다리</h1>
+<p>리만 가설은 소수들의 간격을 조종하는 무수한 주파수 바늘(영점)이 단 하나의 예외도 없이 <code class="code-nowrap">0.5</code> 눈금선 위에만 정렬되어 있다는 명제이며, 알푀게와 Claude의 <code class="code-nowrap">175,187</code>개 Lean 파일은 자연수에서 불가능하던 미분 증폭을 '제곱근 횟수의 연속 세타 리프트'로 대체해 복수의 독립 증명 커널에서 무공리 기계적 형식 인증을 통과했습니다(<code class="code-nowrap">PASS</code>, 인간 수학계의 동료심사 및 공인은 현재 진행 중). 이 글은 수학 기호를 단 하나도 쓰지 않고 손으로 따라갈 수 있는 작은 숫자 예시와 다섯 개의 비유만으로 전체 원리를 설명합니다.</p>
 <hr />
 <h2>프롤로그. 리만 가설이 다루는 단 하나의 사실</h2>
 <p><code class="code-nowrap">2, 3, 5, 7, 11, 13</code>처럼 <code class="code-nowrap">1</code>과 자기 자신으로만 나누어떨어지는 수를 <strong>소수</strong>라고 부릅니다. 소수를 작은 수부터 차례대로 세어 나가면 어떨 때는 연달아 나오고 어떨 때는 한참 동안 나오지 않아 마치 주사위를 던진 것처럼 불규칙해 보입니다.</p>
@@ -310,7 +316,7 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
 <li><code class="code-nowrap">p = 3</code>일 때: <code class="code-nowrap">(10 / 3) - 1 = 2.33</code></li>
 <li><code class="code-nowrap">p = 5</code>일 때: <code class="code-nowrap">(10 / 5) - 1 = 1.00</code></li>
 <li><code class="code-nowrap">p = 7</code>일 때: <code class="code-nowrap">(10 / 7) - 1 = 0.43</code></li>
-<li><code class="code-nowrap">10</code>에 딱 걸린 수는 <code class="code-nowrap">(10 / 10) - 1 = 0</code>이 되어 계단 턱이 사라지고 매끄러운 곡선이 됩니다.</li>
+<li><code class="code-nowrap">10</code>에 딱 걸린 수는 <code class="code-nowrap">(10 / 10) - 1 = 0</code>이 되어 계단 턱이 사라지고 매끄러운 곡선이 됩니다(손계산 편의를 위해 소수 거듭제곱인 <code class="code-nowrap">4, 8, 9</code>와 자연로그 가중치는 생략했으며 정확한 가중식은 제02권에서 다룹니다).</li>
 </ul>
 </li>
 </ol>
@@ -377,7 +383,7 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
 <p>일반적인 학술 논문이라면 제5막의 짝수 사각지대를 메울 때 "이 고차원 패칭 성질은 선행 논문을 인용한다"고 한 줄로 적고 넘어갑니다. 그러나 컴퓨터 검증기(Lean)는 아무리 유명한 기존 정리라도 기계가 확인한 증명 코드를 직접 넣어주지 않으면 단 한 줄도 통과시키지 않습니다.</p>
 <p>제5막의 보형 창문 엔진(<code class="code-nowrap">157,604</code>개 파일 · <code class="code-nowrap">1,609만 줄</code>)은 순수 신작 패칭 코드 <code class="code-nowrap">103만 줄</code>(<code class="code-nowrap">10,832</code>개 파일) 아래에 아벨 다양체(<code class="code-nowrap">814만 줄</code>)를 포함한 현대 대수기하학 기출 기반 <code class="code-nowrap">1,506만 줄</code>을 끌어다 씁니다.
 알푀게와 Claude는 외부 가정 논란을 원천 차단하기 위해 지난 60여 년간 축적된 현대 수학 대정리 <code class="code-nowrap">195</code>개 묶음을 <strong>컴퓨터 안에서 밑바닥부터 전부 다시 증명해 기초 공사로 깔았습니다.</strong> 30층짜리 새 전망대(리만 가설 5막 본증명)를 세우기 위해 광산 채굴부터 제철소와 시멘트 공장까지 22만 쪽 분량을 자체 건설한 셈입니다.</p>
-<p>로컬 장비와 <code class="code-nowrap">spark</code> 장비 두 대가 8시간 21분 동안 수행한 전수 컴파일은 그 기초 공사의 첫 번째 벽돌부터 전망대 꼭대기 마지막 나사까지 논리 결함이 <code class="code-nowrap">0</code>건임을 기계적으로 확인한 절차입니다.</p></section><section class="chapter" id="chap-2"><div class="chapter-badge">제2부 · 핵심 수리 원리 5막</div><h1>02. 눈으로 만지는 핵심 원리 5막: <span class='math-inline math-nowrap'><span class='sqrt'>√<span class='rad'>X</span></span></span> 리프트 횟수의 수리적 도출</h1>
+<p>로컬 장비·<code class="code-nowrap">spark</code> 장비 컴파일과 외부 독립 검증기(<code class="code-nowrap">nanoda</code> · <code class="code-nowrap">con-leche</code> · <code class="code-nowrap">lean4lean</code>) 교차 실행은 그 기초 공사의 첫 번째 벽돌부터 전망대 꼭대기 마지막 나사까지 형식 논리 결함이 <code class="code-nowrap">0</code>건임을 기계적으로 인증한 절차이며, 이제 전 세계 수학자들이 그 설계도를 읽고 소화하는 동료심사 단계가 이어집니다.</p></section><section class="chapter" id="chap-2"><div class="chapter-badge">제2부 · 핵심 수리 원리 5막</div><h1>02. 눈으로 만지는 핵심 원리 5막: <span class='math-inline math-nowrap'><span class='sqrt'>√<span class='rad'>X</span></span></span> 리프트 횟수의 수리적 도출</h1>
 <p>레벤트 알푀게와 Claude의 증명에서 가장 핵심적인 수치인 세타 리프트 반복 횟수 <span class='math-inline math-nowrap'>m ≈ <span class='sqrt'>√<span class='rad'>X</span></span></span>는 체비쇼프 마디 이산화 오차 <span class='math-inline math-nowrap'>O(X log  m / m)</span>를 임계선 목표치 <span class='math-inline math-nowrap'>O(X<sup>1/2+ε</sup>)</span> 아래로 누르기 위한 최소 자유도 조건 <span class='math-inline math-nowrap'>m ≥ X<sup>1 - θ - ε</sup></span> (<span class='math-inline math-nowrap'>θ = 1/2</span>)에서 정확히 도출됩니다(<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Zeta<wbr/>Nonvanishing<wbr/>Chebyshev<wbr/>Weights.<wbr/>lean:26-35</code>, <code class="code-nowrap">PASS</code>). 본 문서는 대학 기초 미적분 수준에서 5막 전체의 핵심 수식과 <span class='math-inline math-nowrap'>X ≤ 10,000</span> 실제 소수 계산 결과(<a href="./data/prime_lab_results.json">prime_lab_results.json</a>)를 단계별로 대조합니다.</p>
 <hr />
 <h2>제1막. 소수 계단을 매끄럽게 적분한 잔차 함수 <span class='math-inline math-nowrap'>G<sub>z</sub>(x)</span></h2>
@@ -399,7 +405,7 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
 <th style="text-align: right;">주항 <span class='math-inline math-nowrap'>Xlog  X - (1+γ)X</span></th>
 <th style="text-align: right;">실제 잔차 <span class='math-inline math-nowrap'>G<sub>z</sub>(X)</span></th>
 <th style="text-align: right;">비율 <span class='math-inline math-nowrap'>| G<sub>z</sub>(X) | / <span class='sqrt'>√<span class='rad'>X</span></span></span></th>
-<th style="text-align: right;">이탈 영점 스케일 (<span class='math-inline math-nowrap'>X<sup>0.75</sup></span>)</th>
+<th style="text-align: right;">점근 성장률 비교 (<span class='math-inline math-nowrap'>X<sup>0.75</sup></span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -450,17 +456,27 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
 </tr>
 </tbody>
 </table>
+<p><div class='math-block'>G<sub>z</sub>(x) = log (2π) - ∑<sub>ρ</sub> <span class='frac'><span class='num'>x<sup>ρ</sup></span><span class='den'>ρ(ρ - 1)</span></span> + O(x<sup>-1</sup>)</div></p>
+<ul>
+<li><strong>명시적 공식과 분모 감쇠 해석</strong>: 표의 <span class='math-inline math-nowrap'>G<sub>z</sub>(X)</span> 값들이 <code class="code-nowrap">+1.7</code> 부근에 머무는 주된 이유는 <span class='math-inline math-nowrap'>s = 0</span> 유수에서 오는 상수항 <span class='math-inline math-nowrap'>log (2π) ≈ 1.8379</span> 때문이며, 개별 영점 진동항은 분모 <span class='math-inline math-nowrap'>| ρ(ρ - 1) |</span>로 강하게 억제됩니다(가장 낮은 영점 <span class='math-inline math-nowrap'>γ<sub>1</sub> ≈ 14.13</span>에서도 <span class='math-inline math-nowrap'>| ρ<sub>1</sub>(ρ<sub>1</sub> - 1) | ≈ 200</span>에 의해 진폭이 약 <code class="code-nowrap">200분의 1</code> 수준으로 줄어들며, 허수부 <span class='math-inline math-nowrap'>|γ|</span>가 큰 영점은 <span class='math-inline math-nowrap'>X = 10,000</span> 구간에서 진폭이 미세합니다).
+  따라서 오른쪽 끝 열의 <span class='math-inline math-nowrap'>X<sup>0.75</sup></span>은 유한한 <span class='math-inline math-nowrap'>X = 10,000</span>에서의 즉각적인 진폭이 아니라 <span class='math-inline math-nowrap'>x → ∞</span> 극한에서의 <strong>점근 성장 지수(<span class='math-inline math-nowrap'>x<sup>θ</sup></span> 대 <span class='math-inline math-nowrap'>x<sup>1/2</sup></span>)</strong> 비교 기준입니다.</li>
+</ul>
 <blockquote>
-<p><strong>제1막 수리 요점</strong>: <span class='math-inline math-nowrap'>X = 10,000</span>에서 소수 합이 <code class="code-nowrap">76,332.9964</code>에 달하지만 주항을 뺀 실제 잔차 <span class='math-inline math-nowrap'>G<sub>z</sub>(10000)</span>은 <code class="code-nowrap">1.7493</code>으로 가상 이탈 영점 스케일(<code class="code-nowrap">1,000.00</code>)의 <code class="code-nowrap">570분의 1</code> 수준에 묶여 있습니다. 모든 <span class='math-inline math-nowrap'>x → ∞</span>에서 <span class='math-inline math-nowrap'>|G<sub>z</sub>(x)| ≲ x<sup>1/2+ε</sup></span>을 증명하면 리만 가설이 성립합니다.</p>
+<p><strong>제1막 수리 요점</strong>: <span class='math-inline math-nowrap'>X = 10,000</span>에서 소수 합 <span class='math-inline math-nowrap'>S<sub>z</sub>(10000)</span>은 <code class="code-nowrap">76,332.9964</code>에 달하지만 <span class='math-inline math-nowrap'>s = 1</span> 주항을 뺀 잔차 <span class='math-inline math-nowrap'>G<sub>z</sub>(10000)</span>은 <span class='math-inline math-nowrap'>log (2π) ≈ 1.8379</span> 근처인 <code class="code-nowrap">+1.7493</code>에 머뭅니다. <span class='math-inline math-nowrap'>x → ∞</span> 극한에서 단방향 성장 상한 <span class='math-inline math-nowrap'>G<sub>z</sub>(x) ≲ x<sup>1/2+ε</sup></span>을 증명하면 <span class='math-inline math-nowrap'>Re(ρ) > 1/2</span>인 이탈 영점의 점근 발산(<span class='math-inline math-nowrap'>x<sup>Re(ρ)</sup> / |ρ(ρ-1)|</span>)과 양립할 수 없어 리만 가설이 성립합니다.</p>
 </blockquote>
 <hr />
-<h2>제2막. 란다우 양수성 정리와 영점 위수 일치 공식 (<code class="code-nowrap">OCAvg</code>)</h2>
-<p>단일 함수 <span class='math-inline math-nowrap'>G<sub>z</sub>(x)</span>는 부호가 바뀌며 진동하므로 복소영점을 직접 배제하기 어렵습니다. 이를 해결하기 위해 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Statement<wbr/>OC.<wbr/>lean:17-51</code>과 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Defs<wbr/>OC.<wbr/>lean:26-47</code>은 실수 디리클레 지표 <span class='math-inline math-nowrap'>χ<sub>i</sub></span> 가족과의 차이를 결합합니다.</p>
-<p><div class='math-block'>G<sub>z</sub>(x) - G<sub>χ<sub>i</sub></sub>(x) = ∑<sub>n ≤ x</sub> Λ(n)(1 - χ<sub>i</sub>(n))(<span class='frac'><span class='num'>x</span><span class='den'>n</span></span> - 1) - xlog  x + C<sub>χ<sub>i</sub></sub> x</div></p>
-<p>여기서 계수 <span class='math-inline math-nowrap'>1 - χ<sub>i</sub>(n) ≥ 0</span>은 모든 자연수 <span class='math-inline math-nowrap'>n</span>에서 음수가 되지 않습니다. 피적분 함수가 단일 부호를 유지하면 <strong>란다우 정리(<code class="code-nowrap">LandauEq</code>)</strong>가 작동하여, 양수 가중치 합 <span class='math-inline math-nowrap'>∑<sub>i</sub> w<sub>i</sub> (G<sub>z</sub>(x) - G<sub>χ<sub>i</sub></sub>(x))</span>가 <span class='math-inline math-nowrap'>± C x<sup>θ</sup></span> 안에 묶이는 즉시 <span class='math-inline math-nowrap'>Re(s) > θ</span> 영역 전체에서 영점 위수 사이에 다음 항등식(<code class="code-nowrap">OrderLogDeriv</code>)이 성립합니다.</p>
+<h2>제2막. 단방향 란다우 양수성 정리와 가중 영점 위수 등식 (<code class="code-nowrap">OCAvg</code> · <code class="code-nowrap">OCAvgUpper</code>)</h2>
+<p>단일 잔차 <span class='math-inline math-nowrap'>G<sub>z</sub>(x)</span>는 부호가 바뀌며 진동하므로 단방향 부등식만으로는 복소 우반평면 전체의 해석적 연속을 얻을 수 없습니다. 이를 해결하기 위해 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Statement<wbr/>OC.<wbr/>lean:11-64</code>와 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Defs<wbr/>OC.<wbr/>lean:26-47</code>은 실수 값을 갖는 디리클레 지표 <span class='math-inline math-nowrap'>χ<sub>i</sub></span> 가족과의 원시 합 차이와 잔차 차이를 구분해 결합합니다.</p>
+<p><div class='math-block'>S<sub>z</sub>(x) - S<sub>χ<sub>i</sub></sub>(x) = ∑<sub>1 ≤ n ≤ ⌊ x ⌋</sub> Λ(n)(1 - Re χ<sub>i</sub>(n))(<span class='frac'><span class='num'>x</span><span class='den'>n</span></span> - 1) ≥ 0</div></p>
+<p><div class='math-block'>G<sub>z</sub>(x) - G<sub>χ<sub>i</sub></sub>(x) = (S<sub>z</sub>(x) - S<sub>χ<sub>i</sub></sub>(x)) - xlog  x + (1 + γ - Re<span class='frac'><span class='num'>L'</span><span class='den'>L</span></span>(1, χ<sub>i</sub>))x</div></p>
+<ul>
+<li><strong>단방향 부등식과 란다우 정리(<code class="code-nowrap">LandauEq</code>, <code class="code-nowrap">DefsOC.lean:26-35</code>)의 정확한 역할</strong>: 만약 양방향 유계 <span class='math-inline'>|∑<sub>i</sub> w<sub>i</sub>(G<sub>z</sub>(x) - G<sub>χ<sub>i</sub></sub>(x))| ≤ C x<sup>θ</sup></span>가 처음부터 주어졌다면 멜린 적분은 단순 절대수렴만으로 <span class='math-inline math-nowrap'>Re(s) > θ</span>에서 정칙이 되어 부호 조건이 필요 없습니다.
+  란다우 정리가 핵심 역할을 하는 지점은 코드의 <code class="code-nowrap">OCAvg</code>(<code class="code-nowrap">39~51</code>행, 하한 <span class='math-inline math-nowrap'>-C x<sup>θ</sup> ≤ ∑<sub>i</sub> w<sub>i</sub>(G<sub>z</sub> - G<sub>χ<sub>i</sub></sub>)</span>)와 <code class="code-nowrap">OCAvgUpper</code>(<code class="code-nowrap">52~64</code>행, 상한 <span class='math-inline math-nowrap'>∑<sub>i</sub> w<sub>i</sub>(G<sub>z</sub> - G<sub>χ<sub>i</sub></sub>) ≤ C x<sup>θ</sup></span>)처럼 <strong>단방향(one-sided) 부등식</strong>만 주어졌을 때입니다.
+  원시 계수 <span class='math-inline math-nowrap'>1 - Re χ<sub>i</sub>(n) ≥ 0</span> 덕분에 주항 보정 후 보조 피적분 함수 <span class='math-inline math-nowrap'>H(x) ≥ 0</span> (<code class="code-nowrap">DefsOC.lean:28</code>)을 비음수로 구성할 수 있으며, 실축 구간 <span class='math-inline math-nowrap'>(θ, 1)</span> 위에서 실수 영점 부재(<span class='math-inline math-nowrap'>L(σ, χ<sub>i</sub>) ≠ 0</span>)가 확인되면 수렴 횡좌표가 <span class='math-inline math-nowrap'>θ</span>까지 내려가 복소 반평면 <span class='math-inline math-nowrap'>Re(s) > θ</span> 전체에서 다음 가중 위수 항등식(<code class="code-nowrap">OrderLogDeriv</code>, <code class="code-nowrap">40~46</code>행)이 성립합니다.</li>
+</ul>
 <p><div class='math-block'>(∑<sub>i</sub> w<sub>i</sub>) · ord<sub>s</sub>(ζ) = ∑<sub>i</sub> w<sub>i</sub> · ord<sub>s</sub>(L(·, χ<sub>i</sub>))</div></p>
 <blockquote>
-<p><strong>제2막 수리 요점</strong>: <span class='math-inline math-nowrap'>1 - χ<sub>i</sub>(n) ≥ 0</span> 부호 불변성 덕분에 가중 잔차 상한이 증명되는 순간, <span class='math-inline math-nowrap'>Re(s) > θ</span>의 어떤 점 <span class='math-inline math-nowrap'>s</span>에서 <span class='math-inline math-nowrap'>ζ(s)=0</span>이려면 참여한 모든 <span class='math-inline math-nowrap'>L(s, χ<sub>i</sub>)</span>가 같은 점에서 동시에 <code class="code-nowrap">0</code>이 되어야 한다는 강한 제약이 걸립니다.</p>
+<p><strong>제2막 수리 요점</strong>: 위 가중 등식 단독으로는 모든 <span class='math-inline math-nowrap'>L(s, χ<sub>i</sub>)</span>가 동시에 <code class="code-nowrap">0</code>임을 뜻하지 않으나(<span class='math-inline math-nowrap'>w<sub>1</sub>=w<sub>2</sub>=1,  ord<sub>s</sub>(ζ)=1</span>일 때 <span class='math-inline math-nowrap'>ord<sub>s</sub>(L<sub>1</sub>)=2,  ord<sub>s</sub>(L<sub>2</sub>)=0</span> 가능), <strong>가중 평균 영점 위수가 <span class='math-inline math-nowrap'>ord<sub>s</sub>(ζ)</span>와 정확히 보존된다</strong>는 제약을 부과합니다. 따라서 <span class='math-inline math-nowrap'>ord<sub>s</sub>(ζ) ≥ 1</span>이면 양의 가중치를 갖는 <span class='math-inline math-nowrap'>L(s, χ<sub>i</sub>)</span> 중 최소 하나 이상이 소멸하며 가중 총 중복도가 일치해야 하고, 역으로 지표 가족에서 <span class='math-inline math-nowrap'>ord<sub>s</sub>(L(·, χ<sub>i</sub>)) = 0</span>이 확립되면 즉시 <span class='math-inline math-nowrap'>ord<sub>s</sub>(ζ) = 0</span>이 도출됩니다.</p>
 </blockquote>
 <hr />
 <h2>제3막. 3줄 대수식으로 도출되는 <span class='math-inline math-nowrap'>m = <span class='sqrt'>√<span class='rad'>X</span></span></span> (<code class="code-wrap">Zeta<wbr/>Nonvanishing<wbr/>Chebyshev<wbr/>Weights</code>)</h2>
@@ -581,10 +597,16 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </ol>
 </li>
 </ul>
-<h3>3.2 보형 창문 인터페이스 (<code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Every<wbr/>Character.<wbr/>lean:8-18</code> · <code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Exists<wbr/>Page<wbr/>N.<wbr/>lean:12-50</code>)</h3>
+<h3>3.2 보형 창문 인터페이스 및 전역 아라켈로프 곱공식 폐루프 (<code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Every<wbr/>Character.<wbr/>lean:8-18</code> · <code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Des<wbr/>Win.<wbr/>lean:11-32</code>)</h3>
 <ul>
-<li>원시 지표 무영점 조립(<code class="code-nowrap">plugWin</code>, <code class="code-nowrap">EveryCharacter.lean</code> <code class="code-nowrap">8~11</code>행): 그린 함수 조건(<code class="code-nowrap">Green</code>), 보형 창문 조건(<code class="code-nowrap">VWin</code>), 닫힌 패밀리 가설을 결합해 <code class="code-nowrap">la := 3 / 2</code> 스케일에서 원시 지표 무영점(<code class="code-nowrap">ZeroFreeAll</code>)을 도출하고, <code class="code-nowrap">18</code>행 비원시 확장(<code class="code-nowrap">imprimitive</code>)으로 모든 지표를 덮습니다.</li>
-<li>보형 창문 상수(<code class="code-nowrap">VWin</code>, <code class="code-nowrap">ExistsPageN.lean</code> <code class="code-nowrap">49</code>행): 지수 상한 <code class="code-nowrap">Ct = 401</code>과 <span class='math-inline math-nowrap'>ε < 1/52</span>, 소수 쌍 <span class='math-inline'>(q ≡ 3 (mod 8),  d ≡ 7 (mod 16),  q ∣ d+1)</span> 조건(<code class="code-nowrap">WinPair</code>, <code class="code-nowrap">27~38</code>행)에서 샤파레비치-테이트 코호몰로지 길이 합 상한 <code class="code-nowrap">VVle E ⌊x^401⌋₊ √(exp(x^ε))</code>을 요구합니다.</li>
+<li>원시 지표 무영점 조립(<code class="code-nowrap">plugWin</code>, <code class="code-nowrap">EveryCharacter.lean</code> <code class="code-nowrap">8~11</code>행): 그린 함수 조건(<code class="code-nowrap">Green</code>), 보형 창문 조건(<code class="code-nowrap">VWin</code>), 닫힌 패밀리 가설을 결합해 <code class="code-nowrap">la := 3 / 2</code> 스케일(<code class="code-nowrap">SupplyChi.lean:8-16</code>)에서 <code class="code-nowrap">ZeroFreeAllOfTopG.lean:26-35</code>(<code class="code-nowrap">zeroFreeAll_of_topG</code>)로 원시 지표 무영점(<code class="code-nowrap">ZeroFreeAll</code>)을 도출하고, <code class="code-nowrap">18</code>행 비원시 확장(<code class="code-nowrap">imprimitive</code>)으로 모든 지표를 덮습니다.</li>
+<li>
+<p>전역 곱공식·기울기 결합 폐루프(<code class="code-nowrap">ShapeWin.lean:27-50</code> · <code class="code-nowrap">DesWin.lean:11-32</code> · <code class="code-nowrap">DivinNOfHypV.lean:76-131</code>): <code class="code-nowrap">VWin</code>의 코호몰로지 상한 <code class="code-nowrap">HypV</code>가 <code class="code-nowrap">divinN_of_hypV</code>를 거쳐 경계 부치 상한 <code class="code-nowrap">DIVinN</code>(<code class="code-wrap">Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:59-64</code>)으로 변환됩니다.
+  이어서 폰 망골트 유류합-부치 이득 <code class="code-nowrap">LinkG</code>(<code class="code-nowrap">122~141</code>행), 지겔-베유 질량 비 <code class="code-nowrap">LinkS</code>(<code class="code-nowrap">145~163</code>행), 아라켈로프 하더-나라심한 기울기 부등식 <code class="code-nowrap">DivIneqObj</code>(<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Divisor<wbr/>Inequality/<wbr/>Statement<wbr/>Obj.<wbr/>lean:239-425</code>, CM 원형은 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Product<wbr/>Formula/<wbr/>Statement<wbr/>OCCM.<wbr/>lean:27-161</code>)과 결합되어 <code class="code-nowrap">(eD, eL) = (2, 0)</code>에서 <code class="code-nowrap">SChain.lean:88-101</code>의 창문 성장 부등식 <code class="code-nowrap">ChainTied</code>를 닫습니다.</p>
+</li>
+<li>
+<p>보형 창문 상수(<code class="code-nowrap">VWin</code>, <code class="code-nowrap">ExistsPageN.lean</code> <code class="code-nowrap">49</code>행): 지수 상한 <code class="code-nowrap">Ct = 401</code>과 <span class='math-inline math-nowrap'>ε < 1/52</span>, 소수 쌍 <span class='math-inline'>(q ≡ 3 (mod 8),  d ≡ 7 (mod 16),  q ∣ d+1)</span> 조건(<code class="code-nowrap">WinPair</code>, <code class="code-nowrap">27~38</code>행, 린니크 정리 기반 동적 구성 <code class="code-nowrap">WinPairs.lean:5-81</code>)에서 샤파레비치-테이트 코호몰로지 길이 합 상한 <code class="code-nowrap">VVle E ⌊x^401⌋₊ √(exp(x^ε))</code>을 요구합니다.</p>
+</li>
 </ul>
 <hr />
 <h2>4. 본문 5막과 대응하는 핵심 모듈 요약표 (<code class="code-nowrap">Level 4</code>)</h2>
@@ -643,7 +665,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </ul>
 <hr />
 <h2>5. 메타프로그래밍 사용 파일 8종 전수 감사 기록</h2>
-<p>아카이브 전체에서 <code class="code-nowrap">import Lean</code> 또는 <code class="code-nowrap">CoreM</code> 엘라보레이터를 호출하는 파일은 아래 8개뿐이며, 이종 커널(<code class="code-nowrap">x86_64</code> · <code class="code-nowrap">aarch64</code>) 실컴파일에서 모두 커널 타입체크를 통과했습니다(<code class="code-nowrap">PASS</code>).</p>
+<p>아카이브 전체에서 <code class="code-nowrap">import Lean</code> 또는 <code class="code-nowrap">CoreM</code> 엘라보레이터를 호출하는 파일은 아래 8개뿐이며, 공식 <code class="code-nowrap">lean4:v4.33.1</code> 이중 CPU(<code class="code-nowrap">x86_64</code> · <code class="code-nowrap">aarch64</code>) 실컴파일 및 외부 이종 독립 커널(<code class="code-nowrap">leanchecker</code> · Rust <code class="code-nowrap">nanoda</code> · <code class="code-nowrap">con-leche --compare</code> · <code class="code-nowrap">lean4lean</code>, <code class="code-nowrap">175,187</code>개 모듈 · <code class="code-nowrap">1,468,418</code>개 선언) 교차 검증을 모두 통과했습니다(<code class="code-nowrap">PASS</code>).</p>
 <ol>
 <li>검색 제외 등록(<code class="code-wrap">src/<wbr/>Build<wbr/>Aid/<wbr/>D1.<wbr/>lean:1-4</code> ~ <code class="code-wrap">src/<wbr/>Build<wbr/>Aid/<wbr/>D5.<wbr/>lean:1-4</code>, <code class="code-nowrap">5</code>개): 라이브러리 검색 제안 거부 목록(<code class="code-nowrap">nameDenyListExt</code>) 등록 전용.</li>
 <li>메타변수 할당 전술(<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Local<wbr/>To<wbr/>Global/<wbr/>Indefinite<wbr/>Real/<wbr/>Hecke<wbr/>Nonvanishing/<wbr/>Imports.<wbr/>lean:1-8</code>): <code class="code-nowrap">elab &quot;kexactB &quot;</code> 전술(정리 등록 시 C++ 커널 검증 수행).</li>
@@ -652,7 +674,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </ol>
 <hr />
 <h2>6. <code class="code-nowrap">VWin</code>(<code class="code-nowrap">Ct = 401</code>) 홀·짝 합류 · 7분할 반디버 패칭 및 <code class="code-nowrap">UnusedSlot</code> 9종 분류 감사</h2>
-<p><code class="code-nowrap">vwin_of_row</code>(<code class="code-nowrap">157,604</code>개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 <code class="code-nowrap">UnusedSlot</code> 식별자 분류는 다음과 같습니다(상세 수식 유도는 <a href="./05_전공자용_수론심층심사및수식복원서.md">05_전공자용_수론심층심사및수식복원서.md</a> 제4·5장 참조).</p>
+<p><code class="code-nowrap">vwin_of_row</code>(<code class="code-nowrap">157,604</code>개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 <code class="code-nowrap">UnusedSlot</code> 식별자 분류는 다음과 같습니다(상세 수식 유도는 <a href="./05_전공자용_수론심층심사및수식복원서.md">05_전공자용_수론심층심사및수식복원서.md</a> 제4~6장 참조).</p>
 <ul>
 <li><strong><code class="code-nowrap">VWin</code> 홀·짝 합류 및 짝수(<code class="code-nowrap">PsiEven</code>) 7분할 심부 패칭 사슬</strong>:<ul>
 <li>홀수(<code class="code-nowrap">minusLen</code>) · 짝수(<code class="code-nowrap">plusLen</code>) 최상위 합류(<code class="code-nowrap">vwin_of_counts</code> · <code class="code-nowrap">point</code> · <code class="code-nowrap">sumOut</code>): <code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Automorphic<wbr/>Varieties/<wbr/>Height<wbr/>And<wbr/>Vanishing/<wbr/>Joint<wbr/>Win<wbr/>Of<wbr/>Counts.<wbr/>lean:16-34</code>,
@@ -767,7 +789,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <td style="text-align: center;"><code class="code-nowrap">093</code></td>
 <td style="text-align: left;"><code class="code-wrap">abelian_<wbr/>lifting_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L403</code>)</td>
 <td style="text-align: left;">주편극 아벨 다양체의 표수 <code class="code-nowrap">0</code> 변형 승강 정리</td>
-<td style="text-align: left;">오르트-멈퍼드 (Norman-Oort, 1980), 그로텐디크</td>
+<td style="text-align: left;">노먼-오르트 (Norman-Oort, 1980), 그로텐디크</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">094</code></td>
@@ -838,19 +860,19 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">146</code></td>
 <td style="text-align: left;"><code class="code-wrap">siegel_<wbr/>toroidal_<wbr/>integral_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L509</code>)</td>
-<td style="text-align: left;">지겔 모듈라이 공간의 정수 환원체 콤팩트화 구성</td>
+<td style="text-align: left;">지겔 모듈라이 공간의 정수 원환체(토로이달) 콤팩트화 구성</td>
 <td style="text-align: left;">팔팅스-차이 (Faltings-Chai, 1990)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">152</code></td>
 <td style="text-align: left;"><code class="code-wrap">toroidal_<wbr/>compactification_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L521</code>)</td>
-<td style="text-align: left;">대칭 영역 몫다양체의 환원체(Toroidal) 콤팩트화</td>
+<td style="text-align: left;">대칭 영역 몫다양체의 원환체(토로이달) 콤팩트화</td>
 <td style="text-align: left;">애시-멈퍼드-라포포르트-타이 (AMRT, 1975)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">153</code></td>
 <td style="text-align: left;"><code class="code-wrap">toroidal_<wbr/>for_<wbr/>fan_<wbr/>ks_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L523</code>)</td>
-<td style="text-align: left;">적합 다면체 부채꼴에 따른 환원체 경계 인자 및 고다이라-스펜서 사상</td>
+<td style="text-align: left;">적합 다면체 부채꼴에 따른 원환체(토로이달) 경계 인자 및 고다이라-스펜서 사상</td>
 <td style="text-align: left;">팔팅스-차이 (1990), 란 (Lan, 2013)</td>
 </tr>
 <tr>
@@ -955,7 +977,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">095</code></td>
 <td style="text-align: left;"><code class="code-wrap">grothendieck_<wbr/>messing_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L407</code>)</td>
-<td style="text-align: left;"><span class='math-inline math-nowrap'>p</span>-가해군 결정 디외도네 가군과 호지 여과의 변형 동치 정리</td>
+<td style="text-align: left;"><span class='math-inline math-nowrap'>p</span>-가분군 결정 디외도네 가군과 호지 여과의 변형 동치 정리</td>
 <td style="text-align: left;">그로텐디크 (1970), 메싱 (Messing, 1972)</td>
 </tr>
 <tr>
@@ -967,13 +989,13 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">129</code></td>
 <td style="text-align: left;"><code class="code-wrap">prismatic_<wbr/>dieudonne_<wbr/>hodge_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L475</code>)</td>
-<td style="text-align: left;">유한 평탄·<span class='math-inline math-nowrap'>p</span>-가해군의 프리즘 디외도네 분류 및 호지 비교</td>
+<td style="text-align: left;">유한 평탄·<span class='math-inline math-nowrap'>p</span>-가분군의 프리즘 디외도네 분류 및 호지 비교</td>
 <td style="text-align: left;">안쉬츠-르브라 (Anschütz-Le Bras, 2023)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">166</code></td>
 <td style="text-align: left;"><code class="code-wrap">fargues_<wbr/>exact_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L549</code>)</td>
-<td style="text-align: left;">파르그 <span class='math-inline math-nowrap'>p</span>-가해군 하드-나라심한 경질 여과 완전열</td>
+<td style="text-align: left;">파르그 <span class='math-inline math-nowrap'>p</span>-가분군 하더-나라심한(Harder-Narasimhan) 표준 여과 완전열</td>
 <td style="text-align: left;">로랑 파르그 (Fargues, 2010)</td>
 </tr>
 </tbody>
@@ -995,7 +1017,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <td style="text-align: center;"><code class="code-nowrap">076</code></td>
 <td style="text-align: left;"><code class="code-wrap">siegel_<wbr/>eisenstein_<wbr/>continuation_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L369</code>)</td>
 <td style="text-align: left;">유니터리 지겔 아이젠슈타인 급수의 유리형 해석적 연속 및 함수방정식</td>
-<td style="text-align: left;">랭글란즈 (1976), 시무라 (1983~1997), 탄 (Tan, 1999)</td>
+<td style="text-align: left;">랑글란즈 (Langlands, 1976), 시무라 (1983~1997), 탄 (Tan, 1999)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">077</code></td>
@@ -1006,7 +1028,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">085</code></td>
 <td style="text-align: left;"><code class="code-wrap">gl_<wbr/>howe_<wbr/>duality_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L387</code>)</td>
-<td style="text-align: left;">제1유형 <span class='math-inline math-nowrap'>GL<sub>n</sub> × GL<sub>m</sub></span> 쌍 위 하우 쌍대성 정리</td>
+<td style="text-align: left;">제2유형(Type II) <span class='math-inline math-nowrap'>GL<sub>n</sub> × GL<sub>m</sub></span> 쌍 위 하우 쌍대성 정리</td>
 <td style="text-align: left;">하우 (Howe, 1989), 밍게즈 (Mínguez, 2008)</td>
 </tr>
 <tr>
@@ -1159,7 +1181,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">028</code></td>
 <td style="text-align: left;"><code class="code-wrap">borel_<wbr/>casselman_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L273</code>)</td>
-<td style="text-align: left;">이오와호리 고정 벡터 범주와 아핀 헤케 대수 가군 동치 정리</td>
+<td style="text-align: left;">이와호리(Iwahori) 고정 벡터 범주와 아핀 헤케 대수 가군 동치 정리</td>
 <td style="text-align: left;">보렐 (Borel, 1976), 카셀만 (Casselman, 1980)</td>
 </tr>
 <tr>
@@ -1171,13 +1193,13 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">037</code></td>
 <td style="text-align: left;"><code class="code-wrap">gelfand_<wbr/>kazhdan_<wbr/>dual_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L291</code>)</td>
-<td style="text-align: left;"><span class='math-inline math-nowrap'>GL<sub>n</sub>(F)</span> 기약 표현의 쌍대 표현과 전치 반자동형 일치 정리</td>
+<td style="text-align: left;"><span class='math-inline math-nowrap'>GL<sub>n</sub>(F)</span> 기약 표현의 쌍대 표현과 전치 반자기동형(anti-automorphism) 일치 정리</td>
 <td style="text-align: left;">겔판트-카즈단 (Gelfand-Kazhdan, 1975)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">038</code></td>
 <td style="text-align: left;"><code class="code-wrap">generic_<wbr/>unlinked_<wbr/>gl_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L293</code>)</td>
-<td style="text-align: left;">비연결(unlinked) 세그먼트 유도 표현의 기약성 및 비중복 휘태커 모형</td>
+<td style="text-align: left;">비연결(unlinked) 세그먼트 유도 표현의 기약성 및 일반적(generic, 비퇴화 휘태커) 모형</td>
 <td style="text-align: left;">젤레빈스키 (Zelevinsky, 1980)</td>
 </tr>
 <tr>
@@ -1351,7 +1373,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">087</code></td>
 <td style="text-align: left;"><code class="code-wrap">generic_<wbr/>unitary_<wbr/>dual_<wbr/>gl_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L391</code>)</td>
-<td style="text-align: left;"><span class='math-inline math-nowrap'>GL<sub>n</sub></span> 비중복(generic) 기약 유니터리 표현의 타디치(Tadić) 분류</td>
+<td style="text-align: left;"><span class='math-inline math-nowrap'>GL<sub>n</sub></span> 일반적(generic, 비퇴화 휘태커) 기약 유니터리 표현의 타디치(Tadić) 분류</td>
 <td style="text-align: left;">타디치 (Tadić, Ann. Sci. ENS, 1986), 보간 (1986)</td>
 </tr>
 <tr>
@@ -1369,7 +1391,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">091</code></td>
 <td style="text-align: left;"><code class="code-wrap">green_<wbr/>regular_<wbr/>characters_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L399</code>)</td>
-<td style="text-align: left;">들로네-루스티그 정칙 원환 지표와 <span class='math-inline math-nowrap'>GL<sub>n</sub>(𝔽<sub>q</sub>)</span> 기약 표현</td>
+<td style="text-align: left;">들리뉴-루스티그 정칙 원환 지표와 <span class='math-inline math-nowrap'>GL<sub>n</sub>(𝔽<sub>q</sub>)</span> 기약 표현</td>
 <td style="text-align: left;">그린 (1955), 들리뉴-루스티그 (Deligne-Lusztig, 1976)</td>
 </tr>
 <tr>
@@ -1528,7 +1550,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">055</code></td>
 <td style="text-align: left;"><code class="code-wrap">clozel_<wbr/>cohomological_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L327</code>)</td>
-<td style="text-align: left;">정칙 대수적 공호몰로지 첨점 표현에 대응하는 <span class='math-inline math-nowrap'>ℓ</span>-진 갈루아 표현 구성</td>
+<td style="text-align: left;">정칙 대수적 코호몰로지 첨점 표현에 대응하는 <span class='math-inline math-nowrap'>ℓ</span>-진 갈루아 표현 구성</td>
 <td style="text-align: left;">클로젤 (Clozel, 1991), 해리스-테일러 (2001), 신석우 (2011)</td>
 </tr>
 <tr>
@@ -1553,7 +1575,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <td style="text-align: center;"><code class="code-nowrap">060</code></td>
 <td style="text-align: left;"><code class="code-wrap">cusp_<wbr/>decay_<wbr/>sobolev_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L337</code>)</td>
 <td style="text-align: left;">첨점 형식 소볼레프 노름 지배에 따른 점별 급속 감쇠 추정</td>
-<td style="text-align: left;">번스타인-레즈니코프, 코고트-밀러, 뮐러</td>
+<td style="text-align: left;">하리시-찬드라 (1968), 보렐 (1974), 아서 (1978), 번스타인-레즈니코프 (2004)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">061</code></td>
@@ -1576,7 +1598,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">084</code></td>
 <td style="text-align: left;"><code class="code-wrap">gk_<wbr/>globalisation_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L385</code>)</td>
-<td style="text-align: left;">주어진 유한 개 국소 이산계열·초첨점 성분을 실현하는 대역 첨점 형식 포앵카레 급수 구성</td>
+<td style="text-align: left;">주어진 유한 개 국소 이산계열·초첨점 성분을 실현하는 대역 첨점 형식 푸앵카레 급수 구성</td>
 <td style="text-align: left;">클로젤 (1986), 보렐-왈라흐, 신석우 (Shin, 2012)</td>
 </tr>
 <tr>
@@ -1600,7 +1622,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">104</code></td>
 <td style="text-align: left;"><code class="code-wrap">hecke_<wbr/>l_<wbr/>adic_<wbr/>parameter_<wbr/>above_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L425</code>)</td>
-<td style="text-align: left;"><span class='math-inline math-nowrap'>ℓ ∣ p</span> 위 대수적 보형 지표의 베이유-들리뉴·호지 매개변수 정합성</td>
+<td style="text-align: left;"><span class='math-inline math-nowrap'>ℓ ∣ p</span> 위 대수적 보형 지표의 베유-들리뉴·호지 매개변수 정합성</td>
 <td style="text-align: left;">세르 (1968), 폰텐-마주르</td>
 </tr>
 <tr>
@@ -1625,7 +1647,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <td style="text-align: center;"><code class="code-nowrap">122</code></td>
 <td style="text-align: left;"><code class="code-wrap">car<wbr/>U_<wbr/>above_<wbr/>l_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L461</code>)</td>
 <td style="text-align: left;"><span class='math-inline math-nowrap'>ℓ = p</span> 자리에서 정칙 대수적 표현 갈루아 대응의 결정·드람 국소-대역 호환성</td>
-<td style="text-align: left;">바를람벡-클로젤, 카라이아니 (Caraiani, Duke Math. J., 2014)</td>
+<td style="text-align: left;">카라이아니 (Caraiani, Duke Math. J., 2014), 바넷-램-지-게라티-테일러 (BLGGT, 2014)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">138</code></td>
@@ -1664,7 +1686,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <td style="text-align: center;"><code class="code-nowrap">003</code></td>
 <td style="text-align: left;"><code class="code-nowrap">heckeTateFunctionalEquation&#x27;</code> (<code class="code-nowrap">L223</code>)</td>
 <td style="text-align: left;">아델 조화해석에 의한 헤케 <span class='math-inline math-nowrap'>L</span>-함수의 해석적 연속 및 테이트 함수방정식</td>
-<td style="text-align: left;">에밀 테이트 (Tate's Thesis, 1950)</td>
+<td style="text-align: left;">존 테이트 (John Tate, Tate's Thesis, 1950)</td>
 </tr>
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">004</code></td>
@@ -1705,7 +1727,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">015</code></td>
 <td style="text-align: left;"><code class="code-wrap">algebraic_<wbr/>character_<wbr/>wd_<wbr/>of_<wbr/>literature</code> (<code class="code-nowrap">L247</code>)</td>
-<td style="text-align: left;">대수적 헤케 지표의 국소 베이유-들리뉴 표현 변환</td>
+<td style="text-align: left;">대수적 헤케 지표의 국소 베유-들리뉴 표현 변환</td>
 <td style="text-align: left;">베유 (1956), 테이트 (1979)</td>
 </tr>
 <tr>
@@ -1918,7 +1940,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">189</code></td>
 <td style="text-align: left;"><code class="code-wrap">literature_<wbr/>nonexistence</code> (<code class="code-nowrap">L639</code>)</td>
-<td style="text-align: left;">비내시적(non-endoscopic) 소멸·전달 통합 가설 조립 (<code class="code-nowrap">NonEndoscopicHypothesesAlt</code>)</td>
+<td style="text-align: left;">비엔도스코피(non-endoscopic) 소멸·전달 통합 가설 조립 (<code class="code-nowrap">NonEndoscopicHypothesesAlt</code>)</td>
 <td style="text-align: left;">내부 조립 (상위 <code class="code-nowrap">lit_local</code> · <code class="code-nowrap">lit_aut</code> · <code class="code-nowrap">lit_coh</code> 통합)</td>
 </tr>
 <tr>
@@ -1948,7 +1970,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <tr>
 <td style="text-align: center;"><code class="code-nowrap">194</code></td>
 <td style="text-align: left;"><code class="code-wrap">published_<wbr/>results_<wbr/>arithmetic</code> (<code class="code-nowrap">L781</code>)</td>
-<td style="text-align: left;">아라켈로프·환원체 호지 다발 기출 통합 레코드 (<code class="code-nowrap">PublishedHodgeBundleTheorems</code>)</td>
+<td style="text-align: left;">아라켈로프·원환체(토로이달) 호지 다발 기출 통합 레코드 (<code class="code-nowrap">PublishedHodgeBundleTheorems</code>)</td>
 <td style="text-align: left;">내부 조립 (<code class="code-nowrap">28</code>개 산술기하·프리즘 기출 필드 통합 구조체)</td>
 </tr>
 <tr>
@@ -1959,8 +1981,8 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </tr>
 </tbody>
 </table></section><section class="chapter" id="chap-5"><div class="chapter-badge">제5부 · 전공자용 수론 심층 심사 및 수식 복원서</div><h1>05. 전공자용 수론 심층 심사 및 수식 복원서 (제3~5막 핵심 등식 · 기우성 분해 · 교차 감사)</h1>
-<p>레벤트 알푀게와 Claude의 <code class="code-nowrap">175,187</code>개 Lean 4 모듈(<code class="code-nowrap">17,374,215</code>줄)은 전반부 체비쇼프 이산화(<code class="code-nowrap">StatementOC</code> · <code class="code-nowrap">StatementU</code>) 뒤로 바르그만-포크 대칭 텐서 행렬식과 양기안 RTT 융합으로 양수 범함수 <span class='math-inline math-nowrap'>W(·) ≥ 0</span>을 구성하고, 동반 차수 <span class='math-inline math-nowrap'>k ≍ x<sup>9/2+10ε</sup></span> 정규화로 <code class="code-nowrap">2/3</code> 이차 손실항 <span class='math-inline math-nowrap'>-C m<sup>2</sup> L / k</span>를 소거한 뒤, <code class="code-nowrap">VWin</code>(<code class="code-nowrap">Ct = 401</code>, <span class='math-inline math-nowrap'>ε < 1/52</span>)에서 홀수(<code class="code-nowrap">minus</code>) 슈티켈베르거·가토 날개와 짝수(<code class="code-nowrap">plus</code>, 반디버) <span class='math-inline math-nowrap'>GSp<sub>4</sub> · U(3)</span> 히다 변형환 패칭 날개를 결합해 임계선 <span class='math-inline math-nowrap'>Re(s) = 1/2</span>에 도달합니다(<code class="code-nowrap">PASS</code>).
-본 문서는 수론 전공자와 저널 심사위원이 원문 코드 없이도 후반부 본체의 정확한 등식·상수 도출·형식화 여유분(formalization slack) 및 단축 가능 지점을 검증할 수 있도록 복원한 심층 수리 보고서이며, 핵심 지수·합동 산술 15개 정리는 독립 커널 검증 파일 <a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>(<code class="code-nowrap">0 sorry</code>, <code class="code-nowrap">LEAN_RC:0</code>)로 기계 검증했습니다.</p>
+<p>레벤트 알푀게와 Claude의 <code class="code-nowrap">175,187</code>개 Lean 4 모듈(<code class="code-nowrap">17,374,215</code>줄)은 전반부 체비쇼프 이산화(<code class="code-nowrap">StatementOC</code> · <code class="code-nowrap">StatementU</code>) 뒤로 바르그만-포크 대칭 텐서 행렬식과 양기안 RTT 융합으로 양수 범함수 <span class='math-inline math-nowrap'>W(·) ≥ 0</span>을 구성하고, 동반 차수 <span class='math-inline math-nowrap'>k ≍ x<sup>9/2+10ε</sup></span> 정규화로 <code class="code-nowrap">2/3</code> 이차 손실항 <span class='math-inline math-nowrap'>-C m<sup>2</sup> L / k</span>를 소거한 뒤, <code class="code-nowrap">VWin</code>(<code class="code-nowrap">Ct = 401</code>, <span class='math-inline math-nowrap'>ε < 1/52</span>)의 홀·짝 기우성 양날개 상한과 전역 아라켈로프 곱공식(<code class="code-nowrap">ProductFormula</code> · <code class="code-nowrap">DivIneqObj</code>)을 결합해 임계선 <span class='math-inline math-nowrap'>Re(s) = 1/2</span>에 도달합니다(<code class="code-nowrap">PASS</code>).
+본 문서는 수론 전공자와 저널 심사위원이 원문 코드 없이도 후반부 본체의 정확한 등식·전역 곱공식 폐루프·형식화 여유분(formalization slack) 및 단축 가능 지점을 검증할 수 있도록 복원한 심층 수리 보고서이며, 핵심 지수·합동·부치 산술 <strong>17개 정리</strong>는 독립 커널 검증 파일 <a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>(<code class="code-nowrap">0 sorry</code>, <code class="code-nowrap">LEAN_RC:0</code>)로 기계 검증했습니다.</p>
 <hr />
 <h2>제1장. 전역 점근 척도 계층 (<code class="code-nowrap">Scale</code>)과 마법 상수 <span class='math-inline math-nowrap'>ε < <span class='frac'><span class='num'>1</span><span class='den'>52</span></span></span>, <code class="code-nowrap">la = 3/2</code>, <code class="code-nowrap">413,718,278,401</code>의 역산</h2>
 <h3>1.1 기본 척도 구조체 (<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Local<wbr/>Ring<wbr/>Cardinality/<wbr/>Data<wbr/>Params₂.<wbr/>lean:9-47</code>)</h3>
@@ -2011,12 +2033,18 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <li>기저 다항식 지수 상수 <span class='math-inline math-nowrap'>A = 26</span> (<code class="code-nowrap">DataParams₂.lean:41</code>)의 절반 역수 <span class='math-inline math-nowrap'><span class='frac'><span class='num'>1</span><span class='den'>2A</span></span> = <span class='frac'><span class='num'>1</span><span class='den'>52</span></span></span>이 격자 섭동 여유 <span class='math-inline math-nowrap'>x<sup>-A/2</sup> = x<sup>-13</sup></span>과 <span class='math-inline math-nowrap'>ε</span>-손실 계수를 정합시킵니다.</li>
 <li><code class="code-wrap">src/<wbr/>Formalism/<wbr/>Sharp<wbr/>Restriction/<wbr/>Growth<wbr/>Bounds/<wbr/>Multiset<wbr/>Valuation/<wbr/>Price<wbr/>Linear<wbr/>Combination<wbr/>Le.<wbr/>lean:45-81</code>(<code class="code-nowrap">ne_rG_lt</code>)에서 작은 소수 가격 상한 차수 <span class='math-inline'>r<sub>G</sub> = ⌈ 8(h<sub>G</sub> + 2)/ε ⌉ + 1 < 32E + 66</span>을 <span class='math-inline'>(34E)<sup>2</sup> ≤ x<sup>2</sup> ≤ x<sup>9/2+10ε-szTh</sup> ≤ k</span> 안으로 밀어 넣을 때 <code class="code-nowrap">have hinv : 52 &lt; E</code>(<code class="code-nowrap">60</code>행)를 직접 호출합니다.</li>
 </ol>
-<h3>1.3 보조 소수 쌍 <code class="code-nowrap">WinPair</code>와 12자리 루카스 소수 증인 <span class='math-inline math-nowrap'>g<sub>A</sub> = 413,718,278,401</span></h3>
-<p><code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Exists<wbr/>Page<wbr/>N.<wbr/>lean:27-38</code>의 <code class="code-nowrap">WinPair eps Y q d</code>는 두 보조 소수 <span class='math-inline math-nowrap'>(q, d)</span>에 다음 합동과 크기 조건을 부과합니다.</p>
+<h3>1.3 동적 창문 소수 쌍 <code class="code-nowrap">WinPair</code>와 별도 국소환 모듈의 12자리 루카스 소수 증인 <span class='math-inline math-nowrap'>g<sub>A</sub> = 413,718,278,401</span></h3>
+<p>코드에는 같은 기호 <span class='math-inline math-nowrap'>(q, d)</span>를 쓰지만 적용 모듈과 가분성 조건이 서로 다른 두 종류의 보조 소수 쌍이 등장하므로 엄밀히 구분해야 합니다.</p>
+<ul>
+<li><strong>동적 창문 소수 쌍 <code class="code-nowrap">WinPair</code> (<code class="code-nowrap">ExistsPageN.lean:27-38</code> · <code class="code-nowrap">WinPairs.lean:5-81</code>, <code class="code-nowrap">thm_06</code>)</strong>: <code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Exists<wbr/>Page<wbr/>N.<wbr/>lean:27-38</code>의 <code class="code-nowrap">WinPair eps Y q d</code>는 임의로 큰 척도 <span class='math-inline math-nowrap'>Y</span>에 맞춰 린니크 정리(<code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Win<wbr/>Pairs.<wbr/>lean:5-81</code>)로 동적 생성되며 아래 네 조건을 동시에 부과합니다.<ul>
+<li><span class='math-inline math-nowrap'>d ≡ 7 (mod 16)</span>이면 판별식이 <span class='math-inline math-nowrap'>-d ≡ 1 (mod 8)</span>이 되어 허수 이차체 <span class='math-inline math-nowrap'>K = ℚ(<span class='sqrt'>√<span class='rad'>-d</span></span>)</span>에서 소수 <code class="code-nowrap">2</code>가 완전 분해되고(<code class="code-nowrap">ThetaNormCM.lean:31</code> 전제), <span class='math-inline math-nowrap'>p ∣ d + 1</span>에 의해 초기 구간 홀수 소수 <span class='math-inline math-nowrap'>p ≤ Y<sup>ε/5</sup></span>에서도 <span class='math-inline math-nowrap'>(<span class='frac'><span class='num'>-d</span><span class='den'>p</span></span>) = (<span class='frac'><span class='num'>1</span><span class='den'>p</span></span>) = +1</span>로 일제히 분해됩니다.</li>
+</ul>
+</li>
+</ul>
 <p><div class='math-block'>q ≡ 3 (mod 8),      d ≡ 7 (mod 16),      q ∣ d + 1,      ∀ p ≤ Y<sup>ε/5</sup> (p ≠ 2 ⟹ p ∣ d + 1)</div></p>
 <ul>
-<li><strong>수리적 이유 (<code class="code-nowrap">thm_06</code>)</strong>: <span class='math-inline math-nowrap'>d ≡ 7 (mod 16)</span>이면 <span class='math-inline math-nowrap'>d ≡ 7 (mod 8)</span>이므로 허수 이차체 <span class='math-inline math-nowrap'>K = ℚ(<span class='sqrt'>√<span class='rad'>-d</span></span>)</span>의 판별식이 <span class='math-inline math-nowrap'>-d ≡ 1 (mod 8)</span>이 되어 소수 <code class="code-nowrap">2</code>가 완전 분해되며(<code class="code-nowrap">ThetaNormCM.lean:31</code>의 정확한 전제), 모든 작은 홀수 소수 <span class='math-inline math-nowrap'>p ≤ Y<sup>ε/5</sup></span>에서도 <span class='math-inline math-nowrap'>d ≡ -1 (mod p)</span>이므로 <span class='math-inline math-nowrap'>(<span class='frac'><span class='num'>-d</span><span class='den'>p</span></span>) = (<span class='frac'><span class='num'>1</span><span class='den'>p</span></span>) = +1</span>이 되어 초기 구간 소수들이 <span class='math-inline math-nowrap'>K</span>에서 일제히 분해됩니다.</li>
-<li><strong>비공허성 기저 증인 (<code class="code-nowrap">thm_07</code>)</strong>: 국소환 생성원 계층이 공집합이 아님을 보이기 위해 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Local<wbr/>Ring<wbr/>Cardinality/<wbr/>Span<wbr/>Power<wbr/>Membership.<wbr/>lean:18-29</code>와 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Local<wbr/>Ring<wbr/>Cardinality/<wbr/>Span<wbr/>Power<wbr/>Membership/<wbr/>Primes.<wbr/>lean:86-87</code>은 <span class='math-inline math-nowrap'>q = 571</span> (<span class='math-inline math-nowrap'>571 ≡ 3  mod  8</span>), <span class='math-inline math-nowrap'>d = 599</span> (<span class='math-inline math-nowrap'>599 ≡ 7  mod 16</span>, <span class='math-inline math-nowrap'>599+1 = 600 = 2<sup>3</sup> · 3 · 5<sup>2</sup></span>) 위에서 다음 명시적 12자리 소수를 구성하고 원시근 밑 <code class="code-nowrap">34</code>에 관한 루카스 소수 판정법(<code class="code-nowrap">lucas_list</code>)으로 소수성을 직접 증명합니다.</li>
+<li><strong>별도 국소환 생성원 모듈(<code class="code-nowrap">SpanPowerMembership</code>)의 정적 증인 <code class="code-nowrap">(571, 599)</code> (<code class="code-nowrap">thm_07</code>)</strong>: 이와 별개로 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Local<wbr/>Ring<wbr/>Cardinality/<wbr/>Span<wbr/>Power<wbr/>Membership.<wbr/>lean:18-29</code>와 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Local<wbr/>Ring<wbr/>Cardinality/<wbr/>Span<wbr/>Power<wbr/>Membership/<wbr/>Primes.<wbr/>lean:17-87</code>은 <strong><span class='math-inline math-nowrap'>q ∣ d + 1</span> 조건을 부과하지 않는</strong> 국소환 거듭제곱 생성원 계층의 비공허성 증인으로 <span class='math-inline math-nowrap'>q = 571</span> (<span class='math-inline math-nowrap'>571 ≡ 3  mod  8</span>), <span class='math-inline math-nowrap'>d = 599</span> (<span class='math-inline math-nowrap'>599 ≡ 7  mod 16</span>, <span class='math-inline'>599 + 1 = 600 = 2<sup>3</sup> · 3 · 5<sup>2</sup></span>)를 택합니다.
+  따라서 <strong><code class="code-nowrap">571 ∤ 600</code>이므로 <code class="code-nowrap">(571, 599)</code>는 <code class="code-nowrap">WinPair</code>의 예시가 아니며</strong>, 원시근 밑 <code class="code-nowrap">34</code> 루카스 소수 판정법(<code class="code-nowrap">lucas_list</code>)으로 아래 12자리 소수를 커널 내부에서 직접 증명하는 데 쓰입니다.</li>
 </ul>
 <p><div class='math-block'>g<sub>A</sub> = 413,718,278,401,      g<sub>A</sub> - 1 = 2<sup>8</sup> · 3<sup>3</sup> · 5<sup>2</sup> · 7 · 571 · 599 ≡ 0 (mod 16 · 571 · 599)</div></p>
 <hr />
@@ -2033,7 +2061,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <p><div class='math-block'>det  G = <span class='frac'><span class='num'>|det  C|<sup>2</sup></span><span class='den'>∏<sub>σ=1</sub><sup>d</sup> ‖e<sub>σ</sub>‖<sup>2</sup></span></span> ≥ 0,      <span class='frac'><span class='num'>‖det (A<sup>-1</sup> B<sub>0</sub> <span style='text-decoration:overline;'>C</span>)‖<sup>2</sup></span><span class='den'>Re(det  G)</span></span> = |A|<sup>-2d</sup>  ‖det  B<sub>0</sub>‖<sup>2</sup> ∏<sub>σ=1</sub><sup>d</sup> ‖e<sub>σ</sub>‖<sup>2</sup></div></p>
 <p>동시에 이산부치환(DVR) <span class='math-inline math-nowrap'>𝒪</span> 위에서는 가우스 소이데알 국소화 길이 보존(<code class="code-nowrap">GaussLength</code>, <code class="code-nowrap">74~79</code>행)과 쌍대 격자 포함 전제 <span class='math-inline math-nowrap'>L<sup>∨</sup> ⊆ L</span> (<code class="code-nowrap">Ld ≤ L</code>) 아래 지수 등식(<code class="code-nowrap">GramDetLength</code>, <code class="code-nowrap">80~89</code>행)</p>
 <p><div class='math-block'>g · det (B(b<sub>i</sub>, b<sub>j</sub>)) = 1 ⟹ length<sub>𝒪</sub>(L / L<sup>∨</sup>) = v<sub>𝒪</sub>(g)</div></p>
-<p>이 결합되어, 아르키메데스 자리에서의 양수성(<span class='math-inline math-nowrap'>det  G ≥ 0</span>)과 유한 소수 자리에서의 <span class='math-inline math-nowrap'>p</span>-진 가역성(보스트 기울기 부등식, 선언문 13번)이 단일 곱공식(<code class="code-wrap">Formalism/<wbr/>Product<wbr/>Formula</code>)으로 묶입니다.</p>
+<p>이 결합되어, 아르키메데스 자리에서의 양수성(<span class='math-inline math-nowrap'>det  G ≥ 0</span>)과 유한 소수 자리에서의 <span class='math-inline math-nowrap'>p</span>-진 가역성(보스트 기울기 부등식, 선언문 13번)이 제5장에서 상술하는 전역 아라켈로프 곱공식(<code class="code-wrap">Formalism/<wbr/>Product<wbr/>Formula</code> · <code class="code-nowrap">DivisorInequality</code>)으로 묶입니다.</p>
 <h3>2.3 <span class='math-inline math-nowrap'>𝔤𝔩<sub>2</sub></span> 양기안(Yangian) RTT 전달행렬과 비얽힘 가중치 융합 (<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Hermitian<wbr/>Curvature/<wbr/>Statement<wbr/>W.<wbr/>lean:9-27</code>)</h3>
 <p>간-그로스-프라사드(GGP) 주기 행렬들을 <span class='math-inline math-nowrap'>m</span>단 사슬로 이어 붙일 때 가중치 <span class='math-inline math-nowrap'>0, 1</span>의 얽힘(interlacing) 및 최대 <span class='math-inline math-nowrap'>m</span>개의 비얽힘 체비쇼프 마디를 양수 행렬식 안에 가두기 위해, 코드는 <span class='math-inline math-nowrap'>2 × 2</span> 행렬 값 스펙트럼 함수 <span class='math-inline math-nowrap'>M(Y)</span> 위에서 양-백스터(Yang-Baxter) RTT 교환 관계(<code class="code-nowrap">IsRTT</code>)와 양자 행렬식(<code class="code-nowrap">IsDet</code>)을 직접 정식화합니다.</p>
 <p><div class='math-block'>((Y' - Y) I<sub>4</sub> - P<sub>flip</sub>)  E<sub>1</sub>(M(Y'))  E<sub>2</sub>(M(Y)) = E<sub>2</sub>(M(Y))  E<sub>1</sub>(M(Y'))  ((Y' - Y) I<sub>4</sub> - P<sub>flip</sub>)</div></p>
@@ -2079,6 +2107,10 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <h3>4.1 왜 <code class="code-nowrap">Ct = 401</code>인가 (<code class="code-nowrap">ExistsPageN.lean:49</code> · <code class="code-nowrap">TailNum.lean:33</code> · <code class="code-nowrap">MSqDiagA.lean:256</code>)</h3>
 <p>보형 창문 명제 <code class="code-nowrap">VWin</code>은 <code class="code-nowrap">IsChiField ψ e q d E</code>를 만족하는 수체 <span class='math-inline math-nowrap'>E ⊂ ℚ(ζ<sub>N</sub>)</span> 위에서 모든 유한 소수 집합 <span class='math-inline math-nowrap'>S</span>에 관해 비분기 샤파레비치-테이트 길이 합이 다음 부등식을 만족할 것을 요구합니다(<code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Exists<wbr/>Page<wbr/>N.<wbr/>lean:12-50</code>).</p>
 <p><div class='math-block'>∑<sub>l ∈ S</sub> (log  l) ∑<sub>e=1</sub><sup>⌊ x<sup>401</sup> ⌋ - 1</sup> shaLen<sub>l</sub>(E, e) ≤ <span class='sqrt'>√<span class='rad'>exp(x<sup>ε</sup>)</span></span> = exp(<span class='frac'><span class='num'>1</span><span class='den'>2</span></span> x<sup>ε</sup>)      (0 < ε < <span class='frac'><span class='num'>1</span><span class='den'>52</span></span>)</div></p>
+<ul>
+<li><strong>임의의 유한 소수 집합 <span class='math-inline math-nowrap'>S</span> 위에서 합이 발산하지 않는 대수적 이유 (<code class="code-nowrap">vvRecord</code>)</strong>: 고정된 <span class='math-inline math-nowrap'>(E, e)</span>마다 비분기 대역 에탈 코호몰로지 군(퀼런-리히텐바움 동형으로 정수환 <span class='math-inline math-nowrap'>𝒪<sub>E</sub></span>의 유한 대수적 <span class='math-inline math-nowrap'>K</span>-군과 연결되며 코드에서는 <code class="code-nowrap">ShaFinOdd</code>(<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Sharp<wbr/>Restriction/<wbr/>Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:25-27</code>) 및 <code class="code-wrap">global_<wbr/>finiteness_<wbr/>of_<wbr/>literature</code>로 정식화됨)의 위수는 유한하므로 유한 개의 소수 <span class='math-inline math-nowrap'>l</span>을 제외한 모든 소수에서 <span class='math-inline math-nowrap'>shaLen<sub>l</sub>(E, e) = 0</span>입니다.
+  이에 따라 <code class="code-nowrap">vvRecord</code>(<code class="code-wrap">src/<wbr/>Development/<wbr/>Automorphic<wbr/>Arithmetic/<wbr/>Character<wbr/>Boxes/<wbr/>Divin<wbr/>NOf<wbr/>Hyp<wbr/>V.<wbr/>lean:17-58</code>)는 모든 유한 집합 <span class='math-inline math-nowrap'>S</span>에 관한 균등 상한으로부터 무한급수 수렴성 <span class='math-inline'>∑<sub>l=1</sub><sup>∞</sup> vvTerm(D, l) ≤ exp(<span class='frac'><span class='num'>1</span><span class='den'>2</span></span> x<sup>ε</sup>)</span>을 즉시 도출합니다.</li>
+</ul>
 <p>지수 <code class="code-nowrap">401</code>의 출처는 <span class='math-inline math-nowrap'>GL<sub>3</sub></span> 평균제곱 야코비 지표합 모듈 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>GL3Mean<wbr/>Squares/<wbr/>Genus<wbr/>Mean<wbr/>Asymptotics/<wbr/>Jacobi<wbr/>Character<wbr/>Sums/<wbr/>Tail<wbr/>Num.<wbr/>lean:33-53</code>과 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>GL3Mean<wbr/>Squares/<wbr/>Genus<wbr/>Mean<wbr/>Asymptotics/<wbr/>Jacobi<wbr/>Character<wbr/>Sums/<wbr/>MSq<wbr/>Diag<wbr/>A.<wbr/>lean:238-259</code>입니다(<code class="code-nowrap">thm_09</code>).
 대각합 주항 절단 차수가 <span class='math-inline math-nowrap'>⌊ x<sup>400</sup> ⌋</span>일 때 꼬리 다항식 <span class='math-inline math-nowrap'>x<sup>398</sup>(x<sup>2</sup> + 1) ≤ x<sup>401</sup></span>과 로그 상한 <span class='math-inline'>1 + log ⌊ x<sup>400</sup> ⌋ ≤ 401 log  x</span> (<span class='math-inline math-nowrap'>x ≥ e</span>)을 정수 계수 하나로 덮기 위해 <span class='math-inline math-nowrap'>400 + 1 = 401</span>이 선택되었으며, <code class="code-nowrap">HVCore.lean:21</code>에서 <code class="code-nowrap">hB 401 (by norm_num)</code>으로 인스턴스화됩니다.</p>
 <h3>4.2 <code class="code-nowrap">vwin_of_counts</code>의 홀·짝(<code class="code-nowrap">minusLen</code> 대 <code class="code-nowrap">plusLen</code>) 최상위 분해와 의존 콘 경계</h3>
@@ -2138,8 +2170,55 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </ol>
 <p><div class='math-block'>Vn(ψ) log  l ≤ <span class='frac'><span class='num'>c<sub>4</sub></span><span class='den'>21</span></span>  o  l  2<sup>n'</sup> (l  2<sup>n'</sup> N p<sub>1</sub>)<sup>16</sup> e<sup>5</sup> log  p<sub>0</sub>(l N p<sub>1</sub>)</div></p>
 <hr />
-<h2>제5장. 포렌식 심사 발견(형식화 여유분 · 비활성 슬롯), OpenAI <code class="code-nowrap">#003</code> 교차 감사 및 단축 설계도</h2>
-<h3>5.1 원문 코드에서 발굴한 형식화 여유분(Formalization Slack) 및 스캐폴딩 흔적 4선</h3>
+<h2>제5장. 전역 아라켈로프 곱공식과 소수 <span class='math-inline math-nowrap'>p</span>-진 가분성 폐루프 (<code class="code-nowrap">ProductFormula</code> · <code class="code-nowrap">DivIneqObj</code> · <code class="code-nowrap">DivinNOfHypV</code>)</h2>
+<p>제1~3막의 폰 망골트 합 <span class='math-inline math-nowrap'>Λ(n)</span> 및 체비쇼프 마디(<span class='math-inline math-nowrap'>m ≍ <span class='sqrt'>√<span class='rad'>x</span></span></span>)가 제3·4장의 지겔-베유 질량 비 <span class='math-inline math-nowrap'>D<sup>*</sup>/d<sup>*</sup></span> 및 코호몰로지 길이 <code class="code-nowrap">shaLen</code>과 최종적으로 어떻게 하나의 부등식으로 맞물리는지는 <code class="code-wrap">Formalism/<wbr/>Product<wbr/>Formula</code>, <code class="code-wrap">Formalism/<wbr/>Divisor<wbr/>Inequality</code>, <code class="code-wrap">Character<wbr/>Boxes/<wbr/>Divin<wbr/>NOf<wbr/>Hyp<wbr/>V.<wbr/>lean</code>, <code class="code-wrap">Size<wbr/>Window<wbr/>Brackets/<wbr/>SChain.<wbr/>lean</code> 네 계층에서 완결됩니다.</p>
+<h3>5.1 정수 곱공식(<code class="code-nowrap">ProductFormula</code>), 르장드르 <span class='math-inline math-nowrap'>p</span>-진 부치, CM <code class="code-nowrap">3/4</code> 원형 부등식 (<code class="code-nowrap">StatementOCCM.lean</code>, <code class="code-nowrap">thm_17</code>)</h3>
+<p>선언문(<code class="code-nowrap">remark.pdf</code> 3쪽 2번, <code class="code-nowrap">10/9/26</code>)이 출발 씨앗으로 지목한 "비활성 소수 <span class='math-inline math-nowrap'>p</span>에서 CM 세타 고계 미분 <span class='math-inline math-nowrap'>D<sup>a</sup>θ(0)/Ω<sup>a</sup></span>의 <span class='math-inline math-nowrap'>p<sup>⌊ a/p⌋ + ⌊ a/p<sup>3</sup>⌋ + …</sup></span> 가분성"은 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Product<wbr/>Formula/<wbr/>Statement<wbr/>OCCM.<wbr/>lean:16-161</code>과 <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Eisenstein<wbr/>Cokernel<wbr/>Lengths/<wbr/>Factorial<wbr/>Valuation<wbr/>Bounds/<wbr/>Padic<wbr/>Val<wbr/>Nat<wbr/>Factorial<wbr/>Le<wbr/>Real.<wbr/>lean:11-28</code>에 원형 그대로 수록되어 있습니다.</p>
+<ul>
+<li><strong>영 아닌 정수의 대역 곱공식과 르장드르 계승 부치 (<code class="code-nowrap">StatementOCCM.lean:153-161</code>, <code class="code-nowrap">thm_17</code>)</strong>: 영 아닌 정수 행렬식 <span class='math-inline math-nowrap'>Δ ∈ ℤ ∖ {0}</span>은 아르키메데스 로그 크기와 유한 소수 <span class='math-inline math-nowrap'>p</span>-진 부치 합이 정확히 일치하는 곱공식(<code class="code-nowrap">ProductFormula</code> · <code class="code-nowrap">DetGain</code>)을 따르며, 테일러 계수 분모 <span class='math-inline math-nowrap'>n!</span>의 <span class='math-inline math-nowrap'>ℓ</span>-진 부치는 르장드르 항등식 <code class="code-wrap">(p - 1) * legendre<wbr/>Fact<wbr/>Val p n + base<wbr/>Digit<wbr/>Sum p n = n</code> (<code class="code-nowrap">thm_17</code>, <code class="code-wrap">padic<wbr/>Val<wbr/>Nat_<wbr/>factorial_<wbr/>le_<wbr/>real</code>: <span class='math-inline math-nowrap'>(ℓ - 1)v<sub>ℓ</sub>(n!) ≤ n</span>)으로 제어됩니다.</li>
+</ul>
+<p><div class='math-block'>∑<sub>p ∈ S</sub> g(p)log  p ≤ ∑<sub>p ∣ Δ</sub> v<sub>p</sub>(Δ)log  p = log |Δ|      (Δ ∈ ℤ ∖ {0})</div></p>
+<ul>
+<li><strong>CM 미분 소멸 이득(<code class="code-nowrap">gainCM</code>)과 켤레 쌍 상쇄 (<code class="code-wrap">Statement<wbr/>OCCM.<wbr/>lean:27-35, 68-123</code>)</strong>: 나쁜 소수 집합 바깥의 소수 <span class='math-inline math-nowrap'>p ≤ x</span>에서 <span class='math-inline math-nowrap'>p<sup>i</sup>  mod  l ∉ Ψ</span>인 원분 거듭제곱마다 스테파노프 <span class='math-inline math-nowrap'>p</span>-진 부치 이득 <code class="code-nowrap">gainCM</code>(<code class="code-nowrap">27~31</code>행)이 부분가군 부치 <span class='math-inline math-nowrap'>v<sub>K</sub>(j, p)</span>의 하한(<code class="code-nowrap">92~93</code>행)을 형성합니다.<ul>
+<li>척도 <span class='math-inline math-nowrap'>a<sub>1</sub> ≈ a = xb</span>, <span class='math-inline math-nowrap'>w ≈ b</span>에서 주항 <span class='math-inline math-nowrap'><span class='frac'><span class='num'>a<sub>1</sub></span><span class='den'>p<sup>i</sup></span></span> - w ≈ b(<span class='frac'><span class='num'>x</span><span class='den'>p<sup>i</sup></span></span> - 1)</span>에 <span class='math-inline math-nowrap'>2log  p</span>를 곱해 합산하면 정확히 폰 망골트 합 <span class='math-inline math-nowrap'>A<sub>Ψ</sub>(x)</span> (<code class="code-nowrap">16~20</code>행)가 복원됩니다.</li>
+<li>CM 타입 <span class='math-inline math-nowrap'>Φ</span>와 쌍대 타입 <span class='math-inline math-nowrap'><span style='text-decoration:overline;'>Φ</span></span> (<code class="code-nowrap">T1</code> · <code class="code-nowrap">T2</code>, <code class="code-nowrap">118~120</code>행)를 짝지으면 모든 <span class='math-inline math-nowrap'>p<sup>i</sup>  mod  l ≠ ± 1</span>이 두 여집합 중 하나에 속하고, 아르키메데스 스털링·차울라-셀베르그 상한 <span class='math-inline'>s<sub>K</sub>(j) ≤ alog  a - a - alog Ω + O(k<sup>2</sup> f log (al))</span> (<code class="code-nowrap">79~80</code>행, <span class='math-inline'>γ + log (π/v) - ℓ ≤ (log Ω<sub>1</sub> + log Ω<sub>2</sub>)/2</span>)이 비아르키메데스 합 <span class='math-inline'>h<sub>fin</sub> = -∑<sub>p ∈ S</sub> 2(log  p) v<sub>t</sub>(p)</span> (<code class="code-nowrap">84</code>행)과 결합됩니다.
+  기울기 부등식 <span class='math-inline math-nowrap'>μ<sub>Q</sub> ≤ μ<sub>max,R</sub> + h<sub>∞</sub> + h<sub>fin</sub></span> (<code class="code-nowrap">74</code>행) 안에서 두 성분이 <span class='math-inline math-nowrap'>S<sub>z</sub>(x)</span>의 주항 <span class='math-inline math-nowrap'>xlog  x - (1+γ)x</span>를 지우고 잔차 상한 <code class="code-nowrap">OCCMEstimate</code>(<code class="code-nowrap">121~122</code>행)을 남깁니다.</li>
+<li>1단 CM 원형(<code class="code-nowrap">ZetaQuarterPowerCorollary</code>, <code class="code-nowrap">137~152</code>행)에서 <span class='math-inline'>(m, k, l) ≍ (x<sup>1/4</sup>, x<sup>1/2</sup>, x<sup>1/4</sup>)</span>를 대입하면 <code class="code-nowrap">MainCM</code>의 네 항 <span class='math-inline math-nowrap'>(x/m, xm/k, x/f, kf)</span> 차수가 모두 <span class='math-inline math-nowrap'>3/4</span>으로 일치해(<code class="code-nowrap">thm_17</code> <code class="code-nowrap">mainCmQuarterDeg 4 1 2 1 = 3</code>) <span class='math-inline math-nowrap'>Re(s) > 3/4</span> 무영점이 즉시 도출됩니다.</li>
+</ul>
+</li>
+</ul>
+<p><div class='math-block'>gainCM(p) = ∑<sub>1 ≤ i ≤ ⌊ x ⌋,  p<sup>i</sup>  mod  l ∉ Ψ</sub> max(<span class='frac'><span class='num'>a<sub>1</sub></span><span class='den'>p<sup>i</sup></span></span> - w,  0) - <span class='frac'><span class='num'>alog (al)</span><span class='den'>x<sup>2</sup></span></span> - <span class='frac'><span class='num'>(k+2m)log  a</span><span class='den'>log  p</span></span> - 1 - <span class='frac'><span class='num'>L<sub>0</sub></span><span class='den'>p - 1</span></span> ≤ v<sub>K</sub>(j, p)</div></p>
+<p><div class='math-block'>G<sub>z</sub>(x) ≤ xℓ + 2x∑<sub>p ∈ Bad</sub> <span class='frac'><span class='num'>log  p</span><span class='den'>p</span></span> + K · MainCM(x, log (al), r, η, m, k, f)</div></p>
+<h3>5.2 일반 차수 아라켈로프 하더-나라심한 기울기 부등식(<code class="code-nowrap">DivIneqObj</code>)과 폰 망골트 유류합(<code class="code-nowrap">LinkG_at</code>)</h3>
+<p>일반 차수 <span class='math-inline math-nowrap'><span class='sqrt'>√<span class='rad'>x</span></span></span>-반복 세타 리프트 사슬에서는 위 CM 곱공식이 완전 복소수체 <span class='math-inline math-nowrap'>K</span> 위 에르미트 격자의 아라켈로프 하더-나라심한 기울기 쌍대성으로 승격됩니다.</p>
+<ul>
+<li><strong>1. 소수 거듭제곱 합에서 비아르키메데스 격자 이득으로 (<code class="code-nowrap">LinkG_at</code>, <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Sharp<wbr/>Restriction/<wbr/>Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:122-141</code>)</strong>: 비활성·신호 소수 부류 <span class='math-inline math-nowrap'>p = resChar(w) ≤ X''</span>마다 <code class="code-nowrap">132~135</code>행은 유류별 폰 망골트 가중합을 국소 격자 지수 이득 <span class='math-inline math-nowrap'>gain(j, w)</span>에서 비틀림 손실 <span class='math-inline math-nowrap'>τ(w)</span>를 뺀 값으로 직접 지배합니다.</li>
+</ul>
+<p><div class='math-block'>∑<sub>j ∈ lifts(D)</sub> ∑<sub>t ∈ TT<sub>w</sub></sub> (vonMangoldtClassSum(j, t, p) - loG(p)) - m · flG(p) ≤ ∑<sub>j ∈ lifts(D)</sub> gain(j, w) - τ(w)</div></p>
+<ul>
+<li><strong>2. 대역 기울기 부등식 (<code class="code-nowrap">DivIneqObj</code>, <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Divisor<wbr/>Inequality/<wbr/>Statement<wbr/>Obj.<wbr/>lean:239-425</code>)</strong>: 유한 자리 이득 총합 <span class='math-inline'>F<sub>o</sub> := ∑<sub>j</sub> ∑<sub>y ∈ Tw</sub> lw(y) ramw(y) F<sub>0</sub>(y, j)</span> (<code class="code-nowrap">328</code>행)와 아르키메데스 스털링 함수 <span class='math-inline math-nowrap'>ph(y) := ylog  y - y</span> (<code class="code-wrap">src/<wbr/>Formalism/<wbr/>Log<wbr/>Factorial<wbr/>Bounds/<wbr/>Log<wbr/>Factorial<wbr/>Sandwich.<wbr/>lean:9</code>)는 쌍대 격자 최소·최대 기울기 비교를 거쳐 <code class="code-nowrap">422~424</code>행(<code class="code-nowrap">LinkDIV_at</code>, <code class="code-wrap">Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:82-84</code>)의 단일 대역 부등식으로 묶입니다.</li>
+</ul>
+<p><div class='math-block'>μ<sub>C</sub> + h<sub>u</sub> - 2 F<sub>o</sub> ≤ ∑<sub>t ∈ TT</sub> (m(ph(a<sub>T</sub>(t)) - a<sub>T</sub>(t)log Ω) - a<sub>T</sub>(t)log  T) + (50 C<sub>0</sub> + 10)(|TT| a L<sub>a</sub> + m(B<sub>0</sub> + N<sub>c</sub>)x<sub>e</sub>)</div></p>
+<h3>5.3 지겔-베유 질량 비(<code class="code-nowrap">LinkS</code>) · <code class="code-nowrap">shaLen</code>(<code class="code-nowrap">divinN_of_hypV</code>) 합류와 최상위 무영점 폐루프 (<code class="code-nowrap">thm_17</code>)</h3>
+<p>위 대역 기울기 부등식의 우변 오차 예산 <span class='math-inline math-nowrap'>B<sub>0</sub> + N<sub>c</sub></span> (<span class='math-inline math-nowrap'>B<sub>0</sub> := f m b x<sup>ε</sup></span>)와 좌변 기울기 비퇴화성을 닫는 지점에서 제3장의 지겔-베유 질량 비 <span class='math-inline math-nowrap'>D<sup>*</sup>/d<sup>*</sup></span>와 제4장의 <code class="code-nowrap">VWin</code>(<code class="code-nowrap">shaLen</code>)이 정확히 합류합니다.</p>
+<ul>
+<li><strong>1. <code class="code-nowrap">VWin</code>(<code class="code-nowrap">shaLen</code>)에서 <code class="code-nowrap">DIVinN</code>으로의 대수적 봉합 (<code class="code-nowrap">DivinNOfHypV.lean:76-131</code>)</strong>: 뒤틀림 자리(<span class='math-inline math-nowrap'>μ<sub>w</sub> ≠ μ<sub>0</sub></span>)에서의 아이젠슈타인-첨점 경계 결손 <code class="code-nowrap">etaSum(L, j)</code>는 <code class="code-nowrap">LinkN_at</code>(<code class="code-wrap">Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:40-44</code>)에 의해 코호몰로지 급수 <span class='math-inline'>∑<sub>l</sub> vvTerm(D, l) = ∑<sub>l</sub> (log  l)∑<sub>1 ≤ e < t</sub> shaLen<sub>l</sub>(E, e)</span>로 제어됩니다.
+  <code class="code-nowrap">divinN_of_hypV</code>(<code class="code-nowrap">117~131</code>행)는 제4장의 <code class="code-nowrap">VWin</code> 상한 <span class='math-inline'>∑<sub>l</sub> vvTerm(D, l) ≤ <span class='sqrt'>√<span class='rad'>b</span></span> ≤ b ≤ B<sub>0</sub></span> (<span class='math-inline math-nowrap'>b = exp(x<sup>ε</sup>) ≥ 1</span>)와 <span class='math-inline math-nowrap'>(log  x)<sup>2</sup> ≤ x<sup>ε</sup></span> (<code class="code-nowrap">log_sq_le_rpow</code>, <code class="code-nowrap">59~74</code>행)을 <code class="code-nowrap">divinN_at</code>(<code class="code-nowrap">76~116</code>행)에 대입해 <code class="code-nowrap">DIVinN_at</code>(<code class="code-wrap">Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:59-61</code>)을 완성합니다.</li>
+</ul>
+<p><div class='math-block'>etaSum(L, j) ≤ d<sub>Z,0</sub>(j)(C(f m b L<sup>2</sup> + (log  x)<sup>2</sup> N<sub>c</sub>) + ∑<sub>l</sub> vvTerm(D, l)) ≤ D<sub>0</sub> · (| C | + 1)  x<sup>ε</sup> (B<sub>0</sub> + N<sub>c</sub>)</div></p>
+<ul>
+<li><strong>2. 지겔-베유 질량 비 <span class='math-inline math-nowrap'>D<sup>*</sup>/d<sup>*</sup></span>에 의한 힐베르트-슈미트 직교성 (<code class="code-nowrap">LinkS_at</code>, <code class="code-wrap">Global<wbr/>Theorem<wbr/>Inputs.<wbr/>lean:145-163</code>)</strong>: 제3장의 <span class='math-inline math-nowrap'><span class='frac'><span class='num'>log (D<sup>*</sup>/d<sup>*</sup>)</span><span class='den'>[K<sup>+</sup>:ℚ] k</span></span></span> 양방향 상한은 단어 쌍 <span class='math-inline math-nowrap'>u ≠ u'</span> 사이의 내적 제곱을 <span class='math-inline'>hsSq(u, u') ≤ (1 + η<sub>0</sub>)<span class='frac'><span class='num'>d<sub>u</sub> d<sub>u'</sub></span><span class='den'>D<sup>*</sup></span></span></span> (<span class='math-inline math-nowrap'>η<sub>0</sub>, η<sub>1</sub>, <span class='sqrt'>√<span class='rad'>e<sub>0</sub></span></span> ≤ exp(-x<sup>ε/8</sup>)</span>)로 묶어 세타 리프트 생성 격자의 전계수 비퇴화성(<code class="code-nowrap">NuFullF</code> · <code class="code-nowrap">J.linkMu_of_linkDIV</code>)을 보장합니다.</li>
+<li><strong>3. 최상위 폐루프 (<code class="code-nowrap">DesWin.lean:28-31</code> <span class='math-inline math-nowrap'>→</span> <code class="code-nowrap">ShapeWin.lean:46</code> <span class='math-inline math-nowrap'>→</span> <code class="code-nowrap">SChain.lean:88-101</code> <span class='math-inline math-nowrap'>→</span> <code class="code-nowrap">ZeroFreeAllOfTopG.lean:26-35</code>, <code class="code-nowrap">thm_17</code>)</strong>: <code class="code-nowrap">ShapeWin.lean:46</code>이 <code class="code-nowrap">(eD, eL) = (2, 0)</code>에서 다섯 전역 조건 <code class="code-wrap">(Link<wbr/>G, Link<wbr/>S, Link<wbr/>IRR, Link<wbr/>DIV, Link<wbr/>Mu)</code>를 <code class="code-nowrap">topDesWin</code>(<code class="code-nowrap">DesWin.lean:11-32</code>)에 투입해 <code class="code-nowrap">ChainTied</code>를 도출하면, <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Size<wbr/>Window<wbr/>Brackets/<wbr/>SChain.<wbr/>lean:88-101</code>(<code class="code-nowrap">ChainAt</code>, <code class="code-nowrap">90</code>행)에서 제타 잔차 상한이 아래 부등식으로 닫힙니다(<code class="code-nowrap">thm_17</code> <code class="code-nowrap">sChainEpsMult 2 0 = 8</code>).
+  일반 원시 지표 <span class='math-inline math-nowrap'>ψ</span> 역시 <code class="code-nowrap">ZeroFreeAllOfTopG.lean:26-35</code>(<code class="code-nowrap">zeroFreeAll_of_topG</code>)의 창문 체비쇼프 부등식을 거쳐 임의의 <span class='math-inline math-nowrap'>ε → 0<sup>+</sup></span>에서 <span class='math-inline math-nowrap'>Re(s) > 1/2</span> 무영점(<code class="code-nowrap">EveryCharacter</code>)으로 종결됩니다.</li>
+</ul>
+<p><div class='math-block'>G<sub>z</sub>(x) ≤ x<sup>1/2 + (e<sub>D</sub> + e<sub>L</sub> + 6)ε</sup> = x<sup>1/2 + 8ε</sup>      (0 < ε < <span class='frac'><span class='num'>1</span><span class='den'>52</span></span>,  <span class='frac'><span class='num'>1</span><span class='den'>2</span></span> + <span class='frac'><span class='num'>8</span><span class='den'>52</span></span> = <span class='frac'><span class='num'>17</span><span class='den'>26</span></span> < 1)</div></p>
+<h3>5.4 왜 전역 아라켈로프 곱공식이 해석적 섭동 장벽(Analytic Perturbation Barrier)을 돌파하는가</h3>
+<p>순수 복소해석적·스펙트럼 양수성 기법만으로는 오일러 곱을 미세하게 비튼 보이링(Beurling)형 의사 제타 함수(함수방정식이나 점근 밀도는 비슷하지만 임계선 바깥에 영점을 갖는 대상)를 배제하기 어렵다는 고전적 장벽이 알려져 있습니다.
+반면 위 5.1~5.3절의 폐루프는 대수적 수체 정수환 <span class='math-inline math-nowrap'>𝒪<sub>K</sub></span> 위에서 <strong>모든 유한 소수 자리와 무한 자리의 로그 부치 합이 정확히 <code class="code-nowrap">0</code>이 되는 대역 곱공식(<code class="code-nowrap">ProductFormula</code> · <code class="code-nowrap">DivIneqObj</code>)</strong>과 <strong>대역 갈루아 코호몰로지 유한 길이(<code class="code-nowrap">VWin</code>)</strong>를 동시에 요구합니다.
+오일러 인자를 연속적으로 조금이라도 섭동하는 순간 기저 세타 급수의 <span class='math-inline math-nowrap'>𝒪<sub>K</sub></span>-정수 격자 구조와 헤케-갈루아 정합성이 즉시 깨져 <code class="code-nowrap">ProductFormula</code> 등식 자체가 성립하지 않으므로, 해석적 섭동 모형이 존재하는 영역 바깥의 산술 강성으로 증명이 닫힙니다.</p>
+<hr />
+<h2>제6장. 포렌식 심사 발견(형식화 여유분 · 비활성 슬롯), OpenAI <code class="code-nowrap">#003</code> 교차 감사 및 단축 설계도</h2>
+<h3>6.1 원문 코드에서 발굴한 형식화 여유분(Formalization Slack) 및 스캐폴딩 흔적 4선</h3>
 <ul>
 <li><strong>1. 이젠슈타인 코커널 3차 유리 꼬리 상수의 반올림 여유분 <code class="code-nowrap">1 / 500</code> (<code class="code-nowrap">thm_08</code>)</strong>:
   <code class="code-wrap">src/<wbr/>Formalism/<wbr/>Eisenstein<wbr/>Cokernel<wbr/>Lengths/<wbr/>Factorial<wbr/>Valuation<wbr/>Bounds/<wbr/>Rational<wbr/>Tail<wbr/>Bound<wbr/>Cubic.<wbr/>lean:24-43</code>에서 <code class="code-wrap">lemma num<wbr/>C_<wbr/>cubic (ℓ : ℝ) (hℓ : 11 ≤ ℓ)</code> (<code class="code-nowrap">24~27</code>행)은 실수 <span class='math-inline math-nowrap'>ℓ ≥ 11</span> 위에서 분모를 없앤 3차 다항식 부등식을 증명하고, <code class="code-wrap">theorem rational<wbr/>Tail<wbr/>Bound<wbr/>Cubic</code> (<code class="code-nowrap">29~43</code>행)이 이를 나누어 유리식 상한 <code class="code-nowrap">NumC</code>: <span class='math-inline'><span class='frac'><span class='num'>8(2ℓ-1)</span><span class='den'>(ℓ-1)<sup>3</sup></span></span> + <span class='frac'><span class='num'>8</span><span class='den'>(ℓ-1)<sup>2</sup></span></span> + <span class='frac'><span class='num'>1</span><span class='den'>ℓ(ℓ-1)</span></span> ≤ <span class='frac'><span class='num'>31.11</span><span class='den'>ℓ<sup>2</sup></span></span></span> (<span class='math-inline math-nowrap'>ℓ ∈ ℝ,  ℓ ≥ 11</span>)을 확립합니다.
@@ -2164,7 +2243,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </ul>
 </li>
 </ul>
-<h3>5.2 OpenAI <code class="code-nowrap">#003</code> (<code class="code-nowrap">(2, 3, 6)</code>-삼각군 중복도 <code class="code-nowrap">1</code> 스테파노프 논증) 대 알푀게 + Claude 교차 심사</h3>
+<h3>6.2 OpenAI <code class="code-nowrap">#003</code> (<code class="code-nowrap">(2, 3, 6)</code>-삼각군 중복도 <code class="code-nowrap">1</code> 스테파노프 논증) 대 알푀게 + Claude 교차 심사</h3>
 <p>알푀게는 선언문(<code class="code-nowrap">remark.pdf</code> 2쪽)에서 OpenAI의 공개 문제 <code class="code-nowrap">#003</code> (<code class="code-nowrap">DirichletL</code> · <code class="code-nowrap">SevenEighths.lean</code> · <code class="code-nowrap">ShortDraft</code>)에 등장한 <code class="code-nowrap">(2, 3, 6)</code>-삼각군 CM 곡선 <span class='math-inline math-nowrap'>ℂ/ℤ[ω]</span> 지겔 영점·준리만 가설 연구를 <strong>"중복도가 없는 스테파노프 논증(a Stepanov argument without multiplicity)"</strong>으로 명시했습니다. 공개 원전과 실제 Lean 코드를 직접 대조하면 두 접근의 수리적 분기점 네 곳이 자명하게 드러납니다.</p>
 <table>
 <thead>
@@ -2202,7 +2281,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 </tr>
 </tbody>
 </table>
-<h3>5.3 기우성 장벽을 반영한 증명 대폭 단축(Short Proof) 정밀 설계도</h3>
+<h3>6.3 기우성 장벽을 반영한 증명 대폭 단축(Short Proof) 정밀 설계도</h3>
 <p>제4장의 기우성 분해(<code class="code-nowrap">thm_12</code>)에 의해 아벨 슈티켈베르거 원소만으로는 짝수 반디버 코호몰로지 블록(<code class="code-nowrap">vwin_of_row</code>)을 직접 대체할 수 없으며, 실제 의존성 그래프에서 유효한 압축 경로는 다음 세 갈래로 좁혀집니다(추정).</p>
 <ol>
 <li><strong>즉시 정리 가능 계층 (<code class="code-nowrap">True</code> 더미 슬롯 2종 제거 및 베렌트 타워 경량화)</strong>: 활성 네임스페이스 7종을 제외한 비활성 <code class="code-nowrap">Prop := True</code> 인자 2종(<code class="code-nowrap">UnusedSlot55</code> · <code class="code-nowrap">UnusedSlot72</code>, <code class="code-nowrap">14</code>개 파일 참조) 정리와 함께, 알푀게 본인이 불필요할 것으로 지목한 <code class="code-nowrap">BehrendSets</code> 원분 공명 회피 체(<code class="code-nowrap">remark.pdf</code> 각주 7)를 표준 디리클레 밀도·비둘기집 평균으로 치환해 조합론 계층을 단순화할 수 있습니다(추정).</li>
@@ -2210,8 +2289,8 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <li><strong>해석적 직접 우회 경로 (<span class='math-inline math-nowrap'> mod  ℓ</span> 코호몰로지 미경유 주기 하한)</strong>: 제3장의 지겔-베유 질량 비 <span class='math-inline math-nowrap'>D<sup>*</sup> / d<sup>*</sup></span>에서 소수 <span class='math-inline math-nowrap'>ℓ</span>별 코커널 길이(<code class="code-nowrap">shaLen</code>)로 내려가지 않고, 아르키메데스·비분기 국소 베셀 주기와 상대 대각합 공식의 평균제곱 체(sieve)만으로 분모 가역성 하한을 직접 닫으면 반디버 약화 정리(<code class="code-nowrap">VWin</code>) 전체를 우회하는 순수 보형-해석적 단축 증명이 성립합니다(추정).</li>
 </ol>
 <hr />
-<h2>제6장. 독립 형식 검증 16대 산술 정리 대조 원장 (<a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>)</h2>
-<p>본 심층 보고서에 수록된 모든 지수·합동·여유분 항등식은 외부 라이브러리 없이 공식 <code class="code-wrap">leanprover/<wbr/>lean4:v4.<wbr/>33.<wbr/>1</code> 커널 단독으로 즉시 검증되는 <a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>(<code class="code-nowrap">0 sorry</code>, <code class="code-nowrap">LEAN_RC:0</code>)의 16개 정리와 1대1 대응합니다.</p>
+<h2>제7장. 독립 형식 검증 17대 산술 정리 대조 원장 (<a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>)</h2>
+<p>본 심층 보고서에 수록된 모든 지수·합동·전역 곱공식 부치·여유분 항등식은 외부 라이브러리 없이 공식 <code class="code-wrap">leanprover/<wbr/>lean4:v4.<wbr/>33.<wbr/>1</code> 커널 단독으로 즉시 검증되는 <a href="./proofs/alpoge_spine_arithmetic_audit.lean">alpoge_spine_arithmetic_audit.lean</a>(<code class="code-nowrap">0 sorry</code>, <code class="code-nowrap">LEAN_RC:0</code>)의 <strong>17개 정리</strong>와 1대1 대응합니다.</p>
 <table>
 <thead>
 <tr>
@@ -2300,6 +2379,11 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 <td style="text-align: left;"><code class="code-wrap">thm_<wbr/>16_<wbr/>vandiver_<wbr/>pluslen_<wbr/>and_<wbr/>cone_<wbr/>partition</code></td>
 <td style="text-align: left;"><code class="code-nowrap">vwin_of_row</code> 콘 분할(<code class="code-nowrap">15,057,843 + 1,029,481</code>) 및 <code class="code-nowrap">plusLen</code> 통합 지수 <code class="code-nowrap">a+b+4</code>, <code class="code-nowrap">C0+D+K+KD</code></td>
 <td style="text-align: left;"><code class="code-nowrap">SumOut.lean:31</code> · <code class="code-nowrap">PointArith.lean:5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code class="code-wrap">thm_<wbr/>17_<wbr/>legendre_<wbr/>padic_<wbr/>factorial_<wbr/>and_<wbr/>global_<wbr/>chain_<wbr/>closure</code></td>
+<td style="text-align: left;">르장드르 부치 <code class="code-wrap">(p-1)*v_<wbr/>p(n!)+s_<wbr/>p(n)=n</code>, CM <code class="code-nowrap">3/4</code> 지수 균형, <code class="code-nowrap">SChain</code> <code class="code-nowrap">(eD,eL)=(2,0)</code> 폐루프 <code class="code-nowrap">1/2 + 8ε &lt; 1</code></td>
+<td style="text-align: left;"><code class="code-wrap">Padic<wbr/>Val<wbr/>Nat<wbr/>Factorial<wbr/>Le<wbr/>Real.<wbr/>lean:19</code> · <code class="code-nowrap">StatementOCCM.lean:112</code> · <code class="code-nowrap">SChain.lean:90</code></td>
 </tr>
 </tbody>
 </table></section>

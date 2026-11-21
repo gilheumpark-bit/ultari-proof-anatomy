@@ -25,7 +25,7 @@ The quadratic denominator $s(s-1)$ damps high-ordinate zeros, while $x\log x - (
 
 ### Empirical Check of $G_z(x)$ on True Primes ([prime_intuition_lab.py](../scripts/prime_intuition_lab.py))
 
-| Cutoff $X$ | Chain $m = \sqrt{X}$ | Smoothed Sum $S_z(X)$ | Main Trend $X\log X - (1+\gamma)X$ | Residual $G_z(X)$ | Ratio $\lvert G_z(X) \rvert / \sqrt{X}$ | Off-Line Scale ($X^{0.75}$) |
+| Cutoff $X$ | Chain $m = \sqrt{X}$ | Smoothed Sum $S_z(X)$ | Main Trend $X\log X - (1+\gamma)X$ | Residual $G_z(X)$ | Ratio $\lvert G_z(X) \rvert / \sqrt{X}$ | Asymptotic Rate ($X^{0.75}$) |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | `100` | `10` | `304.5171` | `302.7955` | `+1.7217` | `0.17217` | `31.62` |
 | `400` | `20` | `1,767.4809` | `1,765.6996` | `+1.7813` | `0.08907` | `89.44` |
@@ -33,21 +33,32 @@ The quadratic denominator $s(s-1)$ damps high-ordinate zeros, while $x\log x - (
 | `3,600` | `60` | `23,802.2198` | `23,801.3045` | `+0.9153` | `0.01526` | `464.76` |
 | `10,000` | `100` | `76,332.9964` | `76,331.2471` | **`+1.7493`** | **`0.01749`** | **`1,000.00`** |
 
-> **Act 1 Summary**: At $X = 10,000$, $S_z(10000)$ reaches `76,332.9964`, yet after subtracting the main term the residual $G_z(10000)$ is `+1.7493`, sitting a factor of `570` below the hypothetical $\mathrm{Re}(\rho) = 0.75$ scale (`1,000.00`). Bounding $|G_z(x)| \lesssim x^{1/2+\varepsilon}$ as $x \to \infty$ implies RH.
+$$G_z(x) = \log(2\pi) - \sum_{\rho} \frac{x^\rho}{\rho(\rho - 1)} + O(x^{-1})$$
+
+- **Explicit-Formula Constant & Denominator Damping**: In the finite-$X$ table above, $G_z(X)$ clusters near `+1.75` primarily because of the $s = 0$ residue constant $\log(2\pi) \approx 1.8379$, while oscillatory zero contributions are strongly damped by $\lvert \rho(\rho - 1) \rvert$.
+  Even at the lowest zero $\gamma_1 \approx 14.13$, $\lvert\rho_1(\rho_1 - 1)\rvert \approx 200$ suppresses amplitude to roughly one two-hundredth, while high-ordinate zeros with large $\lvert\gamma\rvert$ remain tiny at $X = 10,000$.
+  The rightmost column $X^{0.75}$ therefore serves as an **asymptotic growth-exponent benchmark ($x^\theta$ vs $x^{1/2}$ as $x \to \infty$)** rather than a raw amplitude prediction at $X = 10,000$.
+
+> **Act 1 Summary**: At $X = 10,000$, $S_z(10000)$ reaches `76,332.9964`, while subtracting the $s = 1$ pole main term leaves $G_z(10000) = +1.7493$ near $\log(2\pi) \approx 1.8379$. Establishing the asymptotic upper bound $G_z(x) \lesssim x^{1/2+\varepsilon}$ as $x \to \infty$ rules out the $x^{\mathrm{Re}(\rho)} / \lvert\rho(\rho - 1)\rvert$ growth of any zero with $\mathrm{Re}(\rho) > 1/2$.
 
 ---
 
-## Act 2. Landau Positivity and the Zero-Order Identity (`OCAvg`)
+## Act 2. One-Sided Landau Positivity and the Weighted Zero-Order Identity (`OCAvg` · `OCAvgUpper`)
 
-Because a single $G_z(x)$ changes sign, Mellin inversion alone cannot rule out complex off-line zeros without positivity. In `src/Formalism/StatementOC.lean:17-51` and `src/Formalism/DefsOC.lean:26-47`, the proof pairs $\zeta(s)$ against families of real quadratic Dirichlet characters $\chi_i$:
+Because $G_z(x)$ oscillates in sign, a one-sided bound alone cannot analytically continue its Mellin transform across a vertical half-plane. In `src/Formalism/StatementOC.lean:11-64` and `src/Formalism/DefsOC.lean:26-47`, the proof pairs $\zeta(s)$ against real-valued Dirichlet characters $\chi_i$, separating the nonnegative raw prime-power difference from the main-term-subtracted residual:
 
-$$G_z(x) - G_{\chi_i}(x) = \sum_{n \le x} \Lambda(n)\bigl(1 - \chi_i(n)\bigr)\left(\frac{x}{n} - 1\right) - x\log x + C_{\chi_i} x$$
+$$S_z(x) - S_{\chi_i}(x) = \sum_{1 \le n \le \lfloor x \rfloor} \Lambda(n)\bigl(1 - \mathrm{Re}\,\chi_i(n)\bigr)\left(\frac{x}{n} - 1\right) \ge 0$$
 
-Because $\chi_i(n) \in \{-1, 0, +1\}$, every Dirichlet coefficient satisfies $1 - \chi_i(n) \ge 0$. Under this nonnegativity, **Landau's theorem on Dirichlet integrals (`LandauEq`)** converts a two-sided bound $|\sum_i w_i (G_z(x) - G_{\chi_i}(x))| \le C x^\theta$ ($w_i > 0$) into an exact zero-multiplicity identity (`OrderLogDeriv`) across the entire half-plane $\mathrm{Re}(s) > \theta$:
+$$G_z(x) - G_{\chi_i}(x) = \bigl(S_z(x) - S_{\chi_i}(x)\bigr) - x\log x + \left(1 + \gamma - \mathrm{Re}\frac{L'}{L}(1, \chi_i)\right)x$$
+
+- **Why One-Sided Bounds Need Landau's Theorem (`LandauEq`, `DefsOC.lean:26-35`)**: A two-sided bound $\bigl\lvert\sum_i w_i(G_z(x) - G_{\chi_i}(x))\bigr\rvert \le C x^\theta$ would already imply analyticity on $\mathrm{Re}(s) > \theta$ by plain absolute convergence without any positivity condition.
+  Landau's theorem does its real work in `OCAvg` (lines `39-51`, one-sided lower bound $-C x^\theta \le \sum_i w_i(G_z - G_{\chi_i})$) and `OCAvgUpper` (lines `52-64`, one-sided upper bound $\sum_i w_i(G_z - G_{\chi_i}) \le C x^\theta$): because $1 - \mathrm{Re}\,\chi_i(n) \ge 0$ makes the raw difference nonnegative, shifting by the one-sided $C x^\theta$ bound produces a nonnegative integrand $H(x) \ge 0$ (`DefsOC.lean:28`).
+  Once real zeros $L(\sigma, \chi_i) \neq 0$ on $(\theta, 1)$ are excluded, Landau's theorem pushes convergence down to $\mathrm{Re}(s) > \theta$ and establishes `OrderLogDeriv` (lines `40-46`):
 
 $$\left(\sum_i w_i\right) \cdot \mathrm{ord}_s(\zeta) = \sum_i w_i \cdot \mathrm{ord}_s\bigl(L(\cdot, \chi_i)\bigr)$$
 
-> **Act 2 Summary**: Coefficient positivity $1 - \chi_i(n) \ge 0$ forces any hypothetical zero of $\zeta(s)$ in $\mathrm{Re}(s) > \theta$ to be a simultaneous common zero of every participating $L(s, \chi_i)$ in the weighted family.
+> **Act 2 Summary**: By itself, this weighted identity does not force every $L(s, \chi_i)$ to vanish simultaneously (for instance, $w_1 = w_2 = 1$ and $\mathrm{ord}_s(\zeta) = 1$ is algebraically compatible with $\mathrm{ord}_s(L_1) = 2$ and $\mathrm{ord}_s(L_2) = 0$); rather, it proves that **the weighted average zero multiplicity across $\{L(s, \chi_i)\}$ equals $\mathrm{ord}_s(\zeta)$**.
+> Hence $\mathrm{ord}_s(\zeta) \ge 1$ forces at least one $L(s, \chi_i)$ ($w_i > 0$) to vanish with conserved weighted multiplicity, and conversely showing $\mathrm{ord}_s(L(\cdot, \chi_i)) = 0$ across the family forces $\mathrm{ord}_s(\zeta) = 0$.
 
 ---
 

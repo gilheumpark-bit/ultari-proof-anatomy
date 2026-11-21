@@ -54,9 +54,11 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
     2. 세타 리프트 기반 갈루아 국소-대역 정합성(`galoisLocalGlobalStrong_recParameter`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`): 의존 콘 `66,168`개 파일 / `7,850,273`줄.
     3. 보형 창문 성립 정리(`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): 의존 콘 `157,604`개 파일 / `16,087,324`줄 (`OpenLiteratureStatements` 기출 중첩 `146,772`개 파일 · `15,057,843`줄 [`93.6%`] + 기출 바깥 순수 신작 패칭 `Pure_Vwin_Outside_Literature` `10,832`개 파일 · `1,029,481`줄 [`6.4%`]).
 
-### 3.2 보형 창문 인터페이스 (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:12-50`)
-- 원시 지표 무영점 조립(`plugWin`, `EveryCharacter.lean` `8~11`행): 그린 함수 조건(`Green`), 보형 창문 조건(`VWin`), 닫힌 패밀리 가설을 결합해 `la := 3 / 2` 스케일에서 원시 지표 무영점(`ZeroFreeAll`)을 도출하고, `18`행 비원시 확장(`imprimitive`)으로 모든 지표를 덮습니다.
-- 보형 창문 상수(`VWin`, `ExistsPageN.lean` `49`행): 지수 상한 `Ct = 401`과 $\varepsilon < 1/52$, 소수 쌍 $(q \equiv 3 \pmod 8,\; d \equiv 7 \pmod{16},\; q \mid d+1)$ 조건(`WinPair`, `27~38`행)에서 샤파레비치-테이트 코호몰로지 길이 합 상한 `VVle E ⌊x^401⌋₊ √(exp(x^ε))`을 요구합니다.
+### 3.2 보형 창문 인터페이스 및 전역 아라켈로프 곱공식 폐루프 (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:11-32`)
+- 원시 지표 무영점 조립(`plugWin`, `EveryCharacter.lean` `8~11`행): 그린 함수 조건(`Green`), 보형 창문 조건(`VWin`), 닫힌 패밀리 가설을 결합해 `la := 3 / 2` 스케일(`SupplyChi.lean:8-16`)에서 `ZeroFreeAllOfTopG.lean:26-35`(`zeroFreeAll_of_topG`)로 원시 지표 무영점(`ZeroFreeAll`)을 도출하고, `18`행 비원시 확장(`imprimitive`)으로 모든 지표를 덮습니다.
+- 전역 곱공식·기울기 결합 폐루프(`ShapeWin.lean:27-50` · `DesWin.lean:11-32` · `DivinNOfHypV.lean:76-131`): `VWin`의 코호몰로지 상한 `HypV`가 `divinN_of_hypV`를 거쳐 경계 부치 상한 `DIVinN`(`GlobalTheoremInputs.lean:59-64`)으로 변환됩니다.
+  이어서 폰 망골트 유류합-부치 이득 `LinkG`(`122~141`행), 지겔-베유 질량 비 `LinkS`(`145~163`행), 아라켈로프 하더-나라심한 기울기 부등식 `DivIneqObj`(`src/Formalism/DivisorInequality/StatementObj.lean:239-425`, CM 원형은 `src/Formalism/ProductFormula/StatementOCCM.lean:27-161`)과 결합되어 `(eD, eL) = (2, 0)`에서 `SChain.lean:88-101`의 창문 성장 부등식 `ChainTied`를 닫습니다.
+- 보형 창문 상수(`VWin`, `ExistsPageN.lean` `49`행): 지수 상한 `Ct = 401`과 $\varepsilon < 1/52$, 소수 쌍 $(q \equiv 3 \pmod 8,\; d \equiv 7 \pmod{16},\; q \mid d+1)$ 조건(`WinPair`, `27~38`행, 린니크 정리 기반 동적 구성 `WinPairs.lean:5-81`)에서 샤파레비치-테이트 코호몰로지 길이 합 상한 `VVle E ⌊x^401⌋₊ √(exp(x^ε))`을 요구합니다.
 
 ---
 
@@ -83,7 +85,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 
 ## 5. 메타프로그래밍 사용 파일 8종 전수 감사 기록
 
-아카이브 전체에서 `import Lean` 또는 `CoreM` 엘라보레이터를 호출하는 파일은 아래 8개뿐이며, 이종 커널(`x86_64` · `aarch64`) 실컴파일에서 모두 커널 타입체크를 통과했습니다(`PASS`).
+아카이브 전체에서 `import Lean` 또는 `CoreM` 엘라보레이터를 호출하는 파일은 아래 8개뿐이며, 공식 `lean4:v4.33.1` 이중 CPU(`x86_64` · `aarch64`) 실컴파일 및 외부 이종 독립 커널(`leanchecker` · Rust `nanoda` · `con-leche --compare` · `lean4lean`, `175,187`개 모듈 · `1,468,418`개 선언) 교차 검증을 모두 통과했습니다(`PASS`).
 
 1. 검색 제외 등록(`src/BuildAid/D1.lean:1-4` ~ `src/BuildAid/D5.lean:1-4`, `5`개): 라이브러리 검색 제안 거부 목록(`nameDenyListExt`) 등록 전용.
 2. 메타변수 할당 전술(`src/Formalism/LocalToGlobal/IndefiniteReal/HeckeNonvanishing/Imports.lean:1-8`): `elab "kexactB "` 전술(정리 등록 시 C++ 커널 검증 수행).
@@ -94,7 +96,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 
 ## 6. `VWin`(`Ct = 401`) 홀·짝 합류 · 7분할 반디버 패칭 및 `UnusedSlot` 9종 분류 감사
 
-`vwin_of_row`(`157,604`개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 `UnusedSlot` 식별자 분류는 다음과 같습니다(상세 수식 유도는 [05_전공자용_수론심층심사및수식복원서.md](./05_전공자용_수론심층심사및수식복원서.md) 제4·5장 참조).
+`vwin_of_row`(`157,604`개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 `UnusedSlot` 식별자 분류는 다음과 같습니다(상세 수식 유도는 [05_전공자용_수론심층심사및수식복원서.md](./05_전공자용_수론심층심사및수식복원서.md) 제4~6장 참조).
 
 - **`VWin` 홀·짝 합류 및 짝수(`PsiEven`) 7분할 심부 패칭 사슬**:
     - 홀수(`minusLen`) · 짝수(`plusLen`) 최상위 합류(`vwin_of_counts` · `point` · `sumOut`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`,

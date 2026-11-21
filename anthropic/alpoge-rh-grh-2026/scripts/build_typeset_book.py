@@ -18,8 +18,8 @@ EDITIONS = {
         "cover_title": "리만 가설 1,737만 줄 Lean 증명<br/>한국어 완전 풀이집",
         "cover_sub": "Anthropic 레벤트 알푀게(Levent Alpöge)와 Claude의 무주석 형식증명 아카이브(175,187개 파일) 전수 컴파일 검증 및 일반 독자·전공자 계단식 역설계 해설서",
         "meta_lines": [
-            "<strong>커널 검증 상태</strong> : 공식 leanprover/lean4:v4.33.1 이중 아키텍처(x86_64 · aarch64) 175,187 / 175,187 완주 (에러 0건, PASS)",
-            "<strong>의존 공리 검증</strong> : 표준 수학 3공리(propext, Classical.choice, Quot.sound) 외 비표준 공리·sorryAx 0건",
+            "<strong>기계 커널 검증</strong> : lean4:v4.33.1(x86_64 · aarch64) 및 외부 이종 커널(nanoda · con-leche · lean4lean) 175,187개 모듈 통과 (PASS)",
+            "<strong>공리 · 동료심사</strong> : 표준 수학 3공리만 의존(sorryAx 0건) · Mathlib 정의 의미론 감사 및 학계 동료심사 진행 중 (ONGOING)",
             "<strong>수록 범위</strong> : 전체 지도 · 무수식 비유 풀이 · 제곱근 리프트 대수 유도 · Lean 척추 원장 · 기출 195선 전수 복원 · 전공자용 심층 수리 심사서",
         ],
         "toc_heading": "목차",
@@ -54,8 +54,8 @@ EDITIONS = {
         "cover_title": "Decompiling the 17.37M-Line Lean 4<br/>Proof of the Riemann Hypothesis",
         "cover_sub": "Dual-Kernel Compilation Audit, 195-Theorem Literature Attribution, and Six-Volume Stepwise Exposition of Levent Alpöge and Claude's 175,187-File Archive",
         "meta_lines": [
-            "<strong>Kernel Build Verdict</strong> : 175,187 / 175,187 modules verified under official leanprover/lean4:v4.33.1 on x86_64 and aarch64 (0 errors, PASS)",
-            "<strong>Axiom Footprint</strong> : Standard 3 axioms only (propext, Classical.choice, Quot.sound); 0 sorryAx and 0 custom axioms",
+            "<strong>Formal Kernel Verdict</strong> : 175,187 modules verified under lean4:v4.33.1 (x86_64 · aarch64) and independent kernels (nanoda · con-leche · lean4lean, PASS)",
+            "<strong>Axioms &amp; Peer Review</strong> : Standard 3 axioms only (0 sorryAx); semantic audit of Mathlib definitions and community peer review ongoing (ONGOING)",
             "<strong>Monograph Contents</strong> : Executive Map · Zero-Symbol Analogy Guide · Five-Act Algebra · Lean Spine Ledger · 195/195 Literature Dictionary · Referee Equation Audit",
         ],
         "toc_heading": "Contents",
@@ -88,7 +88,7 @@ TEX_SUBS = [
     (r"\\mathcal\{O\}", "𝒪"), (r"\\mathcal\{A\}", "𝒜"), (r"\\mathcal\{K\}", "𝒦"), (r"\\mathcal\{G\}", "𝒢"),
     (r"\\mathbb\{Q\}", "ℚ"), (r"\\mathbb\{Z\}", "ℤ"), (r"\\mathbb\{R\}", "ℝ"),
     (r"\\mathbb\{C\}", "ℂ"), (r"\\mathbb\{A\}", "𝔸"), (r"\\mathbb\{F\}", "𝔽"),
-    (r"\\mathfrak\{gl\}", "𝔤𝔩"), (r"\\mathfrak\{g\}", "𝔤"),
+    (r"\\mathfrak\{gl\}", "𝔤𝔩"), (r"\\mathfrak\{g\}", "𝔤"), (r"\\mathfrak\{p\}", "𝔭"),
     (r"\\left\|", "‖"), (r"\\right\|", "‖"), (r"\\lvert(?![a-zA-Z])", "|"), (r"\\rvert(?![a-zA-Z])", "|"),
     (r"\\(?:bigl|bigr|Bigl|Bigr|left|right)(?![a-zA-Z])", ""),
     (r"\\lfloor(?![a-zA-Z])", "⌊"), (r"\\rfloor(?![a-zA-Z])", "⌋"),
@@ -105,12 +105,13 @@ TEX_SUBS = [
     (r"\\to(?![a-zA-Z])", "→"), (r"\\downarrow(?![a-zA-Z])", "↓"),
     (r"\\infty(?![a-zA-Z])", "∞"), (r"\\inf(?![a-zA-Z])", "inf"),
     (r"\\pm(?![a-zA-Z])", "±"), (r"\\cdot(?![a-zA-Z])", "·"), (r"\\times(?![a-zA-Z])", "×"),
-    (r"\\oplus(?![a-zA-Z])", "⊕"), (r"\\cap(?![a-zA-Z])", "∩"), (r"\\vee(?![a-zA-Z])", "∨"),
-    (r"\\backslash(?![a-zA-Z])", "∖"), (r"\\partial(?![a-zA-Z])", "∂"),
+    (r"\\oplus(?![a-zA-Z])", "⊕"), (r"\\sqcup(?![a-zA-Z])", "⊔"), (r"\\cap(?![a-zA-Z])", "∩"), (r"\\vee(?![a-zA-Z])", "∨"),
+    (r"\\backslash(?![a-zA-Z])", "∖"), (r"\\setminus(?![a-zA-Z])", "∖"), (r"\\partial(?![a-zA-Z])", "∂"),
     (r"\\dots(?![a-zA-Z])", "…"), (r"\\qquad(?![a-zA-Z])", "    "),
     (r"\\quad(?![a-zA-Z])", "  "), (r"\\,", " "), (r"\\;", " "),
-    (r"\\Delta(?![a-zA-Z])", "Δ"), (r"\\Lambda(?![a-zA-Z])", "Λ"), (r"\\psi(?![a-zA-Z])", "ψ"),
-    (r"\\gamma(?![a-zA-Z])", "γ"), (r"\\delta(?![a-zA-Z])", "δ"), (r"\\zeta(?![a-zA-Z])", "ζ"),
+    (r"\\Delta(?![a-zA-Z])", "Δ"), (r"\\Lambda(?![a-zA-Z])", "Λ"), (r"\\Omega(?![a-zA-Z])", "Ω"),
+    (r"\\Phi(?![a-zA-Z])", "Φ"), (r"\\Psi(?![a-zA-Z])", "Ψ"), (r"\\psi(?![a-zA-Z])", "ψ"),
+    (r"\\gamma(?![a-zA-Z])", "γ"), (r"\\delta(?![a-zA-Z])", "δ"), (r"\\eta(?![a-zA-Z])", "η"), (r"\\zeta(?![a-zA-Z])", "ζ"),
     (r"\\theta(?![a-zA-Z])", "θ"), (r"\\vartheta(?![a-zA-Z])", "ϑ"), (r"\\varphi(?![a-zA-Z])", "φ"),
     (r"\\rho(?![a-zA-Z])", "ρ"), (r"\\sigma(?![a-zA-Z])", "σ"), (r"\\tau(?![a-zA-Z])", "τ"),
     (r"\\mu(?![a-zA-Z])", "μ"), (r"\\nu(?![a-zA-Z])", "ν"), (r"\\omega(?![a-zA-Z])", "ω"),
@@ -118,6 +119,7 @@ TEX_SUBS = [
     (r"\\alpha(?![a-zA-Z])", "α"), (r"\\beta(?![a-zA-Z])", "β"), (r"\\pi(?![a-zA-Z])", "π"),
     (r"\\ell(?![a-zA-Z])", "ℓ"), (r"\\ker(?![a-zA-Z])", "ker "), (r"\\det(?![a-zA-Z])", "det "), (r"\\log(?![a-zA-Z])", "log "),
     (r"\\sin(?![a-zA-Z])", "sin"), (r"\\exp(?![a-zA-Z])", "exp"), (r"\\sup(?![a-zA-Z])", "sup "),
+    (r"\\max(?![a-zA-Z])", "max"), (r"\\min(?![a-zA-Z])", "min"),
     (r"\\mid(?![a-zA-Z])", "∣"), (r"\\nmid(?![a-zA-Z])", "∤"), (r"\\in(?![a-zA-Z])", "∈"), (r"\\notin(?![a-zA-Z])", "∉"),
     (r"\\subseteq(?![a-zA-Z])", "⊆"), (r"\\subset(?![a-zA-Z])", "⊂"),
     (r"\\forall(?![a-zA-Z])", "∀"), (r"\\exists(?![a-zA-Z])", "∃"),
@@ -126,7 +128,7 @@ TEX_SUBS = [
 ]
 
 NUM_RE = re.compile(r"^[+-]?[0-9][0-9,.]*%?$")
-CENTER_BADGES = {"PASS", "NOT_RUN", "제1막", "제2막", "제3막", "제4막", "제5막", "Act 1", "Act 2", "Act 3", "Act 4", "Act 5"}
+CENTER_BADGES = {"PASS", "NOT_RUN", "ONGOING", "제1막", "제2막", "제3막", "제4막", "제5막", "Act 1", "Act 2", "Act 3", "Act 4", "Act 5"}
 
 
 def strip_tags(s: str) -> str:
@@ -155,7 +157,7 @@ def format_tex_expr(expr: str) -> str:
         s = re.sub(r"_\{([^{}]+)\}", r"<sub>\1</sub>", s)
         s = re.sub(r"\\frac\{([^{}]+)\}\{([^{}]+)\}", lambda m: f"<span class='frac'><span class='num'>{m.group(1)}</span><span class='den'>{m.group(2)}</span></span>", s)
         s = re.sub(r"\\sqrt\{([^{}]+)\}", lambda m: f"<span class='sqrt'>√<span class='rad'>{m.group(1)}</span></span>", s)
-    s = re.sub(r"\^\s*([0-9a-zA-Zα-ωΑ-Ωℓ∨×'+*-])", r"<sup>\1</sup>", s)
+    s = re.sub(r"\^\s*([0-9a-zA-Zα-ωΑ-Ωℓ∨×'+*∞-])", r"<sup>\1</sup>", s)
     s = re.sub(r"_\s*([0-9a-zA-Zα-ωΑ-Ωℓ∞])", r"<sub>\1</sub>", s)
     s = s.replace("\\|", "‖")
     if "\\" in s:

@@ -1,9 +1,9 @@
 /-
   alpoge_spine_arithmetic_audit.lean
-  Standalone Lean 4 (v4.33.1) formal verification of the 15 core exponent,
-  parity, congruence, formalization-slack, and cross-audit identities extracted
-  from Levent Alpöge & Claude's 175,187-file RH/GRH archive.
-  Zero external dependencies; compiles directly with `lean`.
+  Standalone Lean 4 (v4.33.1) formal verification of the 17 core exponent,
+  parity, congruence, product-formula valuation, formalization-slack, and
+  cross-audit identities extracted from Levent Alpöge & Claude's 175,187-file
+  RH/GRH archive. Zero external dependencies; compiles directly with `lean`.
 -/
 
 namespace AlpogeSpineAudit
@@ -382,5 +382,96 @@ theorem thm_16_vandiver_pluslen_and_cone_partition :
     change k * (x ^ D + D * B) + x ^ C0 ≤ x ^ (C0 + D + K + K * D) + (C0 + D + K + K * D) * B
     rw [hRearr]
     exact Nat.add_le_add hTerm1 hTerm2
+
+/-- Base-`p` digit sum `s_p(n)` for `p ≥ 2`, accompanying Legendre's factorial valuation. -/
+def baseDigitSum (p n : Nat) : Nat :=
+  if h : p ≤ 1 ∨ n = 0 then 0
+  else
+    have hp : 1 < p := by omega
+    have hn : 0 < n := by omega
+    have hlt : n / p < n := Nat.div_lt_self hn hp
+    (n % p) + baseDigitSum p (n / p)
+termination_by n
+
+/-- Legendre `p`-adic factorial valuation sum `∑_{i ≥ 1} ⌊n / p^i⌋`
+    (`PadicValNatFactorialLeReal.lean:11-28` & `StatementOCCM.lean:28-31`). -/
+def legendreFactVal (p n : Nat) : Nat :=
+  if h : p ≤ 1 ∨ n = 0 then 0
+  else
+    have hp : 1 < p := by omega
+    have hn : 0 < n := by omega
+    have hlt : n / p < n := Nat.div_lt_self hn hp
+    (n / p) + legendreFactVal p (n / p)
+termination_by n
+
+/-- Quarter-power scaled `MainCM` exponent max across `(x/m, x*m/k, x/f, k*f)`
+    (`StatementOCCM.lean:111-112, 137-152`). -/
+def mainCmQuarterDeg (x4 m4 k4 f4 : Nat) : Nat :=
+  Nat.max (Nat.max (x4 - m4) (x4 + m4 - k4)) (Nat.max (x4 - f4) (k4 + f4))
+
+/-- Global `SChain` window growth exponent excess `eD + eL + 6` (`SChain.lean:90`). -/
+def sChainEpsMult (eD eL : Nat) : Nat :=
+  eD + eL + 6
+
+theorem legendre_identity_aux (d n : Nat) :
+    let p := d + 2
+    (p - 1) * legendreFactVal p n + baseDigitSum p n = n := by
+  induction n using Nat.strongRecOn with
+  | ind n ih =>
+    dsimp
+    let p := d + 2
+    by_cases hn0 : n = 0
+    · subst hn0
+      simp [legendreFactVal, baseDigitSum]
+    · have hcond : ¬ (p ≤ 1 ∨ n = 0) := by omega
+      have hlt : n / p < n := Nat.div_lt_self (by omega) (by omega)
+      have hrec : (p - 1) * legendreFactVal p (n / p) + baseDigitSum p (n / p) = n / p :=
+        ih (n / p) hlt
+      have hv : legendreFactVal p n = (n / p) + legendreFactVal p (n / p) := by
+        rw [legendreFactVal]
+        simp [hcond]
+      have hd : baseDigitSum p n = (n % p) + baseDigitSum p (n / p) := by
+        rw [baseDigitSum]
+        simp [hcond]
+      rw [hv, hd]
+      have hdiv : p * (n / p) + n % p = n := Nat.div_add_mod n p
+      have hmul : (p - 1) * (n / p) + (n / p) = p * (n / p) := by
+        have hp1 : (p - 1) + 1 = p := by omega
+        calc (p - 1) * (n / p) + (n / p)
+          _ = (p - 1) * (n / p) + 1 * (n / p) := by simp
+          _ = ((p - 1) + 1) * (n / p) := (Nat.add_mul (p - 1) 1 (n / p)).symm
+          _ = p * (n / p) := by rw [hp1]
+      have hlin :
+          (p - 1) * (n / p + legendreFactVal p (n / p)) + (n % p + baseDigitSum p (n / p)) =
+            (p - 1) * (n / p) + ((p - 1) * legendreFactVal p (n / p) + baseDigitSum p (n / p)) + n % p := by
+        rw [Nat.mul_add]
+        omega
+      change (p - 1) * (n / p + legendreFactVal p (n / p)) + (n % p + baseDigitSum p (n / p)) = n
+      rw [hlin, hrec, hmul, hdiv]
+
+/-- Theorem 17 (`PadicValNatFactorialLeReal.lean:19-28`, `StatementOCCM.lean:112,137-152`,
+    `ShapeWin.lean:46`, & `SChain.lean:90`):
+    Global product-formula & Stepanov valuation closure invariants:
+    (1) Exact Legendre identity `(p - 1) * legendreFactVal p n + baseDigitSum p n = n`
+        and upper bound `(p - 1) * legendreFactVal p n ≤ n` for every `p = d + 2 ≥ 2` and `n : Nat`,
+    (2) CM quarter-power balance `mainCmQuarterDeg 4 1 2 1 = 3` (`3/4 < 1` in `ZetaQuarterPowerCorollary`),
+    (3) At `ShapeWin.lean:46`'s `(eD, eL) = (2, 0)`, `sChainEpsMult 2 0 = 8` (`1/2 + 8ε`),
+        and for every `E = d + 53 > 52` (`0 < ε = 1/E < 1/52`), `E + 2 * sChainEpsMult 2 0 < 2 * E`
+        (`1/2 + 8/E < 1`, strictly inside the critical strip). -/
+theorem thm_17_legendre_padic_factorial_and_global_chain_closure :
+    mainCmQuarterDeg 4 1 2 1 = 3 ∧
+    sChainEpsMult 2 0 = 8 ∧
+    (∀ d n : Nat,
+      let p := d + 2
+      let E := d + 53
+      (p - 1) * legendreFactVal p n + baseDigitSum p n = n ∧
+      (p - 1) * legendreFactVal p n ≤ n ∧
+      E + 2 * sChainEpsMult 2 0 < 2 * E) := by
+  refine ⟨by decide, rfl, ?_⟩
+  intro d n
+  dsimp [sChainEpsMult]
+  have hid := legendre_identity_aux d n
+  dsimp at hid
+  exact ⟨hid, by omega, by omega⟩
 
 end AlpogeSpineAudit
