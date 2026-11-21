@@ -6,10 +6,10 @@
 
 ---
 
-## 단행본 합본 (인쇄 · 태블릿 통독용)
+## 단행본 합본 (인쇄 · 태블릿 통독용, 한·영 완비)
 
-- **[리만가설_1737만줄_완전풀이집.pdf](./book/리만가설_1737만줄_완전풀이집.pdf)**: 표지, 목차, 전 6권 본문(`00`~`05`), 고해상도 도판 4종, 기출 `195`선 전수 사전, 심층 수식 조판이 통합된 A4 출판용 단행본(`PASS`).
-- **[리만가설_1737만줄_완전풀이집.html](./book/리만가설_1737만줄_완전풀이집.html)**: 인터넷 연결 없이 브라우저에서 바로 열리는 오프라인 전자책 합본(`PASS`).
+- **한국어판 (`43`쪽 A4)**: **[리만가설_1737만줄_완전풀이집.pdf](./book/리만가설_1737만줄_완전풀이집.pdf)** · **[오프라인 HTML](./book/리만가설_1737만줄_완전풀이집.html)** (`PASS`)
+- **영문판 (`45`쪽 A4)**: **[Alpoge_RH_17M_Complete_Decompilation_EN.pdf](./book/Alpoge_RH_17M_Complete_Decompilation_EN.pdf)** · **[Offline HTML](./book/Alpoge_RH_17M_Complete_Decompilation_EN.html)** · **[영문 6권 본문 (`en/`)](./README.en.md)** (`PASS`)
 
 ---
 

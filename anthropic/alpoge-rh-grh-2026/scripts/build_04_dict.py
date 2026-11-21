@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import json
 import os
 import pathlib
 import re
@@ -262,42 +263,54 @@ def load_rows():
     raise FileNotFoundError(f"Missing {LIT_FILE}; set ALPOGE_FORENSIC_DIR to regenerate 04 dictionary.")
 
 
-def main():
-    rows = load_rows()
-    assert len(rows) == 195, f"Expected 195 rows, got {len(rows)}"
-    missing = [ident for _, _, ident in rows if ident not in META]
-    extra = [k for k in META if k not in {ident for _, _, ident in rows}]
-    assert not missing and not extra, f"Mismatch: missing={missing}, extra={extra}"
-
-    by_pillar = {pid: [] for pid, _, _ in PILLARS}
+def render_dict(rows, pillars, meta, out_path: pathlib.Path, lang: str) -> str:
+    missing = [ident for _, _, ident in rows if ident not in meta]
+    extra = [k for k in meta if k not in {ident for _, _, ident in rows}]
+    assert not missing and not extra, f"{lang} mismatch: missing={missing}, extra={extra}"
+    by_pillar = {pid: [] for pid, _, _ in pillars}
     for idx, lno, ident in rows:
-        pid, ktitle, src = META[ident]
-        by_pillar[pid].append((idx, lno, ident, ktitle, src))
+        pid, title_txt, src = meta[ident]
+        by_pillar[pid].append((idx, lno, ident, title_txt, src))
+    counts_str = " + ".join(str(len(by_pillar[pid])) for pid, _, _ in pillars)
+    if lang == "ko":
+        lines = [
+            "# 04. 기출 대정리 원전 복원 사전 (`OpenLiteratureStatements` 195선 전수 매핑)",
+            "",
+            "원본 아카이브는 외부 공리를 남기지 않기 위해 1930년대부터 2023년에 이르는 현대 수학 대정리들을 순정 `Mathlib` 위에서 밑바닥부터 다시 증명해 수록했으나, 주석과 `.bib` 서지를 모두 비운 상태로 배포했습니다(`PASS`). 본 문서는 `EveryCharacterOfLiteratureOfVWin.lean`에 선언된 `UpperTheory.LiteratureTheorems.*` 정리 **`195 / 195`개 전량(`100.0%`, 개별 기출 래퍼 `184`개 + 리팩터링 비활성 슬롯 `1`개 + 상위 조립 레코드 `9`개 + 최종 결합 주정리 `1`개)**을 한 개도 빠짐없이 7대 기둥으로 분류해 행 번호와 원저자·연도를 복원한 전수 사전입니다.",
+            "",
+            "> **원본 대조 경로 및 집계 불변량**",
+            ">",
+            f"> - 기출 `195`선 통합 파일: `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-814` (`{counts_str} = 195`개 전수 수록)",
+            "> - 조밀 임계값 보조 연결부: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:17-55`",
+            "> - 형식 산술 검증 정리: [alpoge_spine_arithmetic_audit.lean](./proofs/alpoge_spine_arithmetic_audit.lean) (`thm_14_literature_195_partition`, `PASS`)",
+            "",
+        ]
+        hdr = "| 순번 | 코드 내 정리 식별자 (`행 번호`) | 복원된 수학 정리 명칭 및 내용 | 원저자 및 대표 고전 원전 |"
+        cnt_fmt = "(총 `{n}`개)"
+    else:
+        lines = [
+            "# 04. Complete `195 / 195` Classical Literature Attribution Dictionary (`OpenLiteratureStatements`)",
+            "",
+            "To avoid external unproved axioms, the archive re-proves classical theorems spanning the 1930s through 2023 from scratch atop `Mathlib`, while shipping with zero comments and zero `.bib` entries (`PASS`).",
+            "This dictionary maps all **`195 / 195` (`100.0%`: `184` individual literature wrappers + `1` refactored inactive slot + `9` domain assembler records + `1` master join theorem)** `UpperTheory.LiteratureTheorems.*` declarations in `EveryCharacterOfLiteratureOfVWin.lean` across 7 pillars with exact line pins and classical author/year attributions.",
+            "",
+            "> **Upstream File Paths and Partition Invariant**",
+            ">",
+            f"> - Master `195`-wrapper file: `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-814` (`{counts_str} = 195` total)",
+            "> - Dense-threshold connector: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:17-55`",
+            "> - Formal partition check: [alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean) (`thm_14_literature_195_partition`, `PASS`)",
+            "",
+        ]
+        hdr = "| No. | Wrapper Identifier (`Line`) | Restored Mathematical Statement | Classical Authors & Sources |"
+        cnt_fmt = "(`{n}` Entries)"
 
-    counts_str = " + ".join(str(len(by_pillar[pid])) for pid, _, _ in PILLARS)
-    lines = [
-        "# 04. 기출 대정리 원전 복원 사전 (`OpenLiteratureStatements` 195선 전수 매핑)",
-        "",
-        "원본 아카이브는 외부 공리를 남기지 않기 위해 1930년대부터 2023년에 이르는 현대 수학 대정리들을 순정 `Mathlib` 위에서 밑바닥부터 다시 증명해 수록했으나, 주석과 `.bib` 서지를 모두 비운 상태로 배포했습니다(`PASS`). 본 문서는 `EveryCharacterOfLiteratureOfVWin.lean`에 선언된 `UpperTheory.LiteratureTheorems.*` 정리 **`195 / 195`개 전량(`100.0%`, 개별 기출 래퍼 `184`개 + 리팩터링 비활성 슬롯 `1`개 + 상위 조립 레코드 `9`개 + 최종 결합 주정리 `1`개)**을 한 개도 빠짐없이 7대 기둥으로 분류해 행 번호와 원저자·연도를 복원한 전수 사전입니다.",
-        "",
-        "> **원본 대조 경로 및 집계 불변량**",
-        ">",
-        f"> - 기출 `195`선 통합 파일: `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-814` (`{counts_str} = 195`개 전수 수록)",
-        "> - 조밀 임계값 보조 연결부: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:17-55`",
-        "> - 형식 산술 검증 정리: [alpoge_spine_arithmetic_audit.lean](./proofs/alpoge_spine_arithmetic_audit.lean) (`thm_14_literature_195_partition`, `PASS`)",
-        "",
-    ]
-
-    for pid, title, desc in PILLARS:
+    for pid, title, desc in pillars:
         items = by_pillar[pid]
         lines.extend([
-            "---",
-            "",
-            f"## {title} (총 `{len(items)}`개)",
-            "",
-            desc,
-            "",
-            "| 순번 | 코드 내 정리 식별자 (`행 번호`) | 복원된 수학 정리 명칭 및 내용 | 원저자 및 대표 고전 원전 |",
+            "---", "",
+            f"## {title} {cnt_fmt.format(n=len(items))}", "",
+            desc, "",
+            hdr,
             "| :---: | :--- | :--- | :--- |",
         ])
         for idx, lno, ident, ktitle, src in items:
@@ -305,9 +318,20 @@ def main():
             assert len(row_line) <= 440, f"Line too long ({len(row_line)}): {row_line}"
             lines.append(row_line)
         lines.append("")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("\n".join(lines), encoding="utf-8")
+    return counts_str
 
-    OUT.write_text("\n".join(lines), encoding="utf-8")
-    print(f"DICT_OK: wrote {OUT.name} with all 195/195 entries ({counts_str} = 195).")
+
+def main():
+    rows = load_rows()
+    assert len(rows) == 195, f"Expected 195 rows, got {len(rows)}"
+    counts_ko = render_dict(rows, PILLARS, META, OUT, "ko")
+    en_json = json.loads((ROOT / "data/literature_195_en.json").read_text(encoding="utf-8"))
+    en_out = ROOT / "en/04_Literature_195_Attribution_Dictionary.md"
+    counts_en = render_dict(rows, en_json["pillars"], en_json["entries"], en_out, "en")
+    assert counts_ko == counts_en
+    print(f"DICT_OK: wrote KO ({OUT.name}) + EN ({en_out.name}) with 195/195 entries ({counts_ko} = 195).")
 
 
 if __name__ == "__main__":
