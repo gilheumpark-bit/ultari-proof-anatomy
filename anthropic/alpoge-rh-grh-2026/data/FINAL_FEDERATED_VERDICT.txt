@@ -1,0 +1,20 @@
+=== 1. LOCAL (x86_64) KERNEL SEAL VERIFY ===
+'verify_mathlib_RiemannHypothesis_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'verify_RH_statement_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'verify_GRH_Dirichlet_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'riemannHypothesis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'riemannZeta_eq_zero_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LFunction_ne_zero_of_half_lt_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LFunction_eq_zero_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LFunction_eq_zero_re_of_isPrimitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+LOCAL_RC:0
+=== 2. SPARK (aarch64) KERNEL SEAL VERIFY ===
+'verify_mathlib_RiemannHypothesis_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'verify_RH_statement_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'verify_GRH_Dirichlet_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'riemannHypothesis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'riemannZeta_eq_zero_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LFunction_ne_zero_of_half_lt_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LFunction_eq_zero_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LFunction_eq_zero_re_of_isPrimitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+SPARK_RC:0

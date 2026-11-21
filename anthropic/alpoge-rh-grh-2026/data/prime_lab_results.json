@@ -1,0 +1,89 @@
+{
+  "von_mangoldt_table": [
+    {
+      "X": 100,
+      "m_sqrt_X": 10,
+      "cheb_first_node": 0.006156,
+      "cheb_last_node": 0.993844,
+      "Sz_X": 304.5171,
+      "main_term_XlogX_minus_1plusGamma_X": 302.7955,
+      "Gz_X_residual": 1.7217,
+      "spread_weighted_avg_m": 2.8777,
+      "abs_Gz_over_sqrtX": 0.17217,
+      "discretization_step_X_over_m": 10.0,
+      "hypothetical_offline_0p75_scale": 31.62
+    },
+    {
+      "X": 400,
+      "m_sqrt_X": 20,
+      "cheb_first_node": 0.001541,
+      "cheb_last_node": 0.998459,
+      "Sz_X": 1767.4809,
+      "main_term_XlogX_minus_1plusGamma_X": 1765.6996,
+      "Gz_X_residual": 1.7813,
+      "spread_weighted_avg_m": 2.8511,
+      "abs_Gz_over_sqrtX": 0.08907,
+      "discretization_step_X_over_m": 20.0,
+      "hypothetical_offline_0p75_scale": 89.44
+    },
+    {
+      "X": 1600,
+      "m_sqrt_X": 40,
+      "cheb_first_node": 0.000385,
+      "cheb_last_node": 0.999615,
+      "Sz_X": 9282.1486,
+      "main_term_XlogX_minus_1plusGamma_X": 9280.8692,
+      "Gz_X_residual": 1.2794,
+      "spread_weighted_avg_m": 2.7373,
+      "abs_Gz_over_sqrtX": 0.03199,
+      "discretization_step_X_over_m": 40.0,
+      "hypothetical_offline_0p75_scale": 252.98
+    },
+    {
+      "X": 3600,
+      "m_sqrt_X": 60,
+      "cheb_first_node": 0.000171,
+      "cheb_last_node": 0.999829,
+      "Sz_X": 23802.2198,
+      "main_term_XlogX_minus_1plusGamma_X": 23801.3045,
+      "Gz_X_residual": 0.9153,
+      "spread_weighted_avg_m": 2.9036,
+      "abs_Gz_over_sqrtX": 0.01526,
+      "discretization_step_X_over_m": 60.0,
+      "hypothetical_offline_0p75_scale": 464.76
+    },
+    {
+      "X": 10000,
+      "m_sqrt_X": 100,
+      "cheb_first_node": 6.2e-05,
+      "cheb_last_node": 0.999938,
+      "Sz_X": 76332.9964,
+      "main_term_XlogX_minus_1plusGamma_X": 76331.2471,
+      "Gz_X_residual": 1.7493,
+      "spread_weighted_avg_m": 2.5322,
+      "abs_Gz_over_sqrtX": 0.01749,
+      "discretization_step_X_over_m": 100.0,
+      "hypothetical_offline_0p75_scale": 1000.0
+    }
+  ],
+  "behrend_demo": {
+    "n_max": 500,
+    "shell_r2": 5,
+    "size": 12,
+    "ap_violations": 0,
+    "sample": [
+      7,
+      11,
+      27,
+      35,
+      51,
+      55,
+      127,
+      135,
+      175,
+      251,
+      255,
+      275
+    ]
+  }
+}
