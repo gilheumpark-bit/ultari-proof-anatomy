@@ -70,14 +70,16 @@ Short module names appear in the table for readability; full repository paths fo
 | **Act 1** | Smoothed von Mangoldt residual & Landau zero-order identity | `StatementOC.lean:11-51`<br>`DefsOC.lean:12-47` | `Sz`, `Gz`, `OCAvg`, `LandauEq`, `OrderLogDeriv` |
 | **Act 2** | Weighted node quadrature & discretization error $O(x\log m / m)$ | `StatementU.lean:9-46`<br>`ZetaNonvanishingGeneralWeights.lean:9-25` | `wavg`, `RiemannSumApprox`, `ZetaNonvanishingGeneralWeights` |
 | **Act 3** | $m \ge x^{1-\theta-\varepsilon}$ Chebyshev nonvanishing & iterated lifts | `ZetaNonvanishingChebyshevWeights.lean:9-35`<br>`EveryCharacterOfLiteratureOfVWin.lean:810-814` | `chebNode`, `ChebyshevWeightApproximation`, `ZetaNonvanishingChebyshevWeights` |
-| **Act 4** | Rallis seesaw independence, CM Jacobi theta norm, period matching | `FinalThetaLiftAMFKIndep.lean:1-15`<br>`ThetaNormCM.lean:30-40`<br>`SiegelEisensteinSecondTermHypotheses.lean:69` | `final_gaussOp`, `PI.ThetaNormCM`, `every_character_of_theta_integrals_local_matching` |
-| **Act 5** | Progression-free Behrend sets, window cap, cyclotomic tower | `BehrendSets/Statement.lean:48-81`<br>`RowSrc.lean:6`<br>`CorGKOf.lean:10-29` | `BehrendFree`, `WindowTwo`, `galoisLocalGlobalStrong_recParameter`, `corGK` |
+| **Act 4** | Rallis seesaw, CM theta norm, projected Poincaré series & Cauchy-Schwarz decay | `FinalThetaLiftAMFKIndep.lean:1-15`<br>`ThetaNormCM.lean:30-40`<br>`ExistsMultTEqPoin.lean:15-109`<br>`GaussSumCharacterAverageBound.lean:21-98` | `final_gaussOp`, `PI.ThetaNormCM`, `exists_multT_eq_poin`, `hermitian_assembly_numeric_bound` |
+| **Act 5** | Odd/even parity patching (`GSp_4 · U(3)`), Behrend sieve, cyclotomic tower | `WindowBoundOfLiteratureLevel.lean:25-34`<br>`BehrendSets/Statement.lean:48-81`<br>`RowSrc.lean:6` | `published_hypotheses_from_patching_alt`, `BehrendFree`, `WindowTwo`, `galoisLocalGlobalStrong_recParameter` |
 
 - **Full Paths for Section 4**:
     - Acts 1 to 3 (`Formalism`): `src/Formalism/StatementOC.lean:11-51`, `src/Formalism/DefsOC.lean:12-47`, `src/Formalism/StatementU.lean:9-46`, `src/Formalism/ZetaNonvanishingGeneralWeights.lean:9-25`, `src/Formalism/ZetaNonvanishingChebyshevWeights.lean:9-35`
-    - Acts 3 to 4 (theta & periods): `src/Formalism/ThetaLiftIndependence/FinalThetaLiftAMFKIndep.lean:1-15`, `src/Formalism/PeriodIntegrals/ThetaNormCM.lean:30-40`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/SiegelEisensteinSecondTermHypotheses.lean:69`,
-      `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:810-814`
-    - Act 5 (Behrend & tower): `src/Formalism/BehrendSets/Statement.lean:48-81`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/CorGKOf.lean:10-29`
+    - Acts 3 to 4 (theta, Poincaré & Gauss averages): `src/Formalism/ThetaLiftIndependence/FinalThetaLiftAMFKIndep.lean:1-15`, `src/Formalism/PeriodIntegrals/ThetaNormCM.lean:30-40`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/RealBands/ExistsMultTEqPoin.lean:15-109`,
+      `src/Formalism/FlagUnipotentLattices/ConductorCharacterLeakBound.lean:7-58`, `src/Formalism/FlagUnipotentLattices/MinkowskiFactorialBounds/GaussSumCharacterAverageBound.lean:21-98`, `src/Formalism/CharacterColumnKernels/Statement.lean:102-153`,
+      `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/ExportStOfPrintsStatement.lean:11-12`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/SiegelEisensteinSecondTermHypotheses.lean:69`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:810-814`
+    - Act 5 (parity patching, Behrend & tower): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`,
+      `src/Formalism/BehrendSets/Statement.lean:48-81`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/CorGKOf.lean:10-29`
 
 ---
 

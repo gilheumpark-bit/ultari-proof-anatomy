@@ -59,6 +59,7 @@ Here the decisive pivot of the proof appears. While Alpöge was testing ways to 
 In plain terms, the mechanism works like transferring water ripples across a chain of lakes:
 - You cannot shave a pebble (an integer), but once you drop the pebble into a pond to create an **automorphic wave**, you can lift that wave cleanly into a larger, higher-dimensional lake.
 - Each transfer from one unitary symmetry group to the next (one theta lift) adds one fresh layer of signal multiplicity, matching the effect of taking one more derivative of a polynomial.
+- Why moving to a wider lake amplifies the signal is concrete: each step into a higher symmetry space adds one independent sampling dial, locking down one additional degree of freedom through which an off-line tuning fork could hide between measurements.
 
 Simple arithmetic pins down the exact number of lakes you must chain together when testing primes up to `X`:
 - Too few lifts leave coarse sampling gaps, letting a rogue fork hide between sample nodes.
@@ -82,28 +83,29 @@ Even after chaining a square-root number of lenses, a second barrier appears. Ev
 Three precision instruments clear this `0.66` barrier:
 1. **Rallis Seesaw Balancing**: Instead of weighing a tangled multi-lift wave directly on the left seat of a seesaw, the proof weighs its simpler partner (a Bessel period) on the right seat, decoupling character-dependent clutter.
 2. **Companion Rank Division**: Embedding the chain inside a very high-rank base lattice divides the quadratic dimming by the large base rank, shrinking the quadratic penalty toward zero while keeping the linear main signal intact.
-3. **Six-Fold Metaplectic Mirror**: Rather than fighting raw Gauss-sum sign oscillations by hand, the proof packages them into a six-fold cover of `5`-by-`5` matrices where Parseval energy conservation bounds off-diagonal leakage automatically.
+3. **Projected Wave Packets and Energy Averaging**: Generalizing an insight Alpöge first spotted via five-dimensional six-fold covers, the Lean code projects waves into level-filtered wave packets (Poincaré series) and applies Cauchy-Schwarz energy averaging so off-diagonal sign interference decays exponentially with base rank (`src/Formalism/FlagUnipotentLattices/MinkowskiFactorialBounds/GaussSumCharacterAverageBound.lean:21-98`).
 
-> **Act 4 Takeaway**: Seesaw duality, large base-rank normalization, and five-dimensional metaplectic automorphy cancel the `0.66` dimming wall and push visibility all the way to `0.5`.
+> **Act 4 Takeaway**: Seesaw duality, large base-rank normalization, and projected wave-packet energy bounds cancel the `0.66` dimming wall and push visibility all the way to `0.5`.
 
 ---
 
-## Act 5. Filtering the Last Resonant Exceptions with a Behrend Sieve
+## Act 5. Closing the Mirror Blind Spot and the Behrend Sieve
 
-At the very end of the argument, one stubborn pocket of exceptions remains: a thin family of cyclotomic symmetries whose interference survives ordinary character averaging.
+At the very end of the argument, one stubborn family of cyclotomic number-field symmetries survives ordinary character averaging. Under mirror reflection (complex conjugation), these survivors split into two opposite halves:
 
-To catch these survivors, the proof deploys a 1946 combinatorial construction by Felix Behrend: a dense set of integers such as `7, 11, 27, 35, 51, 55, 127` in which **no three numbers ever sit at equal spacing** (zero three-term arithmetic progressions, `src/Formalism/BehrendSets/Statement.lean:48-62`).
+- **The Odd Half (states that flip sign in the mirror)**: Classical symmetry gauges (Stickelberger elements and Kato Euler systems) still grip here. Overlaying Felix Behrend's 1946 **progression-free integer sieve** (`7, 11, 27, 35, 51, 55, 127`, a dense set containing zero equally spaced triples like `1, 3, 5`, `src/Formalism/BehrendSets/Statement.lean:48-62`) starves the odd tower layers of evenly spaced resonances.
+- **The Even Half (the mirror blind spot)**: For any state that looks identical to its own reflection, subtracting the mirror image yields `1 minus 1 = 0`, rendering classical Stickelberger gauges completely blind.
+  To seal this even-half blind spot, Alpöge and Claude brought in higher-dimensional geometric deformation patching across `4`-by-`4` symplectic and `3`-by-`3` unitary spaces (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`).
 
-Overlaying this progression-free net onto the cyclotomic number-field tower starves the surviving symmetries of the evenly spaced resonances they need to conspire, sealing the final gap and locking every tuning fork onto `0.5`.
-
-> **Act 5 Takeaway**: A progression-free Behrend sieve eliminates the last resonant tower exceptions that survive character twisting, completing the unconditional proof.
+> **Act 5 Takeaway**: Classical gauges plus a progression-free Behrend sieve close the odd mirror half, while higher-dimensional symplectic and unitary deformation patching seals the even-half blind spot where classical gauges read zero.
 
 ---
 
 ## Epilogue. Why the Vault Weighs 250,000 Printed Pages
 
-In a traditional journal paper, an author can write "by a 2019 theorem of Bhatt and Scholze" in one sentence and move on. A formal proof kernel like `Lean 4` refuses every appeal to authority: unless a theorem is proved down to foundational logic inside the codebase, it must be declared as an unproved axiom.
+In a traditional journal paper, sealing the Act 5 even-half blind spot would take a single sentence citing published theorems on Shimura varieties and deformation patching. A formal proof kernel like `Lean 4` refuses every appeal to authority: unless a theorem is proved down to foundational logic inside the codebase, it must be declared as an unproved axiom.
 
-To leave zero room for doubt over hidden assumptions, Alpöge and Claude re-proved `195` major theorems of twentieth- and twenty-first-century mathematics **from scratch inside Lean**. Building the 30-story observation tower (the novel 5-act engine, roughly `2.02` million lines) was preceded by mining the ore and pouring `15.35` million lines of foundational steel and concrete.
+Because that Act 5 even-half patching pulls in `8.14` million lines of abelian-variety geometry inside a `15.76`-million-line window cone, Alpöge and Claude re-proved `195` major theorems of twentieth- and twenty-first-century mathematics **from scratch inside Lean**.
+Building the 30-story observation tower (the novel 5-act engine, roughly `2.02` million lines) required mining the ore and pouring `15.35` million lines of foundational steel and concrete first.
 
 The 8-hour 21-minute dual-machine compilation across `x86_64` and `aarch64` verified mechanically that every brick from the bedrock up to the top spire fits with zero logical gaps.

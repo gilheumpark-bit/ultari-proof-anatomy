@@ -244,6 +244,8 @@ def check_one_book(tag: str, html_name: str, pdf_name: str, errors: list) -> str
         for b in BANNED:
             if b in html_no_b64:
                 errors.append(f"book {tag} HTML: banned token {b!r}")
+        if "<pre><code>" in html_no_b64:
+            errors.append(f"book {tag} HTML: unintended unfenced <pre><code> block (list/indent break)")
         auditor = BookHTMLAuditor()
         auditor.feed(html_no_b64)
         if len(auditor.math_texts) < 200:

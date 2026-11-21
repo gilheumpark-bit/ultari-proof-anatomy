@@ -1,7 +1,7 @@
 # 00. Executive Overview and Map: Inside the 17.37M-Line Riemann Hypothesis Archive
 
 Levent Alpöge and Claude's formal `Lean 4` archive proving the Riemann Hypothesis (`RiemannHypothesis`) and the Generalized Riemann Hypothesis (`GRH`) for Dirichlet $L$-functions compiled from scratch across all `175,187 / 175,187` modules with `0` errors under official `leanprover/lean4:v4.33.1` (`2026-11-21 10:10 KST`, `PASS`, receipt in `FINAL_FEDERATED_VERDICT.txt`).
-Out of `17,374,215` lines, `88.35%` (`15,350,921` lines) sits inside the dependency cone re-proving `195` classical theorems from scratch so that zero external axioms are needed, while the novel engine compresses into a five-act architecture combining $\sqrt{X}$-iterated theta lifts with a Behrend-filtered cyclotomic tower ([anatomy_stats.json](../data/anatomy_stats.json)).
+Out of `17,374,215` lines, `88.35%` (`15,350,921` lines) sits inside the dependency cone re-proving `195` classical theorems from scratch so that zero external axioms are needed, while the novel engine compresses into a five-act architecture combining $\sqrt{X}$-iterated theta lifts, seesaw companion-rank division, and odd/even parity patching with a Behrend-filtered cyclotomic tower ([anatomy_stats.json](../data/anatomy_stats.json)).
 
 ---
 

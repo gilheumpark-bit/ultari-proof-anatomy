@@ -8,8 +8,8 @@
 
 ## 단행본 합본 (인쇄 · 태블릿 통독용, 한·영 완비)
 
-- **한국어판 (`43`쪽 A4)**: **[리만가설_1737만줄_완전풀이집.pdf](./book/리만가설_1737만줄_완전풀이집.pdf)** · **[오프라인 HTML](./book/리만가설_1737만줄_완전풀이집.html)** (`PASS`)
-- **영문판 (`45`쪽 A4)**: **[Alpoge_RH_17M_Complete_Decompilation_EN.pdf](./book/Alpoge_RH_17M_Complete_Decompilation_EN.pdf)** · **[Offline HTML](./book/Alpoge_RH_17M_Complete_Decompilation_EN.html)** · **[영문 6권 본문 (`en/`)](./README.en.md)** (`PASS`)
+- **한국어판 (`45`쪽 A4)**: **[리만가설_1737만줄_완전풀이집.pdf](./book/리만가설_1737만줄_완전풀이집.pdf)** · **[오프라인 HTML](./book/리만가설_1737만줄_완전풀이집.html)** (`PASS`)
+- **영문판 (`48`쪽 A4)**: **[Alpoge_RH_17M_Complete_Decompilation_EN.pdf](./book/Alpoge_RH_17M_Complete_Decompilation_EN.pdf)** · **[Offline HTML](./book/Alpoge_RH_17M_Complete_Decompilation_EN.html)** · **[영문 6권 본문 (`en/`)](./README.en.md)** (`PASS`)
 
 ---
 
@@ -18,15 +18,15 @@
 1. **[00_한눈에_보는_전체지도.md](./00_한눈에_보는_전체지도.md)** (`전 독자 공통 · 3분 요약 + 용어 통역표`)
     - `175,187`개 파일 구성 도판([도판 1](./figures/fig1_archive_breakdown.png)), 전문 용어 6개 일상 통역표, 4계단 조립 지도.
 2. **[01_수식없이_읽는_비유풀이.md](./01_수식없이_읽는_비유풀이.md)** (`일반인 · 중고생용 · 수식 기호 0개`)
-    - `10` 이하 소수 손계산 예제, 소리굽쇠 공명, 돋보기 제곱근 개수 직렬 연결, 시소 저울질, 베렌트 체 비유 완결 편.
-3. **[02_눈으로_만지는_핵심원리_5막.md](./02_눈으로_만지는_핵심원리_5막.md)** (`학부생 · 개발자용 · 핵심 수식 + 도판 2·3`)
-    - 이산화 오차 $X/m \le X^\theta$에서 $m = \sqrt{X}$가 도출되는 대수 유도 및 실측 비교 그래프([도판 2](./figures/fig2_residual_vs_fake_zero.png), [도판 3](./figures/fig3_lift_cost_barrier.png)).
+    - `10` 이하 소수 손계산 예제, 소리굽쇠 공명, 돋보기 제곱근 개수 직렬 연결, 시소 저울질, 거울 사각지대 봉합 및 베렌트 체 비유 완결 편.
+3. **[02_눈으로_만지는_핵심원리_5막.md](./02_눈으로_만지는_핵심원리_5막.md)** (`학부생 · 개발자용 · 핵심 수식 + 선형대수·복소켤레 장난감 모형 + 도판 2·3`)
+    - $m = \sqrt{X}$ 대수 유도, 유한차원 행렬 전치·차원 나눗셈 및 복소켤레 거울 사각지대 장난감 모형, 실측 비교 그래프([도판 2](./figures/fig2_residual_vs_fake_zero.png), [도판 3](./figures/fig3_lift_cost_barrier.png)).
 4. **[03_Lean코드_척추_해부원장.md](./03_Lean코드_척추_해부원장.md)** (`수학 연구자 · 검증자용 아키텍처 원장`)
-    - `src/Main.lean:1-12`부터 5막 기저 파일, 메타코드 8종, `VWin` 5대 카운트 및 `UnusedSlot` 9종(`True` 비활성 슬롯 2종 + 활성 네임스페이스 7종)까지의 Lean 행 번호 대조 원장.
+    - `src/Main.lean:1-12`부터 5막 기저 파일, 투영 푸앵카레 급수·코시-슈바르츠 감쇠 모듈, 메타코드 8종, `VWin` 5대 카운트 및 `UnusedSlot` 9종(`True` 비활성 슬롯 2종 + 활성 네임스페이스 7종)까지의 Lean 행 번호 대조 원장.
 5. **[04_기출대정리_원전복원사전.md](./04_기출대정리_원전복원사전.md)** (`서지 · 선행 연구 195 / 195 전수 복원 사전`)
     - `EveryCharacterOfLiteratureOfVWin.lean`에 수록된 기출 래퍼 정리 `195`개 전량(`100.0%`)의 행 번호, 수리 명제, 원저자·연도 사전.
 6. **[05_전공자용_수론심층심사및수식복원서.md](./05_전공자용_수론심층심사및수식복원서.md)** (`전공 수론학자 · 심사위원용 심층 수리 보고서`)
-    - 전역 척도($\varepsilon < 1/52$, `Ct = 401`, 루카스 소수 `413,718,278,401`), 바르그만-포크·양기안 RTT 행렬식 $W(\cdot) \ge 0$, 지겔-베유 질량 비 $-C m^2 L / k$ 약분식, `VWin` 복소켤레 기우성(Parity) 양날개 분해([도판 4](./figures/fig4_vwin_parity_and_counts.png)), 형식화 여유분 4선, OpenAI `#003` 교차 심사 및 단축 설계도.
+    - 전역 척도($\varepsilon < 1/52$, `Ct = 401`, 루카스 소수 `413,718,278,401`), 바르그만-포크·양기안 RTT 행렬식 $W(\cdot) \ge 0$, 지겔-베유 질량 비 $-C m^2 L / k$ 약분식, 선언문 $\mathrm{GL}_5$ 서술 대 실제 투영 푸앵카레 급수·코시-슈바르츠 감쇠 $q^{-(k-2r-5)}$ 대조, `VWin` 복소켤레 기우성 양날개 분해([도판 4](./figures/fig4_vwin_parity_and_counts.png)), 형식화 여유분, OpenAI `#003` (`(2, 3, 6)`-삼각군 중복도 `1` 스테파노프) 교차 심사 및 단축 설계도.
 
 ---
 

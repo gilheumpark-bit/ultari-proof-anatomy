@@ -230,19 +230,49 @@ theorem thm_14_literature_195_partition :
     14 + 361 = 375 := by
   decide
 
-/-- Theorem 15 (`Case 005 · 008` vs Alpöge Cross-Audit Bridge):
-    On common denominator `44064 = lcm(24, 4896, 108)` and `132 = 12 * 11`:
-    (1) OpenAI `#003` multiplicity-1 Path A floor `71/108` lies `1/108 = 408/44064`
-        below the `2/3 = 72/108` pole barrier (`29376 - 28968 = 408`),
-    (2) Hybrid critical saving `Δ_hybrid = 14/33 = 56/132` splits into `39/132` (`E_Low`)
-        plus `17/132` (`39 + 17 = 56`),
-    (3) Alpöge's variable multiplicity `m ~ X^(1/2)` shifts `1 - 1/3 = 2/3` directly to
-        `1 - 1/2 = 1/2` (`72/108 - 54/108 = 18/108 = 1/6`). -/
-theorem thm_15_openai_005_008_vs_alpoge_bridge :
-    (72 * 408 - 71 * 408 = 408) ∧
-    (108 * 408 = 44064) ∧
-    (14 * 4 = 56 ∧ 33 * 4 = 132 ∧ 39 + 17 = 56) ∧
-    (72 - 54 = 18 ∧ 18 * 6 = 108) := by
-  decide
+/-- Theorem 15 (`GaussSumCharacterAverageBound.lean:83` & OpenAI `#003` Barrier Contrast):
+    In `hermitian_assembly_numeric_bound` (`GaussSumCharacterAverageBound.lean:21-98`),
+    the two-type Cauchy-Schwarz consolidated exponent bound at line `83` asserts
+    `(r + 2) + (r + 2) + 9 + (9 * (r + 1)^2 + 12 * (r + 1)) + 4 * (r + 1) ≤ 39 * (r + 1)^2`
+    alongside exponential decay `q^{-(k - 2r - 5)}` for companion rank `k ≥ 4r + 7`.
+    Exact polynomial expansion shows:
+    (1) `csLhsExp r + (30 * r^2 + 42 * r + 1) = 39 * (r + 1)^2` for every `r : Nat`,
+    (2) strict inequality `csLhsExp r < csRhsExp r` holds globally with minimum gap `1`
+        attained at `r = 0` (`38 + 1 = 39`), and
+    (3) `k ≥ 4r + 7` forces positive Cauchy-Schwarz decay exponent `k - (2r + 5) ≥ 2r + 2 ≥ 2`. -/
+def csLhsExp (r : Nat) : Nat :=
+  (r + 2) + (r + 2) + 9 + (9 * (r + 1) ^ 2 + 12 * (r + 1)) + 4 * (r + 1)
+
+def csRhsExp (r : Nat) : Nat :=
+  39 * (r + 1) ^ 2
+
+def csSlackPoly (r : Nat) : Nat :=
+  30 * r ^ 2 + 42 * r + 1
+
+theorem thm_15_cauchy_schwarz_exponent_and_decay_margin :
+    csSlackPoly 0 = 1 ∧
+    csLhsExp 0 = 38 ∧
+    csRhsExp 0 = 39 ∧
+    (∀ r d c : Nat,
+      let k := d + 4 * r + 7
+      let q := c + 2
+      csLhsExp r + csSlackPoly r = csRhsExp r ∧
+      csLhsExp r < csRhsExp r ∧
+      2 ^ (2 * r + 2) ≤ q ^ (k - 2 * r - 5)) := by
+  refine ⟨rfl, rfl, rfl, ?_⟩
+  intro r d c
+  dsimp
+  have h_eq : csLhsExp r + csSlackPoly r = csRhsExp r := by
+    unfold csLhsExp csSlackPoly csRhsExp
+    grind
+  have h_pos : 0 < csSlackPoly r := by
+    unfold csSlackPoly
+    omega
+  have hexp : 2 * r + 2 ≤ d + 4 * r + 7 - 2 * r - 5 := by omega
+  have hpow : 2 ^ (2 * r + 2) ≤ (c + 2) ^ (d + 4 * r + 7 - 2 * r - 5) :=
+    Nat.le_trans
+      (Nat.pow_le_pow_left (by omega) (2 * r + 2))
+      (Nat.pow_le_pow_right (by omega) hexp)
+  exact ⟨h_eq, by omega, hpow⟩
 
 end AlpogeSpineAudit

@@ -121,6 +121,22 @@ $$\sum_{j=0}^{m-1} \frac{1}{[K^+:\mathbb{Q}]} \sum_{\rho} \log\!\left(\frac{w_{\
 
 $$\frac{m^2 L}{k} \asymp x^{2(1/2 - \varepsilon/16) + \varepsilon - (9/2 + 10\varepsilon)} = x^{-\frac{7}{2} - \frac{73}{8}\varepsilon} \longrightarrow 0 \qquad (x \to \infty)$$
 
+### 3.4 Remark's $\mathrm{GL}_5$ Six-Fold Cover Heuristic vs Actual Projected Poincaré Series & Cauchy-Schwarz Implementation
+
+On p. 4 item 16 (`10/14/26`) of `remark.pdf`, Alpöge traces the off-diagonal bound to an earlier half-plane argument *"via sixfold cover of $\mathrm{GL}_5$ automorphy of $\mu$ and reducing via Cauchy-Schwarz to a bound on the norm of a suitably projected Poincaré series, approximate orthogonality of the columns of the integral structure."*
+Exhaustive inspection of all `175,187` `.lean` files reveals that **no standalone $\mathrm{GL}_5$ six-fold metaplectic group is defined in Lean**; instead, the codebase formalizes Poincaré-series projection, two-type Cauchy-Schwarz decay, and column-kernel determinant bounds directly in **general rank** across four module groups:
+
+1. **Finite-Cover Discrete Series Export & Parseval Compatibility**: `DiscreteSeriesCover` (`src/Development/AbelianVarietyTheory/PublishedTheorems/TwistedTraceFormula/AdmissibleDiscreteSeriesOfHasParam.lean:35-39`) feeds into third-place theta series via
+   `exportSt_of_discrete_series_cover` (`src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/ExportStOfPrintsStatement.lean:11-12`), paired with `AllCore` (`src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/ThetaParseval/AllCoreOf.lean:12-27`).
+2. **Cuspidality & Multiplicity Realization of Level-Projected Poincaré Series**: `poin_isCuspFun` (`src/Development/AutomorphicArithmetic/ThetaCorrespondence/RealBands/ExistsMultTEqPoin.lean:15-70`) proves cuspidality via unipotent fiber-integral vanishing (`fibre_integral_eq_zero`), and `exists_multT_eq_poin` (lines `75-109`) embeds `poin θ M (congLev D.sp.cm V.gram Λ 𝔪) v c` inside the multiplicity space `MultT θ M`.
+3. **Integral-Structure Column Kernels & DVR Determinant Length**: `StatLenKer` and `StatGlobal` (`src/Formalism/CharacterColumnKernels/Statement.lean:102-153`) prove $\mathrm{length}_{\mathcal{O}}\bigl(\ker \mathrm{matQ}_{\mathcal{O}}(A)\bigr) = v_{\mathcal{O}}(\det A)$ over a DVR and bound congruence-ideal valuations `vIdeal O (congIdeal J π)` across block-triangular Hecke columns (`remark.pdf` p. 4 items 15 and 16).
+4. **Quadric Gauss-Sum Cancellation & Two-Type Cauchy-Schwarz Decay (`thm_15`)**: `GaussSumZeroCountBound` (`src/Formalism/FlagUnipotentLattices/ConductorCharacterLeakBound.lean:43-57`) bounds character sums over isotropic quadrics ($\rho \ge 4$) by $\frac{8}{7} q^{1-\rho} \lvert U\rvert / q^a$,
+   and `hermitian_assembly_numeric_bound` (`src/Formalism/FlagUnipotentLattices/MinkowskiFactorialBounds/GaussSumCharacterAverageBound.lean:21-98`, `S4aux.type_cauchy_schwarz` at line `85`) proves the weighted amplitude bound below for $k \ge 4r + 7$ and $\lvert\mathrm{Ty}\rvert \le H^{r+2}$.
+    - **Polynomial Reserve & Super-Polynomial Decay (`GaussSumCharacterAverageBound.lean:83`, `thm_15`)**: Consolidating $9r^2 + 36r + 38$ under $39(r+1)^2 = 39r^2 + 78r + 39$ at line `83` leaves exact quadratic gap $30r^2 + 42r + 1 \ge 1$ ($r = 0$ min gap `1`: $38 + 1 = 39$),
+      while companion rank $k \asymp x^{9/2+10\varepsilon} \gg 2r + 5$ makes $q^{-(k - 2r - 5)}$ crush off-diagonal leakage super-polynomially.
+
+$$\sum_{d \in D} w(d)\,\Bigl\|\sum_{t \in \mathrm{Ty}} \mathrm{amp}(t, d)\Bigr\|^2 \le H^{39(r+1)^2} \cdot q^{-(k - 2r - 5)} \cdot \mathrm{nn}$$
+
 ---
 
 ## Chapter 4. `VWin` (`Ct = 401`) Five-Count Assembly and Mirror-Parity Split
@@ -174,16 +190,16 @@ $$3111(\ell - 1)^3 - 100\bigl(8(2\ell-1)\ell^2 + 8\ell^2(\ell-1) + \ell(\ell-1)^
     - **2 Dead `Prop := True` Hypothesis Slots (`14` pairs)**: Only `UnusedSlot55` (`4` files, `TrivialLocalCondition.lean:89`) and `UnusedSlot72` (`10` files, `DiscreteSpectrumResidualClassification.lean:7` and [04_Literature_195_Attribution_Dictionary.md](./04_Literature_195_Attribution_Dictionary.md) `#144` `L505`) are dummy `True` hypotheses.
     - **7 Live Mathematical `namespace` Identifiers (`361` pairs)**: `UnusedSlot33` (`71`), `34` (`37`), `35` (`10`), `36` (`2`, `OrderValuation.lean:7`), `38` (`5`, `GradedCompletionLemmas.lean:8`), `39` (`43`), and `80` (`193`, `ExtensionInvariantClause.lean:7`) are active `namespace` blocks containing live theorems ([03_Lean_Code_Spine_Ledger.md](./03_Lean_Code_Spine_Ledger.md) Section 6).
 
-### 5.2 One-to-One Cross-Audit: OpenAI `#003` (`Cases 005 & 008`) vs Alpöge + Claude (`thm_15`)
+### 5.2 One-to-One Cross-Audit: OpenAI `#003` (`(2, 3, 6)`-Triangle Multiplicity-`1` Stepanov) vs Alpöge + Claude
 
-Alpöge explicitly identifies OpenAI's `(2, 3, 6)`-triangle ($\mathbb{C}/\mathbb{Z}[\omega]$) Siegel-zero work on p. 2 of `remark.pdf` as "a Stepanov argument without multiplicity", aligning both projects along four exact axes:
+On p. 2 of `remark.pdf`, Alpöge explicitly identifies OpenAI's public Problem `#003` (`DirichletL` · `SevenEighths.lean` · `ShortDraft`) on the `(2, 3, 6)`-triangle CM curve $\mathbb{C}/\mathbb{Z}[\omega]$ as **"a Stepanov argument without multiplicity"**. Comparing the public `#003` formalization directly against Alpöge and Claude's `175,187`-file archive isolates four structural bifurcation points:
 
-| Mathematical Axis | OpenAI `#003` & Prior Audit (`Cases 005 & 008`) | Alpöge + Claude (`175,187` Files) | Audit Verdict |
+| Mathematical Axis | OpenAI `#003` (`(2, 3, 6)`-Triangle Multiplicity-`1` Method) | Alpöge + Claude (`175,187` Files) | Audit Verdict |
 | :--- | :--- | :--- | :--- |
-| **Base Arithmetic Seed** | Eisenstein ring $\mathbb{Z}[\omega]$ ($\lvert\mu_K\rvert = 6$) cubic/sextic Gauss sums | Same $\mathbb{C}/\mathbb{Z}[\omega]$ order-`6` normalized Gauss sum + CM lattice `ThetaNormCM` | Identical starting seed |
-| **Multiplicity `1` vs `m` & `2/3` Wall** | Multiplicity-`1` Gram matrix + `CubicGauss` fixed point $\alpha^*=4/3$ stalls at $\frac{71}{108} = \frac{2}{3} - \frac{1}{108}$ with single-$\zeta$ deficit $\frac{2}{11}$ | Unreduced lift sum stalls at $\frac{X}{m} = m^2 \implies \sigma = \frac{2}{3}$; cleared by chaining $m \asymp \sqrt{X}$ lifts + rank-$k$ division | Confirms prior No-Go diagnosis |
-| **Off-Diagonal Gauss Control** | Conditional fixed-rank Voronoi zero-mode cancellation + $k=2$ integration by parts ($\Delta_{\mathrm{hybrid}} = \frac{14}{33}$) | Unconditional bypass via $\mathrm{GL}_5$ six-fold metaplectic cover $\mu$ + iterated Parseval / relative trace | Replaces Voronoi hurdle by $\mathrm{GL}_5$ automorphy |
-| **Pole Shift vs Parity Cohomology** | Shifts analytic `coordR` Euler-product poles `2/3 -> 7/12 -> 1/2` via Stickelberger Hecke $L$-functions ($k_\infty = -6$) | Uses Stickelberger/Kato only on odd wing; deploys $\mathrm{GSp}_4 \cdot U(3)$ Hida patching on even Vandiver wing where Stickelberger = `0` | **Parity wall blocks Stickelberger-only shortcut** |
+| **Base CM Seed** | Eisenstein ring $\mathbb{Z}[\omega]$ ($\lvert\mu_K\rvert = 6$) cubic/sextic Gauss sums and fixed-rank Gram matrices | Same $\mathbb{C}/\mathbb{Z}[\omega]$ order-`6` normalized Gauss sum + CM lattice `ThetaNormCM` (`ThetaNormCM.lean:30-40`) | Identical starting CM seed |
+| **Multiplicity `1` vs `m` & `2/3` Barrier** | Multiplicity-`1` positivity gives $\mathrm{Re}(s) > \frac{23}{24},\; \frac{7}{8}$; unreduced lifts stall at $\frac{X}{m} \asymp m^2 \implies \sigma = \frac{2}{3}$ (`thm_02`) | Chains $m \asymp \sqrt{X}$ lifts (`ZetaNonvanishingChebyshevWeights.lean:30-35`) + rank-$k$ division (`thm_03`) to reach $\sigma = \frac{1}{2}$ | $m \asymp \sqrt{X}$ + rank-$k$ division is the key pivot |
+| **Off-Diagonal Gauss Control** | Constrained by fixed-rank oscillatory character/Voronoi cancellation limits | Bypasses fixed-rank oscillation via level-projected Poincaré series (`ExistsMultTEqPoin.lean:15-109`) + two-type Cauchy-Schwarz decay $q^{-(k - 2r - 5)}$ (`GaussSumCharacterAverageBound.lean:21-98`, `thm_15`) | Large companion rank $k$ crushes off-diagonal leakage exponentially |
+| **Abelian Stickelberger vs Parity Wall** | Abelian Stickelberger elements act nontrivially only on odd parity and vanish ($v - c(v) = 0$, `thm_12`) on even fixed classes $c(v) = v$ | Restricts Stickelberger/Kato/Behrend to odd `CountI`, deploying $\mathrm{GSp}_4 \cdot U(3)$ Hida patching on even Vandiver `CountII · CountIII · CountV` | **Even Vandiver blind spot blocks any Stickelberger-only shortcut** |
 
 ### 5.3 Parity-Aware Short-Proof Compression Routes
 
@@ -215,4 +231,4 @@ Every exponent, congruence, parity, and slack identity in this report correspond
 | `thm_12_stickelberger_parity_annihilation` | $c(v) = v \implies v - c(v) = 0$ on the even Vandiver eigenspace | `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:7` |
 | `thm_13_behrend_base5_sphere_zero_3ap` | Zero nontrivial 3-term arithmetic progressions on the 12-point base-5 shell | `BehrendSets/Statement.lean:48-62` |
 | `thm_14_literature_195_partition` | `184 + 1 + 9 + 1 = 195` wrapper split and `2 + 7 = 9` (`14 + 361 = 375`) `UnusedSlot` split | `EveryCharacterOfLiteratureOfVWin.lean:219-810` |
-| `thm_15_openai_005_008_vs_alpoge_bridge` | Exact rational bridge between `71/108`, `14/33`, and `1/2` | `Cases 005 & 008` cross-audit |
+| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | Cauchy-Schwarz exponent gap $30r^2 + 42r + 1 \ge 1$ ($r=0$ min gap `1`) and decay margin $k - (2r+5) \ge 2r+2$ | `GaussSumCharacterAverageBound.lean:83` |

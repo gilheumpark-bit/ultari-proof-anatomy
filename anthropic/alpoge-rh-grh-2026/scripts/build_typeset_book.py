@@ -43,7 +43,7 @@ EDITIONS = {
     <div class="spine-node spine-accent"><strong>신작 보형 창문 정리 (핵심 엔진)</strong><br/>UpperTheory.Top.VWin (지수 상한 401)<br/>제곱근 반복 세타 리프트 + 시소 약분</div>
   </div>
   <div class="spine-arrow">▲ 계단 C : 공통 갈루아-보형 다리 (RowSrc.lean:6)</div>
-  <div class="spine-row"><div class="spine-node spine-bot"><strong>신작 갈루아 봉합 정리 (galoisLocalGlobalStrong_recParameter)</strong><br/>베렌트 등차 회피 타워 + 세타 리프트 갈루아 정합성으로 외부 가정 완전 소거</div></div>
+  <div class="spine-row"><div class="spine-node spine-bot"><strong>신작 갈루아 봉합 정리 (galoisLocalGlobalStrong_recParameter)</strong><br/>홀·짝 기우성 양날개 패칭 + 베렌트 타워 · 세타 리프트 갈루아 정합성으로 외부 가정 소거</div></div>
 </div>""",
     },
     "en": {
@@ -79,7 +79,7 @@ EDITIONS = {
     <div class="spine-node spine-accent"><strong>Novel Automorphic Window (Core Engine)</strong><br/>UpperTheory.Top.VWin (Exponent Cap 401)<br/>sqrt(X) Iterated Theta Lifts + Seesaw Division</div>
   </div>
   <div class="spine-arrow">▲ Step C : Shared Galois-Automorphic Bridge (RowSrc.lean:6)</div>
-  <div class="spine-row"><div class="spine-node spine-bot"><strong>Unconditional Galois Bridge (galoisLocalGlobalStrong_recParameter)</strong><br/>Discharged via Iterated Theta Lifts and Behrend-Filtered Cyclotomic Towers</div></div>
+  <div class="spine-row"><div class="spine-node spine-bot"><strong>Unconditional Galois Bridge (galoisLocalGlobalStrong_recParameter)</strong><br/>Odd/Even Parity Patching + Behrend-Filtered Tower &amp; Theta-Lift Compatibility</div></div>
 </div>""",
     },
 }
@@ -96,7 +96,7 @@ TEX_SUBS = [
     (r"\\langle(?![a-zA-Z])", "⟨"), (r"\\rangle(?![a-zA-Z])", "⟩"),
     (r"\\\{", "{"), (r"\\\}", "}"), (r"\\!", ""),
     (r"\\bmod(?![a-zA-Z])", " mod "), (r"\\le(?![a-zA-Z])", "≤"), (r"\\ge(?![a-zA-Z])", "≥"),
-    (r"\\ll(?![a-zA-Z])", "≪"), (r"\\neq(?![a-zA-Z])", "≠"), (r"\\approx(?![a-zA-Z])", "≈"),
+    (r"\\ll(?![a-zA-Z])", "≪"), (r"\\gg(?![a-zA-Z])", "≫"), (r"\\neq(?![a-zA-Z])", "≠"), (r"\\approx(?![a-zA-Z])", "≈"),
     (r"\\asymp(?![a-zA-Z])", "≍"), (r"\\propto(?![a-zA-Z])", "∝"),
     (r"\\lesssim(?![a-zA-Z])", "≲"), (r"\\sim(?![a-zA-Z])", "∼"),
     (r"\\implies(?![a-zA-Z])", "⟹"), (r"\\Longrightarrow(?![a-zA-Z])", "⟹"),
@@ -116,7 +116,7 @@ TEX_SUBS = [
     (r"\\mu(?![a-zA-Z])", "μ"), (r"\\nu(?![a-zA-Z])", "ν"), (r"\\omega(?![a-zA-Z])", "ω"),
     (r"\\varepsilon(?![a-zA-Z])", "ε"), (r"\\chi(?![a-zA-Z])", "χ"),
     (r"\\alpha(?![a-zA-Z])", "α"), (r"\\beta(?![a-zA-Z])", "β"), (r"\\pi(?![a-zA-Z])", "π"),
-    (r"\\ell(?![a-zA-Z])", "ℓ"), (r"\\det(?![a-zA-Z])", "det "), (r"\\log(?![a-zA-Z])", "log "),
+    (r"\\ell(?![a-zA-Z])", "ℓ"), (r"\\ker(?![a-zA-Z])", "ker "), (r"\\det(?![a-zA-Z])", "det "), (r"\\log(?![a-zA-Z])", "log "),
     (r"\\sin(?![a-zA-Z])", "sin"), (r"\\exp(?![a-zA-Z])", "exp"), (r"\\sup(?![a-zA-Z])", "sup "),
     (r"\\mid(?![a-zA-Z])", "∣"), (r"\\in(?![a-zA-Z])", "∈"), (r"\\notin(?![a-zA-Z])", "∉"),
     (r"\\subseteq(?![a-zA-Z])", "⊆"), (r"\\subset(?![a-zA-Z])", "⊂"),
@@ -171,6 +171,25 @@ def make_inline_math(expr: str) -> str:
 
 def replace_math_and_mermaid(md_text: str, spine_html: str):
     md_text = re.sub(r"```mermaid[\s\S]*?```", spine_html, md_text)
+    norm_lines = []
+    in_fence = False
+    raw_lines = md_text.splitlines()
+    for idx, ln in enumerate(raw_lines):
+        if ln.lstrip().startswith("```"):
+            in_fence = not in_fence
+            norm_lines.append(ln)
+            continue
+        if (
+            not in_fence
+            and idx > 0
+            and raw_lines[idx - 1].strip() != ""
+            and not re.match(r"^\s*(?:[-*]|\d+\.)\s", raw_lines[idx - 1])
+            and not raw_lines[idx - 1].startswith("   ")
+            and re.match(r"^(?:[-*]|\d+\.)\s", ln)
+        ):
+            norm_lines.append("")
+        norm_lines.append(ln)
+    md_text = "\n".join(norm_lines)
     stash = []
 
     def save_token(rendered: str) -> str:
