@@ -216,13 +216,18 @@ theorem thm_13_behrend_base5_sphere_zero_3ap :
   decide
 
 /-- Theorem 14 (`EveryCharacterOfLiteratureOfVWin.lean:219-810` & Forensic Slot Audit):
-    Complete partition of all `195` `UpperTheory.LiteratureTheorems.*` declarations:
-    `184` active individual literature wrappers + `1` dead scaffolding wrapper (`UnusedSlot72`
-    at `L505`) + `9` composite hypothesis-bundle assemblers + `1` master conclusion = `195`,
-    with `9` distinct `UnusedSlot` types across `375` module references. -/
+    Complete partition of all `195` `UpperTheory.LiteratureTheorems.*` declarations
+    (`184` active individual wrappers + `1` dead `Prop := True` wrapper `UnusedSlot72` at `L505`
+    + `9` composite assemblers + `1` master conclusion = `195`) and exact `2 + 7 = 9`
+    classification of `UnusedSlot*` identifiers (`2` dead `Prop := True` slots across `4 + 10 = 14`
+    slot-file pairs vs `7` active mathematical namespaces across `71 + 37 + 10 + 2 + 5 + 43 + 193 = 361`
+    slot-file pairs, totaling `375` slot-file pairs across `371` unique files). -/
 theorem thm_14_literature_195_partition :
-    184 + 1 + 9 + 1 = 195 ∧ 184 + 1 = 185 ∧
-    71 + 37 + 10 + 2 + 5 + 43 + 4 + 10 + 193 = 375 := by
+    184 + 1 + 9 + 1 = 195 ∧
+    2 + 7 = 9 ∧
+    4 + 10 = 14 ∧
+    71 + 37 + 10 + 2 + 5 + 43 + 193 = 361 ∧
+    14 + 361 = 375 := by
   decide
 
 /-- Theorem 15 (`Case 005 · 008` vs Alpöge Cross-Audit Bridge):

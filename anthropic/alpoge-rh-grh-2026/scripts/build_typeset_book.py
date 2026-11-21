@@ -93,6 +93,7 @@ def strip_tags(s: str) -> str:
 
 def format_tex_expr(expr: str) -> str:
     s = expr.strip()
+    s = s.replace("{,}", ",")
     s = re.sub(r"\\pmod\s*\{([^}]*)\}", r"(mod \1)", s)
     s = re.sub(r"\\pmod\s*([A-Za-z0-9]+)", r"(mod \1)", s)
     s = re.sub(r"\\bmod\s*\{([^}]*)\}", r" mod \1", s)
@@ -120,8 +121,8 @@ def format_tex_expr(expr: str) -> str:
             lambda m: f"<span class='sqrt'>√<span class='rad'>{m.group(1)}</span></span>",
             s,
         )
-    s = re.sub(r"\^\s*([0-9a-zA-Zα-ωΑ-Ωℓ∨'+*-])", r"<sup>\1</sup>", s)
-    s = re.sub(r"_\s*([0-9a-zA-Zα-ωΑ-Ωℓ])", r"<sub>\1</sub>", s)
+    s = re.sub(r"\^\s*([0-9a-zA-Zα-ωΑ-Ωℓ∨×'+*-])", r"<sup>\1</sup>", s)
+    s = re.sub(r"_\s*([0-9a-zA-Zα-ωΑ-Ωℓ∞])", r"<sub>\1</sub>", s)
     s = s.replace("\\|", "‖")
     if "\\" in s:
         raise ValueError(f"Unconverted TeX backslash in math: {s!r}")

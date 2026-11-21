@@ -64,7 +64,7 @@
 
 | 폴더 | 분석 대상 및 원본 규모 | 핵심 검증 및 수식 복원 결과 | 검증 · 단행본 산출물 | 바로가기 |
 | :---: | :--- | :--- | :--- | :---: |
-| **[`alpoge-rh-grh-2026`](./anthropic/alpoge-rh-grh-2026/README.md)** | **Anthropic (Levent Alpöge + Claude): 리만 가설(RH) 및 디리클레 GRH**<br>`175,187`개 `.lean` 파일, `17,374,215`줄 (주석 `0`줄 · `.bib` `0`건) | • **이중 커널 전수 컴파일 완주 (`PASS`)**: `x86_64` · `aarch64` `leanprover/lean4:v4.33.1` 양쪽에서 `175,187 / 175,187`개 에러 `0`건, 표준 3공리만 의존을 확인합니다.<br>• **제1~5막 등식 복원 및 `Case 005·008` 교차 심사**: $\varepsilon < \frac{1}{52}$, 루카스 소수 증인 `413,718,278,401`, 바르그만-포크·양기안 RTT 행렬식 $W(\cdot)\ge 0$, 지겔-베유 $-Cm^2L/k$ 소거, `VWin`(`Ct=401`) 복소켤레 기우성 양날개 분해 및 `UnusedSlot` 9종(`375`회)을 규명합니다.<br>• **기출 `195 / 195`선(`100.0%`) 서지 복원**: 무주석 코드 속 `UpperTheory.LiteratureTheorems.*` `195`개 전량의 원저자·연도를 복원합니다. | **독립 정리 15개** (`0 sorry`)<br>[`alpoge_spine_arithmetic_audit.lean`](./anthropic/alpoge-rh-grh-2026/proofs/alpoge_spine_arithmetic_audit.lean)<br>[`FINAL_FEDERATED_VERDICT.txt`](./anthropic/alpoge-rh-grh-2026/data/FINAL_FEDERATED_VERDICT.txt)<br>[**A4 단행본 PDF (43쪽)**](./anthropic/alpoge-rh-grh-2026/book/리만가설_1737만줄_완전풀이집.pdf) | [**한국어 개요**](./anthropic/alpoge-rh-grh-2026/README.md)<br>[**English**](./anthropic/alpoge-rh-grh-2026/README.en.md)<br>[**비유 편 (`01`)**](./anthropic/alpoge-rh-grh-2026/01_수식없이_읽는_비유풀이.md)<br>[**심층 심사서 (`05`)**](./anthropic/alpoge-rh-grh-2026/05_전공자용_수론심층심사및수식복원서.md) |
+| **[`alpoge-rh-grh-2026`](./anthropic/alpoge-rh-grh-2026/README.md)** | **Anthropic (Levent Alpöge + Claude): 리만 가설(RH) 및 디리클레 GRH**<br>`175,187`개 `.lean` 파일, `17,374,215`줄 (주석 `0`줄 · `.bib` `0`건) | • **이중 커널 전수 컴파일 완주 (`PASS`)**: `x86_64` · `aarch64` `leanprover/lean4:v4.33.1` 양쪽에서 `175,187 / 175,187`개 에러 `0`건, 표준 3공리만 의존을 확인합니다.<br>• **제1~5막 등식 복원 및 `Case 005·008` 교차 심사**: $\varepsilon < \frac{1}{52}$, 루카스 소수 증인 `413,718,278,401`, 바르그만-포크·양기안 RTT 행렬식 $W(\cdot)\ge 0$, 지겔-베유 $-Cm^2L/k$ 소거, `VWin`(`Ct=401`) 복소켤레 기우성 양날개 분해 및 `UnusedSlot` 9종(`2`종 비활성 `True` 슬롯 + `7`종 활성 네임스페이스, `375`쌍)을 규명합니다.<br>• **기출 `195 / 195`선(`100.0%`) 서지 복원**: 무주석 코드 속 `UpperTheory.LiteratureTheorems.*` `195`개 전량의 원저자·연도를 복원합니다. | **독립 정리 15개** (`0 sorry`)<br>[`alpoge_spine_arithmetic_audit.lean`](./anthropic/alpoge-rh-grh-2026/proofs/alpoge_spine_arithmetic_audit.lean)<br>[`FINAL_FEDERATED_VERDICT.txt`](./anthropic/alpoge-rh-grh-2026/data/FINAL_FEDERATED_VERDICT.txt)<br>[**A4 단행본 PDF (43쪽)**](./anthropic/alpoge-rh-grh-2026/book/리만가설_1737만줄_완전풀이집.pdf) | [**한국어 개요**](./anthropic/alpoge-rh-grh-2026/README.md)<br>[**English**](./anthropic/alpoge-rh-grh-2026/README.en.md)<br>[**비유 편 (`01`)**](./anthropic/alpoge-rh-grh-2026/01_수식없이_읽는_비유풀이.md)<br>[**심층 심사서 (`05`)**](./anthropic/alpoge-rh-grh-2026/05_전공자용_수론심층심사및수식복원서.md) |
 
 ---
 
@@ -81,7 +81,7 @@ ultari-proof-anatomy/
 ├── lakefile.toml              # 루트 Mathlib 4 v4.35.0 의존성 설정 (사건 010 및 015용)
 ├── lake-manifest.json         # 고정 Mathlib 4 패키지 매니페스트
 ├── lean-toolchain             # 고정 Lean 컴파일러 버전 (v4.35.0)
-├── MANIFEST.sha256            # 전 케이스 통합 마스터 SHA-256 봉인 원장 (312개 핵심 산출물)
+├── MANIFEST.sha256            # 전 케이스 통합 마스터 SHA-256 봉인 원장 (328개 핵심 산출물)
 ├── LICENSE                    # Apache License 2.0
 ├── NOTICE                     # 결합 라이선스(Apache-2.0 / CC BY 4.0) 및 출처·명칭 사용 고지
 ├── README.md                  # 영문 마스터 목차

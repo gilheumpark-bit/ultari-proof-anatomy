@@ -9,10 +9,10 @@
 ### 1.1 목표 명제 정의 파일 (`src/Statements.lean:1-16`, 전문 `16`줄)
 - **의존성**: `import Mathlib` 단일 줄(`1`행). 사용자 정의 공리·구조체 `0`건.
 - **선언 정의 4종**:
-  - 제타 비자명 영점 임계선 명제(`RiemannZetaZerosOnLine`, `3~4`행): $\zeta(s)=0$이고 음의 짝수 자명영점 $-2(n+1)$ 및 극점 $s=1$이 아니면 $\operatorname{Re}(s) = 1/2$.
-  - 디리클레 우반평면 무영점 명제(`DirichletLNonvanishingRightOfHalf`, `6~8`행): 모든 양의 법 $N$과 모든 디리클레 지표 $\chi \bmod N$에서 $\operatorname{Re}(s) > 1/2$이고 $(\chi \neq 1 \lor s \neq 1)$이면 $L(s, \chi) \neq 0$.
-  - 디리클레 임계띠 영점 정렬 명제(`DirichletLZerosOnLine`, `10~12`행): 임계띠 $0 < \operatorname{Re}(s) < 1$ 내 모든 디리클레 $L$-함수 영점은 $\operatorname{Re}(s) = 1/2$.
-  - 원시 디리클레 지표 임계선 명제(`PrimitiveDirichletLZerosOnLine`, `14~16`행): 원시 디리클레 지표에 관한 동일 임계선 명제.
+    - 제타 비자명 영점 임계선 명제(`RiemannZetaZerosOnLine`, `3~4`행): $\zeta(s)=0$이고 음의 짝수 자명영점 $-2(n+1)$ 및 극점 $s=1$이 아니면 $\operatorname{Re}(s) = 1/2$.
+    - 디리클레 우반평면 무영점 명제(`DirichletLNonvanishingRightOfHalf`, `6~8`행): 모든 양의 법 $N$과 모든 디리클레 지표 $\chi \bmod N$에서 $\operatorname{Re}(s) > 1/2$이고 $(\chi \neq 1 \lor s \neq 1)$이면 $L(s, \chi) \neq 0$.
+    - 디리클레 임계띠 영점 정렬 명제(`DirichletLZerosOnLine`, `10~12`행): 임계띠 $0 < \operatorname{Re}(s) < 1$ 내 모든 디리클레 $L$-함수 영점은 $\operatorname{Re}(s) = 1/2$.
+    - 원시 디리클레 지표 임계선 명제(`PrimitiveDirichletLZerosOnLine`, `14~16`행): 원시 디리클레 지표에 관한 동일 임계선 명제.
 
 ### 1.2 최종 5대 정리 진입 파일 (`src/Main.lean:1-12`, 전문 `12`줄)
 - `4`행: 순정 리만 가설(`theorem riemannHypothesis : RiemannHypothesis := rhOfAll`)
@@ -50,9 +50,9 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
     UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter
 ```
 - **3대 하위 의존 콘 실측 ([anatomy_stats.json](./data/anatomy_stats.json))**:
-  1. 국소 랑글란즈 대응 매개변수 존재성(`recTExists`, `src/Development/AutomorphicArithmetic/Foundations/LocalLanglands/LocalCentralUnits/RecTExists.lean:1-6`): 의존 콘 `26,673`개 파일 / `4,206,972`줄.
-  2. 세타 리프트 기반 갈루아 국소-대역 정합성(`galoisLocalGlobalStrong_recParameter`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`): 의존 콘 `66,168`개 파일 / `7,850,273`줄.
-  3. 보형 창문 성립 정리(`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): 의존 콘 `157,604`개 파일 / `16,087,324`줄.
+    1. 국소 랑글란즈 대응 매개변수 존재성(`recTExists`, `src/Development/AutomorphicArithmetic/Foundations/LocalLanglands/LocalCentralUnits/RecTExists.lean:1-6`): 의존 콘 `26,673`개 파일 / `4,206,972`줄.
+    2. 세타 리프트 기반 갈루아 국소-대역 정합성(`galoisLocalGlobalStrong_recParameter`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`): 의존 콘 `66,168`개 파일 / `7,850,273`줄.
+    3. 보형 창문 성립 정리(`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): 의존 콘 `157,604`개 파일 / `16,087,324`줄.
 
 ### 3.2 보형 창문 인터페이스 (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:12-50`)
 - 원시 지표 무영점 조립(`plugWin`, `EveryCharacter.lean` `8~11`행): 그린 함수 조건(`Green`), 보형 창문 조건(`VWin`), 닫힌 패밀리 가설을 결합해 `la := 3 / 2` 스케일에서 원시 지표 무영점(`ZeroFreeAll`)을 도출하고, `18`행 비원시 확장(`imprimitive`)으로 모든 지표를 덮습니다.
@@ -73,9 +73,9 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 | **제5막** | 베렌트 선형관계 회피 집합, 등차 창문 상한, 이와사와 타워 | `BehrendSets/Statement.lean:48-81`<br>`RowSrc.lean:6`<br>`CorGKOf.lean:10-29` | `BehrendFree`, `WindowTwo`, `galoisLocalGlobalStrong_recParameter`, `corGK` |
 
 - **4절 모듈 전체 경로 색인**:
-  - 제1~3막 `Formalism` 직속: `src/Formalism/StatementOC.lean:11-51`, `src/Formalism/DefsOC.lean:12-47`, `src/Formalism/StatementU.lean:9-46`, `src/Formalism/ZetaNonvanishingGeneralWeights.lean:9-25`, `src/Formalism/ZetaNonvanishingChebyshevWeights.lean:9-35`
-  - 제3~4막 세타·주기: `src/Formalism/ThetaLiftIndependence/FinalThetaLiftAMFKIndep.lean:1-15`, `src/Formalism/PeriodIntegrals/ThetaNormCM.lean:30-40`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/SiegelEisensteinSecondTermHypotheses.lean:69`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:810-814`
-  - 제5막 베렌트·타워: `src/Formalism/BehrendSets/Statement.lean:48-81`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/CorGKOf.lean:10-29`
+    - 제1~3막 `Formalism` 직속: `src/Formalism/StatementOC.lean:11-51`, `src/Formalism/DefsOC.lean:12-47`, `src/Formalism/StatementU.lean:9-46`, `src/Formalism/ZetaNonvanishingGeneralWeights.lean:9-25`, `src/Formalism/ZetaNonvanishingChebyshevWeights.lean:9-35`
+    - 제3~4막 세타·주기: `src/Formalism/ThetaLiftIndependence/FinalThetaLiftAMFKIndep.lean:1-15`, `src/Formalism/PeriodIntegrals/ThetaNormCM.lean:30-40`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/SiegelEisensteinSecondTermHypotheses.lean:69`, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:810-814`
+    - 제5막 베렌트·타워: `src/Formalism/BehrendSets/Statement.lean:48-81`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/CorGKOf.lean:10-29`
 
 ---
 
@@ -90,14 +90,15 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 
 ---
 
-## 6. `VWin`(`Ct = 401`) 내부 5대 카운트 조립부 및 비활성 슬롯(`UnusedSlot`) 전수 감사
+## 6. `VWin`(`Ct = 401`) 내부 5대 카운트 조립부 및 `UnusedSlot` 9종 분류 감사
 
-`vwin_of_row`(`157,604`개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 리팩터링 잔여 슬롯은 다음과 같습니다(상세 수식 유도는 [05_전공자용_수론심층심사및수식복원서.md](./05_전공자용_수론심층심사및수식복원서.md) 제4·5장 참조).
+`vwin_of_row`(`157,604`개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 `UnusedSlot` 식별자 분류는 다음과 같습니다(상세 수식 유도는 [05_전공자용_수론심층심사및수식복원서.md](./05_전공자용_수론심층심사및수식복원서.md) 제4·5장 참조).
 
 - **`VWin` 5대 카운트 합류 사슬**:
-  - 5개 카운트(`CountI · CountII · CountIII · CountV · CountZ`) 통합: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`
-  - 페레로-워싱턴(`FW.ferreroWashington`), `Ct = 401`, 베렌트 체(`Odd.thmBcFree_of`) 결합: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/HVCore.lean:18-24`
-  - 가토 $\mathrm{GL}_2$ 오일러 계(`katoTwoW_of_printsH`), $\mathrm{GSp}_4`(`sp4In0_alt`), $U(3)$ 히다 패칭(`published_hypotheses_from_patching_alt`) 분배: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`
-  - 슈티켈베르거 홀수 기우성 합동(`Odd a`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/StickelbergerElements/StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`
-- **리팩터링 비활성 스캐폴딩 슬롯(`UnusedSlot`) 9종 전수 집계**:
-  - `UnusedSlot33`(`71`개), `UnusedSlot34`(`37`개), `UnusedSlot35`(`10`개), `UnusedSlot36`(`2`개), `UnusedSlot38`(`5`개), `UnusedSlot39`(`43`개), `UnusedSlot55`(`4`개), `UnusedSlot72`(`10`개), `UnusedSlot80`(`193`개)로 총 `9`종 `375`회 참조되며, 모두 `Prop := True` 가정 자리에 `trivial`을 대입하는 구형 인터페이스 잔재여서 커널 건전성 침해는 `0`건입니다.
+    - 5개 카운트(`CountI · CountII · CountIII · CountV · CountZ`) 통합: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`
+    - 페레로-워싱턴(`FW.ferreroWashington`), `Ct = 401`, 베렌트 체(`Odd.thmBcFree_of`) 결합: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/HVCore.lean:18-24`
+    - 가토 $\mathrm{GL}_2$ 오일러 계(`katoTwoW_of_printsH`), $\mathrm{GSp}_4$ (`sp4In0_alt`), $U(3)$ 히다 패칭(`published_hypotheses_from_patching_alt`) 분배: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`
+    - 슈티켈베르거 홀수 기우성 합동(`Odd a`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/StickelbergerElements/StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`
+- **`UnusedSlot` 식별자 9종 전수 분류 (`2 + 7 = 9`종, 고유 파일 `371`개 · 슬롯-파일 쌍 `375`개 · 출현 `2,226`회)**:
+    - **실제 비활성 `Prop := True` 가정 슬롯 2종 (`14`개 슬롯-파일 쌍)**: `UnusedSlot55`(`4`개 파일, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/TrivialLocalCondition.lean:89`)와 `UnusedSlot72`(`10`개 파일, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/DiscreteSpectrumResidualClassification.lean:7`)만 `True`(`trivial`)로 봉합된 구형 가설 인자입니다.
+    - **활성 수학 정리를 담은 `namespace` 명명 잔재 7종 (`361`개 슬롯-파일 쌍)**: 나머지 `UnusedSlot33`(`71`개), `UnusedSlot34`(`37`개), `UnusedSlot35`(`10`개), `UnusedSlot36`(`2`개), `UnusedSlot38`(`5`개), `UnusedSlot39`(`43`개), `UnusedSlot80`(`193`개)은 일괄 익명화·재명명 과정에서 이름만 `UnusedSlot*`으로 남은 **활성 네임스페이스**이며 내부에는 바흐 가군·등급 완비화·높이 부치 정리가 실제로 구현되어 있습니다.

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from html.parser import HTMLParser
 import json
 import os
 import pathlib
@@ -24,7 +25,7 @@ BANNED = [
     "살펴보겠", "상황에 따라 다를 수 있습니다", "를 통해", "에 대해", "에 있어서",
 ]
 REL_LINK_RE = re.compile(r"\]\((\./[^)#\s]+)(?:#L(\d+)(?:-L(\d+))?)?\)")
-SRC_PIN_RE = re.compile(r"`(src/[A-Za-z0-9_./'₂]+\.lean):(\d+)(?:-(\d+))?`")
+ANY_LEAN_PIN_RE = re.compile(r"`((?:src/)?[A-Za-z0-9_./'₂]+\.lean):(\d+)(?:-(\d+))?`")
 LIT_REF_RE = re.compile(r"`([A-Za-z0-9_']+)`\s*\(`L(\d+)`\)")
 FIG_NAMES = [
     "fig1_archive_breakdown.png",
@@ -32,6 +33,56 @@ FIG_NAMES = [
     "fig3_lift_cost_barrier.png",
     "fig4_vwin_parity_and_counts.png",
 ]
+
+
+class BookHTMLAuditor(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []
+        self.math_depth = 0
+        self.code_depth = 0
+        self.cur_math = []
+        self.math_texts = []
+        self.prose_chunks = []
+
+    def handle_starttag(self, tag, attrs):
+        cls_tokens = set(dict(attrs).get("class", "").split())
+        is_math = bool(cls_tokens & {"math-block", "math-inline"})
+        is_code = tag in {"code", "pre", "style", "script"}
+        if is_math:
+            if self.math_depth == 0:
+                self.cur_math = []
+            self.math_depth += 1
+        if is_code:
+            self.code_depth += 1
+        self.stack.append((tag, is_math, is_code))
+
+    def handle_endtag(self, tag):
+        if not self.stack:
+            return
+        _, is_math, is_code = self.stack.pop()
+        if is_math:
+            self.math_depth -= 1
+            if self.math_depth == 0:
+                self.math_texts.append("".join(self.cur_math))
+                self.cur_math = []
+        if is_code:
+            self.code_depth -= 1
+
+    def handle_data(self, data):
+        if self.math_depth > 0:
+            self.cur_math.append(data)
+        elif self.code_depth == 0:
+            self.prose_chunks.append(data)
+
+
+def build_lean_suffix_index(src_dir: pathlib.Path) -> dict:
+    by_name = {}
+    if not src_dir.is_dir():
+        return by_name
+    for p in src_dir.rglob("*.lean"):
+        by_name.setdefault(p.name, []).append(p)
+    return by_name
 
 
 def check_file_lines(path: pathlib.Path, s: int, e: int, label: str, errors: list):
@@ -43,7 +94,42 @@ def check_file_lines(path: pathlib.Path, s: int, e: int, label: str, errors: lis
         errors.append(f"{label}: line range {s}-{e} out of bounds (max {nlines}) for {path.name}")
 
 
-def check_one_md(md: pathlib.Path, lit_lines, fallback_lit_set: set, has_raw_src: bool, errors: list):
+def check_md_delimiters(md_name: str, txt: str, errors: list):
+    lines_no_fence = []
+    in_fence = False
+    for idx, line in enumerate(txt.splitlines(), 1):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            lines_no_fence.append("")
+            continue
+        if in_fence:
+            lines_no_fence.append("")
+            continue
+        if line.count("`") % 2 != 0:
+            errors.append(f"{md_name}:{idx}: odd backtick count ({line.count('`')})")
+        if re.match(r"^ {1,3}(?:[-*]|\d+\.)\s", line):
+            errors.append(f"{md_name}:{idx}: sub-list item must use 4-space indent for Python-Markdown")
+        lines_no_fence.append(re.sub(r"`[^`\n]*`", "", line))
+    if in_fence:
+        errors.append(f"{md_name}: unclosed fenced code block")
+
+    joined = "\n".join(lines_no_fence)
+    if joined.count("$$") % 2 != 0:
+        errors.append(f"{md_name}: odd display-math '$$' delimiter count")
+
+    def strip_display(mat):
+        inner = mat.group(1)
+        if "$" in inner:
+            errors.append(f"{md_name}: stray '$' inside display math block")
+        return "\n" * inner.count("\n")
+
+    inline_only = re.sub(r"\$\$([\s\S]+?)\$\$", strip_display, joined)
+    for idx, line in enumerate(inline_only.splitlines(), 1):
+        if line.count("$") % 2 != 0:
+            errors.append(f"{md_name}:{idx}: odd inline-math '$' delimiter count")
+
+
+def check_one_md(md: pathlib.Path, lit_lines, fallback_lit_set: set, lean_idx: dict, has_raw_src: bool, errors: list):
     txt = md.read_text(encoding="utf-8")
     for idx, line in enumerate(txt.splitlines(), 1):
         if len(line) > 450:
@@ -51,7 +137,9 @@ def check_one_md(md: pathlib.Path, lit_lines, fallback_lit_set: set, has_raw_src
     for b in BANNED:
         if b in txt:
             errors.append(f"{md.name}: banned token {b!r}")
-    prose_only = re.sub(r"\$\$[\s\S]+?\$\$|\$[^\n$]+?\$", "", txt)
+    check_md_delimiters(md.name, txt, errors)
+
+    prose_only = re.sub(r"```[\s\S]*?```|`[^`\n]*`|\$\$[\s\S]+?\$\$|\$[^\n$]+?\$", "", txt)
     if re.search(r"!(?!\[)", prose_only):
         errors.append(f"{md.name}: banned exclamation mark '!' in prose")
     if md.name.startswith("01_") and "$" in txt:
@@ -68,12 +156,20 @@ def check_one_md(md: pathlib.Path, lit_lines, fallback_lit_set: set, has_raw_src
             check_file_lines(target, int(l1), int(l2 or l1), md.name, errors)
 
     pin_cnt = 0
-    for mat in SRC_PIN_RE.finditer(txt):
+    for mat in ANY_LEAN_PIN_RE.finditer(txt):
         sub_p, l1, l2 = mat.groups()
+        s_ln, e_ln = int(l1), int(l2 or l1)
         pin_cnt += 1
-        if has_raw_src:
-            target = FORENSIC / "extracted/lean" / sub_p
-            check_file_lines(target, int(l1), int(l2 or l1), md.name, errors)
+        if not has_raw_src:
+            continue
+        if sub_p.startswith("src/"):
+            check_file_lines(FORENSIC / "extracted/lean" / sub_p, s_ln, e_ln, md.name, errors)
+        else:
+            cands = [p for p in lean_idx.get(pathlib.Path(sub_p).name, []) if str(p).endswith(sub_p)]
+            if not cands:
+                errors.append(f"{md.name}: unresolved Lean pin {sub_p}:{l1}")
+            elif not any(1 <= s_ln <= e_ln <= len(p.read_bytes().splitlines()) for p in cands):
+                errors.append(f"{md.name}: line range {s_ln}-{e_ln} out of bounds for {sub_p}")
 
     lit_cnt = 0
     if md.name.startswith("04_"):
@@ -94,8 +190,8 @@ def check_lean_audit(errors: list) -> int:
         errors.append("missing proofs/alpoge_spine_arithmetic_audit.lean")
         return 0
     src = AUDIT_LEAN.read_text(encoding="utf-8")
-    if re.search(r"\bsorry\b|\baxiom\b", src):
-        errors.append("alpoge_spine_arithmetic_audit.lean: contains forbidden sorry/axiom")
+    if re.search(r"\bsorry\b|\baxiom\b|\bunsafe\b|\bimplemented_by\b|\bextern\b", src):
+        errors.append("alpoge_spine_arithmetic_audit.lean: contains forbidden sorry/axiom/unsafe")
     thm_cnt = len(re.findall(r"^theorem\s+thm_", src, flags=re.M))
     lean_bin = shutil.which("lean") or str(pathlib.Path.home() / ".elan/bin/lean")
     r = subprocess.run([lean_bin, str(AUDIT_LEAN)], capture_output=True, text=True, check=False, timeout=60)
@@ -104,7 +200,7 @@ def check_lean_audit(errors: list) -> int:
     return thm_cnt
 
 
-def check_figures_and_book(errors: list):
+def check_figures_and_book(errors: list) -> str:
     for fn in FIG_NAMES:
         fp = GUIDE / "figures" / fn
         if not fp.is_file() or fp.stat().st_size < 50000:
@@ -118,16 +214,37 @@ def check_figures_and_book(errors: list):
         for b in BANNED:
             if b in html_no_b64:
                 errors.append(f"book HTML: banned token {b!r}")
-        for mspan in re.findall(r"<div class=['\"]math-block['\"]>([\s\S]*?)</div>", html_no_b64):
-            if "\\" in mspan:
-                errors.append(f"book HTML: unconverted TeX backslash in {mspan!r}")
-        prose_html = re.sub(r"<div class=['\"]math-block['\"]>[\s\S]*?</div>", "", html_no_b64)
-        prose_html = re.sub(r"<strong>[a-zA-Z]</strong>!", "", prose_html)
-        prose_html = re.sub(r"<code[^>]*>[\s\S]*?</code>", "", prose_html)
-        if re.search(r"(?<!<)!", prose_html):
+        auditor = BookHTMLAuditor()
+        auditor.feed(html_no_b64)
+        if len(auditor.math_texts) < 200:
+            errors.append(f"book HTML: expected >= 200 math spans/blocks, found {len(auditor.math_texts)}")
+        for mtxt in auditor.math_texts:
+            for bad_tok in ("\\", "{,}", "^", "_", "$"):
+                if bad_tok in mtxt:
+                    errors.append(f"book HTML: unconverted math token {bad_tok!r} in {mtxt!r}")
+        full_prose = "".join(auditor.prose_chunks)
+        if "$" in full_prose:
+            errors.append("book HTML: leaked '$' delimiter in prose")
+        if "{,}" in full_prose:
+            errors.append("book HTML: leaked '{,}' token in prose")
+        prose_no_fac = re.sub(r"[a-zA-Z]!", "", full_prose)
+        if "!" in prose_no_fac:
             errors.append("book HTML: banned exclamation mark '!' in prose")
+
+    page_str = "verified"
     if not pdf_p.is_file() or pdf_p.stat().st_size < 1500000:
         errors.append("book PDF missing or too small")
+    elif shutil.which("pdfinfo"):
+        r = subprocess.run(["pdfinfo", str(pdf_p)], capture_output=True, text=True, check=False, timeout=30)
+        m = re.search(r"^Pages:\s+(\d+)", r.stdout, flags=re.M)
+        if r.returncode != 0 or not m:
+            errors.append(f"pdfinfo failed on {pdf_p.name}")
+        else:
+            pages = int(m.group(1))
+            page_str = f"{pages}p"
+            if pages < 35:
+                errors.append(f"book PDF unexpectedly short ({pages} pages)")
+    return page_str
 
 
 def main():
@@ -135,26 +252,27 @@ def main():
     assert len(md_files) >= 7, f"Expected >= 7 markdown files, found {len(md_files)}"
     has_raw_src = LIT_FILE.is_file()
     lit_lines = LIT_FILE.read_text(encoding="utf-8").splitlines() if has_raw_src else []
+    lean_idx = build_lean_suffix_index(SRC_DIR) if has_raw_src else {}
     stats_obj = json.loads(STATS_JSON.read_text(encoding="utf-8"))
     fallback_lit_set = set(stats_obj.get("literature_wrapper_theorems", []))
     errors = []
     tot_rel = tot_pin = tot_lit = 0
     for md in md_files:
-        r, p, l = check_one_md(md, lit_lines, fallback_lit_set, has_raw_src, errors)
+        r, p, l = check_one_md(md, lit_lines, fallback_lit_set, lean_idx, has_raw_src, errors)
         tot_rel += r
         tot_pin += p
         tot_lit += l
     if tot_lit != 195:
         errors.append(f"Expected 195/195 literature pins in 04, found {tot_lit}")
     thm_cnt = check_lean_audit(errors)
-    check_figures_and_book(errors)
+    page_str = check_figures_and_book(errors)
     if errors:
         for e in errors:
             print("FAIL:", e)
         sys.exit(1)
     mode = "raw-src+json" if has_raw_src else "portable-json"
     print(
-        f"VERIFY_OK ({mode}): {len(md_files)} docs, {len(FIG_NAMES)} figures, HTML+PDF (43p), "
+        f"VERIFY_OK ({mode}): {len(md_files)} docs, {len(FIG_NAMES)} figures, HTML+PDF ({page_str}), "
         f"{thm_cnt} verified Lean audit thms, {tot_rel} relative links, "
         f"{tot_pin} Lean pins, {tot_lit}/195 lit pins (100.0%), 0 violations."
     )
