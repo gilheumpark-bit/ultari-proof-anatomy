@@ -63,8 +63,9 @@ $$\det G_{\mathrm{Fock}}\bigl(\mathrm{Sym}^a(e)\bigr) = \bigl(\det G_{\mathrm{Fo
 
 ### 2.2 Orthogonal-Projection Gram Identity and DVR Cokernel Bridge (`src/Formalism/GaussIdealIdentity/StatementLA.lean:29-89`)
 
-Let $\{e_\sigma\}_{\sigma=1}^d$ ($e_\sigma \neq 0$, nonzero orthogonal family without unit-norm assumption) span a subspace $Z$ of a complex Hilbert space $V$ with orthogonal projection $\mathrm{pr}_Z$.
-For any test family $\{F_a\}_{a=1}^d$, projected Gram matrix $G_{a,b} = \langle \mathrm{pr}_Z F_a, \mathrm{pr}_Z F_b \rangle$, period matrix $C_{\sigma,a} = \langle e_\sigma, F_a \rangle$, nonzero scalar $A \in \mathbb{C}^\times$, and $B_0 \in M_d(\mathbb{C})$, `MasterIdentity` (lines `39-50`) establishes
+Let $\{e_\sigma\}_{\sigma=1}^d$ ($e_\sigma \neq 0$, pairwise orthogonal without unit-norm assumption) span a subspace $Z$ of a complex Hilbert space $V$ with orthogonal projection $\mathrm{pr}_Z$.
+For any test family $\{F_a\}_{a=1}^d$, projected Gram matrix $G_{a,b} = \langle \mathrm{pr}_Z F_a, \mathrm{pr}_Z F_b \rangle$, and period matrix $C_{\sigma,a} = \langle e_\sigma, F_a \rangle$, `GramDet` (lines `29-38`) establishes the left identity below.
+Under the **mandatory hypothesis that $\{\mathrm{pr}_Z F_a\}_{a=1}^d$ is $\mathbb{C}$-linearly independent (`LinearIndependent ℂ (fun a => pr (F a))`, line `47`, ensuring $\det G > 0$)**, `MasterIdentity` (lines `39-51`) holds for every scalar $A \in \mathbb{C}$ (`∀ (A : ℂ)`, line `48`, including $A = 0$ via Lean's `(0 : ℂ)⁻¹ = 0` and `(0 : ℝ) ^ (-(2 * (d : ℤ))) = 0` conventions) and every $B_0 \in M_d(\mathbb{C})$:
 
 $$\det G = \frac{|\det C|^2}{\prod_{\sigma=1}^d \|e_\sigma\|^2} \ge 0, \qquad \frac{\|\det(A^{-1} B_0 \overline{C})\|^2}{\mathrm{Re}(\det G)} = |A|^{-2d}\, \|\det B_0\|^2 \prod_{\sigma=1}^d \|e_\sigma\|^2$$
 
@@ -139,7 +140,7 @@ $$\sum_{d \in D} w(d)\,\Bigl\|\sum_{t \in \mathrm{Ty}} \mathrm{amp}(t, d)\Bigr\|
 
 ---
 
-## Chapter 4. `VWin` (`Ct = 401`) Five-Count Assembly and Mirror-Parity Split
+## Chapter 4. `VWin` (`Ct = 401`) Mirror-Parity Split and 7-Branch Vandiver Patching
 
 ![Figure 4. The 16.09M-Line VWin Dependency Cone and Its Odd/Even Parity Wings](../figures/fig4_vwin_parity_and_counts_en.png)
 
@@ -152,22 +153,42 @@ $$\sum_{l \in S} (\log l) \sum_{e=1}^{\lfloor x^{401} \rfloor - 1} \mathrm{shaLe
 The integer `401` originates in the $\mathrm{GL}_3$ Jacobi character-sum modules `src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/TailNum.lean:33-53` and `src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/MSqDiagA.lean:238-259` (`thm_09`):
 truncating the diagonal main sum at $\lfloor x^{400} \rfloor$ produces a tail polynomial $x^{398}(x^2 + 1) \le x^{401}$ and log factor $1 + \log\lfloor x^{400} \rfloor \le 401 \log x$ ($x \ge e$), instantiated as `400 + 1 = 401` at `HVCore.lean:21`.
 
-### 4.2 Odd/Even Mirror-Parity Wings Inside `JointWinOfCounts`
+### 4.2 Top-Level Odd/Even (`minusLen` vs `plusLen`) Split in `vwin_of_counts` and Cone Boundary
 
-Inspecting `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`, `HVCore.lean:18-24`, and `WindowBoundOfLiteratureLevel.lean:25-34` shows that `VWin` splits along complex conjugation $c$ ($c^2 = 1$):
+Inspecting `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`, `PointArith.lean:36-92`, and `DirichletPrimeToLPartMulLPowerPart.lean:104-226` shows that `VWin` merges an odd (`minusLen`) wing and an even (`plusLen`, `PsiEven e ψ : ψ(-1) = (-1)^e`) Vandiver wing:
 
 | Parity Wing | Components & Identifiers | Arithmetic Machinery | Source Pins |
 | :---: | :--- | :--- | :--- |
-| **Odd (`minus`) Wing** | `ThmBab K 401`, `ThmBcFree` (`ShaMinus`), `CountI` | Stickelberger congruence (`Odd a`), Ferrero-Washington ($\mu=0$), Kato $\mathrm{GL}_2$ Euler system (`KatoTwoW`), Behrend sieve | `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`<br>`ThmBabOfLemmaK.lean:9-13`<br>`ThmBcOfPsiBound.lean:15-109`<br>`CountI.lean:19-102` |
-| **Even (`plus` / Vandiver) Wing** | `CountII`, `CountIII`, `CountV`, `CountVs`, `CountZ` | Symplectic $\mathrm{GSp}_4$ (`sp4In0_alt`), unitary $U(3)$ Hida family (`THidaU`), Taylor-Wiles-Kisin patching (`published_hypotheses_from_patching_alt`), Poitou-Tate duality | `WindowBoundOfLiteratureLevel.lean:25-34`<br>`FinalU.lean:20-53`<br>`CorGKOf.lean:10-28` |
+| **Odd (`minus`) Wing** | `ThmBab K 401`, `ThmBcFree` (`ShaMinus` · `minusLen`) | Stickelberger annihilation (`Odd a` · `stick_of`), Ferrero-Washington ($\mu=0$), Behrend sieve | `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`<br>`ThmBabOfLemmaK.lean:9-13`<br>`ThmBcOfPsiBound.lean:15-40` |
+| **Even (`PsiEven` / Vandiver) Wing** | `PointHV` (`plusLen`): `CountI · CountII · CountIII · CountIV · CountV · CountVs · CountZ` | Kato $\mathrm{GL}_2$ + $U(3)$ rigidity (`rigIUE_alt` · `rigII_a_alt`), $\mathrm{GSp}_4$ (`sp4In0_alt`), $U(3)$ Hida patching (`THidaU`) | `DirichletPrimeToLPartMulLPowerPart.lean:104-226`<br>`PointArith.lean:36-92`<br>`WindowBoundOfLiteratureLevel.lean:25-34` |
 
-- **Odd Wing Bound**: `ThmBcOfPsiBound.lean:15-40` (`stick_of`) bounds odd cohomology length `minusLen` from Stickelberger annihilation $l^r \cdot \mathrm{ShaMinus}(D, e) = 0$ as shown below.
-  In parallel, `CountI.lean:11-102` combines Kato's Euler system (`katoTwoW_of_printsH`) with $\sum_{H \in T} \varphi([(\mathbb{Z}/N\mathbb{Z})^\times : H]) \le N$ to prove $\sum_{l \in L_s} (\log l) \sum_\psi V_n(\psi) \le (N t)^{k+19}$ (`thm_10`), filtered across cyclotomic twists $e$ by `WindowTwo` (`BehrendSets/Statement.lean:48-81`, `thm_13`).
+- **Odd (`minusLen`) Wing Bound**: `ThmBcOfPsiBound.lean:15-40` (`stick_of`) bounds odd cohomology length `minusLen` from Stickelberger annihilation $l^r \cdot \mathrm{ShaMinus}(D, e) = 0$, paired with `ThmBabOfLemmaK.lean:9-13` (`FW.ferreroWashington`) and `WindowTwo` (`BehrendSets/Statement.lean:48-81`, `thm_13`).
 
 $$(\log l)\cdot \mathrm{minusLen}(D, e) \le 8 C l [E:\mathbb{Q}]^2 (e + 1) \bigl(\log(e l N)\bigr)^2$$
 
-- **Why the Even (Vandiver) Wing Forces `15.76M` Lines (`thm_12`)**: On even classes $c(v) = v$, the odd projector vanishes identically ($v - c(v) = 0$, guarded by `Odd a` at `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:7`).
-  Because abelian Stickelberger elements vanish on the Vandiver plus-part, the proof upgrades Ribet-Wiles converse-Herbrand patching to $\mathrm{GSp}_4$ and $U(3)$ Hida families (`RowSrc.lean:6`), pulling in the `15.76M`-line Shimura/abelian/prismatic dependency cone of `vwin_of_row`.
+- **Even (`plusLen`) Wing Necessity and Exact `16.09M`-Line Cone Boundary (`thm_12`, `thm_16`)**: On even classes $c(v) = v$, the odd projector vanishes ($v - c(v) = 0$, `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:7`), and `h.X c e` (`DirichletPrimeToLPartMulLPowerPart.lean:188-193`) collects strictly even twists $\psi(-1) = (-1)^e$ (`PsiEven e ψ`), where $\chi_{\mathrm{cyc},l}(c)^e \psi(c) = (-1)^e(-1)^e = 1$ (`ERigIU.lean:96-109`).
+  Within the **`157,604`-file / `16,087,324`-line (`16.09M`-line)** `vwin_of_row` cone, `146,772` files (`15,057,843` lines, `93.6%`) overlap with `OpenLiteratureStatements`, leaving **`10,832` files / `1,029,481` lines (`1.03M` lines, `6.4%`)** in the novel Vandiver layer `Pure_Vwin_Outside_Literature` ([anatomy_stats.json](../data/anatomy_stats.json)).
+
+### 4.3 Deep Anatomy of the `1.03M`-Line Novel Vandiver Layer: 7-Branch Split & $\mathrm{GSp}_4 \cdot U(3)$ Patching (`thm_16`)
+
+`PointArith.lean:36-92` and `SumOut.lean:50-119` partition odd primes $l \neq 2$ over `PsiEven e ψ` into 7 exhaustive branches according to $l \in B_\chi$, $(l - 1) \mid 2e$, and $l$-part order parity, merging `plusLen` under exponent $C_0 + D + \lvert B_\chi\rvert + \lvert B_\chi\rvert D$ (`thm_16`):
+
+1. **Generic Unramified Branch `CountI` ($l \notin B_\chi,\; (l - 1) \nmid 2e$) & Two-Case $U(3)$ Rigidity (`LinkedUnlE.lean:49-54` · `CountI.lean:11-102`)**:
+   `count_i_of_printed_bound_k_kato_automorphy` couples Kato's $\mathrm{GL}_2$ Euler system (`katoTwoW_of_printsH`, `thm_10`) with two $U(3)$ deformation rigidity theorems and graded cotangent-length algebra to close `oneCharU` (`CorGKOf.lean:14-26`):
+    - **Type-I Rigidity `rigIUE_alt`** (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ERigIU.lean:80-110`): combines even-twist triviality $\chi_{\mathrm{cyc},l}(c)^e\psi(c)=1$ (lines `96-109`), $p$-adic spectral-norm integrality (`int_of_norm`, lines `22-30`: $\|x\| \le 1 \implies x \in \overline{\mathbb{Z}}_l$), and `AdjointLiftingTheorem` to establish `RigidityFirstCase`.
+    - **Type-II Rigidity `rigII_a_alt`** (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/RRRigII.lean:25-100`): controls reducible 2D walls via dual twisting by `!![0, 1; -1, 0]` (line `85`) and strictly anti-monotone Hodge-Tate weights `![e, -e]` (line `68`) to prove `RigiditySecondCase`.
+    - **Graded Cotangent-Length Bound `main_holds`** (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/MainCotSpan.lean:32-70`): uses $\mathrm{finrank}_{\mathcal{O}}\,\mathrm{cotLat}(x, \mathcal{A}, -1) = r$ (line `38`) to bound congruence-ideal valuations across specialization points.
+2. **Weight-`0` Universal $U(3)$ Deformation Finiteness `ThmS6Core_s`, Hida Ideal `THidaU` & Boundary Branches `CountV · CountVs · CountIV · CountZ`**:
+   At bad primes $l \in B_\chi$ with $e = 1$ (`CaseV`), the proof splits at $R_1(l, \psi) := 16\, o\, (l q)^2\, 4^{n_0(l,\psi)}$ versus $2^{c_2(\psi)}$ (`DirichletPrimeToLPartMulLPowerPart.lean:206`, `Counts.lean:69-71`):
+    - **Core Regime $R_1 \le 2^{c_2}$ (`CountV`, `LinkedUnlE.lean:55-61`)**: `ThmS6Core_s` (`ThmS6CoreS.lean:27-37`) proves $\mathcal{O}$-finiteness of the weight-`0` universal $U(3)$ ring (`Module.Finite c.O (wpart c.O u 0)`) and conjugate-self-dual automorphy (`AutOnAlt K ι (-1)`), scaled via $(a / E) L \le X^{C+1}$ (`CountVOf.lean:19-34`).
+    - **Ordinary Unitary Hida Ideal & Root Patching (`THidaU.lean:38-48` · `PublishedHypothesesFromPatching.lean:98-104`)**: `hida_unitary_of_printed_hida` proves classical-point density (`dense_of_is_j_unitary_hecke_data`) and twist compatibility (`twistOk_of_isJ`) of the Hecke ideal `J` for `modU_of_printsH` (`HVCore.lean:23`),
+      while `published_hypotheses_from_patching_alt` joins split-place weak descent `descWeak` (`HasOfSplit.lean:29-30`) with `LiteratureRankNHypothesis` into the 14-field record `HypothesesH'`.
+    - **Boundary Branches (`CountVs · CountIV · CountZ`)**: Large-$R_1$ twists (`CountVs.lean:17-50`), odd-$l$-part twists $e \ge 2$ (`CountIV.lean:14-50`, $(N t)^{n+3}$), and trivial cyclotomic resonances (`Counts.lean:49-52` `PropZ`: $V(l, e, 1) = 0$ for $l \ge 5$, even $e \ge 2$) close directly via Poitou-Tate duality and local Euler characteristics.
+3. **Symplectic $\mathrm{GSp}_4$ Image Density `sp4In0_alt` & Resonant Branches `CountII · CountIII` (`Sp4In0.lean:18-19` · `AdjointLiftingOfCohomology.lean:27-40`)**:
+   Even-$l$-order twists with $e \ge 2$ (`CaseII`: $l \in B_\chi \lor (l-1)\mid 2e$) and odd-order nontrivial twists $\psi \neq 1$ with $(l-1)\mid 2e$ (`CaseIII`: $l \notin B_\chi$) route through $\mathrm{GSp}_4$.
+   Once `sp4In0_alt` proves `SymplecticFourImageDense` (`IsAut4.lean:14-18`: `D.Fin0 ∧ D.NoEnd ∧ D.AllIrr (IsAut4Alt ι)`) from potential modularity (`pmEx_of_printsH`), `FW.ferreroWashington`, and fourth-moment seeds (`fourth_initial_of_prints_h`), `sp4Main_alt` and `rigSp4_alt` establish `leSqrtOfDivSqGeOne` (`Counts.lean:40-47`):
+
+$$\mathrm{Vn}(\psi)\,\log l \le \frac{c_4}{21}\, o\, l\, 2^{n'} \bigl(l\, 2^{n'} N p_1\bigr)^{16} e^5 \log p_0(l N p_1)$$
 
 ---
 
@@ -176,8 +197,9 @@ $$(\log l)\cdot \mathrm{minusLen}(D, e) \le 8 C l [E:\mathbb{Q}]^2 (e + 1) \bigl
 ### 5.1 Four Formalization Slacks and Scaffolding Artifacts Audited in Source
 
 - **1. Rounding Margin `1 / 500` in the Cubic Eisenstein Tail (`thm_08`)**:
-  `src/Formalism/EisensteinCokernelLengths/FactorialValuationBounds/RationalTailBoundCubic.lean:24-43` (`numC_cubic`) proves $\frac{8(2\ell-1)}{(\ell-1)^3} + \frac{8}{(\ell-1)^2} + \frac{1}{\ell(\ell-1)} \le \frac{31.11}{\ell^2}$ for $\ell \ge 11$.
-  Substituting $\ell = d + 11$ ($d \ge 0$) and clearing denominators yields a boundary value at $\ell = 11$ ($d = 0$) of $\frac{31108}{1000} = 31.108$, leaving an exact rational rounding gap of $\frac{2}{1000} = \frac{1}{500}$ below $31.11 = \frac{3111}{100}$:
+  In `src/Formalism/EisensteinCokernelLengths/FactorialValuationBounds/RationalTailBoundCubic.lean:24-43`, `lemma numC_cubic (ℓ : ℝ) (hℓ : 11 ≤ ℓ)` (lines `24-27`) proves the cleared-denominator cubic polynomial inequality over real $\ell \ge 11$,
+  from which `theorem rationalTailBoundCubic` (lines `29-43`) deduces the rational bound `NumC`: $\frac{8(2\ell-1)}{(\ell-1)^3} + \frac{8}{(\ell-1)^2} + \frac{1}{\ell(\ell-1)} \le \frac{31.11}{\ell^2}$ ($\ell \in \mathbb{R},\; \ell \ge 11$).
+  Substituting $\ell = d + 11$ ($d \ge 0$) yields a boundary value at $\ell = 11$ ($d = 0$) of $\frac{31108}{1000} = 31.108$, leaving an exact rational rounding gap of $\frac{2}{1000} = \frac{1}{500}$ below $31.11 = \frac{3111}{100}$:
 
 $$3111(\ell - 1)^3 - 100\bigl(8(2\ell-1)\ell^2 + 8\ell^2(\ell-1) + \ell(\ell-1)^2\bigr) = 611 d^3 + 12630 d^2 + 65300 d + 200$$
 
@@ -199,19 +221,20 @@ On p. 2 of `remark.pdf`, Alpöge explicitly identifies OpenAI's public Problem `
 | **Base CM Seed** | Eisenstein ring $\mathbb{Z}[\omega]$ ($\lvert\mu_K\rvert = 6$) cubic/sextic Gauss sums and fixed-rank Gram matrices | Same $\mathbb{C}/\mathbb{Z}[\omega]$ order-`6` normalized Gauss sum + CM lattice `ThetaNormCM` (`ThetaNormCM.lean:30-40`) | Identical starting CM seed |
 | **Multiplicity `1` vs `m` & `2/3` Barrier** | Multiplicity-`1` positivity gives $\mathrm{Re}(s) > \frac{23}{24},\; \frac{7}{8}$; unreduced lifts stall at $\frac{X}{m} \asymp m^2 \implies \sigma = \frac{2}{3}$ (`thm_02`) | Chains $m \asymp \sqrt{X}$ lifts (`ZetaNonvanishingChebyshevWeights.lean:30-35`) + rank-$k$ division (`thm_03`) to reach $\sigma = \frac{1}{2}$ | $m \asymp \sqrt{X}$ + rank-$k$ division is the key pivot |
 | **Off-Diagonal Gauss Control** | Constrained by fixed-rank oscillatory character/Voronoi cancellation limits | Bypasses fixed-rank oscillation via level-projected Poincaré series (`ExistsMultTEqPoin.lean:15-109`) + two-type Cauchy-Schwarz decay $q^{-(k - 2r - 5)}$ (`GaussSumCharacterAverageBound.lean:21-98`, `thm_15`) | Large companion rank $k$ crushes off-diagonal leakage exponentially |
-| **Abelian Stickelberger vs Parity Wall** | Abelian Stickelberger elements act nontrivially only on odd parity and vanish ($v - c(v) = 0$, `thm_12`) on even fixed classes $c(v) = v$ | Restricts Stickelberger/Kato/Behrend to odd `CountI`, deploying $\mathrm{GSp}_4 \cdot U(3)$ Hida patching on even Vandiver `CountII · CountIII · CountV` | **Even Vandiver blind spot blocks any Stickelberger-only shortcut** |
+| **Abelian Stickelberger vs Parity Wall** | Abelian Stickelberger elements act nontrivially only on odd parity and vanish ($v - c(v) = 0$, `thm_12`) on even fixed classes $c(v) = v$ | Restricts Stickelberger/Behrend to odd `ThmBab · ThmBcFree`, deploying Kato + $\mathrm{GSp}_4 \cdot U(3)$ patching across the 7-branch even `PointHV` | **Even Vandiver blind spot blocks any Stickelberger-only shortcut** |
 
 ### 5.3 Parity-Aware Short-Proof Compression Routes
 
 Because `thm_12` rules out replacing the even Vandiver block (`vwin_of_row`) by abelian Stickelberger elements alone, viable compression paths narrow to three routes (estimate):
 
 1. **Immediate Cleanup (`2` Dead `True` Slots & Behrend Simplification)**: Prune `UnusedSlot55` and `UnusedSlot72` (`14` file references) while replacing the progression-free `BehrendSets` filter (`remark.pdf` footnote 7) with standard Dirichlet pigeonhole averaging (estimate).
-2. **Algebraic Rank Descent ($\mathrm{GSp}_4 \cdot U(3)$ Patching -> CM Elliptic-Unit Euler System)**: Descending the even-wing Selmer bound from $\mathrm{GSp}_4 \cdot U(3)$ deformation rings to Rubin elliptic-unit Euler systems or rank-`2` congruence modules over the CM tower $E$ would detach most of the `8.14M`-line `AbelianVarietyTheory` cone (estimate).
+2. **Algebraic Rank Descent ($\mathrm{GSp}_4 \cdot U(3)$ Patching -> CM Elliptic-Unit Euler System)**: Descending the 7-branch even `PsiEven` bound (`1.03M` novel lines) from $\mathrm{GSp}_4 \cdot U(3)$ deformation rings to Rubin elliptic-unit Euler systems or rank-`2` congruence modules over $E$
+   would detach most of the `15.06M`-line classical overlap (including `8.14M` lines of `AbelianVarietyTheory`) inside the `16.09M`-line (`157,604`-file) `vwin_of_row` cone (estimate).
 3. **Direct Analytic Period Bypass (Avoiding $\bmod\,\ell$ Cohomology)**: Bounding denominator invertibility directly in the Siegel-Weil ratio $D^* / d^*$ via local Bessel periods and relative-trace mean-square sieves without factoring through prime-by-prime `shaLen` would bypass `VWin` altogether (estimate).
 
 ---
 
-## Chapter 6. Standalone 15-Theorem Formal Verification Ledger ([alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean))
+## Chapter 6. Standalone 16-Theorem Formal Verification Ledger ([alpoge_spine_arithmetic_audit.lean](../proofs/alpoge_spine_arithmetic_audit.lean))
 
 Every exponent, congruence, parity, and slack identity in this report corresponds 1-to-1 to a zero-dependency theorem checked under official `leanprover/lean4:v4.33.1` (`0 sorry`, `LEAN_RC:0`):
 
@@ -224,11 +247,12 @@ Every exponent, congruence, parity, and slack identity in this report correspond
 | `thm_05_rank_balance_identity` | Odd parity of $r = k+m-1$ and $r + t = 8 f r + 4 + T(8W)$ | `ExistsRanksRankValFrame.lean:24-43` |
 | `thm_06_winpair_cm_splitting_congruences` | $q \equiv 3 \bmod 8,\; d \equiv 7 \bmod{16} \implies 8 \mid d+1$ | `ExistsPageN.lean:27-38` · `ThetaNormCM.lean:31` |
 | `thm_07_lucas_witness_prime_413718278401` | Exact prime-power factorization and congruences of $g_A - 1$ | `SpanPowerMembership/Primes.lean:86` |
-| `thm_08_cubic_tail_3111_100_and_slack` | Global positivity of `numC_cubic` and exact $\ell=11$ gap `1/500` | `RationalTailBoundCubic.lean:24-43` |
+| `thm_08_cubic_tail_3111_100_and_slack` | `numC_cubic` polynomial, `rationalTailBoundCubic` (`NumC`), and $\ell=11$ gap `1/500` | `RationalTailBoundCubic.lean:24-43` |
 | `thm_09_ct_401_tail_identity` | $x^{398}(x^2 + 1) \le x^{401}$ and $400 + 1 = 401$ | `TailNum.lean:33` · `ExistsPageN.lean:49` |
 | `thm_10_countI_absorb_bound` | $A N^{19} e^7 \le (N t)^{k+19}$ and additive reserve $k+12$ | `CountI.lean:11-17` |
 | `thm_11_fock_and_minor_identities` | Symmetric-power Fock exponent $\binom{a+1}{2}$ and minor count | `StatementFock.lean:56-68` · `Statement.lean:48` |
 | `thm_12_stickelberger_parity_annihilation` | $c(v) = v \implies v - c(v) = 0$ on the even Vandiver eigenspace | `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:7` |
 | `thm_13_behrend_base5_sphere_zero_3ap` | Zero nontrivial 3-term arithmetic progressions on the 12-point base-5 shell | `BehrendSets/Statement.lean:48-62` |
 | `thm_14_literature_195_partition` | `184 + 1 + 9 + 1 = 195` wrapper split and `2 + 7 = 9` (`14 + 361 = 375`) `UnusedSlot` split | `EveryCharacterOfLiteratureOfVWin.lean:219-810` |
-| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | Cauchy-Schwarz exponent gap $30r^2 + 42r + 1 \ge 1$ ($r=0$ min gap `1`) and decay margin $k - (2r+5) \ge 2r+2$ | `GaussSumCharacterAverageBound.lean:83` |
+| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | Cauchy-Schwarz exponent gap $30r^2 + 42r + 1 \ge 1$ ($r=0$ min gap `1`) and decay floor $2^{2r+2}$ | `GaussSumCharacterAverageBound.lean:83` |
+| `thm_16_vandiver_pluslen_and_cone_partition` | `vwin_of_row` cone split (`15,057,843 + 1,029,481`) and `plusLen` exponents `a+b+4`, `C0+D+K+KD` | `SumOut.lean:31` · `PointArith.lean:5` |

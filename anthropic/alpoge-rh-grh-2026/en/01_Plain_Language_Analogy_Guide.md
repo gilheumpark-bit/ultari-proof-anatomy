@@ -93,11 +93,11 @@ Three precision instruments clear this `0.66` barrier:
 
 At the very end of the argument, one stubborn family of cyclotomic number-field symmetries survives ordinary character averaging. Under mirror reflection (complex conjugation), these survivors split into two opposite halves:
 
-- **The Odd Half (states that flip sign in the mirror)**: Classical symmetry gauges (Stickelberger elements and Kato Euler systems) still grip here. Overlaying Felix Behrend's 1946 **progression-free integer sieve** (`7, 11, 27, 35, 51, 55, 127`, a dense set containing zero equally spaced triples like `1, 3, 5`, `src/Formalism/BehrendSets/Statement.lean:48-62`) starves the odd tower layers of evenly spaced resonances.
+- **The Odd Half (states that flip sign in the mirror)**: Classical cyclotomic gauges (Stickelberger annihilation and the Ferrero-Washington theorem) still grip here. Overlaying Felix Behrend's 1946 **progression-free integer sieve** (`7, 11, 27, 35, 51, 55, 127`, a dense set containing zero equally spaced triples like `1, 3, 5`, `src/Formalism/BehrendSets/Statement.lean:48-62`) starves the odd tower layers of evenly spaced resonances.
 - **The Even Half (the mirror blind spot)**: For any state that looks identical to its own reflection, subtracting the mirror image yields `1 minus 1 = 0`, rendering classical Stickelberger gauges completely blind.
-  To seal this even-half blind spot, Alpöge and Claude brought in higher-dimensional geometric deformation patching across `4`-by-`4` symplectic and `3`-by-`3` unitary spaces (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`).
+  Alpöge and Claude partitioned this even blind spot into `7` prime-twist cases, coupling Kato Euler systems to `3`-by-`3` unitary rigidity on generic primes and deploying `4`-by-`4` symplectic and `3`-by-`3` unitary Hida deformation patching on resonant primes (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`).
 
-> **Act 5 Takeaway**: Classical gauges plus a progression-free Behrend sieve close the odd mirror half, while higher-dimensional symplectic and unitary deformation patching seals the even-half blind spot where classical gauges read zero.
+> **Act 5 Takeaway**: Classical cyclotomic gauges plus a progression-free Behrend sieve close the odd mirror half, while `7`-branch symplectic and unitary deformation patching seals the even-half blind spot where Stickelberger gauges read zero.
 
 ---
 
@@ -105,7 +105,7 @@ At the very end of the argument, one stubborn family of cyclotomic number-field 
 
 In a traditional journal paper, sealing the Act 5 even-half blind spot would take a single sentence citing published theorems on Shimura varieties and deformation patching. A formal proof kernel like `Lean 4` refuses every appeal to authority: unless a theorem is proved down to foundational logic inside the codebase, it must be declared as an unproved axiom.
 
-Because that Act 5 even-half patching pulls in `8.14` million lines of abelian-variety geometry inside a `15.76`-million-line window cone, Alpöge and Claude re-proved `195` major theorems of twentieth- and twenty-first-century mathematics **from scratch inside Lean**.
+Inside the Act 5 window cone (`157,604` files totaling `16.09` million lines), `1.03` million lines (`10,832` files) implement novel patching reductions while `15.06` million lines (including `8.14` million lines of abelian varieties) re-prove `195` major theorems of modern mathematics **from scratch inside Lean**.
 Building the 30-story observation tower (the novel 5-act engine, roughly `2.02` million lines) required mining the ore and pouring `15.35` million lines of foundational steel and concrete first.
 
 The 8-hour 21-minute dual-machine compilation across `x86_64` and `aarch64` verified mechanically that every brick from the bedrock up to the top spire fits with zero logical gaps.

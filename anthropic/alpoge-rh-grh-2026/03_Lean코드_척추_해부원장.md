@@ -52,7 +52,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 - **3대 하위 의존 콘 실측 ([anatomy_stats.json](./data/anatomy_stats.json))**:
     1. 국소 랑글란즈 대응 매개변수 존재성(`recTExists`, `src/Development/AutomorphicArithmetic/Foundations/LocalLanglands/LocalCentralUnits/RecTExists.lean:1-6`): 의존 콘 `26,673`개 파일 / `4,206,972`줄.
     2. 세타 리프트 기반 갈루아 국소-대역 정합성(`galoisLocalGlobalStrong_recParameter`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`): 의존 콘 `66,168`개 파일 / `7,850,273`줄.
-    3. 보형 창문 성립 정리(`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): 의존 콘 `157,604`개 파일 / `16,087,324`줄.
+    3. 보형 창문 성립 정리(`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): 의존 콘 `157,604`개 파일 / `16,087,324`줄 (`OpenLiteratureStatements` 기출 중첩 `146,772`개 파일 · `15,057,843`줄 [`93.6%`] + 기출 바깥 순수 신작 패칭 `Pure_Vwin_Outside_Literature` `10,832`개 파일 · `1,029,481`줄 [`6.4%`]).
 
 ### 3.2 보형 창문 인터페이스 (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:12-50`)
 - 원시 지표 무영점 조립(`plugWin`, `EveryCharacter.lean` `8~11`행): 그린 함수 조건(`Green`), 보형 창문 조건(`VWin`), 닫힌 패밀리 가설을 결합해 `la := 3 / 2` 스케일에서 원시 지표 무영점(`ZeroFreeAll`)을 도출하고, `18`행 비원시 확장(`imprimitive`)으로 모든 지표를 덮습니다.
@@ -92,15 +92,23 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 
 ---
 
-## 6. `VWin`(`Ct = 401`) 내부 5대 카운트 조립부 및 `UnusedSlot` 9종 분류 감사
+## 6. `VWin`(`Ct = 401`) 홀·짝 합류 · 7분할 반디버 패칭 및 `UnusedSlot` 9종 분류 감사
 
 `vwin_of_row`(`157,604`개 파일 의존 콘) 내부에서 홀·짝 기우성 코호몰로지 상한을 합류시키는 핵심 조립 모듈과 아카이브 전역의 `UnusedSlot` 식별자 분류는 다음과 같습니다(상세 수식 유도는 [05_전공자용_수론심층심사및수식복원서.md](./05_전공자용_수론심층심사및수식복원서.md) 제4·5장 참조).
 
-- **`VWin` 5대 카운트 합류 사슬**:
-    - 5개 카운트(`CountI · CountII · CountIII · CountV · CountZ`) 통합: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`
-    - 페레로-워싱턴(`FW.ferreroWashington`), `Ct = 401`, 베렌트 체(`Odd.thmBcFree_of`) 결합: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/HVCore.lean:18-24`
-    - 가토 $\mathrm{GL}_2$ 오일러 계(`katoTwoW_of_printsH`), $\mathrm{GSp}_4$ (`sp4In0_alt`), $U(3)$ 히다 패칭(`published_hypotheses_from_patching_alt`) 분배: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`
-    - 슈티켈베르거 홀수 기우성 합동(`Odd a`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/StickelbergerElements/StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`
+- **`VWin` 홀·짝 합류 및 짝수(`PsiEven`) 7분할 심부 패칭 사슬**:
+    - 홀수(`minusLen`) · 짝수(`plusLen`) 최상위 합류(`vwin_of_counts` · `point` · `sumOut`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/PointArith.lean:36-92`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean:50-119`
+    - 짝수 기우성 `PsiEven` 정의 및 7개 분기(`CaseI..CaseZ` · `CountI..CountZ`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean:104-226`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean:40-74`
+    - 페레로-워싱턴(`FW.ferreroWashington`), `Ct = 401`, 베렌트 체(`Odd.thmBcFree_of`), 슈티켈베르거 홀수 합동(`Odd a`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/HVCore.lean:18-24`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/StickelbergerElements/StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`
+    - 가토 $\mathrm{GL}_2$ + $U(3)$ 제1·2유형 강성(`rigIUE_alt` · `rigII_a_alt`) 및 코탄젠트 길이(`main_holds`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/LinkedUnlE.lean:43-62`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ERigIU.lean:80-110`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/RRRigII.lean:25-100`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/MainCotSpan.lean:32-70`
+    - 심플렉틱 $\mathrm{GSp}_4$ 이미지 조밀성(`sp4In0_alt` · `SymplecticFourImageDense`) 및 `CountII · CountIII`: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/Sp4In0.lean:18-19`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/IsAut4.lean:14-18`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AdjointLiftingOfCohomology.lean:27-40`
+    - $U(3)$ 가중치-`0` 변형환 유한성(`ThmS6Core_s`), 히다 아이디얼(`THidaU`), 루트 패칭(`published_hypotheses_from_patching_alt` · `descWeak`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ThmS6CoreS.lean:27-37`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/THidaU.lean:38-48`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PublishedHypothesesFromPatching.lean:98-104`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/TraceFormula/SplitRigidity/HasOfSplit.lean:29-30`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`
 - **`UnusedSlot` 식별자 9종 전수 분류 (`2 + 7 = 9`종, 고유 파일 `371`개 · 슬롯-파일 쌍 `375`개 · 출현 `2,226`회)**:
     - **실제 비활성 `Prop := True` 가정 슬롯 2종 (`14`개 슬롯-파일 쌍)**: `UnusedSlot55`(`4`개 파일, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/TrivialLocalCondition.lean:89`)와 `UnusedSlot72`(`10`개 파일, `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/DiscreteSpectrumResidualClassification.lean:7`)만 `True`(`trivial`)로 봉합된 구형 가설 인자입니다.
     - **활성 수학 정리를 담은 `namespace` 명명 잔재 7종 (`361`개 슬롯-파일 쌍)**: 나머지 `UnusedSlot33`(`71`개), `UnusedSlot34`(`37`개), `UnusedSlot35`(`10`개), `UnusedSlot36`(`2`개), `UnusedSlot38`(`5`개), `UnusedSlot39`(`43`개), `UnusedSlot80`(`193`개)은 일괄 익명화·재명명 과정에서 이름만 `UnusedSlot*`으로 남은 **활성 네임스페이스**이며 내부에는 바흐 가군·등급 완비화·높이 부치 정리가 실제로 구현되어 있습니다.

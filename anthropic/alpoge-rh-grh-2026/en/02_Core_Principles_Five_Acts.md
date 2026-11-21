@@ -105,19 +105,19 @@ The final stage bounds the unramified Shafarevich-Tate cohomology length (`shaLe
 
 ### Complex-Conjugation Toy Model: Why Classical Gauges Go Blind on Half the Problem
 
-Why Act 5 pulls in `15.76` million lines of modern algebraic geometry becomes transparent through elementary complex conjugation $c(a + bi) = a - bi$. Subtracting the conjugate isolates the imaginary (odd / `minus`) part:
+Why Act 5 (`vwin_of_row`, `157,604` files / `16.09` million lines) pulls in vast algebraic geometry becomes transparent through elementary complex conjugation $c(a + bi) = a - bi$. Subtracting the conjugate isolates the imaginary (odd / `minus`) part:
 
 $$z - \overline{z} = (a + bi) - (a - bi) = 2bi$$
 
 Whenever $z = a$ is purely real ($b = 0$, the even / `plus` / Vandiver state satisfying $\overline{z} = z$), this difference evaluates to $a - a = 0$ identically. Because classical Stickelberger elements carry this exact odd projection (`Odd a`), bounding `shaLen` splits into two opposite wings:
 
-- **Odd (`minus`) Wing (`CountI` + Behrend Sieve)**: Where $z - \overline{z} \neq 0$, classical Stickelberger elements and Kato's $\mathrm{GL}_2$ Euler system remain active. To block linear resonances $\alpha x_1 + \beta x_2 + \gamma x_3 = 0$ ($\alpha+\beta+\gamma=0$) across cyclotomic layers $e$, `src/Formalism/BehrendSets/Statement.lean:48-71` constructs dense progression-free sets $T \subseteq [1, N]$:
+- **Odd (`minus`, `ShaMinus`) Wing (`ThmBab K 401` + Behrend Sieve `ThmBcFree`)**: Where $z - \overline{z} \neq 0$, Stickelberger annihilation (`stick_of`) and Ferrero-Washington ($\mu = 0$) remain active. To block linear resonances $\alpha x_1 + \beta x_2 + \gamma x_3 = 0$ ($\alpha+\beta+\gamma=0$) across cyclotomic layers $e$, `src/Formalism/BehrendSets/Statement.lean:48-71` constructs dense progression-free sets $T \subseteq [1, N]$:
 
 $$|T| \ge N \cdot \exp\left(-C \sqrt{\log N \cdot \log(K+1)}\right)$$
 
 - Extracting the base-`5` sphere shell ($r^2 = 5$) below $N = 500$ in [prime_intuition_lab.py](../scripts/prime_intuition_lab.py) yields `{7, 11, 27, 35, 51, 55, 127, 135, 175, 251, 255, 275}` (`12` elements) with `0` three-term arithmetic progressions (`ap_violations = 0`), enforcing `WindowTwo` across the odd wing.
-- **Even (`plus` / Vandiver) Wing (`CountII · CountIII · CountV` High-Rank Patching)**: On the even subspace where Stickelberger acts as `0`, abelian tools cannot bound Selmer length.
-  Alpöge and Claude therefore deploy symplectic $\mathrm{GSp}_4$ and unitary $U(3)$ Hida deformation patching (`src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`), pulling in the `8.14M`-line `AbelianVarietyTheory` library and `15.76M`-line `vwin_of_row` cone.
+- **Even (`PsiEven` / Vandiver, `plusLen`) Wing (`PointHV` 7-Branch High-Rank Patching)**: On the even twist space $\psi(-1) = (-1)^e$ where Stickelberger acts as `0`, abelian cyclotomic tools cannot close Selmer length alone.
+  Alpöge and Claude partition `PsiEven` into 7 branches (`CountI..CountZ`), coupling Kato's $\mathrm{GL}_2$ system to $U(3)$ rigidity (`rigIUE_alt`, `rigII_a_alt`) and deploying $\mathrm{GSp}_4$ (`sp4In0_alt`) plus $U(3)$ Hida patching (`THidaU`, `WindowBoundOfLiteratureLevel.lean:25-34`), whose `1.03M`-line novel core pulls in `15.06M` lines of classical re-proofs (totaling `16.09M` lines across `157,604` files).
 
 ---
 

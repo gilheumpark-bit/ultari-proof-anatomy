@@ -118,11 +118,12 @@ theorem thm_07_lucas_witness_prime_413718278401 :
 def cubicSlack (d : Nat) : Nat :=
   611 * d ^ 3 + 12630 * d ^ 2 + 65300 * d + 200
 
-/-- Theorem 08 (`RationalTailBoundCubic.lean:24-28`):
-    Exact proof of `numC_cubic` for all integers `ℓ = d + 11 ≥ 11`, showing the exact
-    algebraic identity `100 * LHS(d+11) + cubicSlack d = 3111 * (d+10)^3` with
+/-- Theorem 08 (`RationalTailBoundCubic.lean:24-43`):
+    Exact cleared-denominator identity behind `lemma numC_cubic (ℓ : ℝ) (hℓ : 11 ≤ ℓ)` (`24-27`)
+    and `theorem rationalTailBoundCubic : NumC` (`29-43`) at integer points `ℓ = d + 11 ≥ 11`,
+    showing `100 * LHS(d+11) + cubicSlack d = 3111 * (d+10)^3` with
     `cubicSlack d = 611*d^3 + 12630*d^2 + 65300*d + 200 ≥ 200` (`31.108` vs `31.11`,
-    rounding slack `1 / 500`). -/
+    rational rounding slack `2 / 1000 = 1 / 500`). -/
 theorem thm_08_cubic_tail_3111_100_and_slack :
     cubicSlack 0 = 200 ∧
     (100 * (8 * (2 * 11 - 1) * 11 ^ 2 + 8 * 11 ^ 2 * (11 - 1) + 11 * (11 - 1) ^ 2) = 3110800) ∧
@@ -274,5 +275,112 @@ theorem thm_15_cauchy_schwarz_exponent_and_decay_margin :
       (Nat.pow_le_pow_left (by omega) (2 * r + 2))
       (Nat.pow_le_pow_right (by omega) hexp)
   exact ⟨h_eq, by omega, hpow⟩
+
+/-- Theorem 16 (`SumOut.lean:31-32`, `PointArith.lean:5-6`, & `anatomy_stats.json:95-126`):
+    Inside the `vwin_of_row` dependency cone (`157,604` files / `16,087,324` lines):
+    (1) `15,057,843` lines (`146,772` files) overlap with `OpenLiteratureStatements`, leaving
+        `1,029,481` lines (`10,832` files) in the pure novel Vandiver-patching layer,
+    (2) `SumOut.final_le` merges the 4 unramified `PsiEven` branches (`CountI · CountZ · CountII · CountIII`)
+        via `t * (M^a + 2 * M * M^b) ≤ M^(a + b + 4)` for `1 ≤ t ≤ M` and `2 ≤ M`, and
+    (3) `PointArith.point_arith` merges bad primes `l ∈ Bchi` (`sumIn`) with good primes (`sumOut`)
+        into `plusLen` exponent `pointHvExp C0 D K = C0 + D + K + K * D`. -/
+def sumOutExp (a b : Nat) : Nat :=
+  a + b + 4
+
+def pointHvExp (C0 D K : Nat) : Nat :=
+  C0 + D + K + K * D
+
+theorem pow_ge_succ_of_two_le (x K : Nat) (hx : 2 ≤ x) :
+    K + 1 ≤ x ^ K := by
+  induction K with
+  | zero => simp
+  | succ n ih =>
+    have h1 : n + 2 ≤ 2 * (n + 1) := by omega
+    have h2 : 2 * (n + 1) ≤ x * x ^ n := Nat.mul_le_mul hx ih
+    have h3 : x ^ (n + 1) = x ^ n * x := by simp [Nat.pow_succ]
+    have h4 : x ^ n * x = x * x ^ n := Nat.mul_comm _ _
+    omega
+
+theorem thm_16_vandiver_pluslen_and_cone_partition :
+    (15057843 + 1029481 = 16087324 ∧ 146772 + 10832 = 157604) ∧
+    (∀ dt dm a b : Nat,
+      let t := dt + 1
+      let M := t + dm + 1
+      t * (M ^ a + 2 * M * M ^ b) ≤ M ^ sumOutExp a b) ∧
+    (∀ x0 k dk D C0 B : Nat,
+      let x := x0 + 2
+      let K := k + dk
+      k * (x ^ D + D * B) + x ^ C0 ≤ x ^ pointHvExp C0 D K + pointHvExp C0 D K * B) := by
+  refine ⟨by decide, ?_, ?_⟩
+  · intro dt dm a b
+    dsimp [sumOutExp]
+    let t := dt + 1
+    let M := t + dm + 1
+    have hM1 : 1 ≤ M := by omega
+    have hM2 : 2 ≤ M := by omega
+    have htM : t ≤ M := by omega
+    have step1 : t * (M ^ a + 2 * M * M ^ b) ≤ M * (M ^ a + 2 * M * M ^ b) :=
+      Nat.mul_le_mul_right _ htM
+    have step2 : M * (M ^ a + 2 * M * M ^ b) = M * M ^ a + 2 * (M * (M * M ^ b)) := by
+      grind
+    have pA : M * M ^ a ≤ M ^ (a + b + 3) := by
+      have eqA : M * M ^ a = M ^ (a + 1) := by
+        rw [Nat.mul_comm, ← Nat.pow_succ]
+      rw [eqA]
+      exact Nat.pow_le_pow_right hM1 (by omega)
+    have pB : 2 * (M * (M * M ^ b)) ≤ M ^ (a + b + 3) := by
+      have le2 : 2 * (M * (M * M ^ b)) ≤ M * (M * (M * M ^ b)) :=
+        Nat.mul_le_mul_right _ hM2
+      have eqB : M * (M * (M * M ^ b)) = M ^ (b + 3) := by
+        have e1 : M * M ^ b = M ^ (b + 1) := by rw [Nat.mul_comm, ← Nat.pow_succ]
+        have e2 : M * M ^ (b + 1) = M ^ (b + 2) := by rw [Nat.mul_comm, ← Nat.pow_succ]
+        have e3 : M * M ^ (b + 2) = M ^ (b + 3) := by rw [Nat.mul_comm, ← Nat.pow_succ]
+        rw [e1, e2, e3]
+      exact Nat.le_trans le2 (eqB ▸ Nat.pow_le_pow_right hM1 (by omega))
+    have pSum : M ^ (a + b + 3) + M ^ (a + b + 3) ≤ M ^ (a + b + 4) := by
+      have e2 : M ^ (a + b + 3) + M ^ (a + b + 3) = 2 * M ^ (a + b + 3) := by omega
+      have leM : 2 * M ^ (a + b + 3) ≤ M * M ^ (a + b + 3) := Nat.mul_le_mul_right _ hM2
+      have e4 : M * M ^ (a + b + 3) = M ^ (a + b + 4) := by
+        rw [Nat.mul_comm, ← Nat.pow_succ]
+      omega
+    have step3 : M * M ^ a + 2 * (M * (M * M ^ b)) ≤ M ^ (a + b + 4) :=
+      Nat.le_trans (Nat.add_le_add pA pB) pSum
+    exact Nat.le_trans step1 (step2.symm ▸ step3)
+  · intro x0 k dk D C0 B
+    dsimp [pointHvExp]
+    let x := x0 + 2
+    let K := k + dk
+    have hx1 : 1 ≤ x := by omega
+    have hx2 : 2 ≤ x := by omega
+    have hkK : k ≤ K := by omega
+    have hC0 : 1 ≤ x ^ C0 := Nat.one_le_pow C0 x hx1
+    have hKD : 1 ≤ x ^ (K * D) := Nat.one_le_pow (K * D) x hx1
+    have hPowK : K + 1 ≤ x ^ K := pow_ge_succ_of_two_le x K hx2
+    have hTerm1 : k * x ^ D + x ^ C0 ≤ x ^ (C0 + D + K + K * D) := by
+      have a1 : k * x ^ D ≤ K * x ^ D := Nat.mul_le_mul_right _ hkK
+      have a2 : K * x ^ D ≤ K * (x ^ C0 * x ^ D) :=
+        Nat.mul_le_mul_left K (Nat.le_mul_of_pos_left (x ^ D) hC0)
+      have a3 : x ^ C0 ≤ x ^ C0 * x ^ D :=
+        Nat.le_mul_of_pos_right (x ^ C0) (Nat.one_le_pow D x hx1)
+      have a4 : K * (x ^ C0 * x ^ D) + x ^ C0 * x ^ D = (x ^ C0 * x ^ D) * (K + 1) := by
+        grind
+      have a5 : (x ^ C0 * x ^ D) * (K + 1) ≤ (x ^ C0 * x ^ D) * x ^ K :=
+        Nat.mul_le_mul_left _ hPowK
+      have a6 : (x ^ C0 * x ^ D) * x ^ K ≤ (x ^ C0 * x ^ D * x ^ K) * x ^ (K * D) :=
+        Nat.le_mul_of_pos_right _ hKD
+      have a7 : x ^ C0 * x ^ D * x ^ K * x ^ (K * D) = x ^ (C0 + D + K + K * D) := by
+        rw [← Nat.pow_add, ← Nat.pow_add, ← Nat.pow_add]
+      omega
+    have hTerm2 : k * (D * B) ≤ (C0 + D + K + K * D) * B := by
+      have m1 : k * D ≤ K * D := Nat.mul_le_mul_right D hkK
+      have m2 : K * D ≤ C0 + D + K + K * D := by omega
+      have m3 : k * (D * B) = (k * D) * B := (Nat.mul_assoc k D B).symm
+      rw [m3]
+      exact Nat.mul_le_mul_right B (Nat.le_trans m1 m2)
+    have hRearr : k * (x ^ D + D * B) + x ^ C0 = (k * x ^ D + x ^ C0) + k * (D * B) := by
+      grind
+    change k * (x ^ D + D * B) + x ^ C0 ≤ x ^ (C0 + D + K + K * D) + (C0 + D + K + K * D) * B
+    rw [hRearr]
+    exact Nat.add_le_add hTerm1 hTerm2
 
 end AlpogeSpineAudit

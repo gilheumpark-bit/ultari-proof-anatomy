@@ -53,7 +53,7 @@ theorem UpperTheory.FinalTheorems.everyCharacter : UpperTheory.EveryCharacter :=
 - **Three Transitive Dependency Cones ([anatomy_stats.json](../data/anatomy_stats.json))**:
     1. Local Langlands parameter existence (`recTExists`, `src/Development/AutomorphicArithmetic/Foundations/LocalLanglands/LocalCentralUnits/RecTExists.lean:1-6`): `26,673` files / `4,206,972` lines.
     2. Theta-lift Galois local-global compatibility (`galoisLocalGlobalStrong_recParameter`, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`): `66,168` files / `7,850,273` lines.
-    3. Automorphic window discharge (`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): `157,604` files / `16,087,324` lines.
+    3. Automorphic window discharge (`vwin_of_row`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5`): `157,604` files / `16,087,324` lines (`146,772` files / `15,057,843` lines [`93.6%`] overlapping `OpenLiteratureStatements` + `10,832` files / `1,029,481` lines [`6.4%`] novel Vandiver layer `Pure_Vwin_Outside_Literature`).
 
 ### 3.2 Automorphic Window Interface (`src/Development/AutomorphicArithmetic/CharacterBoxes/EveryCharacter.lean:8-18` · `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:12-50`)
 - Primitive nonvanishing assembly (`plugWin`, `EveryCharacter.lean` lines `8-11`): combines Green-function bounds (`Green`), the automorphic window (`VWin`), and closed character families at dyadic scale `la := 3 / 2` to deduce `ZeroFreeAll`, then extends to imprimitive characters at line `18` (`imprimitive`).
@@ -94,15 +94,23 @@ Across all `175,187` files, only the 8 files below invoke `import Lean` or `Core
 
 ---
 
-## 6. `VWin` (`Ct = 401`) Five-Count Assemblers and `UnusedSlot` (`2 + 7 = 9`) Forensic Split
+## 6. `VWin` (`Ct = 401`) Parity Join, 7-Branch Vandiver Chain & `UnusedSlot` (`2 + 7 = 9`) Split
 
 The assembly modules merging odd/even parity cohomology inside `vwin_of_row` (`157,604`-file cone) and the exact classification of all `UnusedSlot*` identifiers across the archive are pinned below (equation derivations in [05_Specialist_Referee_and_Equation_Audit.md](./05_Specialist_Referee_and_Equation_Audit.md) Chapters 4 and 5):
 
-- **`VWin` Five-Count Merge Chain**:
-    - Five-count join (`CountI · CountII · CountIII · CountV · CountZ`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`
-    - Ferrero-Washington (`FW.ferreroWashington`), `Ct = 401`, and Behrend sieve (`Odd.thmBcFree_of`) join: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/HVCore.lean:18-24`
-    - Kato $\mathrm{GL}_2$ Euler system (`katoTwoW_of_printsH`), $\mathrm{GSp}_4$ (`sp4In0_alt`), and $U(3)$ Hida patching (`published_hypotheses_from_patching_alt`) dispatch: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`
-    - Stickelberger odd-parity congruence (`Odd a`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/StickelbergerElements/StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`
+- **`VWin` Odd/Even Merge and Deep `PsiEven` 7-Branch Patching Chain**:
+    - Top-level odd (`minusLen`) / even (`plusLen`) join (`vwin_of_counts` · `point` · `sumOut`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/JointWinOfCounts.lean:16-34`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/PointArith.lean:36-92`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean:50-119`
+    - Even parity `PsiEven` definition and 7 branches (`CaseI..CaseZ` · `CountI..CountZ`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/DirichletPrimeToLPartMulLPowerPart.lean:104-226`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/Counts.lean:40-74`
+    - Ferrero-Washington (`FW.ferreroWashington`), `Ct = 401`, Behrend sieve (`Odd.thmBcFree_of`), Stickelberger odd congruence (`Odd a`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/HVCore.lean:18-24`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/StickelbergerElements/StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`
+    - Kato $\mathrm{GL}_2$ + Type-I/II $U(3)$ rigidity (`rigIUE_alt` · `rigII_a_alt`) and cotangent length (`main_holds`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/LinkedUnlE.lean:43-62`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ERigIU.lean:80-110`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/RRRigII.lean:25-100`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/CommutativeAlgebra/GradedModulesLength/MainCotSpan.lean:32-70`
+    - Symplectic $\mathrm{GSp}_4$ image density (`sp4In0_alt` · `SymplecticFourImageDense`) and `CountII · CountIII`: `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/Sp4In0.lean:18-19`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/IsAut4.lean:14-18`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/AdjointLiftingOfCohomology.lean:27-40`
+    - Weight-`0` $U(3)$ deformation finiteness (`ThmS6Core_s`), Hida ideal (`THidaU`), root patching (`published_hypotheses_from_patching_alt` · `descWeak`): `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/ThmS6CoreS.lean:27-37`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/THidaU.lean:38-48`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/PublishedHypothesesFromPatching.lean:98-104`, `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/TraceFormula/SplitRigidity/HasOfSplit.lean:29-30`,
+      `src/Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/WindowBoundOfLiteratureLevel.lean:25-34`
 - **Exhaustive `UnusedSlot` Classification (`2 + 7 = 9` Identifiers, `371` Unique Files, `375` Slot-File Pairs, `2,226` Occurrences)**:
     - **2 Dead `Prop := True` Hypothesis Slots (`14` slot-file pairs)**: Only `UnusedSlot55` (`4` files, `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/TrivialLocalCondition.lean:89`) and `UnusedSlot72` (`10` files,
       `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/LocalTypeDictionary/DiscreteSpectrumResidualClassification.lean:7`) are inactive dummy hypotheses sealed as `True` (`trivial`).

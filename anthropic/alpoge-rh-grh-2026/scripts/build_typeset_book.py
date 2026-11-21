@@ -85,11 +85,11 @@ EDITIONS = {
 }
 
 TEX_SUBS = [
-    (r"\\mathcal\{O\}", "𝒪"), (r"\\mathcal\{K\}", "𝒦"), (r"\\mathcal\{G\}", "𝒢"),
+    (r"\\mathcal\{O\}", "𝒪"), (r"\\mathcal\{A\}", "𝒜"), (r"\\mathcal\{K\}", "𝒦"), (r"\\mathcal\{G\}", "𝒢"),
     (r"\\mathbb\{Q\}", "ℚ"), (r"\\mathbb\{Z\}", "ℤ"), (r"\\mathbb\{R\}", "ℝ"),
     (r"\\mathbb\{C\}", "ℂ"), (r"\\mathbb\{A\}", "𝔸"), (r"\\mathbb\{F\}", "𝔽"),
     (r"\\mathfrak\{gl\}", "𝔤𝔩"), (r"\\mathfrak\{g\}", "𝔤"),
-    (r"\\left\|", "|"), (r"\\right\|", "|"), (r"\\lvert(?![a-zA-Z])", "|"), (r"\\rvert(?![a-zA-Z])", "|"),
+    (r"\\left\|", "‖"), (r"\\right\|", "‖"), (r"\\lvert(?![a-zA-Z])", "|"), (r"\\rvert(?![a-zA-Z])", "|"),
     (r"\\(?:bigl|bigr|Bigl|Bigr|left|right)(?![a-zA-Z])", ""),
     (r"\\lfloor(?![a-zA-Z])", "⌊"), (r"\\rfloor(?![a-zA-Z])", "⌋"),
     (r"\\lceil(?![a-zA-Z])", "⌈"), (r"\\rceil(?![a-zA-Z])", "⌉"),
@@ -118,7 +118,7 @@ TEX_SUBS = [
     (r"\\alpha(?![a-zA-Z])", "α"), (r"\\beta(?![a-zA-Z])", "β"), (r"\\pi(?![a-zA-Z])", "π"),
     (r"\\ell(?![a-zA-Z])", "ℓ"), (r"\\ker(?![a-zA-Z])", "ker "), (r"\\det(?![a-zA-Z])", "det "), (r"\\log(?![a-zA-Z])", "log "),
     (r"\\sin(?![a-zA-Z])", "sin"), (r"\\exp(?![a-zA-Z])", "exp"), (r"\\sup(?![a-zA-Z])", "sup "),
-    (r"\\mid(?![a-zA-Z])", "∣"), (r"\\in(?![a-zA-Z])", "∈"), (r"\\notin(?![a-zA-Z])", "∉"),
+    (r"\\mid(?![a-zA-Z])", "∣"), (r"\\nmid(?![a-zA-Z])", "∤"), (r"\\in(?![a-zA-Z])", "∈"), (r"\\notin(?![a-zA-Z])", "∉"),
     (r"\\subseteq(?![a-zA-Z])", "⊆"), (r"\\subset(?![a-zA-Z])", "⊂"),
     (r"\\forall(?![a-zA-Z])", "∀"), (r"\\exists(?![a-zA-Z])", "∃"),
     (r"\\neg(?![a-zA-Z])", "¬"), (r"\\land(?![a-zA-Z])", "∧"), (r"\\lor(?![a-zA-Z])", "∨"),
