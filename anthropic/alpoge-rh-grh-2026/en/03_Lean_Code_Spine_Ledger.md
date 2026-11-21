@@ -9,9 +9,9 @@ Although the upstream archive (`175,187` files, `17,374,215` lines) ships as a c
 ### 1.1 Target Statement File (`src/Statements.lean:1-16`, `16` lines total)
 - **Imports**: Single line `import Mathlib` (line `1`). Zero custom axioms or wrapper structures.
 - **Four Exported Propositions**:
-    - Zeta critical-line predicate (`RiemannZetaZerosOnLine`, lines `3-4`): if $\zeta(s) = 0$ and $s$ is neither a trivial negative even integer $-2(n+1)$ nor the pole $s = 1$, then $\operatorname{Re}(s) = 1/2$.
-    - Dirichlet half-plane nonvanishing (`DirichletLNonvanishingRightOfHalf`, lines `6-8`): for every modulus $N > 0$ and Dirichlet character $\chi \bmod N$, if $\operatorname{Re}(s) > 1/2$ and $(\chi \neq 1 \lor s \neq 1)$, then $L(s, \chi) \neq 0$.
-    - Dirichlet critical-strip alignment (`DirichletLZerosOnLine`, lines `10-12`): every zero of $L(s, \chi)$ inside $0 < \operatorname{Re}(s) < 1$ satisfies $\operatorname{Re}(s) = 1/2$.
+    - Zeta critical-line predicate (`RiemannZetaZerosOnLine`, lines `3-4`): if $\zeta(s) = 0$ and $s$ is neither a trivial negative even integer $-2(n+1)$ nor the pole $s = 1$, then $\mathrm{Re}(s) = 1/2$.
+    - Dirichlet half-plane nonvanishing (`DirichletLNonvanishingRightOfHalf`, lines `6-8`): for every modulus $N > 0$ and Dirichlet character $\chi \bmod N$, if $\mathrm{Re}(s) > 1/2$ and $(\chi \neq 1 \lor s \neq 1)$, then $L(s, \chi) \neq 0$.
+    - Dirichlet critical-strip alignment (`DirichletLZerosOnLine`, lines `10-12`): every zero of $L(s, \chi)$ inside $0 < \mathrm{Re}(s) < 1$ satisfies $\mathrm{Re}(s) = 1/2$.
     - Primitive Dirichlet critical-line predicate (`PrimitiveDirichletLZerosOnLine`, lines `14-16`): same critical-strip alignment restricted to primitive characters.
 
 ### 1.2 Top-Level Theorem File (`src/Main.lean:1-12`, `12` lines total)
@@ -28,10 +28,10 @@ Although the upstream archive (`175,187` files, `17,374,215` lines) ships as a c
 ### 2.1 Kernel Bridge (`src/Supplements/Kernels/MainTheorems.lean:7-16`)
 - Line `7`: Master character nonvanishing (`theorem allChi : UpperTheory.EveryCharacter := UpperTheory.FinalTheorems.everyCharacter`)
 - Line `9`: Specialization to `RiemannHypothesis` (`theorem rhOfAll : RiemannHypothesis := Formalism.VW.rh_of_every allChi`)
-- Lines `11-13`: Reflection across $\operatorname{Re}(s) = 1/2$ (`theorem critAll ... := Formalism.VW.critLine allChi N χ hχ s h0 h1 hz`)
+- Lines `11-13`: Reflection across $\mathrm{Re}(s) = 1/2$ (`theorem critAll ... := Formalism.VW.critLine allChi N χ hχ s h0 h1 hz`)
 
 ### 2.2 Gamma Nonvanishing & Functional Reflection (`src/Formalism/GammaFactorNonvanishing/CritLine.lean:6-32` · `src/Development/AutomorphicArithmetic/CharacterBoxes/RiemannHypothesisOfEveryCharacter.lean:211-229`)
-- **Mathematical Role**: Given nonvanishing on $\operatorname{Re}(s) > 1/2$ (`EveryCharacter`), the completed functional equation $\Lambda(s, \chi^{-1}) = \varepsilon \Lambda(1-s, \chi)$ together with Archimedian gamma nonvanishing (`gammaFactor_ne_zero`, line `6`) reflects any hypothetical zero in $0 < \operatorname{Re}(s) < 1/2$ to $1 - s$ in $\operatorname{Re}(1-s) > 1/2$, yielding an immediate contradiction.
+- **Mathematical Role**: Given nonvanishing on $\mathrm{Re}(s) > 1/2$ (`EveryCharacter`), the completed functional equation $\Lambda(s, \chi^{-1}) = \varepsilon \Lambda(1-s, \chi)$ together with Archimedian gamma nonvanishing (`gammaFactor_ne_zero`, line `6`) reflects any hypothetical zero in $0 < \mathrm{Re}(s) < 1/2$ to $1 - s$ in $\mathrm{Re}(1-s) > 1/2$, yielding an immediate contradiction.
   Specializing to $N = 1$ ($L(s, 1) = \zeta(s)$, `LFunction_modOne_eq`) yields `RiemannHypothesis`.
 
 ---

@@ -40,9 +40,10 @@ In `src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38`
 $$q \equiv 3 \pmod 8, \qquad d \equiv 7 \pmod{16}, \qquad q \mid d + 1, \qquad \forall p \le Y^{\varepsilon/5}\;(p \neq 2 \implies p \mid d + 1)$$
 
 - **Arithmetic Reason (`thm_06`)**: $d \equiv 7 \pmod{16}$ implies $-d \equiv 1 \pmod 8$, so $2$ splits completely in the imaginary quadratic field $K = \mathbb{Q}(\sqrt{-d})$ (matching the exact hypothesis of `ThetaNormCM.lean:31`), while $d \equiv -1 \pmod p$ gives $\bigl(\frac{-d}{p}\bigr) = \bigl(\frac{1}{p}\bigr) = +1$, splitting every odd prime $p \le Y^{\varepsilon/5}$ in $K$.
-- **Non-Vacuity Witness (`thm_07`)**: To prove non-emptiness at the base of the local-ring hierarchy, `src/Formalism/LocalRingCardinality/SpanPowerMembership.lean:18-29` and `src/Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86-87` instantiate $q = 571$ ($571 \equiv 3 \bmod 8$) and $d = 599$ ($599 \equiv 7 \bmod{16}$, $599+1 = 600 = 2^3 \cdot 3 \cdot 5^2$) together with the explicit 12-digit prime
-  $$g_A = 413{,}718{,}278{,}401, \qquad g_A - 1 = 2^8 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 571 \cdot 599 \equiv 0 \pmod{16 \cdot 571 \cdot 599}$$
-  certified in-kernel via the Lucas primality test (`lucas_list`) at primitive root base `34`.
+- **Non-Vacuity Witness (`thm_07`)**: To prove non-emptiness at the base of the local-ring hierarchy, `src/Formalism/LocalRingCardinality/SpanPowerMembership.lean:18-29` and `src/Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86-87` instantiate $q = 571$ ($571 \equiv 3 \bmod 8$) and $d = 599$ ($599 \equiv 7 \bmod{16}$, $599+1 = 600 = 2^3 \cdot 3 \cdot 5^2$).
+  Over this pair, the code certifies the explicit 12-digit prime below in-kernel via the Lucas primality test (`lucas_list`) at primitive root base `34`:
+
+$$g_A = 413{,}718{,}278{,}401, \qquad g_A - 1 = 2^8 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 571 \cdot 599 \equiv 0 \pmod{16 \cdot 571 \cdot 599}$$
 
 ---
 
@@ -56,20 +57,20 @@ Over the multivariate polynomial ring $R[\tau]$, the multi-factorial Fock inner 
 
 $$\langle f, g \rangle_{\mathrm{Fock}} = \sum_{\mathbf{m}} f_{\mathbf{m}} \overline{g_{\mathbf{m}}}\, \mathbf{m}!, \qquad G_{\mathrm{Fock}}(v)_{i,j} = \langle v_i, v_j \rangle_{\mathrm{Fock}}$$
 
-Products of homogeneous linear forms satisfy the Wick permanent identity $\langle \prod_{s=1}^a x_s, \prod_{t=1}^a y_t \rangle_{\mathrm{Fock}} = \operatorname{perm}\bigl(\langle x_s, y_t \rangle_{\mathrm{Fock}}\bigr)$ (`FockPerm`, line `47`), and passing to the degree-$a$ symmetric monomial basis $\operatorname{Sym}^a(e)$ amplifies the determinant exponent by a binomial coefficient (`DetFockSym`, lines `63-68`, `thm_11`):
+Products of homogeneous linear forms satisfy the Wick permanent identity $\langle \prod_{s=1}^a x_s, \prod_{t=1}^a y_t \rangle_{\mathrm{Fock}} = \mathrm{perm}\bigl(\langle x_s, y_t \rangle_{\mathrm{Fock}}\bigr)$ (`FockPerm`, line `47`), and passing to the degree-$a$ symmetric monomial basis $\mathrm{Sym}^a(e)$ amplifies the determinant exponent by a binomial coefficient (`DetFockSym`, lines `63-68`, `thm_11`):
 
-$$\det G_{\mathrm{Fock}}\bigl(\operatorname{Sym}^a(e)\bigr) = \bigl(\det G_{\mathrm{Fock}}(e)\bigr)^{\binom{|\sigma| + a - 1}{|\sigma|}} \prod_{\mathbf{t} \in \operatorname{Sym}^a(\sigma)} \mathbf{t}!$$
+$$\det G_{\mathrm{Fock}}\bigl(\mathrm{Sym}^a(e)\bigr) = \bigl(\det G_{\mathrm{Fock}}(e)\bigr)^{\binom{|\sigma| + a - 1}{|\sigma|}} \prod_{\mathbf{t} \in \mathrm{Sym}^a(\sigma)} \mathbf{t}!$$
 
 ### 2.2 Orthogonal-Projection Gram Identity and DVR Cokernel Bridge (`src/Formalism/GaussIdealIdentity/StatementLA.lean:29-89`)
 
 Let $\{e_\sigma\}_{\sigma=1}^d$ ($e_\sigma \neq 0$, nonzero orthogonal family without unit-norm assumption) span a subspace $Z$ of a complex Hilbert space $V$ with orthogonal projection $\mathrm{pr}_Z$.
 For any test family $\{F_a\}_{a=1}^d$, projected Gram matrix $G_{a,b} = \langle \mathrm{pr}_Z F_a, \mathrm{pr}_Z F_b \rangle$, period matrix $C_{\sigma,a} = \langle e_\sigma, F_a \rangle$, nonzero scalar $A \in \mathbb{C}^\times$, and $B_0 \in M_d(\mathbb{C})$, `MasterIdentity` (lines `39-50`) establishes
 
-$$\det G = \frac{|\det C|^2}{\prod_{\sigma=1}^d \|e_\sigma\|^2} \ge 0, \qquad \frac{\|\det(A^{-1} B_0 \overline{C})\|^2}{\operatorname{Re}(\det G)} = |A|^{-2d}\, \|\det B_0\|^2 \prod_{\sigma=1}^d \|e_\sigma\|^2$$
+$$\det G = \frac{|\det C|^2}{\prod_{\sigma=1}^d \|e_\sigma\|^2} \ge 0, \qquad \frac{\|\det(A^{-1} B_0 \overline{C})\|^2}{\mathrm{Re}(\det G)} = |A|^{-2d}\, \|\det B_0\|^2 \prod_{\sigma=1}^d \|e_\sigma\|^2$$
 
 Over any discrete valuation ring (DVR) $\mathcal{O}$, Gauss prime-ideal localization (`GaussLength`, lines `74-79`) and dual-lattice inclusion $L^\vee \subseteq L$ (`Ld ≤ L`, `GramDetLength`, lines `80-89`) give
 
-$$g \cdot \det\bigl(B(b_i, b_j)\bigr) = 1 \implies \operatorname{length}_{\mathcal{O}}(L / L^\vee) = v_{\mathcal{O}}(g)$$
+$$g \cdot \det\bigl(B(b_i, b_j)\bigr) = 1 \implies \mathrm{length}_{\mathcal{O}}(L / L^\vee) = v_{\mathcal{O}}(g)$$
 
 coupling Archimedean positivity ($\det G \ge 0$) to finite-place $p$-adic invertibility (Bost slope inequality, `remark.pdf` item 13) through `Formalism/ProductFormula`.
 
@@ -109,15 +110,16 @@ $$\mathcal{G}^* \mathcal{G} v = \sum_{e \in \mathbb{F}^\times} \left(\sum_{d \in
 
 Second, `PI.ThetaNormCM` (`src/Formalism/PeriodIntegrals/ThetaNormCM.lean:30-40`) evaluates the inverse $L^2$-norm of the 2-torsion CM theta function $G$ on $\Lambda = \mathbb{Z}\omega_1 \oplus \mathbb{Z}\omega_1\tau$ ($d \equiv 7 \pmod 8$) via Jacobi $\vartheta_2$:
 
-$$\|G\|_{L^2(\Lambda)}^{-2} = \sqrt{2 \operatorname{Im}\tau} \cdot \left(\exp\!\left(-\frac{\pi a^2 \operatorname{Im}\tau}{4}\right) \cdot \left|\vartheta_2\!\left(\frac{a\tau + b}{2},\, \tau\right)\right|\right)^2$$
+$$\|G\|_{L^2(\Lambda)}^{-2} = \sqrt{2\,\mathrm{Im}\,\tau} \cdot \left(\exp\!\left(-\frac{\pi a^2\,\mathrm{Im}\,\tau}{4}\right) \cdot \left|\vartheta_2\!\left(\frac{a\tau + b}{2},\, \tau\right)\right|\right)^2$$
 
 Third, ascending from a rank-$k$ hermitian lattice $L_k$ to rank $r = k - 1 + m$ lattice $L_r$, `MassLowerBoundClosed` and `MassUpperBoundClosed` (`src/Formalism/GL3MeanSquares/MassLowerBoundClosed.lean:12-74`) sandwich the normalized Siegel-mass, index, and Weyl-dimension ratio $D^* / d^*$:
 
 $$\sum_{j=0}^{m-1} \frac{1}{[K^+:\mathbb{Q}]} \sum_{\rho} \log\!\left(\frac{w_{\rho,j}\, v_{\mathrm{inv}}(K)}{\pi}\right) + m\log(g_1 g_2) - C\!\left(L + \frac{m^2 L}{k}\right) \le \frac{\log(D^* / d^*)}{[K^+:\mathbb{Q}]\, k} \le C \cdot m \cdot L$$
 
-- **Exact Cancellation (`thm_03`)**: The negative penalty $-C \frac{m^2 L}{k}$ at line `40` is the quadratic $m^2$ obstruction. Because Chapter 1 sets companion rank $k \asymp x^{9/2 + 10\varepsilon}$ against $m \asymp x^{1/2 - \varepsilon/16}$ and $L = x^\varepsilon$, normalization by $k$ drives the quadratic term to zero:
-  $$\frac{m^2 L}{k} \asymp x^{2(1/2 - \varepsilon/16) + \varepsilon - (9/2 + 10\varepsilon)} = x^{-\frac{7}{2} - \frac{73}{8}\varepsilon} \longrightarrow 0 \qquad (x \to \infty)$$
-  satisfying `(m : ℝ) ^ 2 * L ≤ k` (line `57`) with room to spare and leaving only the linear upper bound $C m L = O\bigl(x^{1/2 + 15\varepsilon/16}\bigr)$ needed for $\theta = \frac{1}{2}$.
+- **Exact Cancellation (`thm_03`)**: The negative penalty $-C \frac{m^2 L}{k}$ at line `40` is the quadratic $m^2$ obstruction.
+  Because Chapter 1 sets companion rank $k \asymp x^{9/2 + 10\varepsilon}$ against $m \asymp x^{1/2 - \varepsilon/16}$ and $L = x^\varepsilon$, normalization by $k$ satisfies `(m : ℝ) ^ 2 * L ≤ k` (line `57`) and drives the quadratic term to zero, leaving only the linear bound $C m L = O\bigl(x^{1/2 + 15\varepsilon/16}\bigr)$ needed for $\theta = \frac{1}{2}$:
+
+$$\frac{m^2 L}{k} \asymp x^{2(1/2 - \varepsilon/16) + \varepsilon - (9/2 + 10\varepsilon)} = x^{-\frac{7}{2} - \frac{73}{8}\varepsilon} \longrightarrow 0 \qquad (x \to \infty)$$
 
 ---
 
@@ -129,7 +131,7 @@ $$\sum_{j=0}^{m-1} \frac{1}{[K^+:\mathbb{Q}]} \sum_{\rho} \log\!\left(\frac{w_{\
 
 Over cyclotomic subfields $E \subset \mathbb{Q}(\zeta_N)$ satisfying `IsChiField ψ e q d E`, `VWin` bounds unramified Shafarevich-Tate lengths across finite prime sets $S$ (`src/Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:12-50`):
 
-$$\sum_{l \in S} (\log l) \sum_{e=1}^{\lfloor x^{401} \rfloor - 1} \operatorname{shaLen}_l(E, e) \le \sqrt{\exp(x^\varepsilon)} = \exp\!\left(\frac{1}{2} x^\varepsilon\right) \qquad \left(0 < \varepsilon < \frac{1}{52}\right)$$
+$$\sum_{l \in S} (\log l) \sum_{e=1}^{\lfloor x^{401} \rfloor - 1} \mathrm{shaLen}_l(E, e) \le \sqrt{\exp(x^\varepsilon)} = \exp\!\left(\frac{1}{2} x^\varepsilon\right) \qquad \left(0 < \varepsilon < \frac{1}{52}\right)$$
 
 The integer `401` originates in the $\mathrm{GL}_3$ Jacobi character-sum modules `src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/TailNum.lean:33-53` and `src/Formalism/GL3MeanSquares/GenusMeanAsymptotics/JacobiCharacterSums/MSqDiagA.lean:238-259` (`thm_09`):
 truncating the diagonal main sum at $\lfloor x^{400} \rfloor$ produces a tail polynomial $x^{398}(x^2 + 1) \le x^{401}$ and log factor $1 + \log\lfloor x^{400} \rfloor \le 401 \log x$ ($x \ge e$), instantiated as `400 + 1 = 401` at `HVCore.lean:21`.
@@ -143,9 +145,11 @@ Inspecting `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAnd
 | **Odd (`minus`) Wing** | `ThmBab K 401`, `ThmBcFree` (`ShaMinus`), `CountI` | Stickelberger congruence (`Odd a`), Ferrero-Washington ($\mu=0$), Kato $\mathrm{GL}_2$ Euler system (`KatoTwoW`), Behrend sieve | `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:5-7`<br>`ThmBabOfLemmaK.lean:9-13`<br>`ThmBcOfPsiBound.lean:15-109`<br>`CountI.lean:19-102` |
 | **Even (`plus` / Vandiver) Wing** | `CountII`, `CountIII`, `CountV`, `CountVs`, `CountZ` | Symplectic $\mathrm{GSp}_4$ (`sp4In0_alt`), unitary $U(3)$ Hida family (`THidaU`), Taylor-Wiles-Kisin patching (`published_hypotheses_from_patching_alt`), Poitou-Tate duality | `WindowBoundOfLiteratureLevel.lean:25-34`<br>`FinalU.lean:20-53`<br>`CorGKOf.lean:10-28` |
 
-- **Odd Wing Bound**: `ThmBcOfPsiBound.lean:15-40` (`stick_of`) converts Stickelberger annihilation $l^r \cdot \mathrm{ShaMinus}(D, e) = 0$ into
-  $$(\log l)\cdot \mathrm{minusLen}(D, e) \le 8 C l [E:\mathbb{Q}]^2 (e + 1) \bigl(\log(e l N)\bigr)^2$$
-  while `CountI.lean:11-102` combines Kato's Euler system (`katoTwoW_of_printsH`) with $\sum_{H \in T} \varphi([(\mathbb{Z}/N\mathbb{Z})^\times : H]) \le N$ to prove $\sum_{l \in L_s} (\log l) \sum_\psi V_n(\psi) \le (N t)^{k+19}$ (`thm_10`), filtered across cyclotomic twists $e$ by `WindowTwo` (`BehrendSets/Statement.lean:48-81`, `thm_13`).
+- **Odd Wing Bound**: `ThmBcOfPsiBound.lean:15-40` (`stick_of`) bounds odd cohomology length `minusLen` from Stickelberger annihilation $l^r \cdot \mathrm{ShaMinus}(D, e) = 0$ as shown below.
+  In parallel, `CountI.lean:11-102` combines Kato's Euler system (`katoTwoW_of_printsH`) with $\sum_{H \in T} \varphi([(\mathbb{Z}/N\mathbb{Z})^\times : H]) \le N$ to prove $\sum_{l \in L_s} (\log l) \sum_\psi V_n(\psi) \le (N t)^{k+19}$ (`thm_10`), filtered across cyclotomic twists $e$ by `WindowTwo` (`BehrendSets/Statement.lean:48-81`, `thm_13`).
+
+$$(\log l)\cdot \mathrm{minusLen}(D, e) \le 8 C l [E:\mathbb{Q}]^2 (e + 1) \bigl(\log(e l N)\bigr)^2$$
+
 - **Why the Even (Vandiver) Wing Forces `15.76M` Lines (`thm_12`)**: On even classes $c(v) = v$, the odd projector vanishes identically ($v - c(v) = 0$, guarded by `Odd a` at `StickelbergerCarrySpecAndWeightOneCoeffOfOdd.lean:7`).
   Because abelian Stickelberger elements vanish on the Vandiver plus-part, the proof upgrades Ribet-Wiles converse-Herbrand patching to $\mathrm{GSp}_4$ and $U(3)$ Hida families (`RowSrc.lean:6`), pulling in the `15.76M`-line Shimura/abelian/prismatic dependency cone of `vwin_of_row`.
 
@@ -155,16 +159,18 @@ Inspecting `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAnd
 
 ### 5.1 Four Formalization Slacks and Scaffolding Artifacts Audited in Source
 
-1. **Rounding Margin `1 / 500` in the Cubic Eisenstein Tail (`thm_08`)**:
-   `src/Formalism/EisensteinCokernelLengths/FactorialValuationBounds/RationalTailBoundCubic.lean:24-43` (`numC_cubic`) proves $\frac{8(2\ell-1)}{(\ell-1)^3} + \frac{8}{(\ell-1)^2} + \frac{1}{\ell(\ell-1)} \le \frac{31.11}{\ell^2}$ for $\ell \ge 11$. Substituting $\ell = d + 11$ ($d \ge 0$) and clearing denominators yields the exact polynomial identity
-   $$3111(\ell - 1)^3 - 100\bigl(8(2\ell-1)\ell^2 + 8\ell^2(\ell-1) + \ell(\ell-1)^2\bigr) = 611 d^3 + 12630 d^2 + 65300 d + 200$$
-   whose boundary value at $\ell = 11$ ($d = 0$) is $\frac{31108}{1000} = 31.108$, leaving an exact rational rounding gap of $\frac{2}{1000} = \frac{1}{500}$ below $31.11 = \frac{3111}{100}$.
-2. **Degree Padding $t^{k+12}$ in `CountI.absorb` (`thm_10`)**:
-   `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/CountI.lean:11-17` promotes $e^7 \le t^7$ to $t^{k+19}$ so a single `ring` call closes $(N t)^{k+19}$, introducing an additive degree reserve of $(k + 19) - 7 = k + 12 \ge 12$.
-3. **Global Unification of $\varepsilon$ Thresholds (`thm_04`)**:
-   Local modules permit $\varepsilon \le \frac{1}{8}$ (`ExistsRanksRankValFrame.lean:56`) and $\varepsilon \le \frac{200}{57}$ (`DIVfromGLbud.lean:31`), all unified globally under $\varepsilon < \frac{1}{2A} = \frac{1}{52}$.
-4. **Two-Way Split of the 9 `UnusedSlot` Identifiers (`2` Dead `True` Slots vs `7` Live Namespaces, `thm_14`)**:
-   Across `371` unique files (`375` slot-file pairs, `2,226` occurrences), the 9 `UnusedSlot*` identifiers split into two distinct classes (`2 + 7 = 9`):
+- **1. Rounding Margin `1 / 500` in the Cubic Eisenstein Tail (`thm_08`)**:
+  `src/Formalism/EisensteinCokernelLengths/FactorialValuationBounds/RationalTailBoundCubic.lean:24-43` (`numC_cubic`) proves $\frac{8(2\ell-1)}{(\ell-1)^3} + \frac{8}{(\ell-1)^2} + \frac{1}{\ell(\ell-1)} \le \frac{31.11}{\ell^2}$ for $\ell \ge 11$.
+  Substituting $\ell = d + 11$ ($d \ge 0$) and clearing denominators yields a boundary value at $\ell = 11$ ($d = 0$) of $\frac{31108}{1000} = 31.108$, leaving an exact rational rounding gap of $\frac{2}{1000} = \frac{1}{500}$ below $31.11 = \frac{3111}{100}$:
+
+$$3111(\ell - 1)^3 - 100\bigl(8(2\ell-1)\ell^2 + 8\ell^2(\ell-1) + \ell(\ell-1)^2\bigr) = 611 d^3 + 12630 d^2 + 65300 d + 200$$
+
+- **2. Degree Padding $t^{k+12}$ in `CountI.absorb` (`thm_10`)**:
+  `src/Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/CountI.lean:11-17` promotes $e^7 \le t^7$ to $t^{k+19}$ so a single `ring` call closes $(N t)^{k+19}$, introducing an additive degree reserve of $(k + 19) - 7 = k + 12 \ge 12$.
+- **3. Global Unification of $\varepsilon$ Thresholds (`thm_04`)**:
+  Local modules permit $\varepsilon \le \frac{1}{8}$ (`ExistsRanksRankValFrame.lean:56`) and $\varepsilon \le \frac{200}{57}$ (`DIVfromGLbud.lean:31`), all unified globally under $\varepsilon < \frac{1}{2A} = \frac{1}{52}$.
+- **4. Two-Way Split of the 9 `UnusedSlot` Identifiers (`2` Dead `True` Slots vs `7` Live Namespaces, `thm_14`)**:
+  Across `371` unique files (`375` slot-file pairs, `2,226` occurrences), the 9 `UnusedSlot*` identifiers split into two distinct classes (`2 + 7 = 9`):
     - **2 Dead `Prop := True` Hypothesis Slots (`14` pairs)**: Only `UnusedSlot55` (`4` files, `TrivialLocalCondition.lean:89`) and `UnusedSlot72` (`10` files, `DiscreteSpectrumResidualClassification.lean:7` and [04_Literature_195_Attribution_Dictionary.md](./04_Literature_195_Attribution_Dictionary.md) `#144` `L505`) are dummy `True` hypotheses.
     - **7 Live Mathematical `namespace` Identifiers (`361` pairs)**: `UnusedSlot33` (`71`), `34` (`37`), `35` (`10`), `36` (`2`, `OrderValuation.lean:7`), `38` (`5`, `GradedCompletionLemmas.lean:8`), `39` (`43`), and `80` (`193`, `ExtensionInvariantClause.lean:7`) are active `namespace` blocks containing live theorems ([03_Lean_Code_Spine_Ledger.md](./03_Lean_Code_Spine_Ledger.md) Section 6).
 
@@ -174,7 +180,7 @@ Alpöge explicitly identifies OpenAI's `(2, 3, 6)`-triangle ($\mathbb{C}/\mathbb
 
 | Mathematical Axis | OpenAI `#003` & Prior Audit (`Cases 005 & 008`) | Alpöge + Claude (`175,187` Files) | Audit Verdict |
 | :--- | :--- | :--- | :--- |
-| **Base Arithmetic Seed** | Eisenstein ring $\mathbb{Z}[\omega]$ ($|\mu_K|=6$) cubic/sextic Gauss sums | Same $\mathbb{C}/\mathbb{Z}[\omega]$ order-`6` normalized Gauss sum + CM lattice `ThetaNormCM` | Identical starting seed |
+| **Base Arithmetic Seed** | Eisenstein ring $\mathbb{Z}[\omega]$ ($\lvert\mu_K\rvert = 6$) cubic/sextic Gauss sums | Same $\mathbb{C}/\mathbb{Z}[\omega]$ order-`6` normalized Gauss sum + CM lattice `ThetaNormCM` | Identical starting seed |
 | **Multiplicity `1` vs `m` & `2/3` Wall** | Multiplicity-`1` Gram matrix + `CubicGauss` fixed point $\alpha^*=4/3$ stalls at $\frac{71}{108} = \frac{2}{3} - \frac{1}{108}$ with single-$\zeta$ deficit $\frac{2}{11}$ | Unreduced lift sum stalls at $\frac{X}{m} = m^2 \implies \sigma = \frac{2}{3}$; cleared by chaining $m \asymp \sqrt{X}$ lifts + rank-$k$ division | Confirms prior No-Go diagnosis |
 | **Off-Diagonal Gauss Control** | Conditional fixed-rank Voronoi zero-mode cancellation + $k=2$ integration by parts ($\Delta_{\mathrm{hybrid}} = \frac{14}{33}$) | Unconditional bypass via $\mathrm{GL}_5$ six-fold metaplectic cover $\mu$ + iterated Parseval / relative trace | Replaces Voronoi hurdle by $\mathrm{GL}_5$ automorphy |
 | **Pole Shift vs Parity Cohomology** | Shifts analytic `coordR` Euler-product poles `2/3 -> 7/12 -> 1/2` via Stickelberger Hecke $L$-functions ($k_\infty = -6$) | Uses Stickelberger/Kato only on odd wing; deploys $\mathrm{GSp}_4 \cdot U(3)$ Hida patching on even Vandiver wing where Stickelberger = `0` | **Parity wall blocks Stickelberger-only shortcut** |

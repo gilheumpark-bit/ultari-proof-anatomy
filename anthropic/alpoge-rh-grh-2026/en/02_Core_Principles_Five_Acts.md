@@ -17,9 +17,9 @@ $$G_z(x) = S_z(x) - x \log x + (1 + \gamma) x$$
 
 Here $\gamma \approx 0.57721566$ denotes the Euler-Mascheroni constant. Applying the Mellin transform identity (`MellinSgen`, `src/Formalism/DefsOC.lean:12-19`) gives
 
-$$\int_1^\infty S_z(x)\, x^{-s-1}\,dx = -\frac{\zeta'(s)}{\zeta(s)} \cdot \frac{1}{s(s-1)} \qquad (\operatorname{Re}(s) > 1)$$
+$$\int_1^\infty S_z(x)\, x^{-s-1}\,dx = -\frac{\zeta'(s)}{\zeta(s)} \cdot \frac{1}{s(s-1)} \qquad (\mathrm{Re}(s) > 1)$$
 
-The quadratic denominator $s(s-1)$ damps high-ordinate zeros, while $x\log x - (1+\gamma)x$ cancels the double residue at $s = 1$. Consequently, the growth exponent of $|G_z(x)|$ matches the supremum $\theta = \sup \operatorname{Re}(\rho)$ of nontrivial zeta zeros.
+The quadratic denominator $s(s-1)$ damps high-ordinate zeros, while $x\log x - (1+\gamma)x$ cancels the double residue at $s = 1$. Consequently, the growth exponent of $|G_z(x)|$ matches the supremum $\theta = \sup \mathrm{Re}(\rho)$ of nontrivial zeta zeros.
 
 ![Figure 2. Smoothed Prime Residual vs Off-Line Zero Blowup](../figures/fig2_residual_vs_fake_zero_en.png)
 
@@ -33,7 +33,7 @@ The quadratic denominator $s(s-1)$ damps high-ordinate zeros, while $x\log x - (
 | `3,600` | `60` | `23,802.2198` | `23,801.3045` | `+0.9153` | `0.01526` | `464.76` |
 | `10,000` | `100` | `76,332.9964` | `76,331.2471` | **`+1.7493`** | **`0.01749`** | **`1,000.00`** |
 
-> **Act 1 Summary**: At $X = 10,000$, $S_z(10000)$ reaches `76,332.9964`, yet after subtracting the main term the residual $G_z(10000)$ is `+1.7493`, sitting a factor of `570` below the hypothetical $\operatorname{Re}(\rho) = 0.75$ scale (`1,000.00`). Bounding $|G_z(x)| \lesssim x^{1/2+\varepsilon}$ as $x \to \infty$ implies RH.
+> **Act 1 Summary**: At $X = 10,000$, $S_z(10000)$ reaches `76,332.9964`, yet after subtracting the main term the residual $G_z(10000)$ is `+1.7493`, sitting a factor of `570` below the hypothetical $\mathrm{Re}(\rho) = 0.75$ scale (`1,000.00`). Bounding $|G_z(x)| \lesssim x^{1/2+\varepsilon}$ as $x \to \infty$ implies RH.
 
 ---
 
@@ -43,11 +43,11 @@ Because a single $G_z(x)$ changes sign, Mellin inversion alone cannot rule out c
 
 $$G_z(x) - G_{\chi_i}(x) = \sum_{n \le x} \Lambda(n)\bigl(1 - \chi_i(n)\bigr)\left(\frac{x}{n} - 1\right) - x\log x + C_{\chi_i} x$$
 
-Because $\chi_i(n) \in \{-1, 0, +1\}$, every Dirichlet coefficient satisfies $1 - \chi_i(n) \ge 0$. Under this nonnegativity, **Landau's theorem on Dirichlet integrals (`LandauEq`)** converts a two-sided bound $|\sum_i w_i (G_z(x) - G_{\chi_i}(x))| \le C x^\theta$ ($w_i > 0$) into an exact zero-multiplicity identity (`OrderLogDeriv`) across the entire half-plane $\operatorname{Re}(s) > \theta$:
+Because $\chi_i(n) \in \{-1, 0, +1\}$, every Dirichlet coefficient satisfies $1 - \chi_i(n) \ge 0$. Under this nonnegativity, **Landau's theorem on Dirichlet integrals (`LandauEq`)** converts a two-sided bound $|\sum_i w_i (G_z(x) - G_{\chi_i}(x))| \le C x^\theta$ ($w_i > 0$) into an exact zero-multiplicity identity (`OrderLogDeriv`) across the entire half-plane $\mathrm{Re}(s) > \theta$:
 
-$$\left(\sum_i w_i\right) \cdot \operatorname{ord}_s(\zeta) = \sum_i w_i \cdot \operatorname{ord}_s\bigl(L(\cdot, \chi_i)\bigr)$$
+$$\left(\sum_i w_i\right) \cdot \mathrm{ord}_s(\zeta) = \sum_i w_i \cdot \mathrm{ord}_s\bigl(L(\cdot, \chi_i)\bigr)$$
 
-> **Act 2 Summary**: Coefficient positivity $1 - \chi_i(n) \ge 0$ forces any hypothetical zero of $\zeta(s)$ in $\operatorname{Re}(s) > \theta$ to be a simultaneous common zero of every participating $L(s, \chi_i)$ in the weighted family.
+> **Act 2 Summary**: Coefficient positivity $1 - \chi_i(n) \ge 0$ forces any hypothetical zero of $\zeta(s)$ in $\mathrm{Re}(s) > \theta$ to be a simultaneous common zero of every participating $L(s, \chi_i)$ in the weighted family.
 
 ---
 
@@ -59,7 +59,7 @@ To replace continuous Chebyshev smoothing $G_{\text{cheb}}(x)$ by a finite deter
 
 $$\left|\text{chebAvg}(m, x, G_z) - G_{\text{cheb}}(x)\right| \le K \cdot \frac{x (1 + \log m)}{m}$$
 
-To establish zero-freeness on $\operatorname{Re}(s) > \theta$, this quadrature error must fall below $x^{\theta + \varepsilon}$. Requiring $\frac{x \log m}{m} \lesssim x^{\theta + \varepsilon}$ yields the lower bound on $m$ stated at line `33` (`x ^ (1 - θ - ε) ≤ m`):
+To establish zero-freeness on $\mathrm{Re}(s) > \theta$, this quadrature error must fall below $x^{\theta + \varepsilon}$. Requiring $\frac{x \log m}{m} \lesssim x^{\theta + \varepsilon}$ yields the lower bound on $m$ stated at line `33` (`x ^ (1 - θ - ε) ≤ m`):
 
 $$\frac{x}{m} \le x^{\theta + \varepsilon} \quad \Longleftrightarrow \quad m \ge x^{1 - \theta - \varepsilon}$$
 

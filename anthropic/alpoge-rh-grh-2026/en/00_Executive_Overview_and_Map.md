@@ -70,7 +70,7 @@ flowchart TD
     EC --> M
 ```
 
-- **Step A (`EC -> M`)**: Once every Dirichlet $L$-function is shown to be nonzero on $\operatorname{Re}(s) > 1/2$ (`EveryCharacter`), functional-equation reflection ($s \leftrightarrow 1 - s$) and gamma-factor nonvanishing eliminate zeros in $0 < \operatorname{Re}(s) < 1/2$, locking all nontrivial zeros onto $\operatorname{Re}(s) = 1/2$ (`src/Formalism/GammaFactorNonvanishing/CritLine.lean:11-32`).
+- **Step A (`EC -> M`)**: Once every Dirichlet $L$-function is shown to be nonzero on $\mathrm{Re}(s) > 1/2$ (`EveryCharacter`), functional-equation reflection ($s \leftrightarrow 1 - s$) and gamma-factor nonvanishing eliminate zeros in $0 < \mathrm{Re}(s) < 1/2$, locking all nontrivial zeros onto $\mathrm{Re}(s) = 1/2$ (`src/Formalism/GammaFactorNonvanishing/CritLine.lean:11-32`).
 - **Step B (`LIT + VW -> EC`)**: The classical `195`-theorem warehouse (`OpenLiteratureStatements`) and the novel automorphic window theorem (`VWin`) merge at `src/Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:810-814` to establish `EveryCharacter`.
 - **Step C (`ROW`)**: The Galois-automorphic bridge (`galoisLocalGlobalStrong_recParameter`) required by both branches is discharged unconditionally via theta lifts at `src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`.
 

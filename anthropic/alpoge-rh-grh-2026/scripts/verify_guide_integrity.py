@@ -24,6 +24,9 @@ BANNED = [
     "—", "?", "획기적", "강력한", "패러다임", "본질적", "구조적",
     "살펴보겠", "상황에 따라 다를 수 있습니다", "를 통해", "에 대해", "에 있어서",
 ]
+GH_BLOCKED_MACROS_RE = re.compile(
+    r"\\(?:operatorname|DeclareMathOperator|newcommand|renewcommand|providecommand|def|let|csname|tag|label|eqref|href|url|bbox|style|class|cssId)\b"
+)
 REL_LINK_RE = re.compile(r"\]\((\.\.?/[^)#\s]+)(?:#L(\d+)(?:-L(\d+))?)?\)")
 ANY_LEAN_PIN_RE = re.compile(r"`((?:src/)?[A-Za-z0-9_./'₂]+\.lean):(\d+)(?:-(\d+))?`")
 LIT_REF_RE = re.compile(r"`([A-Za-z0-9_']+)`\s*\(`L(\d+)`\)")
@@ -117,7 +120,27 @@ def check_md_delimiters(md_label: str, txt: str, errors: list):
             errors.append(f"{md_label}:{idx}: odd backtick count ({line.count('`')})")
         if re.match(r"^ {1,3}(?:[-*]|\d+\.)\s", line):
             errors.append(f"{md_label}:{idx}: sub-list item must use 4-space indent for Python-Markdown")
-        lines_no_fence.append(re.sub(r"`[^`\n]*`", "", line))
+        no_code = re.sub(r"`[^`\n]*`", "CODE", line)
+        for bad_m in GH_BLOCKED_MACROS_RE.finditer(no_code):
+            errors.append(f"{md_label}:{idx}: GitHub-blocked LaTeX macro {bad_m.group(0)!r}")
+        if line.lstrip().startswith("|"):
+            for m_in in re.finditer(r"\$([^$]+)\$", no_code):
+                if "|" in m_in.group(1):
+                    errors.append(f"{md_label}:{idx}: unescaped '|' inside table math {m_in.group(0)!r}")
+        if "$$" in line and not line.startswith("$$"):
+            errors.append(f"{md_label}:{idx}: indented '$$' display math breaks on GitHub GFM; flush to column 0")
+        no_disp_ln = re.sub(r"\$\$[^$]+\$\$", "DISP", no_code)
+        d_pos = [m.start() for m in re.finditer(r"(?<!\$)\$(?!\$)", no_disp_ln)]
+        for k_i in range(0, len(d_pos) - 1, 2):
+            s_i, e_i = d_pos[k_i], d_pos[k_i + 1]
+            inner = no_disp_ln[s_i + 1 : e_i]
+            pre = no_disp_ln[s_i - 1] if s_i > 0 else ""
+            post = no_disp_ln[e_i + 1] if e_i + 1 < len(no_disp_ln) else ""
+            if not inner or inner[0].isspace() or inner[-1].isspace():
+                errors.append(f"{md_label}:{idx}: space inside inline '$' delimiter: ${inner}$")
+            if (pre and pre.isalnum() and pre.isascii()) or (post and ((post.isalnum() and post.isascii()) or post == "(")):
+                errors.append(f"{md_label}:{idx}: GitHub GFM unsafe char adjacent to '$': {pre}${inner}${post}")
+        lines_no_fence.append(no_code)
     if in_fence:
         errors.append(f"{md_label}: unclosed fenced code block")
 

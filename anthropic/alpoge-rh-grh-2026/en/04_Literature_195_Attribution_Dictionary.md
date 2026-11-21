@@ -48,7 +48,7 @@ Covers the algebraic-geometric and arithmetic-intersection backbone implemented 
 | `164` | `dual_abelian_scheme_of_literature` (`L545`) | Existence and biduality of dual abelian schemes over general bases | Grothendieck, Mumford, Oort, Raynaud |
 | `165` | `zarhin_statement` (`L547`) | Zarhin's fourth-power trick producing principal polarizations | Zarhin (1974) |
 | `167` | `nef_rr_of_literature` (`L551`) | Asymptotic Riemann-Roch theorem for nef divisors (`NefRR`) | Fujita, Lazarsfeld (2004) |
-| `168` | `poincare_lelong_inv_of_literature` (`L553`) | Poincare-Lelong current equation $\frac{i}{\pi}\partial\bar{\partial}\log|s| = [\mathrm{div}(s)] - c_1$ | Lelong (1957), Griffiths-Harris (1978) |
+| `168` | `poincare_lelong_inv_of_literature` (`L553`) | Poincare-Lelong current equation $\frac{i}{\pi}\partial\bar{\partial}\log\lvert s\rvert = [\mathrm{div}(s)] - c_1$ | Lelong (1957), Griffiths-Harris (1978) |
 | `169` | `principalisation_char_zero_of_literature` (`L555`) | Strong functorial principalisation of ideals in characteristic `0` | Hironaka (1964), Bierstone-Milman (1997) |
 | `170` | `resolution_char_zero_of_literature` (`L557`) | Resolution of singularities for algebraic varieties in characteristic `0` | Hironaka (1964) |
 
@@ -194,7 +194,7 @@ Covers local/global Langlands correspondences, Galois representations in Shimura
 | `101` | `hecke_l_adic_character_of_literature` (`L419`) | $\ell$-adic Galois character attached to an algebraic Hecke character (Grossencharakter) | Weil (1956), Serre (1968) |
 | `103` | `hecke_l_adic_character_above_of_literature` (`L423`) | Hodge-Tate weight formula at $\ell \mid p$ for algebraic Hecke Galois characters | Serre (1968), Scholl |
 | `104` | `hecke_l_adic_parameter_above_of_literature` (`L425`) | Weil-Deligne and Hodge parameter compatibility above $\ell \mid p$ for algebraic characters | Serre (1968), Fontaine-Mazur |
-| `113` | `jacquet_shalika_of_literature` (`L443`) | Nonvanishing on $\operatorname{Re}(s)=1$ and unique Euler-product factorization of $\mathrm{GL}_n$ isobaric sums | Jacquet-Shalika (1981) |
+| `113` | `jacquet_shalika_of_literature` (`L443`) | Nonvanishing on $\mathrm{Re}(s)=1$ and unique Euler-product factorization of $\mathrm{GL}_n$ isobaric sums | Jacquet-Shalika (1981) |
 | `120` | `cuspidal_multiplicity_one_of_literature` (`L457`) | Multiplicity-`1` theorem for the cuspidal automorphic spectrum of $\mathrm{GL}_n(\mathbb{A})$ | Shalika (Ann. Math., 1974), Piatetski-Shapiro (1979) |
 | `121` | `carU_local_global_of_literature` (`L459`) | Local-global compatibility at all $\ell \neq p$ places for regular algebraic Galois representations | Taylor-Yoshida (2007), S. W. Shin (2011), Caraiani (2012) |
 | `122` | `carU_above_l_of_literature` (`L461`) | Crystalline/de Rham local-global compatibility at $\ell = p$ for regular algebraic representations | Barnet-Lamb-Gee-Geraghty, Caraiani (Duke Math. J., 2014) |

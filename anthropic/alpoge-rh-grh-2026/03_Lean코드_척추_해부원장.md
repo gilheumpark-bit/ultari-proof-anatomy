@@ -9,9 +9,9 @@
 ### 1.1 목표 명제 정의 파일 (`src/Statements.lean:1-16`, 전문 `16`줄)
 - **의존성**: `import Mathlib` 단일 줄(`1`행). 사용자 정의 공리·구조체 `0`건.
 - **선언 정의 4종**:
-    - 제타 비자명 영점 임계선 명제(`RiemannZetaZerosOnLine`, `3~4`행): $\zeta(s)=0$이고 음의 짝수 자명영점 $-2(n+1)$ 및 극점 $s=1$이 아니면 $\operatorname{Re}(s) = 1/2$.
-    - 디리클레 우반평면 무영점 명제(`DirichletLNonvanishingRightOfHalf`, `6~8`행): 모든 양의 법 $N$과 모든 디리클레 지표 $\chi \bmod N$에서 $\operatorname{Re}(s) > 1/2$이고 $(\chi \neq 1 \lor s \neq 1)$이면 $L(s, \chi) \neq 0$.
-    - 디리클레 임계띠 영점 정렬 명제(`DirichletLZerosOnLine`, `10~12`행): 임계띠 $0 < \operatorname{Re}(s) < 1$ 내 모든 디리클레 $L$-함수 영점은 $\operatorname{Re}(s) = 1/2$.
+    - 제타 비자명 영점 임계선 명제(`RiemannZetaZerosOnLine`, `3~4`행): $\zeta(s)=0$이고 음의 짝수 자명영점 $-2(n+1)$ 및 극점 $s=1$이 아니면 $\mathrm{Re}(s) = 1/2$.
+    - 디리클레 우반평면 무영점 명제(`DirichletLNonvanishingRightOfHalf`, `6~8`행): 모든 양의 법 $N$과 모든 디리클레 지표 $\chi \bmod N$에서 $\mathrm{Re}(s) > 1/2$이고 $(\chi \neq 1 \lor s \neq 1)$이면 $L(s, \chi) \neq 0$.
+    - 디리클레 임계띠 영점 정렬 명제(`DirichletLZerosOnLine`, `10~12`행): 임계띠 $0 < \mathrm{Re}(s) < 1$ 내 모든 디리클레 $L$-함수 영점은 $\mathrm{Re}(s) = 1/2$.
     - 원시 디리클레 지표 임계선 명제(`PrimitiveDirichletLZerosOnLine`, `14~16`행): 원시 디리클레 지표에 관한 동일 임계선 명제.
 
 ### 1.2 최종 5대 정리 진입 파일 (`src/Main.lean:1-12`, 전문 `12`줄)
@@ -31,7 +31,7 @@
 - `11~13`행: 임계선 대칭 도출(`theorem critAll ... := Formalism.VW.critLine allChi N χ hχ s h0 h1 hz`)
 
 ### 2.2 감마 인자 무영점 및 반사 대칭 (`src/Formalism/GammaFactorNonvanishing/CritLine.lean:6-32` · `src/Development/AutomorphicArithmetic/CharacterBoxes/RiemannHypothesisOfEveryCharacter.lean:211-229`)
-- **수리 역할**: 우반평면 $\operatorname{Re}(s) > 1/2$ 무영점(`EveryCharacter`)이 확립되면 완비 $L$-함수 방정식 $\Lambda(s, \chi^{-1}) = \varepsilon \Lambda(1-s, \chi)$와 감마 인자 무영점(`gammaFactor_ne_zero`, `6`행)에 의해 좌반쪽 $0 < \operatorname{Re}(s) < 1/2$에서도 $1 - s$가 우반평면으로 반사되어 모순이 발생합니다. 법 $N=1$ 자명 지표($L(s, 1) = \zeta(s)$, `LFunction_modOne_eq`) 특화로 리만 제타 함수가 함께 증명됩니다.
+- **수리 역할**: 우반평면 $\mathrm{Re}(s) > 1/2$ 무영점(`EveryCharacter`)이 확립되면 완비 $L$-함수 방정식 $\Lambda(s, \chi^{-1}) = \varepsilon \Lambda(1-s, \chi)$와 감마 인자 무영점(`gammaFactor_ne_zero`, `6`행)에 의해 좌반쪽 $0 < \mathrm{Re}(s) < 1/2$에서도 $1 - s$가 우반평면으로 반사되어 모순이 발생합니다. 법 $N=1$ 자명 지표($L(s, 1) = \zeta(s)$, `LFunction_modOne_eq`) 특화로 리만 제타 함수가 함께 증명됩니다.
 
 ---
 
