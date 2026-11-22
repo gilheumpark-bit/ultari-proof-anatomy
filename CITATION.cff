@@ -23,6 +23,7 @@ repository-code: "https://github.com/gilheumpark-bit/ultari-proof-anatomy"
 authors:
   - family-names: "Park"
     given-names: "Gilheum"
+    orcid: "https://orcid.org/0009-0000-3647-5727"
     email: "gilheum.park@gmail.com"
     affiliation: "Independent Researcher (ultari-proof-anatomy)"
 keywords:

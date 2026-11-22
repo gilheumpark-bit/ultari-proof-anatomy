@@ -5,7 +5,8 @@
   "creators": [
     {
       "name": "Park, Gilheum",
-      "affiliation": "Independent Researcher (ultari-proof-anatomy)"
+      "affiliation": "Independent Researcher (ultari-proof-anatomy)",
+      "orcid": "0009-0000-3647-5727"
     }
   ],
   "description": "Byte-level zero-truncation technical audit, mathematical decompilation, and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (v1.1.0): (1) 15 OpenAI, DeepMind, and classical case studies (892 standalone zero-sorry Lean 4 theorems, 4,217/4,217 hypothesis mutations killed across 44,833 distinct upstream .lean files, >12.4M lines) under the 5-Gate Audit Rubric; and (2) the unified bilingual (EN/KO) deep mathematical decompilation of the 17.37M-line (175,187-file) Levent Alpöge & Claude Riemann Hypothesis (RH) and Dirichlet GRH Lean 4 archive, comprising the 7-volume Part A Academic Monograph (148p EN & 132p KO A4 PDFs, 1,870 verified .lean:line pins per language, pinned Mathlib boundary audit, 201/201 classical import equivalence classification, Formalism 116-subtheory and Pure_Vwin Vandiver-bypass hub reconstruction, and 152-page journal paper blueprint), the Part B 100.00% AST Formula Atlas (30,343 unique modules, 308,731/308,731 declarations), the 6-volume progressive reader & specialist guide (55p EN & 53p KO A4 PDFs, 195/195 literature attribution dictionary), and 61 standalone zero-sorry Lean 4 audit theorems (953 total standalone theorems across the repository).",
