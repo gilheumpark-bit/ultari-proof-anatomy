@@ -1,18 +1,18 @@
 cff-version: 1.2.0
-message: "If you use this audit framework, the 5-Gate Audit Rubric, the 14 Checkpoints (CP-01 to CP-14), or any findings from the Case Evaluation Ledgers (Case 001 to Case 015), please cite it using the metadata below."
-title: "Ultari Proof Anatomy: 5-Gate Technical Audit & Formal Dissection Archive for Frontier Mathematical & Code Verification Corpora"
-abstract: "Byte-level zero-truncation technical audit and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (15 case studies, 892 standalone Lean 4 theorems with 0 sorry and 0 axiom, 4,217/4,217 hypothesis mutations killed, covering 44,833 distinct upstream .lean files and 49,969 cumulative per-case file-audits across >12.4M lines) under the project's 5-Gate Audit Rubric (OPFF) synthesizing COPE, IMU/AMS/EMS, ACM Artifact Review v1.1, ICMJE/NISO CRediT, and NeurIPS/ICML/ICLR guidelines."
+message: "If you use this audit framework, the 5-Gate Audit Rubric, the Case Evaluation Ledgers (Case 001 to Case 015), or the 17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation & Part B AST Atlas, please cite it using the metadata below."
+title: "Ultari Proof Anatomy: 5-Gate Technical Audit, Formal Dissection Archive & 17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation"
+abstract: "Byte-level zero-truncation technical audit, mathematical decompilation, and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (v1.1.0): (1) 15 OpenAI, DeepMind, and classical case studies (892 standalone zero-sorry Lean 4 theorems, 4,217/4,217 hypothesis mutations killed across 44,833 distinct upstream .lean files, >12.4M lines) under the 5-Gate Audit Rubric; and (2) the unified bilingual (EN/KO) deep mathematical decompilation of the 17.37M-line (175,187-file) Levent Alpöge & Claude Riemann Hypothesis (RH) and Dirichlet GRH Lean 4 archive (Part A 148p EN & 132p KO deep monographs, Part B 100.00% AST Atlas across 30,343 modules and 308,731 declarations, 6-volume reader guide 55p EN & 53p KO PDFs, 195/195 literature attribution dictionary, and 61 standalone zero-sorry Lean 4 audit theorems; 953 total standalone theorems across the repository)."
 type: software
-version: "1.0.3"
+version: "1.1.0"
 doi: "10.5281/zenodo.24241228"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.24241228"
-    description: "CERN Zenodo Concept DOI (all versions)"
+    description: "CERN Zenodo Concept DOI (resolves to latest version)"
   - type: doi
     value: "10.5281/zenodo.24241229"
     description: "CERN Zenodo Version DOI (v1.0.0)"
-date-released: "2026-11-18"
+date-released: "2026-11-22"
 license:
   - Apache-2.0
   - CC-BY-4.0
@@ -26,8 +26,9 @@ keywords:
   - "formal-verification"
   - "lean4"
   - "mathlib4"
+  - "riemann-hypothesis"
+  - "dirichlet-l-functions"
   - "proof-forensics"
   - "academic-integrity"
   - "ai-audit"
-  - "open-proof-forensic-framework"
-  - "opff"
+  - "ultari-proof-anatomy"
