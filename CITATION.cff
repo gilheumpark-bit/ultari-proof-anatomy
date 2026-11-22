@@ -10,6 +10,9 @@ identifiers:
     value: "10.5281/zenodo.24241228"
     description: "CERN Zenodo Concept DOI (resolves to latest version)"
   - type: doi
+    value: "10.5281/zenodo.24437646"
+    description: "CERN Zenodo Version DOI (v1.1.0, Unified Alpoge-Claude RH/GRH Suite)"
+  - type: doi
     value: "10.5281/zenodo.24241229"
     description: "CERN Zenodo Version DOI (v1.0.0)"
 date-released: "2026-11-22"
