@@ -1,5 +1,7 @@
 # 알푀게 리만 가설 · GRH 1,737만 줄 Lean 4 형식증명 심층 해독 패키지 (`Part A` + `Part B`)
 
+> **언어 선택 (Language)**: **한국어** | [**English (`README.en.md`)**](./README.en.md)
+
 - **작성 및 수리 기준일**: `2026-11-22`
 - **검증 대상 원본**: Levent Alpöge & Claude (Anthropic), `175,187`개 `.lean` 파일 (`17,374,215`줄, `1,030.53 MB`, 전수 선언 `1,061,425`개 · 무속성 기본 선언 `1,054,282`개, `leanprover/lean4:v4.33.1`, 공식 `mathlib4` `0df444a3`)
 
@@ -9,12 +11,13 @@
 
 | 구분 | 디렉터리 / 산출물 | 수록 규모 (실측) | 설명 |
 | :--- | :--- | :--- | :--- |
-| **Part A 조판 단행본** | `book/알푀게_리만가설_신작증명_심층해독단행본_AB.pdf` (`.html`) | **A4 단행본 `133`쪽 PDF** (`19.22 MB`, 도판 `4`종 내장) | 신작 `422만 줄` 하부 허브 수식 복원, `Mathlib` 경계 의미론 감사, 기출 `201`임포트 동치성 판정, `152`쪽 인간 논문 청사진 |
-| **Part A 마크다운 원고** | `part_a/A00` ~ `A06` (`7`개 권) | 총 **`5,618`줄** · 검증된 정확 경로 `.lean:line` 핀 **`1,870`개** (`오류 0건`) | 제0부 총괄 지도 ~ 제6부 단축 논문 청사진 및 전역 총색인 |
-| **Part B 마크다운 도감** | `atlas/volumes/B00` ~ `B10` (`11`개 권) | 총 **`373,974`줄** · 고유 **`30,343`개 모듈** · **`308,731`개 선언** (`100.00%` 전수) | `Formalism`(`18,254`개) $\cup$ `Pure_Vwin`(`10,832`개) $\cup$ `PublishedTheorems`(`1,073`개) $\cup$ `201`임포트 무명 `instance`·`scoped`·`local` 포함 전수 시그니처·전술·피참조 차수 색인 |
+| **Part A 한국어 단행본** | [`book/알푀게_리만가설_신작증명_심층해독단행본_AB.pdf`](./book/알푀게_리만가설_신작증명_심층해독단행본_AB.pdf) (`.html`) | **A4 단행본 `132`쪽 PDF** (`19.23 MB`, 한국어 도판 `4`종 내장) | 신작 `422만 줄` 하부 허브 수식 복원, `Mathlib` 경계 의미론 감사, 기출 `201`임포트 동치성 판정, `152`쪽 인간 논문 청사진 |
+| **Part A 영문 단행본** | [`book/Alpoge_RH_AB_Deep_Decompilation_EN.pdf`](./book/Alpoge_RH_AB_Deep_Decompilation_EN.pdf) (`.html`) | **A4 단행본 `148`쪽 PDF** (`19.30 MB`, 영문 도판 `4`종 내장) | 전 7권(`A00`~`A06`) 무생략 1대1 영문 출판 조판 단행본 |
+| **Part A 한·영 마크다운 원고** | `part_a/A00`~`A06` (`7`권) · `part_a_en/A00`~`A06` (`7`권) | 한국어 **`5,618`줄** · 영문 **`5,427`줄** · 권별 1대1 일치 `.lean:line` 핀 각 **`1,870`개** (`오류 0건`) | 제0부 총괄 지도 ~ 제6부 단축 논문 청사진 및 전역 총색인 (한·영 전권 완비) |
+| **Part B 마크다운 도감** | `atlas/volumes/B00` ~ `B10` + [`B00_Master_Index_And_Hubs.en.md`](./atlas/volumes/B00_Master_Index_And_Hubs.en.md) (`12`개 파일) | 한국어 **`373,974`줄** (+ 영문 색인 `192`줄) · 고유 **`30,343`개 모듈** · **`308,731`개 선언** (`100.00%` 전수) | `Formalism`(`18,254`개) $\cup$ `Pure_Vwin`(`10,832`개) $\cup$ `PublishedTheorems`(`1,073`개) $\cup$ `201`임포트 무명 `instance`·`scoped`·`local` 포함 전수 시그니처·전술·피참조 차수 색인 |
 | **Part B JSONL 원장** | `atlas/data/*.jsonl` (`4`종) + `atlas_summary.json` | `30,343`개 레코드 (`JSONL`) | 기계 질의·그래프 탐색용 무손실 AST 선언 및 의존성 데이터베이스 |
 | **독립 기계 검증 스위트** | `proofs/alpoge_ab_deep_audit.lean` | **`1,143`줄** · 무-sorry 정리 **`44`개** (주 정리 `30` + 보조 `14`, 사용자 추가 공리 `0`건 · 표준 내장 공리 이하) | 외부 패키지 없이 순수 Lean 4 코어만으로 즉시 검증되는 핵심 산술·부등식·합동식 감사 코드 (`68`개 주석 원문 핀 전수 검증) |
-| **빌드 · 검증 스크립트** | `scripts/` (`4`종) | Python 3 자동화 파이프라인 (`sys.dont_write_bytecode = True`) | `build_part_b_atlas.py`, `generate_ab_figures.py`, `build_ab_monograph.py`, `verify_ab_project.py` |
+| **빌드 · 검증 스크립트** | `scripts/` (`4`종) + `figures/` (`8`종: 한 `4` · 영 `4`) | Python 3 자동화 파이프라인 (`sys.dont_write_bytecode = True`) | `build_part_b_atlas.py`, `generate_ab_figures.py`, `build_ab_monograph.py`, `verify_ab_project.py` |
 
 ---
 
@@ -33,15 +36,15 @@
 ## 3. 재현 및 무결성 검증 실행 명령
 
 ```bash
-# 1. Part B 30,343개 모듈 · 308,731개 선언(100.00%) 전수 AST 도감 재생성
+# 1. Part B 30,343개 모듈 · 308,731개 선언(100.00%) 전수 AST 도감 재생성 (한·영 B00 포함)
 python3 -B scripts/build_part_b_atlas.py
 
-# 2. 실측 도판 4종 재생성
+# 2. 실측 도판 8종(한국어 4종 + 영문 4종) 재생성
 python3 -B scripts/generate_ab_figures.py
 
-# 3. Part A 단행본 HTML 및 A4 PDF 조판 빌드
+# 3. Part A 한국어(132쪽) 및 영문(148쪽) 단행본 HTML · A4 PDF 조판 빌드
 python3 -B scripts/build_ab_monograph.py
 
-# 4. 1,870+68개 .lean:line 핀 실존·범위 검사 + HTML 조판 감사 + 44개 Lean 정리 컴파일 검증
+# 4. 한·영 각 1,870개(권별 1대1 일치) + 68개 .lean:line 핀 검사 · HTML 감사 · MANIFEST(50건) · 44개 Lean 정리 컴파일 검증
 python3 -B scripts/verify_ab_project.py
 ```

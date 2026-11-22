@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Build the Part A Deep Academic Monograph (HTML + Print-Ready A4 PDF via Headless Chrome).
+Build both Korean and English Part A Deep Academic Monographs (HTML + Print-Ready A4 PDF via Headless Chrome).
 Includes strict zero-unconverted-TeX enforcement, subscript glyph normalization in code,
-ordered-list display-math continuity, multi-level TOC, and embedded base64 figures.
+ordered-list display-math/code continuity, multi-level TOC, and embedded base64 figures.
 """
 import sys
 
@@ -16,17 +16,28 @@ import subprocess
 import markdown
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-PART_A = ROOT / "part_a"
+PART_A_KO = ROOT / "part_a"
+PART_A_EN = ROOT / "part_a_en"
 BOOK_DIR = ROOT / "book"
 
-CHAPTERS = [
-    ("제0부 · 총괄 서문 및 해부 지도", PART_A / "A00_총괄서문_및_전체해부지도.md"),
-    ("제1부 · 최상위 봉인 · Mathlib 의미론 및 상단 브리지 감사", PART_A / "A01_최상위봉인_Mathlib경계의미론_및_상단브리지감사.md"),
-    ("제2부 · 기출 201선 및 PublishedTheorems 동치성 감사", PART_A / "A02_기출201선_및_PublishedTheorems_의미론동치성감사.md"),
-    ("제3부 · Formalism 4대 기둥(258만 줄) 하부 허브 심층 복원", PART_A / "A03_Formalism_4대기둥_하부전술및핵심허브_심층복원.md"),
-    ("제4부 · Formalism 112개 소이론 및 전역 상수 폐루프 복원", PART_A / "A04_Formalism_112개특수소이론_및_전역상수폐루프복원.md"),
-    ("제5부 · Pure_Vwin 반디버 우회 · 베렌트 타워 및 기계 검증 확장", PART_A / "A05_PureVwin_반디버우회_베렌트타워_및_기계검증확장.md"),
-    ("제6부 · 인간 단축 논문 청사진 및 전역 참조 총색인", PART_A / "A06_부록_인간단축논문_재구성청사진_및_전역참조총색인.md"),
+CHAPTERS_KO = [
+    ("제0부 · 총괄 서문 및 해부 지도", PART_A_KO / "A00_총괄서문_및_전체해부지도.md"),
+    ("제1부 · 최상위 봉인 · Mathlib 의미론 및 상단 브리지 감사", PART_A_KO / "A01_최상위봉인_Mathlib경계의미론_및_상단브리지감사.md"),
+    ("제2부 · 기출 201선 및 PublishedTheorems 동치성 감사", PART_A_KO / "A02_기출201선_및_PublishedTheorems_의미론동치성감사.md"),
+    ("제3부 · Formalism 4대 기둥(258만 줄) 하부 허브 심층 복원", PART_A_KO / "A03_Formalism_4대기둥_하부전술및핵심허브_심층복원.md"),
+    ("제4부 · Formalism 112개 소이론 및 전역 상수 폐루프 복원", PART_A_KO / "A04_Formalism_112개특수소이론_및_전역상수폐루프복원.md"),
+    ("제5부 · Pure_Vwin 반디버 우회 · 베렌트 타워 및 기계 검증 확장", PART_A_KO / "A05_PureVwin_반디버우회_베렌트타워_및_기계검증확장.md"),
+    ("제6부 · 인간 단축 논문 청사진 및 전역 참조 총색인", PART_A_KO / "A06_부록_인간단축논문_재구성청사진_및_전역참조총색인.md"),
+]
+
+CHAPTERS_EN = [
+    ("Volume 0 · Executive Preface & Master Decompilation Map", PART_A_EN / "A00_Executive_Preface_And_Master_Map.md"),
+    ("Volume 1 · Top Seal, Mathlib Boundary Semantics & Upper Bridges", PART_A_EN / "A01_Top_Seal_Mathlib_Boundary_Semantics_And_Upper_Bridge_Audit.md"),
+    ("Volume 2 · Classical 201 Imports & PublishedTheorems Equivalence Audit", PART_A_EN / "A02_Classical_201_Imports_And_PublishedTheorems_Semantic_Equivalence_Audit.md"),
+    ("Volume 3 · Formalism Four Pillars (2.58M Lines) Lower Hubs & Tactics", PART_A_EN / "A03_Formalism_Four_Pillars_Lower_Tactics_And_Core_Hubs_Decompilation.md"),
+    ("Volume 4 · Formalism 112 Specialized Subtheories & Global Constant Closure", PART_A_EN / "A04_Formalism_112_Specialized_Subtheories_And_Global_Constant_Closure.md"),
+    ("Volume 5 · Pure_Vwin Vandiver Bypass, Behrend Tower & 44-Theorem Suite", PART_A_EN / "A05_PureVwin_Vandiver_Bypass_Behrend_Tower_And_Formal_Audit_Suite.md"),
+    ("Volume 6 · 152-Page Journal Paper Blueprint & Global Master Index", PART_A_EN / "A06_Appendix_152p_Journal_Paper_Blueprint_And_Global_Master_Index.md"),
 ]
 
 CALLIGRAPHIC = {
@@ -103,7 +114,6 @@ TEX_SUBS = [
     (r"\\partial(?![a-zA-Z])", "∂"), (r"\\nabla(?![a-zA-Z])", "∇"),
     (r"\\qquad(?![a-zA-Z])", "    "), (r"\\quad(?![a-zA-Z])", "  "),
     (r"\\,", " "), (r"\\;", " "), (r"\\:", " "), (r"\\ ", " "),
-    # Greek uppercase & lowercase
     (r"\\Gamma(?![a-zA-Z])", "Γ"), (r"\\Delta(?![a-zA-Z])", "Δ"), (r"\\Theta(?![a-zA-Z])", "Θ"),
     (r"\\Lambda(?![a-zA-Z])", "Λ"), (r"\\Xi(?![a-zA-Z])", "Ξ"), (r"\\Pi(?![a-zA-Z])", "Π"),
     (r"\\Sigma(?![a-zA-Z])", "Σ"), (r"\\Upsilon(?![a-zA-Z])", "Υ"), (r"\\Phi(?![a-zA-Z])", "Φ"),
@@ -121,7 +131,6 @@ TEX_SUBS = [
     (r"\\varphi(?![a-zA-Z])", "φ"), (r"\\phi(?![a-zA-Z])", "ϕ"),
     (r"\\chi(?![a-zA-Z])", "χ"), (r"\\psi(?![a-zA-Z])", "ψ"), (r"\\omega(?![a-zA-Z])", "ω"),
     (r"\\ell(?![a-zA-Z])", "ℓ"), (r"\\hbar(?![a-zA-Z])", "ℏ"), (r"\\wp(?![a-zA-Z])", "℘"),
-    # Operators
     (r"\\Re(?![a-zA-Z])", "Re"), (r"\\Im(?![a-zA-Z])", "Im"),
     (r"\\ker(?![a-zA-Z])", "ker "), (r"\\coker(?![a-zA-Z])", "coker "),
     (r"\\det(?![a-zA-Z])", "det "), (r"\\dim(?![a-zA-Z])", "dim "),
@@ -134,7 +143,6 @@ TEX_SUBS = [
     (r"\\exp(?![a-zA-Z])", "exp"), (r"\\sup(?![a-zA-Z])", "sup "), (r"\\inf(?![a-zA-Z])", "inf "),
     (r"\\limsup(?![a-zA-Z])", "lim sup "), (r"\\liminf(?![a-zA-Z])", "lim inf "), (r"\\lim(?![a-zA-Z])", "lim"),
     (r"\\max(?![a-zA-Z])", "max"), (r"\\min(?![a-zA-Z])", "min"),
-    # Relations & Quantifiers
     (r"\\not\\mid(?![a-zA-Z])", "∤"), (r"\\mid(?![a-zA-Z])", "∣"), (r"\\nmid(?![a-zA-Z])", "∤"),
     (r"\\in(?![a-zA-Z])", "∈"), (r"\\notin(?![a-zA-Z])", "∉"), (r"\\ni(?![a-zA-Z])", "∋"),
     (r"\\subseteq(?![a-zA-Z])", "⊆"), (r"\\subsetneq(?![a-zA-Z])", "⊊"), (r"\\subset(?![a-zA-Z])", "⊂"),
@@ -149,7 +157,7 @@ TEX_SUBS = [
 ]
 
 NUM_RE = re.compile(r"^[+-]?[0-9][0-9,.]*%?$")
-CENTER_BADGES = {"PASS", "ONGOING", "유형 I", "유형 II", "Type I", "Type II"}
+CENTER_BADGES = {"PASS", "ONGOING", "유형 I", "유형 II", "Type I", "Type II", "Type II-A", "Type II-B"}
 
 
 def strip_tags(s: str) -> str:
@@ -279,7 +287,7 @@ def normalize_ordered_lists(md_text: str) -> str:
     ordered list items r. and (r+1). stay 4-space indented inside <li> without splitting <ol>."""
     lines = md_text.splitlines()
     in_fence = False
-    top_items = []  # (line_idx, item_num)
+    top_items = []
     boundary_lines = set()
 
     for idx, ln in enumerate(lines):
@@ -475,67 +483,67 @@ def inline_images(html_str: str, base_dir: pathlib.Path) -> str:
     return re.sub(r'src="([^"]+)"', repl, html_str)
 
 
-CSS_STYLE = """
-@page {
+CSS_STYLE_TEMPLATE = """
+@page {{
   size: A4; margin: 18mm 16mm 20mm 16mm;
-  @bottom-center { content: counter(page) " / " counter(pages); font-family: "NanumSquare Neo", "Noto Sans CJK KR", sans-serif; font-size: 8.5pt; color: #64748B; }
-}
-* { box-sizing: border-box; }
-body { margin: 0; padding: 0; background: #F7F5F0; color: #1A202C; font-family: "NanumMyeongjo", "DejaVu Serif", serif; font-size: 10.2pt; line-height: 1.75; word-break: keep-all; }
-.page-shell { max-width: 860px; margin: 0 auto; background: #FFFFFF; padding: 44px 52px; }
-@media print { body { background: #FFFFFF; } .page-shell { max-width: none; padding: 0; } }
-.cover { padding: 54px 12px 44px 12px; border-bottom: 3px solid #1E293B; margin-bottom: 34px; page-break-after: always; }
-.cover-kicker { font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 9.8pt; font-weight: 700; letter-spacing: 0.08em; color: #9B2C2C; margin-bottom: 14px; }
-.cover-title { font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 22.5pt; font-weight: 800; line-height: 1.34; color: #0F172A; margin: 0 0 16px 0; }
-.cover-sub { font-size: 11.2pt; line-height: 1.62; color: #334155; margin-bottom: 28px; }
-.cover-meta { background: #F8FAFC; border-left: 4px solid #1F5A73; padding: 15px 18px; font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 9.2pt; line-height: 1.72; color: #1E293B; }
-.toc-box { background: #FAF9F6; border: 1px solid #CBD5E1; padding: 22px 28px; margin-bottom: 34px; page-break-after: always; }
-.toc-title { font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 14pt; font-weight: 700; margin: 0 0 12px 0; color: #0F172A; }
-.toc-list { margin: 0; padding-left: 20px; font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 9.4pt; line-height: 1.85; }
-.toc-sublist { margin: 2px 0 8px 0; padding-left: 18px; font-size: 8.6pt; line-height: 1.62; color: #475569; list-style-type: disc; }
-.toc-list a { color: #1E3A5F; text-decoration: none; }
-.chapter { page-break-before: always; padding-top: 4px; }
-.chapter:first-of-type { page-break-before: auto; }
-.chapter-badge { font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 9pt; font-weight: 700; color: #1F5A73; letter-spacing: 0.05em; margin-bottom: 4px; }
-h1, h2, h3, h4 { font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; color: #0F172A; break-after: avoid; }
-h1 { font-size: 16.2pt; line-height: 1.35; border-bottom: 2px solid #1E293B; padding-bottom: 9px; margin-top: 4px; }
-h2 { font-size: 12.2pt; line-height: 1.4; margin-top: 22px; margin-bottom: 9px; color: #1E3A5F; border-left: 3.5px solid #1F5A73; padding-left: 8px; }
-h3 { font-size: 10.4pt; margin-top: 16px; margin-bottom: 7px; color: #334155; }
-h4 { font-size: 9.6pt; margin-top: 12px; margin-bottom: 5px; color: #475569; }
-p { margin: 0 0 10px 0; text-align: justify; }
-ul, ol { margin: 0 0 12px 0; padding-left: 22px; }
-li { margin-bottom: 4px; }
-hr { border: none; border-top: 1px solid #E2E8F0; margin: 18px 0; }
-blockquote { margin: 12px 0; padding: 10px 15px; background: #F8FAFC; border-left: 4px solid #B83227; font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 9.2pt; line-height: 1.62; color: #1E293B; break-inside: avoid; }
-blockquote p { margin: 0; text-align: left; }
-code { font-family: "DejaVu Sans Mono", "DejaVu Math TeX Gyre", "D2Coding ligature", "NanumSquare Neo", monospace; font-size: 8.1pt; background: #F1F5F9; color: #0F172A; padding: 1px 4px; border-radius: 3px; word-break: keep-all; }
-code.code-nowrap { white-space: nowrap; }
-code.code-wrap { white-space: normal; overflow-wrap: break-word; }
-sub.code-sub { font-size: 0.76em; line-height: 0; vertical-align: -0.22em; }
-pre { background: #0F172A; color: #F8FAFC; padding: 11px 14px; border-radius: 5px; overflow-x: auto; line-height: 1.45; break-inside: avoid; }
-pre code { background: transparent; color: #F8FAFC; padding: 0; font-size: 8.0pt; white-space: pre-wrap; overflow-wrap: anywhere; }
-table { width: 100%; border-collapse: collapse; margin: 11px 0 15px 0; font-family: "NanumSquare Neo", "DejaVu Sans", sans-serif; font-size: 8.1pt; line-height: 1.44; font-variant-numeric: tabular-nums; }
-thead { display: table-header-group; }
-tr { break-inside: avoid; }
-th { background: #1E293B; color: #FFFFFF; font-weight: 700; text-align: left; padding: 5px 7px; border: 1px solid #1E293B; }
-th code { background: #334155; color: #F8FAFC; }
-th.th-nowrap { white-space: nowrap; }
-td { padding: 5px 7px; border: 1px solid #CBD5E1; vertical-align: top; }
-td.td-num { white-space: nowrap; text-align: right; }
-td.td-center { white-space: nowrap; text-align: center; font-weight: 700; }
-tbody tr:nth-child(even) { background: #FAF9F6; }
-img { display: block; max-width: 100%; height: auto; margin: 12px auto; border: 1px solid #E2E8F0; border-radius: 4px; break-inside: avoid; }
-.math-block { margin: 11px 0; padding: 9px 14px; background: #FAF9F6; border: 1px solid #E2E8F0; border-radius: 4px; text-align: center; font-family: "DejaVu Math TeX Gyre", "DejaVu Serif", "NanumMyeongjo", serif; font-size: 10.4pt; line-height: 1.55; break-inside: avoid; }
-.math-inline { font-family: "DejaVu Math TeX Gyre", "DejaVu Serif", "NanumMyeongjo", serif; font-style: italic; padding: 0 1px; }
-.math-nowrap, sup, sub, .frac, .sqrt { white-space: nowrap; }
-.frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 3px; font-style: normal; }
-.frac .num { border-bottom: 1px solid #1A202C; padding: 0 3px 1px 3px; line-height: 1.15; }
-.frac .den { padding: 1px 3px 0 3px; line-height: 1.15; }
-.binom { display: inline-flex; align-items: center; vertical-align: middle; font-style: normal; padding: 0 2px; }
-.bstack { display: inline-flex; flex-direction: column; text-align: center; font-size: 0.82em; line-height: 1.05; padding: 0 1px; }
-.overset { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 3px; }
-.ov-top { font-size: 0.68em; line-height: 1.0; font-style: normal; }
-.sqrt .rad { border-top: 1px solid #1A202C; padding-top: 1px; }
+  @bottom-center {{ content: counter(page) " / " counter(pages); font-family: {sans_font}; font-size: 8.5pt; color: #64748B; }}
+}}
+* {{ box-sizing: border-box; }}
+body {{ margin: 0; padding: 0; background: #F7F5F0; color: #1A202C; font-family: {body_font}; font-size: 10.2pt; line-height: 1.72; {word_break_rule} }}
+.page-shell {{ max-width: 860px; margin: 0 auto; background: #FFFFFF; padding: 44px 52px; }}
+@media print {{ body {{ background: #FFFFFF; }} .page-shell {{ max-width: none; padding: 0; }} }}
+.cover {{ padding: 54px 12px 44px 12px; border-bottom: 3px solid #1E293B; margin-bottom: 34px; page-break-after: always; }}
+.cover-kicker {{ font-family: {sans_font}; font-size: 9.8pt; font-weight: 700; letter-spacing: 0.08em; color: #9B2C2C; margin-bottom: 14px; }}
+.cover-title {{ font-family: {sans_font}; font-size: 22.0pt; font-weight: 800; line-height: 1.32; color: #0F172A; margin: 0 0 16px 0; }}
+.cover-sub {{ font-size: 11.0pt; line-height: 1.60; color: #334155; margin-bottom: 28px; }}
+.cover-meta {{ background: #F8FAFC; border-left: 4px solid #1F5A73; padding: 15px 18px; font-family: {sans_font}; font-size: 9.2pt; line-height: 1.70; color: #1E293B; }}
+.toc-box {{ background: #FAF9F6; border: 1px solid #CBD5E1; padding: 22px 28px; margin-bottom: 34px; page-break-after: always; }}
+.toc-title {{ font-family: {sans_font}; font-size: 14pt; font-weight: 700; margin: 0 0 12px 0; color: #0F172A; }}
+.toc-list {{ margin: 0; padding-left: 20px; font-family: {sans_font}; font-size: 9.4pt; line-height: 1.82; }}
+.toc-sublist {{ margin: 2px 0 8px 0; padding-left: 18px; font-size: 8.6pt; line-height: 1.60; color: #475569; list-style-type: disc; }}
+.toc-list a {{ color: #1E3A5F; text-decoration: none; }}
+.chapter {{ page-break-before: always; padding-top: 4px; }}
+.chapter:first-of-type {{ page-break-before: auto; }}
+.chapter-badge {{ font-family: {sans_font}; font-size: 9pt; font-weight: 700; color: #1F5A73; letter-spacing: 0.05em; margin-bottom: 4px; }}
+h1, h2, h3, h4 {{ font-family: {sans_font}; color: #0F172A; break-after: avoid; }}
+h1 {{ font-size: 16.0pt; line-height: 1.35; border-bottom: 2px solid #1E293B; padding-bottom: 9px; margin-top: 4px; }}
+h2 {{ font-size: 12.0pt; line-height: 1.4; margin-top: 22px; margin-bottom: 9px; color: #1E3A5F; border-left: 3.5px solid #1F5A73; padding-left: 8px; }}
+h3 {{ font-size: 10.4pt; margin-top: 16px; margin-bottom: 7px; color: #334155; }}
+h4 {{ font-size: 9.6pt; margin-top: 12px; margin-bottom: 5px; color: #475569; }}
+p {{ margin: 0 0 10px 0; text-align: justify; }}
+ul, ol {{ margin: 0 0 12px 0; padding-left: 22px; }}
+li {{ margin-bottom: 4px; }}
+hr {{ border: none; border-top: 1px solid #E2E8F0; margin: 18px 0; }}
+blockquote {{ margin: 12px 0; padding: 10px 15px; background: #F8FAFC; border-left: 4px solid #B83227; font-family: {sans_font}; font-size: 9.2pt; line-height: 1.60; color: #1E293B; break-inside: avoid; }}
+blockquote p {{ margin: 0; text-align: left; }}
+code {{ font-family: "DejaVu Sans Mono", "DejaVu Math TeX Gyre", "D2Coding ligature", "NanumSquare Neo", monospace; font-size: 8.1pt; background: #F1F5F9; color: #0F172A; padding: 1px 4px; border-radius: 3px; word-break: keep-all; }}
+code.code-nowrap {{ white-space: nowrap; }}
+code.code-wrap {{ white-space: normal; overflow-wrap: break-word; }}
+sub.code-sub {{ font-size: 0.76em; line-height: 0; vertical-align: -0.22em; }}
+pre {{ background: #0F172A; color: #F8FAFC; padding: 11px 14px; border-radius: 5px; overflow-x: auto; line-height: 1.45; break-inside: avoid; }}
+pre code {{ background: transparent; color: #F8FAFC; padding: 0; font-size: 8.0pt; white-space: pre-wrap; overflow-wrap: anywhere; }}
+table {{ width: 100%; border-collapse: collapse; margin: 11px 0 15px 0; font-family: {sans_font}; font-size: 8.1pt; line-height: 1.44; font-variant-numeric: tabular-nums; }}
+thead {{ display: table-header-group; }}
+tr {{ break-inside: avoid; }}
+th {{ background: #1E293B; color: #FFFFFF; font-weight: 700; text-align: left; padding: 5px 7px; border: 1px solid #1E293B; }}
+th code {{ background: #334155; color: #F8FAFC; }}
+th.th-nowrap {{ white-space: nowrap; }}
+td {{ padding: 5px 7px; border: 1px solid #CBD5E1; vertical-align: top; }}
+td.td-num {{ white-space: nowrap; text-align: right; }}
+td.td-center {{ white-space: nowrap; text-align: center; font-weight: 700; }}
+tbody tr:nth-child(even) {{ background: #FAF9F6; }}
+img {{ display: block; max-width: 100%; height: auto; margin: 12px auto; border: 1px solid #E2E8F0; border-radius: 4px; break-inside: avoid; }}
+.math-block {{ margin: 11px 0; padding: 9px 14px; background: #FAF9F6; border: 1px solid #E2E8F0; border-radius: 4px; text-align: center; font-family: "DejaVu Math TeX Gyre", "DejaVu Serif", "NanumMyeongjo", serif; font-size: 10.4pt; line-height: 1.55; break-inside: avoid; }}
+.math-inline {{ font-family: "DejaVu Math TeX Gyre", "DejaVu Serif", "NanumMyeongjo", serif; font-style: italic; padding: 0 1px; }}
+.math-nowrap, sup, sub, .frac, .sqrt {{ white-space: nowrap; }}
+.frac {{ display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 3px; font-style: normal; }}
+.frac .num {{ border-bottom: 1px solid #1A202C; padding: 0 3px 1px 3px; line-height: 1.15; }}
+.frac .den {{ padding: 1px 3px 0 3px; line-height: 1.15; }}
+.binom {{ display: inline-flex; align-items: center; vertical-align: middle; font-style: normal; padding: 0 2px; }}
+.bstack {{ display: inline-flex; flex-direction: column; text-align: center; font-size: 0.82em; line-height: 1.05; padding: 0 1px; }}
+.overset {{ display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; padding: 0 3px; }}
+.ov-top {{ font-size: 0.68em; line-height: 1.0; font-style: normal; }}
+.sqrt .rad {{ border-top: 1px solid #1A202C; padding-top: 1px; }}
 """
 
 
@@ -564,14 +572,24 @@ def render_chapter(idx: int, badge: str, md_path: pathlib.Path):
     return sec_html, h2_titles
 
 
-def main():
-    BOOK_DIR.mkdir(parents=True, exist_ok=True)
+def build_edition(
+    lang: str,
+    chapters: list,
+    html_name: str,
+    pdf_name: str,
+    doc_title: str,
+    kicker: str,
+    cover_title: str,
+    cover_sub: str,
+    meta_lines: list,
+    toc_heading: str,
+):
     toc_items = []
     chap_htmls = []
 
-    for idx, (badge, path) in enumerate(CHAPTERS):
+    for idx, (badge, path) in enumerate(chapters):
         if not path.is_file():
-            raise FileNotFoundError(f"Missing Part A volume: {path}")
+            raise FileNotFoundError(f"Missing Part A volume ({lang}): {path}")
         sec_html, h2_list = render_chapter(idx, badge, path)
         chap_htmls.append(sec_html)
         sub_ul = ""
@@ -584,31 +602,38 @@ def main():
             f'<li><a href="#chap-{idx}"><strong>{html.escape(badge)}</strong></a>{sub_ul}</li>'
         )
 
-    meta_lines = [
-        "<strong>기계 커널 검증</strong> : lean4:v4.33.1(x86_64 · aarch64) 및 이종 커널(nanoda · con-leche · lean4lean) 175,187개 파일 통과 (PASS)",
-        "<strong>Part A 단행본 범위</strong> : Mathlib 경계 의미론 감사 · 기출 201임포트(PublishedTheorems 1,073개) 동치성 감사 · Formalism 4대 기둥 및 112개 소이론(320만 줄) 하부 수식 복원 · Pure_Vwin 반디버 우회(103만 줄) 복원 · 독립 무-sorry Lean 검증 스위트(44개 정리)",
-        "<strong>Part B 연동 도감</strong> : 신작 영역 29,067개 파일 + 기출 명세 1,258개 파일 + 상단 척추 = 고유 30,343개 모듈 · 308,731개 선언 전수(100.00%) AST 역컴파일 도감(B00~B10, 37.4만 줄) 연동",
-    ]
-    meta_divs = "".join(f"<div>{ln}</div>" for ln in meta_lines)
+    if lang == "ko":
+        css = CSS_STYLE_TEMPLATE.format(
+            body_font='"NanumMyeongjo", "DejaVu Serif", serif',
+            sans_font='"NanumSquare Neo", "DejaVu Sans", sans-serif',
+            word_break_rule="word-break: keep-all;",
+        )
+    else:
+        css = CSS_STYLE_TEMPLATE.format(
+            body_font='"DejaVu Serif", "Liberation Serif", serif',
+            sans_font='"DejaVu Sans", "Liberation Sans", sans-serif',
+            word_break_rule="word-break: normal;",
+        )
 
+    meta_divs = "".join(f"<div>{ln}</div>" for ln in meta_lines)
     full_html = f"""<!DOCTYPE html>
-<html lang="ko">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>알푀게 리만 가설·GRH 1,737만 줄 형식증명 심층 해독 단행본 (Part A-B)</title>
-<style>{CSS_STYLE}</style>
+<title>{html.escape(doc_title)}</title>
+<style>{css}</style>
 </head>
 <body>
 <div class="page-shell">
   <header class="cover">
-    <div class="cover-kicker">수리 포렌식 및 신작 증명 심층 역설계 학술 단행본 · 2026-11-22</div>
-    <h1 class="cover-title" style="border:none;font-size:22.5pt;">알푀게 리만 가설 · GRH 형식증명<br/>신작 422만 줄 심층 해독 단행본 (Part A)</h1>
-    <div class="cover-sub">Mathlib 원문 경계 의미론 감사, 기출 문헌 201개 임포트 동치성 판정, Formalism 116개 소이론 하부 허브 수식 복원, 베렌트 이와사와 타워 반디버 우회 및 Part B 전수 수식 도감(30,343개 모듈 · 308,731개 선언) 통합본</div>
+    <div class="cover-kicker">{html.escape(kicker)}</div>
+    <h1 class="cover-title" style="border:none;">{cover_title}</h1>
+    <div class="cover-sub">{html.escape(cover_sub)}</div>
     <div class="cover-meta">{meta_divs}</div>
   </header>
   <nav class="toc-box">
-    <h2 class="toc-title" style="border:none;padding:0;margin-top:0;">전체 목차 (제0부 ~ 제6부)</h2>
+    <h2 class="toc-title" style="border:none;padding:0;margin-top:0;">{html.escape(toc_heading)}</h2>
     <ol class="toc-list">{''.join(toc_items)}</ol>
   </nav>
   {''.join(chap_htmls)}
@@ -617,8 +642,8 @@ def main():
 </html>
 """
 
-    html_out = BOOK_DIR / "알푀게_리만가설_신작증명_심층해독단행본_AB.html"
-    pdf_out = BOOK_DIR / "알푀게_리만가설_신작증명_심층해독단행본_AB.pdf"
+    html_out = BOOK_DIR / html_name
+    pdf_out = BOOK_DIR / pdf_name
     html_out.write_text(full_html, encoding="utf-8")
 
     cmd = [
@@ -631,14 +656,53 @@ def main():
     ]
     r = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=180)
     if r.returncode != 0 or not pdf_out.is_file():
-        raise RuntimeError(f"Chrome PDF build failed rc={r.returncode}: {r.stderr}")
+        raise RuntimeError(f"Chrome PDF build failed ({lang}) rc={r.returncode}: {r.stderr}")
 
     pinfo = subprocess.run(["pdfinfo", str(pdf_out)], capture_output=True, text=True, check=False, timeout=30)
     pages = "?"
     for ln in pinfo.stdout.splitlines():
         if ln.startswith("Pages:"):
             pages = ln.split(":", 1)[1].strip()
-    print(f"MONOGRAPH_OK: HTML={html_out.stat().st_size:,}B | PDF={pdf_out.stat().st_size:,}B | PAGES={pages}")
+    print(f"MONOGRAPH_OK [{lang.upper()}]: HTML={html_out.stat().st_size:,}B | PDF={pdf_out.stat().st_size:,}B | PAGES={pages}")
+
+
+def main():
+    BOOK_DIR.mkdir(parents=True, exist_ok=True)
+
+    build_edition(
+        lang="ko",
+        chapters=CHAPTERS_KO,
+        html_name="알푀게_리만가설_신작증명_심층해독단행본_AB.html",
+        pdf_name="알푀게_리만가설_신작증명_심층해독단행본_AB.pdf",
+        doc_title="알푀게 리만 가설·GRH 1,737만 줄 형식증명 심층 해독 단행본 (Part A-B)",
+        kicker="수리 포렌식 및 신작 증명 심층 역설계 학술 단행본 · 2026-11-22",
+        cover_title="알푀게 리만 가설 · GRH 형식증명<br/>신작 422만 줄 심층 해독 단행본 (Part A)",
+        cover_sub="Mathlib 원문 경계 의미론 감사, 기출 문헌 201개 임포트 동치성 판정, Formalism 116개 소이론 하부 허브 수식 복원, 베렌트 이와사와 타워 반디버 우회 및 Part B 전수 수식 도감(30,343개 모듈 · 308,731개 선언) 통합본",
+        meta_lines=[
+            "<strong>기계 커널 검증</strong> : lean4:v4.33.1(x86_64 · aarch64) 및 이종 커널(nanoda · con-leche · lean4lean) 175,187개 파일 통과 (PASS)",
+            "<strong>Part A 단행본 범위</strong> : Mathlib 경계 의미론 감사 · 기출 201임포트(PublishedTheorems 1,073개) 동치성 감사 · Formalism 4대 기둥 및 112개 소이론(320만 줄) 하부 수식 복원 · Pure_Vwin 반디버 우회(103만 줄) 복원 · 독립 무-sorry Lean 검증 스위트(44개 정리)",
+            "<strong>Part B 연동 도감</strong> : 신작 영역 29,067개 파일 + 기출 명세 1,258개 파일 + 상단 척추 = 고유 30,343개 모듈 · 308,731개 선언 전수(100.00%) AST 역컴파일 도감(B00~B10, 37.4만 줄) 연동",
+        ],
+        toc_heading="전체 목차 (제0부 ~ 제6부)",
+    )
+
+    if all(p.is_file() for _, p in CHAPTERS_EN):
+        build_edition(
+            lang="en",
+            chapters=CHAPTERS_EN,
+            html_name="Alpoge_RH_AB_Deep_Decompilation_EN.html",
+            pdf_name="Alpoge_RH_AB_Deep_Decompilation_EN.pdf",
+            doc_title="Deep Mathematical Decompilation of the 17.37M-Line Alpöge-Claude RH & GRH Proof (Part A-B)",
+            kicker="MATHEMATICAL FORENSICS & DEEP DECOMPILATION MONOGRAPH · 2026-11-22",
+            cover_title="Deep Decompilation of the Alpöge-Claude<br/>4.22M-Line Novel RH &amp; GRH Proof Engine (Part A)",
+            cover_sub="Pinned Mathlib Boundary Semantics Audit, 201 Classical Import Equivalence Classification, Formalism 116 Subtheory Hub Equations, Behrend-Iwasawa Vandiver Bypass, and 100.00% AST Formula Atlas (30,343 Modules · 308,731 Declarations)",
+            meta_lines=[
+                "<strong>Mechanical Kernel Verification</strong> : 175,187 / 175,187 modules verified under lean4:v4.33.1 (x86_64 &amp; aarch64) and independent kernels (nanoda · con-leche · lean4lean) (PASS)",
+                "<strong>Part A Monograph Scope</strong> : Pinned Mathlib boundary semantics · 201 classical imports &amp; 1,073 PublishedTheorems equivalence audit · Formalism 4 pillars &amp; 112 subtheories (3.20M lines) hub decompilation · Pure_Vwin Vandiver bypass (1.03M lines) · 44-theorem standalone zero-sorry Lean 4 suite",
+                "<strong>Part B Companion Atlas</strong> : 29,067 novel modules + 1,258 classical boundary modules + top spine = 30,343 unique modules · 308,731 / 308,731 declarations (100.00%) AST-indexed across Volumes B00-B10 (373,974 lines)",
+            ],
+            toc_heading="Complete Contents (Volumes 0 - 6)",
+        )
 
 
 if __name__ == "__main__":

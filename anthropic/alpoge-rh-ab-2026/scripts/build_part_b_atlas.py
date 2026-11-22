@@ -550,7 +550,48 @@ def main():
         b00.append(
             f"| {idx} | `{h['rel']}` | `{h['in_degree']:,}` | `{h['lines']:,}` | `{h['dist']}` | `{h['decls']}` |"
         )
-    (ATLAS_VOLS / "B00_Master_Index_And_Hubs.md").write_text("\n".join(b00), encoding="utf-8")
+    (ATLAS_VOLS / "B00_Master_Index_And_Hubs.md").write_text("\n".join(b00) + "\n", encoding="utf-8")
+
+    b00_en = []
+    b00_en.append("# Part B 100.00% AST Formula Atlas Master Index (`B00`)\n")
+    b00_en.append(f"- **Generated At**: `{summary['generated_at']}`")
+    b00_en.append(
+        f"- **Novel Unique File Union (`Formalism ∪ Pure_Vwin`)**: `{summary['novel_union_unique_files']:,}` files "
+        f"(`Formalism` `{summary['formalism_files']:,}` + `Pure_Vwin` `{summary['pure_vwin_files']:,}`, overlap `{summary['overlap_formalism_pure_vwin']}`)"
+    )
+    b00_en.append(f"- **Novel Unique Source Lines**: `{summary['novel_union_lines']:,}` lines")
+    b00_en.append(f"- **Novel Extracted Declarations**: `{summary['novel_union_declarations']:,}` (`{summary['novel_kind_counts']}`)")
+    b00_en.append(
+        f"- **Classical Interface Boundary Indexed**: `PublishedTheorems` `{summary['published_theorems_files']:,}` files + "
+        f"`EveryCharacterOfLiteratureOfVWin` direct imports `{summary['every_character_direct_imports']}`"
+    )
+    b00_en.append(
+        f"- **Part B Total Unique AST-Parsed Modules**: `{summary['target_parsed_unique_files']:,}` files "
+        f"(`{summary['target_parsed_declarations']:,}` declarations = `100.00%`)\n"
+    )
+    b00_en.append("## 1. Overview of All 10 Part B Signature Volumes (`B01`..`B10`)\n")
+    b00_en.append("| Volume File | Lean Files | Lean Lines | Theorems (`theorem`/`lemma`) | Defs / Structs / Instances | Markdown Lines |")
+    b00_en.append("| :--- | ---: | ---: | ---: | ---: | ---: |")
+    for vs in vol_stats:
+        b00_en.append(
+            f"| `{vs['file']}` | `{vs['lean_files']:,}` | `{vs['lean_lines']:,}` | "
+            f"`{vs['theorems']:,}` | `{vs['defs']:,}` | `{vs['markdown_lines']:,}` |"
+        )
+    b00_en.append(f"\n## 2. Complete Statistics Across All `{len(formalism_sub_stats)}` `Formalism` Subtheories\n")
+    b00_en.append("| Rank | Subtheory Namespace | Files | Lines | Theorems | Defs / Structs / Instances |")
+    b00_en.append("| ---: | :--- | ---: | ---: | ---: | ---: |")
+    for idx, st in enumerate(summary["formalism_subtheories"], 1):
+        b00_en.append(
+            f"| {idx} | `{st['name']}` | `{st['files']:,}` | `{st['lines']:,}` | `{st['theorems']:,}` | `{st['defs']:,}` |"
+        )
+    b00_en.append("\n## 3. Top 50 Most-Imported Core Hub Modules Across the Novel Cone\n")
+    b00_en.append("| Rank | Relative File Path (`src/`) | `in_degree` | Lines | `Main` Dist | Declarations |")
+    b00_en.append("| ---: | :--- | ---: | ---: | ---: | ---: |")
+    for idx, h in enumerate(summary["top_100_novel_hubs"][:50], 1):
+        b00_en.append(
+            f"| {idx} | `{h['rel']}` | `{h['in_degree']:,}` | `{h['lines']:,}` | `{h['dist']}` | `{h['decls']}` |"
+        )
+    (ATLAS_VOLS / "B00_Master_Index_And_Hubs.en.md").write_text("\n".join(b00_en) + "\n", encoding="utf-8")
     print(f"DONE in {time.time() - t0:.1f}s!")
 
 
