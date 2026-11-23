@@ -242,9 +242,9 @@ theorem thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR
     mobius_lam108 = beta_pole108 ∧ pole_gap108 = 1 := by
   omega
 
-/-- [Theorem 40] Why `CubicGauss` Alone Stops at `71/108` While `Part II` Stickelberger Annihilation Crosses `2/3`:
-without Stickelberger pole cancellation, the sextic count envelope with `CubicGauss` (`R_eff = 7/9`) hits `71/108`
-just below `β_pole = 2/3 = 72/108`. In `Part II`, multiplying by the Stickelberger-Eisenstein element (`k_∞ = -6 ≠ 0`)
+/-- [Theorem 40] Algebraic Pole-Order Accounting Crossing `β_pole = 2/3` (`Part II` Stickelberger Annihilation vs. Zero-Energy Floor `71/108`):
+even if `LowRows` were hypothetically cancelled to the zero-energy LP intercept `71/108 < 72/108 = 2/3`, the naive `coordR` pole at `β_pole = 2/3`
+would still obstruct continuation. Multiplying by the Stickelberger-Eisenstein element (`k_∞ = -6 ≠ 0`)
 adds root multiplicity `1` at `β = 2/3`, cancelling the simple pole `(3β - 2)^(-1)` (`net_pole_order = 1 - 1 = 0`). -/
 theorem thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds
     (k_inf pole_order_raw stick_vanish_order net_pole_order beta_pole12 beta_next12 : Int)
@@ -277,20 +277,20 @@ theorem thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift
     2 * pole_crit12 = 12 := by
   omega
 
-/-- [Theorem 42] Exact Numerator `3264` Appears as the Gap `(71/108 - 7/12)` in Common Denominator `44064`:
-in the master common denominator `D = lcm(24, 4896, 108) = 44064 = 9 * 4896 = 27 * 1632`,
+/-- [Theorem 42] Exact Numerator `3264` Appears as the Gap `(71/108 - 7/12)` in Common Multiple `D = 3 * lcm(24, 4896, 108) = 44064`:
+since `lcm(24, 4896, 108) = 14688` (`(71/108 - 7/12) * 14688 = 1088 = d_001 / 3`), over `D = 3 * 14688 = 44064 = 9 * 4896 = 27 * 1632`,
 the `Part III` Path-A floor `71/108 = 28968/44064` and the `Part II` shifted pole barrier `7/12 = 25704/44064`
 differ by `28968 - 25704 = 3264`, which is literally `Part I`'s denominator `d_001 = 3264`! -/
 theorem thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064
     (D b_pathA_D b_7_12_D gap_D d_001 : Int)
-    (hD : D = 44064)
+    (hD : D = 3 * Int.ofNat (Nat.lcm (Nat.lcm 24 4896) 108))
     (hpA : 108 * b_pathA_D = 71 * D)
     (hb7 : 12 * b_7_12_D = 7 * D)
     (hgap : gap_D = b_pathA_D - b_7_12_D)
     (hd1 : 27 * d_001 = 2 * D) :
-    b_pathA_D = 28968 ∧ b_7_12_D = 25704 ∧
+    Nat.lcm (Nat.lcm 24 4896) 108 = 14688 ∧ D = 44064 ∧ b_pathA_D = 28968 ∧ b_7_12_D = 25704 ∧
     gap_D = 3264 ∧ gap_D = d_001 := by
-  omega
+  have hlcm : Nat.lcm (Nat.lcm 24 4896) 108 = 14688 := rfl; rw [hlcm] at hD ⊢; simp only [Int.ofNat_eq_natCast] at hD; exact ⟨rfl, by omega⟩
 
 /-- [Theorem 43] Why `paper2.tex` Stops at `11/12` Unless Connected to `Part III`'s `CubicGauss` and `Part II`'s Moment System:
 in `Part III` Pillar 1, the sixth-power Cauchy-Schwarz exponent as `θ → 0+` decomposes into `1/2 + 1/12 + 5/12 = 11/12`
@@ -309,10 +309,10 @@ theorem thm_43_eleven_twelfths_to_seven_eighths_bridge
   omega
 
 /-- [Theorem 44] Complete 6-Stage Telescoping Decomposition of the QRH Trilogy (`23/24 → 11/12 → 7/8 → 4069/4896 → 71/108 → 7/12 → 1/2`):
-in the master common denominator `D = 44064`, the total distance from `ShortDraft` (`23/24 = 42228/44064`)
+in the master common multiple `D = 3 * lcm(24, 4896, 108) = 44064`, the total distance from `ShortDraft` (`23/24 = 42228/44064`)
 to the critical line (`1/2 = 22032/44064`) is `20196/44064 = 11/24`, which decomposes into 6 positive trilogy stages:
 `d1 = 1836`, `d2 = 1836`, `d3 = 1935` (`Part I` `9 * 215` Gram + Stickelberger unbundling),
-`d4 = 7653` (`Part III` `CubicGauss` sharp `2/3` sieve), `d5 = 3264` (`Part I` denominator gap to `7/12`), and `d6 = 3672` (`1/12` to `1/2`). -/
+`d4 = 7653` (conditional zero-energy LP step `4069/4896 → 71/108`), `d5 = 3264` (`Part I` denominator gap to `7/12`), and `d6 = 3672` (`1/12` to `1/2`). -/
 theorem thm_44_six_stage_trilogy_telescoping_decomposition
     (b_23_24 b_11_12 b_7_8 b_4069 b_71_108 b_7_12 b_1_2 d1 d2 d3 d4 d5 d6 total_drop : Int)
     (h23 : 24 * b_23_24 = 23 * 44064) (h11 : 12 * b_11_12 = 11 * 44064)

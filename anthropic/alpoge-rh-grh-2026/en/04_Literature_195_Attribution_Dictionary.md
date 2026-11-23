@@ -17,7 +17,7 @@ Covers the algebraic-geometric and arithmetic-intersection backbone implemented 
 
 | No. | Wrapper Identifier (`Line`) | Restored Mathematical Statement | Classical Authors & Sources |
 | :---: | :--- | :--- | :--- |
-| `009` | `ht_card_of_literature` (`L235`) | Finiteness and cardinality bound for rational points of bounded height (`HtCard`) | Northcott (1949), Schanuel (1979) |
+| `009` | `ht_card_of_literature` (`L235`) | Hodge-Tate filtration jump multiplicity sum on $\ell$-adic de Rham modules (`HtCard`) | Fontaine (1982), Sen (1980) |
 | `010` | `ab_mul_n_st_of_literature` (`L237`) | Finite flatness and degree $n^{2g}$ of multiplication-by-$[n]$ on abelian varieties | Mumford (Abelian Varieties, 1970) |
 | `011` | `abelian_de_rham_of_literature` (`L239`) | Local freeness and base change of relative de Rham cohomology for abelian schemes | Grothendieck (1966), Oda (1969) |
 | `016` | `ar_calc_of_literature` (`L249`) | Fundamental arithmetic intersection calculus formulas (`ArCalc`) | Arakelov (1974), Gillet-Soule (1990) |
@@ -117,7 +117,7 @@ Covers $p$-adic Bernstein-Zelevinsky classification, Moy-Prasad depth-`0` theory
 | `031` | `ess_square_integrable_segments_of_literature` (`L279`) | Zelevinsky segment classification of essentially square-integrable $\mathrm{GL}_n$ representations | Zelevinsky (Ann. Sci. ENS, 1980) |
 | `037` | `gelfand_kazhdan_dual_of_literature` (`L291`) | Gelfand-Kazhdan contragredient identity via transpose-inverse on $\mathrm{GL}_n(F)$ | Gelfand-Kazhdan (1975) |
 | `038` | `generic_unlinked_gl_of_literature` (`L293`) | Irreducibility and generic Whittaker property of unlinked segment products | Zelevinsky (1980) |
-| `039` | `chevalley_units_of_literature` (`L295`) | Integral Bruhat/Iwahori decomposition and unit generation for reductive groups | Chevalley (1955-1961), Bruhat-Tits |
+| `039` | `chevalley_units_of_literature` (`L295`) | Congruence $m$-th power theorem for number-field global units $(\mathcal{O}_E)^\times$ (`ChevalleyUnits`) | Chevalley (J. Math. Soc. Japan, 1951) |
 | `040` | `geometric_restriction_of_literature` (`L297`) | Bernstein-Zelevinsky geometric lemma for Jacquet restriction of parabolic induction | Bernstein-Zelevinsky (1977) |
 | `041` | `grothendieck_ring_polynomial_of_literature` (`L299`) | Free polynomial-ring structure of the Grothendieck ring of smooth $\mathrm{GL}_n$ representations | Zelevinsky (1980) |
 | `042` | `segment_representation_of_literature` (`L301`) | Unique irreducible quotient and subrepresentation of a supercuspidal segment | Zelevinsky (1980) |

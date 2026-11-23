@@ -22,7 +22,7 @@ Over the past 130 years since de la Vallee Poussin's 1896 proof of the Prime Num
   2. Unbundling the three QRH Gram regimes universally in δ ∈ ℝ (1/24 + δ/16 and 1/8 + δ/16) recovers 487/3264 ≈ 0.149203 at δ = 79/204, while single-destruct specialization in Ostmann lowers the Siegel-Walfisz conductor threshold from 4,115,904 to 255,983 (16.08x reduction).
 - Sharp No-Go / Rigidity Obstruction Theorems:
   1. Degree-3 Sign-Changing Fejer Counterexample & Universal Ceiling: On sign-changing nonnegative cosine polynomials, the positive-part weight bound $W_+ = \sum \max(c_k, 0)$ satisfying $W_+ \ge 2 c_1 - c_0$ is refuted by the explicit degree-3 Fejer square (65/16, 9/2, 0, -1) (W_+ = 72/16 < 79/16), whereas both the Hadamard cone weight W = ∑ c_k (c_k >= 0) and the two-sided Weyl absolute weight `W_abs = ∑ |c_k|` (c_k ∈ ℝ) obey >= 2 c_1 - c_0 and are trapped below (3 - 2√2)/3 ≈ 0.057191 by Fejer-Riesz autocorrelation c_1 < 2 c_0, forcing 1 - β -> 0.
-  2. Gram Phase Destruction, Classical.em Non-Constructivity, $J_{AB} = -1/2$ Barrier, and Burgess SOS Trap: Schur's triangle-inequality ε n^2 > 0 gap (4.5390 vs. 3.0245 at R=64, N=128), phantom-modulus branching in Siegel's theorem, Conrey's finite-θ ceiling κ(θ) < 1, and (r - 2)^2 / (16 r^2) >= 0 are sealed as unconditional No-Go / rigidity theorems.
+  2. Gram Phase Destruction, Auxiliary-Conductor Scaling Decay, $J_{AB} = -1/2$ Barrier, and Burgess SOS Trap: Schur's triangle-inequality ε n^2 > 0 gap (4.5390 vs. 3.0245 at R=64, N=128), unbounded auxiliary-conductor decay $c_{\mathrm{scale}} q_1^{-\gamma} < c_{\mathrm{prop}}$ in Siegel's two-branch setup, Conrey's finite-θ ceiling κ(θ) < 1, and (r - 2)^2 / (16 r^2) >= 0 are sealed as unconditional rigidity/obstruction theorems over $\mathbb{R}$.
 
 
 
@@ -91,7 +91,7 @@ Upstream QRH (`#003 SevenEighths`) audits examine [oai_ref/GramBound.lean#L13-L9
 
 ## 4. Paper 3 (Theorems 36-50): Siegel (1935) Ineffectiveness & Goldfeld-Gross-Zagier (1986) Effectivization Anatomy
 
-### 4.1 Estermann Biquadratic Series, Perron Truncation, and the Classical.em Barrier
+### 4.1 Estermann Biquadratic Series, Perron Truncation, and Auxiliary-Conductor Scaling Decay
 For real primitive characters $\chi_1, \chi_2$ ($\chi_1^2 = \chi_2^2 = 1$), the local Euler factor of $F(s) := \zeta(s) L(s,\chi_1) L(s,\chi_2) L(s,\chi_1\chi_2)$ obeys
 $$4(1+\chi_1)(1+\chi_2) = (1+\chi_1+\chi_2+\chi_1\chi_2)^2 - (\chi_1^2-1)(1+\chi_2)^2 - (\chi_2^2-1)(2+2\chi_1),$$
 taking values in $\{0, 4\}$ and guaranteeing nonnegative Dirichlet coefficients bounded below by $a_1 = 1$. Optimizing Perron truncation at $X := (2 C_0 Q^A)^{2/(2\beta_1 - 1)}$ yields $L(1,\chi_2) \gg_\varepsilon q_2^{-\varepsilon}$ with an implied constant decaying as $q_1^{-A/(2\beta_1-1)} \to 0$ if a phantom zero $\beta_1 \to 1^-$ exists. Goldfeld-Gross-Zagier achieve computability via an elliptic curve of conductor 5077 ($\operatorname{ord}_{s=1} L(E,s) = 3$), trading $D^{1/2-\varepsilon}$ for $\log D$.
@@ -105,7 +105,7 @@ Upstream `#003` (`SiegelZeros`) and `#013` (`Ostmann`) audits cover [oai_ref/The
 - [thm_39_siegel_perron_optimal_truncation_scale](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L57): Exact $1/2$ residue margin at optimal Perron cutoff scale.
 - [thm_40_siegel_exponent_threshold_equivalence](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L87): Equivalence $2A(1-\beta_1)/(2\beta_1-1) \le \varepsilon \iff \beta_1 \ge 1 - \varepsilon/(2(A+\varepsilon))$.
 - [thm_41_siegel_implied_constant_decay_with_q1_blowup](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L114): Implied constant decay below arbitrary $\delta_{\mathrm{target}} > 0$ as $Q_1 \to \infty$.
-- [thm_42_siegel_two_case_nonconstructive_lem_barrier](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L135): No-Go obstruction proving impossibility of a uniform positive lower bound across phantom-zero branches.
+- [thm_42_siegel_two_case_nonconstructive_lem_barrier](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L135): Real-analytic scaling obstruction proving $\forall c_{\mathrm{prop}} > 0,\ \exists q_1 > 1,\ c_{\mathrm{scale}} q_1^{-\gamma} < c_{\mathrm{prop}}$ across unbounded auxiliary conductors $q_1$ (modeling the quantitative constant decay in Siegel's two-branch argument rather than a meta-logical `Classical.em` independence theorem).
 - [thm_43_landau_page_repulsion_pair_exclusion](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L157): Landau-Page pair exclusion with exact $60/23 - 5/2 = 5/46$ repulsion margin.
 - [thm_44_tatuzawa_one_exceptional_modulus_effective_dichotomy](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L190): Tatuzawa effective dichotomy outside at most one exceptional modulus.
 - [thm_45_dirichlet_class_number_formula_siegel_transfer](../proofs/classical_siegel_zero_and_ineffectiveness.lean#L207): Transfers $L(1,\chi_{-D})$ lower bounds to $h(-D)$ via Dirichlet's class number formula.

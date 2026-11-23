@@ -9,8 +9,8 @@
   },
   "artifacts_sha256": {
     "proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean": "db8865fae7d724f17f28f803d4df09157767e3068eca7c64b0e70dfaae41a029",
-    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "797b362b7cbf5a8d2822cee3c851037e6db47d5347fb755662d56c0457248c0d",
-    "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "95ff96ccc3e90f422a01d8d1be868e9c31d1ab9411c22b24a30661a839987a23",
+    "proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean": "e8cd0d389dd1c111ad5d46dfac34ef2aa8234eaeafd939defe9cc02506d2f750",
+    "proofs/qrh_trilogy_induction_and_algebraic_bridge.lean": "d6ee86e9b16f2ab31332fc0c655affe055b6ba9f3539f16a46bf66d8983ccc68",
     "proofs/verify_symbolic_qrh_synthesis.py": "3a6c4de3c1f80944ee1da12fc260b742ac73661136dd7a4c076f4c268747b863",
     "proofs/symbolic_verification_result.json": "d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4",
     "proofs/problem_spec.md": "610816b4cdb431bd97d8368e2d4e55753b5f828dedf0357292c2a61915ae7fc4"

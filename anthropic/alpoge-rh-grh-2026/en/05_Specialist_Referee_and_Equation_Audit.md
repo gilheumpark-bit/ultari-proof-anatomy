@@ -199,7 +199,7 @@ $$\mathrm{Vn}(\psi)\,\log l \le \frac{c_4}{21}\, o\, l\, 2^{n'} \bigl(l\, 2^{n'}
 
 ## Chapter 5. Global Arakelov Product Formula and the Prime $p$-adic Divisibility Closure Loop (`ProductFormula` · `DivIneqObj` · `DivinNOfHypV`)
 
-How the prime-power von Mangoldt sums $\Lambda(n)$ and Chebyshev nodes ($m \asymp \sqrt{x}$) of Acts 1 to 3 lock into the Siegel-Weil mass ratio $D^*/d^*$ and cohomology length `shaLen` of Chapters 3 and 4 is resolved across four modules: `Formalism/ProductFormula`, `Formalism/DivisorInequality`, `CharacterBoxes/DivinNOfHypV.lean`, and `SizeWindowBrackets/SChain.lean`.
+How the prime-power von Mangoldt sums $\Lambda(n)$ and Chebyshev nodes ($m \asymp \sqrt{x}$) of Acts 1 to 3 lock into the Siegel-Weil mass ratio $D^*/d^*$ and cohomology length `shaLen` of Chapters 3 and 4 is resolved across `Formalism/ProductFormula`, `Formalism/DivisorInequality`, `CharacterBoxes/DivinNOfHypV.lean`, and `PrimitiveCosets/CoreGm.lean` (alongside the standalone $\zeta$-spec `SizeWindowBrackets/SChain.lean`).
 
 ### 5.1 Integer Product Formula (`ProductFormula`), Legendre $p$-adic Valuation, and the CM `3/4` Prototype (`StatementOCCM.lean`, `thm_17`)
 
@@ -239,10 +239,11 @@ Both Chapter 3's mass ratio $D^*/d^*$ and Chapter 4's `VWin` (`shaLen`) enter di
 $$\mathrm{etaSum}(L, j) \le d_{Z,0}(j)\left(C\bigl(f m b L^2 + (\log x)^2 N_c\bigr) + \sum_{l} \mathrm{vvTerm}(D, l)\right) \le D_0 \cdot (\lvert C \rvert + 1)\, x^\varepsilon (B_0 + N_c)$$
 
 - **2. Hilbert-Schmidt Quasi-Orthogonality from $D^*/d^*$ (`LinkS_at`, `GlobalTheoremInputs.lean:145-163`)**: Chapter 3's two-sided bound on $\frac{\log(D^*/d^*)}{[K^+:\mathbb{Q}] k}$ forces off-diagonal Gram inner products $\mathrm{hsSq}(u, u') \le (1 + \eta_0)\frac{d_u d_{u'}}{D^*}$ ($\eta_0, \eta_1, \sqrt{e_0} \le \exp(-x^{\varepsilon/8})$), securing full-rank non-degeneracy (`NuFullF` · `J.linkMu_of_linkDIV`).
-- **3. Top-Level Closure (`DesWin.lean:28-31` $\to$ `ShapeWin.lean:46` $\to$ `SChain.lean:88-101` $\to$ `ZeroFreeAllOfTopG.lean:26-35`, `thm_17`)**: `ShapeWin.lean:46` feeds `(LinkG, LinkS, LinkIRR, LinkDIV, LinkMu)` at `(eD, eL) = (2, 0)` into `topDesWin` (`DesWin.lean:11-32`) to obtain `ChainTied`.
-  `src/Formalism/SizeWindowBrackets/SChain.lean:88-101` (`ChainAt`, line `90`) converts `ChainTied` into the window bound below (`thm_17` `sChainEpsMult 2 0 = 8`), while `ZeroFreeAllOfTopG.lean:26-35` (`zeroFreeAll_of_topG`) sends $\varepsilon \to 0^+$ across window scales to establish `ZeroFreeAll` and `EveryCharacter`.
+- **3. Top-Level Closure (`DesWin.lean:28-31` $\to$ `ShapeWin.lean:46` $\to$ `CoreGm.lean:12-15` $\to$ `ZeroFreeAllOfTopG.lean:26-35`, `thm_17`)**: `ShapeWin.lean:46` feeds `(LinkG, LinkS, LinkIRR, LinkDIV, LinkMu)` at `(eD, eL) = (2, 0)` into `topDesWin` (`DesWin.lean:11-32`).
+  While the standalone $\zeta$-specification `src/Formalism/SizeWindowBrackets/SChain.lean:88-101` (`ChainAt`, line `90`) records $G_z(x) \le x^{1/2 + 8\varepsilon}$ (`thm_17` `sChainEpsMult 2 0 = 8`),
+  the active Dirichlet spine closes $\Lambda.\mathrm{Gm}(x) \le x^{1/2 + (e_D + e_L + 7)\varepsilon} = x^{1/2 + 9\varepsilon}$ in `src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15` (`core_gm`), and `ZeroFreeAllOfTopG.lean:26-35` sends $\varepsilon \to 0^+$ to establish `EveryCharacter`.
 
-$$G_z(x) \le x^{1/2 + (e_D + e_L + 6)\varepsilon} = x^{1/2 + 8\varepsilon} \qquad \left(0 < \varepsilon < \frac{1}{52},\; \frac{1}{2} + \frac{8}{52} = \frac{17}{26} < 1\right)$$
+$$\Lambda.\mathrm{Gm}(x) \le x^{1/2 + (e_D + e_L + 7)\varepsilon} = x^{1/2 + 9\varepsilon} \qquad \left(0 < \varepsilon < \frac{1}{52},\; \frac{1}{2} + \frac{9}{52} = \frac{35}{52} < 1;\; G_z(x) \le x^{1/2 + 8\varepsilon}\right)$$
 
 ### 5.4 Why Global Product-Formula Rigidity Escapes the Analytic Perturbation Barrier
 

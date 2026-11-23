@@ -26,8 +26,8 @@ python3 ../../tools/verify_all.py --root .
 | 산출물 파일 | SHA-256 체크섬 |
 | :--- | :--- |
 | [proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean) | `db8865fae7d724f17f28f803d4df09157767e3068eca7c64b0e70dfaae41a029` |
-| [proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `797b362b7cbf5a8d2822cee3c851037e6db47d5347fb755662d56c0457248c0d` |
-| [proofs/qrh_trilogy_induction_and_algebraic_bridge.lean](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `95ff96ccc3e90f422a01d8d1be868e9c31d1ab9411c22b24a30661a839987a23` |
+| [proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean) | `e8cd0d389dd1c111ad5d46dfac34ef2aa8234eaeafd939defe9cc02506d2f750` |
+| [proofs/qrh_trilogy_induction_and_algebraic_bridge.lean](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) | `d6ee86e9b16f2ab31332fc0c655affe055b6ba9f3539f16a46bf66d8983ccc68` |
 | [proofs/verify_symbolic_qrh_synthesis.py](../proofs/verify_symbolic_qrh_synthesis.py) | `3a6c4de3c1f80944ee1da12fc260b742ac73661136dd7a4c076f4c268747b863` |
 | [proofs/symbolic_verification_result.json](../proofs/symbolic_verification_result.json) | `d57f4eb4f15a3fb9a9734f4a81dc52416cdb188e71e39d0cf8120b67d83de9c4` |
 | [proofs/problem_spec.md](../proofs/problem_spec.md) | `610816b4cdb431bd97d8368e2d4e55753b5f828dedf0357292c2a61915ae7fc4` |
@@ -65,11 +65,11 @@ python3 ../../tools/verify_all.py --root .
 - 정리 22: [thm_22_signal_matching_identity_and_face_K_origin](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L145-L156) : 신호 정합 항등식 (11/12 - ℓ/4) - (4 + b)/6 = x/2 + b/12 및 `Face_K`의 기원.
 - 정리 23: [thm_23_complete_square_uniqueness_at_dc_and_u_half](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L162-L174) : `A_c(v)` 및 disc(v) 계수 양수성을 이용한 `(d, u) = (δ_c, 1/2)`에서의 완전제곱 유일성.
 - 정리 24: [thm_24_parametric_unbundled_farkas_shift_theorem](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L187-L211) : 매개변수 파카스 이동 정리 `B*(Δ_0, Δ_K, Δ_H) = B_Liu - (w_0 Δ_0 + w_K Δ_K + w_H Δ_H)`.
-- 정리 25: [thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L216-L228) : `w_0 > 2/3` 및 Xu–Sang(`arXiv:2610.15291`, 미심사 프리프린트) δ = 0 6차 모멘트 절감으로 `B_Liu`(`arXiv:2610.12234`, 미심사 프리프린트)를 8748867/10000000으로 이동.
+- 정리 25: [thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L216-L228) : `w_0 > 2/3` 및 Y. Xu & H. Sang(`arXiv:2610.15291`, 미심사 프리프린트) δ = 0 반사 분자 증폭 모멘트 절감으로 `B_Liu`(`arXiv:2610.12234`, 미심사 프리프린트)를 8748867/10000000으로 이동.
 - 정리 26: [thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L234-L246) : 그램 결합 해제 + 슈티켈베르거 `z_high' = 7/20` 이동의 LP 지수 목표치 4103/4896 및 4069/4896.
-- 정리 27: [thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L252-L264) : `CubicGauss`의 날카로운 2/3 큰 체(`R_eff = 7/9`)를 결합한 조건부 LP/대수적 지수 합성 목표치 71/108(실제 달성은 슈티켈베르거 극점 소멸 및 보로노이-멜린 전달의 완전한 해석적 증명 구축에 조건부 의존).
+- 정리 27: [thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L252-L264) : `(4/9, 13/18)`에서 `CubicGauss`가 남기는 양의 저차 행 지수 `53/216 > 0`(`β(0) = 65/72`)과 가상적 완전 상쇄(`Δ_gram = 53/216`) 아래의 영에너지 LP 절편 `71/108` 분리.
 - 정리 28: [thm_28_ten_tier_qrh_boundary_hierarchy](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L268-L284) : 1/2부터 23/24까지의 10단계 영점 비존재 경계 엄격 순서 관계.
-- 정리 29: [thm_29_zero_free_strip_width_progression_ratios](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L290-L302) : 영점 비존재 폭 배율 진행(1x → 2x → 3x → 3.89x → 4.05x → 8.22x → 12x).
+- 정리 29: [thm_29_zero_free_strip_width_progression_ratios](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L290-L302) : `lcm(24, 4896, 108) = 14688`, `D = 3 * 14688 = 44064` 및 영점 비존재 폭 배율 진행 증명.
 - 정리 30: [thm_30_master_qrh_ecosystem_synthesis_verdict](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L308-L321) : 4대 축 전체를 결합한 마스터 생태계 합성 정리.
 
 ### 파일 3: [proofs/qrh_trilogy_induction_and_algebraic_bridge.lean](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean) (정리 15개 + `def` 7개 + `structure` 1개 `ZSqrt921`)
@@ -84,7 +84,7 @@ python3 ../../tools/verify_all.py --root .
 - 정리 39: [thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L232-L243) : 제3부 `CubicGauss` 고정점 `α* = 4/3`과 제2부 `coordR` 극점 `β_pole = 2/3`의 쌍대성(`α* + β_pole = 2`) 및 `β_pole - 71/108 = 1/108`.
 - 정리 40: [thm_40_cubic_gauss_plus_stickelberger_crosses_two_thirds](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L249-L258) : 조건부 대수적 극점 위수 소멸(`k_∞ = -6`, `net_pole_order = 1 - 1 = 0`) 검증(실제 `71/108` 달성은 슈티켈베르거 극점 소멸 및 보로노이-멜린 전달의 완전한 해석적 증명 구축에 조건부 의존).
 - 정리 41: [thm_41_case001_gauss_branch_vanishing_drives_case005_pole_shift](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L264-L278) : 제1부 가우스 분기 6/8 소멸(1/6 → 1/12)과 제2부 극점 좌표 이동(2/3 → 7/12 → 1/2)의 일치.
-- 정리 42: [thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L293) : 공통분모 44064에서 `(71/108 - 7/12) * 44064 = 3264` (제1부 분모) 일치 증명.
+- 정리 42: [thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L293) : `lcm(24, 4896, 108) = 14688`(`격차 = 1088 = d_I/3`) 및 공통배수 `D = 3 * 14688 = 44064`에서 `(71/108 - 7/12) * 44064 = 3264` 증명.
 - 정리 43: [thm_43_eleven_twelfths_to_seven_eighths_bridge](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L299-L309) : 1부 11/12 (14/24 + 8/24 = 11/12)에서 2부 7/8 (14/24 + 7/24 = 7/8)로의 전이.
 - 정리 44: [thm_44_six_stage_trilogy_telescoping_decomposition](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L316-L331) : 6단계 망원 합 `1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = (23/24 - 1/2) * 44064`.
 - 정리 45: [thm_45_grand_trilogy_synthesis_verdict](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L338-L354) : 제1부 + 제2부 + 제3부 3부작 통합 마스터 정리.

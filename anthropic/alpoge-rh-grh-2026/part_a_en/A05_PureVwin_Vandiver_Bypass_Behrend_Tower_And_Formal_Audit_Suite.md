@@ -2,7 +2,7 @@
 
 - **Document Identifier**: `A05` (Part A Deep Decompilation Monograph, Volume 5)
 - **Target Decompilation Cone**: `Pure_Vwin_Outside_Literature` (`10,832` `.lean` files · `1,029,481` lines · `61,209` declarations)
-- **Standalone Formal Verification Artifact**: `proofs/alpoge_ab_deep_audit.lean` (`1,143` lines · `30` main theorems + `14` auxiliary theorems = `44` zero-sorry theorems (zero user-added axioms, within standard built-in Lean 4 axioms))
+- **Standalone Formal Verification Artifact**: `proofs/alpoge_ab_deep_audit.lean` (`1,245` lines · `30` main theorems + `14` auxiliary theorems = `44` zero-sorry theorems (zero user-added axioms, within standard built-in Lean 4 axioms))
 - **Companion Part B Complete Atlas Volumes**:
     - Volume 6 `B06_PureVwin_AutomorphicVarieties.md` (`3,747` files · `409,549` lines · `22,661` declarations)
     - Volume 7 `B07_PureVwin_Foundations_And_Hecke.md` (`1,895` files · `198,417` lines · `11,530` declarations)
@@ -55,7 +55,7 @@ $$
 \mathrm{Pure\_Vwin\_Outside\_Literature} := C_{\mathrm{vwin}} \setminus C_{\mathrm{lit}} \implies 10{,}832\text{ files},\; 1{,}029{,}481\text{ lines},\; 61{,}209\text{ declarations}
 $$
 
-This cone partition identity is formally verified in `thm_16_vandiver_pluslen_and_cone_partition` at `proofs/alpoge_ab_deep_audit.lean:284-305` and `thm_18_pure_vwin_b06_b08_conservation` at `proofs/alpoge_ab_deep_audit.lean:455-462`.
+This cone partition identity is formally verified in `thm_16_vandiver_pluslen_and_cone_partition` at `proofs/alpoge_ab_deep_audit.lean:353-433` and `thm_18_pure_vwin_b06_b08_conservation` at `proofs/alpoge_ab_deep_audit.lean:534-560`.
 Moreover, the overlap between the global analytic and arithmetic-geometric novel core `Formalism.*` (`18,254` files · `3,200,748` lines · `240,099` declarations) and `Pure_Vwin_Outside_Literature` consists of only `19` files in total: `13` files under `Formalism/SharpRestriction/ValuationFrobeniusEpsilon/` and `6` re-export files under `CompanionTheory/EightfoldTheory/VariationTheory/`.
 Consequently, the union of pure novel code across the entire archive forms `18,254 + 10,832 - 19 = 29,067` unique files (`4,224,608` lines · `300,415` declarations), written as $18{,}254 + 10{,}832 - 19 = 29{,}067$.
 
@@ -64,7 +64,7 @@ Consequently, the union of pure novel code across the entire archive forms `18,2
 Although an extensive body of modern number theory and algebraic geometry already resides inside the literature cone $C_{\mathrm{lit}}$, closing `UpperTheory.Top.VWin` unconditionally required `1,029,481` lines of separate novel code because the global zero-exclusion chain confronts three unresolved obstructions.
 
 First is the **unproved barrier of the classical Vandiver conjecture (Vandiver's Conjecture)**.
-To derive a contradiction from a putative off-line zero by combining Chebyshev weighted sums, the $\mathrm{GL}_5$ sixfold-cover relative trace formula (`Formalism.SharpRestriction`), the Siegel-Weil seesaw identity (`Formalism.PeriodIntegrals`), and Arakelov height intersection theory (`Formalism.HermitianCurvature`), the weighted sum of $\mathbb{Z}_\ell$-lengths of Tate-Shafarevich groups over the base CM number field $E \subset \mathbb{Q}(\zeta_N)$ must remain strictly smaller than the main-term growth rate.
+To derive a contradiction from a putative off-line zero by combining Chebyshev weighted sums, recursive cokernel sum-of-squares and Cauchy-Schwarz Gram bounds (`Formalism.SharpRestriction`), the Siegel-Weil seesaw identity (`Formalism.PeriodIntegrals`), and Arakelov height intersection theory (`Formalism.HermitianCurvature`), the weighted sum of $\mathbb{Z}_\ell$-lengths of Tate-Shafarevich groups over the base CM number field $E \subset \mathbb{Q}(\zeta_N)$ must remain strictly smaller than the main-term growth rate.
 
 $$
 \sum_{\ell \in S} (\log \ell) \sum_{1 \le e < \lfloor x^{401} \rfloor} \mathrm{length}_{\mathbb{Z}_\ell}\left(\amalg^1(E, (\mathbb{Q}_\ell/\mathbb{Z}_\ell)(-e))\right) \le \sqrt{\exp(x^\varepsilon)}
@@ -81,8 +81,8 @@ To overcome this obstruction, the archive couples three-term progression cancell
 This coupling guarantees a clean window $[Y, Y^2] \subset [X^{1/J}, X]$ avoiding every exceptional exponent within a magnification factor $J = 2^{R+2}(2 C_K C_t / \varepsilon)^R$ determined by the finite exceptional set cardinality $|\mathrm{Exc}| \le R$.
 
 Third is **sealing the formal gap between the open-literature specification (`OpenImageCondition`) and the actual automorphy-lifting hypothesis (`HypothesesH'`)**.
-Inspecting `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:18-74` reveals that the `50` literature wrappers extracted directly from `OpenImageCondition` do not by themselves fill all `56` slots of `LiteratureRankNHypothesis`.
-Cross-checking the assembly block in the source (`L38-74`) identifies six novel proofs injected from outside the literature condition.
+Inspecting `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:18-74` reveals that the `56` slots of `LiteratureRankNHypothesis` partition as `50 + 5 + 1 = 56`: `50` pure `*_of_open O` literature wrappers, `5` pure non-`O` novel slots (`bc, gal, per, gmp, st`), and `1` hybrid slot (`cm.dual`, combining `dual_abelian_scheme_of_open O` with the novel witness `crystallineSmoothLift_of_relations`).
+Cross-checking the assembly block in the source (`L38-74`) identifies these six novel inputs (`5` pure novel + `1` hybrid supplement) injected from outside the literature condition.
 
 ```lean
 -- Source: Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:38-74
@@ -306,7 +306,7 @@ $$
 $$
 
 When the parity matching condition $\chi(\pi(-1)) = (-1)^k$ holds, $|\chi_{\mathrm{dir}}(a)| = 1$ and $a^k > 1$ force the first Euler-type factor to be nonzero (`L24-29`), while the classical nonvanishing theorem `b_nzC` forces the generalized Bernoulli factor to be nonzero (`L23`), so their product is nonzero.
-Conversely, on the even wing (the Vandiver regime, $\chi(\pi(-1)) = -(-1)^k$), one has $\mathrm{genB}(k, \chi_{\mathrm{dir}}) = 0$ and this annihilator vanishes (`thm_12_stickelberger_parity_annihilation` in `proofs/alpoge_ab_deep_audit.lean:196-199`), establishing the division of labor between the odd-wing annihilator and even-wing automorphic patching.
+Conversely, on the even wing (the Vandiver regime, $\chi(\pi(-1)) = -(-1)^k$), one has $\mathrm{genB}(k, \chi_{\mathrm{dir}}) = 0$ and this annihilator vanishes (`thm_12_stickelberger_parity_annihilation` in `proofs/alpoge_ab_deep_audit.lean:248-264`), establishing the division of labor between the odd-wing annihilator and even-wing automorphic patching.
 
 #### Step 2: Global Product Formula and Factorial-Conductor Upper Bound (`ThmBcOfPsiBound.lean`)
 The module `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:15-160` bounds the sum of $\ell$-adic valuations of the nonvanishing Stickelberger element $\alpha_{e+1,\chi} = \mathrm{alN}(e+1, \chi)$ by the archimedean norm bound `bnd N (e + 1)` via the global product formula (`prime_of`, `L67-109`).
@@ -316,7 +316,7 @@ $$
 $$
 
 Next, the lemma `log_bnd_le_mul_log` in `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-146` multiplies three natural-number inequalities for $F \ge 1$, $t \ge 2$, and $e + 1 \le t$: namely $16 \le (tF)^4$, $F^{e+2} \le (tF)^{t+1}$, and $\Gamma(e+2) \le (e+1)^{e+1} \le (tF)^t$.
-This yields $16 F^{e+2} \Gamma(e+2) \le (tF)^{2t+5}$, and hence the logarithmic upper bound $(2t + 5) \log(tF)$ (`thm_27` in `proofs/alpoge_ab_deep_audit.lean:1001-1023`).
+This yields $16 F^{e+2} \Gamma(e+2) \le (tF)^{2t+5}$, and hence the logarithmic upper bound $(2t + 5) \log(tF)$ (`thm_27` in `proofs/alpoge_ab_deep_audit.lean:1103-1125`).
 
 #### Step 3: In-Archive Proof of the Ferrero-Washington Index Bound (`FerreroWashington.lean`)
 The file `Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/FerreroWashingtonIndex/FerreroWashington.lean:18-119` proves the Ferrero-Washington theorem on the vanishing of the Iwasawa $\mu$-invariant in cyclotomic $\mathbb{Z}_\ell$-towers directly inside the archive without literature axioms.
@@ -328,12 +328,12 @@ Resonances arising inside the tower when bad primes $\ell \in B'$ meet roots of 
 
 - **Behrend thick-set determinant cancellation (`Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-82`)**: Whenever three shifted points $t + i_k \cdot h$ ($i_1 < i_2 < i_3$) within window width $i_3 - i_1 \le L_w$ simultaneously belong to the thick set `thick n S u` (the image of elements $y \in S$ satisfying $4 L_w y < n$), linear elimination yields the modulo-$n$ congruence $D := (i_3 - i_1)(y_2 - y_1) - (i_2 - i_1)(y_3 - y_1) \equiv 0 \pmod n$ (`L32-42`).
     - Yet the archimedean triangle inequality gives $4 |D| \le 4 L_w |y_2 - y_1| + 4 L_w |y_3 - y_1| < n + n = 2n$, so $|D| < n/2 < n$ (`L48-65`), which collides with $n \mid D$ and forces the exact integer identity $D = 0$ (`L66`).
-    - That identity contradicts the Behrend progression-free spherical set hypothesis `SpaceFreePos Lw S` (`L80-81`), ruling out triple resonances unconditionally (`thm_28_behrend_thick_set_determinant_vanishing` in `proofs/alpoge_ab_deep_audit.lean:1030-1079`).
+    - That identity contradicts the Behrend progression-free spherical set hypothesis `SpaceFreePos Lw S` (`L80-81`), ruling out triple resonances unconditionally (`thm_28_behrend_thick_set_determinant_vanishing` in `proofs/alpoge_ab_deep_audit.lean:1132-1181`).
 - **Exceptional-layer avoidance dyadic window (`Window1.lean` · `ThmBabOf.lean` · `PartB.lean`)**:
     - The upper assembly consists of three modules: `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOfLemmaK.lean:9-13`, `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOf.lean:11-103`, and `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/PartB.lean:50-95`.
     - The window selection lemmas reside in two modules: `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window.lean:7-43` and `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58`.
     - `ThmBabOf` defines the total exceptional count bound $R := R_0(M) + \sum_{\ell \in B'} R_\ell(L_\ell)$ and the scale exponent $J := 2^{R+2}(2 C_K C_t / \varepsilon)^R$ (`L28-29`).
-    - Applying the inductive pigeonhole lemma of `Window1.lean` then extracts a window $[Y, Y^2] \subset [X^{1/J}, X]$ avoiding all $|\mathrm{Exc}| \le R$ bad exponents (`thm_26` in `proofs/alpoge_ab_deep_audit.lean:957-980`), after which `PartB.lean` bounds the cohomology sum on the intermediate Iwasawa layer $L_1$ at depth $j_0(\ell, R) = \lfloor \log_\ell R_\ell \rfloor + 3$ by $\exp(x^{4\varepsilon/5})$.
+    - Applying the inductive pigeonhole lemma of `Window1.lean` then extracts a window $[Y, Y^2] \subset [X^{1/J}, X]$ avoiding all $|\mathrm{Exc}| \le R$ bad exponents (`thm_26` in `proofs/alpoge_ab_deep_audit.lean:1059-1082`), after which `PartB.lean` bounds the cohomology sum on the intermediate Iwasawa layer $L_1$ at depth $j_0(\ell, R) = \lfloor \log_\ell R_\ell \rfloor + 3$ by $\exp(x^{4\varepsilon/5})$.
 
 ### 2.5 Five-Branch Automorphic Summation on the Even Wing (`plusLen`) and `SumOut` · `PointArith` Exponent Convergence
 
@@ -358,7 +358,7 @@ $$
 Next, `point_arith` in `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/PointArith.lean:5-35` combines the contribution $k(M^D + D B)$ from the bad prime set $B_\chi$ ($k \le K_B := |B_\chi|$) with the unramified contribution $M^{C_0}$, confining the entire `plusLen` sum within the single combined exponent $C_{\mathrm{HV}} = C_0 + D + K_B + K_B D$.
 
 $$
-M^{C_0} + k\left(M^D + D B\right) \le (1 + k) M^{C_0 + D} + k D B \le (1 + B) M^{C_0 + D + K_B + K_B D}
+M^{C_0} + k\left(M^D + D B\right) \le (1 + k) M^{C_0 + D} + k D B \le M^{C_0 + D + K_B + K_B D} + (C_0 + D + K_B + K_B D) B
 $$
 
 Finally, in `Development/AutomorphicArithmetic/AutomorphicVarieties/CMFieldExponentialBounds/AdmissibleOfPageN.lean:123-130`, both $B = \exp(x^{4\varepsilon/5})$ and the polynomial term $(N t)^{C_{\mathrm{HV}}}$ are absorbed below $\sqrt{\exp(x^\varepsilon)} = \exp(\frac{1}{2} x^\varepsilon)$.
@@ -495,7 +495,7 @@ The arithmetic reason why the truncation exponent is fixed at **`401`** emerges 
 1. **Coupling with the Siegel zero-exclusion box width `1 / 400`**:
     - `Development/AutomorphicArithmetic/CharacterBoxes/PairGood.lean:12-13` and `32-34` define the box conditions `ZeroBox` and `RealBox` controlling exceptional real zeros in the region $\mathrm{Re}(s) > 1 - \frac{1}{400}$.
     - Matching this width, `WinDatum.bound` in `Development/AutomorphicArithmetic/CharacterBoxes/TwistForm.lean:25-26` requires the cohomology length bound `VVle E ⌊x ^ 400⌋₊ (Real.sqrt (Real.exp (x ^ eps)))` up to exponent **`400`**.
-    - Likewise, in the `Formalism` tail-bound estimates, degree $m = 398$ is multiplied by the quadratic factor $x^2 + 1 \le x^3$ ($x \ge 2$), producing $398 + 3 = 401$ (`thm_09` in `proofs/alpoge_ab_deep_audit.lean:149-162`).
+    - Likewise, in the `Formalism` tail-bound estimates, degree $m = 398$ is multiplied by the quadratic factor $x^2 + 1 \le x^3$ ($x \ge 2$), producing $398 + 3 = 401$ (`thm_09` in `proofs/alpoge_ab_deep_audit.lean:166-179`).
 2. **Lossless absorption of an arbitrary rescaling constant $c \ge 1$ (`Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean:16-81`)**:
     - Given a rescaling factor $c \ge 1$, `winPairs` chooses $k \ge 1$ satisfying $k^{2+8\varepsilon} = c$ and secures a window lower bound $W \ge M \ge \max(k^3, k^{400})$ (`L23-25`).
     - Writing any point $x \in [kW, (kW)^{3/2}]$ in the target interval as $x = k x'$ with $x' \ge W \ge k^{400}$, the bound $k^3 \le W \implies (kW)^{3/2} \le W^2$ (`L40-51`) yields $x' \le x \le W^2$, licensing invocation of `VWinAt ψ 401` at the base point $x'$ (`L75`).
@@ -536,14 +536,14 @@ Source-level comparison clarifies the divergence and mathematical role of each r
 - **Dynamic asymptotic window pair `WinPair eps Y q d` (`Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` and `Development/AutomorphicArithmetic/CharacterBoxes/PairGood.lean:18-30`)**:
     - In the asymptotic regime $Y \to \infty$, `splitBound` grows concurrently as $\lfloor x^{\varepsilon/(5J)} \rfloor$, requiring both that every odd prime $p \le Y^{\varepsilon/5}$ divide $d + 1$ (`d_small`) and that **$q \mid d + 1$ (`d_q`)** hold simultaneously.
     - Arithmetically, $q \equiv 3 \pmod 8$ is odd while $d \equiv 7 \pmod{16}$ implies $d + 1 \equiv 8 \pmod{16}$ ($8 \mid d + 1$ and $16 \nmid d + 1$). By the Bézout identity $3q = 8(3\lfloor q/8 \rfloor + 1) + 1$, one has $\gcd(8, q) = 1$, so $q \mid d + 1$ immediately forces **$8q \mid d + 1$ and $d \ge 8q - 1$**.
-    - In particular, at $q = 11 \equiv 3 \pmod 8$, the minimal dynamic prime witness for which every odd prime $3, 5, 7, 11$ up to $11$ divides $d + 1$ is $d = 9{,}239$, satisfying $9{,}239 \equiv 7 \pmod{16}$ and $9{,}239 + 1 = 9{,}240 = 8 \cdot 3 \cdot 5 \cdot 7 \cdot 11$ (verified in `thm_22_static_571_599_vs_dynamic_winpair_divisibility` at `proofs/alpoge_ab_deep_audit.lean:748-780`).
+    - In particular, at $q = 11 \equiv 3 \pmod 8$, the minimal dynamic prime witness for which every odd prime $3, 5, 7, 11$ up to $11$ divides $d + 1$ is $d = 9{,}239$, satisfying $9{,}239 \equiv 7 \pmod{16}$ and $9{,}239 + 1 = 9{,}240 = 8 \cdot 3 \cdot 5 \cdot 7 \cdot 11$ (verified in `thm_22_static_571_599_vs_dynamic_winpair_divisibility` at `proofs/alpoge_ab_deep_audit.lean:850-882`).
 
 ### 3.4 Three-Variable Unitary Deformations (`CountVOf.lean`) and the Small Class Number Branch (`SmallClassNumbers`)
 
 Deformation theory for the three-variable unitary group $U(3)$ operates across a two-layer structure: the foundational `103`-file layer anchored at `Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeDeformations/CountVOf.lean:1-41` and its dense-threshold junction `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-61` (inside `Pure_Vwin`).
 
 - **Universal deformation ring length theorem in `CountVOf.lean` (`L33-60`)**: Over the Gaussian imaginary quadratic field $K = \mathbb{Q}(i)$, the proof constructs a host frame `exists_hostFrame` (`L36-40`), extracts residual representations and congruence data from the automorphic generator theorem `ThmS6_s` (`L42`), and builds a universal deformation ring $(R, u)$ over the complete local coefficient ring `c.O` (`exists_isUniv`, `L45`, with $\ell \in \mathfrak{m}_{c.O}$ proved by the lemma `l_mem` at `L26-32`).
-- Feeding the cotangent generator lemmas `LemmaM` and `LemmaM'`, Poitou-Tate normalized duality, $U(3)$ rigidity `HostRigid_s`, and the congruence-number upper bound `HostNumber_s` into `abstract_count` (`L48-54`) yields cohomology length $a \le V \le 2 E s$ together with $s \log \ell \le (\ell N e)^C$, from which the arithmetic lemma `arith` (`L11-25`) deduces $\frac{a}{E} \log \ell \le (\ell N e)^{C+1}$ (`thm_29` in `proofs/alpoge_ab_deep_audit.lean:1088-1103`).
+- Feeding the cotangent generator lemmas `LemmaM` and `LemmaM'`, Poitou-Tate normalized duality, $U(3)$ rigidity `HostRigid_s`, and the congruence-number upper bound `HostNumber_s` into `abstract_count` (`L48-54`) yields cohomology length $a \le V \le 2 E s$ together with $s \log \ell \le (\ell N e)^C$, from which the arithmetic lemma `arith` (`L11-25`) deduces $\frac{a}{E} \log \ell \le (\ell N e)^{C+1}$ (`thm_29` in `proofs/alpoge_ab_deep_audit.lean:1190-1205`).
 
 ```lean
 -- Source: Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeDeformations/CountVOf.lean:19-41
@@ -567,23 +567,23 @@ In parallel, four files under `Development/AutomorphicArithmetic/AutomorphicVari
 - `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/CorGKOf.lean:10-28`: Directly combines `Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6` and `Development/AutomorphicArithmetic/Foundations/BaseChangeIdentities/DefiniteNHolds.lean:5` to close the three unconditional theorems `litN`, `corGK : U3.CorGK`, and `bound : Bound`.
 - `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/LenEqZeroIff.lean:9-92` and `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/OnePoint.lean:10-41`: Establish respectively the equivalence `len Ω l c e = 0 ↔ Vanish Ω l c e` (`L33-64`) and the single-point nonvanishing criterion `onePoint`.
 
-### 3.5 Dual `SChain` Closure and Right-Half-Plane Zero Elimination (`ClassCounting/SChain.lean` · `SizeWindowBrackets/SChain.lean`)
+### 3.5 Simplicial `SChain` and Window Growth Closure (`ClassCounting/SChain.lean` · `CoreGm.lean` · `SizeWindowBrackets/SChain.lean`)
 
-The terminal stage converting `VWin` into zero-freeness of Dirichlet $L$-functions consists of a coupled pair of algebraic and analytic `SChain` mechanisms.
+The terminal stage converting `VWin` into zero-freeness of Dirichlet $L$-functions couples an algebraic simplicial chain with the analytic window growth chain.
 
 1. **Algebraic simplicial homology chain (`Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:9-116`)**:
     - Over the inhomogeneous simplicial chain complex `Ch A G m` of a group $G$, this file proves boundary-squared vanishing `bd_bd` (`L30-34`), commutativity with group homomorphisms `bd_cm` (`L36-49`), conjugation prism homotopy `cm_prism` (`L51-72`), and exactness over the trivial group `triv` (`L90-106`), establishing `UpperTheory.V.ZK.sChain` (`L110-116`).
-    - Here the alternating-sum identity `(1 + ∑_{j=0}^m (-1)^{j+1}) + (1 + ∑_{j=0}^{m+1} (-1)^{j+1}) = 1` at `L81-89` governs exactness of cycles over the trivial group (`thm_30` in `proofs/alpoge_ab_deep_audit.lean:1129-1141`).
+    - Here the alternating-sum identity `(1 + ∑_{j=0}^m (-1)^{j+1}) + (1 + ∑_{j=0}^{m+1} (-1)^{j+1}) = 1` at `L81-89` governs exactness of cycles over the trivial group (`thm_30` in `proofs/alpoge_ab_deep_audit.lean:1231-1243`).
 2. **Closed-family connectors `topDesWin` and `shapeWin` (`Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:11-32` · `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:27-50`)**:
     - The hypothesis `HypV Fm.toFamCore` derived from `VWin` feeds into `divinN_of_hypV` at `Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:29`, activating the divisibility link `LinkDIVt`.
     - Next, `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46` invokes `topDesWin` at the concrete parameter tuple $(C_{\mathrm{abs}}, C_0, e_D, e_L) = (2, 3, 2, 0)$ to establish `FamilyClassConnected` for all sufficiently small $\varepsilon > 0$.
-3. **Analytic growth-inequality chain (`Formalism/SizeWindowBrackets/SChain.lean:50-102`)**: Once `RestSize` (`L53-58`) aligns the $\sqrt{x}$-lift count $m \ge x^{1/2 - \varepsilon}$ with the companion rank $k \le n^2 x^{1/2 - \varepsilon}$ ($x m \le k$, `L119`), `ChainAt` (`L88-90`) compresses the zero-detection functional `Gz x` to
+3. **Active Dirichlet `CoreGm` chain vs. standalone $\zeta$-only `SizeWindowBrackets/SChain` specification (`Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15` · `Formalism/SizeWindowBrackets/SChain.lean:50-102`)**: While `ChainAt` (`L88-90`) in `Formalism/SizeWindowBrackets/SChain.lean:50-102` (a standalone $\zeta$-only specification file containing `0` theorems) records the formula $\mathrm{Gz}(x) \le x^{1/2 + (e_D + e_L + 6)\varepsilon} = x^{1/2 + 8\varepsilon}$, the active Dirichlet $L$-function spine reaching `Main.lean` routes $(e_D, e_L) = (2, 0)$ from `ShapeWin.lean` through `core_gm` in `Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15` to bound the combined detection functional $\Lambda.\mathrm{Gm}(x)$ by
 
 $$
-\mathrm{Gz}(x) \le x^{\frac{1}{2} + (e_D + e_L + 6)\varepsilon} = x^{\frac{1}{2} + 8\varepsilon}
+\Lambda.\mathrm{Gm}(x) \le x^{\frac{1}{2} + (e_D + e_L + 7)\varepsilon} = x^{\frac{1}{2} + 9\varepsilon} \qquad \bigl(\mathrm{Gz}(x) \le x^{\frac{1}{2} + 8\varepsilon}\text{ in standalone }\zeta\text{-spec}\bigr)
 $$
 
-Because $\frac{1}{2} + 8\varepsilon < \frac{2}{3} < 1$ holds throughout the entire admissible range $\varepsilon < 1/52$ (`thm_19` in `proofs/alpoge_ab_deep_audit.lean:475-490`), the classical pre-seesaw $2/3$ barrier collapses and taking the limit $\varepsilon \to 0^+$ (`ChainEventualGivesRiemannHypothesis`, `L97-101`) eliminates every zero in the half-plane $\mathrm{Re}(s) > 1/2$.
+At precision $\varepsilon = 1/E$, the active exponent satisfies $\frac{1}{2} + \frac{9}{E} < \frac{2}{3} < 1$ for every $E > 54$ (and the $\zeta$-spec exponent satisfies $\frac{1}{2} + \frac{8}{E} < \frac{2}{3}$ for $E > 48$; `thm_19` in `proofs/alpoge_ab_deep_audit.lean:573-591`), breaking the classical $2/3$ barrier and eliminating every zero in $\mathrm{Re}(s) > 1/2$ as $\varepsilon \to 0^+$.
 
 ### 3.6 Anatomy of Core Non-Modularity Auxiliary Branches in `AutomorphicVarieties` (`ConjugateRepresentations` · `LiteratureResults`)
 
@@ -677,7 +677,7 @@ Source comparison brings out three core design choices.
 
 - First, rather than integrating directly over piecewise fundamental-domain boundaries of $\Gamma_0(L) \backslash \mathbb{H}$, the file introduces a partition-of-unity weight predicate `Wt L ρ` (`L90-94`) whose congruence-subgroup orbit sum equals $1$ (`HasSum ... 1`) with support covered by finitely many translates of `ModularGroup.fd`, defining the Petersson inner product `petIP` (`L98`) smoothly as a global integral over $\mathbb{H}$.
 - Second, over formal sequence spaces $\mathbb{N} \to R$ with pure commutative-ring coefficients, it defines the Atkin-Lehner shift operators `Uo` and `Vo`, prime depletion `dep`, the weight-$k$ Hecke operator `To`, divisor antidiagonal Eisenstein series `eis` (`L25-26`), the triple convolution kernel `Zs` (`L28-30`), the truncated linear functional `lam B c a` (`L34`), and the eigenfunctional structure `EigF` (`L100-103`).
-    - Lines `L63-64` embed a concrete unit example confirming $(T_2 a)_2 = (-24)^2 = 576$ for the Ramanujan discriminant form ($k = 12$, $a_1 = 1, a_2 = -24, a_4 = -1472$), verified in `thm_30` at `proofs/alpoge_ab_deep_audit.lean:1129-1141`.
+    - Lines `L63-64` embed a concrete unit example confirming $(T_2 a)_2 = (-24)^2 = 576$ for the Ramanujan discriminant form ($k = 12$, $a_1 = 1, a_2 = -24, a_4 = -1472$), verified in `thm_30` at `proofs/alpoge_ab_deep_audit.lean:1231-1243`.
 - Third, the second-difference operator `dif L v` at `L104-111` removes constant terms and poles from lattice period sums to generate regularized Eisenstein lattice series `lat`, linking directly to Kummer-Eisenstein congruences.
 
 #### (2) Congruence Subgroup $\Gamma_0(L)$ Double-Coset Representatives and Slash Action (`RepL.lean`, `in_degree = 236`)
@@ -781,96 +781,97 @@ Inspecting three specialized connector families inside `B08` clarifies the exact
 
 ### 5.1 Verification Architecture and Complete Compilation · Axiom Audit Under Lean 4.33.1 and 4.36.0
 
-To allow immediate mechanical reproduction of the exponent budgets, congruence identities, Cauchy-Schwarz Gram positivity, Behrend determinant cancellation, and functional-equation reflection logic reconstructed in this monograph without rebuilding all `175,187` upstream files simultaneously, we inherited all `17` foundational theorems (`alpoge_spine_arithmetic_audit.lean`) and proved `13` new deep theorems, producing the dependency-free standalone verification file `proofs/alpoge_ab_deep_audit.lean:1-1143` comprising **`30` main theorems (`thm_01`..`thm_30`) and `14` auxiliary theorems (`44` zero-sorry theorems (zero user-added axioms, within standard built-in Lean 4 axioms), `74` total declarations, `1,143` lines)**.
+To allow immediate mechanical reproduction of the exponent budgets, congruence identities, Cauchy-Schwarz Gram positivity, Behrend determinant cancellation, and functional-equation reflection logic reconstructed in this monograph without rebuilding all `175,187` upstream files simultaneously, we inherited all `17` foundational theorems (`alpoge_spine_arithmetic_audit.lean`) and proved `13` new deep theorems, producing the dependency-free standalone verification file `proofs/alpoge_ab_deep_audit.lean:1-1245` comprising **`30` main theorems (`thm_01`..`thm_30`) and `14` auxiliary theorems (`44` zero-sorry theorems (zero user-added axioms, within standard built-in Lean 4 axioms), `77` total declarations, `1,245` lines)**.
 
 Empirical verification executed in the local environment (Ubuntu Linux `x86_64`, `~/.elan/bin/lean` Lean `v4.33.1` and `v4.36.0`) establishes the following results.
 
 - **Compilation execution and exit code**: Running `~/.elan/bin/lean proofs/alpoge_ab_deep_audit.lean` with `0` external package imports (no `Mathlib` or third-party dependencies) compiles cleanly with **exit code `0`, `0` errors, and `0` warnings**.
 - **Static integrity audit**: `0` unproved placeholders (`sorry`), `0` user-added axioms (`axiom`), and `0` unsafe bypass directives (`unsafe`, `implemented_by`, `extern`).
 - **Three-tier `#print axioms` distribution**: Running `#print axioms` across all `30` main theorems confirms that every theorem lies within standard built-in Lean 4 axioms.
-    - **Axiom-free kernel computation (`none`, `does not depend on any axioms`, `5` theorems)**: `thm_07`, `thm_11`, `thm_13`, `thm_14`, `thm_18`.
-    - **Intuitionistic core axiom theorems (`[propext, Quot.sound]`, `9` theorems)**: `thm_01`, `thm_03`, `thm_04`, `thm_05`, `thm_09`, `thm_10`, `thm_12`, `thm_17`, `thm_27`.
-    - **Theorems within standard classical logic axioms (`[propext, Classical.choice, Quot.sound]`, `16` theorems)**: `thm_02`, `thm_06`, `thm_08`, `thm_15`, `thm_16`, `thm_19`, `thm_20`, `thm_21`, `thm_22`, `thm_23`, `thm_24`, `thm_25`, `thm_26`, `thm_28`, `thm_29`, `thm_30`.
+    - **Axiom-free kernel computation (`none`, `does not depend on any axioms`, `2` theorems)**: `thm_07`, `thm_13`.
+    - **Intuitionistic core axiom theorems (`[propext, Quot.sound]`, `8` theorems)**: `thm_03`, `thm_04`, `thm_05`, `thm_09`, `thm_10`, `thm_12`, `thm_17`, `thm_27`.
+    - **Theorems within standard classical logic axioms (`[propext, Classical.choice, Quot.sound]`, `20` theorems)**: `thm_01`, `thm_02`, `thm_06`, `thm_08`, `thm_11`, `thm_14`, `thm_15`, `thm_16`, `thm_18`, `thm_19`, `thm_20`, `thm_21`, `thm_22`, `thm_23`, `thm_24`, `thm_25`, `thm_26`, `thm_28`, `thm_29`, `thm_30`.
 
 The `14` auxiliary theorems (`aux theorem`) proved from scratch inside the file to underwrite the `30` main theorems are cataloged below.
 
 | Auxiliary Theorem Identifier | Audit File Line Span | Proved Mathematical Property |
 | :--- | :--- | :--- |
-| `pow_ge_succ_of_two_le` | `proofs/alpoge_ab_deep_audit.lean:270-279` | Bernoulli-type lower bound $K + 1 \le x^K$ for all $K \ge 0$ when $x \ge 2$ |
-| `legendre_identity_aux` | `proofs/alpoge_ab_deep_audit.lean:392-426` | Legendre identity $(p - 1)\nu_p(\mathrm{fact}(n)) + s_p(n) = n$ by strong induction |
-| `int_sq_nonneg` / `int_sq_eq_zero` | `proofs/alpoge_ab_deep_audit.lean:493-510` | $0 \le a^2$ and $a^2 = 0 \implies a = 0$ over core `Int` |
-| `vecNormSq_nonneg` / `vecNormSqTr_le` | `proofs/alpoge_ab_deep_audit.lean:532-551` | Nonnegativity of squared norm and monotonicity of truncated norm on arbitrary-length integer vectors |
-| `combNormSq_nonneg` / `combNormSq_expand` | `proofs/alpoge_ab_deep_audit.lean:553-571` | Nonnegativity $\sum (x u_i - y v_i)^2 \ge 0$ and quadratic-form expansion identity |
-| `vecDot_eq_zero_of_normSqTr_zero` | `proofs/alpoge_ab_deep_audit.lean:573-586` | Vanishing inner product $u \cdot v = 0$ whenever the truncated squared norm is $0$ |
-| `cauchy_schwarz_list` | `proofs/alpoge_ab_deep_audit.lean:588-618` | Cauchy-Schwarz inequality $(u \cdot v)^2 \le \lVert u \rVert^2 \lVert v \rVert^2$ on arbitrary-length integer lists |
-| `baseDigitSum_pos` | `proofs/alpoge_ab_deep_audit.lean:782-802` | Positivity of base-$p$ digit sum $1 \le s_p(n)$ for $p \ge 2$ and $n \ge 1$ |
-| `intListSum_le_of_pointwise` | `proofs/alpoge_ab_deep_audit.lean:811-817` | Finite-sum monotonicity under pointwise dominance `ListPointwiseLe ms vs` |
-| `exists_missing_bucket` | `proofs/alpoge_ab_deep_audit.lean:932-949` | Finite pigeonhole existence of an omitted bucket in $[0, R]$ for any list of length $\le R$ |
-| `factNat_le_pow` | `proofs/alpoge_ab_deep_audit.lean:987-995` | Factorial upper bound $\mathrm{factNat}(n) \le n^n$ for all $n \ge 0$ |
+| `pow_ge_succ_of_two_le` | `proofs/alpoge_ab_deep_audit.lean:339-348` | Bernoulli-type lower bound $K + 1 \le x^K$ for all $K \ge 0$ when $x \ge 2$ |
+| `legendre_identity_aux` | `proofs/alpoge_ab_deep_audit.lean:461-495` | Legendre identity $(p - 1)\nu_p(\mathrm{fact}(n)) + s_p(n) = n$ by strong induction |
+| `int_sq_nonneg` / `int_sq_eq_zero` | `proofs/alpoge_ab_deep_audit.lean:594-611` | $0 \le a^2$ and $a^2 = 0 \implies a = 0$ over core `Int` |
+| `vecNormSq_nonneg` / `vecNormSqTr_le` | `proofs/alpoge_ab_deep_audit.lean:633-652` | Nonnegativity of squared norm and monotonicity of truncated norm on arbitrary-length integer vectors |
+| `combNormSq_nonneg` / `combNormSq_expand` | `proofs/alpoge_ab_deep_audit.lean:654-672` | Nonnegativity $\sum (x u_i - y v_i)^2 \ge 0$ and quadratic-form expansion identity |
+| `vecDot_eq_zero_of_normSqTr_zero` | `proofs/alpoge_ab_deep_audit.lean:674-687` | Vanishing inner product $u \cdot v = 0$ whenever the truncated squared norm is $0$ |
+| `cauchy_schwarz_list` | `proofs/alpoge_ab_deep_audit.lean:689-718` | Cauchy-Schwarz inequality $(u \cdot v)^2 \le \lVert u \rVert^2 \lVert v \rVert^2$ on arbitrary-length integer lists |
+| `baseDigitSum_pos` | `proofs/alpoge_ab_deep_audit.lean:884-902` | Positivity of base-$p$ digit sum $1 \le s_p(n)$ for $p \ge 2$ and $n \ge 1$ |
+| `intListSum_le_of_pointwise` | `proofs/alpoge_ab_deep_audit.lean:913-919` | Finite-sum monotonicity under pointwise dominance `ListPointwiseLe ms vs` |
+| `exists_missing_bucket` | `proofs/alpoge_ab_deep_audit.lean:1034-1051` | Finite pigeonhole existence of an omitted bucket in $[0, R]$ for any list of length $\le R$ |
+| `factNat_le_pow` | `proofs/alpoge_ab_deep_audit.lean:1089-1097` | Factorial upper bound $\mathrm{factNat}(n) \le n^n$ for all $n \ge 0$ |
 
 ### 5.2 Part I Inherited Foundational Arithmetic and Topological Audit Suite (`thm_01`..`thm_17`) Summary Ledger
 
-The complete ledger of the `17` foundational spine audit theorems in Part I (`proofs/alpoge_ab_deep_audit.lean:16-445`) appears below.
+The complete ledger of the `17` foundational spine audit theorems in Part I (`proofs/alpoge_ab_deep_audit.lean:16-514`) appears below.
 
 | Theorem Identifier | Audit File Line Span | Core Verified Mathematical Content and Upstream Counterpart Pin | Axiom Footprint |
 | :--- | :--- | :--- | :--- |
-| `thm_01_chebyshev_sqrt_exponent` | `proofs/alpoge_ab_deep_audit.lean:26-33` | Critical-line $\theta = 1/2$ Chebyshev exponent $8D - 16n < 8D - n$ ($n > 0$) | `propext, Quot.sound` |
-| `thm_02_naive_lift_barrier_two_thirds` | `proofs/alpoge_ab_deep_audit.lean:39-42` | Naive quadratic cost balance $3 - \alpha_3 = 2\alpha_3 \implies \alpha = 1/3,\; \sigma = 2/3$ | Standard 3 axioms |
-| `thm_03_rank_division_kills_quadratic_loss` | `proofs/alpoge_ab_deep_audit.lean:51-55` | Post-division quadratic error exponent $-(56D + 146n) < 0$ at companion rank $k \sim x^{9/2+10\varepsilon}$ | `propext, Quot.sound` |
-| `thm_04_scale_eps_52_invariants` | `proofs/alpoge_ab_deep_audit.lean:61-71` | `Scale.A = 26` (`Formalism/LocalRingCardinality/DataParams₂.lean:14-41`) and four $E > 52$ inequalities | `propext, Quot.sound` |
-| `thm_05_rank_balance_identity` | `proofs/alpoge_ab_deep_audit.lean:77-92` | Odd parity $r = 2k' + 2m' - 1$ and rank-balance identity $r + t = 8fr + 4 + T(8W)$ | `propext, Quot.sound` |
-| `thm_06_winpair_cm_splitting_congruences` | `proofs/alpoge_ab_deep_audit.lean:97-100` | `WinPair` (`Formalism/PeriodIntegrals/ThetaNormCM.lean:31`) congruence $(d+1) \bmod 16 = 8$ | Standard 3 axioms |
-| `thm_07_lucas_witness_prime_413718278401` | `proofs/alpoge_ab_deep_audit.lean:107-115` | `Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86` $g_A - 1$ factorization | **Axiom-free (`none`)** |
-| `thm_08_cubic_tail_3111_100_and_slack` | `proofs/alpoge_ab_deep_audit.lean:124-144` | Rational cubic tail identity $100 \cdot \mathrm{LHS} + \mathrm{cubicSlack} = 3111(\ell - 1)^3$ for $\ell \ge 11$ | Standard 3 axioms |
-| `thm_09_ct_401_tail_identity` | `proofs/alpoge_ab_deep_audit.lean:149-162` | For $m = 398, x \ge 2$, $x^m(x^2 + 1) \le x^{401}$ and $400 + 1 = 401$ | `propext, Quot.sound` |
-| `thm_10_countI_absorb_bound` | `proofs/alpoge_ab_deep_audit.lean:167-182` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/CountI.lean:11-17` exponent absorption | `propext, Quot.sound` |
-| `thm_11_fock_and_minor_identities` | `proofs/alpoge_ab_deep_audit.lean:187-191` | Fock determinant exponent $11 \cdot 10 / 2 = 55$ and principal minor count $q^{r^2-r}(q-1)^r$ | **Axiom-free (`none`)** |
-| `thm_12_stickelberger_parity_annihilation` | `proofs/alpoge_ab_deep_audit.lean:196-199` | Annihilation of odd projection $v - c(v) = 0$ on even fixed elements $c(v) = v$ | `propext, Quot.sound` |
-| `thm_13_behrend_base5_sphere_zero_3ap` | `proofs/alpoge_ab_deep_audit.lean:211-213` | Exhaustive absence of nontrivial 3-term arithmetic progressions on the 12-point base-5 Behrend sphere | **Axiom-free (`none`)** |
-| `thm_14_literature_195_partition` | `proofs/alpoge_ab_deep_audit.lean:218-224` | `Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-810` partition | **Axiom-free (`none`)** |
-| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | `proofs/alpoge_ab_deep_audit.lean:238-262` | Type-II Cauchy-Schwarz exponent margin $30r^2 + 42r + 1 \ge 1$ and $2^{2r+2} \le q^{k-2r-5}$ | Standard 3 axioms |
-| `thm_16_vandiver_pluslen_and_cone_partition` | `proofs/alpoge_ab_deep_audit.lean:284-364` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean:31-32` and `PointArith` | Standard 3 axioms |
-| `thm_17_legendre_padic_factorial_and_global_chain_closure` | `proofs/alpoge_ab_deep_audit.lean:431-445` | Legendre identity $(p-1)\nu_p + s_p(n) = n$, CM $3/4$ exponent, and $1/2 + 8/E < 1$ | `propext, Quot.sound` |
+| `thm_01_chebyshev_sqrt_exponent` | `proofs/alpoge_ab_deep_audit.lean:26-38` | General-$\theta$ 1-step parity ($\theta = 1/2$) and Chebyshev exponent $8D - 16n < 8D - n$ ($n > 0$) | Standard 3 axioms |
+| `thm_02_naive_lift_barrier_two_thirds` | `proofs/alpoge_ab_deep_audit.lean:46-55` | Universal $m$-step quadratic cost balance $m(2\alpha) \le m(D-\alpha) \implies 2D \le 3\sigma$ ($2/3$ barrier) | Standard 3 axioms |
+| `thm_03_rank_division_kills_quadratic_loss` | `proofs/alpoge_ab_deep_audit.lean:65-71` | General companion rank $k > 2m + 2l$ and post-division exponent $-(56D + 146n) < 0$ | `propext, Quot.sound` |
+| `thm_04_scale_eps_52_invariants` | `proofs/alpoge_ab_deep_audit.lean:77-87` | `Scale.A = 26` (`Formalism/LocalRingCardinality/DataParams₂.lean:14-41`) and four $E > 52$ inequalities | `propext, Quot.sound` |
+| `thm_05_rank_balance_identity` | `proofs/alpoge_ab_deep_audit.lean:93-108` | Odd parity $r = 2k' + 2m' - 1$ and rank-balance identity $r + t = 8fr + 4 + T(8W)$ | `propext, Quot.sound` |
+| `thm_06_winpair_cm_splitting_congruences` | `proofs/alpoge_ab_deep_audit.lean:114-117` | `WinPair` (`Formalism/PeriodIntegrals/ThetaNormCM.lean:31`) divisibility $8 \mid d+1$ and $16 \nmid d+1$ | Standard 3 axioms |
+| `thm_07_lucas_witness_prime_413718278401` | `proofs/alpoge_ab_deep_audit.lean:124-132` | `Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86` $g_A - 1$ factorization | **Axiom-free (`none`)** |
+| `thm_08_cubic_tail_3111_100_and_slack` | `proofs/alpoge_ab_deep_audit.lean:141-161` | Rational cubic tail identity $100 \cdot \mathrm{LHS} + \mathrm{cubicSlack} = 3111(\ell - 1)^3$ for $\ell \ge 11$ | Standard 3 axioms |
+| `thm_09_ct_401_tail_identity` | `proofs/alpoge_ab_deep_audit.lean:166-179` | For $m = 398, x \ge 2$, $x^m(x^2 + 1) \le x^{401}$ and $400 + 1 = 401$ | `propext, Quot.sound` |
+| `thm_10_countI_absorb_bound` | `proofs/alpoge_ab_deep_audit.lean:184-199` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/CountI.lean:11-17` exponent absorption | `propext, Quot.sound` |
+| `thm_11_fock_and_minor_identities` | `proofs/alpoge_ab_deep_audit.lean:210-240` | General-$a$ Gauss sum $2\sum_{j=0}^a j = a(a+1)$ and Bruhat principal minor recurrence | Standard 3 axioms |
+| `thm_12_stickelberger_parity_annihilation` | `proofs/alpoge_ab_deep_audit.lean:248-264` | Additive involution $c^2 = \mathrm{id}$ eigenspace algebra and odd-projector annihilation on $c(v) = v$ | `propext, Quot.sound` |
+| `thm_13_behrend_base5_sphere_zero_3ap` | `proofs/alpoge_ab_deep_audit.lean:276-278` | Exhaustive absence of nontrivial 3-term arithmetic progressions on the 12-point base-5 Behrend sphere | **Axiom-free (`none`)** |
+| `thm_14_literature_195_partition` | `proofs/alpoge_ab_deep_audit.lean:284-293` | `ForcedSumIdentity` and `Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-810` `152+25+8` / `50+5+1` partitions | Standard 3 axioms |
+| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | `proofs/alpoge_ab_deep_audit.lean:307-331` | Type-II Cauchy-Schwarz exponent margin $30r^2 + 42r + 1 \ge 1$ and $2^{2r+2} \le q^{k-2r-5}$ | Standard 3 axioms |
+| `thm_16_vandiver_pluslen_and_cone_partition` | `proofs/alpoge_ab_deep_audit.lean:353-433` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean:31-32` and `PointArith` | Standard 3 axioms |
+| `thm_17_legendre_padic_factorial_and_global_chain_closure` | `proofs/alpoge_ab_deep_audit.lean:500-514` | Legendre identity $(p-1)\nu_p + s_p(n) = n$, CM $3/4$ exponent, and $1/2 + 8/E < 1$ | `propext, Quot.sound` |
 
 ### 5.3 Part II Extended Deep Formal Audit Suite (`thm_18`..`thm_30`) Complete Ledger and Mathematical Commentary
 
-Part II (`proofs/alpoge_ab_deep_audit.lean:447-1143`) formalizes `13` core algebraic and arithmetic mechanisms from `Pure_Vwin` and the global zero-exclusion chain decoded in Chapters 1 through 4 as zero-sorry theorems (zero user-added axioms, within standard built-in Lean 4 axioms).
+Part II (`proofs/alpoge_ab_deep_audit.lean:516-1245`) formalizes `13` core algebraic and arithmetic mechanisms from `Pure_Vwin` and the global zero-exclusion chain decoded in Chapters 1 through 4 as zero-sorry theorems (zero user-added axioms, within standard built-in Lean 4 axioms).
 
 | Theorem Identifier | Audit File Line Span | Upstream Archive Counterpart Pin (`src/`-Relative) | Verified Theme and Proof Tactics |
 | :--- | :--- | :--- | :--- |
-| `thm_18_pure_vwin_b06_b08_conservation` | `proofs/alpoge_ab_deep_audit.lean:455-462` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5` | `B06+B07+B08` file, line, and declaration conservation (`decide`, axiom-free kernel computation (`none`)) |
-| `thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence` | `proofs/alpoge_ab_deep_audit.lean:475-490` | `Formalism/SizeWindowBrackets/SChain.lean:53-58` · `Formalism/LocalRingCardinality/Params.lean:22` | Theme (a): $m$-step lift $2/3$ barrier vs. $1/2+8/E < 2/3$ seesaw convergence |
-| `thm_20_gl5_sixfold_cauchy_schwarz_and_gram_positivity` | `proofs/alpoge_ab_deep_audit.lean:635-674` | `Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29-58` · `Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:15-65` | Theme (b): $\mathrm{GL}_5$ sixfold-cover Cauchy-Schwarz and Gram positivity |
-| `thm_21_local_ring_determinant_exponent_congruences` | `proofs/alpoge_ab_deep_audit.lean:684-722` | `Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean:216-221` · `Formalism/LocalRingCardinality/Params.lean:36-100` | Theme (c): Local-ring `rhoDet`/`rhoDet'` determinant-exponent seesaw congruences |
-| `thm_22_static_571_599_vs_dynamic_winpair_divisibility` | `proofs/alpoge_ab_deep_audit.lean:748-780` | `Formalism/LocalRingCardinality/SpanPowerMembership/ExampleLayerExistsGenerators.lean:172-218` · `Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` | Theme (d): Static `(571, 599)` vs. dynamic `WinPair` $8q \mid d+1$ |
-| `thm_23_legendre_strict_bound_and_arakelov_product_contradiction` | `proofs/alpoge_ab_deep_audit.lean:828-856` | `Development/WeilBound/RepresentationTheoryGL/TwistedFactors/SelmerRankBounds/EllipticityFromProductFormula.lean:18-28` | Theme (e): Strict Legendre bound and Arakelov product-formula contradiction chain |
-| `thm_24_functional_equation_reflection_implies_critical_line` | `proofs/alpoge_ab_deep_audit.lean:863-876` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:42-74` · `Formalism/GammaFactorNonvanishing/CritLine.lean:11-28` | Theme (f): Functional-equation reflection $s \mapsto 1-s \implies \mathrm{Re}(s) = 1/2$ |
-| `thm_25_imprimitive_euler_factor_zero_forces_re_zero` | `proofs/alpoge_ab_deep_audit.lean:892-928` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:7-34` · `Statements.lean:10-16` | Theme (g): Imprimitive Euler-factor zeros $\implies \mathrm{Re}(s) = 0$ |
-| `thm_26_dyadic_window_avoidance_pigeonhole` | `proofs/alpoge_ab_deep_audit.lean:957-980` | `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` | Iwasawa exceptional-layer pigeonhole avoidance multiplier $2^{R+2}B^R$ |
-| `thm_27_stickelberger_minus_part_factorial_conductor_bound` | `proofs/alpoge_ab_deep_audit.lean:1001-1023` | `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136` | Odd-wing Stickelberger denominator bound $(tF)^{2t+5}$ (`propext, Quot.sound`) |
-| `thm_28_behrend_thick_set_determinant_vanishing` | `proofs/alpoge_ab_deep_audit.lean:1030-1079` | `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66` | Behrend thick-set 3-term determinant $-n < 2D < n \implies D = 0$ |
-| `thm_29_unitary_three_countV_exponent_step` | `proofs/alpoge_ab_deep_audit.lean:1088-1103` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25` | $U(3)$ deformation length $aL \le E X^{C+1}$ and `ClassNumberThree.gd` |
-| `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` | `proofs/alpoge_ab_deep_audit.lean:1129-1141` | `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64` · `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89` | `B08` Ramanujan $T_2$ eigenrelation and `B06` simplicial boundary alternating sum |
+| `thm_18_pure_vwin_b06_b08_conservation` | `proofs/alpoge_ab_deep_audit.lean:534-560` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5` | Inductive `DetChain` block-determinant identity plus inclusion-exclusion and cone conservation |
+| `thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence` | `proofs/alpoge_ab_deep_audit.lean:573-591` | `Formalism/SizeWindowBrackets/SChain.lean:53-58` · `Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15` · `Formalism/LocalRingCardinality/Params.lean:22` | Theme (a): $m$-step lift $2/3$ barrier vs. `SChain` (`8/E`) and `CoreGm` (`9/E`) convergence |
+| `thm_20_five_vector_cauchy_schwarz_and_gram_positivity` | `proofs/alpoge_ab_deep_audit.lean:736-776` | `Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29-58` · `Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:15-65` · `Formalism/SharpRestriction/GrowthBounds/MonomialFactorials/RestrictedBoundsWeakenFromSevenToSix.lean:18` | Theme (b): Five-vector Cauchy-Schwarz, Gram positivity, and `RestOpen7 → RestOpen6` merge |
+| `thm_21_local_ring_determinant_exponent_congruences` | `proofs/alpoge_ab_deep_audit.lean:786-824` | `Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean:216-221` · `Formalism/LocalRingCardinality/Params.lean:36-100` | Theme (c): Local-ring `rhoDet`/`rhoDet'` determinant-exponent seesaw congruences |
+| `thm_22_static_571_599_vs_dynamic_winpair_divisibility` | `proofs/alpoge_ab_deep_audit.lean:850-882` | `Formalism/LocalRingCardinality/SpanPowerMembership/ExampleLayerExistsGenerators.lean:172-218` · `Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` | Theme (d): Static `(571, 599)` vs. dynamic `WinPair` $8q \mid d+1$ |
+| `thm_23_legendre_strict_bound_and_arakelov_product_contradiction` | `proofs/alpoge_ab_deep_audit.lean:930-958` | `Development/WeilBound/RepresentationTheoryGL/TwistedFactors/SelmerRankBounds/EllipticityFromProductFormula.lean:18-28` | Theme (e): Strict Legendre bound and Arakelov product-formula contradiction chain |
+| `thm_24_functional_equation_reflection_implies_critical_line` | `proofs/alpoge_ab_deep_audit.lean:965-978` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:42-74` · `Formalism/GammaFactorNonvanishing/CritLine.lean:11-28` | Theme (f): Functional-equation reflection $s \mapsto 1-s \implies \mathrm{Re}(s) = 1/2$ |
+| `thm_25_imprimitive_euler_factor_zero_forces_re_zero` | `proofs/alpoge_ab_deep_audit.lean:994-1030` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:7-34` · `Statements.lean:10-16` | Theme (g): Imprimitive Euler-factor zeros $\implies \mathrm{Re}(s) = 0$ |
+| `thm_26_dyadic_window_avoidance_pigeonhole` | `proofs/alpoge_ab_deep_audit.lean:1059-1082` | `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` | Iwasawa exceptional-layer pigeonhole avoidance multiplier $2^{R+2}B^R$ |
+| `thm_27_stickelberger_minus_part_factorial_conductor_bound` | `proofs/alpoge_ab_deep_audit.lean:1103-1125` | `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136` | Odd-wing Stickelberger denominator bound $(tF)^{2t+5}$ (`propext, Quot.sound`) |
+| `thm_28_behrend_thick_set_determinant_vanishing` | `proofs/alpoge_ab_deep_audit.lean:1132-1181` | `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66` | Behrend thick-set 3-term determinant $-n < 2D < n \implies D = 0$ |
+| `thm_29_unitary_three_countV_exponent_step` | `proofs/alpoge_ab_deep_audit.lean:1190-1205` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25` | $U(3)$ deformation length $aL \le E X^{C+1}$ and `ClassNumberThree.gd` |
+| `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` | `proofs/alpoge_ab_deep_audit.lean:1231-1243` | `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64` · `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89` | `B08` Ramanujan $T_2$ eigenrelation and `B06` simplicial boundary alternating sum |
 
 The mathematical design and Lean 4 proof structure of each of the `13` new extended theorems are detailed below by theme.
 
-#### (a) Accumulated Multiplicity $m$ Under Iterated $\sqrt{X}$ Lifts vs. Seesaw Cancellation Convergence (`thm_19`, `proofs/alpoge_ab_deep_audit.lean:475-490`)
+#### (a) Accumulated Multiplicity $m$ Under Iterated $\sqrt{X}$ Lifts vs. Seesaw Cancellation Convergence (`thm_19`, `proofs/alpoge_ab_deep_audit.lean:573-591`)
 Even when a $\sqrt{X}$ lift is iterated $m \ge 1$ times, directly comparing the discretization gain exponent $m(D - \alpha)$ against an uncanceled quadratic Parseval and Siegel-Weil loss $m(2\alpha)$ cancels the multiplicity $m$ from both sides, leaving $2\alpha \le D - \alpha$, hence $3\alpha \le D$ and the classical zero-exclusion floor $\sigma = D - \alpha \ge \frac{2}{3}D$.
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:475-481
+-- Source: proofs/alpoge_ab_deep_audit.lean:573-579
 theorem thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence :
     (∀ m D α σ : Int, 1 ≤ m → m * (2 * α) ≤ m * (D - α) → σ = D - α →
       3 * α ≤ D ∧ 2 * D ≤ 3 * σ) ∧
     (∀ k m t : Nat, m ≤ t + 1 → m ^ 2 ≤ k + m * (t + 1)) ∧
-    (∀ E : Nat, 48 < E → 3 * (E + 2 * sChainEpsMult 2 0) < 4 * E)
+    (∀ E : Nat, 48 < E → 3 * (E + 2 * sChainEpsMult 2 0) < 4 * E) ∧
+    (∀ E : Nat, 54 < E → 3 * (E + 2 * (2 + 0 + 7)) < 4 * E ∧ E + 2 * (2 + 0 + 7) < 2 * E)
 ```
 
 By contrast, in the companion rank $N(m) = k + m(t + 1)$ introduced at `Formalism/LocalRingCardinality/Params.lean:22` and `36`, the quadratic-cost absorption inequality $m^2 \le k + m(t + 1)$ (`m_sq_le_N`) holds identically for every $k \ge 0$ whenever $m \le t + 1$.
-Once the seesaw identity cancels the quadratic loss, the parameter choice $(e_D, e_L) = (2, 0)$ in `Formalism/SizeWindowBrackets/SChain.lean:90` and `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46` yields the critical exponent $\frac{1}{2} + \frac{8}{E}$, which satisfies $3(E + 16) < 4E$, equivalently $\frac{1}{2} + \frac{8}{E} < \frac{2}{3}$, for every precision $E > 48$ (and in particular throughout the admissible regime $E > 52$), strictly breaking the $2/3$ barrier.
+Once the seesaw identity cancels the quadratic loss, the parameter choice $(e_D, e_L) = (2, 0)$ in `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46` yields both the standalone $\zeta$-specification exponent $\frac{1}{2} + \frac{8}{E}$ (`Formalism/SizeWindowBrackets/SChain.lean:90`, $< \frac{2}{3}$ for $E > 48$) and the active Dirichlet spine exponent $\frac{1}{2} + \frac{9}{E}$ (`Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15`, $< \frac{2}{3}$ for $E > 54$ and $< 1$ for all $E > 18$), strictly breaking the $2/3$ barrier and converging to $1/2$ as $E \to \infty$ ($\varepsilon \to 0^+$).
 
-#### (b) $\mathrm{GL}_5$ Sixfold-Cover Cauchy-Schwarz Squared Inequality and Gram Matrix Nonnegativity (`thm_20`, `proofs/alpoge_ab_deep_audit.lean:493-674`)
-Without external libraries, the general Cauchy-Schwarz inequality $(\sum_i u_i v_i)^2 \le (\sum_i u_i^2)(\sum_i v_i^2)$ on arbitrary-length integer vectors `u, v : List Int` is proved directly from a discriminant quadratic-form identity (`cauchy_schwarz_list`, `proofs/alpoge_ab_deep_audit.lean:588-618`).
+#### (b) Five-Vector Cauchy-Schwarz Inequality, Gram Positivity, and `RestOpen7 → RestOpen6` Clause Merge (`thm_20`, `proofs/alpoge_ab_deep_audit.lean:594-776`)
+Without external libraries, the general Cauchy-Schwarz inequality $(\sum_i u_i v_i)^2 \le (\sum_i u_i^2)(\sum_i v_i^2)$ on arbitrary-length integer vectors `u, v : List Int` is proved directly from a discriminant quadratic-form identity (`cauchy_schwarz_list`, `proofs/alpoge_ab_deep_audit.lean:689-718`).
 Expanding the nonnegative sum of squares `combNormSq x y u v := ∑_i (x u_i - y v_i)^2 ≥ 0` and substituting $x = S := u \cdot v$ and $y = A := \sum u_i^2$ produces the factorization below.
 
 $$
@@ -880,7 +881,7 @@ $$
 Here $A = 0$ forces $S = 0$ by `vecDot_eq_zero_of_normSqTr_zero`, while $A > 0$ forces $AB - S^2 \ge 0$.
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:588-618
+-- Source: proofs/alpoge_ab_deep_audit.lean:689-718
 theorem cauchy_schwarz_list (u v : List Int) :
     (vecDot u v) * (vecDot u v) ≤ vecNormSq u * vecNormSq v := by
   let S := vecDot u v
@@ -913,10 +914,10 @@ theorem cauchy_schwarz_list (u v : List Int) :
     omega
 ```
 
-Theorem `thm_20` specializes this bound to `5`-dimensional $\mathrm{GL}_5$ vector pairs and proves by induction that the five-vector $\mathrm{GL}_5$ Gram quadratic form `gram5Quad v0 v1 v2 v3 v4 x0 x1 x2 x3 x4` (corresponding to `Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:57-65` and `one_le_generic_gram_value` in `Formalism/SharpRestriction/CuspSpanNormBounds/GramFlagFamilyOfPositive.lean:15-65`) is everywhere nonnegative.
-It simultaneously verifies the sixfold metaplectic cover monomial degree bound $6k$ (`Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29`) and the slope coefficient $3/8$ ($2 \cdot 3 = 6 < 8$, `L58`).
+Theorem `thm_20` specializes this bound to `5`-dimensional vector pairs and proves by induction that the five-cell Poincaré Gram quadratic form `gram5Quad v0 v1 v2 v3 v4 x0 x1 x2 x3 x4` (corresponding to `Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:57-65` and `one_le_generic_gram_value` in `Formalism/SharpRestriction/CuspSpanNormBounds/GramFlagFamilyOfPositive.lean:15-65`) is everywhere nonnegative.
+It simultaneously verifies the Gram polynomial support degree bound $6k$ (`Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29`), the signed-chain slope coefficient $3/8$ ($2 \cdot 3 = 6 < 8$, `L58`), and the 4-clause-to-3-clause conjunction compression `RestOpen7 → RestOpen6` (`Formalism/SharpRestriction/GrowthBounds/MonomialFactorials/RestrictedBoundsWeakenFromSevenToSix.lean:18`).
 
-#### (c) Local-Ring and Column-Chain Determinant-Exponent Seesaw Congruences (`thm_21`, `proofs/alpoge_ab_deep_audit.lean:684-722`)
+#### (c) Local-Ring and Column-Chain Determinant-Exponent Seesaw Congruences (`thm_21`, `proofs/alpoge_ab_deep_audit.lean:786-824`)
 In `Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean:216-221` and `Formalism/LocalRingCardinality/SpanPowerMembership/RelDetCore.lean:27-38`, the two determinant character rules `rhoDet` and `rhoDet'` attached to adjacent steps $(j, j+1)$ of the column chain form an inverted seesaw pair.
 
 $$
@@ -924,7 +925,7 @@ $$
 $$
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:684-697
+-- Source: proofs/alpoge_ab_deep_audit.lean:786-799
 theorem thm_21_local_ring_determinant_exponent_congruences
     (k' m' t' j : Nat) (hm : 1 ≤ m') :
     let k := 2 * k'
@@ -941,8 +942,8 @@ theorem thm_21_local_ring_determinant_exponent_congruences
 
 Under the parity constraints of `Formalism/LocalRingCardinality/Params.lean:6-47` and `91-100`, `thm_21` proves that (1) every step dimension $N(j) = 2(k' + j(t'+1))$ is evenly divisible by $2$, (2) upon multiplying adjacent steps, cancellation of the auxiliary character $\widetilde{\mu}_{j+1}$ leaves a constant integer $\chi_D$-exponent $-\frac{N(j+1)}{2} + \frac{N(j)}{2} = -(t' + 1)$ independent of both $j$ and $k$, and (3) the base-space identity $N(0) + 1 + 2 r_S = r$ and top-rank identity $N(m) = \mathrm{rankX}' + 1$ hold simultaneously.
 
-#### (d) Dual Algebraic Audit of the Static Prime Pair `(571, 599)` vs. Dynamic `WinPair` Divisibility $q \mid d + 1$ (`thm_22`, `proofs/alpoge_ab_deep_audit.lean:724-780`)
-Constructing a bounded $\sqrt{n}$ trial-division primality checker `isPrimeSqrtBool` (`proofs/alpoge_ab_deep_audit.lean:727-735`), `thm_22` audits both the static witness and the dynamic window pair in one theorem.
+#### (d) Dual Algebraic Audit of the Static Prime Pair `(571, 599)` vs. Dynamic `WinPair` Divisibility $q \mid d + 1$ (`thm_22`, `proofs/alpoge_ab_deep_audit.lean:826-882`)
+Constructing a bounded $\sqrt{n}$ trial-division primality checker `isPrimeSqrtBool` (`proofs/alpoge_ab_deep_audit.lean:829-837`), `thm_22` audits both the static witness and the dynamic window pair in one theorem.
 First, for the static host witness $(571, 599)$, it verifies primality of $571$ and $599$, the dimension inequality $4 \cdot 15 \cdot 9 + 1 < 571$, the factorization $599 + 1 = 2^3 \cdot 3 \cdot 5^2$, nondivisibility $600 \bmod 571 = 29 \neq 0$ ($571 \nmid 600$), and for the second witness prime $g_B = 603{,}339{,}156{,}001$ the complete prime factorization $g_B - 1 = 2^5 \cdot 3^2 \cdot 5^3 \cdot 7^2 \cdot 571 \cdot 599$ together with $g_B \equiv 1 \pmod{16 \cdot 571 \cdot 599}$.
 Second, for any natural-number pair $(q, d)$ satisfying the dynamic `WinPair` conditions $q \equiv 3 \pmod 8$, $d \equiv 7 \pmod{16}$, and $q \mid d + 1$, it constructs the explicit Bézout identity
 
@@ -952,11 +953,11 @@ $$
 
 to deduce $8q \mid d + 1$, $16 \nmid d + 1$, and $8q \le d + 1$ without external prime libraries, and certifies primality and all congruence and divisibility conditions for the concrete dynamic witness $(q, d) = (11, 9{,}239)$ ($9{,}239 + 1 = 8 \cdot 3 \cdot 5 \cdot 7 \cdot 11$).
 
-#### (e) Strict Legendre Factorial Bound and Arakelov Product-Formula Contradiction Chain (`thm_23`, `proofs/alpoge_ab_deep_audit.lean:782-856`)
-Proving first by strong induction that the base-$p$ digit sum satisfies $s_p(n) \ge 1$ (`baseDigitSum_pos`, `proofs/alpoge_ab_deep_audit.lean:782-802`) for $p = d + 2 \ge 2$ and every $n \ge 1$, `thm_23` sharpens the nonstrict inequality $(p-1)\nu_p \le n$ to the strict inequality $(p-1)\nu_p(\Gamma(n+1)) < n$.
+#### (e) Strict Legendre Factorial Bound and Arakelov Product-Formula Contradiction Chain (`thm_23`, `proofs/alpoge_ab_deep_audit.lean:884-958`)
+Proving first by strong induction that the base-$p$ digit sum satisfies $s_p(n) \ge 1$ (`baseDigitSum_pos`, `proofs/alpoge_ab_deep_audit.lean:884-902`) for $p = d + 2 \ge 2$ and every $n \ge 1$, `thm_23` sharpens the nonstrict inequality $(p-1)\nu_p \le n$ to the strict inequality $(p-1)\nu_p(\Gamma(n+1)) < n$.
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:828-839
+-- Source: proofs/alpoge_ab_deep_audit.lean:930-941
 theorem thm_23_legendre_strict_bound_and_arakelov_product_contradiction :
     (∀ d n : Nat, 1 ≤ n →
       let p := d + 2
@@ -968,11 +969,11 @@ theorem thm_23_legendre_strict_bound_and_arakelov_product_contradiction :
 
 Whenever a list of finite-place valuations `vs` dominates local divisibility lower bounds `ms` pointwise while the global product formula enforces $\sum_i v_i + v_\infty \le 0$ and archimedean or Stepanov lower bounds enforce $\sum_i m_i + v_\infty > 0$, an immediate contradiction (`False`) ensues; in integer divisibility form ($n > 0$, $D = n q$, $-n < D < n$), it forces $D = 0$.
 
-#### (f) Derivation of the Critical Line $\mathrm{Re}(s) = 1/2$ from Functional-Equation Reflection $s \mapsto 1 - s$ (`thm_24`, `proofs/alpoge_ab_deep_audit.lean:863-876`)
+#### (f) Derivation of the Critical Line $\mathrm{Re}(s) = 1/2$ from Functional-Equation Reflection $s \mapsto 1 - s$ (`thm_24`, `proofs/alpoge_ab_deep_audit.lean:965-978`)
 The reflection logic of `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:42-74`, `Development/AutomorphicArithmetic/CharacterBoxes/HalfPlane.lean:3-10`, `Formalism/GammaFactorNonvanishing/CritLine.lean:11-28`, and `Development/AutomorphicArithmetic/CharacterBoxes/RiemannHypothesisOfEveryCharacter.lean:215-231` is formalized over an abstract character type `C`, dual involution `inv : C → C`, and scaled real part `σ : Int` on the open critical strip $0 < \sigma < 2 \cdot \mathrm{halfW}$.
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:863-876
+-- Source: proofs/alpoge_ab_deep_audit.lean:965-978
 theorem thm_24_functional_equation_reflection_implies_critical_line
     {C : Type} (inv : C → C) (ZeroAt : C → Int → Prop) (halfW : Int)
     (h_rhp_nonvanish : ∀ (χ : C) (σ : Int), halfW < σ → ¬ ZeroAt χ σ)
@@ -983,11 +984,11 @@ theorem thm_24_functional_equation_reflection_implies_critical_line
 
 If $\sigma > \mathrm{halfW}$, the right-half-plane nonvanishing hypothesis `h_rhp_nonvanish` is contradicted directly; if $\sigma < \mathrm{halfW}$, functional-equation reflection `h_fe_reflect` produces a reflected zero at $2 \cdot \mathrm{halfW} - \sigma > \mathrm{halfW}$ for the dual character `inv χ`, again contradicting right-half-plane nonvanishing; trichotomy therefore pins every critical-strip zero onto $\sigma = \mathrm{halfW}$ ($\mathrm{Re}(s) = 1/2$).
 
-#### (g) Verification of Imprimitive Character Euler Factor $(1 - \chi_0(p)p^{-s}) = 0 \implies \mathrm{Re}(s) = 0$ (`thm_25`, `proofs/alpoge_ab_deep_audit.lean:880-928`)
+#### (g) Verification of Imprimitive Character Euler Factor $(1 - \chi_0(p)p^{-s}) = 0 \implies \mathrm{Re}(s) = 0$ (`thm_25`, `proofs/alpoge_ab_deep_audit.lean:982-1030`)
 Explaining why `DirichletLZerosOnLine` (`Statements.lean:10-12`) in `Main.lean:10` requires the open strip $0 < \mathrm{Re}(s) < 1$, `thm_25` formalizes the imprimitive Euler-factor theorem (`Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:7-34`) via the scaled norm equation `eulerFactorNormMatch p normChi reScaled`.
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:892-897
+-- Source: proofs/alpoge_ab_deep_audit.lean:994-999
 theorem thm_25_imprimitive_euler_factor_zero_forces_re_zero (p normChi : Nat) (reScaled : Int)
     (hp : 2 ≤ p) (hchi : normChi = 0 ∨ normChi = 1) :
     (0 < reScaled → ¬ eulerFactorNormMatch p normChi reScaled) ∧
@@ -998,11 +999,11 @@ theorem thm_25_imprimitive_euler_factor_zero_forces_re_zero (p normChi : Nat) (r
 At a prime $p \ge 2$, the modulus of the underlying primitive character $\chi_0$ satisfies $\mathrm{normChi} \in \{0, 1\}$ ($0$ when $p \mid \mathrm{cond}(\chi)$, and $1$ when $p \mid N$ with $p \nmid \mathrm{cond}(\chi)$).
 Theorem `thm_25` proves within the standard three built-in axioms that (1) for $\mathrm{Re}(s) > 0$ (`reScaled > 0`), $p^{\mathrm{reScaled}} \ge 2 > \mathrm{normChi}$ precludes any Euler-factor zero, and (2) an Euler factor vanishes if and only if $\mathrm{normChi} = 1$ and `reScaled = 0`, placing all extraneous imprimitive Euler zeros exclusively on the imaginary axis $\mathrm{Re}(s) = 0$.
 
-#### (h) Behrend-Iwasawa Pigeonhole Window, Stickelberger Denominator, Unitary Deformation, and Hecke Alternating Sum (`thm_26`..`thm_30`, `proofs/alpoge_ab_deep_audit.lean:932-1141`)
+#### (h) Behrend-Iwasawa Pigeonhole Window, Stickelberger Denominator, Unitary Deformation, and Hecke Alternating Sum (`thm_26`..`thm_30`, `proofs/alpoge_ab_deep_audit.lean:1034-1243`)
 The final five theorems complete the formal verification of the core novel lemmas decoded in Chapters 2 through 4.
 
 ```lean
--- Source: proofs/alpoge_ab_deep_audit.lean:957-1132
+-- Source: proofs/alpoge_ab_deep_audit.lean:1059-1234
 theorem thm_26_dyadic_window_avoidance_pigeonhole (R B : Nat) (hB : 1 ≤ B) :
     (2 * B) * (2 ^ (R + 2) * B ^ R) = 2 ^ ((R + 1) + 2) * B ^ (R + 1) ∧
     4 ≤ 2 ^ (R + 2) * B ^ R ∧
@@ -1038,15 +1039,15 @@ theorem thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum :
     (∀ m : Nat, (1 + altChainSum m) + (1 + altChainSum (m + 1)) = 1)
 ```
 
-- `thm_26_dyadic_window_avoidance_pigeonhole` (`proofs/alpoge_ab_deep_audit.lean:957-980`): Proves the inductive magnification identity $(2B)(2^{R+2}B^R) = 2^{(R+1)+2}B^{R+1}$ of `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` together with the finite pigeonhole lemma `exists_missing_bucket` (`|Exc| ≤ R` guarantees at least one exception-free dyadic bucket among $R+1$ buckets) by induction on filtered list length.
-- `thm_27_stickelberger_minus_part_factorial_conductor_bound` (`proofs/alpoge_ab_deep_audit.lean:1001-1023`): Proves `factNat_le_pow` by induction and establishes the Stickelberger denominator inequality $16 F^{e+2} \cdot \mathrm{factNat}(e+1) \le (tF)^{2t+5}$ of `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136` via an intuitionistic proof (`[propext, Quot.sound]`) free of `Classical.choice`.
-- `thm_28_behrend_thick_set_determinant_vanishing` (`proofs/alpoge_ab_deep_audit.lean:1030-1079`): Proves that the 3-term progression determinant $D = (i_3 - i_1)(y_2 - y_1) - (i_2 - i_1)(y_3 - y_1)$ of `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66` satisfies $-n < 2D < n$ whenever $4 L_w y_k < n$, forcing $D = nq \implies D = 0$.
-- `thm_29_unitary_three_countV_exponent_step` (`proofs/alpoge_ab_deep_audit.lean:1088-1103`): Verifies the cleared-denominator inequality $aL \le E X^{C+1}$ of `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25` alongside the $\ell = 5$ vs. $\ell = 7$ ($e = 2$) branch criterion of `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/ClassNumberThree.lean:64-87`.
-- `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` (`proofs/alpoge_ab_deep_audit.lean:1129-1141`): Verifies the Ramanujan $\Delta$-form Hecke eigenrelation `heckeTo 12 1 2 ramanujanTauStub 2 = (-24)^2 = 576` from `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64` together with the simplicial boundary alternating-sum identity for all degrees $m \ge 0$ from `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89` by induction and `grind`.
+- `thm_26_dyadic_window_avoidance_pigeonhole` (`proofs/alpoge_ab_deep_audit.lean:1059-1082`): Proves the inductive magnification identity $(2B)(2^{R+2}B^R) = 2^{(R+1)+2}B^{R+1}$ of `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` together with the finite pigeonhole lemma `exists_missing_bucket` (`|Exc| ≤ R` guarantees at least one exception-free dyadic bucket among $R+1$ buckets) by induction on filtered list length.
+- `thm_27_stickelberger_minus_part_factorial_conductor_bound` (`proofs/alpoge_ab_deep_audit.lean:1103-1125`): Proves `factNat_le_pow` by induction and establishes the Stickelberger denominator inequality $16 F^{e+2} \cdot \mathrm{factNat}(e+1) \le (tF)^{2t+5}$ of `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136` via an intuitionistic proof (`[propext, Quot.sound]`) free of `Classical.choice`.
+- `thm_28_behrend_thick_set_determinant_vanishing` (`proofs/alpoge_ab_deep_audit.lean:1132-1181`): Proves that the 3-term progression determinant $D = (i_3 - i_1)(y_2 - y_1) - (i_2 - i_1)(y_3 - y_1)$ of `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66` satisfies $-n < 2D < n$ whenever $4 L_w y_k < n$, forcing $D = nq \implies D = 0$.
+- `thm_29_unitary_three_countV_exponent_step` (`proofs/alpoge_ab_deep_audit.lean:1190-1205`): Verifies the cleared-denominator inequality $aL \le E X^{C+1}$ of `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25` alongside the $\ell = 5$ vs. $\ell = 7$ ($e = 2$) branch criterion of `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/ClassNumberThree.lean:64-87`.
+- `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` (`proofs/alpoge_ab_deep_audit.lean:1231-1243`): Verifies the Ramanujan $\Delta$-form Hecke eigenrelation `heckeTo 12 1 2 ramanujanTauStub 2 = (-24)^2 = 576` from `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64` together with the simplicial boundary alternating-sum identity for all degrees $m \ge 0$ from `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89` by induction and `grind`.
 
 ### 5.4 Standalone Reproduction Command and Comprehensive Formal Verification Ledger
 
-Compilation and axiom auditing of the standalone verification file `proofs/alpoge_ab_deep_audit.lean:1-1143` are reproduced directly with the single command below.
+Compilation and axiom auditing of the standalone verification file `proofs/alpoge_ab_deep_audit.lean:1-1245` are reproduced directly with the single command below.
 
 ```bash
 ~/.elan/bin/lean proofs/alpoge_ab_deep_audit.lean
@@ -1058,9 +1059,9 @@ The summary table below consolidates the verification metrics and arithmetic-top
 | :--- | :--- | :--- |
 | Target cone `Pure_Vwin_Outside_Literature` | `10,832` files · `1,029,481` lines · `61,209` declarations | `B06` (`3,747`) + `B07` (`1,895`) + `B08` (`5,190`) |
 | Automated search tactics (`aesop`, `contrapose`) in `Pure_Vwin` | `0` occurrences (`0.000%`) | Deterministic construction across all `61,209` declarations |
-| Standalone audit file `proofs/alpoge_ab_deep_audit.lean` | `1,143` lines · `74` declarations (`44` zero-sorry theorems + `29` defs + `1` inductive) | `0` external package dependencies (`Mathlib`, etc.), zero user-added axioms, within standard built-in Lean 4 axioms |
+| Standalone audit file `proofs/alpoge_ab_deep_audit.lean` | `1,245` lines · `77` declarations (`44` zero-sorry theorems + `32` defs + `1` inductive) | `0` external package dependencies (`Mathlib`, etc.), zero user-added axioms, within standard built-in Lean 4 axioms |
 | Main (`thm_01`..`thm_30`) and auxiliary theorem counts | `30` main theorems + `14` auxiliary theorems = `44` theorems | Exceeds target threshold ($\ge 28$ theorems) |
 | Lean `v4.36.0` exit code and compiler diagnostics | Exit code `0` · `0` errors · `0` warnings | `0` `sorry` · `0` `axiom` · `0` `unsafe` |
-| `#print axioms` axiom-free kernel computation (`none`) | `5` theorems (`thm_07`, `thm_11`, `thm_13`, `thm_14`, `thm_18`) | Pure kernel computation (`decide` / `rfl`) |
-| `#print axioms` intuitionistic core (`propext, Quot.sound`) | `9` theorems (`thm_01`, `03`, `04`, `05`, `09`, `10`, `12`, `17`, `27`) | Free of `Classical.choice` |
-| `#print axioms` within standard classical 3 axioms | `16` theorems (`thm_02`, `06`, `08`, `15`, `16`, `19`..`26`, `28`..`30`) | All `44` zero-sorry theorems within standard built-in Lean 4 axioms |
+| `#print axioms` axiom-free kernel computation (`none`) | `2` theorems (`thm_07`, `thm_13`) | Pure kernel computation (`decide`) |
+| `#print axioms` intuitionistic core (`propext, Quot.sound`) | `8` theorems (`thm_03`, `04`, `05`, `09`, `10`, `12`, `17`, `27`) | Free of `Classical.choice` |
+| `#print axioms` within standard classical 3 axioms | `20` theorems (`thm_01`, `02`, `06`, `08`, `11`, `14`..`16`, `18`..`26`, `28`..`30`) | All `44` zero-sorry theorems within standard built-in Lean 4 axioms |

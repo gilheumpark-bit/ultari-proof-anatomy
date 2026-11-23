@@ -124,23 +124,23 @@ elab "kexactB " t:term : tactic => withMainContext do
 
 5대 명세 파일 각각의 원문 수식 정의와 이를 충족하는 4대 기둥의 공급 정리는 다음과 같습니다.
 
-#### (1) `Formalism/Statement.lean:11-50` (`50`줄, `dist = 9`) - 체비쇼프 가중 폰 망골트 잔차 $G(x)$와 란다우 귀류 명세
-원문 `Formalism/Statement.lean:11-23`은 폰 망골트 함수 $\Lambda(n)$의 절단합 $S(x)$와 그 주항 보정 잔차 $G(x)$를 다음과 같이 정의합니다.
+#### (1) `Formalism/Statement.lean:11-50` (`50`줄, `dist = 9`) - 체비쇼프 가중 폰 망골트 잔차 $G(\chi, x)$와 란다우 단측 하한 귀류 명세
+원문 `Formalism/Statement.lean:11-23`은 디리클레 지표 $\chi$ (`[NeZero N]`)에 결합된 비음수 계수 $\mathrm{LamF}(\chi, n) := \Lambda(n)(1 + \Re\chi(n))$, 절단합 $S(\chi, x)$, 로그미분 상수 $\gamma_F(\chi)$, 그리고 주항 보정 잔차 $G(\chi, x)$를 다음과 같이 정의합니다.
 
 $$
-S(x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n) \max\left(0, \frac{x}{n} - 1\right), \qquad \gamma_F(x) := x\left(\log x - 1 - \gamma\right) + 1, \qquad G(x) := S(x) - \gamma_F(x)
+S(\chi, x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n)\bigl(1 + \Re\chi(n)\bigr)\left(\frac{x}{n} - 1\right), \qquad \gamma_F(\chi) := \gamma + \Re\!\left(\frac{L'(1, \chi)}{L(1, \chi)}\right), \qquad G(\chi, x) := S(\chi, x) - x\log x + \bigl(1 + \gamma_F(\chi)\bigr)x
 $$
 
-이어서 `Formalism/Statement.lean:32-49`는 란다우 양수성 귀류 단계 `LandauStep`, `LandauStepEps`와 함께 최종 목표 명제 `RHofG`(`Formalism/Statement.lean:46-49`)를 선언합니다. `RHofG`는 임의의 $\theta \in [1/2, 1)$와 $\varepsilon > 0$마다 $G(x) \le C x^{\theta + \varepsilon}$(충분히 큰 모든 $x \ge x_0$)이면 반평면 $\Re(s) > \theta$에서 $\zeta(s) \ne 0$이라는 단측 상한(one-sided upper bound) 귀류 원리입니다. 복소 해석적 절댓값 $|G(x)|$ 대신 **실수 단측 상한 $G(x) \le C x^{\theta+\varepsilon}$만으로 충분하다**는 이 비대칭성이 4대 기둥 전체에서 에르미트 그람 행렬의 양수성($0 \le \langle \Theta f, \Theta f \rangle$)으로부터 영점 부재를 끌어내는 출발점입니다.
+이어서 `Formalism/Statement.lean:32-49`는 실수 지표($\Im\chi(n) = 0$) 위 란다우 귀류 단계 `LandauStep`, `LandauStepEps`와 최종 목표 명제 `RHofG`(`Formalism/Statement.lean:46-49`)를 선언합니다. `RHofG χ`는 모든 $\varepsilon > 0$마다 $x \ge 1$에서 **단측 하한** $-C x^{1/2 + \varepsilon} \le G(\chi, x)$가 성립하면 `RiemannHypothesis`와 반평면 $\Re(s) > 1/2$에서의 $L(s, \chi) \ne 0$이 동시에 도출된다는 귀류 원리입니다. 양측 절댓값 $|G(\chi, x)|$ 대신 **실수 단측 부등식만으로 충분하다**는 이 비대칭성이 4대 기둥 전체에서 에르미트 그람 행렬의 양수성($0 \le \langle \Theta f, \Theta f \rangle$)으로부터 영점 부재를 끌어내는 출발점입니다.
 
-#### (2) `Formalism/StatementOC.lean:11-73` (`73`줄, `dist = 8`) - 디리클레 지표 결합 잔차 $G_\chi(x)$와 가중 평균 `OCAvg`
-`Formalism/StatementOC.lean:11-22`는 `Formalism.Statement`를 임포트한 뒤 법 $q$의 디리클레 지표 $\chi$에 관한 꼬인 합 $S_\chi(x)$와 주항 보정 잔차 $G_\chi(x)$를 선언합니다.
+#### (2) `Formalism/StatementOC.lean:11-73` (`73`줄, `dist = 8`) - 실수화 지표 잔차 $G_\chi(x)$와 영점 차수 일치 명세 `OCAvg`
+`Formalism/StatementOC.lean:11-22`는 `Formalism.Statement`를 임포트한 뒤 순수 제타 잔차 $G_z(x) := S_z(x) - x\log x + (1 + \gamma)x$와 법 $N$의 지표 $\chi$에 관한 **실수값** 꼬인 합 $S_\chi(x)$ 및 잔차 $G_\chi(x)$를 선언합니다.
 
 $$
-S_\chi(x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n)\chi(n)\max\left(0, \frac{x}{n} - 1\right), \qquad G_\chi(x) := S_\chi(x) + \frac{L'(1, \chi)}{L(1, \chi)}\, x
+S_\chi(x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n)\,\Re\chi(n)\left(\frac{x}{n} - 1\right), \qquad G_\chi(x) := S_\chi(x) + \Re\!\left(\frac{L'(1, \chi)}{L(1, \chi)}\right) x
 $$
 
-이어서 `OCStep`(`Formalism/StatementOC.lean:23-30`)과 체비쇼프 가중 평균 판본 `OCAvgUpper`(`Formalism/StatementOC.lean:52-64`), `RiemannHypothesisOfLowerBounds`(`Formalism/StatementOC.lean:65-72`)를 정의합니다. 제2기둥 `SharpRestriction` 내부의 핵심 출력 허브인 `Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:2`(`168`줄, `dist = 7`, `in_degree = 10`)가 이 `Formalism.StatementOC`를 직접 임포트하여 원시 지표 유한군 수준 $\Lambda : \mathrm{Level}$ 위에서 결합 선형 형식 $\Lambda.\mathrm{Gm}(y)$(`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:38`)를 구성합니다.
+이어서 차분 $G_z(x) - G_\chi(x)$의 단측 하한·상한으로부터 $\Re(s) > \theta$ ($s \ne 1$)에서의 해석적 영점 차수 일치 `analyticOrderAt riemannZeta s = analyticOrderAt (LFunction χ) s`를 도출하는 `OCStep`(`Formalism/StatementOC.lean:23-30`), 가중 평균 판본 `OCAvgUpper`(`Formalism/StatementOC.lean:52-64`), `RiemannHypothesisOfLowerBounds`(`Formalism/StatementOC.lean:65-72`)를 정의합니다. 제2기둥 `SharpRestriction` 내부의 핵심 출력 허브인 `Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:2`(`168`줄, `dist = 7`, `in_degree = 10`)가 이 `Formalism.StatementOC`를 직접 임포트하여 원시 지표 유한군 수준 $\Lambda : \mathrm{Level}$ 위에서 결합 선형 형식 $\Lambda.\mathrm{Gm}(y)$(`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:38`)를 구성합니다.
 
 $$
 \Lambda.\mathrm{Gm}(y) := G_z(y) + \sum_{\psi \in \Lambda.\mathrm{Nt}} \Lambda.\mathrm{wt}(\psi)\,\Re\left(g_\chi(\psi.\chi, y)\right), \qquad \Lambda.\mathrm{wt}(\psi) := \begin{cases} 1 & (\Lambda.\mathrm{psK} = \mathrm{some}\,\psi) \\ (3\,\Lambda.o + 1)^{-1} & (\text{그 외}) \end{cases}
@@ -148,14 +148,14 @@ $$
 
 여기서 가중치 $(3\,\Lambda.o + 1)^{-1}$(`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:36`)은 위수 $\Lambda.o = |\Xi|$인 지표 부분군 위에서 코셋 지시함수의 양수성을 강제하는 결정적 계수이며, 같은 파일의 정리 `EAtH.explicit_formula_error_of_host_conditions`(`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:155-165`)가 호스트 조건 `HostConditions`로부터 명시 공식 오차 패키지 `EAtH`를 도출합니다.
 
-#### (3) `Formalism/StatementU.lean:9-47` (`47`줄, `dist = 10`) - 체비쇼프 창 평균 `wavg`와 멜린-란다우 해석적 연속
-`Formalism/StatementU.lean:9-13`은 정규화 잔차 $\bar{G}_z(x) := G_z(x) + x - 1$과 길이 $m$의 이산 창 평균 `wavg m x f`를 정의합니다.
+#### (3) `Formalism/StatementU.lean:9-47` (`47`줄, `dist = 10`) - 연속 적분 평균 `Gzbar`, 표본 평균 `wavg`와 멜린-란다우 해석적 연속
+`Formalism/StatementU.lean:9-13`은 구간 $[1, 2]$ 위의 연속 적분 평활화 잔차 $\bar{G}_z(x)$(`Gzbar`)와 일반 표본점·가중치 평균 `wavg xs ω x f`를 다음과 같이 정의합니다.
 
 $$
-\mathrm{wavg}(m, x, f) := \frac{1}{m}\sum_{j=1}^{m} f\left(\left(1 + \frac{j}{2m}\right) x\right)
+\bar{G}_z(x) := \int_{1}^{2} u\, G_z\!\left(\frac{x}{u}\right) du, \qquad \mathrm{wavg}(\mathrm{xs}, \omega, x, f) := \sum_{j=0}^{m-1} \omega_j \frac{x}{\mathrm{xs}_j} f(\mathrm{xs}_j)
 $$
 
-명제 `ZetaLandauBarEps`(`Formalism/StatementU.lean:29-33`)는 $m \ge x^{1 - \theta - \varepsilon}$인 창 평균 상한 $\mathrm{wavg}(m, x, \bar{G}_z) \le C x^{\theta + \varepsilon}$으로부터 $\Re(s) > \theta$에서의 $\zeta(s) \ne 0$을 도출하는 명세입니다. 이 명세는 `Formalism/ZetaNonvanishing/ZetaLandau.lean:18-99`(`300`줄, `dist = 11`)에서 멜린 변환 항등식 `mellin_HZ`(`Formalism/ZetaNonvanishing/ZetaLandau.lean:75-91`)로 실현됩니다. 구체적으로 $H_Z(\varepsilon, C, \theta; x) := \varepsilon G_z(x) + C x^\theta \ge 0$의 멜린 적분 $I_Z(s) = \int_1^\infty H_Z(x) x^{-s-1}\,dx$가 $\Re(s) > 1$에서
+명제 `ZetaLandauBarEps`(`Formalism/StatementU.lean:29-33`)는 부호 $s_0 \in \{1, -1\}$에 관한 적분 평활화 단측 상한 $s_0\,\bar{G}_z(x) \le C x^{\theta + \varepsilon}$ ($x \ge x_0$)으로부터 $\Re(s) > \theta$에서의 $\zeta(s) \ne 0$을 도출하며, 조화 격자 $\mathrm{xs}_j = x / (1 + \frac{j+1}{m})$과 균등 가중치 $\omega_j = 1/m$에서의 이산-연속 오차 $|\mathrm{wavg} - \bar{G}_z(x)| \le K x / m$은 `RiemannSumApprox`(`Formalism/StatementU.lean:42-46`)가 연결합니다. 이 명세는 `Formalism/ZetaNonvanishing/ZetaLandau.lean:18-99`(`300`줄, `dist = 11`)에서 멜린 변환 항등식 `mellin_HZ`(`Formalism/ZetaNonvanishing/ZetaLandau.lean:75-91`)로 실현됩니다. 구체적으로 $H_Z(\varepsilon, C, \theta; x) := \varepsilon G_z(x) + C x^\theta \ge 0$의 멜린 적분 $I_Z(s) = \int_1^\infty H_Z(x) x^{-s-1}\,dx$가 $\Re(s) > 1$에서
 
 $$
 \Phi_Z(\varepsilon, C, \theta; s) = \frac{\varepsilon \, n_Z(s)}{s(s - 1)} + \frac{C}{s - \theta}, \qquad n_Z(s) := -\frac{\zeta_1'(s)}{\zeta_1(s)} - 1 + (1 + \gamma)s
@@ -163,11 +163,11 @@ $$
 
 와 일치함을 보이고(`PhiZ_eq`, `Formalism/ZetaNonvanishing/ZetaLandau.lean:93-98`), 양수 피적분함수에 관한 란다우 실축 특이점 정리로 실수 영점 및 복소 영점의 존재를 차단합니다.
 
-#### (4) `Formalism/StatementCM.lean:9-45` (`45`줄, `dist = 13`) 및 `Formalism/StatementFL.lean:11-44` (`44`줄, `dist = 15`) - CM 반유형 분할과 홀수 지표 소거 공식
-`Formalism/StatementCM.lean:9-44`는 위수 $2n$ 순환군 $\mathbb{Z}/2n\mathbb{Z}$ 위에서 원소 $a$와 $-a$ 중 정확히 하나씩만을 선택하는 CM 유형(`IsCMType`, `Formalism/StatementCM.lean:9-10`) 및 그 절반족 `HalfTypes`(`Formalism/StatementCM.lean:22-26`)을 정의하고, 보형 세타 리프트가 강제하는 합동류 가중 폰 망골트 합 `ForcedSumCM`(`Formalism/StatementCM.lean:35-40`)을 명세합니다. 한편 `Formalism/StatementFL.lean:11-43`은 복소 계수 $c_\chi$에 관한 지표 가족 결합식 `famComb`(`Formalism/StatementFL.lean:17-20`)
+#### (4) `Formalism/StatementCM.lean:9-45` (`45`줄, `dist = 13`) 및 `Formalism/StatementFL.lean:11-44` (`44`줄, `dist = 15`) - 단수군 CM 반유형 분할과 홀수 지표 차분 공식
+`Formalism/StatementCM.lean:9-44`는 홀수 소수 $l \ge 3$의 **곱셈 단수군** $(\mathbb{Z}/l\mathbb{Z})^\times$ (`(ZMod l)ˣ`) 위에서 각 대립쌍 $\{g, -g\}$ 중 정확히 한 원소만 선택하는 CM 유형(`IsCMType`, `Formalism/StatementCM.lean:9-10`: `∀ g : (ZMod l)ˣ, g ∈ Φ ↔ -g ∉ Φ`)과 절반족 항등식 `HalfTypes`(`Formalism/StatementCM.lean:22-26`), 그리고 쌍대 유형 $\Phi \cup \Phi^\vee$ 위의 합동류 가중 폰 망골트 합 오차 `ForcedSumCM`(`Formalism/StatementCM.lean:35-40`)을 명세합니다. 한편 `Formalism/StatementFL.lean:11-43`은 복소 계수 $c_i \in \mathbb{C}$에 관한 지표 가족 **차분** 결합식 `famComb`(`Formalism/StatementFL.lean:17-20`)
 
 $$
-\mathrm{famComb}(\mathrm{chars}, c, y) := G_z(y) + \Re\left(\sum_{\chi \in \mathrm{chars}} c(\chi)\, G_{\chi,\mathbb{C}}(\chi, y)\right)
+\mathrm{famComb}(N, \chi, c, x) := G_z(x) - \Re\left(\sum_{i} c_i\, G_{\chi,\mathbb{C}}(\chi_i, x)\right)
 $$
 
 을 정의하며, 이는 `Formalism/LFunctionBounds/Statement.lean:11-126`(`127`줄, `dist = 14`)에서 소수 법 $l$ 위 합이 $l$인 세 쌍 $S = (s_1, s_2, s_3) \in \mathrm{triples}(l)$의 확률 분포 $\nu$와 톱니파 주기 항등식(`PeriodIdentity`, `Formalism/LFunctionBounds/Statement.lean:44-53`) 및 예외적 영점 보유 지표를 소거하는 `KillingLemma`(`Formalism/LFunctionBounds/Statement.lean:55-59`: $|BB| \le l^{1-\varepsilon}$인 나쁜 홀수 지표 집합 $BB$ 위에서 $c_W(l, \nu, \chi) = 0$)로 구현됩니다.
@@ -195,7 +195,7 @@ $$
 | `2` | **`Columns`** | `376` | `95,905` | `5,313` | `2,524` | 아델 행렬 열 공간 분해, 포물선 부분군 불변 조건 및 기저 변환 |
 | `3` | **`IndefiniteReal`** | `435` | `78,821` | `4,014` | `3,006` | $m$단계 원시 세타 연결고리(`LinksStage`), 시험 벡터(`DatumVec`), 복합 그람 고유값(`PThmB`) |
 | `4` | **`TorsionIntegrality`** | `489` | `70,444` | `4,581` | `1,477` | 비틀림 코커널 위수 상한과 국소-전역 정수가역성(`p`-진 분모 소거) |
-| `5` | **`GlobalTheory`** | `389` | `69,295` | `3,562` | `1,308` | $\mathrm{GL}_5$ 6중 피복 연결(`GL5/Statement.lean`), 등차수열 소수 정리 귀결 조립 |
+| `5` | **`GlobalTheory`** | `389` | `69,295` | `3,562` | `1,308` | 유니터리 속 질량·기본영역 부피비(`GL5/Statement.lean` `GenusMassVolumes`) 및 등차수열 소수 정리 귀결 조립 |
 | `6` | **`KernelLattices`** | `162` | `48,309` | `2,778` | `1,421` | 멱등 사영 핵 격자(`ker(1-e)`)의 판별식·기울기 보존 정리 |
 | `7` | **`ProjectiveLattices`** | `325` | `43,028` | `1,865` | `1,606` | 아벨 다양체 사영 단면(`FreeBridge`), 단축 정규화 평가(`ThShort`), 전칭 시험(`AllTest`) |
 | `8` | **`CharacterGerms`** | `238` | `40,069` | `2,068` | `767` | 국소 지표 싹(germ) 전개와 분지 도체 지수 정합성 |
@@ -289,7 +289,7 @@ $$
 사영 아벨 다양체 위의 세타 함수 평가를 담당하는 `ProjectiveLattices`의 3대 허브입니다.
 `Formalism/LocalToGlobal/ProjectiveLattices/AllTest.lean:12-15`는 허용되는 모든 시험 배치에 걸친 보편 정합 술어 `AllTest`를 정의하여 `452`개 하위 모듈의 공통 타입 서명을 통일합니다.
 `Formalism/LocalToGlobal/ProjectiveLattices/FreeBridge.lean:18-117`은 자유 $\mathcal{O}_E$-격자 표현(`Unf`)과 사영 스킴 단면(`Pj`) 사이의 번역기 `Unf.ofPj`·`Unf.toPj`(`:38-43`)를 구축하고, 유한 차원 정칙 첨점 단면 일치 정리 `FDSec_eq`(`:18-19`), `isHolCusp_iff`(`:20-22`), 그리고 평가점 집합 위에서 공통 영점이 없음을 번역하는 `noCommonZero_iff`(`:104-106`)를 증명합니다.
-그 위에서 `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-349`는 아벨 스킴 상의 미분연산자 다항식 $P(\nabla)$에 정규화 인자 $N^{-\deg P}$를 곱한 단축 평가 `ShortValAt`(`:244-262`)를 정의하고, 우세 가중치 생성 가정으로부터 비영 평가점의 존재를 도출하는 정리 `shortNe0_of_t4Span`(`:335-349`)을 증명합니다.
+그 위에서 `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-349`는 아벨 스킴 상의 조화 다항식 $P \in \mathrm{harmL}(\Lambda, a)$에 4중 정규화 역원($\beta^{-1} \cdot \mathrm{mIdx}_N(\Lambda)^{-1} \cdot |\mathrm{LevQ}^n|^{-1} \cdot N^{-\deg P}$)을 결부한 충실 평탄 단축 평가 관계식 `ShortValAt`(`:244-262`)를 정의하고, 우세 가중치 생성 가정으로부터 비영 평가점의 존재를 도출하는 정리 `shortNe0_of_t4Span`(`:335-349`)을 증명합니다.
 
 #### (5) `NGData.lean` (`in_degree = 339`), `TermLoc.lean` (`in_degree = 190`), `AllTied.lean` (`in_degree = 197`)
 지겔 격자 궤도 계산을 담당하는 `Formalism/LocalToGlobal/SiegelLatticeTheory/CokernelGLCounts/NGData.lean:18-125`는 퇴화·비일반 푸리에-야코비 궤도의 기여도를 제어하기 위해 가중 지수합 `Jw`(`:29-33`), 제곱합 `J2of`(`:34-38`), 군 평균합 `grpC`(`:39-42`), 그리고 코시-슈바르츠 증폭 비율
@@ -360,22 +360,22 @@ $$
 \left(\Theta_t \circ \Theta_t^*\right)(e) = \left(\kappa \prod_{j=0}^{m-1} \lambda_{j, t, p, v_0}\right) e
 $$
 
-더 나아가 각 단계가 스칼라가 아닌 다중 행 블록 연산자 $B_j \in \End_{\mathbb{C}}(E)$로 작용하는 일반 가족 설정에서도, `Formalism/ThetaLiftIndependence/Statement.lean:266-277`(`301`줄, `in_degree = 19`, `dist = 9`)의 명제 `DetChain`은 합성 그람 행렬 $A := \Theta_t \circ \Theta_t^*$의 행렬식이
+더 나아가 직합 분해 $E = \bigoplus_{s \in \sigma} E_s$ 및 $W_j = \bigoplus_{s \in \sigma} W_{j,s}$ ($\dim W_{j,s} = \dim E_s$) 위에서 각 단계 연산자가 블록별 스칼라 작용 $B_j|_{W_{j,s}} = \lambda_{j,s}\,\mathrm{id}$를 갖고 합성 연산자가 $A|_{E_s} = (\kappa \prod_j \lambda_{j,s})\,\mathrm{id}$로 주어질 때, `Formalism/ThetaLiftIndependence/Statement.lean:266-277`(`301`줄, `in_degree = 19`, `dist = 9`)의 명제 `DetChain`은 합성 그람 연산자 $A$의 행렬식이
 
 $$
-\det(A) = \kappa^{\dim_{\mathbb{C}} E} \prod_{j=0}^{m-1} \det(B_j)
+\det(A) = \kappa^{\dim_{\mathbb{k}} E} \prod_{j=0}^{m-1} \det(B_j)
 $$
 
 로 분해됨을 확립합니다. 즉 연결고리 $U(X_j) \to U(X_{j+1})$를 한 단계 통과할 때마다 중심 $L$-값 및 국소 부피 비율에서 기인하는 보형 이득 인자 $\lambda_{j, t, p, v_0}$가 지수 위에 $+1$겹씩 정확히 $m$번 쌓여 $\prod_{j=0}^{m-1} \lambda_j \asymp \Lambda_{\mathrm{gain}}^m$ 크기의 곱셈적 증폭을 만들어냅니다.
 
-#### 제4단계: 무미분 단축 평가 `ShortValAt`와의 결합 (`Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262`)
-마지막으로 종단 공간 $U(X_m)$에 도달한 보형 형식 $\Theta_t(f_0)$를 특수 CM 점 주기(CM cycles) 위에서 평가할 때, `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262`의 `ShortValAt`는 아벨 스킴 위의 가중치 $a$ 조화 다항식 $P \in \mathrm{harmL}(\Lambda, a)$에 레벨 정규화 인자 $(N : c.F)^{-\deg P}$를 곱한 대수적 값
+#### 제4단계: 무미분 단축 평가 관계식 `ShortValAt`와의 결합 (`Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262`)
+마지막으로 종단 공간 $U(X_m)$에 도달한 보형 형식 $\Theta_t(f_0)$를 특수 CM 점 주기(CM cycles) 위에서 평가할 때, `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262`의 `ShortValAt`는 아벨 스킴 위 조화 다항식 $P \in \mathrm{harmL}(\Lambda, a)$에 관한 **충실 평탄(faithfully flat) 기저변환 관계식(`Prop`)**으로서, 확장 대수 $\varphi : S \to S'$ 위에서 평가값 $v \in S$가 네 정규화 역원($\beta^{-1}$, 격자 지수 $\mathrm{mIdx}_N(\Lambda)^{-1}$, 레벨 몫 기수 $|\mathrm{LevQ}^n|^{-1}$, 차수 척도 $N^{-\deg P}$)과 유한 지지 합 등식
 
 $$
-\mathrm{ShortValAt}(\nabla, w, \Lambda, \beta; P) := N^{-\deg P} \, \mathrm{ev}_{x_0}\left(\beta^{-a}\, D_P(s_w)\right) \in \mathcal{O}_{K_0}\left[\frac{1}{\mathrm{bad}}\right]
+\varphi(v) = \iota_{S'}\!\left(\beta^{-1} \cdot \mathrm{mIdx}_N(\Lambda)^{-1} \cdot |\mathrm{LevQ}^n|^{-1} \cdot N^{-\deg P}\right) \sum_{q}^{\mathrm{f}} \iota_{S'}(w_q) \sum_{i} \sum_{m \in \mathrm{supp}(P)} \iota_{S'}(P_m) \prod_{b} \nabla_{y'}\!\left(N^2, F_{q,i,b}, \mathrm{col}_m(b)\right)
 $$
 
-를 추출합니다. 여기서 $P(\nabla)$는 기하적 가우스-마닌/마اس-시무라 미분층(고정된 유한 차수)에서만 작동하며, 유리수 소수 $p$ 방향으로 고계 도함수를 취하지 않습니다. 대신 소수점 개수를 압도하는 $\Theta(\sqrt{x})$차 중복도는 전적으로 앞선 $m$단계 유니터리 세타 사슬의 고유값 곱 $\prod_{j=0}^{m-1} \lambda_j$와 아라켈로프 선다발 차수 하한에서 공급됩니다. 이것이 정수환 $\mathbb{Z}$ 위에서 미분 없이 작동하는 보형 스테파노프 중복도의 정확한 Lean 4 구현 메커니즘입니다.
+을 만족함을 규정합니다. 여기서 $\nabla_{y'}$는 기하적 가우스-마닌/마아스-시무라 접속층(고정된 유한 차수 $\deg P$)에서만 작동하며, 유리수 소수 $p$ 방향으로 고계 도함수를 취하지 않습니다. 대신 소수점 개수를 압도하는 $\Theta(\sqrt{x})$차 중복도는 전적으로 앞선 $m$단계 유니터리 세타 사슬의 고유값 곱 $\prod_{j=0}^{m-1} \lambda_j$와 아라켈로프 선다발 차수 하한에서 공급됩니다. 이것이 정수환 $\mathbb{Z}$ 위에서 미분 없이 작동하는 보형 스테파노프 중복도의 정확한 Lean 4 구현 메커니즘입니다.
 
 위 4단계 구성을 기저 단계($j = 0$)부터 종단 평가 단계($j = m$)까지 단계별 공간·연산자·누적량 대응표로 집약하면 아래와 같습니다.
 
@@ -402,7 +402,7 @@ $$
 | ---: | :--- | ---: | ---: | ---: | ---: | :--- |
 | `1` | **`GrowthBounds`** | `1,210` | `231,225` | `11,586` | `4,555` | 매개변수 창 `(m, n, k, j0)`에서의 지수 성장률 비교 및 주항-오차항 분리 |
 | `2` | **`LevelLetterCocycles`** | `758` | `170,849` | `7,138` | `3,626` | 국소 갈루아 코호몰로지(`LocCoh`), 바흐-헤르 격자(`DataNLoc`), 관성 특성다항식(`TameType`) |
-| `3` | **`CuspSpanNormBounds`** | `399` | `132,978` | `6,418` | `4,749` | 반복 파르세발(`Kk_succ`), 사영 푸앵카레 그람 분해(`RelevantZeroGramTerms`), C*-슈어 다리 |
+| `3` | **`CuspSpanNormBounds`** | `399` | `132,978` | `6,418` | `4,749` | 재귀 코커널 제곱합(`Kk_succ`), 사영 푸앵카레 그람 분해(`RelevantZeroGramTerms`), C*-슈어 다리 |
 | `4` | **`Divisibility`** | `274` | `63,162` | `2,670` | `3,220` | 차트 독립 생성원 유일성(`ThExprUniqOfChartIndep2`), 슈어 기약성(`SchurIrreducible`), 랄리스 모형 |
 | `5` | **`GlobalSchurBounds`** | `158` | `48,032` | `2,399` | `2,338` | 유니터리 형식차수(`ThickPlacesCorollaryOfAnyTranslate`), 속 질량 부피(`GenusMassVolumes`), `TieGlobal` |
 | `6` | **`GenusPolyhedralBounds`** | `88` | `27,878` | `1,718` | `600` | 에르미트 속(genus) 내 격자점의 다면체 절단 합 및 에르하르트 부피 상한 |
@@ -439,7 +439,7 @@ $$
 | `1` | `Formalism/SharpRestriction/Divisibility/GeneratorPowers/ThExprUniqOfChartIndep2.lean` | `41` | `873` | `9` | `ChartIndepSt2`, `thExprUniq_of_chartIndep2` ($p^k$ 격자 이동 계수 유일성) |
 | `2` | `Formalism/SharpRestriction/LevelLetterCocycles/LocCoh.lean` | `195` | `654` | `7` | 블로흐-카토 결정/드람 코호몰로지 핵 `bkACore`, `bkBCore`, `LocalTateTopDegree` |
 | `3` | `Formalism/SharpRestriction/LevelLetterCocycles/LocalSituation.lean` | `641` | `627` | `7` | 30개 필드 $p$-진 갈루아 리프팅 상황 `Sit`, `LocalLiftingUniformConstant` |
-| `4` | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean` | `282` | `400` | `9` | 국소 분해 베셀 모형 `Model`, 재귀 파르세발 등식 `Kk_succ` |
+| `4` | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean` | `282` | `400` | `9` | 국소 분해 베셀 모형 `Model`, 재귀 코커널 제곱합 전개 `Kk_succ` |
 | `5` | `Formalism/SharpRestriction/Divisibility/SchurIrreducible.lean` | `617` | `377` | `7` | 블라트너 매개변수 `DiscreteSeriesBlattner`, `ArchimedeanRallisLocal` |
 | `6` | `Formalism/SharpRestriction/ParConsts.lean` | `103` | `224` | `7` | 무이득 기준 `NoGain`, 36개 필드 가족 `FamP`, 허용 범위 `DFamP`(`eps < 1/52`) |
 | `7` | `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean` | `573` | `201` | `7` | 사영 푸앵카레 그람 연산자 `Kmat`, `RelevantZeroGramTerms`, `famNG`, `famG` |
@@ -495,29 +495,29 @@ $$
 j_0 := \left\lceil \frac{\log\left(n \cdot N(m) / m\right)}{\log 5} \right\rceil_+
 $$
 
-밑이 $5$로 선택된 이유는 제3.3절에서 다룰 $\mathrm{GL}_5$ 상대 대각합 공식 및 5분할 레벨 가지치기 구조와 직결됩니다.
+밑이 $5$로 선택된 이유는 제3.3절에서 다룰 5진 야코비 수준 가지치기와 일반 계수 유니터리 지겔-베유 부피비 구조와 직결됩니다.
 
 #### (4) `SchurIrreducible.lean` (`in_degree = 377`), `GenusMassVolumes.lean` (`in_degree = 183`), `ThickPlacesCorollaryOfAnyTranslate.lean` (`in_degree = 189`)
 아르키메데스 및 전역 측도 정규화를 담당하는 3대 허브입니다.
 - `Formalism/SharpRestriction/Divisibility/SchurIrreducible.lean:20-614`는 이산계열의 최저 $K$-유형 블라트너(Blattner) 매개변수 `DiscreteSeriesBlattner`(`:74-81`)와 올림·내림 작용소 핵 `lowKer`(`:38-42`), `raised`(`:43-48`)를 정의하고, 국소 아르키메데스 랄리스 내적 공식 `ArchimedeanRallisLocal`(`:613-614`)을 출력합니다.
 - `Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean:11-396`은 CM 확대 $E/F$ 위의 비퇴화 에르미트 형식 `IsHermND`(`:22-24`)에 관해 베유 측도 `SdW`(`:353-356`), 실수 자리 측도 `SdR`(`:357-360`), 에르미트 궤도 측도 `SdHerm`(`:361-364`), 푸리에-베셀 궤도 측도 `IsXbetaMeasure`(`:365-389`) 사이의 정규화 정합성 `IsCompatible`(`:390-396`)을 정의합니다.
-- `Formalism/SharpRestriction/GlobalSchurBounds/ThickPlacesCorollaryOfAnyTranslate.lean:17-2353`(`2,354`줄)은 이 기둥 최대 규모의 증명 파일 중 하나로, 하리시-찬드라 형식차수(formal degree)의 바일 차원·근계 곱 공식 단조성 `harishChandraAbs_pos_of_strictAnti`(`:2251-2260`)로부터 모든 유니터리 군에 걸친 형식차수 상하한 정리 `formalDegreeBound_all_unitaryGroups`(`:2261-2312`) 및 `familyFormalDegree_all`(`:2317-2321`)을 완결 증명하고, 최하단 `volumeMass_of_unfolding`(`:2342-2353`)에서 언폴딩 질량 비율을 확정합니다.
+- `Formalism/SharpRestriction/GlobalSchurBounds/ThickPlacesCorollaryOfAnyTranslate.lean:17-2353`(`2,354`줄)은 이 기둥 최대 규모의 증명 파일 중 하나로, 순감소 하리시-찬드라 매개변수 열의 반복 상한 양수성 `harishChandraAbs_pos_of_strictAnti`(`:2251-2260`)로부터 모든 유니터리 군에 걸친 형식차수 상하한 정리 `formalDegreeBound_all_unitaryGroups`(`:2261-2312`) 및 `familyFormalDegree_all`(`:2317-2321`)을 완결 증명하고, 최하단 `volumeMass_of_unfolding`(`:2342-2353`)에서 언폴딩 질량 비율을 확정합니다.
 
 #### (5) `FractionFieldToGenericStalkAlgebraMapEq.lean` (`in_degree = 400`) 및 `RelevantZeroGramTerms.lean` (`in_degree = 201`)
 첨점 형식 생성 부분공간의 그람 행렬 노름을 직접 계산하는 두 핵심 허브이며, 그 내부 방정식 체인을 아래 제3.3절에서 전수 복원합니다.
 
 ---
 
-### 3.3 수리적 핵심 복원: 반복 파르세발 등식과 $\mathrm{GL}_5$ 6중 메타플렉틱 피복 상대 대각합·슈어 상한 체인
+### 3.3 수리적 핵심 복원: 재귀 코커널 제곱합 `Kk_succ`, 일반 계수 유니터리 지겔-베유 질량비(`GL5/Statement.lean`), 그리고 무투영 C*-슈어 상한 체인
 
-해석적 정수론에서 푸앵카레 급수(Poincaré series)들의 내적 행렬 $\langle P_u, P_{u'} \rangle$을 상한할 때, 전통적인 쿠즈네초프-페테르손 대각합 공식은 클루스터만 합(Kloosterman/Gauss sums)의 개별 복소 위상 상쇄(예: 베유 상한 $q^{1/2}$)에 의존합니다. 그러나 고계 유니터리 군 및 일반선형군($\mathrm{GL}_5$ 이상)의 다중 분지 레벨에서는 고차원 지수합의 퇴화 쌍곡선 특이점 때문에 점별 위상 상쇄만으로는 지수 손실을 막을 수 없습니다.
+해석적 정수론에서 푸앵카레 급수(Poincaré series)들의 내적 행렬 $\langle P_u, P_{u'} \rangle$을 상한할 때, 전통적인 쿠즈네초프-페테르손 대각합 공식은 클루스터만 합(Kloosterman/Gauss sums)의 개별 복소 위상 상쇄(예: 베유 상한 $q^{1/2}$)에 의존합니다. 그러나 고계 유니터리 군의 다중 분지 레벨에서는 고차원 지수합의 퇴화 쌍곡선 특이점 때문에 점별 위상 상쇄만으로는 지수 손실을 막을 수 없습니다.
 
-`SharpRestriction` 기둥이 이 난관을 돌파하기 위해 구축한 해법은 **개별 가우스 합의 부호 상쇄를 전혀 요구하지 않는 대신, 몫가군 코커널 위의 반복 파르세발(iterated Parseval) 등식과 $\mathrm{GL}_5$ 6중 메타플렉틱 피복 상대 대각합 공식, 그리고 C*-대수 함수해석적 슈어 보조정리를 결합해 그람 행렬의 힐베르트-슈미트 및 작용소 노름을 순수 양수 $L^2$ 제곱합으로 압축하는 것**입니다. 원문 코드에 기록된 정확한 수식 체인은 다음 4단계로 구성됩니다.
+`SharpRestriction` 기둥이 이 난관을 돌파하기 위해 구축한 해법은 **개별 가우스 합의 부호 상쇄나 단독 $\mathrm{GL}_5$ 6중 메타플렉틱 피복군 정의 없이, 몫가군 코커널 동치류 위의 재귀 제곱합(`Kk_succ`), 일반 계수 유니터리 지겔-베유 속 질량·부피비(`GL5/Statement.lean`), 그리고 C*-대수 함수해석적 슈어 보조정리를 결합해 그람 행렬의 힐베르트-슈미트 및 작용소 노름을 순수 양수 $L^2$ 제곱합으로 압축하는 것**입니다. 원문 코드에 기록된 정확한 수식 체인은 다음 4단계로 구성됩니다.
 
-#### 제1단계: 가우스 합 상쇄를 대체하는 코커널 동치류 반복 파르세발 등식 (`Kk_succ`)
+#### 제1단계: 코커널 동치류 위의 재귀 베셀 핵 정의와 전개 보조정리 (`Kk_succ`)
 `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:42-260`은 비아르키메데스 국소체 확장 $E/F$ 위의 분해 모형 `Model F E`(`:42-47`), 정수환 부분환 $R := M.R \subseteq E$(`:52-60`), 가법 지표 $\psi_R : E \to \mathbb{C}^\times$(`:66-70`), 그리고 크기 $m+1$ 행렬들의 코커널 `M.Cok ZZ`(`:90-92`) 및 동형 동치류 집합 $\mathrm{Cls}_m(M) := M.\mathrm{Cls}\,m$(`:143`, 자기동형군 크기 $|\Aut(c)| = M.\mathrm{nAut}\,c$, `:145`)을 정의합니다.
 
-하삼각·상삼각 대ipotent 행렬 $u_{\mathrm{Low}}(x)$(`:181-183`)와 $u_{\mathrm{Up}}(w, y)$(`:184-187`)에 관해 부분 베셀 적분 계수 $\mathrm{BB}(M; w, c) \in \mathbb{C}$(`:211-214`)를 정의하면, 깊이 $m$에서 깊이 $m+1$로 올라가는 핵 함수 $K_k := M.\mathrm{Kk}$(`:215-218`)는 정리 `Kk_succ`(`Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256`)에서 다음의 정확한 파르세발 분해 항등식을 만족합니다.
+하삼각·상삼각 멱단 행렬 $u_{\mathrm{Low}}(x)$(`:181-183`)와 $u_{\mathrm{Up}}(w, y)$(`:184-187`)에 관해 부분 베셀 적분 계수 $\mathrm{BB}(M; w, c) \in \mathbb{C}$(`:211-214`)를 도입한 뒤, 원문은 깊이 $i$의 재귀 핵 함수 $K_k := M.\mathrm{Kk}$(`:215-218`) 자체를 코커널 동치류 합으로 직접 정의하고 정의적 전개 보조정리 `Kk_succ`(`Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256`, `:= rfl`)로 다음 등식을 기록합니다.
 
 $$
 K_{m+1}(w, w') = \sum_{c \in \mathrm{Cls}_m(M)} \frac{\mathrm{BB}(M; w, c)\,\overline{\mathrm{BB}(M; w', c)}}{|\Aut(c)|}
@@ -529,7 +529,7 @@ $$
 K_{m+1}(w, w) = \sum_{c \in \mathrm{Cls}_m(M)} \frac{\left|\mathrm{BB}(M; w, c)\right|^2}{|\Aut(c)|} \ge 0
 $$
 
-이 되어 복소 진동항의 점별 상쇄를 추정할 필요 없이 유한 아벨 코커널 `M.Cok ZZ` 위의 직교성(파르세발 항등식)만으로 차원 $1 \to 2 \to \dots \to r_S + 1$을 따라 $L^2$ 질량이 정확히 보존됩니다. 비대각선 $w \ne w'$인 경우에도 즉시 코시-슈바르츠 부등식 $|K_{m+1}(w, w')|^2 \le K_{m+1}(w, w)\,K_{m+1}(w', w')$가 성립합니다.
+이 되어 복소 진동항의 점별 상쇄를 추정할 필요 없이 하위 궤도 적분 일치 정리들이 유한 아벨 코커널 `M.Cok ZZ` 위의 양정치 제곱합에 직결됩니다. 비대각선 $w \ne w'$인 경우에도 즉시 코시-슈바르츠 부등식 $|K_{m+1}(w, w')|^2 \le K_{m+1}(w, w)\,K_{m+1}(w', w')$가 성립합니다.
 
 #### 제2단계: 사영 푸앵카레 그람 행렬 `Kmat`의 5중 세포 분해 (`Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:335-524`)
 `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:335-377`은 단어 매개변수 $u, u' \in \mathrm{Word}$에 대응하는 첨점 부분공간 `s.Cu u` 위에서 정규화 상수
@@ -551,8 +551,8 @@ $$
 | **`1.` $K_{\mathrm{id}}(u, u')$** | `IdCellDiag`(`:372`), `IdCellOff`(`:375`) | $s.\mathrm{isId}(t)$ | 정규화 인자 $c_0(u)$에 의해 대각선 $u=u'$에서 $\mathrm{id}_{\mathcal{C}_u}$, 비대각선 $u \ne u'$에서 $0$ |
 | **`2.` $K_2(u, u')$** | `RelevantZeroGramTerms`(`:351`), `K2`(`:366`) | $s.\mathrm{relevant}(t) \wedge s.\mathrm{Gterm}(t) = 0$ | 매끄러운 절단 `isCutoff_exists`(`:548-557`) 및 카펠리 간격 `capW`(`:536-541`)로 소거 |
 | **`3.` $K_{\mathrm{NG}}(u, u')$** | `famNG`(`:353`), `KOf s u u' famNG` | $\neg s.\mathrm{isId}(t) \wedge s.\mathrm{Gterm}(t) \ne 0 \wedge \neg s.\mathrm{generic}(t)$ | `Formalism/LocalToGlobal/SiegelLatticeTheory/CokernelGLCounts/NGData.lean:43-125`의 코시-슈바르츠 비율 $\mathrm{a2C} = \|\mathrm{grpC}\|^2 / \mathrm{J2of}$로 상한 |
-| **`4.` $K_{\mathrm{G, sc}}(u, u')$** | `famG`(`:355`) 내 `scalarP`(`:361`), `Kgs`(`:368`) | 일반항 쌍 중 대각 스칼라 결합 쌍 | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256`의 반복 파르세발 `Kk_succ` 직결 |
-| **`5.` $K_{\mathrm{G, loop}}(u, u')$** | `famG`(`:355`) 내 `loopP`(`:357`) | 일반항 쌍 중 비대각 교차 루프 쌍 | $\mathrm{GL}_5$ 6중 피복 상대 대각합 제곱평균 및 5진 깊이 $5^{-j_0}$ 부피 감쇠(`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`) |
+| **`4.` $K_{\mathrm{G, sc}}(u, u')$** | `famG`(`:355`) 내 `scalarP`(`:361`), `Kgs`(`:368`) | 일반항 쌍 중 대각 스칼라 결합 쌍 | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256`의 재귀 코커널 제곱합 `Kk_succ` 직결 |
+| **`5.` $K_{\mathrm{G, loop}}(u, u')$** | `famG`(`:355`) 내 `loopP`(`:357`) | 일반항 쌍 중 비대각 교차 루프 쌍 | 2유형 코시-슈바르츠 제곱평균 및 5진 깊이 $5^{-j_0}$ 부피 감쇠(`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`) |
 
 각 성분의 집합 정의식을 원문 그대로 적으면 다음과 같습니다.
 - **연관 영-그람 항 집합 (`:351`)**:
@@ -563,10 +563,10 @@ $$
   $$\mathrm{famG} := \left\{ t \in s.\mathrm{Term}(u, u') \;\mid\; \neg s.\mathrm{isId}(t) \wedge s.\mathrm{Gterm}(t) \ne 0 \wedge s.\mathrm{generic}(t) \right\}$$
   여기서 모든 주 소행렬식 `leadMinor`(`:235-237`)가 가역인 `famG` 내부의 곱집합 쌍 $(t_1, t_2) \in \mathrm{pairsIn}(\mathrm{famG})$(`:364`)이 `scalarP`와 `loopP`로 이분되어 위 표의 4번·5번 성분을 형성합니다.
 
-#### 제3단계: $\mathrm{GL}_5$ 6중 메타플렉틱 피복 상대 대각합 결합 (`GL5/Statement.lean` 및 `AsmIface.lean`)
-루프 쌍 `loopP`와 비자명 궤도 평균을 제곱평균으로 묶을 때 등장하는 고계 군이 바로 기저 계수 $K = 5$(`Formalism/HermitianCurvature/HermitianCurvatureProofs/TheoremPIntegralOfPlaces.lean:27`: `(S.mkData Kr hK0 Th e).K = 5`)에 대응하는 $\mathrm{GL}_5$ 및 그 **6중 메타플렉틱 피복(6-fold metaplectic cover)** 연결부입니다.
-`Formalism/LocalToGlobal/GlobalTheory/GL5/Statement.lean:14-147`(`148`줄, `dist = 9`)을 열람하면, 이 모듈은 `FamP eps` 가족 위에서 실수 자리 정합 `TiedRealF`(`:15-17`), 프레임 정합 `TiedFrameF`(`:28-30`), 베유-지겔 게이지 `WeilSiegelGauge`(`:39-44`), 표준 격자 질량 비율 `MassRatioStd`(`:45-50`), 하리시-찬드라 형식차수 `HCFormalDegree`(`:69-75`), 란트헤르-하세 국소-전역 원리 `LandherrHasse`(`:76-81`), 그리고 5단 연결 개수 명제 `LinkCount5`(`:137-140`)를 결합합니다.
-6중 피복 위에서의 지겔-베유·심플렉틱 세타 함수 리프트는 3차·6차 단위근 가우스 인자를 동반하는데, 본 증명에서는 앞서 본 반복 파르세발 제곱합 $|K_{m+1}|^2$과 상대 대각합의 양수 스펙트럼 변을 취함으로써 6차 단위근 위상 인자가 켤레곱 $\zeta_6 \overline{\zeta_6} = 1$로 자동 소멸하고 5진 수준 깊이 $j_0 = \lceil \log_5(n N(m)/m)\rceil_+$(`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`)에 따른 부피 감쇠 인자 $5^{-j_0}$만이 순수 실수 상한으로 남게 됩니다.
+#### 제3단계: `GL5` 폴더(`GenusMassVolumes`)의 실제 정체와 푸리에 감쇠 차수 $K = 5$ · 5진 깊이 결합 (`GL5/Statement.lean` 및 `AsmIface.lean`)
+선언문 초안(`remark.pdf` 16번)은 초기 착안 배경으로 $\mathrm{GL}_5$ 6중 피복을 언급했으나, 실제 Lean 코드에서 `GL5`라는 디렉터리 이름을 가진 모듈군(`Formalism/LocalToGlobal/GlobalTheory/GL5/Statement.lean:14-147`, `148`줄, `dist = 9`)을 열람하면 메타플렉틱 6중 피복군은 전혀 정의되지 않으며 네임스페이스 역시 `Formalism.L2.GlobalTheoryTheory.GenusMassVolumes`입니다.
+구체적으로 이 모듈은 일반 계수 유니터리 군의 `FamP eps` 가족 위에서 실수 자리 정합 `TiedRealF`(`:15-17`), 프레임 정합 `TiedFrameF`(`:28-30`), 베유-지겔 정리 `WeilSiegelCM`(`:31-38`) 및 미사용 슬롯 래퍼 `WeilSiegelGauge`(`:39-44`), 표준 격자 질량 비율 `MassRatioStd`(`:45-50`), 기본영역 부피비 `VolRatioTrue`(`:51-68`), 하리시-찬드라 형식차수 `HCFormalDegree`(`:69-75`), 란트헤르-하세 국소-전역 원리 `LandherrHasse`(`:76-81`), 그리고 5단 연결 명제 `LinkCount5`(`:137-140`)를 순수 유니터리 지겔-베유 질량 공식으로 결합합니다.
+마찬가지로 제3기둥 `Formalism/HermitianCurvature/HermitianCurvatureProofs/TheoremPIntegralOfPlaces.lean:27`의 `(S.mkData Kr hK0 Th e).K = 5`는 아르키메데스 푸리에 감쇠 차수 정수 $K = 5$이며, 비대각 루프 쌍 `loopP` 제어는 코커널 제곱합 $|K_{m+1}|^2$과 5진 야코비 수준 깊이 $j_0 = \lceil \log_5(n N(m)/m)\rceil_+$(`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`)에 따른 부피 감쇠 인자 $5^{-j_0}$로 직접 완결됩니다.
 
 #### 제4단계: C*-대수 함수미적분 슈어 보조정리와 전역 노름 마감 (`BridgeCSchur.lean` 및 `MainSup.lean`)
 마지막으로 국소 제곱적분 가능 표현 공간 위에서 합성 적분 연산자가 스칼라 배수로 축약되고 힐베르트-슈미트 노름 `hsSqD u u'`(`Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:519`)가 연산자 노름을 지배함을 보이기 위해, `Formalism/SharpRestriction/CuspSpanNormBounds/BridgeCSchur.lean:18-630`(`635`줄, `in_degree = 29`, `dist = 9`)은 완비 힐베르트 공간 위의 연속 선형 작용소 C*-대수에서 비유계·유계 슈어 보조정리 `schur_selfAdjoint`(`:18-121`)와 `schur_bounded`(`:122-138`)를 스펙트럼 사영 없이 순수 함수해석(`CFC` 연속 함수 미적분)으로 직접 증명합니다.
@@ -583,13 +583,13 @@ $$
 1. **`Formalism/SharpRestriction/CuspSpanNormBounds/BridgeCSchur.lean:18-138`의 무투영 C*-함수미적분 슈어 보조정리 증명**:
    무한차원 힐베르트 공간 $H$ 위의 기약 유니터리 표현 $\sigma$와 가환인 자기수반 유계 작용소 $T \in (H \to_L H)$(`IsSelfAdjoint T`)가 스칼라의 상수배임을 보일 때, 전통적 증명은 보렐 스펙트럼 측도(spectral projection) 구성을 필요로 합니다.
    반면 `schur_selfAdjoint`(`Formalism/SharpRestriction/CuspSpanNormBounds/BridgeCSchur.lean:18-121`)는 `Mathlib`의 연속 함수 미적분(`cfc : (ℝ → ℝ) → (H →L[ℂ] H) → (H →L[ℂ] H)`)만을 사용해 이를 우회합니다.
-   - 만약 스펙트럼 $\mathrm{spectrum}\,\mathbb{R}\,T$에 서로 다른 두 실수 $a < b$가 존재한다면, 서로소인 지지를 갖는 두 음이 아닌 연속 절단 함수 $f_1, f_2 : \mathbb{R} \to \mathbb{R}$ ($f_1(a) > 0$, $f_2(b) > 0$, $f_1 \cdot f_2 = 0$)를 구성합니다.
-   - 다항식 균일 근사(바이어슈트라스 정리)와 연속성에 의해 `cfc f_1 T`와 `cfc f_2 T` 역시 모든 $\sigma(g)$와 가환이므로, $\overline{\mathrm{range}(\mathrm{cfc}\,f_1\,T)}$는 비영(`cfc f_1 T ≠ 0`)이면서 진부분공간(`cfc f_2 T`의 상과 직교)인 닫힌 $\sigma$-불변 부분공간이 되어 기약성 `IsIrredOn`과 모순됩니다.
-   - 따라서 스펙트럼은 한 점 $\{c\}$로 축약되며 `cfc_id`에 의해 $T = c \cdot \mathrm{id}_H$가 도출됩니다.
+   - 만약 스펙트럼 $\mathrm{spectrum}\,\mathbb{R}\,T$에 서로 다른 두 실수 $s \ne t$가 존재한다면, 서로소인 지지를 갖는 두 음이 아닌 연속 천막 함수 $f_1(x) = \max(0, |s-t|/2 - |x-s|)$, $f_2(x) = \max(0, |s-t|/2 - |x-t|)$ ($f_1(s) > 0$, $f_2(t) > 0$, $f_1 \cdot f_2 = 0$)를 구성합니다.
+   - 연속 함수 미적분 가환성에 의해 `cfc f_1 T`와 `cfc f_2 T` 역시 모든 $U \in \mathcal{U}$와 가환이고 `cfc f_1 T * cfc f_2 T = 0`이므로, **닫힌 핵 부분공간** $K := \ker(\mathrm{cfc}\,f_1\,T)$는 $U$-불변이면서 $\bot$도 아니고($\mathrm{cfc}\,f_2\,T \ne 0$의 상이 $K$에 포함됨) $\top$도 아니어서($\mathrm{cfc}\,f_1\,T \ne 0$) 기약성과 모순됩니다.
+   - 따라서 스펙트럼은 한 점 $\{c\}$로 축약되며 `cfc_id'`에 의해 $T = c \cdot \mathrm{id}_H$가 도출됩니다.
    - 일반 유계 가환 작용소 $S$는 카르탕 실수·허수 분해 $S = \frac{S + S^*}{2} + i\,\frac{S - S^*}{2i}$를 거쳐 `schur_bounded`(`:122-138`)에서 즉시 복소 스칼라로 환원됩니다.
 2. **`Formalism/SharpRestriction/GlobalSchurBounds/ThickPlacesCorollaryOfAnyTranslate.lean:17-2353`의 유니터리 형식차수 및 언폴딩 부피비 증명**:
    - 파일 상단부(`:17-61`)의 `finrank_host`, `fDeg_host`, `vInv_host`, `cmField_unramified_massIdentity`, `massIdentity_holds`, `lVal_pos`는 호스트 CM 확대체의 상대 판별식과 디리클레·헤케 $L$-값 $L(M, \eta^M) > 0$을 결합해 비분지 국소 질량 항등식을 먼저 고정합니다.
-   - 파일 하단부(`:2251-2321`)의 `harishChandraAbs_pos_of_strictAnti`(`:2251-2260`)는 순감소하는 하리시-찬드라 매개변수 열 $\lambda_0 > \lambda_1 > \dots > \lambda_{n-1}$에 관해 바일 분모 곱 $\prod_{i < j} |\lambda_i - \lambda_j|$가 최소 간격 $1$ 이상으로 양수 유계임을 증명하고, 이를 `formalDegreeBound_all_unitaryGroups`(`:2261-2312`) 및 `familyFormalDegree_all`(`:2317-2321`)로 올려 사슬 내 모든 계수의 유니터리 군에서 형식차수 $d(\sigma)$의 다항식 상하한을 동시에 확립합니다.
+   - 파일 하단부(`:2251-2321`)의 `harishChandraAbs_pos_of_strictAnti`(`:2251-2260`)는 순감소하는 하리시-찬드라 매개변수 열 $\lambda_0 > \lambda_1 > \dots > \lambda_{N-1}$ ($N \ge 2$)에 관해 $|\lambda_0 - \lambda_1| > 0$으로부터 반복 상한 $\mathrm{lamAbs}(\lambda) := \sup_a \sup_b |\lambda_a - \lambda_b| > 0$을 증명하고, 이를 `formalDegreeBound_all_unitaryGroups`(`:2261-2312`) 및 `familyFormalDegree_all`(`:2317-2321`)로 올려 사슬 내 모든 계수의 유니터리 군에서 형식차수 $d(\sigma)$의 다항식 상하한을 동시에 확립합니다.
    - 마지막 정리 `volumeMass_of_unfolding`(`:2342-2353`)은 부피 비율 `VolumeRatio₂`(`:2330-2341`)를 지겔-베유 언폴딩 등식과 결합해 전역 질량 상수를 마감합니다.
 
 ---
@@ -1114,8 +1114,8 @@ $$
    \left(\Theta_t \circ \Theta_t^*\right)(e) = \left(\kappa \prod_{j=0}^{m-1} \lambda_{j, t, p, v_0}\right) e, \qquad \det(A) = \kappa^{\dim_{\mathbb{C}} E} \prod_{j=0}^{m-1} \det(B_j)
    $$
 
-2. **제2기둥(`SharpRestriction`) 반복 파르세발·슈어 그람 상한**:
-   가우스 합의 점별 위상 상쇄에 의존하지 않고 코커널 동치류 직교성(`Kk_succ`), $\mathrm{GL}_5$ 6중 메타플렉틱 피복 상대 대각합 제곱평균($5^{-j_0}$ 감쇠), C*-연속 함수 미적분 슈어 보조정리(`schur_UJ`)로 사영 푸앵카레 그람 연산자 $K(u, u')$의 노름을 통제합니다.
+2. **제2기둥(`SharpRestriction`) 코커널 제곱합·슈어 그람 상한**:
+   가우스 합의 점별 위상 상쇄나 단독 $\mathrm{GL}_5$ 6중 피복군 없이 코커널 동치류 재귀 제곱합(`Kk_succ`), 2유형 코시-슈바르츠 제곱평균($5^{-j_0}$ 감쇠), C*-연속 함수 미적분 슈어 보조정리(`schur_UJ`)로 사영 푸앵카레 그람 연산자 $K(u, u')$의 노름을 통제합니다.
 
    $$
    K_{r+1}(w, w') = \sum_{c \in \mathrm{Cls}_r(M)} \frac{\mathrm{BB}(M; w, c)\,\overline{\mathrm{BB}(M; w', c)}}{|\Aut(c)|}
@@ -1170,7 +1170,7 @@ $$
 | 제3장 | `Formalism/SharpRestriction/Divisibility/GeneratorPowers/ThExprUniqOfChartIndep2.lean:1-41` | `41` | `873` | `9` | `B02` 허브 | 차트 독립 소수 거듭제곱 격자 이동 유일성 (전체 2위 허브) |
 | 제3장 | `Formalism/SharpRestriction/LevelLetterCocycles/LocCoh.lean:1-195` | `195` | `654` | `7` | `B02` 허브 | 블로흐-카토 결정·드람 코호몰로지 및 국소 테이트 쌍대성 |
 | 제3장 | `Formalism/SharpRestriction/LevelLetterCocycles/LocalSituation.lean:1-641` | `641` | `627` | `7` | `B02` 허브 | 30필드 $p$-진 갈루아 리프팅 상황 `Sit` 및 균일 상수 |
-| 제3장 | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:1-282` | `282` | `400` | `9` | `B02` 허브 | 코커널 동치류 반복 파르세발 항등식 `Kk_succ` |
+| 제3장 | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:1-282` | `282` | `400` | `9` | `B02` 허브 | 코커널 동치류 재귀 제곱합 전개 보조정리 `Kk_succ` |
 | 제3장 | `Formalism/SharpRestriction/Divisibility/SchurIrreducible.lean:1-617` | `617` | `377` | `7` | `B02` 허브 | 이산계열 블라트너 매개변수 및 국소 아르키메데스 랄리스 공식 |
 | 제3장 | `Formalism/SharpRestriction/ParConsts.lean:1-103` | `103` | `224` | `7` | `B02` 허브 | 전역 매개변수 창 `FamP`, 리터럴 고정 상수 및 `DFamP` (`eps < 1/52`) |
 | 제3장 | `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:1-573` | `573` | `201` | `7` | `B02` 허브 | 사영 푸앵카레 그람 연산자 `Kmat`의 5중 세포 분해 |

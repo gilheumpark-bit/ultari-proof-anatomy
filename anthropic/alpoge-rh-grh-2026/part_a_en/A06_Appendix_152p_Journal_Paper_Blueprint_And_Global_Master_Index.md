@@ -16,7 +16,7 @@ The table below maps each section of a standalone human refereeable manuscript t
 | §2. Classical Literature Interface and Host Datum `D7` | 16 pp. | Master 7-tuple host datum `D7`, 2-fold cover `GrpData p q`, derivation of `8` Type-II specialized interfaces from classical sources | `Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:1-814` | `A02` Ch. 1–6 |
 | §3. Chebyshev-Guinand-Weil Explicit Formula and Landau Window | 14 pp. | Auxiliary kernel nonnegativity under $\mathrm{Re}(\rho_0) > \theta$, geometric-series contradiction between Cauchy pole lower bound and Poisson tail upper bound | `Formalism/ZetaNonvanishingChebyshevWeights.lean:1-36`, `Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/landauWindow.lean:20-170` | `A04` Ch. 5–6 |
 | §4. Totally Definite Unitary Chains and $\sqrt{X}$ Iterated Theta Lifts | 24 pp. | Construction of $m \asymp \sqrt{x}$-step chain $U(X_0) \to \dots \to U(X_m)$, derivative-free Stepanov multiplicity $+1$ stacking via Gram eigenvalue products | `Formalism/LocalToGlobal/IndefiniteReal/LinksStage.lean:1-315`, `Formalism/LocalToGlobal/IndefiniteReal/BaseLiftsPackageOfPrimitiveLinks.lean:1-367` | `A03` Ch. 2 |
-| §5. $\mathrm{GL}_5$ Sixfold Metaplectic Cover Relative Trace and Parseval Replacement | 22 pp. | Iterated Parseval identity `Kk_succ`, 5-cell Poincaré Gram operator decomposition, projection-free CFC Schur norm bound | `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:1-573`, `Formalism/SharpRestriction/LevelLetterCocycles/LocalSituation.lean:1-641` | `A03` Ch. 3 |
+| §5. Recursive Cokernel Sum-of-Squares and 5-Cell Poincaré Gram Parseval Replacement | 22 pp. | Recursive cokernel sum `Kk_succ`, 5-cell Poincaré Gram operator decomposition, projection-free CFC Schur norm bound | `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:1-573`, `Formalism/SharpRestriction/LevelLetterCocycles/LocalSituation.lean:1-641` | `A03` Ch. 3 |
 | §6. Triple Cancellation: Rallis Seesaw, Chowla-Selberg, and Siegel Mass (Breaking $\sigma=2/3$) | 22 pp. | Group-ring idempotent telescoping (`Conclusion4a`), $d \equiv 7 \pmod{16}$ half-form phase cancellation, $\mu$-independence division of Bessel periods | `Formalism/SharpRestriction/Divisibility/FunctionModelRallisFromInputs.lean:262-629`, `Formalism/PairingDivisors/StatementH.lean:48-98` | `A03` Ch. 5 |
 | §7. Hermitian Curvature Positivity and Arakelov Product-Formula Closure | 16 pp. | Compact-support regularization (`CutCpt`), Harder-Narasimhan slope transport, strict Legendre $p$-adic factorial bound and product-formula contradiction | `Formalism/HermitianCurvature/HermitianCurvatureProofs/CutCptManual.lean:25-79`, `Formalism/ProductFormula/StatementOCCM.lean:27-161` | `A03` Ch. 4 · `A04` Ch. 3, 6 |
 | §8. Behrend-Filtered Iwasawa Tower and Weakened-Vandiver Patching | 20 pp. | Odd wing (Stickelberger, Ferrero-Washington, Behrend 3-term determinant vanishing) + even wing (5-branch automorphic sum) closing `VWin` ($C_t=401$) | `Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:1-6`, `Formalism/BehrendSets/Statement.lean:1-55` | `A05` Ch. 2–3 |
@@ -31,7 +31,7 @@ The table below maps each section of a standalone human refereeable manuscript t
 | `m` (`D.R.m`) | $\sqrt{x\,\delta_1} \le m \le 2\sqrt{x\,\delta_1}$ | Number of iterated theta-lift steps across totally definite unitary groups (realizes derivative-free Stepanov multiplicity $m$ over $\mathbb{Z}$) | `Formalism/SharpRestriction/Divisibility/FunctionModelRallisFromInputs.lean:492` |
 | $(C_{\mathrm{abs}}, C_0, e_D, e_L)$ | Fixed constants $(2, 3, 2, 0)$ | Global constants passed by `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46` into `Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:11` ($e_D = 2, e_L = 0 \implies \frac{1}{2} + (e_D + e_L + 7)\varepsilon = \frac{1}{2} + 9\varepsilon$) | `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46` |
 | `eps` | $0 < \varepsilon < 1 / 52$ | Small positive slack parameter in `ParConsts` preventing Schur norm, window loss, and period-denominator errors from breaching main exponent $1/2$ | `Formalism/SharpRestriction/ParConsts.lean:1-103` |
-| Host discriminant $d$ | $d \equiv 7 \pmod{16}$ | Host quadratic-form congruence eliminating metaplectic half-form eighth-root-of-unity phase factors over $\mathbb{Z}$ | `Formalism/PeriodIntegrals/TwChrOne.lean:230-247` |
+| Host discriminant $d$ | $d \equiv 7 \pmod{16}$ | Host quadratic-form congruence (`hd16`) eliminating half-form eighth-root-of-unity phase factors over $\mathbb{Z}$ | `Formalism/SharpRestriction/Divisibility/WeightFamilies.lean:224` |
 | `Ct = 401` | Automorphic window exponent threshold | Shafarevich summation cutoff determined by Siegel box width $1/400$ and multiplier absorption $(k x')^{400} \le (x')^{401}$ | `Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean:16-81` |
 | `(571, 599)` | Static prime witness pair | Static split-prime witness pair satisfying $571 \nmid 600 = 599 + 1$ (`splitBound = 2`) | `Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:1-569` |
 | `WinPair (q, d)` | $q \mid d + 1$ dynamic window pair | Dynamic prime/discriminant witness pair satisfying $8q \mid d + 1$ (minimal concrete witness $(q, d) = (11, 9{,}239)$) | `Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean:16-81` |
@@ -97,40 +97,40 @@ This master index links the high-`in_degree` hubs decompiled in `Part A` directl
 
 ## 6.5 Quick Reference to the 30 Main Standalone Lean 4 Audit Theorems (`thm_01`..`thm_30`)
 
-Verified in seconds with zero external package imports via `~/.elan/bin/lean proofs/alpoge_ab_deep_audit.lean` (zero `sorry`, zero user-added axioms, within standard built-in Lean 4 axioms, including `5` pure kernel-computation `none` theorems):
+Verified in seconds with zero external package imports via `~/.elan/bin/lean proofs/alpoge_ab_deep_audit.lean` (zero `sorry`, zero user-added axioms, within standard built-in Lean 4 axioms, including `2` pure kernel-computation `none` theorems and `8` intuitionistic `propext, Quot.sound` theorems):
 
 | Theorem Identifier | Audit File Pin | Core Algebraic or Analytic Mechanism Verified |
 | :--- | :--- | :--- |
-| `thm_01_chebyshev_sqrt_exponent` | `proofs/alpoge_ab_deep_audit.lean:26` | Chebyshev weighted average and $\sqrt{X}$ lift-count exponent identity |
-| `thm_02_naive_lift_barrier_two_thirds` | `proofs/alpoge_ab_deep_audit.lean:39` | Algebraic origin of the $\sigma = 2/3$ barrier under uncompensated lift denominators |
-| `thm_03_rank_division_kills_quadratic_loss` | `proofs/alpoge_ab_deep_audit.lean:51` | Cancellation of quadratic $m^2$ denominator loss via companion rank division |
-| `thm_04_scale_eps_52_invariants` | `proofs/alpoge_ab_deep_audit.lean:61` | Positive slack invariants in the $\varepsilon < 1/52$ ($E > 52$) scale window |
-| `thm_05_rank_balance_identity` | `proofs/alpoge_ab_deep_audit.lean:77` | Dimension and rank balance identity across the unitary lift chain |
-| `thm_06_winpair_cm_splitting_congruences` | `proofs/alpoge_ab_deep_audit.lean:97` | `WinPair` CM splitting congruence conditions ($8q \mid d+1$) |
-| `thm_07_lucas_witness_prime_413718278401` | `proofs/alpoge_ab_deep_audit.lean:107` | Lucas-Pratt primality certificate for witness prime $413{,}718{,}278{,}401$ (`none`) |
-| `thm_08_cubic_tail_3111_100_and_slack` | `proofs/alpoge_ab_deep_audit.lean:124` | Cubic tail coefficient $3111/100$ upper bound and nonnegative slack |
-| `thm_09_ct_401_tail_identity` | `proofs/alpoge_ab_deep_audit.lean:149` | Derivation of window threshold exponent $C_t = 401$ from $m = 398$ |
-| `thm_10_countI_absorb_bound` | `proofs/alpoge_ab_deep_audit.lean:167` | Multiplier absorption inequality for even-wing Branch 1 (`CountI`) |
-| `thm_11_fock_and_minor_identities` | `proofs/alpoge_ab_deep_audit.lean:187` | Bargmann-Fock determinant exponent and leading minor count identities (`none`) |
-| `thm_12_stickelberger_parity_annihilation` | `proofs/alpoge_ab_deep_audit.lean:196` | Odd/even parity annihilation identity for Stickelberger elements |
-| `thm_13_behrend_base5_sphere_zero_3ap` | `proofs/alpoge_ab_deep_audit.lean:211` | Exhaustive 3-AP-free check on the 12-element base-5 Behrend sphere (`none`) |
-| `thm_14_literature_195_partition` | `proofs/alpoge_ab_deep_audit.lean:218` | Partition conservation across the `195` classical literature wrappers (`none`) |
-| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | `proofs/alpoge_ab_deep_audit.lean:238` | Type-II Cauchy-Schwarz exponent and off-diagonal decay margin |
-| `thm_16_vandiver_pluslen_and_cone_partition` | `proofs/alpoge_ab_deep_audit.lean:284` | 5-branch even-wing `plusLen` sum and `175,187`-file cone partition |
-| `thm_17_legendre_padic_factorial_and_global_chain_closure` | `proofs/alpoge_ab_deep_audit.lean:431` | Legendre $p$-adic factorial valuation identity and global chain closure |
-| `thm_18_pure_vwin_b06_b08_conservation` | `proofs/alpoge_ab_deep_audit.lean:455` | `Pure_Vwin` `B06`..`B08` (`10,832` files, `61,209` decls) conservation (`none`) |
-| `thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence` | `proofs/alpoge_ab_deep_audit.lean:475` | $m$-step $\sqrt{X}$ lift multiplicity vs. seesaw cancellation converging to $1/2 + 8/E$ |
-| `thm_20_gl5_sixfold_cauchy_schwarz_and_gram_positivity` | `proofs/alpoge_ab_deep_audit.lean:635` | Arbitrary-length list Cauchy-Schwarz and $\mathrm{GL}_5$ 5-cell Gram quadratic nonnegativity |
-| `thm_21_local_ring_determinant_exponent_congruences` | `proofs/alpoge_ab_deep_audit.lean:684` | `RhoDetPrimeEqMuTildeMulChiPow` local-ring determinant seesaw exponent congruences |
-| `thm_22_static_571_599_vs_dynamic_winpair_divisibility` | `proofs/alpoge_ab_deep_audit.lean:748` | Static `(571, 599)` ($571 \nmid 600$) vs. dynamic `(11, 9239)` ($88 \mid 9240$) divisibility |
-| `thm_23_legendre_strict_bound_and_arakelov_product_contradiction` | `proofs/alpoge_ab_deep_audit.lean:828` | Strict Legendre bound $(p-1)\nu_p(\mathrm{fac}(n)) < n$ and Arakelov product contradiction |
-| `thm_24_functional_equation_reflection_implies_critical_line` | `proofs/alpoge_ab_deep_audit.lean:863` | Right half-plane nonvanishing + $s \leftrightarrow 1-s$ reflection $\implies \mathrm{Re}(s) = 1/2$ |
-| `thm_25_imprimitive_euler_factor_zero_forces_re_zero` | `proofs/alpoge_ab_deep_audit.lean:892` | Imprimitive Euler-factor zeros lie strictly on the imaginary axis $\mathrm{Re}(s) = 0$ |
-| `thm_26_dyadic_window_avoidance_pigeonhole` | `proofs/alpoge_ab_deep_audit.lean:957` | Dyadic pigeonhole window avoidance of finite exceptional Iwasawa layers |
-| `thm_27_stickelberger_minus_part_factorial_conductor_bound` | `proofs/alpoge_ab_deep_audit.lean:1001` | Intuitionistic factorial-conductor bound for odd-wing Stickelberger denominators |
-| `thm_28_behrend_thick_set_determinant_vanishing` | `proofs/alpoge_ab_deep_audit.lean:1030` | 3-term progression determinant collapse ($D \equiv 0 \pmod n, |D| < n \implies D = 0$) |
-| `thm_29_unitary_three_countV_exponent_step` | `proofs/alpoge_ab_deep_audit.lean:1088` | $U(3)$ universal deformation ring `CountV` exponent-step inequality |
-| `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` | `proofs/alpoge_ab_deep_audit.lean:1129` | Ramanujan $\Delta$ Hecke eigenvalue relation and simplicial alternating boundary sum |
+| `thm_01_chebyshev_sqrt_exponent` | `proofs/alpoge_ab_deep_audit.lean:26` | General-$\theta$ 1-step parity ($\theta=1/2$) and Chebyshev $\sqrt{X}$ lift-count exponent identity |
+| `thm_02_naive_lift_barrier_two_thirds` | `proofs/alpoge_ab_deep_audit.lean:46` | Universal $m$-step $\sigma \ge 2/3$ barrier under uncompensated quadratic lift denominators |
+| `thm_03_rank_division_kills_quadratic_loss` | `proofs/alpoge_ab_deep_audit.lean:65` | Cancellation of quadratic $m^2$ denominator loss via general companion rank division ($k > 2m+2l$) |
+| `thm_04_scale_eps_52_invariants` | `proofs/alpoge_ab_deep_audit.lean:77` | Positive slack invariants in the $\varepsilon < 1/52$ ($E > 52$) scale window |
+| `thm_05_rank_balance_identity` | `proofs/alpoge_ab_deep_audit.lean:93` | Dimension and rank balance identity across the unitary lift chain |
+| `thm_06_winpair_cm_splitting_congruences` | `proofs/alpoge_ab_deep_audit.lean:114` | `WinPair` CM splitting congruence conditions ($8 \mid d+1,\; 16 \nmid d+1$) |
+| `thm_07_lucas_witness_prime_413718278401` | `proofs/alpoge_ab_deep_audit.lean:124` | Lucas-Pratt primality certificate for witness prime $413{,}718{,}278{,}401$ (`none`) |
+| `thm_08_cubic_tail_3111_100_and_slack` | `proofs/alpoge_ab_deep_audit.lean:141` | Cubic tail coefficient $3111/100$ upper bound and nonnegative slack |
+| `thm_09_ct_401_tail_identity` | `proofs/alpoge_ab_deep_audit.lean:166` | Derivation of window threshold exponent $C_t = 401$ from $m = 398$ |
+| `thm_10_countI_absorb_bound` | `proofs/alpoge_ab_deep_audit.lean:184` | Multiplier absorption inequality for even-wing Branch 1 (`CountI`) |
+| `thm_11_fock_and_minor_identities` | `proofs/alpoge_ab_deep_audit.lean:210` | General-degree Bargmann-Fock Gauss sum and Bruhat principal minor recurrence |
+| `thm_12_stickelberger_parity_annihilation` | `proofs/alpoge_ab_deep_audit.lean:248` | Additive involution projector algebra and Stickelberger odd/even parity annihilation |
+| `thm_13_behrend_base5_sphere_zero_3ap` | `proofs/alpoge_ab_deep_audit.lean:276` | Exhaustive 3-AP-free check on the 12-element base-5 Behrend sphere (`none`) |
+| `thm_14_literature_195_partition` | `proofs/alpoge_ab_deep_audit.lean:284` | `ForcedSumIdentity` and `152+25+8` literature / `50+5+1` `TopMainZj` partitions |
+| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | `proofs/alpoge_ab_deep_audit.lean:307` | Type-II Cauchy-Schwarz exponent and off-diagonal decay margin |
+| `thm_16_vandiver_pluslen_and_cone_partition` | `proofs/alpoge_ab_deep_audit.lean:353` | 5-branch even-wing `plusLen` sum and `175,187`-file cone partition |
+| `thm_17_legendre_padic_factorial_and_global_chain_closure` | `proofs/alpoge_ab_deep_audit.lean:500` | Legendre $p$-adic factorial valuation identity and global chain closure |
+| `thm_18_pure_vwin_b06_b08_conservation` | `proofs/alpoge_ab_deep_audit.lean:534` | Inductive `DetChain` block-determinant identity, inclusion-exclusion, and `B06`..`B08` conservation |
+| `thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence` | `proofs/alpoge_ab_deep_audit.lean:573` | $m$-step $\sqrt{X}$ lift multiplicity vs. `SChain` (`1/2+8/E`) and active `CoreGm` (`1/2+9/E`) convergence |
+| `thm_20_five_vector_cauchy_schwarz_and_gram_positivity` | `proofs/alpoge_ab_deep_audit.lean:736` | Arbitrary-length list Cauchy-Schwarz, 5-cell Gram nonnegativity, and `RestOpen7 → RestOpen6` merge |
+| `thm_21_local_ring_determinant_exponent_congruences` | `proofs/alpoge_ab_deep_audit.lean:786` | `RhoDetPrimeEqMuTildeMulChiPow` local-ring determinant seesaw exponent congruences |
+| `thm_22_static_571_599_vs_dynamic_winpair_divisibility` | `proofs/alpoge_ab_deep_audit.lean:850` | Static `(571, 599)` ($571 \nmid 600$) vs. dynamic `(11, 9239)` ($88 \mid 9240$) divisibility |
+| `thm_23_legendre_strict_bound_and_arakelov_product_contradiction` | `proofs/alpoge_ab_deep_audit.lean:930` | Strict Legendre bound $(p-1)\nu_p(\mathrm{fac}(n)) < n$ and Arakelov product contradiction |
+| `thm_24_functional_equation_reflection_implies_critical_line` | `proofs/alpoge_ab_deep_audit.lean:965` | Right half-plane nonvanishing + $s \leftrightarrow 1-s$ reflection $\implies \mathrm{Re}(s) = 1/2$ |
+| `thm_25_imprimitive_euler_factor_zero_forces_re_zero` | `proofs/alpoge_ab_deep_audit.lean:994` | Imprimitive Euler-factor zeros lie strictly on the imaginary axis $\mathrm{Re}(s) = 0$ |
+| `thm_26_dyadic_window_avoidance_pigeonhole` | `proofs/alpoge_ab_deep_audit.lean:1059` | Dyadic pigeonhole window avoidance of finite exceptional Iwasawa layers |
+| `thm_27_stickelberger_minus_part_factorial_conductor_bound` | `proofs/alpoge_ab_deep_audit.lean:1103` | Intuitionistic factorial-conductor bound for odd-wing Stickelberger denominators |
+| `thm_28_behrend_thick_set_determinant_vanishing` | `proofs/alpoge_ab_deep_audit.lean:1132` | 3-term progression determinant collapse ($D \equiv 0 \pmod n, |D| < n \implies D = 0$) |
+| `thm_29_unitary_three_countV_exponent_step` | `proofs/alpoge_ab_deep_audit.lean:1190` | $U(3)$ universal deformation ring `CountV` exponent-step inequality |
+| `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` | `proofs/alpoge_ab_deep_audit.lean:1231` | Ramanujan $\Delta$ Hecke eigenvalue relation and simplicial alternating boundary sum |
 
 ## 6.6 Summary Checklist of the 8 Classical Translation Adapters (`Type II-A/B`, `A1`..`A8`)
 

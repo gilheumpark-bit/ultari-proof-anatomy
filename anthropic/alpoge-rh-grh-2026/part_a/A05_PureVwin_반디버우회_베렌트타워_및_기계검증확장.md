@@ -2,7 +2,7 @@
 
 - **문서 식별자**: `A05` (Part A 심층 해독 단행본 제5권)
 - **해독 대상 원뿔**: `Pure_Vwin_Outside_Literature` (`10,832`개 `.lean` 파일 · `1,029,481`줄 · `61,209`개 선언)
-- **독립 기계 검증 산출물**: `proofs/alpoge_ab_deep_audit.lean` (`1,143`줄 · `30`개 주 정리 + `14`개 보조 정리 = `44`개 무-sorry 정리, 사용자 추가 공리 `0`건 · 표준 내장 공리 이하)
+- **독립 기계 검증 산출물**: `proofs/alpoge_ab_deep_audit.lean` (`1,245`줄 · `30`개 주 정리 + `14`개 보조 정리 = `44`개 무-sorry 정리, 사용자 추가 공리 `0`건 · 표준 내장 공리 이하)
 - **연계 Part B 전수 도감**:
     - 제6권 `B06_PureVwin_AutomorphicVarieties.md` (`3,747`개 파일 · `409,549`줄 · `22,661`개 선언)
     - 제7권 `B07_PureVwin_Foundations_And_Hecke.md` (`1,895`개 파일 · `198,417`줄 · `11,530`개 선언)
@@ -55,7 +55,7 @@ $$
 \mathrm{Pure\_Vwin\_Outside\_Literature} := C_{\mathrm{vwin}} \setminus C_{\mathrm{lit}} \implies 10{,}832\text{개 파일},\; 1{,}029{,}481\text{줄},\; 61{,}209\text{개 선언}
 $$
 
-이 원뿔 분할 등식은 `proofs/alpoge_ab_deep_audit.lean:284-305`의 `thm_16_vandiver_pluslen_and_cone_partition`과 `proofs/alpoge_ab_deep_audit.lean:455-462`의 `thm_18_pure_vwin_b06_b08_conservation`에서 기계 검증되었습니다.
+이 원뿔 분할 등식은 `proofs/alpoge_ab_deep_audit.lean:353-433`의 `thm_16_vandiver_pluslen_and_cone_partition`과 `proofs/alpoge_ab_deep_audit.lean:534-560`의 `thm_18_pure_vwin_b06_b08_conservation`에서 기계 검증되었습니다.
 아울러 대역 해석·산술기하 신작 코어인 `Formalism.*` (`18,254`개 파일 · `3,200,748`줄 · `240,099`개 선언)와 `Pure_Vwin_Outside_Literature` 사이의 중복 파일은 `Formalism/SharpRestriction/ValuationFrobeniusEpsilon/` 산하 `13`개 파일과 `CompanionTheory/EightfoldTheory/VariationTheory/` 산하 `6`개 재수출 파일 등 총 `19`개뿐입니다.
 따라서 아카이브 전체의 순수 신작 합집합은 정확히 $18{,}254 + 10{,}832 - 19 = 29{,}067$개 고유 파일(`4,224,608`줄 · `300,415`개 선언)을 형성합니다.
 
@@ -64,7 +64,7 @@ $$
 문헌 원뿔 $C_{\mathrm{lit}}$ 내부에 이미 방대한 현대 수론·대수기하 정리가 구축되어 있음에도 `UpperTheory.Top.VWin` 하나를 무조건부로 닫기 위해 `1,029,481`줄의 별도 신작 코드가 작성된 까닭은 대역 영점 배제 사슬이 마주하는 세 가지 미해결 난관 때문입니다.
 
 첫째, **고전 반디버 추측(Vandiver's Conjecture)의 미증명 장벽**입니다.
-체비쇼프 가중합과 $\mathrm{GL}_5$ 6중 피복 상대 대각합 공식(`Formalism.SharpRestriction`), 지겔-베유 시소 항등식(`Formalism.PeriodIntegrals`), 아라켈로프 높이 교차이론(`Formalism.HermitianCurvature`)을 결합하여 가짜 영점으로부터 모순을 도출하려면, 기저 CM 수체 $E \subset \mathbb{Q}(\zeta_N)$ 위에서 테이트-샤파레비치 군의 $\mathbb{Z}_\ell$-길이 가중합이 주항 성장률보다 엄격히 작아야 합니다.
+체비쇼프 가중합과 코커널 동치류 재귀 제곱합·코시-슈바르츠 그람 상한(`Formalism.SharpRestriction`), 지겔-베유 시소 항등식(`Formalism.PeriodIntegrals`), 아라켈로프 높이 교차이론(`Formalism.HermitianCurvature`)을 결합하여 가짜 영점으로부터 모순을 도출하려면, 기저 CM 수체 $E \subset \mathbb{Q}(\zeta_N)$ 위에서 테이트-샤파레비치 군의 $\mathbb{Z}_\ell$-길이 가중합이 주항 성장률보다 엄격히 작아야 합니다.
 
 $$
 \sum_{\ell \in S} (\log \ell) \sum_{1 \le e < \lfloor x^{401} \rfloor} \mathrm{length}_{\mathbb{Z}_\ell}\left(\amalg^1(E, (\mathbb{Q}_\ell/\mathbb{Z}_\ell)(-e))\right) \le \sqrt{\exp(x^\varepsilon)}
@@ -81,8 +81,8 @@ $$
 그 결과 유한 예외 집합 크기 $|\mathrm{Exc}| \le R$에 의존하는 배율 $J = 2^{R+2}(2 C_K C_t / \varepsilon)^R$ 안에서 모든 예외 지수를 비켜가는 청정 창문 $[Y, Y^2] \subset [X^{1/J}, X]$가 보장됩니다.
 
 셋째, **기출 문헌 명세(`OpenImageCondition`)와 실제 보형 들림 가설(`HypothesesH'`) 사이의 형식적 간극 봉합**입니다.
-`Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:18-74`를 열람하면, `OpenImageCondition`으로부터 직접 추출되는 `50`개 문헌 래퍼만으로는 `LiteratureRankNHypothesis`의 `56`개 슬롯이 완성되지 않습니다.
-실제 원문의 조립 블록(`L38-74`)을 대조하면 문헌 조건 바깥에서 별도로 주입되는 여섯 개의 신작 증명이 명확히 식별됩니다.
+`Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:18-74`를 열람하면, `LiteratureRankNHypothesis`의 `56`개 슬롯은 순수 `*_of_open O` 문헌 래퍼 `50`개만으로 닫히지 않고 순수 비-`O` 신작 슬롯 `5`개(`bc, gal, per, gmp, st`)와 혼합 슬롯 `1`개(`cm.dual`: 문헌 증인 `dual_abelian_scheme_of_open O` + 신작 증인 `crystallineSmoothLift_of_relations`)가 결합된 `50 + 5 + 1 = 56` 분할을 이룹니다.
+실제 원문의 조립 블록(`L38-74`)을 대조하면 문헌 조건 바깥에서 투입되는 여섯 개의 신작 증인(`5`개 순수 신작 + `1`개 혼합 보강)이 명확히 식별됩니다.
 
 ```lean
 -- 출처: Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/TopMainZj.lean:38-74
@@ -306,7 +306,7 @@ $$
 $$
 
 기우성 일치 조건 $\chi(\pi(-1)) = (-1)^k$가 성립하면 $|\chi_{\mathrm{dir}}(a)| = 1$ 및 $a^k > 1$이므로 첫째 오일러형 인자가 $0$이 아니고(`L24-29`), 둘째 일반화 베르누이 수 인자도 고전 무영점 정리 `b_nzC`에 의해 $0$이 아니므로(`L23`) 곱 전체가 $0$이 아닙니다.
-반면 짝수 날개(반디버 영역, $\chi(\pi(-1)) = -(-1)^k$)에서는 $\mathrm{genB}(k, \chi_{\mathrm{dir}}) = 0$이 되어 이 소멸자가 사라지므로(`proofs/alpoge_ab_deep_audit.lean:196-199`의 `thm_12_stickelberger_parity_annihilation`), 홀수 날개 전용 소멸자와 짝수 날개 전용 보형 패칭의 분업이 성립합니다.
+반면 짝수 날개(반디버 영역, $\chi(\pi(-1)) = -(-1)^k$)에서는 $\mathrm{genB}(k, \chi_{\mathrm{dir}}) = 0$이 되어 이 소멸자가 사라지므로(`proofs/alpoge_ab_deep_audit.lean:248-264`의 `thm_12_stickelberger_parity_annihilation`), 홀수 날개 전용 소멸자와 짝수 날개 전용 보형 패칭의 분업이 성립합니다.
 
 #### 제2단계: 대역 곱공식과 계승-도체 상한 (`ThmBcOfPsiBound.lean`)
 `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:15-160`은 스틱켈베르거 비소멸 원소 $\alpha_{e+1,\chi} = \mathrm{alN}(e+1, \chi)$의 $\ell$-진 값매김 합을 대역 곱공식으로 아르키메데스 노름 상한 `bnd N (e + 1)`에 묶습니다(`prime_of`, `L67-109`).
@@ -316,7 +316,7 @@ $$
 $$
 
 이어서 `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-146`의 보조정리 `log_bnd_le_mul_log`는 $F \ge 1$, $t \ge 2$, $e + 1 \le t$에서 세 자연수 부등식 $16 \le (tF)^4$, $F^{e+2} \le (tF)^{t+1}$, $\Gamma(e+2) \le (e+1)^{e+1} \le (tF)^t$를 곱합니다.
-그 결과 $16 F^{e+2} \Gamma(e+2) \le (tF)^{2t+5}$, 즉 로그 상한 $(2t + 5) \log(tF)$가 성립합니다(`proofs/alpoge_ab_deep_audit.lean:1001-1023`의 `thm_27`).
+그 결과 $16 F^{e+2} \Gamma(e+2) \le (tF)^{2t+5}$, 즉 로그 상한 $(2t + 5) \log(tF)$가 성립합니다(`proofs/alpoge_ab_deep_audit.lean:1103-1125`의 `thm_27`).
 
 #### 제3단계: 페레로-와싱턴 지수 상한의 아카이브 내부 증명 (`FerreroWashington.lean`)
 `Development/AutomorphicArithmetic/AutomorphicVarieties/GaloisLibrary/FerreroWashingtonIndex/FerreroWashington.lean:18-119`는 원분 $\mathbb{Z}_\ell$-타워에서 이와사와 $\mu$-불변량이 사라진다는 페레로-와싱턴 정리를 문헌 공리 없이 직접 증명합니다.
@@ -328,12 +328,12 @@ $$
 
 - **베렌트 두꺼운 집합 행렬식 소거 (`Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-82`)**: 창문 폭 $i_3 - i_1 \le L_w$ 안에 놓인 세 이동점 $t + i_k \cdot h$ ($i_1 < i_2 < i_3$)가 동시에 두꺼운 집합 `thick n S u` ($4 L_w y < n$인 $y \in S$들의 상)에 속하면 선형 결합으로 법 $n$ 합동식 $D := (i_3 - i_1)(y_2 - y_1) - (i_2 - i_1)(y_3 - y_1) \equiv 0 \pmod n$이 성립합니다(`L32-42`).
     - 그러나 아르키메데스 삼각부등식에서 $4 |D| \le 4 L_w |y_2 - y_1| + 4 L_w |y_3 - y_1| < n + n = 2n$, 즉 $|D| < n/2 < n$이므로(`L48-65`) $n \mid D$와 충돌하여 전역 등식 $D = 0$이 강제됩니다(`L66`).
-    - 이는 베렌트 무진행 구면 집합 조건 `SpaceFreePos Lw S`와 모순을 일으켜(`L80-81`) 3중 공명을 원천 차단합니다(`proofs/alpoge_ab_deep_audit.lean:1030-1079`의 `thm_28_behrend_thick_set_determinant_vanishing`).
+    - 이는 베렌트 무진행 구면 집합 조건 `SpaceFreePos Lw S`와 모순을 일으켜(`L80-81`) 3중 공명을 원천 차단합니다(`proofs/alpoge_ab_deep_audit.lean:1132-1181`의 `thm_28_behrend_thick_set_determinant_vanishing`).
 - **예외 층 회피 다이아딕 창문 (`Window1.lean` · `ThmBabOf.lean` · `PartB.lean`)**:
     - 상위 조립 파일은 `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOfLemmaK.lean:9-13`, `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/ThmBabOf.lean:11-103`, `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/PartB.lean:50-95` 세 모듈입니다.
     - 창문 선택 보조정리는 `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window.lean:7-43` 및 `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` 두 모듈에 자리합니다.
     - `ThmBabOf`는 총 예외 개수 상한 $R := R_0(M) + \sum_{\ell \in B'} R_\ell(L_\ell)$과 스케일 지수 $J := 2^{R+2}(2 C_K C_t / \varepsilon)^R$ (`L28-29`)를 설정합니다.
-    - 이어서 `Window1.lean`의 귀납적 비둘기집 정리로 $|\mathrm{Exc}| \le R$개의 나쁜 지수를 모두 피하는 창문 $[Y, Y^2] \subset [X^{1/J}, X]$를 추출하고(`proofs/alpoge_ab_deep_audit.lean:957-980`의 `thm_26`), `PartB.lean`에서 깊이 $j_0(\ell, R) = \lfloor \log_\ell R_\ell \rfloor + 3$의 이와사와 중간층 $L_1$ 코호몰로지 합을 $\exp(x^{4\varepsilon/5})$ 이하로 제압합니다.
+    - 이어서 `Window1.lean`의 귀납적 비둘기집 정리로 $|\mathrm{Exc}| \le R$개의 나쁜 지수를 모두 피하는 창문 $[Y, Y^2] \subset [X^{1/J}, X]$를 추출하고(`proofs/alpoge_ab_deep_audit.lean:1059-1082`의 `thm_26`), `PartB.lean`에서 깊이 $j_0(\ell, R) = \lfloor \log_\ell R_\ell \rfloor + 3$의 이와사와 중간층 $L_1$ 코호몰로지 합을 $\exp(x^{4\varepsilon/5})$ 이하로 제압합니다.
 
 ### 2.5 짝수 날개(`plusLen`) 5갈래 보형 합산과 `SumOut` · `PointArith` 지수 수렴
 
@@ -358,7 +358,7 @@ $$
 그 다음 `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/PointArith.lean:5-35`의 `point_arith`가 나쁜 소수 집합 $B_\chi$ ($k \le K_B := |B_\chi|$)의 기여분 $k(M^D + D B)$와 비분기 기여분 $M^{C_0}$를 합쳐 총 지수 $C_{\mathrm{HV}} = C_0 + D + K_B + K_B D$ 안에 모든 `plusLen` 합을 가둡니다.
 
 $$
-M^{C_0} + k\left(M^D + D B\right) \le (1 + k) M^{C_0 + D} + k D B \le (1 + B) M^{C_0 + D + K_B + K_B D}
+M^{C_0} + k\left(M^D + D B\right) \le (1 + k) M^{C_0 + D} + k D B \le M^{C_0 + D + K_B + K_B D} + (C_0 + D + K_B + K_B D) B
 $$
 
 최종적으로 `Development/AutomorphicArithmetic/AutomorphicVarieties/CMFieldExponentialBounds/AdmissibleOfPageN.lean:123-130`에서 $B = \exp(x^{4\varepsilon/5})$와 다항식 항 $(N t)^{C_{\mathrm{HV}}}$가 모두 $\sqrt{\exp(x^\varepsilon)} = \exp(\frac{1}{2} x^\varepsilon)$ 아래로 흡수됩니다.
@@ -495,7 +495,7 @@ def VWin : Prop := ∀ ψ : PChar, VWinAt ψ 401
 1. **지겔 영점 배제 상자 폭 `1 / 400`과의 연동**:
     - `Development/AutomorphicArithmetic/CharacterBoxes/PairGood.lean:12-13` 및 `32-34`는 예외적 실수 영점을 통제하는 상자 조건 `ZeroBox`와 `RealBox`를 실수부 $\mathrm{Re}(s) > 1 - \frac{1}{400}$ 영역에서 정의합니다.
     - 이에 맞추어 `Development/AutomorphicArithmetic/CharacterBoxes/TwistForm.lean:25-26`의 `WinDatum.bound`는 지수 **`400`**까지의 코호몰로지 길이 상한 `VVle E ⌊x ^ 400⌋₊ (Real.sqrt (Real.exp (x ^ eps)))`를 요구합니다.
-    - 또한 `Formalism` 꼬리항 추정에서는 차수 $m = 398$에 이차 인자 $x^2 + 1 \le x^3$ ($x \ge 2$)이 곱해지며 $398 + 3 = 401$이 형성됩니다(`proofs/alpoge_ab_deep_audit.lean:149-162`의 `thm_09`).
+    - 또한 `Formalism` 꼬리항 추정에서는 차수 $m = 398$에 이차 인자 $x^2 + 1 \le x^3$ ($x \ge 2$)이 곱해지며 $398 + 3 = 401$이 형성됩니다(`proofs/alpoge_ab_deep_audit.lean:166-179`의 `thm_09`).
 2. **임의 배수 상수 $c \ge 1$의 무손실 흡수 (`Development/AutomorphicArithmetic/CharacterBoxes/WinPairs.lean:16-81`)**:
     - `winPairs`는 주어진 배율 상수 $c \ge 1$에 맞추어 $k^{2+8\varepsilon} = c$인 $k \ge 1$을 잡고, 창문 하한 $W \ge M \ge \max(k^3, k^{400})$을 확보합니다(`L23-25`).
     - 목표 구간 $x \in [kW, (kW)^{3/2}]$의 임의의 점을 $x = k x'$ ($x' \ge W \ge k^{400}$)로 쓰면 $k^3 \le W \implies (kW)^{3/2} \le W^2$ (`L40-51`)이므로 $x' \le x \le W^2$가 성립하여 기저점 $x'$에서 `VWinAt ψ 401`을 호출할 수 있습니다(`L75`).
@@ -536,14 +536,14 @@ structure WinPair (eps Y : ℝ) (q d : ℕ) : Prop where
 - **동적 점근 창문 쌍 `WinPair eps Y q d` (`Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` 및 `Development/AutomorphicArithmetic/CharacterBoxes/PairGood.lean:18-30`)**:
     - 점근 스케일 $Y \to \infty$에서는 `splitBound`가 $\lfloor x^{\varepsilon/(5J)} \rfloor$로 함께 자라나므로, $p \le Y^{\varepsilon/5}$인 모든 홀수 소수 $p$가 $d + 1$을 나누는 조건(`d_small`)과 더불어 **$q \mid d + 1$ (`d_q`)** 조건이 동시에 요구됩니다.
     - 산술적으로 $q \equiv 3 \pmod 8$은 홀수이고 $d \equiv 7 \pmod{16}$은 $d + 1 \equiv 8 \pmod{16}$ ($8 \mid d + 1$, $16 \nmid d + 1$)을 함의합니다. 베주 항등식 $3q = 8(3\lfloor q/8 \rfloor + 1) + 1$에 따라 $\gcd(8, q) = 1$이므로, $q \mid d + 1$은 즉시 **$8q \mid d + 1$ 및 $d \ge 8q - 1$**을 강제합니다.
-    - 예컨대 $q = 11 \equiv 3 \pmod 8$일 때 $p \le 11$인 모든 홀수 소수 $3, 5, 7, 11$이 $d + 1$을 나누는 최소 동적 소수 증인은 $d = 9{,}239$ ($9{,}239 \equiv 7 \pmod{16}$, $9{,}239 + 1 = 9{,}240 = 8 \cdot 3 \cdot 5 \cdot 7 \cdot 11$)입니다(`proofs/alpoge_ab_deep_audit.lean:748-780`의 `thm_22_static_571_599_vs_dynamic_winpair_divisibility`에서 검증 완료).
+    - 예컨대 $q = 11 \equiv 3 \pmod 8$일 때 $p \le 11$인 모든 홀수 소수 $3, 5, 7, 11$이 $d + 1$을 나누는 최소 동적 소수 증인은 $d = 9{,}239$ ($9{,}239 \equiv 7 \pmod{16}$, $9{,}239 + 1 = 9{,}240 = 8 \cdot 3 \cdot 5 \cdot 7 \cdot 11$)입니다(`proofs/alpoge_ab_deep_audit.lean:850-882`의 `thm_22_static_571_599_vs_dynamic_winpair_divisibility`에서 검증 완료).
 
 ### 3.4 3변수 유니터리 변형(`CountVOf.lean`)과 작은 유수 가지(`SmallClassNumbers`)
 
 3변수 유니터리 군 $U(3)$ 변형 이론은 기반 층 `Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeDeformations/CountVOf.lean:1-41` 외 `102`개 파일과 이를 밀집 임계치 사슬에 접합하는 `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-61` (`Pure_Vwin` 소속)의 복층 구조로 작동합니다.
 
 - **`CountVOf.lean`의 보편 변형환 길이 정리 (`L33-60`)**: 가우스 허수 이차체 $K = \mathbb{Q}(i)$ 위에서 호스트 틀 `exists_hostFrame`을 잡고(`L36-40`), 보형 생성원 정리 `ThmS6_s`로부터 잔여 표현과 합동 데이터를 추출한 뒤(`L42`), 완비 국소 계수환 `c.O` 위에서 보편 변형환 $(R, u)$ (`exists_isUniv`, `L45`, $\ell \in \mathfrak{m}_{c.O}$ 조건은 `l_mem` 보조정리 `L26-32`로 증명)를 세웁니다.
-- 이어서 코탄젠트 생성원 보조정리 `LemmaM`, `LemmaM'`와 포이투-테이트 정규화 쌍대성, $U(3)$ 강성 `HostRigid_s`, 합동수 상한 `HostNumber_s`를 `abstract_count` (`L48-54`)에 주입하여 코호몰로지 길이 $a \le V \le 2 E s$ 및 $s \log \ell \le (\ell N e)^C$를 얻고, 산술 보조정리 `arith` (`L11-25`)로 $\frac{a}{E} \log \ell \le (\ell N e)^{C+1}$을 도출합니다(`proofs/alpoge_ab_deep_audit.lean:1088-1103`의 `thm_29`).
+- 이어서 코탄젠트 생성원 보조정리 `LemmaM`, `LemmaM'`와 포이투-테이트 정규화 쌍대성, $U(3)$ 강성 `HostRigid_s`, 합동수 상한 `HostNumber_s`를 `abstract_count` (`L48-54`)에 주입하여 코호몰로지 길이 $a \le V \le 2 E s$ 및 $s \log \ell \le (\ell N e)^C$를 얻고, 산술 보조정리 `arith` (`L11-25`)로 $\frac{a}{E} \log \ell \le (\ell N e)^{C+1}$을 도출합니다(`proofs/alpoge_ab_deep_audit.lean:1190-1205`의 `thm_29`).
 
 ```lean
 -- 출처: Development/AutomorphicArithmetic/AutomorphicVarieties/UnitaryThreeDeformations/CountVOf.lean:19-41
@@ -567,23 +567,23 @@ private theorem l_mem {l : ℕ} [hl : Fact l.Prime] (c : Coef l) :
 - `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/CorGKOf.lean:10-28`: `Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/IntegralStructures/RowSrc.lean:6`과 `Development/AutomorphicArithmetic/Foundations/BaseChangeIdentities/DefiniteNHolds.lean:5`를 직접 조립하여 무조건부 정리 `litN`, `corGK : U3.CorGK`, `bound : Bound` 세 개를 완결합니다.
 - `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/LenEqZeroIff.lean:9-92` 및 `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/OnePoint.lean:10-41`: `len Ω l c e = 0 ↔ Vanish Ω l c e` 동치(`L33-64`)와 단일 점 비소멸 조건 `onePoint`를 각각 확립합니다.
 
-### 3.5 이중 `SChain` 사슬 닫힘과 우반평면 영점 소거 (`ClassCounting/SChain.lean` · `SizeWindowBrackets/SChain.lean`)
+### 3.5 단체 호몰로지 `SChain`과 창문 성장 사슬 닫힘 (`ClassCounting/SChain.lean` · `CoreGm.lean` · `SizeWindowBrackets/SChain.lean`)
 
-`VWin`이 최종적으로 디리클레 $L$-함수의 영점 비소멸로 전환되는 종결부는 대수적 `SChain`과 해석적 `SChain`의 이중 사슬로 이루어집니다.
+`VWin`이 최종적으로 디리클레 $L$-함수의 영점 비소멸로 전환되는 종결부는 대수적 단체 사슬과 해석적 창문 성장 사슬의 결합으로 이루어집니다.
 
 1. **대수적 단체 호몰로지 사슬 (`Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:9-116`)**:
     - 군 $G$의 비동차 단체 사슬 `Ch A G m` 위에서 경계 제곱 소멸 `bd_bd` (`L30-34`), 군 준동형 사상과의 가환성 `bd_cm` (`L36-49`), 켤레 프리즘 사상 등변성 `cm_prism` (`L51-72`), 자명군 위 완전성 `triv` (`L90-106`)를 증명하여 `UpperTheory.V.ZK.sChain` (`L110-116`)을 확립합니다.
-    - 이때 `L81-89`의 교대합 항등식 `(1 + ∑_{j=0}^m (-1)^{j+1}) + (1 + ∑_{j=0}^{m+1} (-1)^{j+1}) = 1`이 자명군 순환사슬의 경계성을 결정짓습니다(`proofs/alpoge_ab_deep_audit.lean:1129-1141`의 `thm_30`).
+    - 이때 `L81-89`의 교대합 항등식 `(1 + ∑_{j=0}^m (-1)^{j+1}) + (1 + ∑_{j=0}^{m+1} (-1)^{j+1}) = 1`이 자명군 순환사슬의 경계성을 결정짓습니다(`proofs/alpoge_ab_deep_audit.lean:1231-1243`의 `thm_30`).
 2. **닫힌 가족 연결기 `topDesWin` 및 `shapeWin` (`Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:11-32` · `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:27-50`)**:
     - `VWin`으로부터 유도된 `HypV Fm.toFamCore` 가설은 `Development/AutomorphicArithmetic/CharacterBoxes/DesWin.lean:29`의 `divinN_of_hypV`에 주입되어 가분성 고리 `LinkDIVt`를 활성화합니다.
     - 이어서 `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46`이 구체적 매개변수 $(C_{\mathrm{abs}}, C_0, e_D, e_L) = (2, 3, 2, 0)$에서 `topDesWin`을 호출하여 모든 충분히 작은 $\varepsilon > 0$에서 `FamilyClassConnected`를 성립시킵니다.
-3. **해석적 성장 부등식 사슬 (`Formalism/SizeWindowBrackets/SChain.lean:50-102`)**: `RestSize` (`L53-58`)에서 $\sqrt{x}$ 들림 횟수 $m \ge x^{1/2 - \varepsilon}$ 및 동반 랭크 $k \le n^2 x^{1/2 - \varepsilon}$ ($x m \le k$, `L119`)이 맞춰지면, `ChainAt` (`L88-90`)이 영점 검출량 `Gz x`를
+3. **활성 디리클레 `CoreGm` 사슬 대 $\zeta$-전용 `SizeWindowBrackets/SChain` 명세 (`Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15` · `Formalism/SizeWindowBrackets/SChain.lean:50-102`)**: `Formalism/SizeWindowBrackets/SChain.lean:50-102`(정리 `0`건인 $\zeta$-전용 독립 명세 파일)의 `ChainAt`(`L88-90`)은 $\mathrm{Gz}(x) \le x^{1/2 + (e_D + e_L + 6)\varepsilon} = x^{1/2 + 8\varepsilon}$ 형식을 기록하는 반면, 실제 `Main.lean` 활성 디리클레 $L$-함수 척추는 `ShapeWin.lean`의 $(e_D, e_L) = (2, 0)$을 `Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15`의 `core_gm`에 투입하여 결합 검출량 $\Lambda.\mathrm{Gm}(x)$를
 
 $$
-\mathrm{Gz}(x) \le x^{\frac{1}{2} + (e_D + e_L + 6)\varepsilon} = x^{\frac{1}{2} + 8\varepsilon}
+\Lambda.\mathrm{Gm}(x) \le x^{\frac{1}{2} + (e_D + e_L + 7)\varepsilon} = x^{\frac{1}{2} + 9\varepsilon} \qquad \bigl(\mathrm{Gz}(x) \le x^{\frac{1}{2} + 8\varepsilon}\text{ in standalone }\zeta\text{-spec}\bigr)
 $$
 
-으로 누릅니다. $\varepsilon < 1/52$ 전 구간에서 $\frac{1}{2} + 8\varepsilon < \frac{2}{3} < 1$이 성립하므로(`proofs/alpoge_ab_deep_audit.lean:475-490`의 `thm_19`), 시소 상쇄 이전의 고전적 $2/3$ 장벽이 무너지고 $\varepsilon \to 0^+$ 극한(`ChainEventualGivesRiemannHypothesis`, `L97-101`)에서 $\mathrm{Re}(s) > 1/2$ 영역의 모든 영점이 소거됩니다.
+으로 누릅니다. 정밀도 $\varepsilon = 1/E$에서 $E > 54$이면 활성 지수 $\frac{1}{2} + \frac{9}{E} < \frac{2}{3} < 1$이 성립하고($E > 48$이면 $\zeta$-명세 지수 $\frac{1}{2} + \frac{8}{E} < \frac{2}{3}$, `proofs/alpoge_ab_deep_audit.lean:573-591`의 `thm_19`), 고전적 $2/3$ 장벽이 무너진 뒤 $\varepsilon \to 0^+$ 극한에서 $\mathrm{Re}(s) > 1/2$ 영역의 모든 영점이 소거됩니다.
 
 ### 3.6 `AutomorphicVarieties` 비-모듈러성 핵심 보조 가지 해부 (`ConjugateRepresentations` · `LiteratureResults`)
 
@@ -677,7 +677,7 @@ def petIP (k : ℕ) (ρ : ℍ → ℝ) (f h : ℍ → ℂ) : ℂ :=
 
 - 첫째, $\Gamma_0(L) \backslash \mathbb{H}$의 조각난 기본영역 경계를 직접 적분하는 대신, 합동 부분군 궤도 합이 1(`HasSum ... 1`)이고 유한 개 기본영역 이동 안에 지지되는 단위분할 가중함수 `Wt L ρ` (`L90-94`)를 도입하여 페테르손 내적 `petIP` (`L98`)를 상반평면 전체 위의 측도 적분으로 매끄럽게 정의했습니다.
 - 둘째, 형식 수열 공간 $\mathbb{N} \to R$ 위에서 아트킨-레너 이동 작용소 `Uo`, `Vo`, 소수 제거 `dep`, 무게 $k$ 헤케 작용소 `To`, 약수 반대가각선 아이젠슈타인 급수 `eis` (`L25-26`), 3중 합성곱 커널 `Zs` (`L28-30`), 절단 선형 범함수 `lam B c a` (`L34`), 고유범함수 구조체 `EigF` (`L100-103`)를 순수 가환환 위에서 정의합니다.
-    - 원문 `L63-64`에는 라마누잔 판별식 형식($k = 12$, $a_1 = 1, a_2 = -24, a_4 = -1472$)에서 $(T_2 a)_2 = (-24)^2 = 576$을 확인하는 단위 예제가 내장되어 있습니다(`proofs/alpoge_ab_deep_audit.lean:1129-1141`의 `thm_30`에서 검증).
+    - 원문 `L63-64`에는 라마누잔 판별식 형식($k = 12$, $a_1 = 1, a_2 = -24, a_4 = -1472$)에서 $(T_2 a)_2 = (-24)^2 = 576$을 확인하는 단위 예제가 내장되어 있습니다(`proofs/alpoge_ab_deep_audit.lean:1231-1243`의 `thm_30`에서 검증).
 - 셋째, `L104-111`의 2차 차분 연산자 `dif L v`는 격자 주기 합에서 상수항·극점을 제거한 정칙화 아이젠슈타인 격자 급수 `lat`를 생성하여 쿠머-아이젠슈타인 합동으로 연결됩니다.
 
 #### (2) 합동 부분군 $\Gamma_0(L)$ 이중 잉여류 대표원과 슬래시 작용 (`RepL.lean`, `in_degree = 236`)
@@ -781,96 +781,97 @@ theorem TemperedBoundGL2.span {S : Set (GL (Fin 2) F → ℂ)}
 
 ### 5.1 검증 아키텍처와 Lean 4.33.1 · 4.36.0 컴파일·공리 전수 감사 결과
 
-`175,187`개 파일 전체를 동시에 재빌드하지 않는 환경에서도 본 단행본이 복원한 지수 수지타산·합동식·코시-슈바르츠 그람 양수성·베렌트 행렬식 소거·함수방정식 반사 논리가 기계적으로 완전무결함을 즉시 재현할 수 있도록, 선행 `17`개 정리(`alpoge_spine_arithmetic_audit.lean`)를 전면 계승하고 `13`개 심층 정리를 신설하여 총 **`30`개 주 정리(`thm_01` ~ `thm_30`)와 `14`개 보조 정리(합계 `44`개 정리, 총 `74`개 선언, `1,143`줄)**로 구성된 무의존성 독립 검증 파일 `proofs/alpoge_ab_deep_audit.lean:1-1143`을 작성하였습니다.
+`175,187`개 파일 전체를 동시에 재빌드하지 않는 환경에서도 본 단행본이 복원한 지수 수지타산·합동식·코시-슈바르츠 그람 양수성·베렌트 행렬식 소거·함수방정식 반사 논리가 기계적으로 완전무결함을 즉시 재현할 수 있도록, 선행 `17`개 정리(`alpoge_spine_arithmetic_audit.lean`)를 전면 계승하고 `13`개 심층 정리를 신설하여 총 **`30`개 주 정리(`thm_01` ~ `thm_30`)와 `14`개 보조 정리(합계 `44`개 정리, 총 `77`개 선언, `1,245`줄)**로 구성된 무의존성 독립 검증 파일 `proofs/alpoge_ab_deep_audit.lean:1-1245`을 작성하였습니다.
 
 로컬 실행 환경(Ubuntu Linux `x86_64`, `~/.elan/bin/lean` Lean `v4.33.1` 및 `v4.36.0`)에서 수행한 실측 검증 결과는 다음과 같습니다.
 
 - **컴파일 실행 및 종료 코드**: `~/.elan/bin/lean proofs/alpoge_ab_deep_audit.lean` 명령 실행 시 외부 패키지(`Mathlib` 등) 임포트 `0`건 상태에서 **종료 코드 `0`, 에러 `0`건, 경고 `0`건**으로 완결 컴파일됩니다.
 - **무결성 정적 감사**: 미증명 자리표시자(`sorry`) `0`건, 사용자 공리(`axiom`) `0`건, 비안전 우회 지시어(`unsafe`, `implemented_by`, `extern`) `0`건입니다.
 - **`#print axioms` 3계층 분포**: `30`개 주 정리 전수에 `#print axioms`를 실행한 결과 모든 정리가 Lean 4 표준 내장 공리 부분집합 안에 놓입니다.
-    - **무공리 커널 계산 정리 (`5`개, `does not depend on any axioms`)**: `thm_07`, `thm_11`, `thm_13`, `thm_14`, `thm_18`.
-    - **직관주의 코어 공리 정리 (`9`개, `[propext, Quot.sound]`)**: `thm_01`, `thm_03`, `thm_04`, `thm_05`, `thm_09`, `thm_10`, `thm_12`, `thm_17`, `thm_27`.
-    - **표준 고전 논리 공리 이하 정리 (`16`개, `[propext, Classical.choice, Quot.sound]`)**: `thm_02`, `thm_06`, `thm_08`, `thm_15`, `thm_16`, `thm_19`, `thm_20`, `thm_21`, `thm_22`, `thm_23`, `thm_24`, `thm_25`, `thm_26`, `thm_28`, `thm_29`, `thm_30`.
+    - **무공리 커널 계산 정리 (`2`개, `does not depend on any axioms`)**: `thm_07`, `thm_13`.
+    - **직관주의 코어 공리 정리 (`8`개, `[propext, Quot.sound]`)**: `thm_03`, `thm_04`, `thm_05`, `thm_09`, `thm_10`, `thm_12`, `thm_17`, `thm_27`.
+    - **표준 고전 논리 공리 이하 정리 (`20`개, `[propext, Classical.choice, Quot.sound]`)**: `thm_01`, `thm_02`, `thm_06`, `thm_08`, `thm_11`, `thm_14`, `thm_15`, `thm_16`, `thm_18`, `thm_19`, `thm_20`, `thm_21`, `thm_22`, `thm_23`, `thm_24`, `thm_25`, `thm_26`, `thm_28`, `thm_29`, `thm_30`.
 
 주 정리 `30`개를 뒷받침하기 위해 파일 내부에서 밑바닥부터 직접 증명한 `14`개 핵심 보조 정리(`aux theorem`) 목록은 다음과 같습니다.
 
 | 보조 정리 식별자 | 감사 파일 행 범위 | 증명된 수학적 성질 |
 | :--- | :--- | :--- |
-| `pow_ge_succ_of_two_le` | `proofs/alpoge_ab_deep_audit.lean:270-279` | $x \ge 2$일 때 모든 $K \ge 0$에서 베르누이형 하한 $K + 1 \le x^K$ |
-| `legendre_identity_aux` | `proofs/alpoge_ab_deep_audit.lean:392-426` | 강한 귀납법에 의한 르장드르 항등식 $(p - 1)\nu_p(\mathrm{fact}(n)) + s_p(n) = n$ |
-| `int_sq_nonneg` / `int_sq_eq_zero` | `proofs/alpoge_ab_deep_audit.lean:493-510` | 코어 정수환 위에서 $0 \le a^2$ 및 $a^2 = 0 \implies a = 0$ |
-| `vecNormSq_nonneg` / `vecNormSqTr_le` | `proofs/alpoge_ab_deep_audit.lean:532-551` | 임의 길이 정수 벡터 노름 제곱 비음수성 및 절단 노름 단조성 |
-| `combNormSq_nonneg` / `combNormSq_expand` | `proofs/alpoge_ab_deep_audit.lean:553-571` | 선형 결합 제곱합 $\sum (x u_i - y v_i)^2 \ge 0$ 및 이차형식 전개 항등식 |
-| `vecDot_eq_zero_of_normSqTr_zero` | `proofs/alpoge_ab_deep_audit.lean:573-586` | 절단 노름 제곱합이 $0$이면 내적 $u \cdot v = 0$ |
-| `cauchy_schwarz_list` | `proofs/alpoge_ab_deep_audit.lean:588-618` | 임의 길이 정수 리스트 위 코시-슈바르츠 부등식 $(u \cdot v)^2 \le \lVert u \rVert^2 \lVert v \rVert^2$ |
-| `baseDigitSum_pos` | `proofs/alpoge_ab_deep_audit.lean:782-802` | $p \ge 2, n \ge 1$일 때 $p$-진 자릿수 합 양수성 $1 \le s_p(n)$ |
-| `intListSum_le_of_pointwise` | `proofs/alpoge_ab_deep_audit.lean:811-817` | 점별 지배 관계 `ListPointwiseLe ms vs`의 유한 자리 합 단조성 |
-| `exists_missing_bucket` | `proofs/alpoge_ab_deep_audit.lean:932-949` | 길이 $\le R$ 리스트의 $[0, R]$ 구간 유한 비둘기집 누락 원소 존재성 |
-| `factNat_le_pow` | `proofs/alpoge_ab_deep_audit.lean:987-995` | 모든 $n \ge 0$에서 계승 상한 $\mathrm{factNat}(n) \le n^n$ |
+| `pow_ge_succ_of_two_le` | `proofs/alpoge_ab_deep_audit.lean:339-348` | $x \ge 2$일 때 모든 $K \ge 0$에서 베르누이형 하한 $K + 1 \le x^K$ |
+| `legendre_identity_aux` | `proofs/alpoge_ab_deep_audit.lean:461-495` | 강한 귀납법에 의한 르장드르 항등식 $(p - 1)\nu_p(\mathrm{fact}(n)) + s_p(n) = n$ |
+| `int_sq_nonneg` / `int_sq_eq_zero` | `proofs/alpoge_ab_deep_audit.lean:594-611` | 코어 정수환 위에서 $0 \le a^2$ 및 $a^2 = 0 \implies a = 0$ |
+| `vecNormSq_nonneg` / `vecNormSqTr_le` | `proofs/alpoge_ab_deep_audit.lean:633-652` | 임의 길이 정수 벡터 노름 제곱 비음수성 및 절단 노름 단조성 |
+| `combNormSq_nonneg` / `combNormSq_expand` | `proofs/alpoge_ab_deep_audit.lean:654-672` | 선형 결합 제곱합 $\sum (x u_i - y v_i)^2 \ge 0$ 및 이차형식 전개 항등식 |
+| `vecDot_eq_zero_of_normSqTr_zero` | `proofs/alpoge_ab_deep_audit.lean:674-687` | 절단 노름 제곱합이 $0$이면 내적 $u \cdot v = 0$ |
+| `cauchy_schwarz_list` | `proofs/alpoge_ab_deep_audit.lean:689-718` | 임의 길이 정수 리스트 위 코시-슈바르츠 부등식 $(u \cdot v)^2 \le \lVert u \rVert^2 \lVert v \rVert^2$ |
+| `baseDigitSum_pos` | `proofs/alpoge_ab_deep_audit.lean:884-902` | $p \ge 2, n \ge 1$일 때 $p$-진 자릿수 합 양수성 $1 \le s_p(n)$ |
+| `intListSum_le_of_pointwise` | `proofs/alpoge_ab_deep_audit.lean:913-919` | 점별 지배 관계 `ListPointwiseLe ms vs`의 유한 자리 합 단조성 |
+| `exists_missing_bucket` | `proofs/alpoge_ab_deep_audit.lean:1034-1051` | 길이 $\le R$ 리스트의 $[0, R]$ 구간 유한 비둘기집 누락 원소 존재성 |
+| `factNat_le_pow` | `proofs/alpoge_ab_deep_audit.lean:1089-1097` | 모든 $n \ge 0$에서 계승 상한 $\mathrm{factNat}(n) \le n^n$ |
 
 ### 5.2 제1부 계승 기초 산술·위상 감사 스위트 (`thm_01` ~ `thm_17`) 요약 원장
 
-제1부(`proofs/alpoge_ab_deep_audit.lean:16-445`)에 수록된 기초 척추 감사 `17`개 정리의 전체 원장은 다음과 같습니다.
+제1부(`proofs/alpoge_ab_deep_audit.lean:16-514`)에 수록된 기초 척추 감사 `17`개 정리의 전체 원장은 다음과 같습니다.
 
 | 정리 식별자 | 감사 파일 행 범위 | 핵심 수리 검증 내용 및 원본 대응 핀 | 공리 의존성 |
 | :--- | :--- | :--- | :--- |
-| `thm_01_chebyshev_sqrt_exponent` | `proofs/alpoge_ab_deep_audit.lean:26-33` | 임계선 $\theta = 1/2$ 체비쇼프 지수 $8D - 16n < 8D - n$ ($n > 0$) | `propext, Quot.sound` |
-| `thm_02_naive_lift_barrier_two_thirds` | `proofs/alpoge_ab_deep_audit.lean:39-42` | 단순 이차 비용 균형 $3 - \alpha_3 = 2\alpha_3 \implies \alpha = 1/3,\; \sigma = 2/3$ | 표준 3공리 |
-| `thm_03_rank_division_kills_quadratic_loss` | `proofs/alpoge_ab_deep_audit.lean:51-55` | 동반 랭크 $k \sim x^{9/2+10\varepsilon}$ 나눗셈 후 이차 오차 지수 $-(56D + 146n) < 0$ | `propext, Quot.sound` |
-| `thm_04_scale_eps_52_invariants` | `proofs/alpoge_ab_deep_audit.lean:61-71` | `Scale.A = 26` (`Formalism/LocalRingCardinality/DataParams₂.lean:14-41`) 및 $E > 52$ 4대 부등식 | `propext, Quot.sound` |
-| `thm_05_rank_balance_identity` | `proofs/alpoge_ab_deep_audit.lean:77-92` | $r = 2k' + 2m' - 1$ 홀수 기우성과 $r + t = 8fr + 4 + T(8W)$ 항등식 | `propext, Quot.sound` |
-| `thm_06_winpair_cm_splitting_congruences` | `proofs/alpoge_ab_deep_audit.lean:97-100` | `WinPair` (`Formalism/PeriodIntegrals/ThetaNormCM.lean:31`) $(d+1) \bmod 16 = 8$ | 표준 3공리 |
-| `thm_07_lucas_witness_prime_413718278401` | `proofs/alpoge_ab_deep_audit.lean:107-115` | `Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86` $g_A - 1$ 분해 | **무공리 (`none`)** |
-| `thm_08_cubic_tail_3111_100_and_slack` | `proofs/alpoge_ab_deep_audit.lean:124-144` | $\ell \ge 11$ 유리 3차 꼬리항 $100 \cdot \mathrm{LHS} + \mathrm{cubicSlack} = 3111(\ell - 1)^3$ | 표준 3공리 |
-| `thm_09_ct_401_tail_identity` | `proofs/alpoge_ab_deep_audit.lean:149-162` | $m = 398, x \ge 2$에서 $x^m(x^2 + 1) \le x^{401}$ 및 $400 + 1 = 401$ | `propext, Quot.sound` |
-| `thm_10_countI_absorb_bound` | `proofs/alpoge_ab_deep_audit.lean:167-182` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/CountI.lean:11-17` 지수 흡수 | `propext, Quot.sound` |
-| `thm_11_fock_and_minor_identities` | `proofs/alpoge_ab_deep_audit.lean:187-191` | 포크 행렬식 지수 $11 \cdot 10 / 2 = 55$ 및 주 소행렬식 개수 $q^{r^2-r}(q-1)^r$ | **무공리 (`none`)** |
-| `thm_12_stickelberger_parity_annihilation` | `proofs/alpoge_ab_deep_audit.lean:196-199` | 짝수 고정 원소 $c(v) = v$ 위에서 홀수 사영 $v - c(v) = 0$ 소멸 | `propext, Quot.sound` |
-| `thm_13_behrend_base5_sphere_zero_3ap` | `proofs/alpoge_ab_deep_audit.lean:211-213` | 5진 구면 12원소 베렌트 집합의 비자명 3항 등차수열 전수 부재 검증 | **무공리 (`none`)** |
-| `thm_14_literature_195_partition` | `proofs/alpoge_ab_deep_audit.lean:218-224` | `Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-810` 분할 | **무공리 (`none`)** |
-| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | `proofs/alpoge_ab_deep_audit.lean:238-262` | 2유형 코시-슈바르츠 지수 여유분 $30r^2 + 42r + 1 \ge 1$ 및 $2^{2r+2} \le q^{k-2r-5}$ | 표준 3공리 |
-| `thm_16_vandiver_pluslen_and_cone_partition` | `proofs/alpoge_ab_deep_audit.lean:284-364` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean:31-32` 및 `PointArith` | 표준 3공리 |
-| `thm_17_legendre_padic_factorial_and_global_chain_closure` | `proofs/alpoge_ab_deep_audit.lean:431-445` | 르장드르 항등식 $(p-1)\nu_p + s_p(n) = n$, CM $3/4$ 지수, $1/2 + 8/E < 1$ | `propext, Quot.sound` |
+| `thm_01_chebyshev_sqrt_exponent` | `proofs/alpoge_ab_deep_audit.lean:26-38` | 일반 $\theta$ 1단 동등성($\theta = 1/2$) 및 체비쇼프 지수 $8D - 16n < 8D - n$ ($n > 0$) | 표준 3공리 |
+| `thm_02_naive_lift_barrier_two_thirds` | `proofs/alpoge_ab_deep_audit.lean:46-55` | 모든 $m \ge 1$에서 이차 비용 균형 $m(2\alpha) \le m(D-\alpha) \implies 2D \le 3\sigma$ ($2/3$ 장벽) | 표준 3공리 |
+| `thm_03_rank_division_kills_quadratic_loss` | `proofs/alpoge_ab_deep_audit.lean:65-71` | 일반 동반 랭크 $k > 2m + 2l$ 및 $k \sim x^{9/2+10\varepsilon}$ 나눗셈 후 지수 $-(56D + 146n) < 0$ | `propext, Quot.sound` |
+| `thm_04_scale_eps_52_invariants` | `proofs/alpoge_ab_deep_audit.lean:77-87` | `Scale.A = 26` (`Formalism/LocalRingCardinality/DataParams₂.lean:14-41`) 및 $E > 52$ 4대 부등식 | `propext, Quot.sound` |
+| `thm_05_rank_balance_identity` | `proofs/alpoge_ab_deep_audit.lean:93-108` | $r = 2k' + 2m' - 1$ 홀수 기우성과 $r + t = 8fr + 4 + T(8W)$ 항등식 | `propext, Quot.sound` |
+| `thm_06_winpair_cm_splitting_congruences` | `proofs/alpoge_ab_deep_audit.lean:114-117` | `WinPair` (`Formalism/PeriodIntegrals/ThetaNormCM.lean:31`) $8 \mid d+1$ 및 $16 \nmid d+1$ | 표준 3공리 |
+| `thm_07_lucas_witness_prime_413718278401` | `proofs/alpoge_ab_deep_audit.lean:124-132` | `Formalism/LocalRingCardinality/SpanPowerMembership/Primes.lean:86` $g_A - 1$ 분해 | **무공리 (`none`)** |
+| `thm_08_cubic_tail_3111_100_and_slack` | `proofs/alpoge_ab_deep_audit.lean:141-161` | $\ell \ge 11$ 유리 3차 꼬리항 $100 \cdot \mathrm{LHS} + \mathrm{cubicSlack} = 3111(\ell - 1)^3$ | 표준 3공리 |
+| `thm_09_ct_401_tail_identity` | `proofs/alpoge_ab_deep_audit.lean:166-179` | $m = 398, x \ge 2$에서 $x^m(x^2 + 1) \le x^{401}$ 및 $400 + 1 = 401$ | `propext, Quot.sound` |
+| `thm_10_countI_absorb_bound` | `proofs/alpoge_ab_deep_audit.lean:184-199` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/CountI.lean:11-17` 지수 흡수 | `propext, Quot.sound` |
+| `thm_11_fock_and_minor_identities` | `proofs/alpoge_ab_deep_audit.lean:210-240` | 일반 $a$ 가우스 삼각합 $2\sum_{j=0}^a j = a(a+1)$ 및 브루아 주 소행렬식 점화식 | 표준 3공리 |
+| `thm_12_stickelberger_parity_annihilation` | `proofs/alpoge_ab_deep_audit.lean:248-264` | 가법 대합 $c^2 = \mathrm{id}$ 고유공간 분해 및 짝수 고정 원소 위 홀수 사영 소멸 | `propext, Quot.sound` |
+| `thm_13_behrend_base5_sphere_zero_3ap` | `proofs/alpoge_ab_deep_audit.lean:276-278` | 5진 구면 12원소 베렌트 집합의 비자명 3항 등차수열 전수 부재 검증 | **무공리 (`none`)** |
+| `thm_14_literature_195_partition` | `proofs/alpoge_ab_deep_audit.lean:284-293` | `ForcedSumIdentity` 및 `Development/AutomorphicArithmetic/ThetaCorrespondence/ThetaPairLifts/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean:219-810` `152+25+8` · `50+5+1` 분할 | 표준 3공리 |
+| `thm_15_cauchy_schwarz_exponent_and_decay_margin` | `proofs/alpoge_ab_deep_audit.lean:307-331` | 2유형 코시-슈바르츠 지수 여유분 $30r^2 + 42r + 1 \ge 1$ 및 $2^{2r+2} \le q^{k-2r-5}$ | 표준 3공리 |
+| `thm_16_vandiver_pluslen_and_cone_partition` | `proofs/alpoge_ab_deep_audit.lean:353-433` | `Development/AutomorphicArithmetic/AutomorphicVarieties/HeightAndVanishing/SumOut.lean:31-32` 및 `PointArith` | 표준 3공리 |
+| `thm_17_legendre_padic_factorial_and_global_chain_closure` | `proofs/alpoge_ab_deep_audit.lean:500-514` | 르장드르 항등식 $(p-1)\nu_p + s_p(n) = n$, CM $3/4$ 지수, $1/2 + 8/E < 1$ | `propext, Quot.sound` |
 
 ### 5.3 제2부 신규 심층 확장 감사 스위트 (`thm_18` ~ `thm_30`) 전수 원장 및 수리 해설
 
-제2부(`proofs/alpoge_ab_deep_audit.lean:447-1143`)는 본 단행본 제1~4장에서 해독한 `Pure_Vwin` 및 대역 영점 배제 사슬의 13대 핵심 대수·산술 메커니즘을 모두 무-sorry(사용자 추가 공리 `0`건 · 표준 공리 이하) Lean 4 정리로 구현합니다.
+제2부(`proofs/alpoge_ab_deep_audit.lean:516-1245`)는 본 단행본 제1~4장에서 해독한 `Pure_Vwin` 및 대역 영점 배제 사슬의 13대 핵심 대수·산술 메커니즘을 모두 무-sorry(사용자 추가 공리 `0`건 · 표준 공리 이하) Lean 4 정리로 구현합니다.
 
 | 정리 식별자 | 감사 파일 행 범위 | 대응 원본 아카이브 핀 (`src/` 기준) | 검증 주제 및 전술 |
 | :--- | :--- | :--- | :--- |
-| `thm_18_pure_vwin_b06_b08_conservation` | `proofs/alpoge_ab_deep_audit.lean:455-462` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5` | `B06+B07+B08` 파일·줄·선언 보존 (`decide`, 무공리) |
-| `thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence` | `proofs/alpoge_ab_deep_audit.lean:475-490` | `Formalism/SizeWindowBrackets/SChain.lean:53-58` · `Formalism/LocalRingCardinality/Params.lean:22` | 주제 (a): $m$회 리프트 $2/3$ 장벽 대 $1/2+8/E < 2/3$ 수렴 |
-| `thm_20_gl5_sixfold_cauchy_schwarz_and_gram_positivity` | `proofs/alpoge_ab_deep_audit.lean:635-674` | `Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29-58` · `Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:15-65` | 주제 (b): $\mathrm{GL}_5$ 6중 피복 코시-슈바르츠 및 그람 양수성 |
-| `thm_21_local_ring_determinant_exponent_congruences` | `proofs/alpoge_ab_deep_audit.lean:684-722` | `Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean:216-221` · `Formalism/LocalRingCardinality/Params.lean:36-100` | 주제 (c): 국소환 `rhoDet`/`rhoDet'` 행렬식 지수 시소 합동 |
-| `thm_22_static_571_599_vs_dynamic_winpair_divisibility` | `proofs/alpoge_ab_deep_audit.lean:748-780` | `Formalism/LocalRingCardinality/SpanPowerMembership/ExampleLayerExistsGenerators.lean:172-218` · `Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` | 주제 (d): 정적 `(571, 599)` 대 동적 `WinPair` $8q \mid d+1$ |
-| `thm_23_legendre_strict_bound_and_arakelov_product_contradiction` | `proofs/alpoge_ab_deep_audit.lean:828-856` | `Development/WeilBound/RepresentationTheoryGL/TwistedFactors/SelmerRankBounds/EllipticityFromProductFormula.lean:18-28` | 주제 (e): 엄격한 르장드르 상한 및 아라켈로프 곱공식 모순 사슬 |
-| `thm_24_functional_equation_reflection_implies_critical_line` | `proofs/alpoge_ab_deep_audit.lean:863-876` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:42-74` · `Formalism/GammaFactorNonvanishing/CritLine.lean:11-28` | 주제 (f): 함수방정식 $s \mapsto 1-s$ 반사 $\implies \mathrm{Re}(s) = 1/2$ |
-| `thm_25_imprimitive_euler_factor_zero_forces_re_zero` | `proofs/alpoge_ab_deep_audit.lean:892-928` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:7-34` · `Statements.lean:10-16` | 주제 (g): 비원시 오일러 인자 영점 $\implies \mathrm{Re}(s) = 0$ |
-| `thm_26_dyadic_window_avoidance_pigeonhole` | `proofs/alpoge_ab_deep_audit.lean:957-980` | `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` | 이와사와 예외 층 비둘기집 회피 배율 $2^{R+2}B^R$ |
-| `thm_27_stickelberger_minus_part_factorial_conductor_bound` | `proofs/alpoge_ab_deep_audit.lean:1001-1023` | `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136` | 홀수 날개 스틱켈베르거 분모 상한 $(tF)^{2t+5}$ (`propext, Quot.sound`) |
-| `thm_28_behrend_thick_set_determinant_vanishing` | `proofs/alpoge_ab_deep_audit.lean:1030-1079` | `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66` | 베렌트 두꺼운 집합 3항 행렬식 $-n < 2D < n \implies D = 0$ |
-| `thm_29_unitary_three_countV_exponent_step` | `proofs/alpoge_ab_deep_audit.lean:1088-1103` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25` | $U(3)$ 변형 길이 $aL \le E X^{C+1}$ 및 `ClassNumberThree.gd` |
-| `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` | `proofs/alpoge_ab_deep_audit.lean:1129-1141` | `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64` · `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89` | `B08` 라마누잔 $T_2$ 고유관계 및 `B06` 단체 호몰로지 교대합 |
+| `thm_18_pure_vwin_b06_b08_conservation` | `proofs/alpoge_ab_deep_audit.lean:534-560` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/VwinOfRow.lean:4-5` | `DetChain` 귀납 블록 행렬식 항등식 및 포함-배제·원뿔 보존 |
+| `thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence` | `proofs/alpoge_ab_deep_audit.lean:573-591` | `Formalism/SizeWindowBrackets/SChain.lean:53-58` · `Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15` · `Formalism/LocalRingCardinality/Params.lean:22` | 주제 (a): $m$회 리프트 $2/3$ 장벽 대 `SChain`(`8/E`)·`CoreGm`(`9/E`) 수렴 |
+| `thm_20_five_vector_cauchy_schwarz_and_gram_positivity` | `proofs/alpoge_ab_deep_audit.lean:736-776` | `Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29-58` · `Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:15-65` · `Formalism/SharpRestriction/GrowthBounds/MonomialFactorials/RestrictedBoundsWeakenFromSevenToSix.lean:18` | 주제 (b): 5벡터 코시-슈바르츠·그람 양수성 및 `RestOpen7 → RestOpen6` 압축 |
+| `thm_21_local_ring_determinant_exponent_congruences` | `proofs/alpoge_ab_deep_audit.lean:786-824` | `Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean:216-221` · `Formalism/LocalRingCardinality/Params.lean:36-100` | 주제 (c): 국소환 `rhoDet`/`rhoDet'` 행렬식 지수 시소 합동 |
+| `thm_22_static_571_599_vs_dynamic_winpair_divisibility` | `proofs/alpoge_ab_deep_audit.lean:850-882` | `Formalism/LocalRingCardinality/SpanPowerMembership/ExampleLayerExistsGenerators.lean:172-218` · `Development/AutomorphicArithmetic/CharacterBoxes/ExistsPageN.lean:27-38` | 주제 (d): 정적 `(571, 599)` 대 동적 `WinPair` $8q \mid d+1$ |
+| `thm_23_legendre_strict_bound_and_arakelov_product_contradiction` | `proofs/alpoge_ab_deep_audit.lean:930-958` | `Development/WeilBound/RepresentationTheoryGL/TwistedFactors/SelmerRankBounds/EllipticityFromProductFormula.lean:18-28` | 주제 (e): 엄격한 르장드르 상한 및 아라켈로프 곱공식 모순 사슬 |
+| `thm_24_functional_equation_reflection_implies_critical_line` | `proofs/alpoge_ab_deep_audit.lean:965-978` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:42-74` · `Formalism/GammaFactorNonvanishing/CritLine.lean:11-28` | 주제 (f): 함수방정식 $s \mapsto 1-s$ 반사 $\implies \mathrm{Re}(s) = 1/2$ |
+| `thm_25_imprimitive_euler_factor_zero_forces_re_zero` | `proofs/alpoge_ab_deep_audit.lean:994-1030` | `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:7-34` · `Statements.lean:10-16` | 주제 (g): 비원시 오일러 인자 영점 $\implies \mathrm{Re}(s) = 0$ |
+| `thm_26_dyadic_window_avoidance_pigeonhole` | `proofs/alpoge_ab_deep_audit.lean:1059-1082` | `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58` | 이와사와 예외 층 비둘기집 회피 배율 $2^{R+2}B^R$ |
+| `thm_27_stickelberger_minus_part_factorial_conductor_bound` | `proofs/alpoge_ab_deep_audit.lean:1103-1125` | `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136` | 홀수 날개 스틱켈베르거 분모 상한 $(tF)^{2t+5}$ (`propext, Quot.sound`) |
+| `thm_28_behrend_thick_set_determinant_vanishing` | `proofs/alpoge_ab_deep_audit.lean:1132-1181` | `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66` | 베렌트 두꺼운 집합 3항 행렬식 $-n < 2D < n \implies D = 0$ |
+| `thm_29_unitary_three_countV_exponent_step` | `proofs/alpoge_ab_deep_audit.lean:1190-1205` | `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25` | $U(3)$ 변형 길이 $aL \le E X^{C+1}$ 및 `ClassNumberThree.gd` |
+| `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` | `proofs/alpoge_ab_deep_audit.lean:1231-1243` | `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64` · `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89` | `B08` 라마누잔 $T_2$ 고유관계 및 `B06` 단체 호몰로지 교대합 |
 
 신규 확장 정리 `13`건의 구체적인 수학적 설계와 검증 코드 구조를 주제별로 상세히 해설합니다.
 
-#### (a) $\sqrt{X}$ 리프트 중복도 $m$ 누적 대 시소 상쇄 수렴 (`thm_19`, `proofs/alpoge_ab_deep_audit.lean:475-490`)
+#### (a) $\sqrt{X}$ 리프트 중복도 $m$ 누적 대 시소 상쇄 수렴 (`thm_19`, `proofs/alpoge_ab_deep_audit.lean:573-591`)
 단순히 $\sqrt{X}$ 리프트를 $m \ge 1$회 반복하더라도 이산화 이득 지수 $m(D - \alpha)$와 상쇄되지 않은 이차 파르세발·지겔-베유 손실 $m(2\alpha)$를 직접 비교하면 양변에서 중복도 $m$이 소거되어 여전히 $2\alpha \le D - \alpha$, 즉 $3\alpha \le D$와 영점 배제 한계 $\sigma = D - \alpha \ge \frac{2}{3}D$에 갇힙니다.
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:475-481
+-- 출처: proofs/alpoge_ab_deep_audit.lean:573-579
 theorem thm_19_m_step_sqrt_lift_multiplicity_vs_seesaw_convergence :
     (∀ m D α σ : Int, 1 ≤ m → m * (2 * α) ≤ m * (D - α) → σ = D - α →
       3 * α ≤ D ∧ 2 * D ≤ 3 * σ) ∧
     (∀ k m t : Nat, m ≤ t + 1 → m ^ 2 ≤ k + m * (t + 1)) ∧
-    (∀ E : Nat, 48 < E → 3 * (E + 2 * sChainEpsMult 2 0) < 4 * E)
+    (∀ E : Nat, 48 < E → 3 * (E + 2 * sChainEpsMult 2 0) < 4 * E) ∧
+    (∀ E : Nat, 54 < E → 3 * (E + 2 * (2 + 0 + 7)) < 4 * E ∧ E + 2 * (2 + 0 + 7) < 2 * E)
 ```
 
 반면 `Formalism/LocalRingCardinality/Params.lean:22` 및 `36`이 도입한 동반 랭크 $N(m) = k + m(t + 1)$에서는 $m \le t + 1$이기만 하면 임의의 $k \ge 0$에서 이차 비용 흡수 조건 $m^2 \le k + m(t + 1)$ (`m_sq_le_N`)이 항등적으로 성립합니다.
-시소 항등식이 이차 손실을 상쇄한 뒤 `Formalism/SizeWindowBrackets/SChain.lean:90`과 `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46`의 $(e_D, e_L) = (2, 0)$이 산출하는 임계 지수 $\frac{1}{2} + \frac{8}{E}$는 $E > 48$인 모든 정밀도(특히 허용 영역 $E > 52$ 전체)에서 $3(E + 16) < 4E$, 즉 $\frac{1}{2} + \frac{8}{E} < \frac{2}{3}$를 만족하여 $2/3$ 장벽을 엄격히 돌파합니다.
+시소 항등식이 이차 손실을 상쇄한 뒤 `Development/AutomorphicArithmetic/CharacterBoxes/ShapeWin.lean:46`의 $(e_D, e_L) = (2, 0)$이 산출하는 $\zeta$-명세 지수 $\frac{1}{2} + \frac{8}{E}$ (`Formalism/SizeWindowBrackets/SChain.lean:90`, $E > 48$)와 활성 디리클레 사슬 지수 $\frac{1}{2} + \frac{9}{E}$ (`Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean:12-15`, $E > 54$에서 $< \frac{2}{3}$, 모든 $E > 18$에서 $< 1$)는 둘 다 $E \to \infty$ ($\varepsilon \to 0^+$)에서 $2/3$ 장벽을 엄격히 돌파하여 $1/2$로 수렴합니다.
 
-#### (b) $\mathrm{GL}_5$ 6중 피복 코시-슈바르츠 제곱 부등식 및 그람 행렬 비음수성 (`thm_20`, `proofs/alpoge_ab_deep_audit.lean:493-674`)
-외부 라이브러리 없이 임의 길이 정수 벡터 `u, v : List Int` 위의 일반 코시-슈바르츠 부등식 $(\sum_i u_i v_i)^2 \le (\sum_i u_i^2)(\sum_i v_i^2)$를 판별식 이차형식 항등식으로 직접 증명하였습니다(`cauchy_schwarz_list`, `proofs/alpoge_ab_deep_audit.lean:588-618`).
+#### (b) 5벡터 코시-슈바르츠 제곱 부등식, 그람 행렬 비음수성 및 `RestOpen7 → RestOpen6` 절 압축 (`thm_20`, `proofs/alpoge_ab_deep_audit.lean:594-776`)
+외부 라이브러리 없이 임의 길이 정수 벡터 `u, v : List Int` 위의 일반 코시-슈바르츠 부등식 $(\sum_i u_i v_i)^2 \le (\sum_i u_i^2)(\sum_i v_i^2)$를 판별식 이차형식 항등식으로 직접 증명하였습니다(`cauchy_schwarz_list`, `proofs/alpoge_ab_deep_audit.lean:689-718`).
 선형 결합 제곱합 `combNormSq x y u v := ∑_i (x u_i - y v_i)^2 ≥ 0`을 전개하여 $x = S := u \cdot v$, $y = A := \sum u_i^2$를 대입하면 다음 인수분해가 성립합니다.
 
 $$
@@ -880,7 +881,7 @@ $$
 여기서 $A = 0$이면 `vecDot_eq_zero_of_normSqTr_zero`에 의해 $S = 0$이고, $A > 0$이면 $AB - S^2 \ge 0$이 강제됩니다.
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:588-618
+-- 출처: proofs/alpoge_ab_deep_audit.lean:689-718
 theorem cauchy_schwarz_list (u v : List Int) :
     (vecDot u v) * (vecDot u v) ≤ vecNormSq u * vecNormSq v := by
   let S := vecDot u v
@@ -913,10 +914,10 @@ theorem cauchy_schwarz_list (u v : List Int) :
     omega
 ```
 
-`thm_20`은 이를 `5`차원 $\mathrm{GL}_5$ 벡터 쌍에 특수화하고, 다섯 벡터 $v_0, \dots, v_4$가 이루는 $\mathrm{GL}_5$ 그람 이차형식 `gram5Quad v0 v1 v2 v3 v4 x0 x1 x2 x3 x4` (`Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:57-65` 및 `Formalism/SharpRestriction/CuspSpanNormBounds/GramFlagFamilyOfPositive.lean:15-65`의 `one_le_generic_gram_value` 대응)가 항상 $0$ 이상임을 귀납 증명합니다.
-아울러 6중 메타플렉틱 피복의 단항식 차수 상한 $6k$ (`Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29`) 및 기울기 계수 $3/8$ ($2 \cdot 3 = 6 < 8$, `L58`) 불변량을 함께 확인합니다.
+`thm_20`은 이를 `5`차원 벡터 쌍에 특수화하고, 다섯 벡터 $v_0, \dots, v_4$가 이루는 5세포 푸앵카레 그람 이차형식 `gram5Quad v0 v1 v2 v3 v4 x0 x1 x2 x3 x4` (`Formalism/SharpRestriction/CuspSpanNormBounds/GramProductBounds.lean:57-65` 및 `Formalism/SharpRestriction/CuspSpanNormBounds/GramFlagFamilyOfPositive.lean:15-65`의 `one_le_generic_gram_value` 대응)가 항상 $0$ 이상임을 귀납 증명합니다.
+아울러 그람 지지 다항식 단항식 차수 상한 $6k$ (`Formalism/SharpRestriction/GrowthBounds/DiagonalSupport/GramExponentArithmetic.lean:29`), 부호 사슬 기울기 계수 $3/8$ ($2 \cdot 3 = 6 < 8$, `L58`), 그리고 4절 연언을 3절 연언으로 병합하는 `RestOpen7 → RestOpen6` 명제 압축(`Formalism/SharpRestriction/GrowthBounds/MonomialFactorials/RestrictedBoundsWeakenFromSevenToSix.lean:18`)을 함께 확인합니다.
 
-#### (c) 국소환·열 사슬 행렬식 지수 시소 합동 항등식 (`thm_21`, `proofs/alpoge_ab_deep_audit.lean:684-722`)
+#### (c) 국소환·열 사슬 행렬식 지수 시소 합동 항등식 (`thm_21`, `proofs/alpoge_ab_deep_audit.lean:786-824`)
 `Formalism/LocalRingCardinality/RhoDetPrimeEqMuTildeMulChiPow.lean:216-221` 및 `Formalism/LocalRingCardinality/SpanPowerMembership/RelDetCore.lean:27-38`에서 열 사슬의 인접 단계 $(j, j+1)$에 부여된 두 행렬식 지표 규칙 `rhoDet`과 `rhoDet'`는 다음과 같은 역전 대칭을 이룹니다.
 
 $$
@@ -924,7 +925,7 @@ $$
 $$
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:684-697
+-- 출처: proofs/alpoge_ab_deep_audit.lean:786-799
 theorem thm_21_local_ring_determinant_exponent_congruences
     (k' m' t' j : Nat) (hm : 1 ≤ m') :
     let k := 2 * k'
@@ -941,8 +942,8 @@ theorem thm_21_local_ring_determinant_exponent_congruences
 
 `thm_21`은 `Formalism/LocalRingCardinality/Params.lean:6-47` 및 `91-100`의 기우성 조건 아래에서 (1) 모든 단계 $j$의 차원 $N(j) = 2(k' + j(t'+1))$이 나머지 없이 짝수이고, (2) 인접 단계 결합 시 보조 지표 $\widetilde{\mu}_{j+1}$가 약분되면서 남는 $\chi_D$ 지수 합 $-\frac{N(j+1)}{2} + \frac{N(j)}{2} = -(t' + 1)$이 $j$와 $k$에 무관한 순수 정수 상수가 되며, (3) 기저 공간 항등식 $N(0) + 1 + 2 r_S = r$와 최상단 등식 $N(m) = \mathrm{rankX}' + 1$이 동시에 성립함을 증명합니다.
 
-#### (d) 정적 소수 쌍 `(571, 599)` 대 동적 `WinPair` $q \mid d + 1$ 이중 대수 검증 (`thm_22`, `proofs/alpoge_ab_deep_audit.lean:724-780`)
-단계 제한 $\sqrt{n}$ 나눗셈 소수 판별기 `isPrimeSqrtBool` (`proofs/alpoge_ab_deep_audit.lean:727-735`)을 구축하여 정적 증인과 동적 창문 쌍을 동시에 검증하였습니다.
+#### (d) 정적 소수 쌍 `(571, 599)` 대 동적 `WinPair` $q \mid d + 1$ 이중 대수 검증 (`thm_22`, `proofs/alpoge_ab_deep_audit.lean:826-882`)
+단계 제한 $\sqrt{n}$ 나눗셈 소수 판별기 `isPrimeSqrtBool` (`proofs/alpoge_ab_deep_audit.lean:829-837`)을 구축하여 정적 증인과 동적 창문 쌍을 동시에 검증하였습니다.
 첫째, 정적 호스트 증인 $(571, 599)$에서 $571, 599$의 소수성, $4 \cdot 15 \cdot 9 + 1 < 571$, $599 + 1 = 2^3 \cdot 3 \cdot 5^2$, 비가분성 $600 \bmod 571 = 29 \neq 0$ ($571 \nmid 600$), 그리고 제2 증인 소수 $g_B = 603{,}339{,}156{,}001$의 완전 소인수분해 $g_B - 1 = 2^5 \cdot 3^2 \cdot 5^3 \cdot 7^2 \cdot 571 \cdot 599$ 및 $g_B \equiv 1 \pmod{16 \cdot 571 \cdot 599}$를 검증합니다.
 둘째, 동적 `WinPair` 조건 $q \equiv 3 \pmod 8$, $d \equiv 7 \pmod{16}$, $q \mid d + 1$을 만족하는 임의의 자연수 쌍 $(q, d)$에서 명시적 베주 항등식
 
@@ -952,11 +953,11 @@ $$
 
 을 구성하여 외부 소수 라이브러리 없이 $8q \mid d + 1$, $16 \nmid d + 1$, $8q \le d + 1$을 연역 증명하고, 구체적 동적 소수 쌍 $(q, d) = (11, 9{,}239)$ ($9{,}239 + 1 = 8 \cdot 3 \cdot 5 \cdot 7 \cdot 11$)의 소수성과 모든 합동·약수 조건을 확인합니다.
 
-#### (e) 엄격한 르장드르 계승 상한 및 아라켈로프 곱공식 대수 모순 사슬 (`thm_23`, `proofs/alpoge_ab_deep_audit.lean:782-856`)
-먼저 강한 귀납법으로 $p = d + 2 \ge 2$와 모든 $n \ge 1$에서 $p$-진 자릿수 합이 $s_p(n) \ge 1$ (`baseDigitSum_pos`, `proofs/alpoge_ab_deep_audit.lean:782-802`)임을 증명하여 기존 $(p-1)\nu_p \le n$보다 예리한 엄격 부등식 $(p-1)\nu_p(\Gamma(n+1)) < n$을 확립하였습니다.
+#### (e) 엄격한 르장드르 계승 상한 및 아라켈로프 곱공식 대수 모순 사슬 (`thm_23`, `proofs/alpoge_ab_deep_audit.lean:884-958`)
+먼저 강한 귀납법으로 $p = d + 2 \ge 2$와 모든 $n \ge 1$에서 $p$-진 자릿수 합이 $s_p(n) \ge 1$ (`baseDigitSum_pos`, `proofs/alpoge_ab_deep_audit.lean:884-902`)임을 증명하여 기존 $(p-1)\nu_p \le n$보다 예리한 엄격 부등식 $(p-1)\nu_p(\Gamma(n+1)) < n$을 확립하였습니다.
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:828-839
+-- 출처: proofs/alpoge_ab_deep_audit.lean:930-941
 theorem thm_23_legendre_strict_bound_and_arakelov_product_contradiction :
     (∀ d n : Nat, 1 ≤ n →
       let p := d + 2
@@ -968,11 +969,11 @@ theorem thm_23_legendre_strict_bound_and_arakelov_product_contradiction :
 
 유한 자리 값매김 목록 `vs`가 국소 가분성 하한 `ms` 이상이고 대역 곱공식이 $\sum_i v_i + v_\infty \le 0$을 강제하는 동시에 아르키메데스·스테파노프 하한이 $\sum_i m_i + v_\infty > 0$을 주면 즉시 모순(`False`)이 도출되며, 정수 나눗셈 형태($n > 0$, $D = n q$, $-n < D < n$)에서는 $D = 0$으로 붕괴함을 증명합니다.
 
-#### (f) 함수방정식 반사 $s \mapsto 1 - s$에 의한 임계선 $\mathrm{Re}(s) = 1/2$ 도출 (`thm_24`, `proofs/alpoge_ab_deep_audit.lean:863-876`)
+#### (f) 함수방정식 반사 $s \mapsto 1 - s$에 의한 임계선 $\mathrm{Re}(s) = 1/2$ 도출 (`thm_24`, `proofs/alpoge_ab_deep_audit.lean:965-978`)
 `Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:42-74`, `Development/AutomorphicArithmetic/CharacterBoxes/HalfPlane.lean:3-10`, `Formalism/GammaFactorNonvanishing/CritLine.lean:11-28`, `Development/AutomorphicArithmetic/CharacterBoxes/RiemannHypothesisOfEveryCharacter.lean:215-231`의 논리 구조를 추상 지표 타입 `C`, 쌍대 대합 `inv : C → C`, 스케일된 실수부 `σ : Int`(열린 임계띠 $0 < \sigma < 2 \cdot \mathrm{halfW}$) 위에서 완전 일반화하였습니다.
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:863-876
+-- 출처: proofs/alpoge_ab_deep_audit.lean:965-978
 theorem thm_24_functional_equation_reflection_implies_critical_line
     {C : Type} (inv : C → C) (ZeroAt : C → Int → Prop) (halfW : Int)
     (h_rhp_nonvanish : ∀ (χ : C) (σ : Int), halfW < σ → ¬ ZeroAt χ σ)
@@ -983,11 +984,11 @@ theorem thm_24_functional_equation_reflection_implies_critical_line
 
 만약 $\sigma > \mathrm{halfW}$이면 우반평면 무영점 가설 `h_rhp_nonvanish`와 직접 모순되고, 만약 $\sigma < \mathrm{halfW}$이면 함수방정식 반사 `h_fe_reflect`가 쌍대 지표 `inv χ`에서 반사 영점 $2 \cdot \mathrm{halfW} - \sigma > \mathrm{halfW}$를 생성하여 다시 우반평면 무영점 가설과 모순되므로, 삼분법에 의해 모든 임계띠 영점은 $\sigma = \mathrm{halfW}$ ($\mathrm{Re}(s) = 1/2$) 위에 놓입니다.
 
-#### (g) 비원시 지표 오일러 인자 $(1 - \chi_0(p)p^{-s}) = 0 \implies \mathrm{Re}(s) = 0$ 검증 (`thm_25`, `proofs/alpoge_ab_deep_audit.lean:880-928`)
+#### (g) 비원시 지표 오일러 인자 $(1 - \chi_0(p)p^{-s}) = 0 \implies \mathrm{Re}(s) = 0$ 검증 (`thm_25`, `proofs/alpoge_ab_deep_audit.lean:982-1030`)
 `Main.lean:10`의 `DirichletLZerosOnLine` (`Statements.lean:10-12`)이 왜 열린 구간 $0 < \mathrm{Re}(s) < 1$을 전제하는지 보여 주는 비원시 지표 오일러 인자 정리(`Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean:7-34`)를 스케일된 노름 방정식 `eulerFactorNormMatch p normChi reScaled`로 정식화하였습니다.
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:892-897
+-- 출처: proofs/alpoge_ab_deep_audit.lean:994-999
 theorem thm_25_imprimitive_euler_factor_zero_forces_re_zero (p normChi : Nat) (reScaled : Int)
     (hp : 2 ≤ p) (hchi : normChi = 0 ∨ normChi = 1) :
     (0 < reScaled → ¬ eulerFactorNormMatch p normChi reScaled) ∧
@@ -998,11 +999,11 @@ theorem thm_25_imprimitive_euler_factor_zero_forces_re_zero (p normChi : Nat) (r
 원시 지표 $\chi_0$의 소수 $p \ge 2$에서의 절댓값은 $\mathrm{normChi} \in \{0, 1\}$ ($p \mid \mathrm{cond}(\chi)$이면 $0$, $p \mid N$이되 $p \nmid \mathrm{cond}(\chi)$이면 $1$)입니다.
 `thm_25`는 (1) $\mathrm{Re}(s) > 0$ (`reScaled > 0`)이면 $p^{\mathrm{reScaled}} \ge 2 > \mathrm{normChi}$이므로 오일러 인자가 절대 $0$이 될 수 없고, (2) 오일러 인자가 $0$이 되는 필요충분조건은 $\mathrm{normChi} = 1$이면서 동시에 $\mathrm{reScaled} = 0$, 즉 허수축 $\mathrm{Re}(s) = 0$ 위에서만 여분의 자명 오일러 영점이 나타난다는 사실을 표준 3공리 이하로 증명합니다.
 
-#### (h) 베렌트-이와사와 비둘기집 창문·스틱켈베르거 분모·유니터리 변형·헤케 교대합 (`thm_26` ~ `thm_30`, `proofs/alpoge_ab_deep_audit.lean:932-1141`)
+#### (h) 베렌트-이와사와 비둘기집 창문·스틱켈베르거 분모·유니터리 변형·헤케 교대합 (`thm_26` ~ `thm_30`, `proofs/alpoge_ab_deep_audit.lean:1034-1243`)
 마지막 다섯 정리는 본권 제2~4장의 핵심 신작 보조정리들을 완결 검증합니다.
 
 ```lean
--- 출처: proofs/alpoge_ab_deep_audit.lean:957-1132
+-- 출처: proofs/alpoge_ab_deep_audit.lean:1059-1234
 theorem thm_26_dyadic_window_avoidance_pigeonhole (R B : Nat) (hB : 1 ≤ B) :
     (2 * B) * (2 ^ (R + 2) * B ^ R) = 2 ^ ((R + 1) + 2) * B ^ (R + 1) ∧
     4 ≤ 2 ^ (R + 2) * B ^ R ∧
@@ -1038,15 +1039,15 @@ theorem thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum :
     (∀ m : Nat, (1 + altChainSum m) + (1 + altChainSum (m + 1)) = 1)
 ```
 
-- `thm_26_dyadic_window_avoidance_pigeonhole` (`proofs/alpoge_ab_deep_audit.lean:957-980`): `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58`의 귀납 배율 등식 $(2B)(2^{R+2}B^R) = 2^{(R+1)+2}B^{R+1}$과 유한 비둘기집 정리 `exists_missing_bucket` (`|Exc| ≤ R`이면 $R+1$개 다이아딕 구간 중 최소 하나는 예외 지수와 만나지 않음)을 리스트 필터 길이 감소 귀납법으로 증명합니다.
-- `thm_27_stickelberger_minus_part_factorial_conductor_bound` (`proofs/alpoge_ab_deep_audit.lean:1001-1023`): 보조정리 `factNat_le_pow`를 귀납 증명한 뒤 `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136`의 스틱켈베르거 분모 부등식 $16 F^{e+2} \cdot \mathrm{factNat}(e+1) \le (tF)^{2t+5}$를 고전 선택공리조차 쓰지 않는 직관주의 증명(`[propext, Quot.sound]`)으로 완결합니다.
-- `thm_28_behrend_thick_set_determinant_vanishing` (`proofs/alpoge_ab_deep_audit.lean:1030-1079`): `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66`의 3항 진행 행렬식 $D = (i_3 - i_1)(y_2 - y_1) - (i_2 - i_1)(y_3 - y_1)$이 $4 L_w y_k < n$ 조건 아래 $-n < 2D < n$을 만족하여 $D = nq \implies D = 0$으로 붕괴함을 증명합니다.
-- `thm_29_unitary_three_countV_exponent_step` (`proofs/alpoge_ab_deep_audit.lean:1088-1103`): `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25`의 분모 제거 부등식 $aL \le E X^{C+1}$과 `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/ClassNumberThree.lean:64-87`의 $\ell = 5$ 대 $\ell = 7$ ($e = 2$) 분기 판별식을 검증합니다.
-- `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` (`proofs/alpoge_ab_deep_audit.lean:1129-1141`): `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64`의 라마누잔 $\Delta$ 형식 헤케 고유관계 `heckeTo 12 1 2 ramanujanTauStub 2 = (-24)^2 = 576`과 `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89`의 모든 차수 $m \ge 0$ 단체 경계 교대합 항등식을 귀납법과 `grind` 결정기로 최종 검증합니다.
+- `thm_26_dyadic_window_avoidance_pigeonhole` (`proofs/alpoge_ab_deep_audit.lean:1059-1082`): `Development/AutomorphicArithmetic/AutomorphicVarieties/LayeredIsomorphisms/Window1.lean:6-58`의 귀납 배율 등식 $(2B)(2^{R+2}B^R) = 2^{(R+1)+2}B^{R+1}$과 유한 비둘기집 정리 `exists_missing_bucket` (`|Exc| ≤ R`이면 $R+1$개 다이아딕 구간 중 최소 하나는 예외 지수와 만나지 않음)을 리스트 필터 길이 감소 귀납법으로 증명합니다.
+- `thm_27_stickelberger_minus_part_factorial_conductor_bound` (`proofs/alpoge_ab_deep_audit.lean:1103-1125`): 보조정리 `factNat_le_pow`를 귀납 증명한 뒤 `Development/AutomorphicArithmetic/AutomorphicVarieties/OddResidueBounds/ThmBcOfPsiBound.lean:110-136`의 스틱켈베르거 분모 부등식 $16 F^{e+2} \cdot \mathrm{factNat}(e+1) \le (tF)^{2t+5}$를 고전 선택공리조차 쓰지 않는 직관주의 증명(`[propext, Quot.sound]`)으로 완결합니다.
+- `thm_28_behrend_thick_set_determinant_vanishing` (`proofs/alpoge_ab_deep_audit.lean:1132-1181`): `Formalism/BehrendSets/BehrendVariance/SpaceFreeOfBehrendFree.lean:24-66`의 3항 진행 행렬식 $D = (i_3 - i_1)(y_2 - y_1) - (i_2 - i_1)(y_3 - y_1)$이 $4 L_w y_k < n$ 조건 아래 $-n < 2D < n$을 만족하여 $D = nq \implies D = 0$으로 붕괴함을 증명합니다.
+- `thm_29_unitary_three_countV_exponent_step` (`proofs/alpoge_ab_deep_audit.lean:1190-1205`): `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ThresholdArguments/DenseThresholdCases/CountVOf.lean:11-25`의 분모 제거 부등식 $aL \le E X^{C+1}$과 `Development/AutomorphicArithmetic/AutomorphicVarieties/SmallClassNumbers/ClassNumberThree.lean:64-87`의 $\ell = 5$ 대 $\ell = 7$ ($e = 2$) 분기 판별식을 검증합니다.
+- `thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum` (`proofs/alpoge_ab_deep_audit.lean:1231-1243`): `Development/AbelianVarietyTheory/Definitions/Foundations/PetIPSmulRight.lean:21-64`의 라마누잔 $\Delta$ 형식 헤케 고유관계 `heckeTo 12 1 2 ramanujanTauStub 2 = (-24)^2 = 576`과 `Development/AutomorphicArithmetic/AutomorphicVarieties/ModularityArgument/ClassCounting/SChain.lean:81-89`의 모든 차수 $m \ge 0$ 단체 경계 교대합 항등식을 귀납법과 `grind` 결정기로 최종 검증합니다.
 
 ### 5.4 독립 재현 명령 및 기계 검증 무결성 종합 원장
 
-독립 검증 파일 `proofs/alpoge_ab_deep_audit.lean:1-1143`의 컴파일과 공리 감사는 아래 단일 표준 명령으로 즉시 재현됩니다.
+독립 검증 파일 `proofs/alpoge_ab_deep_audit.lean:1-1245`의 컴파일과 공리 감사는 아래 단일 표준 명령으로 즉시 재현됩니다.
 
 ```bash
 ~/.elan/bin/lean proofs/alpoge_ab_deep_audit.lean
@@ -1058,9 +1059,9 @@ theorem thm_30_b08_ramanujan_hecke_and_simplicial_alternating_sum :
 | :--- | :--- | :--- |
 | 해독 원뿔 `Pure_Vwin_Outside_Literature` | `10,832`개 파일 · `1,029,481`줄 · `61,209`개 선언 | `B06`(`3,747`) + `B07`(`1,895`) + `B08`(`5,190`) |
 | `Pure_Vwin` 내 자동 탐색 전술(`aesop`, `contrapose`) | `0`건 (`0.000%`) | `61,209`개 선언 전수 결정론적 구성 |
-| 독립 감사 파일 `proofs/alpoge_ab_deep_audit.lean` | `1,143`줄 · 총 `74`개 선언 (`44`개 정리 + `29`개 정의 + `1`개 귀납 타입) | 외부 패키지(`Mathlib` 등) 의존성 `0`건 |
+| 독립 감사 파일 `proofs/alpoge_ab_deep_audit.lean` | `1,245`줄 · 총 `77`개 선언 (`44`개 정리 + `32`개 정의 + `1`개 귀납 타입) | 외부 패키지(`Mathlib` 등) 의존성 `0`건 |
 | 주 정리(`thm_01` ~ `thm_30`) 및 보조 정리 수 | 주 정리 `30`건 + 보조 정리 `14`건 = `44`건 | 목표 기준(`28`개 이상) 초과 달성 |
 | Lean `v4.36.0` 컴파일 종료 코드 및 진단 | 종료 코드 `0` · 에러 `0`건 · 경고 `0`건 | `sorry` `0`건 · `axiom` `0`건 · `unsafe` `0`건 |
-| `#print axioms` 무공리(`none`) 주 정리 | `5`건 (`thm_07`, `thm_11`, `thm_13`, `thm_14`, `thm_18`) | 순수 커널 계산 반사(`decide` / `rfl`) |
-| `#print axioms` 직관주의(`propext, Quot.sound`) 주 정리 | `9`건 (`thm_01`, `03`, `04`, `05`, `09`, `10`, `12`, `17`, `27`) | `Classical.choice` 불사용 |
-| `#print axioms` 표준 고전 3공리 이하 주 정리 | `16`건 (`thm_02`, `06`, `08`, `15`, `16`, `19`~`26`, `28`~`30`) | 모든 정리 표준 내장 공리 이하 완결 |
+| `#print axioms` 무공리(`none`) 주 정리 | `2`건 (`thm_07`, `thm_13`) | 순수 커널 계산 반사(`decide`) |
+| `#print axioms` 직관주의(`propext, Quot.sound`) 주 정리 | `8`건 (`thm_03`, `04`, `05`, `09`, `10`, `12`, `17`, `27`) | `Classical.choice` 불사용 |
+| `#print axioms` 표준 고전 3공리 이하 주 정리 | `20`건 (`thm_01`, `02`, `06`, `08`, `11`, `14`~`16`, `18`~`26`, `28`~`30`) | 모든 정리 표준 내장 공리 이하 완결 |

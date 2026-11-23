@@ -15,7 +15,7 @@
     "proofs/classical_dlvp_korobov_and_zero_free.lean": "2a92e463b1b09c54bfd7981ccf5dff3619daae33fd178da0e52563726d58f341",
     "proofs/classical_ingham_huxley_zero_density.lean": "21dc3cf43f73fb819b42e5411d4905d2dc54f8477f64ac62c3d6491ee434b140",
     "proofs/classical_guth_maynard_and_qrh_gram.lean": "fbd5c524ed2283a65763c1d6e4a83f09320f969f01ccf967ff96d2a9761494a3",
-    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "10830e4e50668c2da9d85feb45823e82c152f3ade0ae7029f399f9b8679dae2a",
+    "proofs/classical_siegel_zero_and_ineffectiveness.lean": "8e78df0cb546216bfaba0d362de06cb1735f4ecae50e1356b5510cfb361b1f9d",
     "proofs/classical_levinson_conrey_and_mollifier_barrier.lean": "3d065f7dc823c42c261932e4423714b9d85b3bef79e12db9bba189ba731faff5",
     "proofs/classical_burgess_and_kim_sarnak_barrier.lean": "776e09813a00b76adaa702a1905b0bec3c7c83d94959021447682fd9d8f9c0e1",
     "proofs/verify_symbolic_classical_riemann.py": "201563b296cc49b2f3b46775b44f2270d705b7febedffcc0412a3c79b099a9df",

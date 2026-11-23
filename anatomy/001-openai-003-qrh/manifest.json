@@ -16,11 +16,11 @@
     "proofs/problem_spec.md": "7738b0510123db636cde912e60a856b2055b75ba561ce8dcebf1b3865ee30625",
     "ko/01_초보자용_쉬운해설.md": "2a8740cb9f371caa0f0f18feda80e121b65d73ac1e6edd47038a46ead9b11d79",
     "ko/02_중급자용_구조및수식가이드.md": "028502d563de16f67c0a426564b1473259dce7c53a054d94b87a662004dc0d08",
-    "ko/03_전문가용_수론및형식증명보고서.md": "3ee4373542b2e49acb9c33e275b540e6a6dec58a2421749de9cc51e00c6b3781",
+    "ko/03_전문가용_수론및형식증명보고서.md": "e2fada7b8b83613c8818e3db8f628f879dd6b9a41bbbea870f627d9caf26c7be",
     "ko/04_자동검증및파서용_명세서.md": "75e4da8492ea3a1ea45256a1b5f1f61d10b8f35093f06308d5e8b7d924459f42",
     "en/01_Beginner_Guide.md": "7ca89ad692ef182dee4b60b37ca6b3fe711e49d692273adfc635e5947a172b2f",
     "en/02_Intermediate_Math_and_Code_Guide.md": "a56e74ed93ce865453e7f053e7fd8cd3eb0b67d00542a8842158e0d02be4a845",
-    "en/03_Expert_Mathematical_and_Formal_Report.md": "2d3d1dc0bb2d3e7cb21455f3b0a82716cf8b3a00fefcee28717c7d9a33cd6485",
+    "en/03_Expert_Mathematical_and_Formal_Report.md": "5bf695c811c1185c6d053c88fa66670d888dae9436730e01d7b680bd278067d3",
     "en/04_Automated_Verification_and_Manifest.md": "d5469bb95a4f8747813c62a02cf579910c9d0be9c3daf695e5c913c7d1c7f56f"
   },
   "verification_scope": {

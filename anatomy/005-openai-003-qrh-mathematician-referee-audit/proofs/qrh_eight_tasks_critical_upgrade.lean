@@ -133,11 +133,11 @@ theorem thm_44_task6_voronoi_mellin_conductor_neutral_transfer_lemma
     delta_cond_w132 + e_voronoi_dual132 = 48 ∧ e_voronoi_dual132 + d_mellin132 = 107 ∧ d_mellin132 + e_gram_l2_132 = 98 ∧ e_gram_l2_132 + e_low_final132 = 19 ∧ e_low_final132 + e_target132 = -37 ∧
     e_target132 + margin_l2_132 = -14 ∧ 0 < margin_l2_132 := by rw [hres_op, hc_mean, Int.zero_mul] at *; omega
 
-/-- [Theorem 45] (Task 7: `k_∞ = -6` Bi-Stickelberger Hecke Größencharakter Entirety & Phragmén-Lindelöf Convexity Lemma):
-Over `K = ℚ(√-3)` (`d_K = 2`), the Stickelberger character `Ξ_1 = ψ_Stick η^6` has archimedean frequency `k_∞ = -6 ≠ 0`
-(`gamma_shift = |k_∞|/2 = 3 > 0`), so the trivial-character indicator is `δ_triv = 0` and Hecke's pole residue at
-`w_1 = 6s + 6z - 4 = 1` vanishes (`res_s1 = 0`). At `a = 1/2, ξ = 33/200`, `σ_1 = -1/100 < 0` and `σ_2 = 99/100 ∈ [0,1]`, giving
-`d_K = 2` convexity exponents `μ_1 = 102/100`, `μ_2 = 1/100`, and `μ_bi = 103/100 ≤ 300/100 = 3` (`197/100` margin). -/
+/-- [Theorem 45] (Task 7: Discrete Stickelberger Frequency-Shift & `d_K = 2` Convexity-Budget Accounting):
+Given classical Hecke entirety for `k_∞ = -6 ≠ 0` (`gamma_shift = |k_∞|/2 = 3 > 0`, `δ_triv = 0`, `res_s1 = 0`;
+complex-analytic entirety of `L(s, Ξ_1)` is an external Hecke input), verifies the piecewise `d_K = 2` convexity-exponent
+budget at `a = 1/2, ξ = 33/200` (`σ_1 = -1/100 < 0`, `σ_2 = 99/100 ∈ [0,1]`): `μ_1 = 102/100`, `μ_2 = 1/100`,
+`μ_bi = 103/100 ≤ 300/100 = 3`, and universal left-strip growth `∀ s < σ_1, μ_1 < 50*d_K - 2*s`. -/
 theorem thm_45_task7_bi_stickelberger_grossencharakter_entirety_and_convexity
     (k_inf d_K gamma_shift delta_triv res_s1 a200 xi200 sigma_1_100 sigma_2_100 mu_1_100 mu_2_100 mu_bi100 d_budget100 margin_mu100 : Int)
     (hkinf : k_inf = -6) (hdK : d_K = 2) (hgam : 2 * gamma_shift = -k_inf) (htriv : delta_triv = k_inf + 2 * gamma_shift) (hres : res_s1 = 2 * delta_triv)
@@ -146,7 +146,7 @@ theorem thm_45_task7_bi_stickelberger_grossencharakter_entirety_and_convexity
     (hmu1 : mu_1_100 = 50 * d_K - 2 * sigma_1_100) (hmu2 : 2 * mu_2_100 = d_K * 100 - 2 * sigma_2_100)
     (hmubi : mu_bi100 = mu_1_100 + mu_2_100) (hdb : d_budget100 = 300) (hmrg : margin_mu100 = d_budget100 - mu_bi100) :
     gamma_shift = 3 ∧ 0 < gamma_shift ∧ delta_triv = 0 ∧ res_s1 = 0 ∧ sigma_1_100 = -1 ∧ sigma_2_100 = 99 ∧
-    mu_1_100 = 102 ∧ mu_2_100 = 1 ∧ mu_bi100 = 103 ∧ margin_mu100 = 197 ∧ 0 < margin_mu100 ∧ mu_bi100 ≤ d_budget100 := by omega
+    mu_1_100 = 102 ∧ mu_2_100 = 1 ∧ mu_bi100 = 103 ∧ margin_mu100 = 197 ∧ 0 < margin_mu100 ∧ mu_bi100 ≤ d_budget100 ∧ (∀ s : Int, s < sigma_1_100 → mu_1_100 < 50 * d_K - 2 * s) := by subst hdK; refine ⟨by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, fun s hs => by omega⟩
 
 /-- [Theorem 46] (Task 8: Family-to-Individual `ζ(s)` Conductor-Collapse Deficit & Required Amplification Threshold Inversion):
 Collapsing the character family `M_fam ~ Q/Y = Z^(35/66 = 70/132)` to a single character `M_single = 1` (`ζ(s)`) replaces
@@ -170,11 +170,11 @@ theorem thm_46_task8_family_to_individual_zeta_amplification_obstruction_and_bri
     unamp_zeta132 = 4 ∧ 0 < unamp_zeta132 ∧ 24 ≤ gain_amp132 ∧ 2 * delta_collapse132 ≤ lambda_amp132 + 2 * theta_t132 ∧
     lambda_amp132 < 2 * gain_amp132 ∧ e_zeta_bridged132 < e_target132 := by omega
 
-/-- [Theorem 47] (Extension of Task 6: Discrete Euler-Maclaurin Zero-Mode Residue Decay at `w = 1`):
-Replacing the abstract `res_w1 = 0` hypothesis of `thm_44` by the explicit discrete-to-continuous Euler-Maclaurin error
-on the `M ~ Q/Y = Z^(α_X = 70/132)` grid shows that even under worst-case `x`-conductor inflation `Δe_cond_x = +70/132`,
-the `k = 2` Schwartz boundary condition (`K_0(0) = 0`, leading Bernoulli factor `|B_2|/2! = 1/12`) drives the discrete `w = 1`
-residue exponent to `e_res_k2 = 39/132 + 70/132 - 140/132 = -31/132 < -20/132 < -17/132` (`+14/132 = +7/66` strict margin). -/
+/-- [Theorem 47] (Extension of Task 6: Discrete Euler-Maclaurin Grid-Exponent Scaling Accounting for `k ≥ 2`):
+Models the discrete grid-step exponent `e_res(k) = e_low0 + Δe_cond_x - k * α_X` on `M ~ Q/Y = Z^(α_X = 70/132)`
+(continuous integral remainder bounds external): even under worst-case `x`-conductor inflation `Δe_cond_x = +70/132`,
+every smoothing order `k ≥ 2` (`K_0(0) = 0`) drives the discrete grid exponent to `e_res(k) ≤ -31/132 < -20/132 < -17/132`
+(`+14/132 = +7/66` strict margin below `E_prin(1/2)`). -/
 theorem thm_47_euler_maclaurin_discrete_zero_mode_residue_decay
     (aX132 aY132 e_low0_132 delta_cond_x132 e_res_k1_132 e_res_k2_132 e_res_k3_132 e_low_damped132 e_target132 margin_k2_target132 margin_k2_damped132 margin_k3_target132 : Int)
     (haX : aX132 = 70) (haY : aY132 = 118)
@@ -189,7 +189,7 @@ theorem thm_47_euler_maclaurin_discrete_zero_mode_residue_decay
     e_low0_132 = 39 ∧ delta_cond_x132 = 70 ∧ e_res_k1_132 = 39 ∧ e_res_k2_132 = -31 ∧ e_res_k3_132 = -101 ∧
     e_low_damped132 = -20 ∧ e_target132 = -17 ∧ e_res_k2_132 < e_low_damped132 ∧ e_low_damped132 < e_target132 ∧
     margin_k2_target132 = 14 ∧ margin_k2_damped132 = 11 ∧ margin_k3_target132 = 84 ∧
-    0 < margin_k2_target132 ∧ 0 < margin_k2_damped132 ∧ 0 < margin_k3_target132 := by omega
+    0 < margin_k2_target132 ∧ 0 < margin_k2_damped132 ∧ 0 < margin_k3_target132 ∧ (∀ k : Int, 2 ≤ k → e_low0_132 + delta_cond_x132 - k * aX132 ≤ e_res_k2_132) := by subst haX; refine ⟨by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, by omega, fun k hk => by omega⟩
 
 /-- [Theorem 48] (Extension of Task 8: Welch Rank-Trace Duality Identity & Classical Subconvexity `β_ζ*` Bridge):
 At `(α_X, α_Y) = (70/132, 118/132)`, Path A's Welch rank-trace column-orthogonality cap `Δ_Welch = α_X/2 = 35/132` and

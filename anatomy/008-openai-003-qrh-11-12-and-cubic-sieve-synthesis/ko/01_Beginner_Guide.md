@@ -9,7 +9,7 @@
 1. 왜 논문은 $\text{Re}(s) > 11/12$를 제시하는데 독립 ShortDraft 서브모듈은 $23/24$만 증명하는가?
    - paper.tex 1부와 paper2.tex(openai/math 커밋 4eaee87 / PR #70 ca28f20)의 도입 정리는 무영점 영역 폭을 $1 - 11/12 = 1/12 \approx 0.0833$으로 제시합니다.
    - 저장소 주정리 SevenEighths.lean($\beta = 7/8 = 21/24$, 0 sorry)이 이미 $11/12$와 $23/24$를 모두 함의하고 DescentScale.lean도 저장소에 존재하지만, 별도 서브모듈인 DirichletL/RowCompletion/ZeroFreeRegion.lean의 ShortDraft.DirichletTarget은 폭이 절반인 $\text{Re}(s) > 23/24$(폭 $1/24 \approx 0.0417$)만 증명합니다.
-   - [thm_01_shortdraft_fixed_reserve_and_23_24_exponent](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L25-L38)과 [thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L76-L92)에서 우리는 ClosedRecursion.lean의 $\text{reserve} = \frac{1}{20}$ 상수가 하드코딩되어 $\vartheta = 1/10$로 묶였기 때문임을 밝히고, CanonicalDescentScale(DescentScale.lean)로 $\frac{11}{12} + \varepsilon$이 열림을 증명했습니다.
+   - [thm_01_shortdraft_fixed_reserve_and_23_24_exponent](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L25-L38)과 [thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L76-L92)에서 우리는 RankMargins.lean:83-132의 $\text{reserve} = \frac{1}{20}$ 상수(`ClosedRecursion.lean:120` $\eta \le 1/1000$)가 하드코딩되어 $\vartheta = 1/10$로 묶였기 때문임을 밝히고, CanonicalDescentScale(`PR #70` DescentScale.lean)로 $\frac{11}{12} + \varepsilon$이 열림을 증명했습니다.
 2. 왜 30개 파일(6,252줄) 분량의 날카로운 삼차 큰 체(CubicGauss/)가 미연결 상태로 남아 있는가?
    - lean/OAI/NumberTheory/CubicGauss/(openai/math 커밋 4eaee87 / PR #70 ca28f20)에는 히스-브라운(Heath-Brown)의 날카로운 $2/3$ 삼차 큰 체 부등식이 0 sorry로 완성되어 있습니다.
    - 그러나 DirichletL의 어떤 파일도 CubicGauss를 임포트하지 않고 CubicGram만 사용합니다([thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L297-L311)).
@@ -40,10 +40,10 @@
 4. 4단계, 제2부 고정 스케일 전역 SOS 안장점: $\beta = (6843 - 7\sqrt{921})/7578 \approx 0.87497547$, 영역 폭 $0.12502453$ ($3.0006\times$).
 5. 5단계, Baiying Liu 유리수 섭동 (arXiv:2610.12234, 미심사 프리프린트): $\beta = 34999/40000 = 0.87497500$, 영역 폭 $5001/40000 = 0.125025$.
 6. 6단계, Baiying Liu 3-평면 $\mathbb{Q}(\sqrt{921})$ 최적해 (arXiv:2610.12234, 미심사 프리프린트): $\beta = (1507 - 2\sqrt{921})/1653 \approx 0.87495707$, 영역 폭 $0.12504293$ ($3.0010\times$).
-7. 7단계, Xu-Sang $\delta = 0$ 6차 모멘트 증폭 (arXiv:2610.15291, 미심사 프리프린트): $\beta = 8748867/10000000 = 0.87488670$, 영역 폭 $0.12511330$ ($3.0027\times$).
+7. 7단계, Y. Xu & H. Sang $\delta = 0$ 반사 분자 증폭 모멘트 (arXiv:2610.15291, 미심사 프리프린트): $\beta = 8748867/10000000 = 0.87488670$, 영역 폭 $0.12511330$ ($3.0027\times$).
 8. 8단계, 제2부 2항 비묶음 그람 + 슈티켈베르거 이동 지수 목표치: $\beta = 4103/4896 \approx 0.83803105$, 영역 폭 $793/4896 \approx 0.16197$ ($3.89\times$).
 9. 9단계, 제2부 3항 비묶음 그람 + 슈티켈베르거 이동 지수 목표치: $\beta = 4069/4896 \approx 0.83108660$, 영역 폭 $827/4896 \approx 0.16891$ ($4.05\times$).
-10. 10단계, 조건부 LP 합성 바닥 (제2부 + CubicGauss 지수 설계도): $\beta = 71/108 \approx 0.65740741$, 영역 폭 $37/108 \approx 0.34259$ ($8.22\times$), 슈티켈베르거 극점 소멸 및 보로노이-멜린 전달의 해석적 증명 구축에 조건부로 의존.
+10. 10단계, 형식적 영에너지 LP 절편 ($\Delta_{\mathrm{gram}} = 53/216$ 가상 상쇄 + 슈티켈베르거 설계도): $\beta = 71/108 \approx 0.65740741$, 영역 폭 $37/108 \approx 0.34259$ ($8.22\times$).
 
 ## 4. 단계별 문서 안내
 

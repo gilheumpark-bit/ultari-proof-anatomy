@@ -131,7 +131,7 @@ theorem thm_41_siegel_implied_constant_decay_with_q1_blowup (C0 M1 A β1 q1a q1b
   exact ⟨mul_pos hpref_pos (Real.rpow_pos_of_pos hqb_pos _),
     mul_lt_mul_of_pos_left hneg_lt hpref_pos⟩
 
-/-- [Theorem 42] Ineffectiveness No-Go: every candidate effective floor `c_prop > 0` is defeated by large `q_1`. -/
+/-- [Theorem 42] Auxiliary-Conductor Scaling Decay: for any candidate floor `c_prop > 0`, large `q_1 > 1` forces `c_scale * q_1^(-γ) < c_prop` (real scaling bound, not a meta-logical `Classical.em` theorem). -/
 theorem thm_42_siegel_two_case_nonconstructive_lem_barrier (c_prop c_scale γ : ℝ)
     (hc_prop : 0 < c_prop) (hc_scale : 0 < c_scale) (hγ : 0 < γ) :
     ∃ q1 : ℝ, 1 < q1 ∧ 0 < c_scale * q1 ^ (-γ) ∧ c_scale * q1 ^ (-γ) < c_prop := by

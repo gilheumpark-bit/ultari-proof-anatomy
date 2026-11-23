@@ -6,9 +6,9 @@
 
 ## 핵심 해부 결과
 
-1. `ShortDraft` 23/24 대 11/12 모듈 층위·중간 목표 분석: `#003`의 증명된 주정리 `SevenEighths.lean`($\beta = 7/8 = 21/24$, `0 sorry`)이 이미 $11/12$와 $23/24$를 논리적으로 함의하며 `DescentScale.lean`도 저장소에 존재하지만, `DirichletL/CubicSieve/ClosedRecursion.lean`의 `reserve = 1/20` 상수가 독립 `ShortDraft` 목표만 $\vartheta = 1/10 \implies \frac{23}{24}$에 고정시킨 원인임과 `CanonicalDescentScale`의 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
+1. `ShortDraft` 23/24 대 11/12 모듈 층위·중간 목표 분석: `#003`의 증명된 $7/8$ 주정리(`4eaee87` 공식 `DirichletL/Nonvanishing.lean`, `PR #70` `ca28f20` `SevenEighths.lean`, `0 sorry`)가 이미 $11/12$와 $23/24$를 논리적으로 함의하지만, `DirichletL/CubicSieve/RankMargins.lean:83-132`의 `reserve = 1/20` 상수(`ClosedRecursion.lean:120` $\eta \le 1/1000$)가 독립 `ShortDraft` 목표만 $\vartheta = 1/10 \implies \frac{23}{24}$에 고정시킨 원인임과 `CanonicalDescentScale`(`PR #70` `DescentScale.lean`)의 $\frac{11}{12}+\varepsilon$ 확장을 증명합니다.
 2. 미연결 `CubicGauss` 발굴 및 귀납법 닫힌 해: 미연결 30개 파일(6,252줄)의 날카로운 $2/3$ 삼차 큰 체를 감사하고, 모든 $n \in \mathbb{N}$에서 점화식 `sieveIter`의 일반항 $\frac{4\cdot 3^n - 2^{n+1}}{3\cdot 3^n - 2^{n+1}}$을 수학적 귀납법으로 증명합니다. `CubicGauss/LargeSieve.lean:75`의 기하급수 상계 역시 정확한 점화식과 동일한 점근 고정점 $\alpha^* = 4/3$에 도달하는 유효한 단순화입니다.
-3. $\mathbb{Z}[\sqrt{921}]$ 링 및 조건부 3부작 지수 합성: 제2부와 Liu(`arXiv:2610.12234`, 미심사 프리프린트)의 $\mathbb{Q}(\sqrt{921})$ 이차방정식을 통합합니다. `0 sorry` Lean 4 정리(`thm_27`, `thm_40`)는 $\beta = \frac{71}{108} \approx 0.6574$에 이르는 **조건부 LP/대수적 지수 합성**을 검증하며, 실제 $\beta = \frac{71}{108}$ 달성은 **슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달의 완전한 해석적 증명 구축**(아직 구현되지 않은 이론적 설계도)에 조건부로 의존함을 명시하고 $\beta = \frac{1}{2}$ 도달에 필요한 추가 조건 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$과 구분합니다.
+3. $\mathbb{Z}[\sqrt{921}]$ 링 및 조건부 3부작 지수 합성: 제2부와 Liu(`arXiv:2610.12234`, 미심사 프리프린트)의 $\mathbb{Q}(\sqrt{921})$ 이차방정식을 통합합니다. `0 sorry` Lean 4 정리(`thm_27`, `thm_40`)는 `CubicGauss`가 남기는 양의 저차 행 지수 $53/216 > 0$과 가상적 완전 상쇄($\Delta_{\mathrm{gram}} = 53/216$) 아래의 **형식적 영에너지 LP 절편** $\beta = \frac{71}{108} \approx 0.6574$을 구분하여 검증하며, 실제 달성은 그 추가 상쇄와 **슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달 증명 구축**에 조건부로 의존함을 $\Delta_{\mathrm{hybrid}} = \frac{14}{33}$ 조건과 분리합니다.
 
 ## 4단계 독자 맞춤형 가이드
 

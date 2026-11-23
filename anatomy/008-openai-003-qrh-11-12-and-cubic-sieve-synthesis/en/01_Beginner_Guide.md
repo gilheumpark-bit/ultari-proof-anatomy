@@ -9,7 +9,7 @@ Note upfront on overall #003 scope: OpenAI #003's proved main theorem in SevenEi
 1. Why Does the Standalone ShortDraft Submodule Prove $\text{Re}(s) > 23/24$ When the Paper States $11/12$?
    - Both paper.tex and paper2.tex (openai/math commit 4eaee87 / PR #70 ca28f20) present a warm-up zero-free strip of $\text{Re}(s) > 11/12 = 22/24$ (width $1/12$).
    - While the repository's proved main theorem SevenEighths.lean ($\beta = 7/8 = 21/24$, 0 sorry) already implies both $11/12$ and $23/24$ and DescentScale.lean exists in-repo, the standalone submodule ShortDraft.DirichletTarget in DirichletL/RowCompletion/ZeroFreeRegion.lean only proves $\text{Re}(s) > 23/24$ (width $1/24$, half as wide).
-   - We prove in [thm_01_shortdraft_fixed_reserve_and_23_24_exponent](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L25-L38) and [thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L76-L92) that hardcoding $\text{reserve} = \frac{1}{20}$ in ClosedRecursion.lean locked $\vartheta = 1/10$, whereas switching to CanonicalDescentScale (DescentScale.lean) unlocks $\frac{11}{12} + \varepsilon$.
+   - We prove in [thm_01_shortdraft_fixed_reserve_and_23_24_exponent](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L25-L38) and [thm_04_canonical_descent_scale_budget_unlocks_arbitrary_theta](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L76-L92) that hardcoding $\text{reserve} = \frac{1}{20}$ in RankMargins.lean:83-132 (`η ≤ 1/1000` at ClosedRecursion.lean:120) locked $\vartheta = 1/10$, whereas switching to CanonicalDescentScale (`PR #70` DescentScale.lean) unlocks $\frac{11}{12} + \varepsilon$.
 2. Why Is the 30-File Sharp Cubic Large Sieve (CubicGauss/) Left Unimported?
    - Inside lean/OAI/NumberTheory/CubicGauss/ (openai/math commit 4eaee87 / PR #70 ca28f20), OpenAI formalized Heath-Brown's cubic large sieve with the sharp exponent $2/3$ (0 sorry).
    - However, zero files in DirichletL import CubicGauss ([thm_15_unimported_cubic_gauss_vs_bundled_cubic_gram_gap](../proofs/qrh_eleven_twelfths_and_cubic_large_sieve.lean#L297-L311)).
@@ -40,10 +40,10 @@ Note upfront on overall #003 scope: OpenAI #003's proved main theorem in SevenEi
 4. Tier 4, Part II Fixed-Scale Global SOS Saddle: $\beta = (6843 - 7\sqrt{921})/7578 \approx 0.87497547$, strip width $0.12502453$ ($3.0006\times$).
 5. Tier 5, Baiying Liu Rational Perturbation (arXiv:2610.12234, unrefereed preprint): $\beta = 34999/40000 = 0.87497500$, strip width $5001/40000 = 0.125025$.
 6. Tier 6, Baiying Liu 3-Face $\mathbb{Q}(\sqrt{921})$ Optimum (arXiv:2610.12234, unrefereed preprint): $\beta = (1507 - 2\sqrt{921})/1653 \approx 0.87495707$, strip width $0.12504293$ ($3.0010\times$).
-7. Tier 7, Xu-Sang $\delta = 0$ Amplification (arXiv:2610.15291, unrefereed preprint): $\beta = 8748867/10000000 = 0.87488670$, strip width $0.12511330$ ($3.0027\times$).
+7. Tier 7, Y. Xu & H. Sang $\delta = 0$ Reflected-Numerator Amplification (arXiv:2610.15291, unrefereed preprint): $\beta = 8748867/10000000 = 0.87488670$, strip width $0.12511330$ ($3.0027\times$).
 8. Tier 8, Part II 2-Term Unbundled Gram plus Stickelberger exponent target: $\beta = 4103/4896 \approx 0.83803105$, strip width $793/4896 \approx 0.16197$ ($3.89\times$).
 9. Tier 9, Part II 3-Term Unbundled Gram plus Stickelberger exponent target: $\beta = 4069/4896 \approx 0.83108660$, strip width $827/4896 \approx 0.16891$ ($4.05\times$).
-10. Tier 10, Conditional LP Synthesis Floor (Part II plus CubicGauss exponent blueprint): $\beta = 71/108 \approx 0.65740741$, strip width $37/108 \approx 0.34259$ ($8.22\times$), contingent on constructing the full analytic Stickelberger pole-cancellation and Voronoi-Mellin transfer proof.
+10. Tier 10, Formal Zero-Energy LP Intercept (hypothetical $\Delta_{\mathrm{gram}} = 53/216$ cancellation + Stickelberger blueprint): $\beta = 71/108 \approx 0.65740741$, strip width $37/108 \approx 0.34259$ ($8.22\times$).
 
 ## 4. Navigation Across Tiers
 

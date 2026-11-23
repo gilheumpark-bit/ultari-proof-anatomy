@@ -39,7 +39,7 @@ EDITIONS = {
   <div class="spine-row"><div class="spine-node spine-mid"><strong>중간 총괄 정리 (UpperTheory.EveryCharacter)</strong><br/>모든 디리클레 L-함수의 우반평면 Re(s) &gt; 1/2 무영점</div></div>
   <div class="spine-arrow">▲ 계단 B : 기출 195선 + 보형 창문 결합 (EveryCharacterOfLiteratureOfVWin.lean:810-814)</div>
   <div class="spine-split">
-    <div class="spine-node spine-sub"><strong>기출 대정리 창고 (88.35%)</strong><br/>OpenLiteratureStatements<br/>현대 수학 대정리 195개 자급자족 증명</div>
+    <div class="spine-node spine-sub"><strong>기출 대정리 이행적 콘 (88.35%)</strong><br/>OpenLiteratureStatements<br/>순수 기출 75.69% + 공유 Formalism 기초</div>
     <div class="spine-node spine-accent"><strong>신작 보형 창문 정리 (핵심 엔진)</strong><br/>UpperTheory.Top.VWin (지수 상한 401)<br/>제곱근 반복 세타 리프트 + 시소 약분</div>
   </div>
   <div class="spine-arrow">▲ 계단 C : 공통 갈루아-보형 다리 (RowSrc.lean:6)</div>
@@ -75,7 +75,7 @@ EDITIONS = {
   <div class="spine-row"><div class="spine-node spine-mid"><strong>Master Half-Plane Theorem (UpperTheory.EveryCharacter)</strong><br/>Nonvanishing of Every Dirichlet L-Function on Re(s) &gt; 1/2</div></div>
   <div class="spine-arrow">▲ Step B : 195 Literature Wrappers + VWin Join (EveryCharacterOfLiteratureOfVWin.lean:810-814)</div>
   <div class="spine-split">
-    <div class="spine-node spine-sub"><strong>Classical Re-Proof Cone (88.35%)</strong><br/>OpenLiteratureStatements<br/>195 Classical Theorems Proved from Scratch</div>
+    <div class="spine-node spine-sub"><strong>Classical Re-Proof Cone (88.35% transitive)</strong><br/>OpenLiteratureStatements<br/>75.69% pure classical + shared Formalism base</div>
     <div class="spine-node spine-accent"><strong>Novel Automorphic Window (Core Engine)</strong><br/>UpperTheory.Top.VWin (Exponent Cap 401)<br/>sqrt(X) Iterated Theta Lifts + Seesaw Division</div>
   </div>
   <div class="spine-arrow">▲ Step C : Shared Galois-Automorphic Bridge (RowSrc.lean:6)</div>
@@ -314,6 +314,7 @@ table { width: 100%; border-collapse: collapse; margin: 13px 0 17px 0; font-fami
 thead { display: table-header-group; }
 tr { break-inside: avoid; }
 th { background: #1E293B; color: #FFFFFF; font-weight: 700; text-align: left; padding: 6px 8px; border: 1px solid #1E293B; }
+th code { background: #334155; color: #F8FAFC; }
 th.th-nowrap { white-space: nowrap; }
 td { padding: 6px 8px; border: 1px solid #CBD5E1; vertical-align: top; }
 td.td-num { white-space: nowrap; text-align: right; }
@@ -345,7 +346,35 @@ img { display: block; max-width: 100%; height: auto; margin: 14px auto; border: 
 """
 
 
-def render_chapter(idx: int, badge: str, md_path: pathlib.Path, spine_html: str) -> str:
+GITHUB_SUBDIR_BASE = "https://github.com/gilheumpark-bit/ultari-proof-anatomy/blob/main/anthropic/alpoge-rh-grh-2026"
+
+
+def rewrite_relative_links(html_str: str, base_dir: pathlib.Path, chapters: list) -> str:
+    chap_map = {c_path.resolve(): f"#chap-{c_idx}" for c_idx, (_, c_path) in enumerate(chapters)}
+    root_resolved = ROOT.resolve()
+
+    def repl(mat):
+        href = mat.group(1)
+        if href.startswith(("#", "http://", "https://", "mailto:", "data:")):
+            return mat.group(0)
+        if "#" in href:
+            rel_part, frag = href.split("#", 1)
+            frag_sfx = f"#{frag}"
+        else:
+            rel_part, frag_sfx = href, ""
+        target = (base_dir / rel_part).resolve()
+        if target in chap_map:
+            return f'href="{chap_map[target]}"'
+        try:
+            rel_repo = target.relative_to(root_resolved).as_posix()
+            return f'href="{GITHUB_SUBDIR_BASE}/{rel_repo}{frag_sfx}"'
+        except ValueError:
+            return mat.group(0)
+
+    return re.sub(r'href="([^"]+)"', repl, html_str)
+
+
+def render_chapter(idx: int, badge: str, md_path: pathlib.Path, spine_html: str, chapters: list) -> str:
     raw = md_path.read_text(encoding="utf-8")
     prepped, stash = replace_math_and_mermaid(raw, spine_html)
     body = markdown.markdown(prepped, extensions=["tables", "fenced_code"])
@@ -353,6 +382,7 @@ def render_chapter(idx: int, badge: str, md_path: pathlib.Path, spine_html: str)
         body = body.replace(f"@@MATH_TOKEN_{tidx}@@", val)
     body = postprocess_typography(body)
     body = inline_images(body, md_path.parent)
+    body = rewrite_relative_links(body, md_path.parent, chapters)
     return f'<section class="chapter" id="chap-{idx}"><div class="chapter-badge">{html.escape(badge)}</div>{body}</section>'
 
 
@@ -363,7 +393,7 @@ def build_edition(lang: str, cfg: dict):
     for idx, (badge, path) in enumerate(cfg["chapters"]):
         first_h1 = path.read_text(encoding="utf-8").splitlines()[0].lstrip("# ").strip()
         toc_items.append(f'<li><a href="#chap-{idx}">{render_toc_label(badge, first_h1, spine_html)}</a></li>')
-        chap_htmls.append(render_chapter(idx, badge, path, spine_html))
+        chap_htmls.append(render_chapter(idx, badge, path, spine_html, cfg["chapters"]))
     meta_divs = "".join(f"<div>{ln}</div>" for ln in cfg["meta_lines"])
     full_html = f"""<!DOCTYPE html>
 <html lang="{lang}">

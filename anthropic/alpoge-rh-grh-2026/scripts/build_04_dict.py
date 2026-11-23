@@ -37,7 +37,7 @@ PILLARS = [
 ]
 
 META = {
-    "ht_card_of_literature": (1, "유계 높이 유리점 유한성 및 개수 상한 (`HtCard`)", "노스코트 (Northcott, 1949), 샤누엘 (Schanuel, 1979)"),
+    "ht_card_of_literature": (1, r"$\ell$-진 드람 가군 호지-테이트 여과 점프 중복도 합 공식 (`HtCard := PhtCmp`)", "폰텐 (Fontaine, 1982), 센 (Sen, 1980)"),
     "ab_mul_n_st_of_literature": (1, "아벨 다양체 $[n]$-배 사상의 유한 평탄 차수 $n^{2g}$ 정리", "멈퍼드 (Mumford, Abelian Varieties, 1970)"),
     "abelian_de_rham_of_literature": (1, "아벨 스킴 상대 드람 코호몰로지 국소 자유성 및 기저변환", "그로텐디크 (Grothendieck, 1966), 오다 (Oda, 1969)"),
     "ar_calc_of_literature": (1, "아라켈로프 산술 교차 수 기본 연산 공식 (`ArCalc`)", "아라켈로프 (1974), 질레-술레 (Gillet-Soulé, 1990)"),
@@ -113,7 +113,7 @@ META = {
     "ess_square_integrable_segments_of_literature": (4, "중심 뒤틀림 제곱적분가능 표현의 젤레빈스키 세그먼트 분류", "젤레빈스키 (Zelevinsky, Ann. Sci. ENS, 1980)"),
     "gelfand_kazhdan_dual_of_literature": (4, r"$\mathrm{GL}_n(F)$ 기약 표현의 쌍대 표현과 전치 반자기동형(anti-automorphism) 일치 정리", "겔판트-카즈단 (Gelfand-Kazhdan, 1975)"),
     "generic_unlinked_gl_of_literature": (4, "비연결(unlinked) 세그먼트 유도 표현의 기약성 및 일반적(generic, 비퇴화 휘태커) 모형", "젤레빈스키 (Zelevinsky, 1980)"),
-    "chevalley_units_of_literature": (4, "국소 정수환 위 가약 대수군 원소 분해 및 단수 생성 정리", "슈발레 (Chevalley, 1955~1961), 브뤼아-티츠"),
+    "chevalley_units_of_literature": (4, r"수체 전역 단수군 $(\mathcal{O}_E)^\times$ 의 국소 합동 $m$-거듭제곱 판정 정리", "슈발레 (Chevalley, 1951)"),
     "geometric_restriction_of_literature": (4, "포물선 유도 후 자케 제한 함자의 번스타인-젤레빈스키 기하 보조정리", "번스타인-젤레빈스키 (1977)"),
     "grothendieck_ring_polynomial_of_literature": (4, r"$\mathrm{GL}_n$ 매끄러운 표현 그로텐디크 환의 다항식 환 자유성", "젤레빈스키 (Zelevinsky, 1980)"),
     "segment_representation_of_literature": (4, "초첨점 세그먼트의 유일 기약 몫(Steinberg형) 및 부분표현 구성", "젤레빈스키 (1980)"),

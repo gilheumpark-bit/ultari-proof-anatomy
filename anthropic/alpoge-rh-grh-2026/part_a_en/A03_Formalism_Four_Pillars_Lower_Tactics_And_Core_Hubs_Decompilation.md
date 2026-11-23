@@ -124,23 +124,23 @@ The table below gives the declaration ledger of all five specification files tog
 
 The exact source formulas of each of the five specification files and the corresponding theorems supplied by the four pillars are detailed below.
 
-#### (1) `Formalism/Statement.lean:11-50` (`50` lines, `dist = 9`) - Chebyshev-Weighted von Mangoldt Remainder $G(x)$ and Landau Contradiction Specification
-The source lines `Formalism/Statement.lean:11-23` define the truncated sum $S(x)$ of the von Mangoldt function $\Lambda(n)$ and its main-term-corrected remainder $G(x)$ as follows:
+#### (1) `Formalism/Statement.lean:11-50` (`50` lines, `dist = 9`) - Chebyshev-Weighted von Mangoldt Remainder $G(\chi, x)$ and One-Sided Lower-Bound Landau Specification
+The source lines `Formalism/Statement.lean:11-23` define for a Dirichlet character $\chi$ (`[NeZero N]`) the non-negative weight $\mathrm{LamF}(\chi, n) := \Lambda(n)(1 + \Re\chi(n))$, truncated sum $S(\chi, x)$, logarithmic-derivative constant $\gamma_F(\chi)$, and main-term-corrected remainder $G(\chi, x)$:
 
 $$
-S(x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n) \max\left(0, \frac{x}{n} - 1\right), \qquad \gamma_F(x) := x\left(\log x - 1 - \gamma\right) + 1, \qquad G(x) := S(x) - \gamma_F(x)
+S(\chi, x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n)\bigl(1 + \Re\chi(n)\bigr)\left(\frac{x}{n} - 1\right), \qquad \gamma_F(\chi) := \gamma + \Re\!\left(\frac{L'(1, \chi)}{L(1, \chi)}\right), \qquad G(\chi, x) := S(\chi, x) - x\log x + \bigl(1 + \gamma_F(\chi)\bigr)x
 $$
 
-Next, `Formalism/Statement.lean:32-49` declares the Landau positivity contradiction steps `LandauStep` and `LandauStepEps` together with the final target proposition `RHofG` (`Formalism/Statement.lean:46-49`). `RHofG` is the one-sided upper bound contradiction principle stating that if $G(x) \le C x^{\theta + \varepsilon}$ holds for all sufficiently large $x \ge x_0$ for every $\theta \in [1/2, 1)$ and $\varepsilon > 0$, then $\zeta(s) \ne 0$ on the half-plane $\Re(s) > \theta$. Rather than requiring a two-sided complex modulus bound $|G(x)|$, **a real one-sided upper bound $G(x) \le C x^{\theta+\varepsilon}$ suffices**: this asymmetry is the starting point across all four pillars for deducing zero-freeness from the positivity of Hermitian Gram matrices ($0 \le \langle \Theta f, \Theta f \rangle$).
+Next, `Formalism/Statement.lean:32-49` declares the real-character ($\Im\chi(n) = 0$) Landau positivity contradiction steps `LandauStep` and `LandauStepEps` together with the target proposition `RHofG` (`Formalism/Statement.lean:46-49`). `RHofG χ` states that if for every $\varepsilon > 0$ there exists $C$ such that the **one-sided lower bound** $-C x^{1/2 + \varepsilon} \le G(\chi, x)$ holds for all $x \ge 1$, then both `RiemannHypothesis` and $L(s, \chi) \ne 0$ on $\Re(s) > 1/2$ follow. Rather than requiring a two-sided modulus bound $|G(\chi, x)|$, **a real one-sided inequality suffices**: this asymmetry is the starting point across all four pillars for deducing zero-freeness from the positivity of Hermitian Gram matrices ($0 \le \langle \Theta f, \Theta f \rangle$).
 
-#### (2) `Formalism/StatementOC.lean:11-73` (`73` lines, `dist = 8`) - Dirichlet Character Combined Remainder $G_\chi(x)$ and Weighted Average `OCAvg`
-`Formalism/StatementOC.lean:11-22` imports `Formalism.Statement` and declares the twisted sum $S_\chi(x)$ and main-term-corrected remainder $G_\chi(x)$ for a Dirichlet character $\chi$ modulo $q$:
+#### (2) `Formalism/StatementOC.lean:11-73` (`73` lines, `dist = 8`) - Real-Valued Character Remainder $G_\chi(x)$ and Order-Comparison Specification `OCAvg`
+`Formalism/StatementOC.lean:11-22` imports `Formalism.Statement` and declares the pure zeta remainder $G_z(x) := S_z(x) - x\log x + (1 + \gamma)x$ alongside the **real-valued** twisted sum $S_\chi(x)$ and remainder $G_\chi(x)$ for a Dirichlet character $\chi$ modulo $N$:
 
 $$
-S_\chi(x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n)\chi(n)\max\left(0, \frac{x}{n} - 1\right), \qquad G_\chi(x) := S_\chi(x) + \frac{L'(1, \chi)}{L(1, \chi)}\, x
+S_\chi(x) := \sum_{n=1}^{\lfloor x \rfloor} \Lambda(n)\,\Re\chi(n)\left(\frac{x}{n} - 1\right), \qquad G_\chi(x) := S_\chi(x) + \Re\!\left(\frac{L'(1, \chi)}{L(1, \chi)}\right) x
 $$
 
-It then defines `OCStep` (`Formalism/StatementOC.lean:23-30`), the Chebyshev-weighted average version `OCAvgUpper` (`Formalism/StatementOC.lean:52-64`), and `RiemannHypothesisOfLowerBounds` (`Formalism/StatementOC.lean:65-72`). Inside Pillar 2 `SharpRestriction`, the key output hub `Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:2` (`168` lines, `dist = 7`, `in_degree = 10`) imports `Formalism.StatementOC` directly and constructs the combined linear form $\Lambda.\mathrm{Gm}(y)$ (`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:38`) over a finite primitive-character level $\Lambda : \mathrm{Level}$:
+It then defines `OCStep` (`Formalism/StatementOC.lean:23-30`) equating `analyticOrderAt riemannZeta s = analyticOrderAt (LFunction χ) s` on $\Re(s) > \theta$ ($s \ne 1$) from one-sided bounds on $G_z(x) - G_\chi(x)$, the weighted-average version `OCAvgUpper` (`Formalism/StatementOC.lean:52-64`), and `RiemannHypothesisOfLowerBounds` (`Formalism/StatementOC.lean:65-72`). Inside Pillar 2 `SharpRestriction`, the key output hub `Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:2` (`168` lines, `dist = 7`, `in_degree = 10`) imports `Formalism.StatementOC` directly and constructs the combined linear form $\Lambda.\mathrm{Gm}(y)$ (`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:38`) over a finite primitive-character level $\Lambda : \mathrm{Level}$:
 
 $$
 \Lambda.\mathrm{Gm}(y) := G_z(y) + \sum_{\psi \in \Lambda.\mathrm{Nt}} \Lambda.\mathrm{wt}(\psi)\,\Re\left(g_\chi(\psi.\chi, y)\right), \qquad \Lambda.\mathrm{wt}(\psi) := \begin{cases} 1 & (\Lambda.\mathrm{psK} = \mathrm{some}\,\psi) \\ (3\,\Lambda.o + 1)^{-1} & (\text{otherwise}) \end{cases}
@@ -148,14 +148,14 @@ $$
 
 Here the weight $(3\,\Lambda.o + 1)^{-1}$ (`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:36`) is the decisive coefficient enforcing positivity of coset indicator functions over a character subgroup of order $\Lambda.o = |\Xi|$, and theorem `EAtH.explicit_formula_error_of_host_conditions` (`Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions.lean:155-165`) in the same file derives the explicit-formula error package `EAtH` from `HostConditions`.
 
-#### (3) `Formalism/StatementU.lean:9-47` (`47` lines, `dist = 10`) - Chebyshev Window Average `wavg` and Mellin-Landau Analytic Continuation
-`Formalism/StatementU.lean:9-13` defines the normalized remainder $\bar{G}_z(x) := G_z(x) + x - 1$ and the discrete window average `wavg m x f` of length $m$:
+#### (3) `Formalism/StatementU.lean:9-47` (`47` lines, `dist = 10`) - Integral Smoothing `Gzbar`, Sample Average `wavg`, and Mellin-Landau Analytic Continuation
+`Formalism/StatementU.lean:9-13` defines the continuous integral-smoothed remainder $\bar{G}_z(x)$ (`Gzbar`) over $[1, 2]$ and the general sample-point weighted average `wavg xs ω x f`:
 
 $$
-\mathrm{wavg}(m, x, f) := \frac{1}{m}\sum_{j=1}^{m} f\left(\left(1 + \frac{j}{2m}\right) x\right)
+\bar{G}_z(x) := \int_{1}^{2} u\, G_z\!\left(\frac{x}{u}\right) du, \qquad \mathrm{wavg}(\mathrm{xs}, \omega, x, f) := \sum_{j=0}^{m-1} \omega_j \frac{x}{\mathrm{xs}_j} f(\mathrm{xs}_j)
 $$
 
-The proposition `ZetaLandauBarEps` (`Formalism/StatementU.lean:29-33`) specifies that $\zeta(s) \ne 0$ for $\Re(s) > \theta$ follows from the window-average upper bound $\mathrm{wavg}(m, x, \bar{G}_z) \le C x^{\theta + \varepsilon}$ with $m \ge x^{1 - \theta - \varepsilon}$. This specification is realized in `Formalism/ZetaNonvanishing/ZetaLandau.lean:18-99` (`300` lines, `dist = 11`) via the Mellin transform identity `mellin_HZ` (`Formalism/ZetaNonvanishing/ZetaLandau.lean:75-91`). Specifically, for $H_Z(\varepsilon, C, \theta; x) := \varepsilon G_z(x) + C x^\theta \ge 0$, its Mellin integral $I_Z(s) = \int_1^\infty H_Z(x) x^{-s-1}\,dx$ is proved on $\Re(s) > 1$ to equal
+The proposition `ZetaLandauBarEps` (`Formalism/StatementU.lean:29-33`) specifies that $\zeta(s) \ne 0$ on $\Re(s) > \theta$ follows from the one-sided smoothed bound $s_0\,\bar{G}_z(x) \le C x^{\theta + \varepsilon}$ ($x \ge x_0$, $s_0 \in \{1, -1\}$), while `RiemannSumApprox` (`Formalism/StatementU.lean:42-46`) bridges discrete harmonic nodes $\mathrm{xs}_j = x / (1 + \frac{j+1}{m})$ and uniform weights $\omega_j = 1/m$ to $\bar{G}_z(x)$ via $|\mathrm{wavg} - \bar{G}_z(x)| \le K x / m$. This specification is realized in `Formalism/ZetaNonvanishing/ZetaLandau.lean:18-99` (`300` lines, `dist = 11`) via the Mellin transform identity `mellin_HZ` (`Formalism/ZetaNonvanishing/ZetaLandau.lean:75-91`). Specifically, for $H_Z(\varepsilon, C, \theta; x) := \varepsilon G_z(x) + C x^\theta \ge 0$, its Mellin integral $I_Z(s) = \int_1^\infty H_Z(x) x^{-s-1}\,dx$ is proved on $\Re(s) > 1$ to equal
 
 $$
 \Phi_Z(\varepsilon, C, \theta; s) = \frac{\varepsilon \, n_Z(s)}{s(s - 1)} + \frac{C}{s - \theta}, \qquad n_Z(s) := -\frac{\zeta_1'(s)}{\zeta_1(s)} - 1 + (1 + \gamma)s
@@ -163,11 +163,11 @@ $$
 
 (`PhiZ_eq`, `Formalism/ZetaNonvanishing/ZetaLandau.lean:93-98`), blocking both real and complex zeros via Landau's real-axis singularity theorem for non-negative integrands.
 
-#### (4) `Formalism/StatementCM.lean:9-45` (`45` lines, `dist = 13`) and `Formalism/StatementFL.lean:11-44` (`44` lines, `dist = 15`) - CM Half-Type Partition and Odd-Character Killing Formula
-`Formalism/StatementCM.lean:9-44` defines CM types (`IsCMType`, `Formalism/StatementCM.lean:9-10`) selecting exactly one element from each pair $\{a, -a\}$ over the cyclic group $\mathbb{Z}/2n\mathbb{Z}$ of order $2n$, together with the half-family `HalfTypes` (`Formalism/StatementCM.lean:22-26`), and specifies the congruence-class-weighted von Mangoldt sum `ForcedSumCM` (`Formalism/StatementCM.lean:35-40`) forced by automorphic theta lifts. Meanwhile, `Formalism/StatementFL.lean:11-43` defines the character-family linear combination `famComb` (`Formalism/StatementFL.lean:17-20`) with complex coefficients $c_\chi$:
+#### (4) `Formalism/StatementCM.lean:9-45` (`45` lines, `dist = 13`) and `Formalism/StatementFL.lean:11-44` (`44` lines, `dist = 15`) - Multiplicative-Unit CM Half-Type Partition and Character-Family Difference Formula
+`Formalism/StatementCM.lean:9-44` defines CM types (`IsCMType`, `Formalism/StatementCM.lean:9-10`: `∀ g : (ZMod l)ˣ, g ∈ Φ ↔ -g ∉ Φ`) selecting exactly one element from each opposite pair $\{g, -g\}$ inside the **multiplicative unit group** $(\mathbb{Z}/l\mathbb{Z})^\times$ (`(ZMod l)ˣ`) for odd primes $l \ge 3$, together with the half-family identity `HalfTypes` (`Formalism/StatementCM.lean:22-26`), and specifies the congruence-class-weighted von Mangoldt sum remainder `ForcedSumCM` (`Formalism/StatementCM.lean:35-40`). Meanwhile, `Formalism/StatementFL.lean:11-43` defines the character-family **difference** functional `famComb` (`Formalism/StatementFL.lean:17-20`) with complex coefficients $c_i \in \mathbb{C}$:
 
 $$
-\mathrm{famComb}(\mathrm{chars}, c, y) := G_z(y) + \Re\left(\sum_{\chi \in \mathrm{chars}} c(\chi)\, G_{\chi,\mathbb{C}}(\chi, y)\right)
+\mathrm{famComb}(N, \chi, c, x) := G_z(x) - \Re\left(\sum_{i} c_i\, G_{\chi,\mathbb{C}}(\chi_i, x)\right)
 $$
 
 which is implemented in `Formalism/LFunctionBounds/Statement.lean:11-126` (`127` lines, `dist = 14`) via a probability distribution $\nu$ over triples $S = (s_1, s_2, s_3) \in \mathrm{triples}(l)$ summing to a prime modulus $l$, the sawtooth period identity (`PeriodIdentity`, `Formalism/LFunctionBounds/Statement.lean:44-53`), and `KillingLemma` (`Formalism/LFunctionBounds/Statement.lean:55-59`: $c_W(l, \nu, \chi) = 0$ across a bad odd-character set $BB$ of size $|BB| \le l^{1-\varepsilon}$), which annihilates characters carrying exceptional zeros.
@@ -195,7 +195,7 @@ Pillar 1 `Formalism.LocalToGlobal` is the largest single subtree in the new proo
 | `2` | **`Columns`** | `376` | `95,905` | `5,313` | `2,524` | Adelic matrix column-space decompositions, parabolic subgroup invariance conditions, and basis transitions |
 | `3` | **`IndefiniteReal`** | `435` | `78,821` | `4,014` | `3,006` | $m$-step primitive theta links (`LinksStage`), test vectors (`DatumVec`), composite Gram eigenvalues (`PThmB`) |
 | `4` | **`TorsionIntegrality`** | `489` | `70,444` | `4,581` | `1,477` | Torsion cokernel order bounds and local-to-global integrality ($p$-adic denominator clearing) |
-| `5` | **`GlobalTheory`** | `389` | `69,295` | `3,562` | `1,308` | $\mathrm{GL}_5$ 6-fold cover coupling (`GL5/Statement.lean`) and assembly of primes-in-arithmetic-progressions consequences |
+| `5` | **`GlobalTheory`** | `389` | `69,295` | `3,562` | `1,308` | Unitary genus-mass and fundamental-domain volume ratios (`GL5/Statement.lean` `GenusMassVolumes`) and primes-in-progressions consequences |
 | `6` | **`KernelLattices`** | `162` | `48,309` | `2,778` | `1,421` | Discriminant and slope preservation theorems for idempotent projection kernel lattices (`ker(1-e)`) |
 | `7` | **`ProjectiveLattices`** | `325` | `43,028` | `1,865` | `1,606` | Abelian variety projective sections (`FreeBridge`), shortened normalized evaluation (`ThShort`), universal tests (`AllTest`) |
 | `8` | **`CharacterGerms`** | `238` | `40,069` | `2,068` | `767` | Local character germ expansions and ramification conductor exponent compatibility |
@@ -288,7 +288,7 @@ These three modules form a three-stage pipeline assembling primitive links (`Pri
 These are the three core hubs of `ProjectiveLattices` governing theta-function evaluation on projective abelian varieties.
 `Formalism/LocalToGlobal/ProjectiveLattices/AllTest.lean:12-15` defines the universal compatibility predicate `AllTest` ranging over all admissible test configurations, unifying the common type signature shared across `452` downstream modules.
 `Formalism/LocalToGlobal/ProjectiveLattices/FreeBridge.lean:18-117` constructs the translators `Unf.ofPj` and `Unf.toPj` (`:38-43`) between free $\mathcal{O}_E$-lattice presentations (`Unf`) and projective scheme sections (`Pj`), proving the finite-dimensional holomorphic cuspidal section agreement theorems `FDSec_eq` (`:18-19`), `isHolCusp_iff` (`:20-22`), and `noCommonZero_iff` (`:104-106`), which translates absence of common zeros across evaluation-point sets.
-Building on these, `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-349` defines the shortened evaluation `ShortValAt` (`:244-262`), multiplying a differential-operator polynomial $P(\nabla)$ on an abelian scheme by the normalization factor $N^{-\deg P}$, and proves theorem `shortNe0_of_t4Span` (`:335-349`), deducing the existence of a nonvanishing evaluation point from dominant-weight spanning hypotheses.
+Building on these, `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-349` defines the faithfully flat shortened evaluation relation `ShortValAt` (`:244-262`) for harmonic polynomials $P \in \mathrm{harmL}(\Lambda, a)$ on an abelian scheme with fourfold inverse normalization ($\beta^{-1} \cdot \mathrm{mIdx}_N(\Lambda)^{-1} \cdot |\mathrm{LevQ}^n|^{-1} \cdot N^{-\deg P}$), and proves theorem `shortNe0_of_t4Span` (`:335-349`), deducing the existence of a nonvanishing evaluation point from dominant-weight spanning hypotheses.
 
 #### (5) `NGData.lean` (`in_degree = 339`), `TermLoc.lean` (`in_degree = 190`), and `AllTied.lean` (`in_degree = 197`)
 Governing Siegel lattice orbit counts, `Formalism/LocalToGlobal/SiegelLatticeTheory/CokernelGLCounts/NGData.lean:18-125` introduces the weighted exponential sum `Jw` (`:29-33`), squared sum `J2of` (`:34-38`), group-averaged sum `grpC` (`:39-42`), and the Cauchy-Schwarz amplification ratio
@@ -359,22 +359,22 @@ $$
 \left(\Theta_t \circ \Theta_t^*\right)(e) = \left(\kappa \prod_{j=0}^{m-1} \lambda_{j, t, p, v_0}\right) e
 $$
 
-Moreover, in the general family setting where each step acts as a multi-row block operator $B_j \in \End_{\mathbb{C}}(E)$ rather than a scalar, proposition `DetChain` in `Formalism/ThetaLiftIndependence/Statement.lean:266-277` (`301` lines, `in_degree = 19`, `dist = 9`) establishes that the determinant of the composite Gram matrix $A := \Theta_t \circ \Theta_t^*$ factors as
+Moreover, across direct-sum decompositions $E = \bigoplus_{s \in \sigma} E_s$ and $W_j = \bigoplus_{s \in \sigma} W_{j,s}$ ($\dim W_{j,s} = \dim E_s$) where each step acts blockwise by scalars $B_j|_{W_{j,s}} = \lambda_{j,s}\,\mathrm{id}$ and the composite operator acts by $A|_{E_s} = (\kappa \prod_j \lambda_{j,s})\,\mathrm{id}$, proposition `DetChain` in `Formalism/ThetaLiftIndependence/Statement.lean:266-277` (`301` lines, `in_degree = 19`, `dist = 9`) establishes that the determinant of $A$ factors as
 
 $$
-\det(A) = \kappa^{\dim_{\mathbb{C}} E} \prod_{j=0}^{m-1} \det(B_j)
+\det(A) = \kappa^{\dim_{\mathbb{k}} E} \prod_{j=0}^{m-1} \det(B_j)
 $$
 
 Each traversal of a link $U(X_j) \to U(X_{j+1})$ stacks one additional factor $\lambda_{j, t, p, v_0}$ arising from central $L$-values and local volume ratios onto the exponent, building a multiplicative amplification $\prod_{j=0}^{m-1} \lambda_j \asymp \Lambda_{\mathrm{gain}}^m$ across $m$ steps.
 
-#### Step 4: Coupling with Derivative-Free Shortened Evaluation `ShortValAt` (`Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262`)
-Finally, when evaluating the terminal automorphic form $\Theta_t(f_0)$ on $U(X_m)$ along special CM cycles, `ShortValAt` at `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262` multiplies a weight-$a$ harmonic polynomial $P \in \mathrm{harmL}(\Lambda, a)$ on the abelian scheme by the level normalization factor $(N : c.F)^{-\deg P}$ to extract the algebraic value
+#### Step 4: Coupling with the Derivative-Free Shortened Evaluation Relation `ShortValAt` (`Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262`)
+Finally, when evaluating the terminal automorphic form $\Theta_t(f_0)$ on $U(X_m)$ along special CM cycles, `ShortValAt` at `Formalism/LocalToGlobal/ProjectiveLattices/ThShort.lean:244-262` is a **faithfully flat base-change relation (`Prop`)** on a harmonic polynomial $P \in \mathrm{harmL}(\Lambda, a)$ asserting an extension $\varphi : S \to S'$ under which the value $v \in S$ satisfies the fourfold inverse normalization ($\beta^{-1}$, lattice index $\mathrm{mIdx}_N(\Lambda)^{-1}$, level-quotient cardinality $|\mathrm{LevQ}^n|^{-1}$, and degree scale $N^{-\deg P}$):
 
 $$
-\mathrm{ShortValAt}(\nabla, w, \Lambda, \beta; P) := N^{-\deg P} \, \mathrm{ev}_{x_0}\left(\beta^{-a}\, D_P(s_w)\right) \in \mathcal{O}_{K_0}\left[\frac{1}{\mathrm{bad}}\right]
+\varphi(v) = \iota_{S'}\!\left(\beta^{-1} \cdot \mathrm{mIdx}_N(\Lambda)^{-1} \cdot |\mathrm{LevQ}^n|^{-1} \cdot N^{-\deg P}\right) \sum_{q}^{\mathrm{f}} \iota_{S'}(w_q) \sum_{i} \sum_{m \in \mathrm{supp}(P)} \iota_{S'}(P_m) \prod_{b} \nabla_{y'}\!\left(N^2, F_{q,i,b}, \mathrm{col}_m(b)\right)
 $$
 
-Here $P(\nabla)$ acts solely on the geometric Gauss-Manin / Maass-Shimura differential sheaf of bounded finite degree and takes no high-order derivatives in the rational prime $p$ direction. Instead, the $\Theta(\sqrt{x})$-order multiplicity needed to dominate the number of prime evaluation points is supplied entirely by the eigenvalue product $\prod_{j=0}^{m-1} \lambda_j$ of the $m$-step unitary theta chain together with the Arakelov line-bundle degree lower bound. This is the exact Lean 4 realization of derivative-free automorphic Stepanov multiplicity over $\mathbb{Z}$.
+Here $\nabla_{y'}$ acts solely on the geometric Gauss-Manin / Maass-Shimura connection of bounded finite degree $\deg P$ and takes no high-order derivatives in the rational prime $p$ direction. Instead, the $\Theta(\sqrt{x})$-order multiplicity needed to dominate the number of prime evaluation points is supplied entirely by the eigenvalue product $\prod_{j=0}^{m-1} \lambda_j$ of the $m$-step unitary theta chain together with the Arakelov line-bundle degree lower bound. This is the exact Lean 4 realization of derivative-free automorphic Stepanov multiplicity over $\mathbb{Z}$.
 
 The table below consolidates this four-step construction from the base step ($j = 0$) through terminal evaluation ($j = m$), matching spaces, operators, accumulated invariants, and verification modules.
 
@@ -401,7 +401,7 @@ The quantitative metrics and dedicated mathematical domains of its `13` subpacka
 | ---: | :--- | ---: | ---: | ---: | ---: | :--- |
 | `1` | **`GrowthBounds`** | `1,210` | `231,225` | `11,586` | `4,555` | Exponential growth-rate comparisons and main-term vs. error-term separation across parameter windows `(m, n, k, j0)` |
 | `2` | **`LevelLetterCocycles`** | `758` | `170,849` | `7,138` | `3,626` | Local Galois cohomology (`LocCoh`), Wach-Herr lattices (`DataNLoc`), inertia characteristic polynomials (`TameType`) |
-| `3` | **`CuspSpanNormBounds`** | `399` | `132,978` | `6,418` | `4,749` | Iterated Parseval (`Kk_succ`), projected Poincaré Gram decomposition (`RelevantZeroGramTerms`), C*-Schur bridge |
+| `3` | **`CuspSpanNormBounds`** | `399` | `132,978` | `6,418` | `4,749` | Recursive cokernel sum (`Kk_succ`), projected Poincaré Gram decomposition (`RelevantZeroGramTerms`), C*-Schur bridge |
 | `4` | **`Divisibility`** | `274` | `63,162` | `2,670` | `3,220` | Chart-independent generator uniqueness (`ThExprUniqOfChartIndep2`), Schur irreducibility (`SchurIrreducible`), Rallis model |
 | `5` | **`GlobalSchurBounds`** | `158` | `48,032` | `2,399` | `2,338` | Unitary formal degrees (`ThickPlacesCorollaryOfAnyTranslate`), genus mass volumes (`GenusMassVolumes`), `TieGlobal` |
 | `6` | **`GenusPolyhedralBounds`** | `88` | `27,878` | `1,718` | `600` | Polyhedral truncated sums of lattice points in Hermitian genera and Ehrhart volume upper bounds |
@@ -438,7 +438,7 @@ The quantitative metrics and source decompilation of the top 12 most heavily imp
 | `1` | `Formalism/SharpRestriction/Divisibility/GeneratorPowers/ThExprUniqOfChartIndep2.lean` | `41` | `873` | `9` | `ChartIndepSt2`, `thExprUniq_of_chartIndep2` ($p^k$ lattice-shift coefficient uniqueness) |
 | `2` | `Formalism/SharpRestriction/LevelLetterCocycles/LocCoh.lean` | `195` | `654` | `7` | Bloch-Kato crystalline/de Rham cohomology cores `bkACore`, `bkBCore`, `LocalTateTopDegree` |
 | `3` | `Formalism/SharpRestriction/LevelLetterCocycles/LocalSituation.lean` | `641` | `627` | `7` | 30-field $p$-adic Galois lifting situation `Sit`, `LocalLiftingUniformConstant` |
-| `4` | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean` | `282` | `400` | `9` | Local split Bessel model `Model`, recursive Parseval identity `Kk_succ` |
+| `4` | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean` | `282` | `400` | `9` | Local split Bessel model `Model`, recursive cokernel sum unfolding `Kk_succ` |
 | `5` | `Formalism/SharpRestriction/Divisibility/SchurIrreducible.lean` | `617` | `377` | `7` | Blattner parameter `DiscreteSeriesBlattner`, `ArchimedeanRallisLocal` |
 | `6` | `Formalism/SharpRestriction/ParConsts.lean` | `103` | `224` | `7` | No-gain criterion `NoGain`, 36-field family `FamP`, admissible range `DFamP` (`eps < 1/52`) |
 | `7` | `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean` | `573` | `201` | `7` | Projected Poincaré Gram operator `Kmat`, `RelevantZeroGramTerms`, `famNG`, `famG` |
@@ -494,29 +494,29 @@ $$
 j_0 := \left\lceil \frac{\log\left(n \cdot N(m) / m\right)}{\log 5} \right\rceil_+
 $$
 
-The choice of base $5$ is directly tied to the $\mathrm{GL}_5$ relative trace formula and 5-ary level pruning architecture treated in Section 3.3.
+The choice of base $5$ is directly tied to the 5-ary Jacobi level-pruning depth and general-rank unitary Siegel-Weil volume-ratio architecture treated in Section 3.3.
 
 #### (4) `SchurIrreducible.lean` (`in_degree = 377`), `GenusMassVolumes.lean` (`in_degree = 183`), and `ThickPlacesCorollaryOfAnyTranslate.lean` (`in_degree = 189`)
 These three hubs govern Archimedean and global measure normalizations.
 - `Formalism/SharpRestriction/Divisibility/SchurIrreducible.lean:20-614` defines lowest $K$-type Blattner parameters `DiscreteSeriesBlattner` (`:74-81`) for discrete series together with lowering/raising operator kernels `lowKer` (`:38-42`) and `raised` (`:43-48`), outputting the local Archimedean Rallis inner-product formula `ArchimedeanRallisLocal` (`:613-614`).
 - `Formalism/SharpRestriction/GlobalSchurBounds/GeneralLinearActions/GenusMassVolumes.lean:11-396` defines normalization compatibility `IsCompatible` (`:390-396`) across Weil measures `SdW` (`:353-356`), real-place measures `SdR` (`:357-360`), Hermitian orbit measures `SdHerm` (`:361-364`), and Fourier-Bessel orbit measures `IsXbetaMeasure` (`:365-389`) for nondegenerate Hermitian forms `IsHermND` (`:22-24`) over $E/F$.
-- `Formalism/SharpRestriction/GlobalSchurBounds/ThickPlacesCorollaryOfAnyTranslate.lean:17-2353` (`2,354` lines), one of the largest single proof files in Pillar 2, deduces from Weyl-dimension and root-product monotonicity `harishChandraAbs_pos_of_strictAnti` (`:2251-2260`) of Harish-Chandra formal degrees the two-sided polynomial bounds `formalDegreeBound_all_unitaryGroups` (`:2261-2312`) and `familyFormalDegree_all` (`:2317-2321`) across all unitary groups in the chain, and closes the unfolding mass ratio in `volumeMass_of_unfolding` (`:2342-2353`).
+- `Formalism/SharpRestriction/GlobalSchurBounds/ThickPlacesCorollaryOfAnyTranslate.lean:17-2353` (`2,354` lines), one of the largest single proof files in Pillar 2, deduces from iterated-supremum positivity `harishChandraAbs_pos_of_strictAnti` (`:2251-2260`) on strictly decreasing Harish-Chandra parameter sequences the two-sided polynomial bounds `formalDegreeBound_all_unitaryGroups` (`:2261-2312`) and `familyFormalDegree_all` (`:2317-2321`) across all unitary groups in the chain, and closes the unfolding mass ratio in `volumeMass_of_unfolding` (`:2342-2353`).
 
 #### (5) `FractionFieldToGenericStalkAlgebraMapEq.lean` (`in_degree = 400`) and `RelevantZeroGramTerms.lean` (`in_degree = 201`)
 These two hubs compute the Gram-matrix norms of cusp-form spans directly; their internal equation chains are reconstructed in full in Section 3.3 below.
 
 ---
 
-### 3.3 Core Mathematical Reconstruction: Iterated Parseval Identity and the $\mathrm{GL}_5$ 6-Fold Metaplectic Cover Relative Trace / Schur Upper-Bound Chain
+### 3.3 Core Mathematical Reconstruction: Recursive Cokernel Sum-of-Squares `Kk_succ`, General-Rank Unitary Genus-Mass Ratios (`GL5/Statement.lean`), and Projection-Free C*-Schur Bounds
 
-In analytic number theory, bounding inner-product matrices $\langle P_u, P_{u'} \rangle$ of Poincaré series via classical Kuznetsov-Petersson trace formulas relies on pointwise phase cancellation in individual Kloosterman or Gauss sums (such as the Weil bound $q^{1/2}$). At multiply ramified levels on higher-rank unitary and general linear groups ($\mathrm{GL}_5$ and above), however, degenerate hyperboloid singularities in high-dimensional exponential sums prevent pointwise phase cancellation alone from avoiding exponent loss.
+In analytic number theory, bounding inner-product matrices $\langle P_u, P_{u'} \rangle$ of Poincaré series via classical Kuznetsov-Petersson trace formulas relies on pointwise phase cancellation in individual Kloosterman or Gauss sums (such as the Weil bound $q^{1/2}$). At multiply ramified levels on higher-rank unitary groups, however, degenerate hyperboloid singularities in high-dimensional exponential sums prevent pointwise phase cancellation alone from avoiding exponent loss.
 
-The solution built in `SharpRestriction` **dispenses with sign cancellation in individual Gauss sums altogether, combining iterated Parseval identities over quotient-module cokernels, a relative trace formula on the 6-fold metaplectic cover of $\mathrm{GL}_5$, and a C*-algebraic functional-calculus Schur lemma to compress Hilbert-Schmidt and operator norms of Gram matrices into purely non-negative $L^2$ sums of squares**. The exact four-step equation chain recorded in the source code runs as follows.
+The solution built in `SharpRestriction` **dispenses both with sign cancellation in individual Gauss sums and with any standalone 6-fold metaplectic cover of $\mathrm{GL}_5$, combining recursive cokernel isomorphism-class sums of squares (`Kk_succ`), general-rank unitary Siegel-Weil genus-mass and volume ratios (`GL5/Statement.lean`), and a C*-algebraic functional-calculus Schur lemma to compress Hilbert-Schmidt and operator norms of Gram matrices into purely non-negative $L^2$ sums of squares**. The exact four-step equation chain recorded in the source code runs as follows.
 
-#### Step 1: Iterated Parseval Identity Over Cokernel Isomorphism Classes (`Kk_succ`) Replacing Gauss-Sum Cancellation
+#### Step 1: Recursive Bessel-Kernel Definition Over Cokernel Isomorphism Classes and Unfolding Lemma (`Kk_succ`)
 `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:42-260` defines over a non-Archimedean local field extension $E/F$ the split model `Model F E` (`:42-47`), subring of integers $R := M.R \subseteq E$ (`:52-60`), additive character $\psi_R : E \to \mathbb{C}^\times$ (`:66-70`), cokernels `M.Cok ZZ` (`:90-92`) of size-$(m+1)$ matrices, and the set of isomorphism classes $\mathrm{Cls}_m(M) := M.\mathrm{Cls}\,m$ (`:143`, with automorphism-group order $|\Aut(c)| = M.\mathrm{nAut}\,c$ at `:145`).
 
-Defining the partial Bessel integral coefficients $\mathrm{BB}(M; w, c) \in \mathbb{C}$ (`:211-214`) with respect to lower- and upper-triangular unipotent matrices $u_{\mathrm{Low}}(x)$ (`:181-183`) and $u_{\mathrm{Up}}(w, y)$ (`:184-187`), theorem `Kk_succ` (`Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256`) proves that the kernel $K_k := M.\mathrm{Kk}$ (`:215-218`) ascending from depth $m$ to depth $m+1$ satisfies the exact Parseval decomposition identity
+Introducing the partial Bessel integral coefficients $\mathrm{BB}(M; w, c) \in \mathbb{C}$ (`:211-214`) with respect to lower- and upper-triangular unipotent matrices $u_{\mathrm{Low}}(x)$ (`:181-183`) and $u_{\mathrm{Up}}(w, y)$ (`:184-187`), the source defines the recursive kernel $K_k := M.\mathrm{Kk}$ (`:215-218`) directly as the cokernel-class sum and records its definitional unfolding in `Kk_succ` (`Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256`, `:= rfl`):
 
 $$
 K_{m+1}(w, w') = \sum_{c \in \mathrm{Cls}_m(M)} \frac{\mathrm{BB}(M; w, c)\,\overline{\mathrm{BB}(M; w', c)}}{|\Aut(c)|}
@@ -528,7 +528,7 @@ $$
 K_{m+1}(w, w) = \sum_{c \in \mathrm{Cls}_m(M)} \frac{\left|\mathrm{BB}(M; w, c)\right|^2}{|\Aut(c)|} \ge 0
 $$
 
-so $L^2$ mass is preserved identically across dimensions $1 \to 2 \to \dots \to r_S + 1$ by orthogonality (Parseval's identity) over the finite abelian cokernel `M.Cok ZZ`, without estimating pointwise cancellation of complex oscillatory terms. Off the diagonal ($w \ne w'$), Cauchy-Schwarz yields $|K_{m+1}(w, w')|^2 \le K_{m+1}(w, w)\,K_{m+1}(w', w')$ immediately.
+connecting downstream orbital Gram-comparison theorems directly to non-negative $L^2$ sums of squares over the finite abelian cokernel `M.Cok ZZ`, without estimating pointwise cancellation of complex oscillatory terms. Off the diagonal ($w \ne w'$), Cauchy-Schwarz yields $|K_{m+1}(w, w')|^2 \le K_{m+1}(w, w)\,K_{m+1}(w', w')$ immediately.
 
 #### Step 2: Fivefold Cell Decomposition of the Projected Poincaré Gram Matrix `Kmat` (`Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:335-524`)
 On the cuspidal subspaces `s.Cu u` indexed by word parameters $u, u' \in \mathrm{Word}$, `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:335-377` scales the projected Poincaré Gram operator $K(u, u') := \mathrm{Kmat}(s, u, u') : \mathcal{C}_{u'} \to \mathcal{C}_u$ (`:339-344`) by the normalization constant
@@ -550,8 +550,8 @@ The source predicate definitions, controlling theorems, and norm-decay mechanism
 | **`1.` $K_{\mathrm{id}}(u, u')$** | `IdCellDiag`(`:372`), `IdCellOff`(`:375`) | $s.\mathrm{isId}(t)$ | Equals $\mathrm{id}_{\mathcal{C}_u}$ on the diagonal $u=u'$ via normalization $c_0(u)$, and $0$ off-diagonal ($u \ne u'$) |
 | **`2.` $K_2(u, u')$** | `RelevantZeroGramTerms`(`:351`), `K2`(`:366`) | $s.\mathrm{relevant}(t) \wedge s.\mathrm{Gterm}(t) = 0$ | Eliminated via smooth cutoff `isCutoff_exists` (`:548-557`) and Capelli spectral gap `capW` (`:536-541`) |
 | **`3.` $K_{\mathrm{NG}}(u, u')$** | `famNG`(`:353`), `KOf s u u' famNG` | $\neg s.\mathrm{isId}(t) \wedge s.\mathrm{Gterm}(t) \ne 0 \wedge \neg s.\mathrm{generic}(t)$ | Bounded via the Cauchy-Schwarz ratio $\mathrm{a2C} = \|\mathrm{grpC}\|^2 / \mathrm{J2of}$ of `Formalism/LocalToGlobal/SiegelLatticeTheory/CokernelGLCounts/NGData.lean:43-125` |
-| **`4.` $K_{\mathrm{G, sc}}(u, u')$** | `scalarP`(`:361`) in `famG`(`:355`), `Kgs`(`:368`) | Diagonal scalar-coupled pairs among generic terms | Directly controlled by iterated Parseval `Kk_succ` of `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256` |
-| **`5.` $K_{\mathrm{G, loop}}(u, u')$** | `loopP`(`:357`) in `famG`(`:355`) | Off-diagonal cross-loop pairs among generic terms | Mean-square $\mathrm{GL}_5$ 6-fold cover relative trace bound and 5-adic depth volume decay $5^{-j_0}$ (`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`) |
+| **`4.` $K_{\mathrm{G, sc}}(u, u')$** | `scalarP`(`:361`) in `famG`(`:355`), `Kgs`(`:368`) | Diagonal scalar-coupled pairs among generic terms | Directly controlled by recursive cokernel sum `Kk_succ` of `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:254-256` |
+| **`5.` $K_{\mathrm{G, loop}}(u, u')$** | `loopP`(`:357`) in `famG`(`:355`) | Off-diagonal cross-loop pairs among generic terms | Two-type Cauchy-Schwarz mean-square bound and 5-ary depth volume decay $5^{-j_0}$ (`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`) |
 
 Written out directly from the source, the three non-identity term sets are:
 - **Relevant zero-Gram term set (`:351`)**:
@@ -562,10 +562,10 @@ Written out directly from the source, the three non-identity term sets are:
   $$\mathrm{famG} := \left\{ t \in s.\mathrm{Term}(u, u') \;\mid\; \neg s.\mathrm{isId}(t) \wedge s.\mathrm{Gterm}(t) \ne 0 \wedge s.\mathrm{generic}(t) \right\}$$
   Inside `famG`, where every leading principal minor `leadMinor` (`:235-237`) is invertible, product pairs $(t_1, t_2) \in \mathrm{pairsIn}(\mathrm{famG})$ (`:364`) bifurcate into `scalarP` and `loopP`, forming components 4 and 5 of the table above.
 
-#### Step 3: Coupling with the $\mathrm{GL}_5$ 6-Fold Metaplectic Cover Relative Trace Formula (`GL5/Statement.lean` and `AsmIface.lean`)
-The higher-rank group governing mean-square averages over `loopP` and nontrivial orbital averages is $\mathrm{GL}_5$, corresponding to base rank $K = 5$ (`Formalism/HermitianCurvature/HermitianCurvatureProofs/TheoremPIntegralOfPlaces.lean:27`: `(S.mkData Kr hK0 Th e).K = 5`), together with its **6-fold metaplectic cover** coupling.
-Inspection of `Formalism/LocalToGlobal/GlobalTheory/GL5/Statement.lean:14-147` (`148` lines, `dist = 9`) shows that over the family `FamP eps`, this module ties together real-place compatibility `TiedRealF` (`:15-17`), frame compatibility `TiedFrameF` (`:28-30`), Weil-Siegel gauge `WeilSiegelGauge` (`:39-44`), standard lattice mass ratios `MassRatioStd` (`:45-50`), Harish-Chandra formal degrees `HCFormalDegree` (`:69-75`), the Landherr-Hasse local-global principle `LandherrHasse` (`:76-81`), and the 5-step link count proposition `LinkCount5` (`:137-140`).
-Siegel-Weil and symplectic theta lifts on the 6-fold cover carry 3rd- and 6th-root-of-unity Gauss factors, yet passing to the iterated Parseval sum of squares $|K_{m+1}|^2$ and the positive spectral side of the relative trace formula annihilates the 6th-root-of-unity phases identically via $\zeta_6 \overline{\zeta_6} = 1$, leaving only a pure real volume decay factor $5^{-j_0}$ governed by the 5-adic level depth $j_0 = \lceil \log_5(n N(m)/m)\rceil_+$ (`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`).
+#### Step 3: Actual Contents of the `GL5` Directory (`GenusMassVolumes`), Fourier Decay Order $K = 5$, and 5-Ary Depth Coupling (`GL5/Statement.lean` and `AsmIface.lean`)
+Although item 16 of the informal note `remark.pdf` mentioned a 6-fold cover of $\mathrm{GL}_5$ as initial motivation, inspecting the actual Lean directory named `GL5` (`Formalism/LocalToGlobal/GlobalTheory/GL5/Statement.lean:14-147`, `148` lines, `dist = 9`) confirms that no metaplectic 6-fold cover is defined anywhere in the codebase and that its namespace is `Formalism.L2.GlobalTheoryTheory.GenusMassVolumes`.
+Over the general-rank unitary family `FamP eps`, this module ties together real-place compatibility `TiedRealF` (`:15-17`), frame compatibility `TiedFrameF` (`:28-30`), the unitary Weil-Siegel theorem `WeilSiegelCM` (`:31-38`) and unused-slot wrapper `WeilSiegelGauge` (`:39-44`), standard lattice mass ratios `MassRatioStd` (`:45-50`), fundamental-domain volume ratios `VolRatioTrue` (`:51-68`), Harish-Chandra formal degrees `HCFormalDegree` (`:69-75`), the Landherr-Hasse local-global principle `LandherrHasse` (`:76-81`), and `LinkCount5` (`:137-140`).
+Likewise, `(S.mkData Kr hK0 Th e).K = 5` in `Formalism/HermitianCurvature/HermitianCurvatureProofs/TheoremPIntegralOfPlaces.lean:27` is the integer Archimedean Fourier decay order $K = 5$, while off-diagonal `loopP` terms are controlled directly via cokernel sums of squares $|K_{m+1}|^2$ and the 5-ary level-depth decay factor $5^{-j_0}$ with $j_0 = \lceil \log_5(n N(m)/m)\rceil_+$ (`Formalism/SharpRestriction/InertJacobiLevels/AsmIface.lean:139`).
 
 #### Step 4: C*-Algebraic Functional-Calculus Schur Lemma and Global Norm Closure (`BridgeCSchur.lean` and `MainSup.lean`)
 Finally, to prove that composite integral operators on local square-integrable representation spaces collapse to scalars and that the Hilbert-Schmidt norm `hsSqD u u'` (`Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:519`) controls the operator norm, `Formalism/SharpRestriction/CuspSpanNormBounds/BridgeCSchur.lean:18-630` (`635` lines, `in_degree = 29`, `dist = 9`) proves the self-adjoint and bounded Schur lemmas `schur_selfAdjoint` (`:18-121`) and `schur_bounded` (`:122-138`) in the C*-algebra of continuous linear operators on a complete Hilbert space directly via continuous functional calculus (`CFC`), without spectral projections.
@@ -582,13 +582,13 @@ The tactic-level deductive mechanisms executed inside the kernel by the two core
 1. **Projection-free C*-functional-calculus proof of Schur's lemma in `Formalism/SharpRestriction/CuspSpanNormBounds/BridgeCSchur.lean:18-138`**:
    To show that a bounded self-adjoint operator $T \in (H \to_L H)$ (`IsSelfAdjoint T`) commuting with an irreducible unitary representation $\sigma$ on an infinite-dimensional Hilbert space $H$ is a scalar multiple of the identity, textbook proofs invoke Borel spectral measures (spectral projections).
    Instead, `schur_selfAdjoint` (`Formalism/SharpRestriction/CuspSpanNormBounds/BridgeCSchur.lean:18-121`) bypasses spectral measures using only `Mathlib`'s continuous functional calculus (`cfc : (ℝ → ℝ) → (H →L[ℂ] H) → (H →L[ℂ] H)`).
-   - If the real spectrum $\mathrm{spectrum}\,\mathbb{R}\,T$ contained two distinct points $a < b$, one constructs two non-negative continuous cutoff functions $f_1, f_2 : \mathbb{R} \to \mathbb{R}$ with disjoint supports ($f_1(a) > 0$, $f_2(b) > 0$, $f_1 \cdot f_2 = 0$).
-   - By uniform polynomial approximation (Weierstrass) and continuity, `cfc f_1 T` and `cfc f_2 T` commute with every $\sigma(g)$, making $\overline{\mathrm{range}(\mathrm{cfc}\,f_1\,T)}$ a closed $\sigma$-invariant subspace that is both nonzero (`cfc f_1 T ≠ 0`) and proper (orthogonal to the range of `cfc f_2 T`), contradicting `IsIrredOn`.
-   - Hence the spectrum collapses to a singleton $\{c\}$, and `cfc_id` yields $T = c \cdot \mathrm{id}_H$.
+   - If the real spectrum $\mathrm{spectrum}\,\mathbb{R}\,T$ contained two distinct points $s \ne t$, one constructs two non-negative continuous tent functions $f_1(x) = \max(0, |s-t|/2 - |x-s|)$ and $f_2(x) = \max(0, |s-t|/2 - |x-t|)$ ($f_1(s) > 0$, $f_2(t) > 0$, $f_1 \cdot f_2 = 0$).
+   - By `cfc` commutativity and multiplicativity, `cfc f_1 T` and `cfc f_2 T` commute with every $U \in \mathcal{U}$ and satisfy `cfc f_1 T * cfc f_2 T = 0`, making the **closed kernel** $K := \ker(\mathrm{cfc}\,f_1\,T)$ a closed $\mathcal{U}$-invariant subspace that is neither $\bot$ (since the nonzero range of `cfc f_2 T` lies inside $K$) nor $\top$ (since `cfc f_1 T ≠ 0`), contradicting irreducibility.
+   - Hence the spectrum collapses to a singleton $\{c\}$, and `cfc_id'` yields $T = c \cdot \mathrm{id}_H$.
    - Any general bounded intertwining operator $S$ reduces immediately to a complex scalar in `schur_bounded` (`:122-138`) via the Cartesian real-imaginary decomposition $S = \frac{S + S^*}{2} + i\,\frac{S - S^*}{2i}$.
 2. **Unitary formal-degree bounds and unfolding volume ratios in `Formalism/SharpRestriction/GlobalSchurBounds/ThickPlacesCorollaryOfAnyTranslate.lean:17-2353`**:
    - At the top of the file (`:17-61`), `finrank_host`, `fDeg_host`, `vInv_host`, `cmField_unramified_massIdentity`, `massIdentity_holds`, and `lVal_pos` combine the relative discriminant of the host CM extension with Dirichlet/Hecke $L$-values $L(M, \eta^M) > 0$ to pin down the unramified local mass identity.
-   - Near the bottom (`:2251-2321`), `harishChandraAbs_pos_of_strictAnti` (`:2251-2260`) proves for a strictly decreasing Harish-Chandra parameter sequence $\lambda_0 > \lambda_1 > \dots > \lambda_{n-1}$ that the Weyl denominator product $\prod_{i < j} |\lambda_i - \lambda_j|$ is bounded below positively with minimum spacing at least $1$, lifting this in `formalDegreeBound_all_unitaryGroups` (`:2261-2312`) and `familyFormalDegree_all` (`:2317-2321`) to simultaneous polynomial upper and lower bounds on $d(\sigma)$ across unitary groups of all ranks in the chain.
+   - Near the bottom (`:2251-2321`), `harishChandraAbs_pos_of_strictAnti` (`:2251-2260`) proves for a strictly decreasing Harish-Chandra parameter sequence $\lambda_0 > \lambda_1 > \dots > \lambda_{N-1}$ ($N \ge 2$) that $|\lambda_0 - \lambda_1| > 0$ forces positivity of the iterated supremum $\mathrm{lamAbs}(\lambda) := \sup_a \sup_b |\lambda_a - \lambda_b| > 0$, lifting this in `formalDegreeBound_all_unitaryGroups` (`:2261-2312`) and `familyFormalDegree_all` (`:2317-2321`) to simultaneous polynomial upper and lower bounds on $d(\sigma)$ across unitary groups of all ranks in the chain.
    - The final theorem `volumeMass_of_unfolding` (`:2342-2353`) combines `VolumeRatio₂` (`:2330-2341`) with the Siegel-Weil unfolding identity to close the global mass constant.
 
 ---
@@ -1106,8 +1106,8 @@ The mathematical operating mechanism of the four `Formalism` pillars (`14,866` f
    \left(\Theta_t \circ \Theta_t^*\right)(e) = \left(\kappa \prod_{j=0}^{m-1} \lambda_{j, t, p, v_0}\right) e, \qquad \det(A) = \kappa^{\dim_{\mathbb{C}} E} \prod_{j=0}^{m-1} \det(B_j)
    $$
 
-2. **Pillar 2 (`SharpRestriction`) Iterated Parseval and Schur Gram Upper Bounds**:
-   Without relying on pointwise phase cancellation of Gauss sums, cokernel isomorphism-class orthogonality (`Kk_succ`), mean-square relative trace bounds on the 6-fold metaplectic cover of $\mathrm{GL}_5$ ($5^{-j_0}$ decay), and the C*-continuous-functional-calculus Schur lemma (`schur_UJ`) control the norm of the projected Poincaré Gram operator $K(u, u')$:
+2. **Pillar 2 (`SharpRestriction`) Cokernel Sum-of-Squares and Schur Gram Upper Bounds**:
+   Without pointwise phase cancellation of Gauss sums or any standalone 6-fold cover of $\mathrm{GL}_5$, recursive cokernel isomorphism-class sums of squares (`Kk_succ`), two-type Cauchy-Schwarz mean-square bounds ($5^{-j_0}$ decay), and the C*-continuous-functional-calculus Schur lemma (`schur_UJ`) control the norm of the projected Poincaré Gram operator $K(u, u')$:
 
    $$
    K_{r+1}(w, w') = \sum_{c \in \mathrm{Cls}_r(M)} \frac{\mathrm{BB}(M; w, c)\,\overline{\mathrm{BB}(M; w', c)}}{|\Aut(c)|}
@@ -1162,7 +1162,7 @@ Finally, the master cross-reference index below catalogs all `58` representative
 | Ch. 3 | `Formalism/SharpRestriction/Divisibility/GeneratorPowers/ThExprUniqOfChartIndep2.lean:1-41` | `41` | `873` | `9` | `B02` Hub | Chart-independent prime-power lattice-shift uniqueness (overall #2 hub) |
 | Ch. 3 | `Formalism/SharpRestriction/LevelLetterCocycles/LocCoh.lean:1-195` | `195` | `654` | `7` | `B02` Hub | Bloch-Kato crystalline/de Rham cohomology and local Tate duality |
 | Ch. 3 | `Formalism/SharpRestriction/LevelLetterCocycles/LocalSituation.lean:1-641` | `641` | `627` | `7` | `B02` Hub | 30-field $p$-adic Galois lifting situation `Sit` and uniform constant |
-| Ch. 3 | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:1-282` | `282` | `400` | `9` | `B02` Hub | Cokernel isomorphism-class iterated Parseval identity `Kk_succ` |
+| Ch. 3 | `Formalism/SharpRestriction/CuspSpanNormBounds/FractionFieldToGenericStalkAlgebraMapEq.lean:1-282` | `282` | `400` | `9` | `B02` Hub | Cokernel isomorphism-class recursive sum unfolding `Kk_succ` |
 | Ch. 3 | `Formalism/SharpRestriction/Divisibility/SchurIrreducible.lean:1-617` | `617` | `377` | `7` | `B02` Hub | Discrete-series Blattner parameters and local Archimedean Rallis formula |
 | Ch. 3 | `Formalism/SharpRestriction/ParConsts.lean:1-103` | `103` | `224` | `7` | `B02` Hub | Global parameter window `FamP`, literal fixed constants, and `DFamP` (`eps < 1/52`) |
 | Ch. 3 | `Formalism/SharpRestriction/CuspSpanNormBounds/RelevantZeroGramTerms.lean:1-573` | `573` | `201` | `7` | `B02` Hub | Fivefold cell decomposition of projected Poincaré Gram operator `Kmat` |

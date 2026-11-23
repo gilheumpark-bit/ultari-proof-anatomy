@@ -210,9 +210,9 @@ theorem thm_24_parametric_unbundled_farkas_shift_theorem
   dsimp [farkasWeightedSaving]
   exact ⟨h_sav, by omega, h_ws_pos, by omega, by omega⟩
 
-/-- [Theorem 25] Breaking `B_Liu` via `δ = 0` sixth-moment amplification (`Xu-Sang arXiv:2610.15291`, `β_XS = 8748867/10000000`):
+/-- [Theorem 25] Breaking `B_Liu` via `δ = 0` amplified reflected-numerator moment (`Y. Xu & H. Sang arXiv:2610.15291`, `β_XS = 8748867/10000000`):
 in Liu's Farkas weights at `δ_c = (49 - s)/48`, `w_0 = (163 - 3s)/(183 - 3s) > 2/3` (`3*(163 - 3s) - 2*(183 - 3s) = 123 - 3s > 0`),
-so any `Δ_0 > 0` on `Face_0` transfers more than `2/3` of its saving into `B^*`, lowering `B_Liu ≈ 0.87495707` to `β_XS = 0.8748867 < B_Liu`. -/
+so any `Δ_0 > 0` on `Face_0` (via fourth-moment reflected-numerator amplification) lowers `B_Liu ≈ 0.87495707` to `β_XS = 0.8748867 < B_Liu`. -/
 theorem thm_25_xu_sang_delta0_sixth_moment_breaks_liu_obstruction
     (s_lo1000 s_hi1000 s_shi_scaled w0_gt_2_3_lo1000 B_liu_lo10m B_xs10m gap_liu_xs10m : Int)
     (h_slo : s_lo1000 = 30347)
@@ -245,22 +245,22 @@ theorem thm_26_unbundled_gram_and_stickelberger_shift_breaks_face_H
     beta_unbun3_4896 < beta_unbun2_4896 ∧ beta_unbun2_4896 < beta0_4896 := by
   omega
 
-/-- [Theorem 27] Connecting the unimported `CubicGauss/LargeSieve.lean` (`2/3` sharp cubic large sieve) to the Path-A floor `71/108` (`Part II` `thm_34`):
-replacing the bilinear Cauchy-Schwarz count envelope `R(δ_c, 1/2) = 2/3 = 6/9` (`geometry/V2Optimization.lean:117`) with the sharp cubic-sieve
-effective count envelope `R_eff = 7/9` (`gain = 1/9`) and maximum Path-A Gram saving `Δ_gram^max = 53/216` lowers the static barrier to
-`β_min^A = 142/216 = 71/108 ≈ 0.657407`. -/
+/-- [Theorem 27] Distinguishing `CubicGauss`'s baseline `LowRows` energy `53/216` from the zero-energy Path-A LP intercept `71/108` (`Part II` `thm_34`):
+at `(α_X, α_Y) = (4/9, 13/18) = (96/216, 156/216)` (`d_0 = 7/6 - α_X = 13/18`), the `CubicGauss` `P^(1/6)` sieve leaves positive `LowRows`
+exponent `e_low_cubic = 53/216 > 0` (`β(0) = 195/216 = 65/72`), so reaching `β_min^A = 142/216 = 71/108 ≈ 0.657407` requires an additional
+hypothetical full cancellation `Δ_gram^req = e_low_cubic = 53/216` (`e_low_eff = 0`) beyond `CubicGauss`. -/
 theorem thm_27_connecting_cubic_gauss_2_3_sieve_to_path_A_71_108
-    (R_cs9 R_eff9 R_gain9 aX_zero216 aY_zero216 dgram_max216 beta_minA216 beta_half216 : Int)
-    (hRcs : R_cs9 = 6)
-    (hReff : R_eff9 = 7)
-    (hRg : R_gain9 = R_eff9 - R_cs9)
-    (haX : 3 * aX_zero216 = 288)
+    (d0_zero216 aX_zero216 aY_zero216 e_low_cubic216 beta_unc216 dgram_req216 beta_minA216 beta_half216 : Int)
+    (hd0 : d0_zero216 = 156)
+    (haX : aX_zero216 = 252 - d0_zero216)
     (haY : aY_zero216 = 2 * aX_zero216 - 36)
-    (hdg : 12 * dgram_max216 = 5 * aX_zero216 + aY_zero216)
-    (hbA : 3 * beta_minA216 = 522 - aX_zero216)
+    (helow : 12 * e_low_cubic216 = 5 * aX_zero216 + aY_zero216)
+    (hb0 : 12 * beta_unc216 = 12 * 174 + aX_zero216 + aY_zero216)
+    (hdreq : dgram_req216 = e_low_cubic216)
+    (hbA : beta_minA216 = beta_unc216 - dgram_req216)
     (hbh : beta_half216 = 108) :
-    R_gain9 = 1 ∧ 0 < R_gain9 ∧ aX_zero216 = 96 ∧ aY_zero216 = 156 ∧
-    dgram_max216 = 53 ∧ beta_minA216 = 142 ∧ beta_half216 < beta_minA216 := by
+    aX_zero216 = 96 ∧ aY_zero216 = 156 ∧ e_low_cubic216 = 53 ∧ 0 < e_low_cubic216 ∧
+    beta_unc216 = 195 ∧ dgram_req216 = 53 ∧ beta_minA216 = 142 ∧ beta_half216 < beta_minA216 := by
   omega
 
 /-- [Theorem 28] Complete 10-Tier QRH Boundary Hierarchy (`1/2 < 71/108 < 4069/4896 < 4103/4896 < 0.8748867 < B_Liu < B_r < β_SOS(0) < 7/8 < 11/12 < 23/24`):
@@ -283,23 +283,23 @@ theorem thm_28_ten_tier_qrh_boundary_hierarchy
     b_7_8 < b_11_12 ∧ b_11_12 < b_23_24 := by
   omega
 
-/-- [Theorem 29] Exact Zero-Free Strip Width Progression `W(β) = 1 - β` (in common denominator `lcm(24, 4896, 108) = 44064`):
+/-- [Theorem 29] Exact Zero-Free Strip Width Progression `W(β) = 1 - β` (over `D = 3 * lcm(24, 4896, 108) = 3 * 14688 = 44064`):
 `W(23/24) = 1836` (`1/24`), `W(11/12) = 3672` (`1/12 = 2x`), `W(7/8) = 5508` (`1/8 = 3x`),
 `W(4103/4896) = 7137` (`793/4896 ≈ 3.887x`), `W(4069/4896) = 7443` (`827/4896 ≈ 4.054x`),
 `W(71/108) = 15096` (`37/108 ≈ 8.222x`), and `W(1/2) = 22032` (`1/2 = 12x`). -/
 theorem thm_29_zero_free_strip_width_progression_ratios
     (D w_sd w_11_12 w_7_8 w_unb2 w_unb3 w_pathA w_rh : Int)
-    (hD : D = 44064)
+    (hD : D = 3 * Int.ofNat (Nat.lcm (Nat.lcm 24 4896) 108))
     (hsd : 24 * w_sd = D)
     (h11 : 12 * w_11_12 = D) (h78 : 8 * w_7_8 = D)
     (hu2 : w_unb2 = D - 9 * 4103)
     (hu3 : w_unb3 = D - 9 * 4069)
     (hpA : w_pathA = D - 408 * 71)
     (hrh : 2 * w_rh = D) :
-    w_sd = 1836 ∧ w_11_12 = 2 * w_sd ∧ w_7_8 = 3 * w_sd ∧
+    Nat.lcm (Nat.lcm 24 4896) 108 = 14688 ∧ D = 44064 ∧ w_sd = 1836 ∧ w_11_12 = 2 * w_sd ∧ w_7_8 = 3 * w_sd ∧
     w_unb2 = 7137 ∧ w_unb3 = 7443 ∧ w_pathA = 15096 ∧ w_rh = 12 * w_sd ∧
     w_7_8 < w_unb2 ∧ w_unb2 < w_unb3 ∧ w_unb3 < w_pathA ∧ w_pathA < w_rh := by
-  omega
+  have hlcm : Nat.lcm (Nat.lcm 24 4896) 108 = 14688 := rfl; rw [hlcm] at hD ⊢; simp only [Int.ofNat_eq_natCast] at hD; exact ⟨rfl, by omega⟩
 
 /-- [Theorem 30] Master QRH Ecosystem Synthesis Verdict:
 unifies Pillar 1 (`23/24 → 11/12` symbolic reserve unlock `gap24 = 1`), Pillar 2 (unimported 30-file `CubicGauss` sharp `4/3` large sieve

@@ -1,7 +1,7 @@
 # 고급 가이드: 전 구간 수학적 귀납법(induction n), $\mathbb{Z}[\sqrt{921}]$ 대수적 통합, 매개변수 파카스 쌍대성, 그리고 준리만 가설 3단계 통합 브리지
 
 - 대상 독자: 해석적 정수론 연구자, 형식 검증 전문가, 그리고 `CubicGauss` 비선형 점화식의 전 구간 귀납법 증명, $\mathbb{Z}[\sqrt{921}]$ 정역 연산, 매개변수 파카스 쌍대성, 및 제1부·제2부·제3부 3부작이 어떻게 단일 대수적 불변량으로 통합되는지 확인하고 싶은 분.
-- 범위 및 원문 출처 명시: [proofs/oai_ref/](../proofs/oai_ref/Endpoint.lean)에 포함되지 않은 업스트림 파일은 `openai/math` 저장소(커밋 `4eaee87` / `PR #70` `ca28f20`)에 속합니다. 먼저 `#003`의 증명된 주정리 `SevenEighths.lean`($\beta = 7/8 = 21/24$, `0 sorry`)이 이미 $\text{Re}(s) > 11/12$와 $\text{Re}(s) > 23/24$를 논리적으로 모두 함의하며 `DescentScale.lean`도 저장소에 존재하므로, 본 보고서의 `ElevenTwelfths`(`23/24`) 및 미연결 30개 `CubicGauss` 분석은 `#003`이 $11/12$에 도달하지 못했다는 주장이 아니라 엄밀한 **모듈 층위(module-stratigraphy) 및 중간 목표 분석**입니다. 또한 `thm_27`, `thm_40`은 $\beta = 71/108$에 이르는 **조건부 LP/대수적 지수 합성**을 검증하며, 실제 $\beta = 71/108$ 달성은 슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달의 완전한 해석적 증명 구축(미구축 이론적 설계도)에 조건부로 의존합니다.
+- 범위 및 원문 출처 명시: [proofs/oai_ref/](../proofs/oai_ref/Endpoint.lean)에 포함되지 않은 업스트림 파일은 공식 `openai/math` 커밋 `4eaee87`(`DirichletL/Nonvanishing.lean`, `DirichletL` `2,926`개 파일) 및 커뮤니티 `oai-math-revised` `PR #70` `ca28f20`(`SevenEighths.lean`, `DescentScale.lean`, `ElevenTwelfths/`, `2,927`개 파일)에 속합니다. `#003`의 증명된 $7/8$ 주정리(`0 sorry`)가 이미 $\text{Re}(s) > 11/12$와 $\text{Re}(s) > 23/24$를 논리적으로 함의하므로, 본 보고서의 `ShortDraft`(`23/24`) 및 미연결 30개 `CubicGauss` 분석은 엄밀한 **모듈 층위(module-stratigraphy) 및 중간 목표 분석**입니다. 또한 `thm_27`, `thm_40`은 가상적 저차 행 완전 상쇄($\Delta_{\mathrm{gram}} = 53/216$) 아래의 형식적 영에너지 LP 절편 $\beta = 71/108$을 검증하며, 실제 달성은 그 추가 상쇄와 슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달 증명 구축에 조건부로 의존합니다.
 
 ## 1. `CubicGauss` 비선형 점화식의 뫼비우스 공액 변환 선형화 및 모든 $n \in \mathbb{N}$에서 수학적 귀납법 증명 (정리 9–14, 31–33)
 
@@ -46,7 +46,7 @@ $$\text{sieveIter}(0) = (2, 1), \qquad \text{sieveIter}(n+1) = (6p_n - 4q_n,\; 3
 $$w_0(\delta_c) = \frac{4 + 18\delta_c}{9 + 18\delta_c}, \qquad w_K(\delta_c) = \frac{2}{9 + 18\delta_c}, \qquad w_H(\delta_c) = \frac{3}{9 + 18\delta_c}$$
 는 임의의 $\delta_c$에서 $(M, \ell)$을 항등 소거하며([thm_21_farkas_dual_weights_and_closure_obstruction](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L124-L139)), 각 면의 비음수 절감량 $(\Delta_0, \Delta_K, \Delta_H)$만큼 매개변수 LP 최적 경계를 선형 이동시킵니다([thm_24_parametric_unbundled_farkas_shift_theorem](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L187-L211)–[thm_30_master_qrh_ecosystem_synthesis_verdict](../proofs/qrh_q_sqrt_921_farkas_and_unbundling_synthesis.lean#L308-L321)):
 $$B^*(\Delta_0, \Delta_K, \Delta_H) = B_{\mathrm{Liu}} - \left(w_0\,\Delta_0 + w_K\,\Delta_K + w_H\,\Delta_H\right)$$
-Xu–Sang(`arXiv:2610.15291`, 미심사 프리프린트)의 $\delta = 0$ 경계 $0.8748867$, 비묶음 그람 목표치 $\frac{4103}{4896}$, $\frac{4069}{4896}$, 그리고 조건부 LP/대수적 지수 합성 목표치 $\frac{71}{108}$을 도출합니다(실제 $\beta = 71/108$ 달성은 슈티켈베르거 극점 소멸 $k_\infty = -6$ 및 보로노이-멜린 전달의 완전한 해석적 증명 구축에 조건부로 의존).
+Y. Xu와 H. Sang(`arXiv:2610.15291`, 미심사 프리프린트; 4차 모멘트에서 유도한 반사 분자 증폭 1차 모멘트 + $\delta = 0$ 완화 상한)의 경계 $0.8748867$, 비묶음 그람 목표치 $\frac{4103}{4896}$, $\frac{4069}{4896}$, 그리고 가상적 저차 행 완전 상쇄($\Delta_{\mathrm{gram}} = 53/216$) 아래의 형식적 영에너지 LP 절편 $\frac{71}{108}$을 도출합니다(`CubicGauss` 자체는 $53/216 > 0$을 남김).
 
 
 
@@ -61,15 +61,15 @@ Xu–Sang(`arXiv:2610.15291`, 미심사 프리프린트)의 $\delta = 0$ 경계 
    $$\frac{7}{8} - \frac{4069}{4896} = \frac{4284 - 4069}{4896} = \frac{215}{4896} = \frac{2}{3} \times \frac{215}{3264}.$$
    즉 제2부의 3항 결합 해제 경계 $\frac{4069}{4896}$가 $7/8$에서 내려간 폭 $\frac{215}{4896}$는 제1부의 여백 $\frac{215}{3264}$에 정확히 $\frac{2}{3}$를 곱한 값입니다.
 3. 아이젠슈타인 극점 쌍대성 $\alpha^{\ast} + \beta_{\mathrm{pole}} = 2$ 및 3264 / 44064 항등식 ([thm_39_eisenstein_pole_duality_cubic_gauss_vs_coordR](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L232-L243)–[thm_42_gap_between_71_108_and_7_12_equals_3264_over_44064](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L284-L293)):
-   - 제3부(11/12 및 `CubicGauss` 통합)의 `CubicGauss` 수렴 고정점 $\alpha^{\ast} = \frac{4}{3}$과 제2부의 `coordR` 극점 장벽 $\beta_{\mathrm{pole}} = \frac{2}{3}$는 $\alpha^{\ast} + \beta_{\mathrm{pole}} = 2$ 쌍대 관계를 만족하며, `CubicGauss`를 연결한 조건부 LP 바닥 지수 $\frac{71}{108}$은 $\beta_{\mathrm{pole}} = \frac{72}{108}$보다 $\frac{1}{108}$ 아래에 놓입니다.
+   - 제3부(11/12 및 `CubicGauss` 통합)의 `CubicGauss` 수렴 고정점 $\alpha^{\ast} = \frac{4}{3}$과 제2부의 `coordR` 극점 장벽 $\beta_{\mathrm{pole}} = \frac{2}{3}$는 $\alpha^{\ast} + \beta_{\mathrm{pole}} = 2$ 쌍대 관계를 만족하며, 가상적 저차 행 완전 상쇄($\Delta_{\mathrm{gram}} = 53/216$) 아래의 형식적 영에너지 LP 절편 $\frac{71}{108}$은 $\beta_{\mathrm{pole}} = \frac{72}{108}$보다 $\frac{1}{108}$ 아래에 놓입니다.
    - 동시에 제1부의 가우스 분기 6/8 소멸($\frac{1}{6} \to \frac{1}{12}$, 절감량 $\frac{1}{12}$)과 제2부의 슈티켈베르거 소멸자($k_\infty = -6$, 순 극점 위수 $1 - 1 = 0$)는 극점 좌표를 $\frac{2}{3} \to \frac{7}{12} \to \frac{1}{2}$로 이동시킵니다.
-   - 3부작 최소공배수 분모 $44064 = \operatorname{lcm}(24, 4896, 108) = 9 \times 4896$ 위에서 $\frac{71}{108}$과 이동된 극점 $\frac{7}{12}$ 사이의 거리는 정확히 제1부 분모 $d_{\mathrm{I}} = 3264$입니다:
+   - 실제 최소공배수는 $\operatorname{lcm}(24, 4896, 108) = 14688$($\left(\frac{71}{108} - \frac{7}{12}\right)\times 14688 = 1088 = d_{\mathrm{I}}/3$)이며, 그 3배인 3부작 공통배수 분모 $D = 3\operatorname{lcm}(24, 4896, 108) = 44064 = 9 \times 4896$ 위에서 $\frac{71}{108}$과 이동된 극점 $\frac{7}{12}$ 사이의 거리는 정확히 제1부 분모 $d_{\mathrm{I}} = 3264$입니다:
      $$\left(\frac{71}{108} - \frac{7}{12}\right) \times 44064 = 28968 - 25704 = 3264 = d_{\mathrm{I}}.$$
 4. 6단계 망원 분해와 $\beta = 1/2$ (0.5) 도달을 위한 엄밀한 범위 경계 ([thm_43_eleven_twelfths_to_seven_eighths_bridge](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L299-L309)–[thm_45_grand_trilogy_synthesis_verdict](../proofs/qrh_trilogy_induction_and_algebraic_bridge.lean#L338-L354)):
-   공통분모 $44064$ 위에서 $\frac{23}{24}$부터 $\frac{1}{2}$까지의 전체 폭 $20196$은 6단계 정수 폭으로 분해됩니다:
+   공통배수 분모 $D = 44064$ 위에서 $\frac{23}{24}$부터 $\frac{1}{2}$까지의 전체 폭 $20196$은 6단계 정수 폭으로 분해됩니다:
    $$1836 + 1836 + 1935 + 7653 + 3264 + 3672 = 20196 = \left(\frac{23}{24} - \frac{1}{2}\right) \times 44064.$$
-   - 조건부 LP 및 대수적 지수 합성 검증 영역 (1–4단계, 합계 $13260 / 44064 \to \beta = 71/108 \approx 0.6574$): `0 sorry` Lean 4 정리(`thm_27`, `thm_40`)는 가변 하강 스케일($1836$), 3차 모멘트 전환($1836$), 그램 결합 해제 + 슈티켈베르거 이동($1935$), 미연결 `CubicGauss` 연결($7653$)의 조건부 LP/대수적 지수 합성과 순 극점 위수(`net_pole_order = 0`)를 검증합니다. 다만 실제 $\beta = 71/108$ 달성은 슈티켈베르거 극점 소멸($k_\infty = -6$) 및 보로노이-멜린 전달의 완전한 해석적 증명 구축(아직 미구축인 이론적 설계도)에 조건부로 의존합니다.
-   - $\beta = 1/2$까지의 추가 해석적 난제 영역 (5–6단계, 합계 $(3264 + 3672) / 44064 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$): $71/108$ 전달 설계도 구축 이후에도 실제 모멘트 에너지 바닥을 $\frac{71}{108}$에서 $\frac{1}{2}$까지 내리려면 큰 체 부등식을 넘어서는 비대각 스펙트럼/클루스터만 제곱근 상쇄($\Delta_{\mathrm{hybrid}} = \frac{14}{33} \approx 0.4242$)에 관한 새로운 해석적 증명이 추가로 필요합니다.
+   - 조건부 LP 및 대수적 지수 산술 검증 영역 (1–4단계, 합계 $13260 / 44064 \to \beta = 71/108 \approx 0.6574$): `0 sorry` Lean 4 정리(`thm_27`, `thm_40`)는 가변 하강 스케일($1836$), 3차 모멘트 전환($1836$), 그램 결합 해제 + 슈티켈베르거 이동($1935$), 가상적 저차 행 완전 상쇄 LP 단계($7653$, `CubicGauss` 이후 남는 $53/216$의 추가 상쇄 가정)와 순 극점 위수(`net_pole_order = 0`)를 검증합니다.
+   - $\beta = 1/2$까지의 추가 해석적 난제 영역 (5–6단계, 합계 $(3264 + 3672) / 44064 = 6936 / 44064 = 17/108 \approx 0.1574$, $\frac{71}{108} \to \frac{1}{2}$): $z_{\mathrm{high}} = 0.34 \leftrightarrow z_{\mathrm{high}}' = 0.35$ 접합 하이브리드 모형에서 $\Delta_{\mathrm{hybrid}} = \frac{14}{33} = \frac{56}{132}$을 대입하면 $E_{\mathrm{Low}} - \Delta_{\mathrm{hybrid}} = -\frac{17}{132} < 0$이 되어 비대각 지수합 상쇄만으로는 불가능하며 미증명 아르키메데스 멜린 경로 감쇠($d_{\mathrm{Mellin}} = 59/132$)가 필수적입니다.
 
 
 

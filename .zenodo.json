@@ -1,7 +1,8 @@
 {
   "upload_type": "publication",
   "publication_type": "report",
-  "title": "Ultari Proof Anatomy: 5-Gate Technical Audit, Formal Dissection Archive & 17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation (v1.1.0)",
+  "title": "Ultari Proof Anatomy: 5-Gate Technical Audit, Formal Dissection Archive & 17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation (v1.1.1)",
+  "version": "v1.1.1",
   "creators": [
     {
       "name": "Park, Gilheum",
@@ -9,7 +10,7 @@
       "orcid": "0009-0000-3647-5727"
     }
   ],
-  "description": "Byte-level zero-truncation technical audit, mathematical decompilation, and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (v1.1.0): (1) 15 OpenAI, DeepMind, and classical case studies (892 standalone zero-sorry Lean 4 theorems, 4,217/4,217 hypothesis mutations killed across 44,833 distinct upstream .lean files, >12.4M lines) under the 5-Gate Audit Rubric; and (2) the unified bilingual (EN/KO) deep mathematical decompilation of the 17.37M-line (175,187-file) Levent Alpöge & Claude Riemann Hypothesis (RH) and Dirichlet GRH Lean 4 archive, comprising the 7-volume Part A Academic Monograph (148p EN & 132p KO A4 PDFs, 1,870 verified .lean:line pins per language, pinned Mathlib boundary audit, 201/201 classical import equivalence classification, Formalism 116-subtheory and Pure_Vwin Vandiver-bypass hub reconstruction, and 152-page journal paper blueprint), the Part B 100.00% AST Formula Atlas (30,343 unique modules, 308,731/308,731 declarations), the 6-volume progressive reader & specialist guide (55p EN & 53p KO A4 PDFs, 195/195 literature attribution dictionary), and 61 standalone zero-sorry Lean 4 audit theorems (953 total standalone theorems across the repository).",
+  "description": "Byte-level zero-truncation technical audit, mathematical decompilation, and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (v1.1.1, synchronized with Hexagon Math preprints hexagon:2611.00881 and hexagon:2611.00912): (1) 15 OpenAI, DeepMind, and classical case studies (892 standalone zero-sorry Lean 4 theorems, 4,217/4,217 hypothesis mutations killed across 44,833 distinct upstream .lean files, >12.4M lines) under the 5-Gate Audit Rubric, including the OpenAI #003 QRH Trilogy & Classical Riemann Barriers monograph (hexagon:2611.00912; Cases 001, 005, 008, 015); and (2) the unified bilingual (EN/KO) deep mathematical decompilation of the 17.37M-line (175,187-file) Levent Alpöge & Claude Riemann Hypothesis (RH) and Dirichlet GRH Lean 4 archive (hexagon:2611.00881), comprising the 7-volume Part A Academic Monograph (149p EN & 134p KO A4 PDFs, 1,878 verified .lean:line pins per language, pinned Mathlib boundary audit, 201/201 classical import equivalence classification [92 Type I, 56 Type II-A, 34 Type II-B, 19 adapters], Formalism 116-subtheory [4 pillars + 112 specialized] and Pure_Vwin Vandiver-bypass hub reconstruction [56 slots = 50+5+1], and 152-page journal paper blueprint), the Part B 100.00% AST Formula Atlas (30,343 unique modules, 308,731/308,731 declarations), the 6-volume progressive reader & specialist guide (55p EN & 53p KO A4 PDFs, 195/195 literature attribution dictionary), and 61 standalone zero-sorry Lean 4 audit theorems (953 total standalone theorems across the repository).",
   "access_right": "open",
   "license": "CC-BY-4.0",
   "keywords": [

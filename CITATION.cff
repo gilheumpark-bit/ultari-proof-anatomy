@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this audit framework, the 5-Gate Audit Rubric, the Case Evaluation Ledgers (Case 001 to Case 015), or the 17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation & Part B AST Atlas, please cite it using the metadata below."
 title: "Ultari Proof Anatomy: 5-Gate Technical Audit, Formal Dissection Archive & 17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation"
-abstract: "Byte-level zero-truncation technical audit, mathematical decompilation, and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (v1.1.0): (1) 15 OpenAI, DeepMind, and classical case studies (892 standalone zero-sorry Lean 4 theorems, 4,217/4,217 hypothesis mutations killed across 44,833 distinct upstream .lean files, >12.4M lines) under the 5-Gate Audit Rubric; and (2) the unified bilingual (EN/KO) deep mathematical decompilation of the 17.37M-line (175,187-file) Levent Alpöge & Claude Riemann Hypothesis (RH) and Dirichlet GRH Lean 4 archive (Part A 148p EN & 132p KO deep monographs, Part B 100.00% AST Atlas across 30,343 modules and 308,731 declarations, 6-volume reader guide 55p EN & 53p KO PDFs, 195/195 literature attribution dictionary, and 61 standalone zero-sorry Lean 4 audit theorems; 953 total standalone theorems across the repository)."
+abstract: "Byte-level zero-truncation technical audit, mathematical decompilation, and standalone Lean 4 reconstruction of frontier AI and classical mathematical formal verification corpora (v1.1.1): (1) 15 OpenAI, DeepMind, and classical case studies (892 standalone zero-sorry Lean 4 theorems, 4,217/4,217 hypothesis mutations killed across 44,833 distinct upstream .lean files, >12.4M lines) under the 5-Gate Audit Rubric, including the OpenAI #003 QRH Trilogy & Classical Riemann Barriers monograph (hexagon:2611.00912); and (2) the unified bilingual (EN/KO) deep mathematical decompilation of the 17.37M-line (175,187-file) Levent Alpöge & Claude Riemann Hypothesis (RH) and Dirichlet GRH Lean 4 archive (hexagon:2611.00881; Part A 149p EN & 134p KO deep monographs with 1,878 verified .lean:line pins each, 201/201 classical import classification [92/56/34/19], 116 Formalism subtheories [4 pillars + 112 specialized], Pure_Vwin 56 slots [50+5+1], Part B 100.00% AST Atlas across 30,343 modules and 308,731 declarations, 6-volume reader guide 55p EN & 53p KO PDFs, 195/195 literature attribution dictionary, and 61 standalone zero-sorry Lean 4 audit theorems; 953 total standalone theorems across the repository)."
 type: software
-version: "1.1.0"
+version: "1.1.1"
 doi: "10.5281/zenodo.24241228"
 identifiers:
   - type: doi
@@ -11,11 +11,17 @@ identifiers:
     description: "CERN Zenodo Concept DOI (resolves to latest version)"
   - type: doi
     value: "10.5281/zenodo.24437646"
-    description: "CERN Zenodo Version DOI (v1.1.0, Unified Alpoge-Claude RH/GRH Suite)"
+    description: "CERN Zenodo Version DOI (v1.1.0)"
   - type: doi
     value: "10.5281/zenodo.24241229"
     description: "CERN Zenodo Version DOI (v1.0.0)"
-date-released: "2026-11-22"
+  - type: other
+    value: "hexagon:2611.00881"
+    description: "Hexagon Math Preprint Issue #1 (17.37M-Line Alpöge-Claude RH/GRH Deep Decompilation)"
+  - type: other
+    value: "hexagon:2611.00912"
+    description: "Hexagon Math Preprint Issue #2 (OpenAI #003 QRH Trilogy & Classical Riemann Barriers)"
+date-released: "2026-11-23"
 license:
   - Apache-2.0
   - CC-BY-4.0
